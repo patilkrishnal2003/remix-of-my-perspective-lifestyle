@@ -56,11 +56,11 @@ const Header = () => {
             <Link to="/portfolio" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Portfolio
             </Link>
+            <Link to="/blog" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Blog
+            </Link>
             <Link to="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               About
-            </Link>
-            <Link to="/contact" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Contact
             </Link>
           </nav>
 
