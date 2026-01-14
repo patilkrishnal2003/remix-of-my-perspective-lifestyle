@@ -31,23 +31,23 @@ const Contact = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         {/* Hero Section */}
-        <div className="mb-16 text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+        <div className="mb-10 sm:mb-16 text-center space-y-4 sm:space-y-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
             Let's Build Something Great
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1 px-2">
             Ready to start your project? Get in touch and we'll provide a free consultation and quote.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
-          <div className="rounded-3xl bg-card p-8 md:p-10 animate-slide-up stagger-2">
-            <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <div className="rounded-2xl sm:rounded-3xl bg-card p-6 sm:p-8 md:p-10 animate-slide-up stagger-2">
+            <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Send us a message</h2>
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
                     Name *
@@ -79,7 +79,7 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium mb-2">
                     Company
@@ -130,7 +130,7 @@ const Contact = () => {
               </div>
               <Button 
                 type="submit"
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full py-6 text-lg hover:scale-[1.02] transition-all"
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full py-5 sm:py-6 text-base sm:text-lg hover:scale-[1.02] transition-all"
               >
                 Send Message
               </Button>
@@ -138,11 +138,11 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8 animate-slide-up stagger-3">
-            <div className="rounded-3xl bg-card p-8">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
+          <div className="space-y-6 sm:space-y-8 animate-slide-up stagger-3">
+            <div className="rounded-2xl sm:rounded-3xl bg-card p-6 sm:p-8">
+              <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Contact Information</h2>
+              <div className="space-y-5 sm:space-y-6">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-accent" />
                   </div>
@@ -185,8 +185,8 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-accent/10 p-8">
-              <h3 className="text-xl font-bold mb-4">What happens next?</h3>
+            <div className="rounded-2xl sm:rounded-3xl bg-accent/10 p-6 sm:p-8">
+              <h3 className="text-lg sm:text-xl font-bold mb-4">What happens next?</h3>
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>

@@ -41,32 +41,32 @@ const Blog = () => {
         </section>
 
         {/* Featured Posts */}
-        <section className="mb-20">
-          <h2 className="text-2xl font-bold mb-8">Featured Articles</h2>
-          <div className="grid lg:grid-cols-3 gap-8">
+        <section className="mb-16 sm:mb-20">
+          <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Featured Articles</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredPosts.map((post, index) => (
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
-                className={`group rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
+                className={`group rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
               >
-                <div className="h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="px-4 py-2 rounded-full bg-accent/20 text-accent text-sm font-medium">
+                <div className="h-36 sm:h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                  <span className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/20 text-accent text-xs sm:text-sm font-medium">
                     {post.category}
                   </span>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                <div className="p-5 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-accent transition-colors line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm mb-3 sm:mb-4 line-clamp-2">{post.excerpt}</p>
+                  <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
-                      <User className="h-4 w-4" />
-                      {post.author}
+                      <User className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <span className="truncate">{post.author}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       {post.readTime}
                     </div>
                   </div>
@@ -79,20 +79,20 @@ const Blog = () => {
         {/* All Posts */}
         <section className="mb-20">
           <h2 className="text-2xl font-bold mb-8">Latest Articles</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {regularPosts.map((post, index) => (
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
-                className={`group flex gap-6 p-6 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
+                className={`group flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
               >
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center flex-shrink-0">
+                <div className="w-full sm:w-24 h-32 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center flex-shrink-0">
                   <span className="text-accent text-xs font-medium text-center px-2">
                     {post.category}
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                  <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{post.excerpt}</p>

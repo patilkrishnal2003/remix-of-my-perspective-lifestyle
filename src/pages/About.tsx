@@ -90,43 +90,45 @@ const About = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left Content */}
-            <div className="space-y-8 animate-slide-up">
+            <div className="space-y-6 sm:space-y-8 animate-slide-up order-2 lg:order-1">
               {/* Avatar Badge */}
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-border bg-card">
+              <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full border border-border bg-card">
                 <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-accent/20 border-2 border-background flex items-center justify-center text-xs font-bold text-accent">A</div>
-                  <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-blue-600">S</div>
-                  <div className="w-8 h-8 rounded-full bg-purple-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-purple-600">M</div>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 border-2 border-background flex items-center justify-center text-xs font-bold text-accent">A</div>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-blue-600">S</div>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-purple-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-purple-600">M</div>
                 </div>
-                <span className="text-sm font-medium">Trusted by 50+ businesses</span>
+                <span className="text-xs sm:text-sm font-medium">Trusted by 50+ businesses</span>
               </div>
 
               {/* Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight">
                 Building digital
-                <br />
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
                 products that
-                <br />
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
                 <span className="text-accent">drive growth.</span>
               </h1>
 
               {/* Description */}
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
                 We're a passionate team of developers and designers dedicated to transforming ideas into powerful software solutions that help businesses thrive.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-4">
-                <Link to="/contact">
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-6 text-base hover:scale-105 transition-all">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link to="/contact" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base hover:scale-105 transition-all">
                     Get started
                   </Button>
                 </Link>
-                <Link to="/portfolio">
-                  <Button variant="outline" className="rounded-full px-8 py-6 text-base hover:scale-105 transition-all gap-2">
+                <Link to="/portfolio" className="w-full sm:w-auto">
+                  <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base hover:scale-105 transition-all gap-2">
                     <Play className="h-4 w-4" />
                     View our work
                   </Button>
@@ -135,27 +137,27 @@ const About = () => {
             </div>
 
             {/* Right Image */}
-            <div className="relative animate-slide-up stagger-2">
-              <div className="relative rounded-3xl overflow-hidden">
+            <div className="relative animate-slide-up stagger-2 order-1 lg:order-2">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden">
                 <img
                   src={aboutHeroImage}
                   alt="Advora team member working"
-                  className="w-full h-auto object-cover rounded-3xl"
+                  className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
                 />
                 
                 {/* Floating Stats Card */}
-                <div className="absolute bottom-6 left-6 bg-background/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg border border-border">
+                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-background/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg border border-border">
                   <div className="flex items-center gap-3">
                     <div className="relative">
-                      <span className="text-3xl font-bold">50</span>
-                      <ArrowUpRight className="absolute -top-1 -right-4 h-4 w-4 text-accent" />
+                      <span className="text-2xl sm:text-3xl font-bold">50</span>
+                      <ArrowUpRight className="absolute -top-1 -right-4 h-3 w-3 sm:h-4 sm:w-4 text-accent" />
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">Happy clients</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">Happy clients</p>
                   
                   {/* Heart Icon */}
-                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                    <Heart className="h-4 w-4 text-white fill-white" />
+                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-full flex items-center justify-center">
+                    <Heart className="h-3 w-3 sm:h-4 sm:w-4 text-white fill-white" />
                   </div>
                 </div>
               </div>
