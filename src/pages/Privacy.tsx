@@ -92,7 +92,7 @@ const Privacy = () => {
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
             <p className="text-muted-foreground mt-4">
-              Email: privacy@advora.com<br />
+              Email: advora.in@gmail.com<br />
               Address: New York, NY
             </p>
           </section>

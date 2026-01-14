@@ -106,7 +106,7 @@ const Terms = () => {
               If you have any questions about these Terms of Service, please contact us at:
             </p>
             <p className="text-muted-foreground mt-4">
-              Email: legal@advora.com<br />
+              Email: advora.in@gmail.com<br />
               Address: New York, NY
             </p>
           </section>

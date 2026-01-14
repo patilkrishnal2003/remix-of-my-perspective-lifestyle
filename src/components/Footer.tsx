@@ -27,7 +27,7 @@ const Footer = () => {
               <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
                 <Github className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
-              <a href="mailto:hello@advora.com" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <a href="mailto:advora.in@gmail.com" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
@@ -60,7 +60,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-sm sm:text-base">Contact</h3>
             <ul className="space-y-2.5 sm:space-y-3 text-sm text-muted-foreground">
-              <li>hello@advora.com</li>
+              <li>advora.in@gmail.com</li>
               <li>+1 (555) 123-4567</li>
               <li>New York, NY</li>
               <li className="pt-2">
