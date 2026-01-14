@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Privacy = () => {
   return (
@@ -12,7 +13,7 @@ const Privacy = () => {
             Privacy Policy
           </h1>
           <p className="text-muted-foreground animate-slide-up stagger-1">
-            Last updated: March 20, 2025
+            Last updated: January 14, 2026
           </p>
         </div>
 
@@ -20,8 +21,8 @@ const Privacy = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">Introduction</h2>
             <p className="text-muted-foreground">
-              At Perspective, we take your privacy seriously. This Privacy Policy explains how we collect, 
-              use, disclose, and safeguard your information when you visit our website and subscribe to our newsletter.
+              At Advora, we take your privacy seriously. This Privacy Policy explains how we collect, 
+              use, disclose, and safeguard your information when you visit our website or engage our services.
             </p>
           </section>
 
@@ -32,13 +33,13 @@ const Privacy = () => {
               We may collect personal information that you voluntarily provide to us when you:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Subscribe to our newsletter</li>
+              <li>Request a project quote or consultation</li>
               <li>Contact us through our contact form</li>
-              <li>Comment on our articles</li>
-              <li>Create an account on our website</li>
+              <li>Sign a contract for our services</li>
+              <li>Communicate with us via email or phone</li>
             </ul>
             <p className="text-muted-foreground mt-4">
-              This information may include your name, email address, and any other information you choose to provide.
+              This information may include your name, email address, phone number, company name, and project details.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">Automatically Collected Information</h3>
@@ -55,69 +56,34 @@ const Privacy = () => {
               We use the information we collect to:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>Send you our newsletter and marketing communications</li>
-              <li>Respond to your comments and questions</li>
-              <li>Improve our website and content</li>
-              <li>Analyze usage patterns and trends</li>
-              <li>Protect against fraudulent or illegal activity</li>
+              <li>Respond to your inquiries and provide quotes</li>
+              <li>Deliver and manage our software development services</li>
+              <li>Communicate project updates and deliverables</li>
+              <li>Improve our website and services</li>
+              <li>Send relevant updates about our services (with your consent)</li>
             </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Cookies and Tracking Technologies</h2>
-            <p className="text-muted-foreground">
-              We use cookies and similar tracking technologies to track activity on our website and store 
-              certain information. You can instruct your browser to refuse all cookies or to indicate when 
-              a cookie is being sent. However, if you do not accept cookies, you may not be able to use 
-              some portions of our website.
-            </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold mb-4">Data Security</h2>
             <p className="text-muted-foreground">
-              We implement appropriate technical and organizational security measures to protect your 
-              personal information. However, please note that no method of transmission over the Internet 
-              or method of electronic storage is 100% secure.
+              We implement industry-standard security measures to protect your personal information and 
+              any project data you share with us. All client communications and project files are handled 
+              with strict confidentiality.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold mb-4">Your Rights</h2>
             <p className="text-muted-foreground mb-4">
-              Depending on your location, you may have certain rights regarding your personal information, including:
+              You have the right to:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-              <li>The right to access your personal information</li>
-              <li>The right to rectification of inaccurate information</li>
-              <li>The right to erasure of your personal information</li>
-              <li>The right to withdraw consent</li>
-              <li>The right to data portability</li>
+              <li>Access your personal information we hold</li>
+              <li>Request correction of inaccurate information</li>
+              <li>Request deletion of your personal information</li>
+              <li>Withdraw consent for marketing communications</li>
             </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Third-Party Services</h2>
-            <p className="text-muted-foreground">
-              Our website may contain links to third-party websites. We are not responsible for the privacy 
-              practices of these third-party sites. We encourage you to read their privacy policies.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Children's Privacy</h2>
-            <p className="text-muted-foreground">
-              Our website is not intended for children under the age of 13. We do not knowingly collect 
-              personal information from children under 13.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Changes to This Privacy Policy</h2>
-            <p className="text-muted-foreground">
-              We may update our Privacy Policy from time to time. We will notify you of any changes by 
-              posting the new Privacy Policy on this page and updating the "Last updated" date.
-            </p>
           </section>
 
           <section>
@@ -126,12 +92,14 @@ const Privacy = () => {
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
             <p className="text-muted-foreground mt-4">
-              Email: privacy@perspective.blog<br />
-              Address: San Francisco, CA
+              Email: privacy@advora.com<br />
+              Address: New York, NY
             </p>
           </section>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };

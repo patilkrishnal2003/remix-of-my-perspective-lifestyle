@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,31 +37,31 @@ const Header = () => {
         <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6">
           {/* Logo */}
           <div className="flex items-center min-w-0">
-            <a href="/" className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-primary-foreground font-bold text-base sm:text-lg">P</span>
+            <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
               </div>
-              <span className="text-base sm:text-xl font-bold font-serif truncate">Perspective</span>
-            </a>
+              <span className="text-base sm:text-xl font-bold font-serif truncate">Advora</span>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
-            <a href="/" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+            <Link to="/" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Home
-            </a>
-            <a href="/#articles" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Articles
-            </a>
-            <a href="/wellness" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Wellness
-            </a>
-            <a href="/travel" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Travel
-            </a>
-            <a href="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+            </Link>
+            <Link to="/services" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Services
+            </Link>
+            <Link to="/portfolio" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Portfolio
+            </Link>
+            <Link to="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               About
-            </a>
+            </Link>
+            <Link to="/contact" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Contact
+            </Link>
           </nav>
 
           {/* Actions */}
@@ -77,9 +78,11 @@ const Header = () => {
               )}
             </button>
             
-            <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-2 hover:scale-105 transition-all">
-              Join Now
-            </Button>
+            <Link to="/contact">
+              <Button className="hidden md:flex bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-2 hover:scale-105 transition-all">
+                Get a Quote
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -96,24 +99,26 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <nav className="flex flex-col gap-4">
-              <a href="/" className="text-sm font-medium hover:text-accent transition-colors">
+              <Link to="/" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
                 Home
-              </a>
-              <a href="/#articles" className="text-sm font-medium hover:text-accent transition-colors">
-                Articles
-              </a>
-              <a href="/wellness" className="text-sm font-medium hover:text-accent transition-colors">
-                Wellness
-              </a>
-              <a href="/travel" className="text-sm font-medium hover:text-accent transition-colors">
-                Travel
-              </a>
-              <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
+              </Link>
+              <Link to="/services" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Services
+              </Link>
+              <Link to="/portfolio" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Portfolio
+              </Link>
+              <Link to="/about" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
                 About
-              </a>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
-                Join Now
-              </Button>
+              </Link>
+              <Link to="/contact" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+                Contact
+              </Link>
+              <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full w-full">
+                  Get a Quote
+                </Button>
+              </Link>
             </nav>
           </div>
         )}
