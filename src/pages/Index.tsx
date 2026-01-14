@@ -76,28 +76,28 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="text-center space-y-8 animate-slide-down">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
-              <Zap className="h-4 w-4" />
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32">
+          <div className="text-center space-y-6 sm:space-y-8 animate-slide-down">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium">
+              <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               Software & Web Development Agency
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.15]">
               We build digital
               <span className="block text-accent">products that matter</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
               Advora transforms your ideas into powerful software solutions. From web applications to mobile apps, we deliver excellence.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Link to="/contact">
-                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-6 text-lg hover:scale-105 transition-all">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
                   Start Your Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </Link>
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6 text-lg hover:scale-105 transition-all">
+              <Link to="/portfolio" className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
                   View Our Work
                 </Button>
               </Link>
@@ -106,12 +106,12 @@ const Index = () => {
         </section>
 
         {/* Trusted By Section */}
-        <section className="border-y border-border py-12 bg-muted/30">
+        <section className="border-y border-border py-8 sm:py-12 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-muted-foreground mb-8">Trusted by innovative companies</p>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60">
+            <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-8 md:gap-16 opacity-60">
               {["TechCorp", "StartupX", "FinanceFlow", "HealthTrack", "RetailHub", "EduLearn"].map((company) => (
-                <div key={company} className="text-xl font-bold text-muted-foreground">
+                <div key={company} className="text-sm sm:text-lg md:text-xl font-bold text-muted-foreground">
                   {company}
                 </div>
               ))}

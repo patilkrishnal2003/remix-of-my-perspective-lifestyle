@@ -97,28 +97,57 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <nav className="flex flex-col gap-4">
-              <Link to="/" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+          <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in">
+            <nav className="flex flex-col gap-1">
+              <Link 
+                to="/" 
+                className="text-base font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Home
               </Link>
-              <Link to="/services" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Link 
+                to="/services" 
+                className="text-base font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Services
               </Link>
-              <Link to="/portfolio" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Link 
+                to="/portfolio" 
+                className="text-base font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Portfolio
               </Link>
-              <Link to="/about" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Link 
+                to="/blog" 
+                className="text-base font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              <Link 
+                to="/about" 
+                className="text-base font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 About
               </Link>
-              <Link to="/contact" className="text-sm font-medium hover:text-accent transition-colors" onClick={() => setIsMenuOpen(false)}>
+              <Link 
+                to="/contact" 
+                className="text-base font-medium py-3 px-4 rounded-xl hover:bg-muted transition-colors" 
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Contact
               </Link>
-              <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full w-full">
-                  Get a Quote
-                </Button>
-              </Link>
+              <div className="pt-3 mt-2 border-t border-border">
+                <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full w-full py-6 text-base">
+                    Get a Quote
+                  </Button>
+                </Link>
+              </div>
             </nav>
           </div>
         )}
