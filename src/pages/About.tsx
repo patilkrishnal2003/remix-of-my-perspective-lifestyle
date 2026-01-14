@@ -1,8 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, Target, Award, Heart, Globe, Clock, Briefcase, GraduationCap, Coffee, ArrowRight } from "lucide-react";
+import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import aboutHeroImage from "@/assets/about-hero.jpg";
 
 const About = () => {
   const values = [
@@ -89,14 +90,76 @@ const About = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-              About Advora
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-              We're a team of passionate developers and designers dedicated to building exceptional digital products that help businesses thrive.
-            </p>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8 animate-slide-up">
+              {/* Avatar Badge */}
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-border bg-card">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-accent/20 border-2 border-background flex items-center justify-center text-xs font-bold text-accent">A</div>
+                  <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-blue-600">S</div>
+                  <div className="w-8 h-8 rounded-full bg-purple-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-purple-600">M</div>
+                </div>
+                <span className="text-sm font-medium">Trusted by 50+ businesses</span>
+              </div>
+
+              {/* Heading */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+                Building digital
+                <br />
+                products that
+                <br />
+                <span className="text-accent">drive growth.</span>
+              </h1>
+
+              {/* Description */}
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+                We're a passionate team of developers and designers dedicated to transforming ideas into powerful software solutions that help businesses thrive.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact">
+                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-6 text-base hover:scale-105 transition-all">
+                    Get started
+                  </Button>
+                </Link>
+                <Link to="/portfolio">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-base hover:scale-105 transition-all gap-2">
+                    <Play className="h-4 w-4" />
+                    View our work
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative animate-slide-up stagger-2">
+              <div className="relative rounded-3xl overflow-hidden">
+                <img
+                  src={aboutHeroImage}
+                  alt="Advora team member working"
+                  className="w-full h-auto object-cover rounded-3xl"
+                />
+                
+                {/* Floating Stats Card */}
+                <div className="absolute bottom-6 left-6 bg-background/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg border border-border">
+                  <div className="flex items-center gap-3">
+                    <div className="relative">
+                      <span className="text-3xl font-bold">50</span>
+                      <ArrowUpRight className="absolute -top-1 -right-4 h-4 w-4 text-accent" />
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">Happy clients</p>
+                  
+                  {/* Heart Icon */}
+                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                    <Heart className="h-4 w-4 text-white fill-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
