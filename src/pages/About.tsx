@@ -1,105 +1,150 @@
 import Header from "@/components/Header";
-import ArticleCard from "@/components/ArticleCard";
-import HeroSection from "@/components/HeroSection";
-import IntroSection from "@/components/IntroSection";
-import { articles } from "@/data/articles";
+import Footer from "@/components/Footer";
+import { Users, Target, Award, Heart } from "lucide-react";
 
-const Index = () => {
-  const featuredArticles = articles.slice(0, 6);
+const About = () => {
+  const values = [
+    {
+      icon: Target,
+      title: "Client-Focused",
+      description: "Your success is our priority. We work closely with you to understand your goals and deliver solutions that exceed expectations."
+    },
+    {
+      icon: Award,
+      title: "Excellence",
+      description: "We hold ourselves to the highest standards, ensuring every line of code and every design element meets our quality benchmarks."
+    },
+    {
+      icon: Users,
+      title: "Collaboration",
+      description: "Great products are built together. We believe in transparent communication and partnership throughout the development process."
+    },
+    {
+      icon: Heart,
+      title: "Passion",
+      description: "We love what we do. Our enthusiasm for technology and innovation drives us to create exceptional digital experiences."
+    }
+  ];
+
+  const team = [
+    {
+      name: "Alex Chen",
+      role: "Founder & Lead Developer",
+      bio: "10+ years of experience in full-stack development and software architecture."
+    },
+    {
+      name: "Sarah Johnson",
+      role: "UI/UX Designer",
+      bio: "Passionate about creating intuitive and beautiful user experiences."
+    },
+    {
+      name: "Michael Roberts",
+      role: "Backend Engineer",
+      bio: "Expert in scalable systems and cloud infrastructure."
+    },
+    {
+      name: "Emily Davis",
+      role: "Project Manager",
+      bio: "Ensures smooth delivery and exceptional client communication."
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
-        <HeroSection />
+        <div className="mb-20 text-center space-y-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+            About Advora
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
+            We're a team of passionate developers and designers dedicated to building exceptional digital products that help businesses thrive.
+          </p>
+        </div>
 
-        {/* Intro Section */}
-        <IntroSection />
-
-        {/* Featured Articles Grid */}
-        <section id="articles" className="py-12">
-          <div className="flex items-center justify-between mb-12 animate-slide-up">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Featured Articles</h2>
-            <a href="#all" className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors px-4 py-2 rounded-full hover:bg-muted/60">
-              View all →
-            </a>
+        {/* Story Section */}
+        <section className="mb-20 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6 animate-slide-up stagger-2">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Advora was founded with a simple mission: to bridge the gap between innovative ideas and powerful technology. We saw too many businesses struggling with outdated software or unable to bring their digital visions to life.
+              </p>
+              <p>
+                Today, we've grown into a full-service software and web development agency, serving clients across industries. From startups launching their first product to enterprises modernizing their systems, we bring the same level of dedication and expertise to every project.
+              </p>
+              <p>
+                Our team combines years of experience with a genuine passion for technology. We stay at the forefront of industry trends, continuously learning and adopting new tools and methodologies to deliver the best possible solutions.
+              </p>
+            </div>
           </div>
+          <div className="rounded-3xl bg-card p-8 md:p-12 animate-slide-up stagger-3">
+            <div className="grid grid-cols-2 gap-8">
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">5+</div>
+                <div className="text-muted-foreground">Years in Business</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">150+</div>
+                <div className="text-muted-foreground">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">50+</div>
+                <div className="text-muted-foreground">Happy Clients</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-accent mb-2">15+</div>
+                <div className="text-muted-foreground">Team Members</div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredArticles.map((article, index) => (
-              <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 1, 6)}`}>
-                <ArticleCard {...article} size="small" />
+        {/* Values Section */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
+            <p className="text-xl text-muted-foreground">The principles that guide everything we do</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <div key={value.title} className={`p-6 rounded-2xl bg-card animate-slide-up stagger-${index + 1}`}>
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                  <value.icon className="h-6 w-6 text-accent" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Newsletter Section */}
-        <section className="my-20 rounded-[2.5rem] bg-card p-12 md:p-16 text-center animate-scale-in">
-          <div className="max-w-2xl mx-auto space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Stay inspired.</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Subscribe to receive our latest articles and insights directly in your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-6 py-4 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring transition-all"
-              />
-              <button className="px-10 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 hover:scale-105 transition-all">
-                Subscribe
-              </button>
-            </div>
+        {/* Team Section */}
+        <section className="mb-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
+            <p className="text-xl text-muted-foreground">The talented people behind Advora</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {team.map((member, index) => (
+              <div key={member.name} className={`p-6 rounded-2xl bg-card text-center animate-slide-up stagger-${index + 1}`}>
+                <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-accent">{member.name.charAt(0)}</span>
+                </div>
+                <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+                <p className="text-accent text-sm mb-3">{member.role}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
+              </div>
+            ))}
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="font-semibold mb-4">Explore</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/wellness" className="hover:text-accent transition-colors">Wellness</a></li>
-                <li><a href="/travel" className="hover:text-accent transition-colors">Travel</a></li>
-                <li><a href="/creativity" className="hover:text-accent transition-colors">Creativity</a></li>
-                <li><a href="/growth" className="hover:text-accent transition-colors">Growth</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">About</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/about" className="hover:text-accent transition-colors">Our Story</a></li>
-                <li><a href="/authors" className="hover:text-accent transition-colors">Authors</a></li>
-                <li><a href="/contact" className="hover:text-accent transition-colors">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/style-guide" className="hover:text-accent transition-colors">Style Guide</a></li>
-                <li><a href="/#newsletter" className="hover:text-accent transition-colors">Newsletter</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-                <li><a href="/terms" className="hover:text-accent transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© 2025 Perspective. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
 
-export default Index;
+export default About;
