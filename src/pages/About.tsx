@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import aboutHeroImage from "@/assets/about-hero.jpg";
@@ -101,80 +101,57 @@ const About = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 sm:space-y-8 animate-slide-up order-2 lg:order-1">
-              {/* Avatar Badge */}
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full border border-border bg-card">
-                <div className="flex -space-x-2">
-                  <img src={teamAlex} alt="Alex" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
-                  <img src={teamSarah} alt="Sarah" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
-                  <img src={teamMichael} alt="Michael" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
-                </div>
-                <span className="text-xs sm:text-sm font-medium">Trusted by 50+ businesses</span>
-              </div>
-
-              {/* Heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight">
-                Building digital
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                products that
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                <span className="text-primary">drive growth.</span>
-              </h1>
-
-              {/* Description */}
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
-                We're a passionate team of developers and designers dedicated to transforming ideas into powerful software solutions that help businesses thrive.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base hover:scale-105 transition-all">
-                    Get started
-                  </Button>
-                </Link>
-                <Link to="/portfolio" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base hover:scale-105 transition-all gap-2">
-                    <Play className="h-4 w-4" />
-                    View our work
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="relative animate-slide-up stagger-2 order-1 lg:order-2">
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden">
+        {/* Hero Section - Card Style */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
+          <div className="rounded-3xl overflow-hidden shadow-xl border border-border">
+            <div className="grid lg:grid-cols-2">
+              {/* Left Image */}
+              <div className="relative">
                 <img
                   src={aboutHeroImage}
                   alt="Advora team member working"
-                  className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
+                  className="w-full h-full object-cover min-h-[300px] lg:min-h-[500px]"
                 />
+              </div>
+              
+              {/* Right Content */}
+              <div className="bg-card p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 font-serif">
+                  Crafting Digital Excellence, Together.
+                </h1>
                 
-                {/* Floating Stats Card */}
-                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-background/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg border border-border">
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <span className="text-2xl sm:text-3xl font-bold">50</span>
-                      <ArrowUpRight className="absolute -top-1 -right-4 h-3 w-3 sm:h-4 sm:w-4 text-accent" />
-                    </div>
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">Happy clients</p>
+                <p className="text-muted-foreground leading-relaxed mb-8">
+                  Welcome to Advora Digital: A Realm of Innovation, Expertise, and Discovery. Where Code Illuminates Paths of Progress and Design Transforms the Digital Landscape.
+                </p>
+                
+                <div className="flex items-center gap-4">
+                  <Link to="/contact">
+                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5">
+                      Get Started
+                    </Button>
+                  </Link>
                   
-                  {/* Heart Icon */}
-                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-full flex items-center justify-center">
-                    <Heart className="h-3 w-3 sm:h-4 sm:w-4 text-white fill-white" />
+                  {/* Social Icons */}
+                  <div className="flex items-center gap-2">
+                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+                      <Instagram className="h-4 w-4" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+                      <Facebook className="h-4 w-4" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+                      <Linkedin className="h-4 w-4" />
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
+          {/* Tagline */}
+          <p className="text-center text-lg italic text-muted-foreground mt-10 max-w-3xl mx-auto">
+            Advora is a space for building ideas, finding solutions, and discovering new ways of creating the digital world.
+          </p>
         </section>
 
         {/* Stats Section */}
