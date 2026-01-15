@@ -122,12 +122,12 @@ const Index = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      {/* Canvas Animation */}
-      <canvas id="canvas" className="pointer-events-none fixed inset-0 z-50" />
-
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden min-h-screen flex items-center">
+          {/* Canvas Animation - Hero Only */}
+          <canvas id="canvas" className="pointer-events-none absolute inset-0 z-10" />
+          
           {/* Gradient Background */}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
           
