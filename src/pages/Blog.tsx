@@ -66,8 +66,8 @@ const Blog = () => {
                   )}
                 </div>
                 <div className="p-5 sm:p-6">
-                  <span className="text-xs font-medium text-accent mb-2 block">{post.category}</span>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                  <span className="text-xs font-medium text-primary mb-2 block">{post.category}</span>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-3 sm:mb-4 line-clamp-2">{post.excerpt}</p>
@@ -106,15 +106,15 @@ const Blog = () => {
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                      <span className="text-accent text-xs font-medium text-center px-2">
+                      <span className="text-primary text-xs font-medium text-center px-2">
                         {post.category}
                       </span>
                     </div>
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <span className="text-xs font-medium text-accent mb-1 block">{post.category}</span>
-                  <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                  <span className="text-xs font-medium text-primary mb-1 block">{post.category}</span>
+                  <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{post.excerpt}</p>

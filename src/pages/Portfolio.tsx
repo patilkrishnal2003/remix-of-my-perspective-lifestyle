@@ -139,7 +139,7 @@ const Portfolio = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={stat.label} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
                   <div className="text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
@@ -178,12 +178,12 @@ const Portfolio = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium">{project.category}</span>
+                    <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">{project.category}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{project.description}</p>
                   <div className="p-3 rounded-xl bg-muted/50 mb-4">
-                    <p className="text-sm font-medium text-accent">{project.results}</p>
+                    <p className="text-sm font-medium text-primary">{project.results}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
@@ -203,26 +203,26 @@ const Portfolio = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
-                <span className="text-accent font-medium">Featured Case Study</span>
+                <span className="text-primary font-medium">Featured Case Study</span>
                 <h2 className="text-3xl md:text-4xl font-bold">How We Helped FinanceFlow Scale to 100K Users</h2>
                 <p className="text-muted-foreground leading-relaxed">
                   FinanceFlow came to us with a legacy system that was struggling to keep up with demand. Through a complete platform redesign and modern technology stack, we helped them achieve 300% user growth in just 6 months.
                 </p>
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <div className="text-3xl font-bold text-accent mb-1">300%</div>
+                    <div className="text-3xl font-bold text-primary mb-1">300%</div>
                     <div className="text-muted-foreground">User Growth</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-accent mb-1">50%</div>
+                    <div className="text-3xl font-bold text-primary mb-1">50%</div>
                     <div className="text-muted-foreground">Fewer Support Tickets</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-accent mb-1">12 wks</div>
+                    <div className="text-3xl font-bold text-primary mb-1">12 wks</div>
                     <div className="text-muted-foreground">Development Time</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-accent mb-1">99.9%</div>
+                    <div className="text-3xl font-bold text-primary mb-1">99.9%</div>
                     <div className="text-muted-foreground">Uptime</div>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ const Portfolio = () => {
                 </blockquote>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center">
-                    <span className="font-bold text-accent">JM</span>
+                    <span className="font-bold text-primary">JM</span>
                   </div>
                   <div>
                     <div className="font-bold">Jennifer Martinez</div>

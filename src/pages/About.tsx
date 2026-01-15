@@ -124,7 +124,7 @@ const About = () => {
                 products that
                 <br className="hidden sm:block" />
                 <span className="sm:hidden"> </span>
-                <span className="text-accent">drive growth.</span>
+                <span className="text-primary">drive growth.</span>
               </h1>
 
               {/* Description */}
@@ -188,7 +188,7 @@ const About = () => {
                 { value: "15+", label: "Team Members" }
               ].map((stat, index) => (
                 <div key={stat.label} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
                   <div className="text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
@@ -236,7 +236,7 @@ const About = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {milestones.map((milestone, index) => (
                 <div key={milestone.year} className={`p-6 rounded-2xl bg-background border border-border animate-slide-up stagger-${(index % 6) + 1}`}>
-                  <div className="text-accent font-bold text-lg mb-2">{milestone.year}</div>
+                  <div className="text-primary font-bold text-lg mb-2">{milestone.year}</div>
                   <h3 className="font-bold mb-2">{milestone.title}</h3>
                   <p className="text-muted-foreground text-sm">{milestone.description}</p>
                 </div>
@@ -280,7 +280,7 @@ const About = () => {
                     className="w-20 h-20 rounded-full object-cover mb-6"
                   />
                   <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-accent mb-3">{member.role}</p>
+                  <p className="text-primary mb-3">{member.role}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.bio}</p>
                   <div className="flex flex-wrap gap-2">
                     {member.skills.map((skill) => (
