@@ -6,16 +6,11 @@ import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
 import { FeaturesSectionWithHoverEffects, FeatureItem } from "@/components/ui/feature-section-with-hover-effects";
+import { techStackHome } from "@/components/TechStackIcons";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
 import projectRetailHub from "@/assets/project-retailhub.jpg";
-import logoTechcorp from "@/assets/logo-techcorp.png";
-import logoStartupx from "@/assets/logo-startupx.png";
-import logoFinanceflow from "@/assets/logo-financeflow.png";
-import logoHealthtrack from "@/assets/logo-healthtrack.png";
-import logoRetailhub from "@/assets/logo-retailhub.png";
-import logoEdulearn from "@/assets/logo-edulearn.png";
 
 const Index = () => {
   const serviceFeatures: FeatureItem[] = [
@@ -56,21 +51,6 @@ const Index = () => {
     { icon: Zap, title: "Fast Delivery", description: "Agile development for quick turnaround" },
     { icon: Shield, title: "Secure & Reliable", description: "Enterprise-grade security standards" },
     { icon: Users, title: "Dedicated Team", description: "Expert developers assigned to your project" }
-  ];
-
-  const techStack = [
-    { name: "React", icon: "⚛️" },
-    { name: "Next.js", icon: "▲" },
-    { name: "TypeScript", icon: "TS" },
-    { name: "Node.js", icon: "🟢" },
-    { name: "Python", icon: "🐍" },
-    { name: "PostgreSQL", icon: "🐘" },
-    { name: "MongoDB", icon: "🍃" },
-    { name: "AWS", icon: "☁️" },
-    { name: "Docker", icon: "🐳" },
-    { name: "GraphQL", icon: "◈" },
-    { name: "React Native", icon: "📱" },
-    { name: "Tailwind CSS", icon: "🎨" },
   ];
 
   const testimonials = [

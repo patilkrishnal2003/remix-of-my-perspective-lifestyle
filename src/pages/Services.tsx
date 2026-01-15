@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FeaturesSectionWithHoverEffects, FeatureItem } from "@/components/ui/feature-section-with-hover-effects";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { techStackWithIcons } from "@/components/TechStackIcons";
 import servicesHero from "@/assets/services-hero.jpg";
 
 const Services = () => {
@@ -57,27 +58,6 @@ const Services = () => {
       icon: <LineChart className="h-6 w-6" />,
       tags: ["Architecture", "Planning", "Reviews"],
     },
-  ];
-
-  const techStackWithIcons = [
-    { name: "React", icon: "⚛️" },
-    { name: "Next.js", icon: "▲" },
-    { name: "TypeScript", icon: "TS" },
-    { name: "Node.js", icon: "🟢" },
-    { name: "Python", icon: "🐍" },
-    { name: "Go", icon: "🔷" },
-    { name: "PostgreSQL", icon: "🐘" },
-    { name: "MongoDB", icon: "🍃" },
-    { name: "Redis", icon: "🔴" },
-    { name: "AWS", icon: "☁️" },
-    { name: "Docker", icon: "🐳" },
-    { name: "Kubernetes", icon: "⎈" },
-    { name: "GraphQL", icon: "◈" },
-    { name: "React Native", icon: "📱" },
-    { name: "Flutter", icon: "💙" },
-    { name: "Tailwind CSS", icon: "🎨" },
-    { name: "Figma", icon: "🎯" },
-    { name: "Git", icon: "🔀" },
   ];
 
   const advantages = [
@@ -179,7 +159,7 @@ const Services = () => {
                   key={tech.name}
                   className={`flex items-center gap-2 px-5 py-3 rounded-full bg-background border border-border hover:border-accent/50 hover:scale-105 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
                 >
-                  <span className="text-lg">{tech.icon}</span>
+                  <tech.icon className="h-5 w-5 text-primary" />
                   <span className="font-medium">{tech.name}</span>
                 </div>
               ))}
