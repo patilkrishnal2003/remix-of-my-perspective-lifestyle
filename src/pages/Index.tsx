@@ -115,7 +115,7 @@ const Index = () => {
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
                 We build digital
-                <span className="block text-accent">products that matter</span>
+                <span className="block text-primary">products that matter</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
                 Advora transforms your ideas into powerful software solutions. From web applications to mobile apps, we deliver excellence.
@@ -145,7 +145,7 @@ const Index = () => {
               </div>
               {/* Floating Stats Card */}
               <div className="absolute -bottom-4 -left-4 sm:bottom-6 sm:-left-6 bg-background/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg border border-border hidden md:block">
-                <div className="text-2xl sm:text-3xl font-bold text-accent">150+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary">150+</div>
                 <p className="text-xs sm:text-sm text-muted-foreground">Projects Delivered</p>
               </div>
             </div>
@@ -160,7 +160,7 @@ const Index = () => {
                 key={stat.label} 
                 className={`p-6 sm:p-8 rounded-2xl bg-card border border-border text-center hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${index + 1}`}
               >
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
                 <div className="text-sm sm:text-base text-muted-foreground">{stat.label}</div>
               </div>
             ))}
@@ -232,7 +232,7 @@ const Index = () => {
                 I build high quality apps that your
                 <span className="block">users love</span>
               </h2>
-              <p className="text-accent font-medium text-lg">here's what I focus on</p>
+              <p className="text-primary font-medium text-lg">here's what I focus on</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
               {[
@@ -291,8 +291,8 @@ const Index = () => {
                   />
                 </div>
                 <div className="p-4 bg-card">
-                  <span className="text-xs text-accent font-medium">{project.category}</span>
-                  <h3 className="font-bold mt-1 group-hover:text-accent transition-colors">{project.title}</h3>
+                  <span className="text-xs text-primary font-medium">{project.category}</span>
+                  <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
                 </div>
               </Link>
             ))}
