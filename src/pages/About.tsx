@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, ArrowUpRight } from "lucide-react";
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import aboutHeroImage from "@/assets/about-hero.jpg";
@@ -103,52 +102,45 @@ const About = () => {
       
       <main>
         {/* Hero Section - Card Style */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-16">
-          <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card overflow-hidden shadow-lg animate-slide-up">
-            <div className="grid lg:grid-cols-2 gap-0">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
+          <div className="rounded-3xl overflow-hidden shadow-xl border border-border">
+            <div className="grid lg:grid-cols-2">
               {/* Left Image */}
-              <div className="relative h-64 sm:h-80 lg:h-auto">
+              <div className="relative">
                 <img
                   src={aboutHeroImage}
-                  alt="Advora team workspace"
-                  className="w-full h-full object-cover"
+                  alt="Advora team member working"
+                  className="w-full h-full object-cover min-h-[300px] lg:min-h-[500px]"
                 />
               </div>
-
+              
               {/* Right Content */}
-              <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                {/* Heading */}
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight mb-6">
-                  Crafting Digital
-                  <br />
-                  Excellence,
-                  <br />
-                  Together.
+              <div className="bg-card p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 font-serif">
+                  Crafting Digital Excellence, Together.
                 </h1>
-
-                {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
+                
+                <p className="text-muted-foreground leading-relaxed mb-8">
                   Welcome to Advora Digital: A Realm of Innovation, Expertise, and Discovery. Where Code Illuminates Paths of Progress and Design Transforms the Digital Landscape.
                 </p>
-
-                {/* CTA + Social Icons */}
-                <div className="flex flex-wrap items-center gap-4">
+                
+                <div className="flex items-center gap-4">
                   <Link to="/contact">
-                    <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-5 text-base hover:scale-105 transition-all">
+                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5">
                       Get Started
                     </Button>
                   </Link>
                   
                   {/* Social Icons */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                      <FaInstagram className="w-4 h-4 text-muted-foreground" />
+                      <Instagram className="h-4 w-4" />
                     </a>
                     <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                      <FaFacebookF className="w-4 h-4 text-muted-foreground" />
+                      <Facebook className="h-4 w-4" />
                     </a>
                     <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                      <FaLinkedinIn className="w-4 h-4 text-muted-foreground" />
+                      <Linkedin className="h-4 w-4" />
                     </a>
                   </div>
                 </div>
@@ -156,14 +148,14 @@ const About = () => {
             </div>
           </div>
           
-          {/* Tagline below card */}
-          <p className="text-center text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/80 mt-10 max-w-3xl mx-auto leading-relaxed">
+          {/* Tagline */}
+          <p className="text-center text-lg italic text-muted-foreground mt-10 max-w-3xl mx-auto">
             Advora is a space for building ideas, finding solutions, and discovering new ways of creating the digital world.
           </p>
         </section>
 
         {/* Stats Section */}
-        <section className="section-divider py-16 pt-20">
+        <section className="bg-card py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -182,7 +174,7 @@ const About = () => {
         </section>
 
         {/* Story Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-slide-up">
               <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
@@ -212,7 +204,7 @@ const About = () => {
         </section>
 
         {/* Timeline Section */}
-        <section className="section-divider py-20 pt-24">
+        <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
@@ -231,7 +223,7 @@ const About = () => {
         </section>
 
         {/* Values Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
             <p className="text-xl text-muted-foreground">The principles that guide everything we do</p>
@@ -250,7 +242,7 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className="section-divider py-20 pt-24">
+        <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
@@ -281,7 +273,7 @@ const About = () => {
         </section>
 
         {/* Culture Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Our Culture</h2>

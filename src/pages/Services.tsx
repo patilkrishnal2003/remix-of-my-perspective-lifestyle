@@ -1,105 +1,63 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPostgresql, SiMongodb, SiRedis, SiAmazonwebservices, SiDocker, SiKubernetes, SiGraphql, SiFlutter, SiTailwindcss, SiFigma, SiGit } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { FeaturesSectionWithHoverEffects, FeatureItem } from "@/components/ui/feature-section-with-hover-effects";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { techStackWithIcons } from "@/components/TechStackIcons";
 import servicesHero from "@/assets/services-hero.jpg";
 
 const Services = () => {
-  const services = [
+  const serviceFeatures: FeatureItem[] = [
     {
-      icon: Globe,
       title: "Web Development",
-      description: "Custom websites and web applications built with cutting-edge technologies. From landing pages to complex enterprise platforms, we create responsive, fast, and SEO-optimized solutions.",
-      features: ["React & Next.js", "Custom CMS Integration", "E-commerce Solutions", "Progressive Web Apps"]
+      description: "Custom websites and web applications built with cutting-edge technologies.",
+      icon: <Globe className="h-6 w-6" />,
+      tags: ["React", "Next.js", "TypeScript"],
     },
     {
-      icon: Smartphone,
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-      features: ["React Native", "iOS & Android Native", "App Store Deployment", "Push Notifications"]
+      description: "Native and cross-platform mobile applications for iOS and Android.",
+      icon: <Smartphone className="h-6 w-6" />,
+      tags: ["React Native", "Flutter", "iOS"],
     },
     {
-      icon: Code,
-      title: "Custom Software Development",
-      description: "Tailored software solutions designed to solve your unique business challenges and streamline operations.",
-      features: ["Business Process Automation", "Legacy System Modernization", "Custom Integrations", "Scalable Architecture"]
+      title: "Custom Software",
+      description: "Tailored software solutions designed to solve your unique business challenges.",
+      icon: <Code className="h-6 w-6" />,
+      tags: ["Python", "Node.js", "Go"],
     },
     {
-      icon: Database,
       title: "Backend Development",
-      description: "Robust server-side solutions and APIs that power your applications with reliability and performance.",
-      features: ["RESTful & GraphQL APIs", "Database Design", "Microservices", "Real-time Systems"]
+      description: "Robust server-side solutions and APIs that power your applications.",
+      icon: <Database className="h-6 w-6" />,
+      tags: ["GraphQL", "REST", "PostgreSQL"],
     },
     {
-      icon: Cloud,
       title: "Cloud Solutions",
-      description: "Cloud infrastructure setup, migration, and management for scalable and cost-effective operations.",
-      features: ["AWS & Azure", "Cloud Migration", "DevOps & CI/CD", "Infrastructure as Code"]
+      description: "Cloud infrastructure setup, migration, and management for scalability.",
+      icon: <Cloud className="h-6 w-6" />,
+      tags: ["AWS", "Azure", "Docker"],
     },
     {
-      icon: Palette,
       title: "UI/UX Design",
-      description: "User-centered design that combines aesthetics with functionality to create engaging digital experiences.",
-      features: ["User Research", "Wireframing & Prototyping", "Visual Design", "Usability Testing"]
+      description: "User-centered design that combines aesthetics with functionality.",
+      icon: <Palette className="h-6 w-6" />,
+      tags: ["Figma", "Prototyping", "Research"],
     },
     {
-      icon: Settings,
       title: "Maintenance & Support",
-      description: "Ongoing technical support and maintenance to keep your applications running smoothly and securely.",
-      features: ["24/7 Monitoring", "Bug Fixes & Updates", "Performance Optimization", "Security Patches"]
+      description: "Ongoing technical support to keep your applications running smoothly.",
+      icon: <Settings className="h-6 w-6" />,
+      tags: ["24/7", "Monitoring", "Updates"],
     },
     {
-      icon: LineChart,
       title: "Technical Consulting",
-      description: "Strategic technology advice to help you make informed decisions and plan for future growth.",
-      features: ["Technology Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"]
-    }
-  ];
-
-  const pricingTiers = [
-    {
-      name: "Starter",
-      description: "Perfect for small projects and MVPs",
-      price: "5,000",
-      features: [
-        "Up to 5 pages or screens",
-        "Responsive design",
-        "Basic SEO optimization",
-        "30 days support",
-        "Source code delivery"
-      ]
+      description: "Strategic technology advice to help you make informed decisions.",
+      icon: <LineChart className="h-6 w-6" />,
+      tags: ["Architecture", "Planning", "Reviews"],
     },
-    {
-      name: "Professional",
-      description: "Ideal for growing businesses",
-      price: "15,000",
-      popular: true,
-      features: [
-        "Up to 15 pages or screens",
-        "Custom design system",
-        "Advanced SEO & Analytics",
-        "90 days support",
-        "API integrations",
-        "Performance optimization"
-      ]
-    },
-    {
-      name: "Enterprise",
-      description: "For complex, large-scale projects",
-      price: "Custom",
-      features: [
-        "Unlimited pages/screens",
-        "Custom architecture",
-        "Dedicated team",
-        "24/7 priority support",
-        "SLA guarantees",
-        "Ongoing maintenance"
-      ]
-    }
   ];
 
   const advantages = [
@@ -115,16 +73,16 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-24 sm:pt-28">
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0">
             <img 
               src={servicesHero} 
               alt="Services background"
-              className="w-full h-full object-cover opacity-50"
+              className="w-full h-full object-cover opacity-30"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
           </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
                 Our Services
@@ -137,7 +95,7 @@ const Services = () => {
         </section>
 
         {/* Advantages Section */}
-        <section className="section-divider py-16 pt-20">
+        <section className="bg-card py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {advantages.map((advantage, index) => (
@@ -153,44 +111,17 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        {/* Services Grid with Hover Effects */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
             <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-card via-card to-accent/5 border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 animate-slide-up stagger-${(index % 4) + 1} overflow-hidden`}
-              >
-                {/* Decorative gradient blob */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature) => (
-                        <span key={feature} className="px-3 py-1.5 rounded-full bg-accent/10 text-sm font-medium text-accent border border-accent/20">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <FeaturesSectionWithHoverEffects features={serviceFeatures} />
         </section>
 
         {/* Process Section */}
-        <section className="section-divider py-20 pt-24">
+        <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Development Process</h2>
@@ -216,41 +147,20 @@ const Services = () => {
         </section>
 
         {/* Technologies Section */}
-        <section className="section-divider py-20 pt-24">
+        <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Technologies We Use</h2>
               <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
             </div>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              {[
-                { name: "React", icon: SiReact },
-                { name: "Next.js", icon: SiNextdotjs },
-                { name: "TypeScript", icon: SiTypescript },
-                { name: "Node.js", icon: SiNodedotjs },
-                { name: "Python", icon: SiPython },
-                { name: "Go", icon: SiGo },
-                { name: "PostgreSQL", icon: SiPostgresql },
-                { name: "MongoDB", icon: SiMongodb },
-                { name: "Redis", icon: SiRedis },
-                { name: "AWS", icon: SiAmazonwebservices },
-                { name: "Docker", icon: SiDocker },
-                { name: "Kubernetes", icon: SiKubernetes },
-                { name: "GraphQL", icon: SiGraphql },
-                { name: "React Native", icon: TbBrandReactNative },
-                { name: "Flutter", icon: SiFlutter },
-                { name: "Tailwind CSS", icon: SiTailwindcss },
-                { name: "Figma", icon: SiFigma },
-                { name: "Git", icon: SiGit }
-              ].map((tech, index) => (
+            <div className="flex flex-wrap justify-center gap-4">
+              {techStackWithIcons.map((tech, index) => (
                 <div
                   key={tech.name}
-                  className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
+                  className={`flex items-center gap-2 px-5 py-3 rounded-full bg-background border border-border hover:border-accent/50 hover:scale-105 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
-                    <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
-                  </div>
-                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
+                  <tech.icon className="h-5 w-5 text-primary" />
+                  <span className="font-medium">{tech.name}</span>
                 </div>
               ))}
             </div>
@@ -258,7 +168,7 @@ const Services = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground">Answers to common questions about our services</p>
@@ -272,11 +182,15 @@ const Services = () => {
                 { q: "Can you work with our existing team?", a: "Absolutely. We offer team augmentation services where our developers integrate with your existing team. We can also provide technical consulting to guide your internal development efforts." },
                 { q: "What is your payment structure?", a: "We typically work with a milestone-based payment structure. A percentage is due upfront, with remaining payments tied to project milestones. We're flexible and can discuss arrangements that work for your budget." }
               ].map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`} className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50">
-                  <AccordionTrigger className="text-left font-bold hover:no-underline py-5">
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50"
+                >
+                  <AccordionTrigger className="text-left font-bold hover:no-underline py-6">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
+                  <AccordionContent className="text-muted-foreground pb-6">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
