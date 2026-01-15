@@ -21,23 +21,27 @@ const Index = () => {
   const serviceFeatures: FeatureItem[] = [
     {
       title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies for optimal performance.",
+      description: "Custom websites and web applications built with modern technologies.",
       icon: <Globe className="h-6 w-6" />,
+      tags: ["React", "Next.js"],
     },
     {
       title: "Mobile Apps",
-      description: "Cross-platform mobile applications that deliver seamless user experiences.",
+      description: "Cross-platform mobile applications that deliver seamless experiences.",
       icon: <Smartphone className="h-6 w-6" />,
+      tags: ["React Native", "Flutter"],
     },
     {
       title: "Custom Software",
-      description: "Tailored software solutions designed to solve your unique business challenges.",
+      description: "Tailored software solutions for your unique business challenges.",
       icon: <Code className="h-6 w-6" />,
+      tags: ["Node.js", "Python"],
     },
     {
       title: "Backend Systems",
-      description: "Scalable APIs and database architectures that power your applications.",
+      description: "Scalable APIs and database architectures that power your apps.",
       icon: <Database className="h-6 w-6" />,
+      tags: ["AWS", "PostgreSQL"],
     },
   ];
 

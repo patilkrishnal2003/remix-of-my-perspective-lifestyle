@@ -10,43 +10,51 @@ const Services = () => {
   const serviceFeatures: FeatureItem[] = [
     {
       title: "Web Development",
-      description: "Custom websites and web applications built with React, Next.js, and cutting-edge technologies. From landing pages to complex enterprise platforms, we create responsive, fast, and SEO-optimized solutions.",
+      description: "Custom websites and web applications built with cutting-edge technologies.",
       icon: <Globe className="h-6 w-6" />,
+      tags: ["React", "Next.js", "TypeScript"],
     },
     {
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications using React Native and Flutter. We deliver exceptional user experiences on iOS and Android with push notifications and offline support.",
+      description: "Native and cross-platform mobile applications for iOS and Android.",
       icon: <Smartphone className="h-6 w-6" />,
+      tags: ["React Native", "Flutter", "iOS"],
     },
     {
       title: "Custom Software",
-      description: "Tailored software solutions designed to solve your unique business challenges. We specialize in business process automation, legacy system modernization, and scalable architecture design.",
+      description: "Tailored software solutions designed to solve your unique business challenges.",
       icon: <Code className="h-6 w-6" />,
+      tags: ["Python", "Node.js", "Go"],
     },
     {
       title: "Backend Development",
-      description: "Robust server-side solutions including RESTful & GraphQL APIs, database design, microservices architecture, and real-time systems that power your applications with reliability.",
+      description: "Robust server-side solutions and APIs that power your applications.",
       icon: <Database className="h-6 w-6" />,
+      tags: ["GraphQL", "REST", "PostgreSQL"],
     },
     {
       title: "Cloud Solutions",
-      description: "Cloud infrastructure setup on AWS & Azure, seamless migrations, DevOps & CI/CD pipelines, and Infrastructure as Code for scalable and cost-effective operations.",
+      description: "Cloud infrastructure setup, migration, and management for scalability.",
       icon: <Cloud className="h-6 w-6" />,
+      tags: ["AWS", "Azure", "Docker"],
     },
     {
       title: "UI/UX Design",
-      description: "User-centered design combining aesthetics with functionality. Our process includes user research, wireframing, prototyping, visual design, and comprehensive usability testing.",
+      description: "User-centered design that combines aesthetics with functionality.",
       icon: <Palette className="h-6 w-6" />,
+      tags: ["Figma", "Prototyping", "Research"],
     },
     {
       title: "Maintenance & Support",
-      description: "Ongoing technical support with 24/7 monitoring, bug fixes, security patches, and performance optimization to keep your applications running smoothly and securely.",
+      description: "Ongoing technical support to keep your applications running smoothly.",
       icon: <Settings className="h-6 w-6" />,
+      tags: ["24/7", "Monitoring", "Updates"],
     },
     {
       title: "Technical Consulting",
-      description: "Strategic technology advice including technology assessment, architecture planning, team augmentation, and code reviews to help you make informed decisions.",
+      description: "Strategic technology advice to help you make informed decisions.",
       icon: <LineChart className="h-6 w-6" />,
+      tags: ["Architecture", "Planning", "Reviews"],
     },
   ];
 
