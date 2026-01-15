@@ -115,7 +115,7 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden -mt-[80px] pt-[80px]">
           <div className="absolute inset-0">
             <img 
               src={servicesHero} 
