@@ -1,15 +1,10 @@
-import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Sparkles } from "lucide-react";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -20,12 +15,8 @@ import logoFinanceflow from "@/assets/logo-financeflow.png";
 import logoHealthtrack from "@/assets/logo-healthtrack.png";
 import logoRetailhub from "@/assets/logo-retailhub.png";
 import logoEdulearn from "@/assets/logo-edulearn.png";
-import { renderCanvas } from "@/components/ui/canvas";
 
 const Index = () => {
-  useEffect(() => {
-    renderCanvas();
-  }, []);
   const services = [
     {
       icon: Globe,
@@ -63,18 +54,8 @@ const Index = () => {
   ];
 
   const techStack = [
-    { name: "React", icon: SiReact },
-    { name: "Next.js", icon: SiNextdotjs },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "Node.js", icon: SiNodedotjs },
-    { name: "Python", icon: SiPython },
-    { name: "PostgreSQL", icon: SiPostgresql },
-    { name: "MongoDB", icon: SiMongodb },
-    { name: "AWS", icon: SiAmazonwebservices },
-    { name: "Docker", icon: SiDocker },
-    { name: "GraphQL", icon: SiGraphql },
-    { name: "React Native", icon: TbBrandReactNative },
-    { name: "Tailwind CSS", icon: SiTailwindcss }
+    "React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", 
+    "MongoDB", "AWS", "Docker", "GraphQL", "React Native", "Tailwind CSS"
   ];
 
   const testimonials = [
@@ -124,84 +105,87 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-screen flex items-center">
-          {/* Canvas Animation - Hero Only */}
-          <canvas id="canvas" className="pointer-events-none absolute inset-0 z-10" />
+        <section className="relative overflow-hidden min-h-screen flex items-center -mt-[88px] pt-[88px]">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Grid Pattern */}
+            <div 
+              className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+              style={{
+                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
+              }}
+            />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
+            
+            {/* Floating Shapes */}
+            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-slower" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+            
+            {/* Geometric Shapes */}
+            <div className="hidden lg:block absolute top-32 right-[15%] w-16 h-16 border-2 border-primary/20 rounded-2xl rotate-12 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-40 left-[12%] w-12 h-12 border-2 border-accent/20 rounded-full animate-float-slower" />
+            <div className="hidden lg:block absolute top-1/3 left-[8%] w-8 h-8 bg-primary/10 rounded-lg rotate-45 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-1/3 right-[8%] w-6 h-6 bg-accent/15 rounded-full animate-float-slower" />
+            
+            {/* Decorative Lines */}
+            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                  <circle cx="50" cy="50" r="1" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-pattern)" />
+            </svg>
+          </div>
           
-          {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
-          
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-            <div className="flex flex-col items-center justify-center text-center">
-              {/* Badge */}
-              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/30 px-4 py-2 backdrop-blur-sm animate-fade-in">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">Introducing Advora</span>
-                <span className="text-muted-foreground">·</span>
-                <Link to="/portfolio" className="text-sm text-primary hover:underline flex items-center gap-1">
-                  Explore <ArrowRight className="h-3 w-3" />
-                </Link>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+            {/* Main Hero Content - Centered */}
+            <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span className="text-sm font-medium">Available for new projects</span>
               </div>
 
-              {/* Main Content */}
-              <div className="space-y-6 animate-slide-up">
-                {/* Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
-                  <span className="block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-                    Your complete
-                  </span>
-                  <span className="block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-                    platform for the
-                  </span>
-                  <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
-                    Design.
-                  </span>
-                </h1>
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2]">
+                We craft software
+                <span className="block mt-2 pb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  that drives growth
+                </span>
+              </h1>
 
-                {/* Available Badge */}
-                <div className="flex items-center justify-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                    <span className="relative flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 delay-150"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                  </div>
-                  <span className="text-lg font-medium text-foreground">Available Now</span>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed animate-fade-in">
-                Welcome to my creative playground! I'm{" "}
-                <span className="font-semibold text-foreground">Advora</span>
-              </p>
-
-              <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed animate-fade-in">
-                I craft enchanting visuals for brands, and conjure design resources
-                to empower others.
+              {/* Subheading */}
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Premium software development for startups and enterprises. 
+                We turn complex ideas into elegant, scalable solutions.
               </p>
 
               {/* CTA Buttons */}
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-slide-up">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Link to="/contact">
                   <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all shadow-lg">
-                    Start Project
+                    Start a Project
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link to="/contact">
-                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all border-border/50 backdrop-blur-sm">
-                    Book a call
+                <Link to="/portfolio">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all">
+                    View Case Studies
                   </Button>
                 </Link>
               </div>
 
               {/* Trust Indicators */}
-              <div className="mt-16 animate-fade-in">
+              <div className="pt-8 sm:pt-12">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <div className="flex -space-x-2">
@@ -230,11 +214,24 @@ const Index = () => {
                 </div>
               </div>
             </div>
+
+            {/* Stats Row */}
+            <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
+              {stats.map((stat, index) => (
+                <div 
+                  key={stat.label} 
+                  className="group p-6 sm:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/30 hover:bg-card transition-all duration-300 text-center"
+                >
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">{stat.value}</div>
+                  <div className="text-sm sm:text-base text-muted-foreground mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Trusted By Section */}
-        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16">
+        <section className="border-y border-border py-8 sm:py-12 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
             <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-14">
@@ -259,28 +256,25 @@ const Index = () => {
         </section>
 
         {/* Services Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Comprehensive development solutions tailored to your business needs
-              </p>
-            </div>
-          </ScrollReveal>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-16 animate-slide-up">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive development solutions tailored to your business needs
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <ScrollReveal key={service.title} delay={index * 100}>
-                <div
-                  className="group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] h-full"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="h-7 w-7 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+              <div
+                key={service.title}
+                className={`group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
+              >
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <service.icon className="h-7 w-7 text-accent" />
                 </div>
-              </ScrollReveal>
+                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+              </div>
             ))}
           </div>
           <div className="text-center mt-12">
@@ -294,17 +288,15 @@ const Index = () => {
         </section>
 
         {/* Focus Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
+        <section className="bg-muted/30 py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal>
-              <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  I build high quality apps that your
-                  <span className="block">users love</span>
-                </h2>
-                <p className="text-primary font-medium text-lg">here's what I focus on</p>
-              </div>
-            </ScrollReveal>
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                I build high quality apps that your
+                <span className="block">users love</span>
+              </h2>
+              <p className="text-primary font-medium text-lg">here's what I focus on</p>
+            </div>
             <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
               {[
                 {
@@ -323,136 +315,122 @@ const Index = () => {
                   description: "for future enhancements or feature expansions."
                 }
               ].map((item, index) => (
-                <ScrollReveal key={item.number} delay={index * 150}>
-                  <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
-                    </div>
-                    <div className="pt-2">
-                      <span className="font-bold text-lg">{item.title}</span>{" "}
-                      <span className="text-muted-foreground">{item.description}</span>
-                    </div>
+                <div key={item.number} className={`flex items-start gap-6 animate-slide-up stagger-${index + 1}`}>
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
                   </div>
-                </ScrollReveal>
+                  <div className="pt-2">
+                    <span className="font-bold text-lg">{item.title}</span>{" "}
+                    <span className="text-muted-foreground">{item.description}</span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Featured Work Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
-              <p className="text-xl text-muted-foreground">Some of our recent projects</p>
-            </div>
-          </ScrollReveal>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
+            <p className="text-xl text-muted-foreground">Some of our recent projects</p>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { image: projectFinanceFlow, title: "FinanceFlow", category: "Web Application" },
               { image: projectHealthTrack, title: "HealthTrack Pro", category: "Mobile App" },
               { image: projectRetailHub, title: "RetailHub", category: "E-commerce" }
             ].map((project, index) => (
-              <ScrollReveal key={project.title} delay={index * 100}>
-                <Link 
-                  to="/portfolio"
-                  className="group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] block"
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-4 bg-card">
-                    <span className="text-xs text-primary font-medium">{project.category}</span>
-                    <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
-                  </div>
-                </Link>
-              </ScrollReveal>
+              <Link 
+                key={project.title}
+                to="/portfolio"
+                className={`group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4 bg-card">
+                  <span className="text-xs text-primary font-medium">{project.category}</span>
+                  <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
+                </div>
+              </Link>
             ))}
           </div>
-          <ScrollReveal delay={300}>
-            <div className="text-center mt-10">
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6">
-                  View All Projects
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </ScrollReveal>
+          <div className="text-center mt-10">
+            <Link to="/portfolio">
+              <Button variant="outline" className="rounded-full px-8 py-6">
+                View All Projects
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
         </section>
 
-        <section className="section-divider py-20 pt-24">
+        <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <ScrollReveal animation="fade-right">
-                <div className="space-y-8">
-                  <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
-                  </p>
+              <div className="space-y-8 animate-slide-up">
+                <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
+                </p>
+                <div className="space-y-4">
+                  {features.map((feature) => (
+                    <div key={feature.title} className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                        <feature.icon className="h-6 w-6 text-accent" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold mb-1">{feature.title}</h3>
+                        <p className="text-muted-foreground">{feature.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-6 animate-slide-up stagger-2">
+                <div className="p-8 rounded-3xl bg-background border border-border">
+                  <h3 className="text-2xl font-bold mb-6">Our Process</h3>
                   <div className="space-y-4">
-                    {features.map((feature) => (
-                      <div key={feature.title} className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <feature.icon className="h-6 w-6 text-accent" />
+                    {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
+                      <div key={step} className="flex items-center gap-4">
+                        <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
+                          {index + 1}
                         </div>
-                        <div>
-                          <h3 className="font-bold mb-1">{feature.title}</h3>
-                          <p className="text-muted-foreground">{feature.description}</p>
-                        </div>
+                        <span className="font-medium">{step}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-              </ScrollReveal>
-              <ScrollReveal animation="fade-left" delay={200}>
-                <div className="space-y-6">
-                  <div className="p-8 rounded-3xl bg-background border border-border">
-                    <h3 className="text-2xl font-bold mb-6">Our Process</h3>
-                    <div className="space-y-4">
-                      {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
-                        <div key={step} className="flex items-center gap-4">
-                          <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
-                            {index + 1}
-                          </div>
-                          <span className="font-medium">{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Tech Stack Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+          <div className="flex flex-wrap justify-center gap-4">
             {techStack.map((tech, index) => (
               <div
-                key={tech.name}
-                className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
+                key={tech}
+                className={`px-6 py-3 rounded-full bg-card border border-border hover:border-accent/50 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
               >
-                <div className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
-                  <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
-                </div>
-                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
+                {tech}
               </div>
             ))}
           </div>
         </section>
 
         {/* Testimonials Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
+        <section className="bg-card py-16 sm:py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
@@ -471,7 +449,7 @@ const Index = () => {
         </section>
 
         {/* Featured Blog Posts */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-2">From Our Blog</h2>
@@ -514,7 +492,7 @@ const Index = () => {
         </section>
 
         {/* How It Works Section */}
-        <section className="section-divider py-20 pt-24">
+        <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
@@ -542,29 +520,23 @@ const Index = () => {
         </section>
 
         {/* FAQ Preview */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground">Quick answers to common questions</p>
           </div>
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
-              {[
-                { q: "How long does a typical project take?", a: "Project timelines vary based on scope. Most web applications take 8-16 weeks, while simpler websites can be completed in 4-6 weeks." },
-                { q: "What is your pricing model?", a: "We offer flexible pricing including fixed-price projects and time & materials arrangements. We'll recommend the best approach based on your needs." },
-                { q: "Do you provide ongoing support?", a: "Yes! We offer maintenance and support packages to keep your application running smoothly after launch." },
-                { q: "What technologies do you specialize in?", a: "We specialize in React, Node.js, React Native, and cloud platforms like AWS and Azure. We choose the best tech for each project." }
-              ].map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`} className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50">
-                  <AccordionTrigger className="text-left font-bold hover:no-underline py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              { q: "How long does a typical project take?", a: "Project timelines vary based on scope. Most web applications take 8-16 weeks, while simpler websites can be completed in 4-6 weeks." },
+              { q: "What is your pricing model?", a: "We offer flexible pricing including fixed-price projects and time & materials arrangements. We'll recommend the best approach based on your needs." },
+              { q: "Do you provide ongoing support?", a: "Yes! We offer maintenance and support packages to keep your application running smoothly after launch." },
+              { q: "What technologies do you specialize in?", a: "We specialize in React, Node.js, React Native, and cloud platforms like AWS and Azure. We choose the best tech for each project." }
+            ].map((faq, index) => (
+              <div key={index} className={`p-6 rounded-2xl bg-card border border-border animate-slide-up stagger-${index + 1}`}>
+                <h3 className="font-bold mb-2">{faq.q}</h3>
+                <p className="text-muted-foreground">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </section>
 
