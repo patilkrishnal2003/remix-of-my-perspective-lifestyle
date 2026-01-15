@@ -71,9 +71,19 @@ const BlogPost = () => {
           </div>
         </header>
 
-        {/* Featured Image Placeholder */}
-        <div className="mb-12 rounded-3xl bg-gradient-to-br from-accent/20 to-accent/5 h-64 md:h-96 flex items-center justify-center animate-slide-up stagger-1">
-          <span className="text-accent font-medium">Featured Image</span>
+        {/* Featured Image */}
+        <div className="mb-12 rounded-3xl overflow-hidden animate-slide-up stagger-1">
+          {post.image ? (
+            <img 
+              src={post.image} 
+              alt={post.title}
+              className="w-full h-64 md:h-96 object-cover"
+            />
+          ) : (
+            <div className="bg-gradient-to-br from-accent/20 to-accent/5 h-64 md:h-96 flex items-center justify-center">
+              <span className="text-accent font-medium">Featured Image</span>
+            </div>
+          )}
         </div>
 
         {/* Article Content */}
@@ -131,13 +141,24 @@ const BlogPost = () => {
                 <Link
                   key={relatedPost.id}
                   to={`/blog/${relatedPost.id}`}
-                  className={`group p-6 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all animate-slide-up stagger-${index + 1}`}
+                  className={`group rounded-2xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all animate-slide-up stagger-${index + 1}`}
                 >
-                  <span className="text-xs font-medium text-accent mb-2 block">{relatedPost.category}</span>
-                  <h3 className="font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                    {relatedPost.title}
-                  </h3>
-                  <div className="text-sm text-muted-foreground">{relatedPost.readTime}</div>
+                  {relatedPost.image && (
+                    <div className="h-32 overflow-hidden">
+                      <img 
+                        src={relatedPost.image} 
+                        alt={relatedPost.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <span className="text-xs font-medium text-accent mb-2 block">{relatedPost.category}</span>
+                    <h3 className="font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                      {relatedPost.title}
+                    </h3>
+                    <div className="text-sm text-muted-foreground">{relatedPost.readTime}</div>
+                  </div>
                 </Link>
               ))}
             </div>
