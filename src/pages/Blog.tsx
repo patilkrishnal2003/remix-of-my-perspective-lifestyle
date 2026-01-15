@@ -50,12 +50,23 @@ const Blog = () => {
                 to={`/blog/${post.id}`}
                 className={`group rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
               >
-                <div className="h-36 sm:h-48 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/20 text-accent text-xs sm:text-sm font-medium">
-                    {post.category}
-                  </span>
+                <div className="h-36 sm:h-48 overflow-hidden">
+                  {post.image ? (
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                      <span className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/20 text-accent text-xs sm:text-sm font-medium">
+                        {post.category}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-5 sm:p-6">
+                  <span className="text-xs font-medium text-accent mb-2 block">{post.category}</span>
                   <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 group-hover:text-accent transition-colors line-clamp-2">
                     {post.title}
                   </h3>
@@ -86,12 +97,23 @@ const Blog = () => {
                 to={`/blog/${post.id}`}
                 className={`group flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
               >
-                <div className="w-full sm:w-24 h-32 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent text-xs font-medium text-center px-2">
-                    {post.category}
-                  </span>
+                <div className="w-full sm:w-32 h-32 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0">
+                  {post.image ? (
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                      <span className="text-accent text-xs font-medium text-center px-2">
+                        {post.category}
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
+                  <span className="text-xs font-medium text-accent mb-1 block">{post.category}</span>
                   <h3 className="text-base sm:text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
                     {post.title}
                   </h3>

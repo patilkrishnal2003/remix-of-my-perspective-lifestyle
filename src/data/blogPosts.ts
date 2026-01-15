@@ -8,7 +8,18 @@ export interface BlogPost {
   date: string;
   readTime: string;
   featured?: boolean;
+  image?: string;
 }
+
+// Blog post images
+import blogFutureWeb from "@/assets/blog-future-web.jpg";
+import blogReactScalable from "@/assets/blog-react-scalable.jpg";
+import blogFinanceflowCase from "@/assets/blog-financeflow-case.jpg";
+import blogMobileFrameworks from "@/assets/blog-mobile-frameworks.jpg";
+import blogApiDesign from "@/assets/blog-api-design.jpg";
+import blogHealthtrackCase from "@/assets/blog-healthtrack-case.jpg";
+import blogMicroservices from "@/assets/blog-microservices.jpg";
+import blogTypescript from "@/assets/blog-typescript.jpg";
 
 export const blogPosts: BlogPost[] = [
   {
@@ -34,7 +45,8 @@ export const blogPosts: BlogPost[] = [
     author: "Alex Chen",
     date: "January 10, 2026",
     readTime: "8 min read",
-    featured: true
+    featured: true,
+    image: blogFutureWeb
   },
   {
     id: "building-scalable-react-applications",
@@ -59,7 +71,8 @@ export const blogPosts: BlogPost[] = [
     author: "Sarah Johnson",
     date: "January 8, 2026",
     readTime: "12 min read",
-    featured: true
+    featured: true,
+    image: blogReactScalable
   },
   {
     id: "financeflow-case-study",
@@ -84,7 +97,8 @@ export const blogPosts: BlogPost[] = [
     author: "Michael Roberts",
     date: "January 5, 2026",
     readTime: "10 min read",
-    featured: true
+    featured: true,
+    image: blogFinanceflowCase
   },
   {
     id: "react-native-vs-flutter-2026",
@@ -108,7 +122,8 @@ export const blogPosts: BlogPost[] = [
     category: "Mobile Development",
     author: "Emily Davis",
     date: "January 3, 2026",
-    readTime: "9 min read"
+    readTime: "9 min read",
+    image: blogMobileFrameworks
   },
   {
     id: "api-design-best-practices",
@@ -132,7 +147,8 @@ export const blogPosts: BlogPost[] = [
     category: "Best Practices",
     author: "Alex Chen",
     date: "December 28, 2025",
-    readTime: "7 min read"
+    readTime: "7 min read",
+    image: blogApiDesign
   },
   {
     id: "healthtrack-pro-case-study",
@@ -156,7 +172,8 @@ export const blogPosts: BlogPost[] = [
     category: "Case Study",
     author: "Sarah Johnson",
     date: "December 22, 2025",
-    readTime: "11 min read"
+    readTime: "11 min read",
+    image: blogHealthtrackCase
   },
   {
     id: "microservices-architecture-guide",
@@ -180,7 +197,8 @@ export const blogPosts: BlogPost[] = [
     category: "Best Practices",
     author: "Michael Roberts",
     date: "December 18, 2025",
-    readTime: "8 min read"
+    readTime: "8 min read",
+    image: blogMicroservices
   },
   {
     id: "typescript-best-practices",
@@ -204,7 +222,8 @@ export const blogPosts: BlogPost[] = [
     category: "Web Development",
     author: "Alex Chen",
     date: "December 15, 2025",
-    readTime: "6 min read"
+    readTime: "6 min read",
+    image: blogTypescript
   }
 ];
 

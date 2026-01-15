@@ -4,6 +4,12 @@ import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, Arrow
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import aboutHeroImage from "@/assets/about-hero.jpg";
+import teamAlex from "@/assets/team-alex.jpg";
+import teamSarah from "@/assets/team-sarah.jpg";
+import teamMichael from "@/assets/team-michael.jpg";
+import teamEmily from "@/assets/team-emily.jpg";
+import teamJames from "@/assets/team-james.jpg";
+import teamLisa from "@/assets/team-lisa.jpg";
 
 const About = () => {
   const values = [
@@ -34,37 +40,43 @@ const About = () => {
       name: "Alex Chen",
       role: "Founder & Lead Developer",
       bio: "10+ years of experience in full-stack development and software architecture.",
-      skills: ["React", "Node.js", "System Design"]
+      skills: ["React", "Node.js", "System Design"],
+      image: teamAlex
     },
     {
       name: "Sarah Johnson",
       role: "UI/UX Designer",
       bio: "Passionate about creating intuitive and beautiful user experiences.",
-      skills: ["Figma", "User Research", "Prototyping"]
+      skills: ["Figma", "User Research", "Prototyping"],
+      image: teamSarah
     },
     {
       name: "Michael Roberts",
       role: "Backend Engineer",
       bio: "Expert in scalable systems and cloud infrastructure.",
-      skills: ["Python", "AWS", "PostgreSQL"]
+      skills: ["Python", "AWS", "PostgreSQL"],
+      image: teamMichael
     },
     {
       name: "Emily Davis",
       role: "Project Manager",
       bio: "Ensures smooth delivery and exceptional client communication.",
-      skills: ["Agile", "Scrum", "Client Relations"]
+      skills: ["Agile", "Scrum", "Client Relations"],
+      image: teamEmily
     },
     {
       name: "James Wilson",
       role: "Mobile Developer",
       bio: "Specialist in cross-platform mobile application development.",
-      skills: ["React Native", "iOS", "Android"]
+      skills: ["React Native", "iOS", "Android"],
+      image: teamJames
     },
     {
       name: "Lisa Park",
       role: "DevOps Engineer",
       bio: "Focuses on automation, deployment, and infrastructure reliability.",
-      skills: ["Docker", "Kubernetes", "CI/CD"]
+      skills: ["Docker", "Kubernetes", "CI/CD"],
+      image: teamLisa
     }
   ];
 
@@ -97,9 +109,9 @@ const About = () => {
               {/* Avatar Badge */}
               <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full border border-border bg-card">
                 <div className="flex -space-x-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 border-2 border-background flex items-center justify-center text-xs font-bold text-accent">A</div>
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-blue-600">S</div>
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-purple-500/20 border-2 border-background flex items-center justify-center text-xs font-bold text-purple-600">M</div>
+                  <img src={teamAlex} alt="Alex" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
+                  <img src={teamSarah} alt="Sarah" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
+                  <img src={teamMichael} alt="Michael" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
                 </div>
                 <span className="text-xs sm:text-sm font-medium">Trusted by 50+ businesses</span>
               </div>
@@ -262,9 +274,11 @@ const About = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
                 <div key={member.name} className={`p-8 rounded-3xl bg-background border border-border animate-slide-up stagger-${(index % 6) + 1}`}>
-                  <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-                    <span className="text-3xl font-bold text-accent">{member.name.charAt(0)}</span>
-                  </div>
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-20 h-20 rounded-full object-cover mb-6"
+                  />
                   <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                   <p className="text-accent mb-3">{member.role}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.bio}</p>
