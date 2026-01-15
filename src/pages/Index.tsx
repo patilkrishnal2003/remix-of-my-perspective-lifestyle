@@ -4,6 +4,7 @@ import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, Chec
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -74,6 +75,24 @@ const Index = () => {
       quote: "Professional, communicative, and technically excellent. Advora is our go-to development partner.",
       author: "Sarah Thompson",
       role: "CTO, FinanceFlow",
+      rating: 5
+    },
+    {
+      quote: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months.",
+      author: "Marcus Chen",
+      role: "Director, TechCorp",
+      rating: 5
+    },
+    {
+      quote: "Outstanding work on our learning management system. The user experience is intuitive and students love it.",
+      author: "Dr. Amanda Foster",
+      role: "Dean, EduLearn Academy",
+      rating: 5
+    },
+    {
+      quote: "Advora's team went above and beyond. They delivered features we didn't even know we needed.",
+      author: "Robert Patel",
+      role: "Founder, StartupX",
       rating: 5
     }
   ];
@@ -348,29 +367,14 @@ const Index = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="bg-card py-20">
+        <section className="bg-card py-16 sm:py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-              <p className="text-xl text-muted-foreground">Don't just take our word for it</p>
+              <p className="text-lg sm:text-xl text-muted-foreground">Don't just take our word for it</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div key={testimonial.author} className={`p-8 rounded-3xl bg-background border border-border animate-slide-up stagger-${index + 1}`}>
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-                    ))}
-                  </div>
-                  <p className="text-lg leading-relaxed mb-6">"{testimonial.quote}"</p>
-                  <div>
-                    <p className="font-bold">{testimonial.author}</p>
-                    <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-12">
+            <TestimonialCarousel testimonials={testimonials} />
+            <div className="text-center mt-10 sm:mt-12">
               <Link to="/portfolio">
                 <Button variant="outline" className="rounded-full px-8 py-6">
                   View More Case Studies
