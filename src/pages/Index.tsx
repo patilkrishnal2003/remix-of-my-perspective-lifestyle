@@ -105,6 +105,21 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Stats Cards Section */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {stats.map((stat, index) => (
+              <div 
+                key={stat.label} 
+                className={`p-6 sm:p-8 rounded-2xl bg-card border border-border text-center hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${index + 1}`}
+              >
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
+                <div className="text-sm sm:text-base text-muted-foreground">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Trusted By Section */}
         <section className="border-y border-border py-8 sm:py-12 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -113,20 +128,6 @@ const Index = () => {
               {["TechCorp", "StartupX", "FinanceFlow", "HealthTrack", "RetailHub", "EduLearn"].map((company) => (
                 <div key={company} className="text-sm sm:text-lg md:text-xl font-bold text-muted-foreground">
                   {company}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="bg-card py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={stat.label} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="text-4xl md:text-5xl font-bold text-accent mb-2">{stat.value}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -162,6 +163,48 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
+          </div>
+        </section>
+
+        {/* Focus Section */}
+        <section className="bg-muted/30 py-16 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                I build high quality apps that your
+                <span className="block">users love</span>
+              </h2>
+              <p className="text-accent font-medium text-lg">here's what I focus on</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
+              {[
+                {
+                  number: "1",
+                  title: "Functionality first.",
+                  description: "I go for buttery smooth UX that solves user problems."
+                },
+                {
+                  number: "2",
+                  title: "Mobile first, Minimalistic design.",
+                  description: "Pixel perfect development."
+                },
+                {
+                  number: "3",
+                  title: "App is adaptable",
+                  description: "for future enhancements or feature expansions."
+                }
+              ].map((item, index) => (
+                <div key={item.number} className={`flex items-start gap-6 animate-slide-up stagger-${index + 1}`}>
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+                  </div>
+                  <div className="pt-2">
+                    <span className="font-bold text-lg">{item.title}</span>{" "}
+                    <span className="text-muted-foreground">{item.description}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
