@@ -109,7 +109,7 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-6 sm:space-y-8 animate-slide-down order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium">
                 <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 Software & Web Development Agency
               </div>
@@ -392,7 +392,7 @@ const Index = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-2">From Our Blog</h2>
               <p className="text-muted-foreground">Insights and expertise from our team</p>
             </div>
-            <Link to="/blog" className="hidden md:flex items-center gap-2 text-accent hover:underline">
+            <Link to="/blog" className="hidden md:flex items-center gap-2 text-primary hover:underline">
               View all posts
               <ArrowRight className="h-4 w-4" />
             </Link>
@@ -404,13 +404,13 @@ const Index = () => {
                 to={`/blog/${post.id}`}
                 className={`group rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
               >
-                <div className="h-40 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                  <span className="px-3 py-1 rounded-full bg-accent/20 text-accent text-sm font-medium">
+                <div className="h-40 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                  <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium">
                     {post.category}
                   </span>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{post.excerpt}</p>
