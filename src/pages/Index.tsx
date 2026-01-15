@@ -247,31 +247,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Trusted By Section */}
-        <section className="border-y border-border py-8 sm:py-12 bg-muted/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-14">
-              {[
-                { name: "TechCorp", logo: logoTechcorp },
-                { name: "StartupX", logo: logoStartupx },
-                { name: "FinanceFlow", logo: logoFinanceflow },
-                { name: "HealthTrack", logo: logoHealthtrack },
-                { name: "RetailHub", logo: logoRetailhub },
-                { name: "EduLearn", logo: logoEdulearn }
-              ].map((company) => (
-                <div key={company.name} className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-                  <img 
-                    src={company.logo} 
-                    alt={company.name}
-                    className="h-10 sm:h-12 md:h-14 w-auto object-contain"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Services Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-16 animate-slide-up">
