@@ -232,7 +232,7 @@ const Index = () => {
         </section>
 
         {/* Trusted By Section */}
-        <section className="border-y border-border py-8 sm:py-12 bg-muted/30">
+        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
             <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-14">
@@ -257,7 +257,7 @@ const Index = () => {
         </section>
 
         {/* Services Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-16 animate-slide-up">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -289,7 +289,7 @@ const Index = () => {
         </section>
 
         {/* Focus Section */}
-        <section className="bg-muted/30 py-16 sm:py-20">
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -331,7 +331,7 @@ const Index = () => {
         </section>
 
         {/* Featured Work Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
             <p className="text-xl text-muted-foreground">Some of our recent projects</p>
@@ -371,7 +371,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8 animate-slide-up">
@@ -413,7 +413,7 @@ const Index = () => {
         </section>
 
         {/* Tech Stack Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
@@ -431,7 +431,7 @@ const Index = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="bg-card py-16 sm:py-20 overflow-hidden">
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
@@ -450,7 +450,7 @@ const Index = () => {
         </section>
 
         {/* Featured Blog Posts */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-2">From Our Blog</h2>
@@ -493,7 +493,7 @@ const Index = () => {
         </section>
 
         {/* How It Works Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
@@ -521,7 +521,7 @@ const Index = () => {
         </section>
 
         {/* FAQ Preview */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground">Quick answers to common questions</p>

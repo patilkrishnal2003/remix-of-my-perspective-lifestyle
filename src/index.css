@@ -15,7 +15,7 @@ All colors MUST be HSL.
     --background: 0 0% 100%;
     --foreground: 0 0% 9%;
 
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 9%;
 
     --popover: 0 0% 98%;
@@ -182,6 +182,16 @@ All colors MUST be HSL.
   input, select, textarea {
     font-size: 16px; /* Prevents iOS zoom on focus */
   }
+}
+
+/* Section divider utility */
+.section-divider {
+  @apply relative;
+}
+
+.section-divider::before {
+  content: '';
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-border to-transparent;
 }
 
 @layer utilities {
