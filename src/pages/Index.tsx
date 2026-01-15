@@ -105,7 +105,7 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-[90vh] flex items-center -mt-[72px] pt-[72px]">
+        <section className="relative overflow-hidden min-h-screen flex items-center -mt-[88px] pt-[88px]">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Grid Pattern */}
@@ -143,7 +143,7 @@ const Index = () => {
             </svg>
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24 w-full">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
             {/* Main Hero Content - Centered */}
             <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
               {/* Status Badge */}
