@@ -59,46 +59,25 @@ const Services = () => {
     },
   ];
 
-  const pricingTiers = [
-    {
-      name: "Starter",
-      description: "Perfect for small projects and MVPs",
-      price: "5,000",
-      features: [
-        "Up to 5 pages or screens",
-        "Responsive design",
-        "Basic SEO optimization",
-        "30 days support",
-        "Source code delivery"
-      ]
-    },
-    {
-      name: "Professional",
-      description: "Ideal for growing businesses",
-      price: "15,000",
-      popular: true,
-      features: [
-        "Up to 15 pages or screens",
-        "Custom design system",
-        "Advanced SEO & Analytics",
-        "90 days support",
-        "API integrations",
-        "Performance optimization"
-      ]
-    },
-    {
-      name: "Enterprise",
-      description: "For complex, large-scale projects",
-      price: "Custom",
-      features: [
-        "Unlimited pages/screens",
-        "Custom architecture",
-        "Dedicated team",
-        "24/7 priority support",
-        "SLA guarantees",
-        "Ongoing maintenance"
-      ]
-    }
+  const techStackWithIcons = [
+    { name: "React", icon: "⚛️" },
+    { name: "Next.js", icon: "▲" },
+    { name: "TypeScript", icon: "TS" },
+    { name: "Node.js", icon: "🟢" },
+    { name: "Python", icon: "🐍" },
+    { name: "Go", icon: "🔷" },
+    { name: "PostgreSQL", icon: "🐘" },
+    { name: "MongoDB", icon: "🍃" },
+    { name: "Redis", icon: "🔴" },
+    { name: "AWS", icon: "☁️" },
+    { name: "Docker", icon: "🐳" },
+    { name: "Kubernetes", icon: "⎈" },
+    { name: "GraphQL", icon: "◈" },
+    { name: "React Native", icon: "📱" },
+    { name: "Flutter", icon: "💙" },
+    { name: "Tailwind CSS", icon: "🎨" },
+    { name: "Figma", icon: "🎯" },
+    { name: "Git", icon: "🔀" },
   ];
 
   const advantages = [
@@ -187,52 +166,6 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Pricing</h2>
-            <p className="text-xl text-muted-foreground">Transparent pricing for projects of all sizes</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {pricingTiers.map((tier, index) => (
-              <div
-                key={tier.name}
-                className={`p-8 rounded-3xl ${tier.popular ? 'bg-accent text-accent-foreground ring-2 ring-accent' : 'bg-card border border-border'} animate-slide-up stagger-${index + 1}`}
-              >
-                {tier.popular && (
-                  <span className="inline-block px-3 py-1 rounded-full bg-accent-foreground/20 text-sm font-medium mb-4">
-                    Most Popular
-                  </span>
-                )}
-                <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                <p className={`mb-4 ${tier.popular ? 'opacity-90' : 'text-muted-foreground'}`}>{tier.description}</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">${tier.price}</span>
-                  {tier.price !== "Custom" && <span className={tier.popular ? 'opacity-90' : 'text-muted-foreground'}> starting</span>}
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact">
-                  <Button 
-                    className={`w-full rounded-full py-6 ${tier.popular ? 'bg-accent-foreground text-accent hover:bg-accent-foreground/90' : 'bg-accent text-accent-foreground hover:bg-accent/90'}`}
-                  >
-                    Get Started
-                  </Button>
-                </Link>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-muted-foreground mt-8">
-            * Prices are estimates. Contact us for a detailed quote based on your specific requirements.
-          </p>
-        </section>
-
         {/* Technologies Section */}
         <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -240,17 +173,14 @@ const Services = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Technologies We Use</h2>
               <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {[
-                "React", "Next.js", "TypeScript", "Node.js", "Python", "Go",
-                "PostgreSQL", "MongoDB", "Redis", "AWS", "Docker", "Kubernetes",
-                "GraphQL", "React Native", "Flutter", "Tailwind CSS", "Figma", "Git"
-              ].map((tech, index) => (
+            <div className="flex flex-wrap justify-center gap-4">
+              {techStackWithIcons.map((tech, index) => (
                 <div
-                  key={tech}
-                  className={`p-4 rounded-xl bg-background border border-border text-center hover:border-accent/50 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
+                  key={tech.name}
+                  className={`flex items-center gap-2 px-5 py-3 rounded-full bg-background border border-border hover:border-accent/50 hover:scale-105 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
                 >
-                  {tech}
+                  <span className="text-lg">{tech.icon}</span>
+                  <span className="font-medium">{tech.name}</span>
                 </div>
               ))}
             </div>
