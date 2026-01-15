@@ -10,42 +10,42 @@ const Services = () => {
   const serviceFeatures: FeatureItem[] = [
     {
       title: "Web Development",
-      description: "Custom websites and web applications built with cutting-edge technologies.",
+      description: "Custom websites and web applications built with React, Next.js, and cutting-edge technologies. From landing pages to complex enterprise platforms, we create responsive, fast, and SEO-optimized solutions.",
       icon: <Globe className="h-6 w-6" />,
     },
     {
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications for iOS and Android.",
+      description: "Native and cross-platform mobile applications using React Native and Flutter. We deliver exceptional user experiences on iOS and Android with push notifications and offline support.",
       icon: <Smartphone className="h-6 w-6" />,
     },
     {
       title: "Custom Software",
-      description: "Tailored software solutions designed to solve your unique business challenges.",
+      description: "Tailored software solutions designed to solve your unique business challenges. We specialize in business process automation, legacy system modernization, and scalable architecture design.",
       icon: <Code className="h-6 w-6" />,
     },
     {
       title: "Backend Development",
-      description: "Robust server-side solutions and APIs that power your applications.",
+      description: "Robust server-side solutions including RESTful & GraphQL APIs, database design, microservices architecture, and real-time systems that power your applications with reliability.",
       icon: <Database className="h-6 w-6" />,
     },
     {
       title: "Cloud Solutions",
-      description: "Cloud infrastructure setup, migration, and management for scalability.",
+      description: "Cloud infrastructure setup on AWS & Azure, seamless migrations, DevOps & CI/CD pipelines, and Infrastructure as Code for scalable and cost-effective operations.",
       icon: <Cloud className="h-6 w-6" />,
     },
     {
       title: "UI/UX Design",
-      description: "User-centered design that combines aesthetics with functionality.",
+      description: "User-centered design combining aesthetics with functionality. Our process includes user research, wireframing, prototyping, visual design, and comprehensive usability testing.",
       icon: <Palette className="h-6 w-6" />,
     },
     {
       title: "Maintenance & Support",
-      description: "Ongoing technical support to keep your applications running smoothly.",
+      description: "Ongoing technical support with 24/7 monitoring, bug fixes, security patches, and performance optimization to keep your applications running smoothly and securely.",
       icon: <Settings className="h-6 w-6" />,
     },
     {
       title: "Technical Consulting",
-      description: "Strategic technology advice to help you make informed decisions.",
+      description: "Strategic technology advice including technology assessment, architecture planning, team augmentation, and code reviews to help you make informed decisions.",
       icon: <LineChart className="h-6 w-6" />,
     },
   ];

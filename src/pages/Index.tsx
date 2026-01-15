@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
+import { FeaturesSectionWithHoverEffects, FeatureItem } from "@/components/ui/feature-section-with-hover-effects";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -17,27 +18,27 @@ import logoRetailhub from "@/assets/logo-retailhub.png";
 import logoEdulearn from "@/assets/logo-edulearn.png";
 
 const Index = () => {
-  const services = [
+  const serviceFeatures: FeatureItem[] = [
     {
-      icon: Globe,
       title: "Web Development",
-      description: "Custom websites and web applications built with modern technologies for optimal performance."
+      description: "Custom websites and web applications built with modern technologies for optimal performance.",
+      icon: <Globe className="h-6 w-6" />,
     },
     {
-      icon: Smartphone,
       title: "Mobile Apps",
-      description: "Cross-platform mobile applications that deliver seamless user experiences."
+      description: "Cross-platform mobile applications that deliver seamless user experiences.",
+      icon: <Smartphone className="h-6 w-6" />,
     },
     {
-      icon: Code,
       title: "Custom Software",
-      description: "Tailored software solutions designed to solve your unique business challenges."
+      description: "Tailored software solutions designed to solve your unique business challenges.",
+      icon: <Code className="h-6 w-6" />,
     },
     {
-      icon: Database,
       title: "Backend Systems",
-      description: "Scalable APIs and database architectures that power your applications."
-    }
+      description: "Scalable APIs and database architectures that power your applications.",
+      icon: <Database className="h-6 w-6" />,
+    },
   ];
 
   const stats = [
@@ -275,20 +276,7 @@ const Index = () => {
               Comprehensive development solutions tailored to your business needs
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <service.icon className="h-7 w-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </div>
-            ))}
-          </div>
+          <FeaturesSectionWithHoverEffects features={serviceFeatures} />
           <div className="text-center mt-12">
             <Link to="/services">
               <Button variant="outline" className="rounded-full px-8 py-6">
