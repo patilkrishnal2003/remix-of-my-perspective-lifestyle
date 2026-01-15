@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import servicesHero from "@/assets/services-hero.jpg";
 
 const Services = () => {
   const services = [
@@ -111,14 +112,24 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-              Our Services
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-              Comprehensive development solutions to bring your digital vision to life. From concept to deployment, we've got you covered.
-            </p>
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src={servicesHero} 
+              alt="Services background"
+              className="w-full h-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="text-center space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+                Our Services
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
+                Comprehensive development solutions to bring your digital vision to life. From concept to deployment, we've got you covered.
+              </p>
+            </div>
           </div>
         </section>
 

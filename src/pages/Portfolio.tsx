@@ -3,6 +3,14 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Globe, Smartphone, Code, Star, ExternalLink, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import projectFinanceFlow from "@/assets/project-financeflow.jpg";
+import projectHealthTrack from "@/assets/project-healthtrack.jpg";
+import projectRetailHub from "@/assets/project-retailhub.jpg";
+import projectTaskMaster from "@/assets/project-taskmaster.jpg";
+import projectEduLearn from "@/assets/project-edulearn.jpg";
+import projectPropertyPro from "@/assets/project-propertypro.jpg";
+import projectLogiTrack from "@/assets/project-logitrack.jpg";
+import projectMediConnect from "@/assets/project-mediconnect.jpg";
 
 const Portfolio = () => {
   const projects = [
@@ -11,8 +19,7 @@ const Portfolio = () => {
       category: "Web Application",
       description: "A comprehensive financial management platform for small businesses with invoicing, expense tracking, and reporting features.",
       tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      icon: Globe,
-      color: "from-blue-500/20 to-cyan-500/20",
+      image: projectFinanceFlow,
       results: "300% user growth in 6 months"
     },
     {
@@ -20,8 +27,7 @@ const Portfolio = () => {
       category: "Mobile App",
       description: "Cross-platform health and fitness tracking app with personalized workout plans and nutrition guidance.",
       tech: ["React Native", "Firebase", "Machine Learning"],
-      icon: Smartphone,
-      color: "from-green-500/20 to-emerald-500/20",
+      image: projectHealthTrack,
       results: "50,000 users in first month"
     },
     {
@@ -29,8 +35,7 @@ const Portfolio = () => {
       category: "E-commerce Platform",
       description: "Multi-vendor marketplace with advanced inventory management, analytics dashboard, and automated order processing.",
       tech: ["Next.js", "Supabase", "Stripe", "AWS"],
-      icon: Globe,
-      color: "from-purple-500/20 to-pink-500/20",
+      image: projectRetailHub,
       results: "$2M in transactions processed"
     },
     {
@@ -38,8 +43,7 @@ const Portfolio = () => {
       category: "SaaS Application",
       description: "Project management tool with real-time collaboration, Gantt charts, and team productivity analytics.",
       tech: ["React", "GraphQL", "MongoDB", "WebSockets"],
-      icon: Code,
-      color: "from-orange-500/20 to-amber-500/20",
+      image: projectTaskMaster,
       results: "Used by 200+ teams"
     },
     {
@@ -47,8 +51,7 @@ const Portfolio = () => {
       category: "Learning Platform",
       description: "Online education platform with video courses, interactive quizzes, progress tracking, and certificates.",
       tech: ["Vue.js", "Django", "PostgreSQL", "Vimeo API"],
-      icon: Globe,
-      color: "from-indigo-500/20 to-violet-500/20",
+      image: projectEduLearn,
       results: "10,000+ course completions"
     },
     {
@@ -56,8 +59,7 @@ const Portfolio = () => {
       category: "Mobile App",
       description: "Real estate listing and management app with virtual tours, mortgage calculator, and agent matching.",
       tech: ["React Native", "Node.js", "MongoDB", "Mapbox"],
-      icon: Smartphone,
-      color: "from-teal-500/20 to-cyan-500/20",
+      image: projectPropertyPro,
       results: "4.8 star rating on app stores"
     },
     {
@@ -65,8 +67,7 @@ const Portfolio = () => {
       category: "Enterprise Software",
       description: "Fleet management and logistics optimization system with real-time tracking and route planning.",
       tech: ["React", "Python", "PostgreSQL", "Redis"],
-      icon: Code,
-      color: "from-red-500/20 to-orange-500/20",
+      image: projectLogiTrack,
       results: "30% reduction in delivery times"
     },
     {
@@ -74,8 +75,7 @@ const Portfolio = () => {
       category: "Healthcare Platform",
       description: "Telemedicine platform connecting patients with healthcare providers for virtual consultations.",
       tech: ["Next.js", "WebRTC", "HIPAA Compliance", "AWS"],
-      icon: Globe,
-      color: "from-sky-500/20 to-blue-500/20",
+      image: projectMediConnect,
       results: "100,000+ consultations facilitated"
     }
   ];
@@ -167,23 +167,27 @@ const Portfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group rounded-3xl bg-gradient-to-br ${project.color} border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${(index % 6) + 1}`}
+                className={`group rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${(index % 6) + 1}`}
               >
-                <div className="p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-background/80 flex items-center justify-center">
-                      <project.icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <span className="text-sm font-medium text-muted-foreground">{project.category}</span>
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-medium">{project.category}</span>
                   </div>
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">{project.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">{project.description}</p>
-                  <div className="p-3 rounded-xl bg-background/60 mb-4">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{project.description}</p>
+                  <div className="p-3 rounded-xl bg-muted/50 mb-4">
                     <p className="text-sm font-medium text-accent">{project.results}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="px-3 py-1 rounded-full bg-background/80 text-sm">
+                      <span key={tech} className="px-2 py-1 rounded-full bg-muted text-xs">
                         {tech}
                       </span>
                     ))}
