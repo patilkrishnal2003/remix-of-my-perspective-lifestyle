@@ -4,7 +4,7 @@ import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, Chec
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -60,40 +60,52 @@ const Index = () => {
 
   const testimonials = [
     {
-      quote: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional.",
-      author: "Jennifer Martinez",
-      role: "CEO, RetailHub",
-      rating: 5
+      author: {
+        name: "Jennifer Martinez",
+        handle: "@jenmartinez",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
+      },
+      text: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional."
     },
     {
-      quote: "The team understood our vision from day one. Our mobile app has received outstanding user reviews.",
-      author: "David Kim",
-      role: "Founder, HealthTrack Pro",
-      rating: 5
+      author: {
+        name: "David Kim",
+        handle: "@davidkim",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+      },
+      text: "The team understood our vision from day one. Our mobile app has received outstanding user reviews."
     },
     {
-      quote: "Professional, communicative, and technically excellent. Advora is our go-to development partner.",
-      author: "Sarah Thompson",
-      role: "CTO, FinanceFlow",
-      rating: 5
+      author: {
+        name: "Sarah Thompson",
+        handle: "@sarahcto",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face"
+      },
+      text: "Professional, communicative, and technically excellent. Advora is our go-to development partner."
     },
     {
-      quote: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months.",
-      author: "Marcus Chen",
-      role: "Director, TechCorp",
-      rating: 5
+      author: {
+        name: "Marcus Chen",
+        handle: "@marcuschen",
+        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+      },
+      text: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months."
     },
     {
-      quote: "Outstanding work on our learning management system. The user experience is intuitive and students love it.",
-      author: "Dr. Amanda Foster",
-      role: "Dean, EduLearn Academy",
-      rating: 5
+      author: {
+        name: "Dr. Amanda Foster",
+        handle: "@dramanda",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+      },
+      text: "Outstanding work on our learning management system. The user experience is intuitive and students love it."
     },
     {
-      quote: "Advora's team went above and beyond. They delivered features we didn't even know we needed.",
-      author: "Robert Patel",
-      role: "Founder, StartupX",
-      rating: 5
+      author: {
+        name: "Robert Patel",
+        handle: "@robertpatel",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+      },
+      text: "Advora's team went above and beyond. They delivered features we didn't even know we needed."
     }
   ];
 
@@ -430,23 +442,11 @@ const Index = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="bg-card py-16 sm:py-20 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10 sm:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-              <p className="text-lg sm:text-xl text-muted-foreground">Don't just take our word for it</p>
-            </div>
-            <TestimonialCarousel testimonials={testimonials} />
-            <div className="text-center mt-10 sm:mt-12">
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6">
-                  View More Case Studies
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection
+          title="What Our Clients Say"
+          description="Don't just take our word for it"
+          testimonials={testimonials}
+        />
 
         {/* Featured Blog Posts */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
