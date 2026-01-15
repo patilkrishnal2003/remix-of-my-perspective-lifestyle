@@ -4,6 +4,10 @@ import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, Chec
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
+import heroWorkspace from "@/assets/hero-workspace.jpg";
+import projectFinanceFlow from "@/assets/project-financeflow.jpg";
+import projectHealthTrack from "@/assets/project-healthtrack.jpg";
+import projectRetailHub from "@/assets/project-retailhub.jpg";
 
 const Index = () => {
   const services = [
@@ -76,31 +80,49 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 lg:py-32">
-          <div className="text-center space-y-6 sm:space-y-8 animate-slide-down">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium">
-              <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              Software & Web Development Agency
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left Content */}
+            <div className="space-y-6 sm:space-y-8 animate-slide-down order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-accent/10 text-accent text-xs sm:text-sm font-medium">
+                <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                Software & Web Development Agency
+              </div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+                We build digital
+                <span className="block text-accent">products that matter</span>
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
+                Advora transforms your ideas into powerful software solutions. From web applications to mobile apps, we deliver excellence.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
+                <Link to="/contact" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
+                    Start Your Project
+                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  </Button>
+                </Link>
+                <Link to="/portfolio" className="w-full sm:w-auto">
+                  <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
+                    View Our Work
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.15]">
-              We build digital
-              <span className="block text-accent">products that matter</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-2">
-              Advora transforms your ideas into powerful software solutions. From web applications to mobile apps, we deliver excellence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4">
-              <Link to="/contact" className="w-full sm:w-auto">
-                <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                </Button>
-              </Link>
-              <Link to="/portfolio" className="w-full sm:w-auto">
-                <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
-                  View Our Work
-                </Button>
-              </Link>
+            {/* Right Image */}
+            <div className="relative animate-slide-up order-1 lg:order-2">
+              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+                <img 
+                  src={heroWorkspace} 
+                  alt="Advora team working on software development"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              {/* Floating Stats Card */}
+              <div className="absolute -bottom-4 -left-4 sm:bottom-6 sm:-left-6 bg-background/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg border border-border hidden md:block">
+                <div className="text-2xl sm:text-3xl font-bold text-accent">150+</div>
+                <p className="text-xs sm:text-sm text-muted-foreground">Projects Delivered</p>
+              </div>
             </div>
           </div>
         </section>
@@ -208,7 +230,47 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
+        {/* Featured Work Section */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
+            <p className="text-xl text-muted-foreground">Some of our recent projects</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { image: projectFinanceFlow, title: "FinanceFlow", category: "Web Application" },
+              { image: projectHealthTrack, title: "HealthTrack Pro", category: "Mobile App" },
+              { image: projectRetailHub, title: "RetailHub", category: "E-commerce" }
+            ].map((project, index) => (
+              <Link 
+                key={project.title}
+                to="/portfolio"
+                className={`group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-4 bg-card">
+                  <span className="text-xs text-accent font-medium">{project.category}</span>
+                  <h3 className="font-bold mt-1 group-hover:text-accent transition-colors">{project.title}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link to="/portfolio">
+              <Button variant="outline" className="rounded-full px-8 py-6">
+                View All Projects
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
         <section className="bg-card py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
