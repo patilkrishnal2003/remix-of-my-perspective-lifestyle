@@ -122,14 +122,24 @@ const Portfolio = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-              Our Portfolio
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-              Explore our latest projects and see how we've helped businesses achieve their digital goals.
-            </p>
+        <section className="relative overflow-hidden pt-24 sm:pt-28">
+          <div className="absolute inset-0">
+            <img 
+              src={projectFinanceFlow} 
+              alt="Portfolio background"
+              className="w-full h-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+            <div className="text-center space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+                Our Portfolio
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
+                Explore our latest projects and see how we've helped businesses achieve their digital goals.
+              </p>
+            </div>
           </div>
         </section>
 

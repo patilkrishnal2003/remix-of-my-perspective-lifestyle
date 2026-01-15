@@ -120,11 +120,11 @@ const Services = () => {
             <img 
               src={servicesHero} 
               alt="Services background"
-              className="w-full h-full object-cover opacity-30"
+              className="w-full h-full object-cover opacity-50"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
           </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
                 Our Services
