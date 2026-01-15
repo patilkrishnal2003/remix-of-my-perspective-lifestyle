@@ -3,58 +3,51 @@ import Footer from "@/components/Footer";
 import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { FeaturesSectionWithHoverEffects, FeatureItem } from "@/components/ui/feature-section-with-hover-effects";
 import servicesHero from "@/assets/services-hero.jpg";
 
 const Services = () => {
-  const services = [
+  const serviceFeatures: FeatureItem[] = [
     {
-      icon: Globe,
       title: "Web Development",
-      description: "Custom websites and web applications built with cutting-edge technologies. From landing pages to complex enterprise platforms, we create responsive, fast, and SEO-optimized solutions.",
-      features: ["React & Next.js", "Custom CMS Integration", "E-commerce Solutions", "Progressive Web Apps"]
+      description: "Custom websites and web applications built with cutting-edge technologies.",
+      icon: <Globe className="h-6 w-6" />,
     },
     {
-      icon: Smartphone,
       title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-      features: ["React Native", "iOS & Android Native", "App Store Deployment", "Push Notifications"]
+      description: "Native and cross-platform mobile applications for iOS and Android.",
+      icon: <Smartphone className="h-6 w-6" />,
     },
     {
-      icon: Code,
-      title: "Custom Software Development",
-      description: "Tailored software solutions designed to solve your unique business challenges and streamline operations.",
-      features: ["Business Process Automation", "Legacy System Modernization", "Custom Integrations", "Scalable Architecture"]
+      title: "Custom Software",
+      description: "Tailored software solutions designed to solve your unique business challenges.",
+      icon: <Code className="h-6 w-6" />,
     },
     {
-      icon: Database,
       title: "Backend Development",
-      description: "Robust server-side solutions and APIs that power your applications with reliability and performance.",
-      features: ["RESTful & GraphQL APIs", "Database Design", "Microservices", "Real-time Systems"]
+      description: "Robust server-side solutions and APIs that power your applications.",
+      icon: <Database className="h-6 w-6" />,
     },
     {
-      icon: Cloud,
       title: "Cloud Solutions",
-      description: "Cloud infrastructure setup, migration, and management for scalable and cost-effective operations.",
-      features: ["AWS & Azure", "Cloud Migration", "DevOps & CI/CD", "Infrastructure as Code"]
+      description: "Cloud infrastructure setup, migration, and management for scalability.",
+      icon: <Cloud className="h-6 w-6" />,
     },
     {
-      icon: Palette,
       title: "UI/UX Design",
-      description: "User-centered design that combines aesthetics with functionality to create engaging digital experiences.",
-      features: ["User Research", "Wireframing & Prototyping", "Visual Design", "Usability Testing"]
+      description: "User-centered design that combines aesthetics with functionality.",
+      icon: <Palette className="h-6 w-6" />,
     },
     {
-      icon: Settings,
       title: "Maintenance & Support",
-      description: "Ongoing technical support and maintenance to keep your applications running smoothly and securely.",
-      features: ["24/7 Monitoring", "Bug Fixes & Updates", "Performance Optimization", "Security Patches"]
+      description: "Ongoing technical support to keep your applications running smoothly.",
+      icon: <Settings className="h-6 w-6" />,
     },
     {
-      icon: LineChart,
       title: "Technical Consulting",
-      description: "Strategic technology advice to help you make informed decisions and plan for future growth.",
-      features: ["Technology Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"]
-    }
+      description: "Strategic technology advice to help you make informed decisions.",
+      icon: <LineChart className="h-6 w-6" />,
+    },
   ];
 
   const pricingTiers = [
@@ -150,37 +143,13 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* Services Grid with Hover Effects */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
             <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="h-7 w-7 text-accent" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature) => (
-                        <span key={feature} className="px-3 py-1 rounded-full bg-muted text-sm text-muted-foreground">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <FeaturesSectionWithHoverEffects features={serviceFeatures} />
         </section>
 
         {/* Process Section */}
