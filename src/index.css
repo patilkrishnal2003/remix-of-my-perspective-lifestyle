@@ -195,7 +195,7 @@ All colors MUST be HSL.
   }
 
   .pill-nav {
-    @apply rounded-full bg-[hsl(var(--surface-elevated))] backdrop-blur-lg border border-border/50;
+    @apply rounded-full bg-white dark:bg-card backdrop-blur-lg border border-border/50;
   }
 
   .floating-button {
