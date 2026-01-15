@@ -59,8 +59,18 @@ const Index = () => {
   ];
 
   const techStack = [
-    "React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", 
-    "MongoDB", "AWS", "Docker", "GraphQL", "React Native", "Tailwind CSS"
+    { name: "React", icon: "⚛️" },
+    { name: "Next.js", icon: "▲" },
+    { name: "TypeScript", icon: "TS" },
+    { name: "Node.js", icon: "🟢" },
+    { name: "Python", icon: "🐍" },
+    { name: "PostgreSQL", icon: "🐘" },
+    { name: "MongoDB", icon: "🍃" },
+    { name: "AWS", icon: "☁️" },
+    { name: "Docker", icon: "🐳" },
+    { name: "GraphQL", icon: "◈" },
+    { name: "React Native", icon: "📱" },
+    { name: "Tailwind CSS", icon: "🎨" },
   ];
 
   const testimonials = [
@@ -399,10 +409,11 @@ const Index = () => {
           <div className="flex flex-wrap justify-center gap-4">
             {techStack.map((tech, index) => (
               <div
-                key={tech}
-                className={`px-6 py-3 rounded-full bg-card border border-border hover:border-accent/50 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
+                key={tech.name}
+                className={`flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:border-accent/50 hover:scale-105 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
               >
-                {tech}
+                <span className="text-lg">{tech.icon}</span>
+                <span className="font-medium">{tech.name}</span>
               </div>
             ))}
           </div>
