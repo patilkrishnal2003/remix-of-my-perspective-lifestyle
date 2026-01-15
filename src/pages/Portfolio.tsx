@@ -134,7 +134,7 @@ const Portfolio = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="bg-card py-16">
+        <section className="section-divider py-16 pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -148,7 +148,7 @@ const Portfolio = () => {
         </section>
 
         {/* Filter Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <button
@@ -199,7 +199,7 @@ const Portfolio = () => {
         </section>
 
         {/* Case Study Highlight */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
@@ -252,7 +252,7 @@ const Portfolio = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
             <p className="text-xl text-muted-foreground">Hear from the businesses we've helped succeed</p>
@@ -276,7 +276,7 @@ const Portfolio = () => {
         </section>
 
         {/* Industries Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>
