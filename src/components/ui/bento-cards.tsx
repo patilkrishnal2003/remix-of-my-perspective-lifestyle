@@ -7,12 +7,12 @@ const cardContents = [
   {
     title: "Technical Excellence",
     description:
-      "We deliver cutting-edge solutions built with the latest technologies and best practices for optimal performance.",
+      "We deliver cutting-edge solutions built with the latest technologies and consistent design and performance in mind.",
   },
   {
     title: "Business-First Approach",
     description:
-      "Every line of code we write is focused on driving real business outcomes and measurable results for your company.",
+      "Simple APIs and excellent documentation make it easy to integrate and customize our solutions in your apps.",
   },
   {
     title: "Scalable Architecture",
@@ -22,50 +22,14 @@ const cardContents = [
   {
     title: "Agile Partnership",
     description:
-      "We work as an extension of your team with transparent communication, iterative development, and rapid delivery cycles.",
+      "Every project is thoughtfully designed to work seamlessly with your existing workflows and team dynamics.",
   },
   {
-    title: "End-to-End Support",
+    title: "Fast & Lightweight",
     description:
-      "From initial consultation to post-launch maintenance, we provide comprehensive support throughout your project lifecycle.",
+      "Built for speed and performance, our solutions ensure quick load times without sacrificing quality.",
   },
 ]
-
-const PlusCard: React.FC<{
-  className?: string
-  title: string
-  description: string
-}> = ({ className = "", title, description }) => {
-  return (
-    <div
-      className={cn(
-        "group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-lg",
-        className
-      )}
-    >
-      <CornerPlusIcons />
-      
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col justify-between">
-        <div>
-          <h3 className="mb-3 text-xl font-bold text-foreground">
-            {title}
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">{description}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const CornerPlusIcons = () => (
-  <>
-    <PlusIcon className="absolute -left-3 -top-3 h-6 w-6 text-border transition-colors group-hover:text-accent/50" />
-    <PlusIcon className="absolute -right-3 -top-3 h-6 w-6 text-border transition-colors group-hover:text-accent/50" />
-    <PlusIcon className="absolute -bottom-3 -left-3 h-6 w-6 text-border transition-colors group-hover:text-accent/50" />
-    <PlusIcon className="absolute -bottom-3 -right-3 h-6 w-6 text-border transition-colors group-hover:text-accent/50" />
-  </>
-)
 
 const PlusIcon = ({ className }: { className?: string }) => (
   <svg
@@ -74,7 +38,7 @@ const PlusIcon = ({ className }: { className?: string }) => (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className={className}
+    className={cn("h-4 w-4 text-border", className)}
   >
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
   </svg>
@@ -83,48 +47,99 @@ const PlusIcon = ({ className }: { className?: string }) => (
 export default function BentoCards() {
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <PlusCard
-            className="md:col-span-1"
-            title={cardContents[0].title}
-            description={cardContents[0].description}
-          />
-          <PlusCard
-            className="md:col-span-1"
-            title={cardContents[1].title}
-            description={cardContents[1].description}
-          />
-          <PlusCard
-            className="md:col-span-2 lg:col-span-1 lg:row-span-2"
-            title={cardContents[2].title}
-            description={cardContents[2].description}
-          />
-          <PlusCard
-            className="md:col-span-1"
-            title={cardContents[3].title}
-            description={cardContents[3].description}
-          />
-          <PlusCard
-            className="md:col-span-1"
-            title={cardContents[4].title}
-            description={cardContents[4].description}
-          />
-        </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Bento Grid */}
+        <div className="relative">
+          {/* Row 1: Two equal cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Card 1 - Beautiful Components */}
+            <div className="relative p-8 md:p-10 border-t border-l border-dashed border-border">
+              {/* Plus icons */}
+              <PlusIcon className="absolute -top-2 -left-2" />
+              <PlusIcon className="absolute -top-2 -right-2 md:hidden" />
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                {cardContents[0].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {cardContents[0].description}
+              </p>
+            </div>
+            
+            {/* Card 2 - Developer Friendly */}
+            <div className="relative p-8 md:p-10 border-t border-l border-r border-dashed border-border">
+              <PlusIcon className="absolute -top-2 -left-2 hidden md:block" />
+              <PlusIcon className="absolute -top-2 -right-2" />
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                {cardContents[1].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {cardContents[1].description}
+              </p>
+            </div>
+          </div>
 
-        {/* Section Footer Heading */}
-        <div className="mt-16 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Built for performance. Designed for flexibility.
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Advora gives you the expertise to build beautiful, high-performing digital products with speed and precision. Every solution is thoughtfully crafted to be flexible, scalable, and future-ready.
-          </p>
+          {/* Row 2: Large card + small card */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Card 3 - Flexible Layouts (spans full height of this row) */}
+            <div className="relative p-8 md:p-10 border-t border-l border-dashed border-border md:row-span-2">
+              <PlusIcon className="absolute -top-2 -left-2" />
+              <PlusIcon className="absolute -top-2 -right-2 md:hidden" />
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                {cardContents[2].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {cardContents[2].description}
+              </p>
+            </div>
+            
+            {/* Card 4 - Dark Mode Support */}
+            <div className="relative p-8 md:p-10 border-t border-l border-r border-dashed border-border">
+              <PlusIcon className="absolute -top-2 -left-2 hidden md:block" />
+              <PlusIcon className="absolute -top-2 -right-2" />
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                {cardContents[3].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {cardContents[3].description}
+              </p>
+            </div>
+          </div>
+
+          {/* Row 3: Small card + Tagline */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Card 5 - Fast & Lightweight */}
+            <div className="relative p-8 md:p-10 border-t border-l border-b border-dashed border-border">
+              <PlusIcon className="absolute -top-2 -left-2" />
+              <PlusIcon className="absolute -bottom-2 -left-2" />
+              <PlusIcon className="absolute -top-2 -right-2 md:hidden" />
+              <PlusIcon className="absolute -bottom-2 -right-2 md:hidden" />
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                {cardContents[4].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {cardContents[4].description}
+              </p>
+            </div>
+            
+            {/* Tagline Section */}
+            <div className="relative p-8 md:p-10 border border-dashed border-border flex flex-col justify-end text-right">
+              <PlusIcon className="absolute -top-2 -left-2 hidden md:block" />
+              <PlusIcon className="absolute -top-2 -right-2" />
+              <PlusIcon className="absolute -bottom-2 -left-2 hidden md:block" />
+              <PlusIcon className="absolute -bottom-2 -right-2" />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
+                Built for performance.<br />
+                Designed for flexibility.
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Advora gives you the tools to build beautiful, high-performing digital products with lightning speed. Every solution is thoughtfully designed to be flexible, reusable, and scalable.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-export { BentoCards, PlusCard }
+export { BentoCards }
