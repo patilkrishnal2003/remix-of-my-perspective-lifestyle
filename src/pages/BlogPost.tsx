@@ -22,7 +22,7 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12">
         {/* Breadcrumb */}
         <div className="mb-8 animate-slide-down">
           <Link 

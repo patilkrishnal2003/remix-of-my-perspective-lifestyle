@@ -122,7 +122,7 @@ const Portfolio = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-12 sm:pb-16">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
           <div className="text-center space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
               Our Portfolio
