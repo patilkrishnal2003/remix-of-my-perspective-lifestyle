@@ -35,7 +35,7 @@ export function TestimonialsSection({
           <div className="flex w-full overflow-hidden">
             <div 
               className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused]"
-              style={{ '--duration': '60s', '--gap': '1.5rem' } as React.CSSProperties}
+              style={{ '--duration': '120s', '--gap': '1.5rem' } as React.CSSProperties}
             >
               {[...Array(4)].map((_, setIndex) => (
                 testimonials.map((testimonial, i) => (
