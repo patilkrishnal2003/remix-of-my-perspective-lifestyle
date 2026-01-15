@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -55,8 +57,18 @@ const Index = () => {
   ];
 
   const techStack = [
-    "React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", 
-    "MongoDB", "AWS", "Docker", "GraphQL", "React Native", "Tailwind CSS"
+    { name: "React", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "Python", icon: SiPython },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "AWS", icon: SiAmazonwebservices },
+    { name: "Docker", icon: SiDocker },
+    { name: "GraphQL", icon: SiGraphql },
+    { name: "React Native", icon: TbBrandReactNative },
+    { name: "Tailwind CSS", icon: SiTailwindcss }
   ];
 
   const testimonials = [
@@ -418,13 +430,16 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
             {techStack.map((tech, index) => (
               <div
-                key={tech}
-                className={`px-6 py-3 rounded-full bg-card border border-border hover:border-accent/50 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
+                key={tech.name}
+                className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
               >
-                {tech}
+                <div className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
+                  <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
+                </div>
+                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
               </div>
             ))}
           </div>
