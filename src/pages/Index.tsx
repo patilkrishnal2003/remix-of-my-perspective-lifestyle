@@ -105,65 +105,94 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 sm:space-y-8 animate-slide-down order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium">
-                <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                Software & Web Development Agency
+        <section className="relative overflow-hidden">
+          {/* Background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24">
+            {/* Main Hero Content - Centered */}
+            <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span className="text-sm font-medium">Available for new projects</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
-                We build digital
-                <span className="block text-primary">products that matter</span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-                Advora transforms your ideas into powerful software solutions. From web applications to mobile apps, we deliver excellence.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
-                    Start Your Project
-                    <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  </Button>
-                </Link>
-                <Link to="/portfolio" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg hover:scale-105 transition-all">
-                    View Our Work
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            {/* Right Image */}
-            <div className="relative animate-slide-up order-1 lg:order-2">
-              <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src={heroWorkspace} 
-                  alt="Advora team working on software development"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              {/* Floating Stats Card */}
-              <div className="absolute -bottom-4 -left-4 sm:bottom-6 sm:-left-6 bg-background/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg border border-border hidden md:block">
-                <div className="text-2xl sm:text-3xl font-bold text-primary">150+</div>
-                <p className="text-xs sm:text-sm text-muted-foreground">Projects Delivered</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Stats Cards Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {stats.map((stat, index) => (
-              <div 
-                key={stat.label} 
-                className={`p-6 sm:p-8 rounded-2xl bg-card border border-border text-center hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-sm sm:text-base text-muted-foreground">{stat.label}</div>
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                We craft software
+                <span className="block mt-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  that drives growth
+                </span>
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Premium software development for startups and enterprises. 
+                We turn complex ideas into elegant, scalable solutions.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link to="/contact">
+                  <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all shadow-lg">
+                    Start a Project
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/portfolio">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all">
+                    View Case Studies
+                  </Button>
+                </Link>
               </div>
-            ))}
+
+              {/* Trust Indicators */}
+              <div className="pt-8 sm:pt-12">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="flex -space-x-2">
+                      {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
+                        <div key={i} className="w-8 h-8 rounded-full bg-card border-2 border-background flex items-center justify-center overflow-hidden">
+                          <img src={logo} alt="" className="w-6 h-6 object-contain" />
+                        </div>
+                      ))}
+                    </div>
+                    <span>50+ companies trust us</span>
+                  </div>
+                  <div className="hidden sm:block w-px h-6 bg-border" />
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <span>5.0 rating</span>
+                  </div>
+                  <div className="hidden sm:block w-px h-6 bg-border" />
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>150+ projects delivered</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Row */}
+            <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
+              {stats.map((stat, index) => (
+                <div 
+                  key={stat.label} 
+                  className="group p-6 sm:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/30 hover:bg-card transition-all duration-300 text-center"
+                >
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">{stat.value}</div>
+                  <div className="text-sm sm:text-base text-muted-foreground mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
