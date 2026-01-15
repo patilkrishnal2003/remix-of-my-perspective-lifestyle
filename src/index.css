@@ -11,18 +11,18 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Warm, sophisticated palette inspired by the design */
-    --background: 0 0% 96%;
+    /* Fresh, clean palette with blue accents */
+    --background: 0 0% 100%;
     --foreground: 0 0% 9%;
 
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 9%;
 
-    --popover: 0 0% 89%;
+    --popover: 0 0% 98%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 243 75% 58%;
-    --primary-foreground: 225 100% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 32%;
     --secondary-foreground: 0 0% 98%;
@@ -30,7 +30,7 @@ All colors MUST be HSL.
     --muted: 0 0% 63%;
     --muted-foreground: 0 0% 9%;
 
-    --accent: 258 89% 48%;
+    --accent: 217 91% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 50%;
@@ -38,7 +38,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 83%;
     --input: 0 0% 83%;
-    --ring: 243 75% 58%;
+    --ring: 217 91% 60%;
 
     --radius: 1.25rem;
 
@@ -57,19 +57,19 @@ All colors MUST be HSL.
     --surface-elevated: 36 44% 98%;
     --shadow-soft: 0 0% 0%;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --chart-1: 234 89% 73%;
-    --chart-2: 255 91% 76%;
-    --chart-3: 270 95% 75%;
-    --chart-4: 238 83% 66%;
+    --chart-1: 217 91% 73%;
+    --chart-2: 199 89% 76%;
+    --chart-3: 186 95% 75%;
+    --chart-4: 217 83% 66%;
     --chart-5: 0 0% 45%;
     --sidebar: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 243 75% 58%;
-    --sidebar-primary-foreground: 225 100% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 32%;
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 0 0% 83%;
-    --sidebar-ring: 243 75% 58%;
+    --sidebar-ring: 217 91% 60%;
     --font-sans: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
     --font-serif: 'EB Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
@@ -95,8 +95,8 @@ All colors MUST be HSL.
     --popover: 0 0% 25%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 234 89% 73%;
-    --primary-foreground: 243 47% 20%;
+    --primary: 217 91% 73%;
+    --primary-foreground: 217 91% 15%;
 
     --secondary: 0 0% 45%;
     --secondary-foreground: 0 0% 98%;
@@ -104,7 +104,7 @@ All colors MUST be HSL.
     --muted: 0 0% 32%;
     --muted-foreground: 0 0% 75%;
 
-    --accent: 258 89% 66%;
+    --accent: 217 91% 66%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -112,7 +112,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 32%;
     --input: 0 0% 32%;
-    --ring: 234 89% 73%;
+    --ring: 217 91% 73%;
 
     /* Dark mode tag colors */
     --tag-financing: 210 40% 45%;
@@ -128,19 +128,19 @@ All colors MUST be HSL.
     --cream-foreground: 36 44% 96%;
     --surface-elevated: 0 0% 16%;
     --shadow-soft: 0 0% 0%;
-    --chart-1: 229 93% 81%;
-    --chart-2: 252 94% 85%;
-    --chart-3: 269 97% 85%;
-    --chart-4: 234 89% 73%;
+    --chart-1: 217 93% 81%;
+    --chart-2: 199 94% 85%;
+    --chart-3: 186 97% 85%;
+    --chart-4: 217 89% 73%;
     --chart-5: 0 0% 45%;
     --sidebar: 0 0% 14%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 234 89% 73%;
-    --sidebar-primary-foreground: 243 47% 20%;
-    --sidebar-accent: 255 91% 76%;
-    --sidebar-accent-foreground: 261 72% 22%;
+    --sidebar-primary: 217 91% 73%;
+    --sidebar-primary-foreground: 217 91% 15%;
+    --sidebar-accent: 199 91% 76%;
+    --sidebar-accent-foreground: 217 72% 22%;
     --sidebar-border: 0 0% 32%;
-    --sidebar-ring: 234 89% 73%;
+    --sidebar-ring: 217 91% 73%;
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
@@ -184,6 +184,16 @@ All colors MUST be HSL.
   }
 }
 
+/* Section divider utility */
+.section-divider {
+  @apply relative;
+}
+
+.section-divider::before {
+  content: '';
+  @apply absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-border to-transparent;
+}
+
 @layer utilities {
   .card-hover {
     @apply transition-all duration-500 hover:scale-[1.02];
@@ -195,7 +205,7 @@ All colors MUST be HSL.
   }
 
   .pill-nav {
-    @apply rounded-full bg-[hsl(var(--surface-elevated))] backdrop-blur-lg border border-border/50;
+    @apply rounded-full bg-white dark:bg-card backdrop-blur-lg border border-border/50;
   }
 
   .floating-button {

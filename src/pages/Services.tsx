@@ -1,6 +1,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPostgresql, SiMongodb, SiRedis, SiAmazonwebservices, SiDocker, SiKubernetes, SiGraphql, SiFlutter, SiTailwindcss, SiFigma, SiGit } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import servicesHero from "@/assets/services-hero.jpg";
@@ -112,16 +115,16 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden pt-24 sm:pt-28">
           <div className="absolute inset-0">
             <img 
               src={servicesHero} 
               alt="Services background"
-              className="w-full h-full object-cover opacity-30"
+              className="w-full h-full object-cover opacity-50"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
           </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
                 Our Services
@@ -134,7 +137,7 @@ const Services = () => {
         </section>
 
         {/* Advantages Section */}
-        <section className="bg-card py-16">
+        <section className="section-divider py-16 pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {advantages.map((advantage, index) => (
@@ -151,7 +154,7 @@ const Services = () => {
         </section>
 
         {/* Services Grid */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
             <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
@@ -160,18 +163,21 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className={`group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
+                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-card via-card to-accent/5 border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 animate-slide-up stagger-${(index % 4) + 1} overflow-hidden`}
               >
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="h-7 w-7 text-accent" />
+                {/* Decorative gradient blob */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="relative flex items-start gap-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="h-8 w-8 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">{service.title}</h3>
                     <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {service.features.map((feature) => (
-                        <span key={feature} className="px-3 py-1 rounded-full bg-muted text-sm text-muted-foreground">
+                        <span key={feature} className="px-3 py-1.5 rounded-full bg-accent/10 text-sm font-medium text-accent border border-accent/20">
                           {feature}
                         </span>
                       ))}
@@ -184,7 +190,7 @@ const Services = () => {
         </section>
 
         {/* Process Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Development Process</h2>
@@ -209,70 +215,42 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Pricing</h2>
-            <p className="text-xl text-muted-foreground">Transparent pricing for projects of all sizes</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {pricingTiers.map((tier, index) => (
-              <div
-                key={tier.name}
-                className={`p-8 rounded-3xl ${tier.popular ? 'bg-accent text-accent-foreground ring-2 ring-accent' : 'bg-card border border-border'} animate-slide-up stagger-${index + 1}`}
-              >
-                {tier.popular && (
-                  <span className="inline-block px-3 py-1 rounded-full bg-accent-foreground/20 text-sm font-medium mb-4">
-                    Most Popular
-                  </span>
-                )}
-                <h3 className="text-2xl font-bold mb-2">{tier.name}</h3>
-                <p className={`mb-4 ${tier.popular ? 'opacity-90' : 'text-muted-foreground'}`}>{tier.description}</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">${tier.price}</span>
-                  {tier.price !== "Custom" && <span className={tier.popular ? 'opacity-90' : 'text-muted-foreground'}> starting</span>}
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <CheckCircle className="h-5 w-5 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact">
-                  <Button 
-                    className={`w-full rounded-full py-6 ${tier.popular ? 'bg-accent-foreground text-accent hover:bg-accent-foreground/90' : 'bg-accent text-accent-foreground hover:bg-accent/90'}`}
-                  >
-                    Get Started
-                  </Button>
-                </Link>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-muted-foreground mt-8">
-            * Prices are estimates. Contact us for a detailed quote based on your specific requirements.
-          </p>
-        </section>
-
         {/* Technologies Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Technologies We Use</h2>
               <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
               {[
-                "React", "Next.js", "TypeScript", "Node.js", "Python", "Go",
-                "PostgreSQL", "MongoDB", "Redis", "AWS", "Docker", "Kubernetes",
-                "GraphQL", "React Native", "Flutter", "Tailwind CSS", "Figma", "Git"
+                { name: "React", icon: SiReact },
+                { name: "Next.js", icon: SiNextdotjs },
+                { name: "TypeScript", icon: SiTypescript },
+                { name: "Node.js", icon: SiNodedotjs },
+                { name: "Python", icon: SiPython },
+                { name: "Go", icon: SiGo },
+                { name: "PostgreSQL", icon: SiPostgresql },
+                { name: "MongoDB", icon: SiMongodb },
+                { name: "Redis", icon: SiRedis },
+                { name: "AWS", icon: SiAmazonwebservices },
+                { name: "Docker", icon: SiDocker },
+                { name: "Kubernetes", icon: SiKubernetes },
+                { name: "GraphQL", icon: SiGraphql },
+                { name: "React Native", icon: TbBrandReactNative },
+                { name: "Flutter", icon: SiFlutter },
+                { name: "Tailwind CSS", icon: SiTailwindcss },
+                { name: "Figma", icon: SiFigma },
+                { name: "Git", icon: SiGit }
               ].map((tech, index) => (
                 <div
-                  key={tech}
-                  className={`p-4 rounded-xl bg-background border border-border text-center hover:border-accent/50 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
+                  key={tech.name}
+                  className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
                 >
-                  {tech}
+                  <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
+                    <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
+                  </div>
+                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
                 </div>
               ))}
             </div>
@@ -280,24 +258,30 @@ const Services = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground">Answers to common questions about our services</p>
           </div>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              { q: "How long does a typical project take?", a: "Project timelines vary based on scope and complexity. A simple website might take 4-6 weeks, while a complex application could take 3-6 months. We'll provide a detailed timeline during our initial consultation." },
-              { q: "Do you work with clients remotely?", a: "Yes! We're a remote-first company and have successfully delivered projects for clients worldwide. We use modern collaboration tools to ensure smooth communication regardless of location." },
-              { q: "What happens after the project is delivered?", a: "We offer various maintenance and support packages to keep your application running smoothly. This includes bug fixes, security updates, and feature enhancements as needed." },
-              { q: "Can you work with our existing team?", a: "Absolutely. We offer team augmentation services where our developers integrate with your existing team. We can also provide technical consulting to guide your internal development efforts." },
-              { q: "What is your payment structure?", a: "We typically work with a milestone-based payment structure. A percentage is due upfront, with remaining payments tied to project milestones. We're flexible and can discuss arrangements that work for your budget." }
-            ].map((faq, index) => (
-              <div key={index} className={`p-6 rounded-2xl bg-card border border-border animate-slide-up stagger-${(index % 5) + 1}`}>
-                <h3 className="font-bold mb-2">{faq.q}</h3>
-                <p className="text-muted-foreground">{faq.a}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {[
+                { q: "How long does a typical project take?", a: "Project timelines vary based on scope and complexity. A simple website might take 4-6 weeks, while a complex application could take 3-6 months. We'll provide a detailed timeline during our initial consultation." },
+                { q: "Do you work with clients remotely?", a: "Yes! We're a remote-first company and have successfully delivered projects for clients worldwide. We use modern collaboration tools to ensure smooth communication regardless of location." },
+                { q: "What happens after the project is delivered?", a: "We offer various maintenance and support packages to keep your application running smoothly. This includes bug fixes, security updates, and feature enhancements as needed." },
+                { q: "Can you work with our existing team?", a: "Absolutely. We offer team augmentation services where our developers integrate with your existing team. We can also provide technical consulting to guide your internal development efforts." },
+                { q: "What is your payment structure?", a: "We typically work with a milestone-based payment structure. A percentage is due upfront, with remaining payments tied to project milestones. We're flexible and can discuss arrangements that work for your budget." }
+              ].map((faq, index) => (
+                <AccordionItem key={index} value={`faq-${index}`} className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50">
+                  <AccordionTrigger className="text-left font-bold hover:no-underline py-5">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 

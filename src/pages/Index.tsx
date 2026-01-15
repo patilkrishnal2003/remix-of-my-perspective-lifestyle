@@ -1,10 +1,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -54,8 +58,18 @@ const Index = () => {
   ];
 
   const techStack = [
-    "React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", 
-    "MongoDB", "AWS", "Docker", "GraphQL", "React Native", "Tailwind CSS"
+    { name: "React", icon: SiReact },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "Node.js", icon: SiNodedotjs },
+    { name: "Python", icon: SiPython },
+    { name: "PostgreSQL", icon: SiPostgresql },
+    { name: "MongoDB", icon: SiMongodb },
+    { name: "AWS", icon: SiAmazonwebservices },
+    { name: "Docker", icon: SiDocker },
+    { name: "GraphQL", icon: SiGraphql },
+    { name: "React Native", icon: TbBrandReactNative },
+    { name: "Tailwind CSS", icon: SiTailwindcss }
   ];
 
   const testimonials = [
@@ -105,7 +119,7 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-screen flex items-center -mt-[88px] pt-[88px]">
+        <section className="relative overflow-hidden min-h-screen flex items-start pt-20 sm:pt-24">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Grid Pattern */}
@@ -143,7 +157,7 @@ const Index = () => {
             </svg>
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
             {/* Main Hero Content - Centered */}
             <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
               {/* Status Badge */}
@@ -216,7 +230,7 @@ const Index = () => {
             </div>
 
             {/* Stats Row */}
-            <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
+            <div className="mt-12 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
               {stats.map((stat, index) => (
                 <div 
                   key={stat.label} 
@@ -231,7 +245,7 @@ const Index = () => {
         </section>
 
         {/* Trusted By Section */}
-        <section className="border-y border-border py-8 sm:py-12 bg-muted/30">
+        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
             <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-14">
@@ -256,25 +270,28 @@ const Index = () => {
         </section>
 
         {/* Services Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive development solutions tailored to your business needs
-            </p>
-          </div>
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive development solutions tailored to your business needs
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <service.icon className="h-7 w-7 text-accent" />
+              <ScrollReveal key={service.title} delay={index * 100}>
+                <div
+                  className="group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] h-full"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                    <service.icon className="h-7 w-7 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
           <div className="text-center mt-12">
@@ -288,15 +305,17 @@ const Index = () => {
         </section>
 
         {/* Focus Section */}
-        <section className="bg-muted/30 py-16 sm:py-20">
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                I build high quality apps that your
-                <span className="block">users love</span>
-              </h2>
-              <p className="text-primary font-medium text-lg">here's what I focus on</p>
-            </div>
+            <ScrollReveal>
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                  I build high quality apps that your
+                  <span className="block">users love</span>
+                </h2>
+                <p className="text-primary font-medium text-lg">here's what I focus on</p>
+              </div>
+            </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
               {[
                 {
@@ -315,122 +334,136 @@ const Index = () => {
                   description: "for future enhancements or feature expansions."
                 }
               ].map((item, index) => (
-                <div key={item.number} className={`flex items-start gap-6 animate-slide-up stagger-${index + 1}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+                <ScrollReveal key={item.number} delay={index * 150}>
+                  <div className="flex items-start gap-6">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+                    </div>
+                    <div className="pt-2">
+                      <span className="font-bold text-lg">{item.title}</span>{" "}
+                      <span className="text-muted-foreground">{item.description}</span>
+                    </div>
                   </div>
-                  <div className="pt-2">
-                    <span className="font-bold text-lg">{item.title}</span>{" "}
-                    <span className="text-muted-foreground">{item.description}</span>
-                  </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
 
         {/* Featured Work Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
-            <p className="text-xl text-muted-foreground">Some of our recent projects</p>
-          </div>
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
+              <p className="text-xl text-muted-foreground">Some of our recent projects</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { image: projectFinanceFlow, title: "FinanceFlow", category: "Web Application" },
               { image: projectHealthTrack, title: "HealthTrack Pro", category: "Mobile App" },
               { image: projectRetailHub, title: "RetailHub", category: "E-commerce" }
             ].map((project, index) => (
-              <Link 
-                key={project.title}
-                to="/portfolio"
-                className={`group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4 bg-card">
-                  <span className="text-xs text-primary font-medium">{project.category}</span>
-                  <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
-                </div>
-              </Link>
+              <ScrollReveal key={project.title} delay={index * 100}>
+                <Link 
+                  to="/portfolio"
+                  className="group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] block"
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-4 bg-card">
+                    <span className="text-xs text-primary font-medium">{project.category}</span>
+                    <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
+                  </div>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link to="/portfolio">
-              <Button variant="outline" className="rounded-full px-8 py-6">
-                View All Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
+          <ScrollReveal delay={300}>
+            <div className="text-center mt-10">
+              <Link to="/portfolio">
+                <Button variant="outline" className="rounded-full px-8 py-6">
+                  View All Projects
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </ScrollReveal>
         </section>
 
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8 animate-slide-up">
-                <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
-                </p>
-                <div className="space-y-4">
-                  {features.map((feature) => (
-                    <div key={feature.title} className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <feature.icon className="h-6 w-6 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold mb-1">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-6 animate-slide-up stagger-2">
-                <div className="p-8 rounded-3xl bg-background border border-border">
-                  <h3 className="text-2xl font-bold mb-6">Our Process</h3>
+              <ScrollReveal animation="fade-right">
+                <div className="space-y-8">
+                  <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
+                  </p>
                   <div className="space-y-4">
-                    {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
-                      <div key={step} className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
-                          {index + 1}
+                    {features.map((feature) => (
+                      <div key={feature.title} className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                          <feature.icon className="h-6 w-6 text-accent" />
                         </div>
-                        <span className="font-medium">{step}</span>
+                        <div>
+                          <h3 className="font-bold mb-1">{feature.title}</h3>
+                          <p className="text-muted-foreground">{feature.description}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-left" delay={200}>
+                <div className="space-y-6">
+                  <div className="p-8 rounded-3xl bg-background border border-border">
+                    <h3 className="text-2xl font-bold mb-6">Our Process</h3>
+                    <div className="space-y-4">
+                      {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
+                        <div key={step} className="flex items-center gap-4">
+                          <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
+                            {index + 1}
+                          </div>
+                          <span className="font-medium">{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
 
         {/* Tech Stack Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
             {techStack.map((tech, index) => (
               <div
-                key={tech}
-                className={`px-6 py-3 rounded-full bg-card border border-border hover:border-accent/50 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
+                key={tech.name}
+                className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
               >
-                {tech}
+                <div className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
+                  <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
+                </div>
+                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
               </div>
             ))}
           </div>
         </section>
 
         {/* Testimonials Section */}
-        <section className="bg-card py-16 sm:py-20 overflow-hidden">
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
@@ -449,7 +482,7 @@ const Index = () => {
         </section>
 
         {/* Featured Blog Posts */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="flex items-center justify-between mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-2">From Our Blog</h2>
@@ -492,7 +525,7 @@ const Index = () => {
         </section>
 
         {/* How It Works Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
@@ -520,23 +553,29 @@ const Index = () => {
         </section>
 
         {/* FAQ Preview */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-xl text-muted-foreground">Quick answers to common questions</p>
           </div>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              { q: "How long does a typical project take?", a: "Project timelines vary based on scope. Most web applications take 8-16 weeks, while simpler websites can be completed in 4-6 weeks." },
-              { q: "What is your pricing model?", a: "We offer flexible pricing including fixed-price projects and time & materials arrangements. We'll recommend the best approach based on your needs." },
-              { q: "Do you provide ongoing support?", a: "Yes! We offer maintenance and support packages to keep your application running smoothly after launch." },
-              { q: "What technologies do you specialize in?", a: "We specialize in React, Node.js, React Native, and cloud platforms like AWS and Azure. We choose the best tech for each project." }
-            ].map((faq, index) => (
-              <div key={index} className={`p-6 rounded-2xl bg-card border border-border animate-slide-up stagger-${index + 1}`}>
-                <h3 className="font-bold mb-2">{faq.q}</h3>
-                <p className="text-muted-foreground">{faq.a}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              {[
+                { q: "How long does a typical project take?", a: "Project timelines vary based on scope. Most web applications take 8-16 weeks, while simpler websites can be completed in 4-6 weeks." },
+                { q: "What is your pricing model?", a: "We offer flexible pricing including fixed-price projects and time & materials arrangements. We'll recommend the best approach based on your needs." },
+                { q: "Do you provide ongoing support?", a: "Yes! We offer maintenance and support packages to keep your application running smoothly after launch." },
+                { q: "What technologies do you specialize in?", a: "We specialize in React, Node.js, React Native, and cloud platforms like AWS and Azure. We choose the best tech for each project." }
+              ].map((faq, index) => (
+                <AccordionItem key={index} value={`faq-${index}`} className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50">
+                  <AccordionTrigger className="text-left font-bold hover:no-underline py-5">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 

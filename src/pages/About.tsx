@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, ArrowUpRight } from "lucide-react";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import aboutHeroImage from "@/assets/about-hero.jpg";
@@ -101,84 +102,68 @@ const About = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 sm:space-y-8 animate-slide-up order-2 lg:order-1">
-              {/* Avatar Badge */}
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-full border border-border bg-card">
-                <div className="flex -space-x-2">
-                  <img src={teamAlex} alt="Alex" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
-                  <img src={teamSarah} alt="Sarah" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
-                  <img src={teamMichael} alt="Michael" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-background object-cover" />
-                </div>
-                <span className="text-xs sm:text-sm font-medium">Trusted by 50+ businesses</span>
-              </div>
-
-              {/* Heading */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight">
-                Building digital
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                products that
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
-                <span className="text-primary">drive growth.</span>
-              </h1>
-
-              {/* Description */}
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
-                We're a passionate team of developers and designers dedicated to transforming ideas into powerful software solutions that help businesses thrive.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base hover:scale-105 transition-all">
-                    Get started
-                  </Button>
-                </Link>
-                <Link to="/portfolio" className="w-full sm:w-auto">
-                  <Button variant="outline" className="w-full sm:w-auto rounded-full px-6 sm:px-8 py-5 sm:py-6 text-base hover:scale-105 transition-all gap-2">
-                    <Play className="h-4 w-4" />
-                    View our work
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="relative animate-slide-up stagger-2 order-1 lg:order-2">
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden">
+        {/* Hero Section - Card Style */}
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-16">
+          <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card overflow-hidden shadow-lg animate-slide-up">
+            <div className="grid lg:grid-cols-2 gap-0">
+              {/* Left Image */}
+              <div className="relative h-64 sm:h-80 lg:h-auto">
                 <img
                   src={aboutHeroImage}
-                  alt="Advora team member working"
-                  className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
+                  alt="Advora team workspace"
+                  className="w-full h-full object-cover"
                 />
-                
-                {/* Floating Stats Card */}
-                <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-background/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg border border-border">
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <span className="text-2xl sm:text-3xl font-bold">50</span>
-                      <ArrowUpRight className="absolute -top-1 -right-4 h-3 w-3 sm:h-4 sm:w-4 text-accent" />
-                    </div>
-                  </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground mt-1">Happy clients</p>
+              </div>
+
+              {/* Right Content */}
+              <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
+                {/* Heading */}
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight mb-6">
+                  Crafting Digital
+                  <br />
+                  Excellence,
+                  <br />
+                  Together.
+                </h1>
+
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
+                  Welcome to Advora Digital: A Realm of Innovation, Expertise, and Discovery. Where Code Illuminates Paths of Progress and Design Transforms the Digital Landscape.
+                </p>
+
+                {/* CTA + Social Icons */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link to="/contact">
+                    <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-5 text-base hover:scale-105 transition-all">
+                      Get Started
+                    </Button>
+                  </Link>
                   
-                  {/* Heart Icon */}
-                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-full flex items-center justify-center">
-                    <Heart className="h-3 w-3 sm:h-4 sm:w-4 text-white fill-white" />
+                  {/* Social Icons */}
+                  <div className="flex items-center gap-3">
+                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+                      <FaInstagram className="w-4 h-4 text-muted-foreground" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+                      <FaFacebookF className="w-4 h-4 text-muted-foreground" />
+                    </a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+                      <FaLinkedinIn className="w-4 h-4 text-muted-foreground" />
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
+          {/* Tagline below card */}
+          <p className="text-center text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/80 mt-10 max-w-3xl mx-auto leading-relaxed">
+            Advora is a space for building ideas, finding solutions, and discovering new ways of creating the digital world.
+          </p>
         </section>
 
         {/* Stats Section */}
-        <section className="bg-card py-16">
+        <section className="section-divider py-16 pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -197,7 +182,7 @@ const About = () => {
         </section>
 
         {/* Story Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-slide-up">
               <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
@@ -227,7 +212,7 @@ const About = () => {
         </section>
 
         {/* Timeline Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
@@ -246,7 +231,7 @@ const About = () => {
         </section>
 
         {/* Values Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
             <p className="text-xl text-muted-foreground">The principles that guide everything we do</p>
@@ -265,7 +250,7 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className="bg-card py-20">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
@@ -296,7 +281,7 @@ const About = () => {
         </section>
 
         {/* Culture Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Our Culture</h2>
