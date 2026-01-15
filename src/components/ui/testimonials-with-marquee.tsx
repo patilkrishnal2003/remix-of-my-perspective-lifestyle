@@ -7,6 +7,7 @@ interface TestimonialsSectionProps {
   testimonials: Array<{
     author: TestimonialAuthor
     text: string
+    rating?: number
     href?: string
   }>
   className?: string
@@ -30,11 +31,11 @@ export function TestimonialsSection({
           </p>
         </div>
 
-        <div className="relative w-full">
+        <div className="relative w-full group">
           <div className="flex w-full overflow-hidden">
             <div 
-              className="flex gap-6 animate-marquee"
-              style={{ '--duration': '40s', '--gap': '1.5rem' } as React.CSSProperties}
+              className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused]"
+              style={{ '--duration': '60s', '--gap': '1.5rem' } as React.CSSProperties}
             >
               {[...Array(4)].map((_, setIndex) => (
                 testimonials.map((testimonial, i) => (
