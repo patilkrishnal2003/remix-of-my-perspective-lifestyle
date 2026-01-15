@@ -115,7 +115,7 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden -mt-[80px] pt-[80px]">
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0">
             <img 
               src={servicesHero} 
@@ -124,7 +124,7 @@ const Services = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/80 to-background"></div>
           </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 sm:pt-10 sm:pb-16">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
                 Our Services

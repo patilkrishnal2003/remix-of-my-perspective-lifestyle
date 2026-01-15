@@ -106,7 +106,7 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-screen flex items-center -mt-[100px] pt-[100px]">
+        <section className="relative overflow-hidden min-h-screen flex items-start">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Grid Pattern */}
@@ -144,7 +144,7 @@ const Index = () => {
             </svg>
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-10 sm:pb-12 w-full">
             {/* Main Hero Content - Centered */}
             <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
               {/* Status Badge */}
@@ -217,7 +217,7 @@ const Index = () => {
             </div>
 
             {/* Stats Row */}
-            <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
+            <div className="mt-12 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
               {stats.map((stat, index) => (
                 <div 
                   key={stat.label} 
