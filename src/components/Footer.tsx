@@ -37,11 +37,11 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-sm sm:text-base">Services</h3>
             <ul className="space-y-2.5 sm:space-y-3 text-sm text-muted-foreground">
-              <li><Link to="/services" className="hover:text-accent transition-colors">Web Development</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Mobile Apps</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Custom Software</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">UI/UX Design</Link></li>
-              <li><Link to="/services" className="hover:text-accent transition-colors">Cloud Solutions</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Web Development</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Mobile Apps</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Custom Software</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">UI/UX Design</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Cloud Solutions</Link></li>
             </ul>
           </div>
 
@@ -49,10 +49,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-sm sm:text-base">Company</h3>
             <ul className="space-y-2.5 sm:space-y-3 text-sm text-muted-foreground">
-              <li><Link to="/about" className="hover:text-accent transition-colors">About Us</Link></li>
-              <li><Link to="/portfolio" className="hover:text-accent transition-colors">Portfolio</Link></li>
-              <li><Link to="/blog" className="hover:text-accent transition-colors">Blog</Link></li>
-              <li><Link to="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link></li>
+              <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -64,7 +64,7 @@ const Footer = () => {
               <li>+1 (555) 123-4567</li>
               <li>New York, NY</li>
               <li className="pt-2">
-                <Link to="/contact" className="text-accent hover:underline font-medium">
+                <Link to="/contact" className="text-primary hover:underline font-medium">
                   Get a Quote →
                 </Link>
               </li>
@@ -96,8 +96,8 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-muted-foreground">
           <p>© 2026 Advora. All rights reserved.</p>
           <div className="flex gap-4 sm:gap-6">
-            <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
