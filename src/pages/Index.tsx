@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -270,24 +271,27 @@ const Index = () => {
 
         {/* Services Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive development solutions tailored to your business needs
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive development solutions tailored to your business needs
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                  <service.icon className="h-7 w-7 text-accent" />
+              <ScrollReveal key={service.title} delay={index * 100}>
+                <div
+                  className="group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] h-full"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                    <service.icon className="h-7 w-7 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
           <div className="text-center mt-12">
@@ -303,13 +307,15 @@ const Index = () => {
         {/* Focus Section */}
         <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                I build high quality apps that your
-                <span className="block">users love</span>
-              </h2>
-              <p className="text-primary font-medium text-lg">here's what I focus on</p>
-            </div>
+            <ScrollReveal>
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                  I build high quality apps that your
+                  <span className="block">users love</span>
+                </h2>
+                <p className="text-primary font-medium text-lg">here's what I focus on</p>
+              </div>
+            </ScrollReveal>
             <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
               {[
                 {
@@ -328,15 +334,17 @@ const Index = () => {
                   description: "for future enhancements or feature expansions."
                 }
               ].map((item, index) => (
-                <div key={item.number} className={`flex items-start gap-6 animate-slide-up stagger-${index + 1}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+                <ScrollReveal key={item.number} delay={index * 150}>
+                  <div className="flex items-start gap-6">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+                    </div>
+                    <div className="pt-2">
+                      <span className="font-bold text-lg">{item.title}</span>{" "}
+                      <span className="text-muted-foreground">{item.description}</span>
+                    </div>
                   </div>
-                  <div className="pt-2">
-                    <span className="font-bold text-lg">{item.title}</span>{" "}
-                    <span className="text-muted-foreground">{item.description}</span>
-                  </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
@@ -344,82 +352,91 @@ const Index = () => {
 
         {/* Featured Work Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
-            <p className="text-xl text-muted-foreground">Some of our recent projects</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
+              <p className="text-xl text-muted-foreground">Some of our recent projects</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { image: projectFinanceFlow, title: "FinanceFlow", category: "Web Application" },
               { image: projectHealthTrack, title: "HealthTrack Pro", category: "Mobile App" },
               { image: projectRetailHub, title: "RetailHub", category: "E-commerce" }
             ].map((project, index) => (
-              <Link 
-                key={project.title}
-                to="/portfolio"
-                className={`group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4 bg-card">
-                  <span className="text-xs text-primary font-medium">{project.category}</span>
-                  <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
-                </div>
-              </Link>
+              <ScrollReveal key={project.title} delay={index * 100}>
+                <Link 
+                  to="/portfolio"
+                  className="group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] block"
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-4 bg-card">
+                    <span className="text-xs text-primary font-medium">{project.category}</span>
+                    <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
+                  </div>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="text-center mt-10">
-            <Link to="/portfolio">
-              <Button variant="outline" className="rounded-full px-8 py-6">
-                View All Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
+          <ScrollReveal delay={300}>
+            <div className="text-center mt-10">
+              <Link to="/portfolio">
+                <Button variant="outline" className="rounded-full px-8 py-6">
+                  View All Projects
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </ScrollReveal>
         </section>
 
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8 animate-slide-up">
-                <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
-                </p>
-                <div className="space-y-4">
-                  {features.map((feature) => (
-                    <div key={feature.title} className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <feature.icon className="h-6 w-6 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold mb-1">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-6 animate-slide-up stagger-2">
-                <div className="p-8 rounded-3xl bg-background border border-border">
-                  <h3 className="text-2xl font-bold mb-6">Our Process</h3>
+              <ScrollReveal animation="fade-right">
+                <div className="space-y-8">
+                  <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
+                  <p className="text-xl text-muted-foreground leading-relaxed">
+                    We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
+                  </p>
                   <div className="space-y-4">
-                    {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
-                      <div key={step} className="flex items-center gap-4">
-                        <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
-                          {index + 1}
+                    {features.map((feature) => (
+                      <div key={feature.title} className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                          <feature.icon className="h-6 w-6 text-accent" />
                         </div>
-                        <span className="font-medium">{step}</span>
+                        <div>
+                          <h3 className="font-bold mb-1">{feature.title}</h3>
+                          <p className="text-muted-foreground">{feature.description}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
+              <ScrollReveal animation="fade-left" delay={200}>
+                <div className="space-y-6">
+                  <div className="p-8 rounded-3xl bg-background border border-border">
+                    <h3 className="text-2xl font-bold mb-6">Our Process</h3>
+                    <div className="space-y-4">
+                      {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
+                        <div key={step} className="flex items-center gap-4">
+                          <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
+                            {index + 1}
+                          </div>
+                          <span className="font-medium">{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
