@@ -106,7 +106,7 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-screen flex items-start">
+        <section className="relative overflow-hidden min-h-screen flex items-start pt-20 sm:pt-24">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Grid Pattern */}
