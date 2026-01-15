@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -19,8 +20,12 @@ import logoFinanceflow from "@/assets/logo-financeflow.png";
 import logoHealthtrack from "@/assets/logo-healthtrack.png";
 import logoRetailhub from "@/assets/logo-retailhub.png";
 import logoEdulearn from "@/assets/logo-edulearn.png";
+import { renderCanvas } from "@/components/ui/canvas";
 
 const Index = () => {
+  useEffect(() => {
+    renderCanvas();
+  }, []);
   const services = [
     {
       icon: Globe,
@@ -117,89 +122,86 @@ const Index = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
+      {/* Canvas Animation */}
+      <canvas id="canvas" className="pointer-events-none fixed inset-0 z-50" />
+
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-screen flex items-start pt-20 sm:pt-24">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Grid Pattern */}
-            <div 
-              className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-              style={{
-                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-                backgroundSize: '60px 60px'
-              }}
-            />
-            
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
-            
-            {/* Floating Shapes */}
-            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-slower" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
-            
-            {/* Geometric Shapes */}
-            <div className="hidden lg:block absolute top-32 right-[15%] w-16 h-16 border-2 border-primary/20 rounded-2xl rotate-12 animate-float-slow" />
-            <div className="hidden lg:block absolute bottom-40 left-[12%] w-12 h-12 border-2 border-accent/20 rounded-full animate-float-slower" />
-            <div className="hidden lg:block absolute top-1/3 left-[8%] w-8 h-8 bg-primary/10 rounded-lg rotate-45 animate-float-slow" />
-            <div className="hidden lg:block absolute bottom-1/3 right-[8%] w-6 h-6 bg-accent/15 rounded-full animate-float-slower" />
-            
-            {/* Decorative Lines */}
-            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                  <circle cx="50" cy="50" r="1" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#hero-pattern)" />
-            </svg>
-          </div>
+        <section className="relative overflow-hidden min-h-screen flex items-center">
+          {/* Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/20" />
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
-            {/* Main Hero Content - Centered */}
-            <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
-              {/* Status Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                </span>
-                <span className="text-sm font-medium">Available for new projects</span>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div className="flex flex-col items-center justify-center text-center">
+              {/* Badge */}
+              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/30 px-4 py-2 backdrop-blur-sm animate-fade-in">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium">Introducing Advora</span>
+                <span className="text-muted-foreground">·</span>
+                <Link to="/portfolio" className="text-sm text-primary hover:underline flex items-center gap-1">
+                  Explore <ArrowRight className="h-3 w-3" />
+                </Link>
               </div>
 
-              {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2]">
-                We craft software
-                <span className="block mt-2 pb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                  that drives growth
-                </span>
-              </h1>
+              {/* Main Content */}
+              <div className="space-y-6 animate-slide-up">
+                {/* Heading */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight">
+                  <span className="block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+                    Your complete
+                  </span>
+                  <span className="block bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+                    platform for the
+                  </span>
+                  <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-pulse">
+                    Design.
+                  </span>
+                </h1>
 
-              {/* Subheading */}
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Premium software development for startups and enterprises. 
-                We turn complex ideas into elegant, scalable solutions.
+                {/* Available Badge */}
+                <div className="flex items-center justify-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 delay-150"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                  </div>
+                  <span className="text-lg font-medium text-foreground">Available Now</span>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="mt-8 max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed animate-fade-in">
+                Welcome to my creative playground! I'm{" "}
+                <span className="font-semibold text-foreground">Advora</span>
+              </p>
+
+              <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed animate-fade-in">
+                I craft enchanting visuals for brands, and conjure design resources
+                to empower others.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-slide-up">
                 <Link to="/contact">
                   <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all shadow-lg">
-                    Start a Project
+                    Start Project
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <Link to="/portfolio">
-                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all">
-                    View Case Studies
+                <Link to="/contact">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all border-border/50 backdrop-blur-sm">
+                    Book a call
                   </Button>
                 </Link>
               </div>
 
               {/* Trust Indicators */}
-              <div className="pt-8 sm:pt-12">
+              <div className="mt-16 animate-fade-in">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <div className="flex -space-x-2">
@@ -227,19 +229,6 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Stats Row */}
-            <div className="mt-12 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label} 
-                  className="group p-6 sm:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/30 hover:bg-card transition-all duration-300 text-center"
-                >
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">{stat.value}</div>
-                  <div className="text-sm sm:text-base text-muted-foreground mt-1">{stat.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
