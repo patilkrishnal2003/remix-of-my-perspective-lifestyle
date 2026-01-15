@@ -105,7 +105,7 @@ const Index = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        <section className="relative overflow-hidden min-h-[90vh] flex items-center -mt-[72px] pt-[72px]">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 pointer-events-none">
             {/* Grid Pattern */}
@@ -156,9 +156,9 @@ const Index = () => {
               </div>
 
               {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2]">
                 We craft software
-                <span className="block mt-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                <span className="block mt-2 pb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                   that drives growth
                 </span>
               </h1>
