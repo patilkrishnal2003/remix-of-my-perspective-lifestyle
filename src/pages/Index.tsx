@@ -196,9 +196,9 @@ const Index = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-sm text-muted-foreground">
                   <div className="flex items-center gap-2">
                     <div className="flex -space-x-2">
-                      {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
+                      {[1, 2, 3].map((_, i) => (
                         <div key={i} className="w-8 h-8 rounded-full bg-card border-2 border-background flex items-center justify-center overflow-hidden">
-                          <img src={logo} alt="" className="w-6 h-6 object-contain" />
+                          <Users className="w-4 h-4 text-muted-foreground" />
                         </div>
                       ))}
                     </div>
@@ -387,12 +387,12 @@ const Index = () => {
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            {techStack.map((tech, index) => (
+            {techStackHome.map((tech, index) => (
               <div
                 key={tech.name}
                 className={`flex items-center gap-2 px-5 py-3 rounded-full bg-card border border-border hover:border-accent/50 hover:scale-105 transition-all animate-slide-up stagger-${(index % 6) + 1}`}
               >
-                <span className="text-lg">{tech.icon}</span>
+                <tech.icon className="h-5 w-5 text-primary" />
                 <span className="font-medium">{tech.name}</span>
               </div>
             ))}
