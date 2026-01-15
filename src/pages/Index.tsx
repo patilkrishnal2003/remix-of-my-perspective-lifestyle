@@ -144,7 +144,7 @@ const Index = () => {
             </svg>
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-10 sm:pb-12 w-full">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
             {/* Main Hero Content - Centered */}
             <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
               {/* Status Badge */}
