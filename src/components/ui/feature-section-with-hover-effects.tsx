@@ -14,6 +14,7 @@ export interface FeatureItem {
   title: string;
   description: string;
   icon: React.ReactNode;
+  tags?: string[];
 }
 
 interface FeaturesSectionWithHoverEffectsProps {
@@ -87,11 +88,13 @@ const Feature = ({
   description,
   icon,
   index,
+  tags,
 }: {
   title: string;
   description: string;
   icon: React.ReactNode;
   index: number;
+  tags?: string[];
 }) => {
   return (
     <div
@@ -116,9 +119,21 @@ const Feature = ({
           {title}
         </span>
       </div>
-      <p className="text-sm text-muted-foreground max-w-xs relative z-10 px-10">
+      <p className="text-sm text-muted-foreground max-w-xs relative z-10 px-10 mb-3">
         {description}
       </p>
+      {tags && tags.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 relative z-10 px-10 mt-auto">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
