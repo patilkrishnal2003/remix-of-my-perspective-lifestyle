@@ -122,19 +122,29 @@ const Portfolio = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 section-divider">
-          <div className="text-center space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-              Our Portfolio
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-              Explore our latest projects and see how we've helped businesses achieve their digital goals.
-            </p>
+        <section className="relative overflow-hidden pt-24 sm:pt-28">
+          <div className="absolute inset-0">
+            <img 
+              src={projectFinanceFlow} 
+              alt="Portfolio background"
+              className="w-full h-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+            <div className="text-center space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+                Our Portfolio
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
+                Explore our latest projects and see how we've helped businesses achieve their digital goals.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 section-divider">
+        <section className="section-divider py-16 pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -148,7 +158,7 @@ const Portfolio = () => {
         </section>
 
         {/* Filter Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
               <button
@@ -199,7 +209,7 @@ const Portfolio = () => {
         </section>
 
         {/* Case Study Highlight */}
-        <section className="py-20 section-divider">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
@@ -252,7 +262,7 @@ const Portfolio = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 section-divider">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
             <p className="text-xl text-muted-foreground">Hear from the businesses we've helped succeed</p>
@@ -276,7 +286,7 @@ const Portfolio = () => {
         </section>
 
         {/* Industries Section */}
-        <section className="py-20 section-divider">
+        <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Industries We Serve</h2>

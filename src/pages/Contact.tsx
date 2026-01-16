@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "sonner";
+import aboutHero from "@/assets/about-hero.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -31,16 +32,28 @@ const Contact = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        {/* Hero Section */}
-        <div className="mb-10 sm:mb-16 text-center space-y-4 sm:space-y-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+      {/* Hero Section with Background */}
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ 
+            backgroundImage: `url(${aboutHero})`,
+            opacity: 0.4
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down mb-4 sm:mb-6">
             Let's Build Something Great
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1 px-2">
             Ready to start your project? Get in touch and we'll provide a free consultation and quote.
           </p>
         </div>
+      </section>
+      
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12">
 
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}

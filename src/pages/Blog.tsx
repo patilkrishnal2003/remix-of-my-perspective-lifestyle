@@ -4,6 +4,7 @@ import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getFeaturedPosts } from "@/data/blogPosts";
+import blogHero from "@/assets/blog-future-web.jpg";
 
 const Blog = () => {
   const featuredPosts = getFeaturedPosts();
@@ -15,16 +16,30 @@ const Blog = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main>
         {/* Hero Section */}
-        <div className="mb-16 text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-            Advora Blog
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-            Insights, tutorials, and case studies from our team of experts. Stay updated with the latest in software development.
-          </p>
-        </div>
+        <section className="relative overflow-hidden pt-24 sm:pt-28">
+          <div className="absolute inset-0">
+            <img 
+              src={blogHero} 
+              alt="Blog background"
+              className="w-full h-full object-cover opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+            <div className="text-center space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
+                Advora Blog
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
+                Insights, tutorials, and case studies from our team of experts. Stay updated with the latest in software development.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
 
         {/* Categories */}
         <section className="mb-12 animate-slide-up stagger-2">
@@ -41,7 +56,7 @@ const Blog = () => {
         </section>
 
         {/* Featured Posts */}
-        <section className="mb-16 sm:mb-20 pb-16 section-divider">
+        <section className="mb-16 sm:mb-20">
           <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Featured Articles</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredPosts.map((post, index) => (
@@ -88,7 +103,7 @@ const Blog = () => {
         </section>
 
         {/* All Posts */}
-        <section className="mb-20 pb-16 section-divider">
+        <section className="mb-20">
           <h2 className="text-2xl font-bold mb-8">Latest Articles</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {regularPosts.map((post, index) => (
@@ -135,7 +150,7 @@ const Blog = () => {
         </section>
 
         {/* Newsletter Section */}
-        <section className="mb-20 pb-16 rounded-3xl bg-muted/30 p-8 md:p-12 section-divider">
+        <section className="mb-20 rounded-3xl bg-card p-8 md:p-12">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
@@ -157,7 +172,7 @@ const Blog = () => {
         </section>
 
         {/* Topics Section */}
-        <section className="mb-20 pb-16 section-divider">
+        <section className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center">Explore by Topic</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
@@ -198,6 +213,7 @@ const Blog = () => {
             </Link>
           </div>
         </section>
+        </div>
       </main>
 
       <Footer />
