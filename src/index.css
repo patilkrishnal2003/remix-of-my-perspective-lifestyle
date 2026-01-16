@@ -11,15 +11,18 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Warm, sophisticated palette inspired by the design */
-    --background: 0 0% 96%;
+    /* Clean, fresh white palette */
+    --background: 0 0% 100%;
     --foreground: 0 0% 9%;
 
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 9%;
 
-    --popover: 0 0% 89%;
+    --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
+    
+    /* Section divider gradient */
+    --section-divider: linear-gradient(90deg, transparent, hsl(0 0% 85%), transparent);
 
     --primary: 243 75% 58%;
     --primary-foreground: 225 100% 96%;
@@ -351,5 +354,20 @@ All colors MUST be HSL.
 
   .tag-growth {
     @apply bg-[hsl(var(--tag-growth))] text-primary;
+  }
+
+  /* Section divider - subtle line between sections */
+  .section-divider {
+    @apply relative;
+  }
+  
+  .section-divider::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px;
+    background: var(--section-divider);
+  }
+  
+  .dark .section-divider::after {
+    background: linear-gradient(90deg, transparent, hsl(0 0% 30%), transparent);
   }
 }
