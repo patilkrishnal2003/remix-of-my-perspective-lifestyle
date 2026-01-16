@@ -24,8 +24,9 @@ const ServiceCard = ({
     <div
       className={cn(
         "group relative overflow-hidden rounded-3xl transition-all duration-500 h-full",
-        "bg-gradient-to-br from-card via-card to-card",
-        "border border-border/50 hover:border-transparent",
+        "bg-card/50 dark:bg-card/30 backdrop-blur-xl",
+        "border border-white/20 dark:border-white/10",
+        "hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10",
         "hover:scale-[1.02] hover:-translate-y-1",
         isDetailed ? "p-6" : "p-6 sm:p-8",
         isDetailed && "flex flex-col"

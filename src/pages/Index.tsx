@@ -3,7 +3,9 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ServiceCard from "@/components/ServiceCard";
 import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
+import { BentoCard, BentoGrid } from "@/components/BentoGrid";
+import { FloatingElements } from "@/components/FloatingElements";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Sparkles, Layers, Cpu } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -137,7 +139,7 @@ const Index = () => {
           <div className="absolute inset-0 pointer-events-none">
             {/* Grid Pattern */}
             <div 
-              className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.06]"
               style={{
                 backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
                 backgroundSize: '60px 60px'
@@ -148,19 +150,63 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
             
-            {/* Floating Shapes */}
-            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-slower" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+            {/* Large Gradient Orbs */}
+            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/20 dark:bg-primary/30 rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/15 dark:bg-accent/25 rounded-full blur-3xl animate-float-slower" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/10 to-transparent rounded-full" />
             
-            {/* Geometric Shapes */}
-            <div className="hidden lg:block absolute top-32 right-[15%] w-16 h-16 border-2 border-primary/20 rounded-2xl rotate-12 animate-float-slow" />
-            <div className="hidden lg:block absolute bottom-40 left-[12%] w-12 h-12 border-2 border-accent/20 rounded-full animate-float-slower" />
-            <div className="hidden lg:block absolute top-1/3 left-[8%] w-8 h-8 bg-primary/10 rounded-lg rotate-45 animate-float-slow" />
-            <div className="hidden lg:block absolute bottom-1/3 right-[8%] w-6 h-6 bg-accent/15 rounded-full animate-float-slower" />
+            {/* 3D Floating Shapes */}
+            <div 
+              className="hidden lg:block absolute top-32 right-[15%] w-20 h-20 animate-float-slow"
+              style={{ perspective: "1000px" }}
+            >
+              <div 
+                className="w-full h-full border-2 border-primary/30 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent backdrop-blur-sm"
+                style={{ transform: "rotateX(20deg) rotateY(-20deg) rotateZ(10deg)" }}
+              />
+            </div>
+            
+            <div 
+              className="hidden lg:block absolute bottom-40 left-[12%] w-16 h-16 animate-float-slower"
+              style={{ perspective: "800px" }}
+            >
+              <div 
+                className="w-full h-full border-2 border-accent/30 rounded-full"
+                style={{ transform: "rotateX(60deg)" }}
+              />
+            </div>
+            
+            <div 
+              className="hidden lg:block absolute top-[45%] left-[6%] w-12 h-12 animate-float-slow"
+              style={{ perspective: "600px", animationDelay: "1s" }}
+            >
+              <div 
+                className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/10 rounded-lg"
+                style={{ transform: "rotateY(30deg) rotateX(15deg)" }}
+              />
+            </div>
+            
+            <div 
+              className="hidden lg:block absolute bottom-[30%] right-[8%] w-14 h-14 animate-float-slower"
+              style={{ perspective: "700px", animationDelay: "0.5s" }}
+            >
+              <svg viewBox="0 0 60 60" className="w-full h-full opacity-30 dark:opacity-50">
+                <polygon 
+                  points="30,5 55,50 5,50" 
+                  fill="none" 
+                  stroke="hsl(var(--primary))" 
+                  strokeWidth="2"
+                />
+              </svg>
+            </div>
+            
+            {/* Floating dots */}
+            <div className="absolute top-[35%] left-[4%] w-3 h-3 rounded-full bg-primary/40 animate-float-slow" style={{ animationDelay: "0.2s" }} />
+            <div className="absolute top-[25%] right-[20%] w-2 h-2 rounded-full bg-accent/50 animate-float-slower" style={{ animationDelay: "0.8s" }} />
+            <div className="absolute bottom-[40%] right-[5%] w-4 h-4 rounded-full bg-primary/30 animate-float-slow" style={{ animationDelay: "1.5s" }} />
             
             {/* Decorative Lines */}
-            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern id="hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
                   <circle cx="50" cy="50" r="1" fill="currentColor" />
@@ -329,49 +375,83 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Focus Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Focus Section - Bento Grid */}
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 relative overflow-hidden">
+          <FloatingElements />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <ScrollReveal>
               <div className="text-center mb-12 sm:mb-16">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+                  <Sparkles className="h-4 w-4" />
+                  Our Approach
+                </span>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  I build high quality apps that your
-                  <span className="block">users love</span>
+                  Building apps that your
+                  <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">users love</span>
                 </h2>
-                <p className="text-primary font-medium text-lg">here's what I focus on</p>
               </div>
             </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
-              {[
-                {
-                  number: "1",
-                  title: "Functionality first.",
-                  description: "I go for buttery smooth UX that solves user problems."
-                },
-                {
-                  number: "2",
-                  title: "Mobile first, Minimalistic design.",
-                  description: "Pixel perfect development."
-                },
-                {
-                  number: "3",
-                  title: "App is adaptable",
-                  description: "for future enhancements or feature expansions."
-                }
-              ].map((item, index) => (
-                <ScrollReveal key={item.number} delay={index * 150}>
-                  <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+            
+            <BentoGrid className="lg:grid-cols-3">
+              {/* Large featured card */}
+              <ScrollReveal delay={0}>
+                <BentoCard
+                  icon={Zap}
+                  title="Functionality First"
+                  description="We prioritize buttery smooth UX that solves real user problems. Every feature is designed with purpose and intention."
+                  className="md:col-span-2 lg:col-span-1 lg:row-span-2"
+                  gradient="from-yellow-500/30 to-orange-500/20"
+                >
+                  <div className="mt-6 flex items-center gap-4">
+                    <div className="flex -space-x-2">
+                      {[1, 2, 3].map((i) => (
+                        <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-card" />
+                      ))}
                     </div>
-                    <div className="pt-2">
-                      <span className="font-bold text-lg">{item.title}</span>{" "}
-                      <span className="text-muted-foreground">{item.description}</span>
-                    </div>
+                    <span className="text-sm text-muted-foreground">Loved by 50+ clients</span>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
+                </BentoCard>
+              </ScrollReveal>
+
+              {/* Mobile first card */}
+              <ScrollReveal delay={100}>
+                <BentoCard
+                  icon={Smartphone}
+                  title="Mobile First Design"
+                  description="Pixel-perfect, responsive development that looks stunning on every device."
+                  gradient="from-blue-500/30 to-cyan-500/20"
+                />
+              </ScrollReveal>
+
+              {/* Adaptable card */}
+              <ScrollReveal delay={200}>
+                <BentoCard
+                  icon={Layers}
+                  title="Future-Ready Architecture"
+                  description="Built for scalability and easy feature expansions down the road."
+                  gradient="from-purple-500/30 to-pink-500/20"
+                />
+              </ScrollReveal>
+
+              {/* AI-Powered card - new trend */}
+              <ScrollReveal delay={300}>
+                <BentoCard
+                  icon={Cpu}
+                  title="AI-Powered Solutions"
+                  description="Leverage cutting-edge AI to automate workflows and enhance user experiences."
+                  className="md:col-span-2"
+                  gradient="from-emerald-500/30 to-teal-500/20"
+                >
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {["ChatGPT Integration", "ML Models", "Automation"].map((tag) => (
+                      <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </BentoCard>
+              </ScrollReveal>
+            </BentoGrid>
           </div>
         </section>
 
