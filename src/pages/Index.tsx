@@ -392,25 +392,15 @@ const Index = () => {
               </div>
             </ScrollReveal>
             
-            <BentoGrid className="lg:grid-cols-3">
-              {/* Large featured card */}
+            <BentoGrid className="lg:grid-cols-4">
+              {/* Functionality First card */}
               <ScrollReveal delay={0}>
                 <BentoCard
                   icon={Zap}
                   title="Functionality First"
-                  description="We prioritize buttery smooth UX that solves real user problems. Every feature is designed with purpose and intention."
-                  className="md:col-span-2 lg:col-span-1 lg:row-span-2"
+                  description="We prioritize buttery smooth UX that solves real user problems."
                   gradient="from-yellow-500/30 to-orange-500/20"
-                >
-                  <div className="mt-6 flex items-center gap-4">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-card" />
-                      ))}
-                    </div>
-                    <span className="text-sm text-muted-foreground">Loved by 50+ clients</span>
-                  </div>
-                </BentoCard>
+                />
               </ScrollReveal>
 
               {/* Mobile first card */}
@@ -433,23 +423,14 @@ const Index = () => {
                 />
               </ScrollReveal>
 
-              {/* AI-Powered card - new trend */}
+              {/* AI-Powered card */}
               <ScrollReveal delay={300}>
                 <BentoCard
                   icon={Cpu}
                   title="AI-Powered Solutions"
-                  description="Leverage cutting-edge AI to automate workflows and enhance user experiences."
-                  className="md:col-span-2"
+                  description="Leverage cutting-edge AI to automate workflows and enhance experiences."
                   gradient="from-emerald-500/30 to-teal-500/20"
-                >
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {["ChatGPT Integration", "ML Models", "Automation"].map((tag) => (
-                      <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </BentoCard>
+                />
               </ScrollReveal>
             </BentoGrid>
           </div>
