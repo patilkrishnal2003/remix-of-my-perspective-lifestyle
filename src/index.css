@@ -274,6 +274,18 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes gradientX {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out;
   }
@@ -296,6 +308,10 @@ All colors MUST be HSL.
 
   .animate-float-slower {
     animation: floatSlower 12s ease-in-out infinite;
+  }
+
+  .animate-gradient-x {
+    animation: gradientX 3s ease infinite;
   }
 
   /* Stagger animations */
