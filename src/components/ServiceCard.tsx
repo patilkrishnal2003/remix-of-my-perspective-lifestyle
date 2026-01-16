@@ -23,11 +23,12 @@ const ServiceCard = ({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-3xl transition-all duration-500",
+        "group relative overflow-hidden rounded-3xl transition-all duration-500 h-full",
         "bg-gradient-to-br from-card via-card to-card",
         "border border-border/50 hover:border-transparent",
         "hover:scale-[1.02] hover:-translate-y-1",
-        isDetailed ? "p-8" : "p-6 sm:p-8"
+        isDetailed ? "p-6" : "p-6 sm:p-8",
+        isDetailed && "flex flex-col"
       )}
     >
       {/* Animated gradient border on hover */}
@@ -45,51 +46,47 @@ const ServiceCard = ({
       <div className="absolute bottom-8 right-8 w-1.5 h-1.5 rounded-full bg-accent/40 opacity-0 group-hover:opacity-100 group-hover:animate-float-slower transition-opacity duration-300 delay-150" />
       
       {/* Content */}
-      <div className={cn("relative z-10", isDetailed && "flex items-start gap-6")}>
+      <div className={cn("relative z-10 flex-1", isDetailed && "flex flex-col")}>
         {/* Icon container with modern styling */}
         <div className={cn(
-          "relative flex-shrink-0",
-          isDetailed ? "w-16 h-16" : "w-14 h-14 mb-6"
+          "relative flex-shrink-0 w-12 h-12 mb-5"
         )}>
           {/* Icon background layers */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent opacity-90 group-hover:opacity-100 transition-opacity" />
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent opacity-90 group-hover:opacity-100 transition-opacity" />
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary to-accent blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
           
           {/* Icon */}
-          <div className="relative w-full h-full rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Icon className={cn(
-              "text-primary-foreground",
-              isDetailed ? "h-8 w-8" : "h-7 w-7"
-            )} />
+          <div className="relative w-full h-full rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <Icon className="h-6 w-6 text-primary-foreground" />
           </div>
         </div>
         
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col">
           {/* Title with gradient on hover */}
           <h3 className={cn(
-            "font-bold mb-3 transition-all duration-300",
+            "font-bold mb-2 transition-all duration-300",
             "bg-clip-text",
             "group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-accent",
-            isDetailed ? "text-2xl" : "text-xl"
+            isDetailed ? "text-lg" : "text-xl"
           )}>
             {title}
           </h3>
           
           {/* Description */}
           <p className={cn(
-            "text-muted-foreground leading-relaxed",
-            isDetailed ? "mb-5" : "text-sm"
+            "text-muted-foreground leading-relaxed text-sm",
+            isDetailed ? "mb-4 flex-1" : ""
           )}>
             {description}
           </p>
           
           {/* Feature tags for detailed variant */}
           {isDetailed && features.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
               {features.map((feature, i) => (
                 <span 
                   key={feature}
-                  className="px-3 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 
+                  className="px-2 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20 
                     group-hover:bg-primary/15 group-hover:border-primary/30 transition-colors duration-300"
                   style={{ transitionDelay: `${i * 50}ms` }}
                 >

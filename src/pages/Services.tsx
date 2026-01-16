@@ -163,7 +163,7 @@ const Services = () => {
               <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
             </div>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={index * 75}>
                 <ServiceCard
