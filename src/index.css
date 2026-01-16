@@ -10,6 +10,7 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  /* Light mode - now secondary theme */
   :root {
     /* Fresh, clean palette with blue accents */
     --background: 0 0% 100%;
@@ -85,6 +86,7 @@ All colors MUST be HSL.
     --spacing: 0.25rem;
   }
 
+  /* Dark mode - now the default theme */
   .dark {
     --background: 0 0% 9%;
     --foreground: 0 0% 98%;
