@@ -41,7 +41,7 @@ const Blog = () => {
         </section>
 
         {/* Featured Posts */}
-        <section className="mb-16 sm:mb-20">
+        <section className="mb-16 sm:mb-20 pb-16 section-divider">
           <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Featured Articles</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredPosts.map((post, index) => (
@@ -88,7 +88,7 @@ const Blog = () => {
         </section>
 
         {/* All Posts */}
-        <section className="mb-20">
+        <section className="mb-20 pb-16 section-divider">
           <h2 className="text-2xl font-bold mb-8">Latest Articles</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {regularPosts.map((post, index) => (
@@ -135,7 +135,7 @@ const Blog = () => {
         </section>
 
         {/* Newsletter Section */}
-        <section className="mb-20 rounded-3xl bg-card p-8 md:p-12">
+        <section className="mb-20 pb-16 rounded-3xl bg-muted/30 p-8 md:p-12 section-divider">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
@@ -157,7 +157,7 @@ const Blog = () => {
         </section>
 
         {/* Topics Section */}
-        <section className="mb-20">
+        <section className="mb-20 pb-16 section-divider">
           <h2 className="text-2xl font-bold mb-8 text-center">Explore by Topic</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {[

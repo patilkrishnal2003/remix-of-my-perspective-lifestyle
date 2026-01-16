@@ -102,7 +102,7 @@ const About = () => {
       
       <main>
         {/* Hero Section - Card Style */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 section-divider">
           <div className="rounded-3xl overflow-hidden shadow-xl border border-border">
             <div className="grid lg:grid-cols-2">
               {/* Left Image */}
@@ -155,7 +155,7 @@ const About = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="bg-card py-16">
+        <section className="py-16 section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -174,7 +174,7 @@ const About = () => {
         </section>
 
         {/* Story Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 section-divider">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-slide-up">
               <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
@@ -204,7 +204,7 @@ const About = () => {
         </section>
 
         {/* Timeline Section */}
-        <section className="bg-card py-20">
+        <section className="py-20 section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
@@ -223,7 +223,7 @@ const About = () => {
         </section>
 
         {/* Values Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 section-divider">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
             <p className="text-xl text-muted-foreground">The principles that guide everything we do</p>
@@ -242,7 +242,7 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className="bg-card py-20">
+        <section className="py-20 section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
@@ -273,7 +273,7 @@ const About = () => {
         </section>
 
         {/* Culture Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 section-divider">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Our Culture</h2>
