@@ -35,7 +35,7 @@ export function TestimonialsSection({
           <div 
             className="flex gap-6 group"
             style={{ 
-              '--duration': '60s',
+              '--duration': '120s',
               '--gap': '1.5rem'
             } as React.CSSProperties}
           >
