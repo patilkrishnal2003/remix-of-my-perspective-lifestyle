@@ -1,5 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ServiceCard from "@/components/ServiceCard";
+import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPostgresql, SiMongodb, SiRedis, SiAmazonwebservices, SiDocker, SiKubernetes, SiGraphql, SiFlutter, SiTailwindcss, SiFigma, SiGit } from "react-icons/si";
@@ -155,36 +157,24 @@ const Services = () => {
 
         {/* Services Grid */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
-            <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
+              <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <div
-                key={service.title}
-                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-card via-card to-accent/5 border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 animate-slide-up stagger-${(index % 4) + 1} overflow-hidden`}
-              >
-                {/* Decorative gradient blob */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature) => (
-                        <span key={feature} className="px-3 py-1.5 rounded-full bg-accent/10 text-sm font-medium text-accent border border-accent/20">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ScrollReveal key={service.title} delay={index * 75}>
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  features={service.features}
+                  index={index}
+                  variant="detailed"
+                />
+              </ScrollReveal>
             ))}
           </div>
         </section>
