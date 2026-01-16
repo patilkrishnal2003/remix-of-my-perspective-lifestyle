@@ -95,7 +95,7 @@ const Services = () => {
         </section>
 
         {/* Advantages Section */}
-        <section className="bg-card py-16">
+        <section className="py-16 section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {advantages.map((advantage, index) => (
@@ -112,7 +112,7 @@ const Services = () => {
         </section>
 
         {/* Services Grid with Hover Effects */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 section-divider">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
             <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
@@ -121,7 +121,7 @@ const Services = () => {
         </section>
 
         {/* Process Section */}
-        <section className="bg-card py-20">
+        <section className="py-20 section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Development Process</h2>
@@ -147,7 +147,7 @@ const Services = () => {
         </section>
 
         {/* Technologies Section */}
-        <section className="bg-card py-20">
+        <section className="py-20 section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Technologies We Use</h2>
