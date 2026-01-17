@@ -1,8 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import HeroBackground from "@/components/HeroBackground";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play } from "lucide-react";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -119,77 +118,126 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Centered */}
-        <section className="relative overflow-hidden">
-          {/* Animated Background */}
-          <HeroBackground />
-          
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-8">
-            <div className="text-center max-w-4xl mx-auto">
-            {/* Status Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8 animate-fade-in">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-              </span>
-              <span className="text-sm font-medium text-foreground/80">Available for projects</span>
-            </div>
-
-            {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight mb-6 text-foreground animate-slide-up">
-              Building <span className="text-primary">Digital</span>
-              <br />
-              Excellence
-            </h1>
-
-            {/* Description */}
-            <p className="text-muted-foreground leading-relaxed mb-10 max-w-2xl mx-auto text-base sm:text-lg md:text-xl animate-fade-in opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
-              We craft scalable web applications, mobile solutions, and custom software that help ambitious businesses ship faster and grow smarter.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap justify-center items-center gap-4 mb-12 animate-fade-in opacity-0 [animation-delay:400ms] [animation-fill-mode:forwards]">
-              <Link to="/contact">
-                <Button className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base hover:scale-105 transition-all">
-                  Start a Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6 text-base hover:scale-105 transition-all border-2">
-                  View Work
-                </Button>
-              </Link>
-            </div>
-
-            {/* Tech Stack Pills */}
-            <div className="animate-fade-in opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
-              <p className="text-sm text-muted-foreground mb-4">Technologies we master</p>
-              <div className="flex flex-wrap justify-center gap-2">
-                {[
-                  { name: "React", icon: SiReact, color: "text-cyan-500" },
-                  { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-                  { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
-                  { name: "Next.js", icon: SiNextdotjs, color: "text-foreground" },
-                  { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-500" }
-                ].map((tech) => (
-                  <div key={tech.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 transition-colors">
-                    <tech.icon className={`h-4 w-4 ${tech.color}`} />
-                    <span className="text-sm text-foreground/80">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            </div>
+        {/* Hero Section */}
+        <section className="relative overflow-hidden min-h-screen flex items-start pt-20 sm:pt-24">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Grid Pattern */}
+            <div 
+              className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+              style={{
+                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
+              }}
+            />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
+            
+            {/* Floating Shapes */}
+            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-slower" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+            
+            {/* Geometric Shapes */}
+            <div className="hidden lg:block absolute top-32 right-[15%] w-16 h-16 border-2 border-primary/20 rounded-2xl rotate-12 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-40 left-[12%] w-12 h-12 border-2 border-accent/20 rounded-full animate-float-slower" />
+            <div className="hidden lg:block absolute top-1/3 left-[8%] w-8 h-8 bg-primary/10 rounded-lg rotate-45 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-1/3 right-[8%] w-6 h-6 bg-accent/15 rounded-full animate-float-slower" />
+            
+            {/* Decorative Lines */}
+            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                  <circle cx="50" cy="50" r="1" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-pattern)" />
+            </svg>
           </div>
           
-          {/* Stats Row */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-fade-in opacity-0 [animation-delay:800ms] [animation-fill-mode:forwards]">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/30 transition-colors">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
+            {/* Main Hero Content - Centered */}
+            <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span className="text-sm font-medium">Available for new projects</span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2]">
+                We craft software
+                <span className="block mt-2 pb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  that drives growth
+                </span>
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Premium software development for startups and enterprises. 
+                We turn complex ideas into elegant, scalable solutions.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link to="/contact">
+                  <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all shadow-lg">
+                    Start a Project
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/portfolio">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all">
+                    View Case Studies
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="pt-8 sm:pt-12">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="flex -space-x-2">
+                      {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
+                        <div key={i} className="w-8 h-8 rounded-full bg-card border-2 border-background flex items-center justify-center overflow-hidden">
+                          <img src={logo} alt="" className="w-6 h-6 object-contain" />
+                        </div>
+                      ))}
+                    </div>
+                    <span>50+ companies trust us</span>
+                  </div>
+                  <div className="hidden sm:block w-px h-6 bg-border" />
+                  <div className="flex items-center gap-1.5">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <span>5.0 rating</span>
+                  </div>
+                  <div className="hidden sm:block w-px h-6 bg-border" />
+                  <div className="flex items-center gap-1.5">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>150+ projects delivered</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Row */}
+            <div className="mt-12 sm:mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-2">
+              {stats.map((stat, index) => (
+                <div 
+                  key={stat.label} 
+                  className="group p-6 sm:p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:border-primary/30 hover:bg-card transition-all duration-300 text-center"
+                >
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">{stat.value}</div>
+                  <div className="text-sm sm:text-base text-muted-foreground mt-1">{stat.label}</div>
                 </div>
               ))}
             </div>
