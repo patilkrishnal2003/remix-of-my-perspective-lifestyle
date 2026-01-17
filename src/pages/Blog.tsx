@@ -4,7 +4,7 @@ import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getFeaturedPosts } from "@/data/blogPosts";
-
+import blogHero from "@/assets/blog-future-web.jpg";
 
 const Blog = () => {
   const featuredPosts = getFeaturedPosts();
@@ -18,8 +18,16 @@ const Blog = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="pt-24 sm:pt-28 pb-16 sm:pb-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden pt-24 sm:pt-28">
+          <div className="absolute inset-0">
+            <img 
+              src={blogHero} 
+              alt="Blog background"
+              className="w-full h-full object-cover opacity-40"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
                 Advora Blog

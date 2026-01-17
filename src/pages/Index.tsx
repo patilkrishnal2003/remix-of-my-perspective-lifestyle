@@ -1,14 +1,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import ServiceCard from "@/components/ServiceCard";
-import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee";
-import { BentoCard, BentoGrid } from "@/components/BentoGrid";
-import { FloatingElements } from "@/components/FloatingElements";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Sparkles, Layers, Cpu } from "lucide-react";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
@@ -75,54 +72,42 @@ const Index = () => {
     { name: "Tailwind CSS", icon: SiTailwindcss }
   ];
 
-  const marqueeTestimonials = [
+  const testimonials = [
     {
-      author: {
-        name: "Jennifer Martinez",
-        handle: "@retailhub_ceo",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
-      },
-      text: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional."
+      quote: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional.",
+      author: "Jennifer Martinez",
+      role: "CEO, RetailHub",
+      rating: 5
     },
     {
-      author: {
-        name: "David Kim",
-        handle: "@davidkim_founder",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-      },
-      text: "The team understood our vision from day one. Our mobile app has received outstanding user reviews."
+      quote: "The team understood our vision from day one. Our mobile app has received outstanding user reviews.",
+      author: "David Kim",
+      role: "Founder, HealthTrack Pro",
+      rating: 5
     },
     {
-      author: {
-        name: "Sarah Thompson",
-        handle: "@sarah_cto",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face"
-      },
-      text: "Professional, communicative, and technically excellent. Advora is our go-to development partner."
+      quote: "Professional, communicative, and technically excellent. Advora is our go-to development partner.",
+      author: "Sarah Thompson",
+      role: "CTO, FinanceFlow",
+      rating: 5
     },
     {
-      author: {
-        name: "Marcus Chen",
-        handle: "@marcus_techcorp",
-        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-      },
-      text: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months."
+      quote: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months.",
+      author: "Marcus Chen",
+      role: "Director, TechCorp",
+      rating: 5
     },
     {
-      author: {
-        name: "Dr. Amanda Foster",
-        handle: "@amanda_edulearn",
-        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-      },
-      text: "Outstanding work on our learning management system. The user experience is intuitive and students love it."
+      quote: "Outstanding work on our learning management system. The user experience is intuitive and students love it.",
+      author: "Dr. Amanda Foster",
+      role: "Dean, EduLearn Academy",
+      rating: 5
     },
     {
-      author: {
-        name: "Robert Patel",
-        handle: "@robert_startupx",
-        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
-      },
-      text: "Advora's team went above and beyond. They delivered features we didn't even know we needed."
+      quote: "Advora's team went above and beyond. They delivered features we didn't even know we needed.",
+      author: "Robert Patel",
+      role: "Founder, StartupX",
+      rating: 5
     }
   ];
 
@@ -135,7 +120,42 @@ const Index = () => {
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden min-h-screen flex items-start pt-20 sm:pt-24">
-          {/* Plain white background (removed decorative hero overlays) */}
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Grid Pattern */}
+            <div 
+              className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+              style={{
+                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
+              }}
+            />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
+            
+            {/* Floating Shapes */}
+            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-slower" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+            
+            {/* Geometric Shapes */}
+            <div className="hidden lg:block absolute top-32 right-[15%] w-16 h-16 border-2 border-primary/20 rounded-2xl rotate-12 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-40 left-[12%] w-12 h-12 border-2 border-accent/20 rounded-full animate-float-slower" />
+            <div className="hidden lg:block absolute top-1/3 left-[8%] w-8 h-8 bg-primary/10 rounded-lg rotate-45 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-1/3 right-[8%] w-6 h-6 bg-accent/15 rounded-full animate-float-slower" />
+            
+            {/* Decorative Lines */}
+            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                  <circle cx="50" cy="50" r="1" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hero-pattern)" />
+            </svg>
+          </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
             {/* Main Hero Content - Centered */}
@@ -250,8 +270,7 @@ const Index = () => {
         </section>
 
         {/* Services Section */}
-        <section className="section-divider py-20 pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <ScrollReveal>
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
@@ -263,13 +282,15 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={index * 100}>
-                <ServiceCard
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                  index={index}
-                  variant="compact"
-                />
+                <div
+                  className="group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] h-full"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                    <service.icon className="h-7 w-7 text-accent" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                </div>
               </ScrollReveal>
             ))}
           </div>
@@ -281,67 +302,51 @@ const Index = () => {
               </Button>
             </Link>
           </div>
-          </div>
         </section>
 
-        {/* Focus Section - Bento Grid */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 relative overflow-hidden">
-          <FloatingElements />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Focus Section */}
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-12 sm:mb-16">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                  <Sparkles className="h-4 w-4" />
-                  Our Approach
-                </span>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  Building apps that your
-                  <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">users love</span>
+                  I build high quality apps that your
+                  <span className="block">users love</span>
                 </h2>
+                <p className="text-primary font-medium text-lg">here's what I focus on</p>
               </div>
             </ScrollReveal>
-            
-            <BentoGrid className="lg:grid-cols-4">
-              {/* Functionality First card */}
-              <ScrollReveal delay={0}>
-                <BentoCard
-                  icon={Zap}
-                  title="Functionality First"
-                  description="We prioritize buttery smooth UX that solves real user problems."
-                  gradient="from-yellow-500/30 to-orange-500/20"
-                />
-              </ScrollReveal>
-
-              {/* Mobile first card */}
-              <ScrollReveal delay={100}>
-                <BentoCard
-                  icon={Smartphone}
-                  title="Mobile First Design"
-                  description="Pixel-perfect, responsive development that looks stunning on every device."
-                  gradient="from-blue-500/30 to-cyan-500/20"
-                />
-              </ScrollReveal>
-
-              {/* Adaptable card */}
-              <ScrollReveal delay={200}>
-                <BentoCard
-                  icon={Layers}
-                  title="Future-Ready Architecture"
-                  description="Built for scalability and easy feature expansions down the road."
-                  gradient="from-purple-500/30 to-pink-500/20"
-                />
-              </ScrollReveal>
-
-              {/* AI-Powered card */}
-              <ScrollReveal delay={300}>
-                <BentoCard
-                  icon={Cpu}
-                  title="AI-Powered Solutions"
-                  description="Leverage cutting-edge AI to automate workflows and enhance experiences."
-                  gradient="from-emerald-500/30 to-teal-500/20"
-                />
-              </ScrollReveal>
-            </BentoGrid>
+            <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
+              {[
+                {
+                  number: "1",
+                  title: "Functionality first.",
+                  description: "I go for buttery smooth UX that solves user problems."
+                },
+                {
+                  number: "2",
+                  title: "Mobile first, Minimalistic design.",
+                  description: "Pixel perfect development."
+                },
+                {
+                  number: "3",
+                  title: "App is adaptable",
+                  description: "for future enhancements or feature expansions."
+                }
+              ].map((item, index) => (
+                <ScrollReveal key={item.number} delay={index * 150}>
+                  <div className="flex items-start gap-6">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
+                    </div>
+                    <div className="pt-2">
+                      <span className="font-bold text-lg">{item.title}</span>{" "}
+                      <span className="text-muted-foreground">{item.description}</span>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -458,20 +463,23 @@ const Index = () => {
         </section>
 
         {/* Testimonials Section */}
-        <TestimonialsSection
-          title="What Our Clients Say"
-          description="Don't just take our word for it"
-          testimonials={marqueeTestimonials}
-          className="section-divider pt-20 sm:pt-24"
-        />
-        <div className="text-center pb-8">
-          <Link to="/portfolio">
-            <Button variant="outline" className="rounded-full px-8 py-6">
-              View More Case Studies
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 sm:mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+              <p className="text-lg sm:text-xl text-muted-foreground">Don't just take our word for it</p>
+            </div>
+            <TestimonialCarousel testimonials={testimonials} />
+            <div className="text-center mt-10 sm:mt-12">
+              <Link to="/portfolio">
+                <Button variant="outline" className="rounded-full px-8 py-6">
+                  View More Case Studies
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* Featured Blog Posts */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">

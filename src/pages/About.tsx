@@ -104,7 +104,7 @@ const About = () => {
       <main>
         {/* Hero Section - Card Style */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-16">
-          <div className="rounded-3xl bg-card overflow-hidden shadow-lg animate-slide-up">
+          <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card overflow-hidden shadow-lg animate-slide-up">
             <div className="grid lg:grid-cols-2 gap-0">
               {/* Left Image */}
               <div className="relative h-64 sm:h-80 lg:h-auto">
