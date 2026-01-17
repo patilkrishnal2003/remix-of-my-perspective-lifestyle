@@ -120,23 +120,29 @@ const Index = () => {
       <main>
         {/* Hero Section - Split Layout with Gradient */}
         <section className="relative overflow-hidden min-h-screen flex items-center pt-20 sm:pt-24">
-          {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-accent/10 to-secondary/20 dark:from-primary/10 dark:via-accent/5 dark:to-secondary/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          {/* Animated Gradient Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-violet-500/15 to-cyan-400/20 dark:from-blue-600/15 dark:via-violet-500/10 dark:to-cyan-400/15 animate-gradient-shift" />
+          <div className="absolute inset-0 bg-gradient-to-tl from-indigo-500/10 via-transparent to-purple-500/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           
-          {/* Subtle Pattern Overlay */}
+          {/* Mesh Gradient Overlay */}
           <div 
-            className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+            className="absolute inset-0 opacity-30 dark:opacity-20"
             style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-              backgroundSize: '40px 40px'
+              background: `
+                radial-gradient(at 20% 30%, hsl(var(--primary) / 0.3) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, hsl(221 83% 53% / 0.25) 0px, transparent 40%),
+                radial-gradient(at 60% 80%, hsl(262 83% 58% / 0.2) 0px, transparent 45%),
+                radial-gradient(at 30% 70%, hsl(188 94% 43% / 0.15) 0px, transparent 50%)
+              `
             }}
           />
           
-          {/* Floating Gradient Orbs */}
-          <div className="absolute top-1/4 left-[5%] w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-float-slow" />
-          <div className="absolute bottom-1/4 right-[5%] w-80 h-80 bg-accent/25 rounded-full blur-[80px] animate-float-slower" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/15 rounded-full blur-[120px]" />
+          {/* Floating Gradient Orbs - Blue/Purple/Cyan */}
+          <div className="absolute top-1/4 left-[5%] w-96 h-96 bg-blue-500/25 rounded-full blur-[100px] animate-float-slow" />
+          <div className="absolute bottom-1/4 right-[5%] w-80 h-80 bg-violet-500/30 rounded-full blur-[80px] animate-float-slower" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[120px]" />
+          <div className="absolute top-[10%] right-[20%] w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px] animate-float-slow" />
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 w-full">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -205,16 +211,22 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Right Image */}
+              {/* Right Video */}
               <div className="relative animate-slide-up lg:animate-slide-down stagger-2">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img 
-                    src={heroWorkspace} 
-                    alt="Advora workspace" 
+                  <video 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
                     className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
-                  />
+                    poster={heroWorkspace}
+                  >
+                    <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+                    <img src={heroWorkspace} alt="Advora workspace" className="w-full h-full object-cover" />
+                  </video>
                   {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
                 
                 {/* Floating Stats Card */}
