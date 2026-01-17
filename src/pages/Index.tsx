@@ -163,7 +163,7 @@ const Index = () => {
               </div>
 
               {/* Stats Card */}
-              <div className="bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all animate-slide-up stagger-1 shadow-sm hover:shadow-lg group">
+              <div className="bento-card bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 animate-slide-up stagger-1 shadow-sm group">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                     <CheckCircle className="h-5 w-5 text-primary" />
@@ -175,7 +175,7 @@ const Index = () => {
               </div>
 
               {/* Rating Card */}
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-3xl p-6 sm:p-8 border border-amber-200/50 dark:border-amber-800/30 animate-slide-up stagger-2 shadow-sm">
+              <div className="bento-card bento-card-alt bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-3xl p-6 sm:p-8 border border-amber-200/50 dark:border-amber-800/30 animate-slide-up stagger-2 shadow-sm">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
@@ -201,7 +201,7 @@ const Index = () => {
               </div>
 
               {/* Tech Stack Card */}
-              <div className="bg-card rounded-3xl p-6 sm:p-8 border border-border animate-slide-up stagger-3 shadow-sm">
+              <div className="bento-card bg-card rounded-3xl p-6 sm:p-8 border border-border animate-slide-up stagger-3 shadow-sm">
                 <p className="text-sm text-muted-foreground mb-4">Tech we love</p>
                 <div className="flex flex-wrap gap-2">
                   {[SiReact, SiTypescript, SiNodedotjs, SiPostgresql].map((Icon, i) => (
@@ -213,7 +213,7 @@ const Index = () => {
               </div>
 
               {/* Clients Card */}
-              <div className="bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all animate-slide-up stagger-3 shadow-sm">
+              <div className="bento-card bento-card-alt bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 animate-slide-up stagger-3 shadow-sm">
                 <p className="text-sm text-muted-foreground mb-4">Trusted by</p>
                 <div className="flex -space-x-3">
                   {[logoTechcorp, logoStartupx, logoFinanceflow, logoHealthtrack].map((logo, i) => (
@@ -230,7 +230,7 @@ const Index = () => {
               </div>
 
               {/* CTA Card */}
-              <div className="md:col-span-2 bg-gradient-to-r from-primary to-primary/80 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-slide-up stagger-4 shadow-lg">
+              <div className="bento-card md:col-span-2 bg-gradient-to-r from-primary to-primary/80 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-slide-up stagger-4 shadow-lg">
                 <div>
                   <h3 className="text-xl font-bold text-primary-foreground">Ready to start?</h3>
                   <p className="text-primary-foreground/80 text-sm mt-1">Let's discuss your next project</p>
@@ -247,25 +247,37 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Trusted By Section */}
-        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16">
+        {/* Trusted By Section - Marquee */}
+        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-14">
-              {[
-                { name: "TechCorp", logo: logoTechcorp },
-                { name: "StartupX", logo: logoStartupx },
-                { name: "FinanceFlow", logo: logoFinanceflow },
-                { name: "HealthTrack", logo: logoHealthtrack },
-                { name: "RetailHub", logo: logoRetailhub },
-                { name: "EduLearn", logo: logoEdulearn }
-              ].map((company) => (
-                <div key={company.name} className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300">
-                  <img 
-                    src={company.logo} 
-                    alt={company.name}
-                    className="h-10 sm:h-12 md:h-14 w-auto object-contain"
-                  />
+          </div>
+          <div className="relative">
+            {/* Fade edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
+            
+            {/* Marquee container */}
+            <div className="flex animate-marquee">
+              {/* First set of logos */}
+              {[...Array(2)].map((_, setIndex) => (
+                <div key={setIndex} className="flex items-center gap-10 sm:gap-16 md:gap-20 px-5 sm:px-8">
+                  {[
+                    { name: "TechCorp", logo: logoTechcorp },
+                    { name: "StartupX", logo: logoStartupx },
+                    { name: "FinanceFlow", logo: logoFinanceflow },
+                    { name: "HealthTrack", logo: logoHealthtrack },
+                    { name: "RetailHub", logo: logoRetailhub },
+                    { name: "EduLearn", logo: logoEdulearn }
+                  ].map((company) => (
+                    <div key={`${setIndex}-${company.name}`} className="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 flex-shrink-0">
+                      <img 
+                        src={company.logo} 
+                        alt={company.name}
+                        className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
