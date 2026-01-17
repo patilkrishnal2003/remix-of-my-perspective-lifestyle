@@ -181,57 +181,67 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Right Side - Floating Cards */}
+              {/* Right Side - Floating Portfolio Images */}
               <div className="lg:col-span-6 relative h-[400px] sm:h-[500px] lg:h-[600px]">
-                {/* Main floating card */}
-                <div className="absolute top-[10%] right-0 sm:right-[5%] w-[280px] sm:w-[320px] bg-card rounded-3xl p-6 shadow-2xl border border-border animate-slide-down rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
-                      <Code className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">Web Development</p>
-                      <p className="text-xs text-muted-foreground">React, Next.js, Node</p>
-                    </div>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full" />
+                {/* Main Portfolio Card */}
+                <div className="absolute top-[5%] right-0 sm:right-[5%] w-[260px] sm:w-[300px] rounded-2xl overflow-hidden shadow-2xl animate-slide-down rotate-3 hover:rotate-0 transition-transform duration-500 group">
+                  <img 
+                    src={projectFinanceFlow} 
+                    alt="FinanceFlow Project" 
+                    className="w-full h-[180px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="bg-card p-4 border-t border-border">
+                    <p className="font-semibold">FinanceFlow</p>
+                    <p className="text-xs text-muted-foreground">Web Application</p>
                   </div>
                 </div>
                 
-                {/* Stats floating card */}
-                <div className="absolute top-[45%] left-0 sm:left-[10%] w-[200px] bg-foreground text-background rounded-2xl p-5 shadow-xl animate-slide-up stagger-2 -rotate-6 hover:rotate-0 transition-transform duration-500">
-                  <p className="text-4xl font-bold">150+</p>
-                  <p className="text-sm opacity-70">Projects Delivered</p>
-                  <div className="flex mt-3 -space-x-2">
+                {/* Secondary Portfolio Card */}
+                <div className="absolute top-[40%] left-0 sm:left-[5%] w-[220px] sm:w-[260px] rounded-2xl overflow-hidden shadow-xl animate-slide-up stagger-2 -rotate-6 hover:rotate-0 transition-transform duration-500 group">
+                  <img 
+                    src={projectHealthTrack} 
+                    alt="HealthTrack Project" 
+                    className="w-full h-[140px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="bg-card p-3 border-t border-border">
+                    <p className="font-semibold text-sm">HealthTrack Pro</p>
+                    <p className="text-xs text-muted-foreground">Mobile App</p>
+                  </div>
+                </div>
+                
+                {/* Third Portfolio Card */}
+                <div className="absolute bottom-[8%] right-[5%] sm:right-[10%] w-[180px] sm:w-[220px] rounded-2xl overflow-hidden shadow-lg animate-slide-up stagger-3 rotate-6 hover:rotate-0 transition-transform duration-500 group">
+                  <img 
+                    src={projectRetailHub} 
+                    alt="RetailHub Project" 
+                    className="w-full h-[120px] object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="bg-card p-3 border-t border-border">
+                    <p className="font-semibold text-sm">RetailHub</p>
+                    <p className="text-xs text-muted-foreground">E-commerce</p>
+                  </div>
+                </div>
+                
+                {/* Stats Badge */}
+                <div className="absolute top-[25%] left-[25%] sm:left-[35%] bg-foreground text-background rounded-full px-4 py-2 shadow-xl animate-float-slow">
+                  <p className="text-sm font-bold">150+ Projects</p>
+                </div>
+                
+                {/* Rating Badge */}
+                <div className="absolute bottom-[35%] right-[0%] sm:right-[5%] bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/80 dark:to-orange-900/80 rounded-full px-4 py-2 shadow-lg animate-float-slower flex items-center gap-2">
+                  <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+                  <span className="text-sm font-bold text-amber-900 dark:text-amber-100">5.0</span>
+                </div>
+                
+                {/* Client Avatars */}
+                <div className="absolute bottom-[20%] left-[15%] bg-card rounded-full p-2 shadow-lg animate-float-slow border border-border">
+                  <div className="flex -space-x-2">
                     {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
-                      <div key={i} className="w-7 h-7 rounded-full bg-white flex items-center justify-center border-2 border-foreground">
+                      <div key={i} className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-card shadow-sm">
                         <img src={logo} alt="" className="w-5 h-5 object-contain" />
                       </div>
                     ))}
                   </div>
-                </div>
-                
-                {/* Rating badge */}
-                <div className="absolute bottom-[15%] right-[10%] sm:right-[15%] bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/50 dark:to-orange-900/50 rounded-2xl p-4 shadow-lg animate-slide-up stagger-3 rotate-6 hover:rotate-0 transition-transform duration-500">
-                  <div className="flex gap-1 mb-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-amber-500 text-amber-500" />
-                    ))}
-                  </div>
-                  <p className="text-2xl font-bold text-amber-900 dark:text-amber-100">5.0</p>
-                  <p className="text-xs text-amber-700 dark:text-amber-300">Client Rating</p>
-                </div>
-                
-                {/* Tech icons floating */}
-                <div className="absolute top-[5%] left-[20%] w-14 h-14 bg-card rounded-2xl shadow-lg flex items-center justify-center animate-float-slow border border-border">
-                  <SiReact className="h-7 w-7 text-cyan-500" />
-                </div>
-                <div className="absolute bottom-[30%] left-[5%] w-12 h-12 bg-card rounded-xl shadow-md flex items-center justify-center animate-float-slower border border-border">
-                  <SiTypescript className="h-6 w-6 text-blue-600" />
-                </div>
-                <div className="absolute bottom-[5%] right-[30%] w-10 h-10 bg-card rounded-lg shadow flex items-center justify-center animate-float-slow border border-border">
-                  <SiNodedotjs className="h-5 w-5 text-green-600" />
                 </div>
               </div>
             </div>
