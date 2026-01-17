@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import RotatingLabels from "@/components/RotatingLabels";
 import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -131,11 +132,16 @@ const Index = () => {
             </div>
 
             {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight mb-6 text-foreground animate-slide-up">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] tracking-tight mb-8 text-foreground animate-slide-up">
               Building <span className="text-primary">Digital</span>
               <br />
               Excellence
             </h1>
+
+            {/* Rotating Service Labels */}
+            <div className="mb-10 animate-fade-in opacity-0 [animation-delay:150ms] [animation-fill-mode:forwards]">
+              <RotatingLabels />
+            </div>
 
             {/* Description */}
             <p className="text-muted-foreground leading-relaxed mb-10 max-w-2xl mx-auto text-base sm:text-lg md:text-xl animate-fade-in opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
