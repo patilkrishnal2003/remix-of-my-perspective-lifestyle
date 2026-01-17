@@ -1,8 +1,7 @@
-import { Suspense, lazy } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -10,8 +9,6 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
-
-const Hero3DBackground = lazy(() => import("@/components/Hero3DBackground"));
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -121,140 +118,130 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Premium & Elegant */}
-        <section className="relative overflow-hidden min-h-screen flex items-center">
-          {/* 3D Animated Background */}
-          <Suspense fallback={null}>
-            <Hero3DBackground />
-          </Suspense>
-          
-          {/* Sophisticated Background Overlay */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Gradient Base */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/80" />
-            
-            {/* Animated Gradient Orbs */}
-            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/15 to-accent/5 rounded-full blur-[120px] animate-float-slow opacity-50" />
-            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-accent/10 to-primary/5 rounded-full blur-[100px] animate-float-slower opacity-40" />
-            
-            {/* Elegant Grid Pattern */}
-            <div 
-              className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
-              style={{
-                backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-                backgroundSize: '40px 40px'
-              }}
-            />
+        {/* Hero Section - Split Layout with Image */}
+        <section className="relative min-h-screen flex items-center overflow-hidden">
+          {/* Background */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-muted/50 via-background to-background" />
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 sm:pb-20 w-full">
-            {/* Main Hero Content */}
-            <div className="text-center max-w-5xl mx-auto">
-              {/* Elegant Status Badge */}
-              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-primary/20 bg-card/60 backdrop-blur-md mb-8 animate-fade-in shadow-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                </span>
-                <span className="text-sm font-medium text-foreground/80">Available for new projects</span>
-              </div>
-
-              {/* Premium Heading with Staggered Animation */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] mb-8">
-                <span className="block animate-slide-up opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards]">
-                  We craft software
-                </span>
-                <span className="block mt-2 sm:mt-4 animate-slide-up opacity-0 [animation-delay:250ms] [animation-fill-mode:forwards]">
-                  <span className="relative">
-                    <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[shimmer_3s_linear_infinite]">
-                      that drives growth
-                    </span>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-12 w-full">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              {/* Left Content */}
+              <div className="order-2 lg:order-1">
+                {/* Status Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6 animate-fade-in">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                   </span>
-                </span>
-              </h1>
+                  <span className="text-sm font-medium text-foreground/80">Available for new projects</span>
+                </div>
 
-              {/* Refined Subheading */}
-              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-in opacity-0 [animation-delay:400ms] [animation-fill-mode:forwards]">
-                Premium software development for startups and enterprises. 
-                <span className="hidden sm:inline"> We turn complex ideas into elegant, scalable solutions.</span>
-              </p>
+                {/* Main Heading */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold tracking-tight leading-[1.1] mb-6">
+                  <span className="block animate-slide-up opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards]">
+                    Building
+                  </span>
+                  <span className="block animate-slide-up opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
+                    Digital
+                  </span>
+                  <span className="block text-primary animate-slide-up opacity-0 [animation-delay:300ms] [animation-fill-mode:forwards]">
+                    Excellence
+                  </span>
+                </h1>
 
-              {/* Elegant CTA Group */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14 animate-fade-in opacity-0 [animation-delay:550ms] [animation-fill-mode:forwards]">
-                <Link to="/contact">
-                  <Button className="group relative bg-foreground text-background hover:bg-foreground/90 rounded-full px-10 py-7 text-lg font-medium transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.02] overflow-hidden">
-                    <span className="relative z-10 flex items-center">
-                      Start a Project
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Button>
-                </Link>
-                <Link to="/portfolio">
-                  <Button variant="outline" className="group rounded-full px-10 py-7 text-lg font-medium transition-all duration-300 hover:scale-[1.02] border-2 hover:bg-muted/50">
-                    View Case Studies
-                  </Button>
-                </Link>
+                {/* Description */}
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl animate-fade-in opacity-0 [animation-delay:450ms] [animation-fill-mode:forwards]">
+                  We craft premium software solutions that transform ideas into powerful, scalable applications. From startups to enterprises.
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-4 mb-10 animate-fade-in opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
+                  <Link to="/contact">
+                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-base font-medium hover:scale-105 transition-all shadow-lg">
+                      Start Your Project
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/portfolio">
+                    <Button variant="outline" className="rounded-full px-8 py-6 text-base font-medium hover:scale-105 transition-all border-2">
+                      <Play className="mr-2 h-4 w-4" />
+                      View Our Work
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Trust Stats */}
+                <div className="flex flex-wrap gap-8 animate-fade-in opacity-0 [animation-delay:750ms] [animation-fill-mode:forwards]">
+                  {[
+                    { value: "150+", label: "Projects" },
+                    { value: "50+", label: "Clients" },
+                    { value: "5+", label: "Years" }
+                  ].map((stat) => (
+                    <div key={stat.label} className="text-center">
+                      <div className="text-3xl sm:text-4xl font-bold text-foreground">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Trust Indicators - Premium Style */}
-              <div className="animate-fade-in opacity-0 [animation-delay:700ms] [animation-fill-mode:forwards]">
-                <div className="inline-flex flex-col sm:flex-row items-center gap-6 sm:gap-10 px-8 py-5 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/50">
-                  <div className="flex items-center gap-3">
-                    <div className="flex -space-x-2">
-                      {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
-                        <div key={i} className="w-9 h-9 rounded-full bg-background border-2 border-background flex items-center justify-center overflow-hidden shadow-md">
-                          <img src={logo} alt="" className="w-6 h-6 object-contain" />
+              {/* Right - Hero Image Card */}
+              <div className="order-1 lg:order-2 animate-fade-in opacity-0 [animation-delay:400ms] [animation-fill-mode:forwards]">
+                <div className="relative">
+                  {/* Main Image Card */}
+                  <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img 
+                      src={heroWorkspace} 
+                      alt="Digital workspace" 
+                      className="w-full h-[400px] sm:h-[500px] lg:h-[550px] object-cover"
+                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    
+                    {/* Floating Badge on Image */}
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <div className="bg-white/95 dark:bg-card/95 backdrop-blur-md rounded-2xl p-5 shadow-lg">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="flex items-center gap-1 mb-1">
+                              {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                              ))}
+                            </div>
+                            <p className="text-sm text-muted-foreground">Trusted by 50+ companies worldwide</p>
+                          </div>
+                          <div className="flex -space-x-2">
+                            {[logoTechcorp, logoStartupx, logoFinanceflow, logoHealthtrack].map((logo, i) => (
+                              <div key={i} className="w-10 h-10 rounded-full bg-background border-2 border-white dark:border-card flex items-center justify-center overflow-hidden shadow-sm">
+                                <img src={logo} alt="" className="w-7 h-7 object-contain" />
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                      ))}
+                      </div>
                     </div>
-                    <span className="text-sm font-medium text-foreground/70">50+ companies trust us</span>
                   </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl animate-float-slow" />
+                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/10 rounded-full blur-2xl animate-float-slower" />
                   
-                  <div className="hidden sm:block w-px h-8 bg-border/50" />
-                  
-                  <div className="flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
+                  {/* Small floating card */}
+                  <div className="hidden sm:flex absolute -left-8 top-1/4 bg-card border border-border rounded-2xl p-4 shadow-xl animate-float-slow">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center">
+                        <CheckCircle className="h-5 w-5 text-green-500" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-sm">24/7 Support</p>
+                        <p className="text-xs text-muted-foreground">Always available</p>
+                      </div>
                     </div>
-                    <span className="text-sm font-medium text-foreground/70">5.0 rating</span>
-                  </div>
-                  
-                  <div className="hidden sm:block w-px h-8 bg-border/50" />
-                  
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    <span className="text-sm font-medium text-foreground/70">150+ projects delivered</span>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Premium Stats Row */}
-            <div className="mt-20 sm:mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label}
-                  className="group relative p-8 sm:p-10 rounded-3xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-500 text-center overflow-hidden animate-fade-in opacity-0 [animation-fill-mode:forwards]"
-                  style={{ animationDelay: `${850 + index * 100}ms` }}
-                >
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
-                  <div className="relative">
-                    <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{stat.value}</div>
-                    <div className="text-sm sm:text-base text-muted-foreground mt-2 font-medium">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-            <div className="w-6 h-10 rounded-full border-2 border-foreground/20 flex justify-center pt-2">
-              <div className="w-1 h-2 bg-foreground/40 rounded-full animate-pulse" />
             </div>
           </div>
         </section>
