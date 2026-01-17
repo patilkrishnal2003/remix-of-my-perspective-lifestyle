@@ -8,7 +8,7 @@ import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPost
 import { TbBrandReactNative } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import servicesHero from "@/assets/services-hero.jpg";
+
 
 const Services = () => {
   const services = [
@@ -117,16 +117,8 @@ const Services = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-24 sm:pt-28">
-          <div className="absolute inset-0">
-            <img 
-              src={servicesHero} 
-              alt="Services background"
-              className="w-full h-full object-cover opacity-50"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
-          </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+        <section className="pt-24 sm:pt-28 pb-16 sm:pb-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
                 Our Services

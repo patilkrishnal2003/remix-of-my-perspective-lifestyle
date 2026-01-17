@@ -135,86 +135,7 @@ const Index = () => {
       <main>
         {/* Hero Section */}
         <section className="relative overflow-hidden min-h-screen flex items-start pt-20 sm:pt-24">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Grid Pattern */}
-            <div 
-              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.06]"
-              style={{
-                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-                backgroundSize: '60px 60px'
-              }}
-            />
-            
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
-            
-            {/* Large Gradient Orbs */}
-            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/20 dark:bg-primary/30 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/15 dark:bg-accent/25 rounded-full blur-3xl animate-float-slower" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/10 to-transparent rounded-full" />
-            
-            {/* 3D Floating Shapes */}
-            <div 
-              className="hidden lg:block absolute top-32 right-[15%] w-20 h-20 animate-float-slow"
-              style={{ perspective: "1000px" }}
-            >
-              <div 
-                className="w-full h-full border-2 border-primary/30 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent backdrop-blur-sm"
-                style={{ transform: "rotateX(20deg) rotateY(-20deg) rotateZ(10deg)" }}
-              />
-            </div>
-            
-            <div 
-              className="hidden lg:block absolute bottom-40 left-[12%] w-16 h-16 animate-float-slower"
-              style={{ perspective: "800px" }}
-            >
-              <div 
-                className="w-full h-full border-2 border-accent/30 rounded-full"
-                style={{ transform: "rotateX(60deg)" }}
-              />
-            </div>
-            
-            <div 
-              className="hidden lg:block absolute top-[45%] left-[6%] w-12 h-12 animate-float-slow"
-              style={{ perspective: "600px", animationDelay: "1s" }}
-            >
-              <div 
-                className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/10 rounded-lg"
-                style={{ transform: "rotateY(30deg) rotateX(15deg)" }}
-              />
-            </div>
-            
-            <div 
-              className="hidden lg:block absolute bottom-[30%] right-[8%] w-14 h-14 animate-float-slower"
-              style={{ perspective: "700px", animationDelay: "0.5s" }}
-            >
-              <svg viewBox="0 0 60 60" className="w-full h-full opacity-30 dark:opacity-50">
-                <polygon 
-                  points="30,5 55,50 5,50" 
-                  fill="none" 
-                  stroke="hsl(var(--primary))" 
-                  strokeWidth="2"
-                />
-              </svg>
-            </div>
-            
-            {/* Floating dots */}
-            <div className="absolute top-[35%] left-[4%] w-3 h-3 rounded-full bg-primary/40 animate-float-slow" style={{ animationDelay: "0.2s" }} />
-            <div className="absolute top-[25%] right-[20%] w-2 h-2 rounded-full bg-accent/50 animate-float-slower" style={{ animationDelay: "0.8s" }} />
-            <div className="absolute bottom-[40%] right-[5%] w-4 h-4 rounded-full bg-primary/30 animate-float-slow" style={{ animationDelay: "1.5s" }} />
-            
-            {/* Decorative Lines */}
-            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                  <circle cx="50" cy="50" r="1" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#hero-pattern)" />
-            </svg>
-          </div>
+          {/* Plain white background (removed decorative hero overlays) */}
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
             {/* Main Hero Content - Centered */}
@@ -329,20 +250,8 @@ const Index = () => {
         </section>
 
         {/* Services Section */}
-        <section className="section-divider relative py-20 pt-24 overflow-hidden">
-          {/* Background texture */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div 
-              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
-              style={{
-                backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-                backgroundSize: '24px 24px'
-              }}
-            />
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-          </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="section-divider py-20 pt-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
