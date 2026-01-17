@@ -4,14 +4,13 @@ import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, Arrow
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import aboutHeroImage from "@/assets/about-hero.jpg";
+import aboutWorkspaceImage from "@/assets/about-workspace.jpg";
 import teamAlex from "@/assets/team-alex.jpg";
 import teamSarah from "@/assets/team-sarah.jpg";
 import teamMichael from "@/assets/team-michael.jpg";
 import teamEmily from "@/assets/team-emily.jpg";
 import teamJames from "@/assets/team-james.jpg";
 import teamLisa from "@/assets/team-lisa.jpg";
-
 const About = () => {
   const values = [
     {
@@ -107,9 +106,9 @@ const About = () => {
           <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card overflow-hidden shadow-lg animate-slide-up">
             <div className="grid lg:grid-cols-2 gap-0">
               {/* Left Image */}
-              <div className="relative h-64 sm:h-80 lg:h-auto">
+              <div className="relative h-64 sm:h-80 lg:h-auto min-h-[280px] lg:min-h-[400px]">
                 <img
-                  src={aboutHeroImage}
+                  src={aboutWorkspaceImage}
                   alt="Advora team workspace"
                   className="w-full h-full object-cover"
                 />
@@ -117,38 +116,38 @@ const About = () => {
 
               {/* Right Content */}
               <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                {/* Heading */}
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight mb-6">
-                  Crafting Digital
+                {/* Heading - Serif style like reference */}
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-[1.15] tracking-tight mb-6 text-foreground">
+                  Journey
                   <br />
-                  Excellence,
+                  Through Life's
                   <br />
-                  Together.
+                  Spectrum
                 </h1>
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
-                  Welcome to Advora Digital: A Realm of Innovation, Expertise, and Discovery. Where Code Illuminates Paths of Progress and Design Transforms the Digital Landscape.
+                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md text-sm sm:text-base">
+                  Welcome to Advora Digital: A Realm of Reflection, Inspiration, and Discovery. Where Words Illuminate Paths of Meaning and Thoughts Unravel the Mysteries of Life's Spectrum.
                 </p>
 
                 {/* CTA + Social Icons */}
                 <div className="flex flex-wrap items-center gap-4">
                   <Link to="/contact">
-                    <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8 py-5 text-base hover:scale-105 transition-all">
-                      Get Started
+                    <Button className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-5 text-base hover:scale-105 transition-all">
+                      Join Now
                     </Button>
                   </Link>
                   
                   {/* Social Icons */}
                   <div className="flex items-center gap-3">
-                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                      <FaInstagram className="w-4 h-4 text-muted-foreground" />
+                    <a href="#" className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                      <FaInstagram className="w-4 h-4 text-foreground/70" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                      <FaFacebookF className="w-4 h-4 text-muted-foreground" />
+                    <a href="#" className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                      <FaFacebookF className="w-4 h-4 text-foreground/70" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
-                      <FaLinkedinIn className="w-4 h-4 text-muted-foreground" />
+                    <a href="#" className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/5 transition-colors">
+                      <FaLinkedinIn className="w-4 h-4 text-foreground/70" />
                     </a>
                   </div>
                 </div>
@@ -156,10 +155,15 @@ const About = () => {
             </div>
           </div>
           
-          {/* Tagline below card */}
-          <p className="text-center text-lg sm:text-xl md:text-2xl font-serif italic text-foreground/80 mt-10 max-w-3xl mx-auto leading-relaxed">
-            Advora is a space for building ideas, finding solutions, and discovering new ways of creating the digital world.
-          </p>
+          {/* Tagline below card - Italic serif style like reference */}
+          <div className="text-center mt-16 max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl md:text-3xl font-serif italic text-foreground leading-relaxed mb-6">
+              Advora is a space for exploring ideas, finding inspiration, and discovering new ways of seeing the world.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+              From mindful living and personal growth to travel experiences and creative pursuits, we share perspectives that enrich daily life. Join us as we explore topics that inspire curiosity and meaningful conversation.
+            </p>
+          </div>
         </section>
 
         {/* Stats Section */}
