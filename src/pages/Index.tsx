@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -9,6 +10,8 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
+
+const Hero3DBackground = lazy(() => import("@/components/Hero3DBackground"));
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -120,35 +123,28 @@ const Index = () => {
       <main>
         {/* Hero Section - Premium & Elegant */}
         <section className="relative overflow-hidden min-h-screen flex items-center">
-          {/* Sophisticated Background */}
+          {/* 3D Animated Background */}
+          <Suspense fallback={null}>
+            <Hero3DBackground />
+          </Suspense>
+          
+          {/* Sophisticated Background Overlay */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             {/* Gradient Base */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30" />
+            <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/80" />
             
             {/* Animated Gradient Orbs */}
-            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/20 to-accent/10 rounded-full blur-[120px] animate-float-slow opacity-60" />
-            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-accent/15 to-primary/5 rounded-full blur-[100px] animate-float-slower opacity-50" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full opacity-40" />
+            <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-primary/15 to-accent/5 rounded-full blur-[120px] animate-float-slow opacity-50" />
+            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-accent/10 to-primary/5 rounded-full blur-[100px] animate-float-slower opacity-40" />
             
             {/* Elegant Grid Pattern */}
             <div 
-              className="absolute inset-0 opacity-[0.02] dark:opacity-[0.04]"
+              className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03]"
               style={{
                 backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
                 backgroundSize: '40px 40px'
               }}
             />
-            
-            {/* Floating Geometric Accents */}
-            <div className="hidden lg:block absolute top-28 right-[18%] w-20 h-20 border border-primary/10 rounded-3xl rotate-12 animate-float-slow" />
-            <div className="hidden lg:block absolute bottom-32 left-[15%] w-14 h-14 border border-accent/15 rounded-full animate-float-slower" />
-            <div className="hidden lg:block absolute top-1/2 left-[5%] w-3 h-3 bg-primary/30 rounded-full animate-float-slow" />
-            <div className="hidden lg:block absolute top-1/3 right-[8%] w-2 h-2 bg-accent/40 rounded-full animate-float-slower" />
-            <div className="hidden lg:block absolute bottom-1/4 right-[12%] w-4 h-4 bg-primary/20 rounded-full animate-float-slow" />
-            
-            {/* Decorative Lines */}
-            <div className="hidden lg:block absolute top-40 left-[10%] w-32 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-float-slower" />
-            <div className="hidden lg:block absolute bottom-48 right-[10%] w-24 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent animate-float-slow" />
           </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 sm:pb-20 w-full">
