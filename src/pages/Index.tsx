@@ -1,8 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import CodeTypingAnimation from "@/components/CodeTypingAnimation";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play, Terminal } from "lucide-react";
+import Laptop3D from "@/components/Laptop3D";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -119,125 +119,99 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Split Card Style */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-16">
-          <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card overflow-hidden shadow-lg animate-slide-up">
-            <div className="grid lg:grid-cols-2 gap-0">
-              {/* Left Content */}
-              <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
-                {/* Status Badge */}
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-foreground/10 bg-background/50 mb-6 w-fit">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                  </span>
-                  <span className="text-xs font-medium text-foreground/70">Available for projects</span>
-                </div>
-
-                {/* Heading - Serif style */}
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-[1.15] tracking-tight mb-6 text-foreground">
-                  Building
-                  <br />
-                  Digital
-                  <br />
-                  Excellence
-                </h1>
-
-                {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md text-sm sm:text-base">
-                  We craft scalable web applications, mobile solutions, and custom software that help ambitious businesses ship faster and grow smarter.
-                </p>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link to="/contact">
-                    <Button className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-5 text-base hover:scale-105 transition-all">
-                      Start a Project
-                    </Button>
-                  </Link>
-                  <Link to="/portfolio" className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1">
-                    View Work
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+        {/* Hero Section - 3D Laptop */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-16">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh]">
+            {/* Left - 3D Laptop */}
+            <div className="relative h-[350px] sm:h-[400px] lg:h-[500px] order-2 lg:order-1 animate-fade-in">
+              <Laptop3D />
+              
+              {/* Floating elements around laptop */}
+              <div className="absolute top-4 left-4 px-3 py-2 rounded-xl bg-card border border-border shadow-lg animate-float-slow">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <span className="text-xs font-medium">150+ Projects</span>
                 </div>
               </div>
-
-              {/* Right - Code Window */}
-              <div className="relative h-64 sm:h-80 lg:h-auto min-h-[280px] lg:min-h-[400px] order-1 lg:order-2 bg-slate-900 flex items-center justify-center p-6">
-                {/* Code Window */}
-                <div className="w-full max-w-md rounded-xl overflow-hidden bg-slate-800 border border-slate-700 shadow-2xl">
-                  {/* Window Header */}
-                  <div className="flex items-center justify-between px-4 py-3 bg-slate-800/80 border-b border-slate-700">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-400" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                      <div className="w-3 h-3 rounded-full bg-green-400" />
-                    </div>
-                    <span className="text-xs text-slate-400 font-mono">App.tsx</span>
-                    <div className="w-16" />
-                  </div>
-                  
-                  {/* Code Content */}
-                  <div className="p-4 min-h-[200px]">
-                    <CodeTypingAnimation />
-                  </div>
+              
+              <div className="absolute bottom-8 right-4 px-3 py-2 rounded-xl bg-card border border-border shadow-lg animate-float-slower">
+                <div className="flex items-center gap-2">
+                  <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                  <span className="text-xs font-medium">5-Star Reviews</span>
                 </div>
+              </div>
+            </div>
 
-                {/* Floating Terminal */}
-                <div className="absolute bottom-4 left-4 w-48 rounded-lg overflow-hidden bg-slate-950 border border-slate-700 shadow-xl">
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-slate-900 border-b border-slate-700">
-                    <Terminal className="w-3 h-3 text-green-400" />
-                    <span className="text-[10px] text-slate-400 font-mono">terminal</span>
-                  </div>
-                  <div className="p-2 font-mono text-[10px]">
-                    <div className="text-green-400">$ npm run deploy</div>
-                    <div className="text-slate-500 mt-0.5">✓ Build complete</div>
-                    <div className="text-cyan-400">→ Live ✓</div>
-                  </div>
-                </div>
+            {/* Right Content */}
+            <div className="order-1 lg:order-2 animate-slide-up">
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span className="text-sm font-medium text-foreground/80">Available for projects</span>
+              </div>
 
-                {/* Floating Stats */}
-                <div className="absolute top-4 right-4 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 p-3">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-400" />
-                    <div>
-                      <p className="text-white font-semibold text-xs">150+ Shipped</p>
-                      <p className="text-[10px] text-slate-400">Projects delivered</p>
+              {/* Heading - Serif style */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif leading-[1.1] tracking-tight mb-6 text-foreground">
+                Building
+                <br />
+                <span className="text-primary">Digital</span>
+                <br />
+                Excellence
+              </h1>
+
+              {/* Description */}
+              <p className="text-muted-foreground leading-relaxed mb-8 max-w-lg text-base sm:text-lg">
+                We craft scalable web applications, mobile solutions, and custom software that help ambitious businesses ship faster and grow smarter.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-4 mb-10">
+                <Link to="/contact">
+                  <Button className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-6 text-base hover:scale-105 transition-all">
+                    Start a Project
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/portfolio">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-base hover:scale-105 transition-all border-2">
+                    View Work
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Tech Stack Pills */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-3">Technologies we master</p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { name: "React", icon: SiReact, color: "text-cyan-500" },
+                    { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+                    { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
+                    { name: "Next.js", icon: SiNextdotjs, color: "text-foreground" },
+                    { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-500" }
+                  ].map((tech) => (
+                    <div key={tech.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 transition-colors">
+                      <tech.icon className={`h-4 w-4 ${tech.color}`} />
+                      <span className="text-sm text-foreground/80">{tech.name}</span>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
           
-          {/* Tagline below card - Italic serif style */}
+          {/* Tagline below */}
           <div className="text-center mt-16 max-w-3xl mx-auto">
-            <p className="text-xl sm:text-2xl md:text-3xl font-serif italic text-foreground leading-relaxed mb-6">
-              From idea to production in weeks, not months. We build software that scales.
+            <p className="text-xl sm:text-2xl md:text-3xl font-serif italic text-foreground leading-relaxed">
+              From idea to production in weeks, not months.
             </p>
-            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base mb-10">
-              Full-stack development for startups and enterprises. Modern technologies, agile delivery, and a team that genuinely cares about your success.
-            </p>
-            
-            {/* Tech Stack Pills */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {[
-                { name: "React", icon: SiReact, color: "text-cyan-500" },
-                { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-                { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
-                { name: "Next.js", icon: SiNextdotjs, color: "text-foreground" },
-                { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-500" }
-              ].map((tech) => (
-                <div key={tech.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 transition-colors">
-                  <tech.icon className={`h-4 w-4 ${tech.color}`} />
-                  <span className="text-sm text-foreground/80">{tech.name}</span>
-                </div>
-              ))}
-            </div>
           </div>
           
           {/* Stats Row */}
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors">
                 <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">{stat.value}</div>
