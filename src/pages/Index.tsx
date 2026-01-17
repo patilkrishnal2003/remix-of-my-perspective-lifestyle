@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play } from "lucide-react";
+import CodeTypingAnimation from "@/components/CodeTypingAnimation";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -118,64 +119,63 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Software Themed */}
-        <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-          {/* Animated Grid Background */}
+        {/* Hero Section - Light Software Themed */}
+        <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background">
+          {/* Subtle Grid Background */}
           <div className="absolute inset-0 overflow-hidden">
             <div 
-              className="absolute inset-0 opacity-20"
+              className="absolute inset-0 opacity-[0.03]"
               style={{
-                backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)`,
-                backgroundSize: '50px 50px'
+                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
               }}
             />
-            {/* Glowing orbs */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[128px] animate-float-slow" />
-            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/15 rounded-full blur-[100px] animate-float-slower" />
-            <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px] animate-float-slow" />
+            {/* Soft gradient orbs */}
+            <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] animate-float-slow" />
+            <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] animate-float-slower" />
           </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Left Content */}
-              <div className="text-white">
+              <div>
                 {/* Status Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm mb-8 animate-fade-in">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8 animate-fade-in">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                   </span>
-                  <span className="text-sm font-medium text-slate-300">Available for new projects</span>
+                  <span className="text-sm font-medium text-foreground/80">Available for new projects</span>
                 </div>
 
                 {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-                  <span className="block text-white animate-slide-up opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards]">
+                  <span className="block text-foreground animate-slide-up opacity-0 [animation-delay:100ms] [animation-fill-mode:forwards]">
                     We Build
                   </span>
-                  <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent animate-slide-up opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
+                  <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-slide-up opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
                     Software That
                   </span>
-                  <span className="block text-white animate-slide-up opacity-0 [animation-delay:300ms] [animation-fill-mode:forwards]">
-                    Ships <span className="text-green-400">Fast</span>
+                  <span className="block text-foreground animate-slide-up opacity-0 [animation-delay:300ms] [animation-fill-mode:forwards]">
+                    Ships <span className="text-green-500">Fast</span>
                   </span>
                 </h1>
 
                 {/* Description */}
-                <p className="text-lg sm:text-xl text-slate-400 leading-relaxed mb-8 max-w-xl animate-fade-in opacity-0 [animation-delay:450ms] [animation-fill-mode:forwards]">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl animate-fade-in opacity-0 [animation-delay:450ms] [animation-fill-mode:forwards]">
                   From idea to production in weeks, not months. We craft scalable web apps, mobile solutions, and custom software for ambitious teams.
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-4 mb-12 animate-fade-in opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
+                <div className="flex flex-wrap gap-4 mb-10 animate-fade-in opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
                   <Link to="/contact">
-                    <Button className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-6 text-base font-medium hover:scale-105 transition-all shadow-lg shadow-blue-500/25">
+                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-base font-medium hover:scale-105 transition-all shadow-lg">
                       Start Building
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                   <Link to="/portfolio">
-                    <Button variant="outline" className="rounded-full px-8 py-6 text-base font-medium hover:scale-105 transition-all border-slate-600 text-white hover:bg-slate-800 hover:text-white">
+                    <Button variant="outline" className="rounded-full px-8 py-6 text-base font-medium hover:scale-105 transition-all border-2">
                       View Projects
                     </Button>
                   </Link>
@@ -183,18 +183,18 @@ const Index = () => {
 
                 {/* Tech Stack Pills */}
                 <div className="animate-fade-in opacity-0 [animation-delay:750ms] [animation-fill-mode:forwards]">
-                  <p className="text-sm text-slate-500 mb-3">Technologies we master</p>
+                  <p className="text-sm text-muted-foreground mb-3">Technologies we master</p>
                   <div className="flex flex-wrap gap-2">
                     {[
-                      { name: "React", icon: SiReact, color: "text-cyan-400" },
-                      { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
-                      { name: "Node.js", icon: SiNodedotjs, color: "text-green-400" },
-                      { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
-                      { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-300" }
+                      { name: "React", icon: SiReact, color: "text-cyan-500" },
+                      { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+                      { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
+                      { name: "Next.js", icon: SiNextdotjs, color: "text-foreground" },
+                      { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-500" }
                     ].map((tech) => (
-                      <div key={tech.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700/50">
+                      <div key={tech.name} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border hover:border-primary/30 transition-colors">
                         <tech.icon className={`h-4 w-4 ${tech.color}`} />
-                        <span className="text-sm text-slate-300">{tech.name}</span>
+                        <span className="text-sm text-foreground/80">{tech.name}</span>
                       </div>
                     ))}
                   </div>
@@ -204,89 +204,70 @@ const Index = () => {
               {/* Right - Code/Software Elements */}
               <div className="relative animate-fade-in opacity-0 [animation-delay:400ms] [animation-fill-mode:forwards]">
                 {/* Main Code Window */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-700/50 shadow-2xl shadow-black/50">
+                <div className="relative rounded-2xl overflow-hidden bg-card border border-border shadow-2xl">
                   {/* Window Header */}
-                  <div className="flex items-center justify-between px-4 py-3 bg-slate-800/50 border-b border-slate-700/50">
+                  <div className="flex items-center justify-between px-4 py-3 bg-muted/50 border-b border-border">
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-red-400" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                      <div className="w-3 h-3 rounded-full bg-green-400" />
                     </div>
-                    <span className="text-xs text-slate-500 font-mono">App.tsx</span>
+                    <span className="text-xs text-muted-foreground font-mono">App.tsx</span>
                     <div className="w-16" />
                   </div>
                   
-                  {/* Code Content */}
-                  <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden">
-                    <div className="space-y-1">
-                      <div><span className="text-purple-400">import</span> <span className="text-slate-300">{'{'} useState {'}'}</span> <span className="text-purple-400">from</span> <span className="text-green-400">'react'</span></div>
-                      <div><span className="text-purple-400">import</span> <span className="text-slate-300">{'{'} motion {'}'}</span> <span className="text-purple-400">from</span> <span className="text-green-400">'framer-motion'</span></div>
-                      <div className="h-4" />
-                      <div><span className="text-blue-400">const</span> <span className="text-yellow-300">App</span> <span className="text-slate-300">= () {'=> {'}</span></div>
-                      <div className="pl-4"><span className="text-blue-400">const</span> <span className="text-slate-300">[</span><span className="text-cyan-300">isLoading</span><span className="text-slate-300">,</span> <span className="text-cyan-300">setLoading</span><span className="text-slate-300">] =</span> <span className="text-yellow-300">useState</span><span className="text-slate-300">(</span><span className="text-orange-400">false</span><span className="text-slate-300">)</span></div>
-                      <div className="h-4" />
-                      <div className="pl-4"><span className="text-purple-400">return</span> <span className="text-slate-300">(</span></div>
-                      <div className="pl-8"><span className="text-slate-500">{'<'}</span><span className="text-blue-400">motion.div</span></div>
-                      <div className="pl-12"><span className="text-cyan-300">initial</span><span className="text-slate-300">=</span><span className="text-slate-300">{'{{'}</span> <span className="text-cyan-300">opacity</span><span className="text-slate-300">:</span> <span className="text-orange-400">0</span> <span className="text-slate-300">{'}}'}</span></div>
-                      <div className="pl-12"><span className="text-cyan-300">animate</span><span className="text-slate-300">=</span><span className="text-slate-300">{'{{'}</span> <span className="text-cyan-300">opacity</span><span className="text-slate-300">:</span> <span className="text-orange-400">1</span> <span className="text-slate-300">{'}}'}</span></div>
-                      <div className="pl-8"><span className="text-slate-500">{'>'}</span></div>
-                      <div className="pl-12"><span className="text-slate-500">{'<'}</span><span className="text-green-400">Dashboard</span> <span className="text-cyan-300">loading</span><span className="text-slate-300">=</span><span className="text-slate-300">{'{'}isLoading{'}'}</span> <span className="text-slate-500">{'/>'}</span></div>
-                      <div className="pl-8"><span className="text-slate-500">{'</'}</span><span className="text-blue-400">motion.div</span><span className="text-slate-500">{'>'}</span></div>
-                      <div className="pl-4"><span className="text-slate-300">)</span></div>
-                      <div><span className="text-slate-300">{'}'}</span></div>
-                    </div>
-                    
-                    {/* Typing cursor */}
-                    <div className="inline-block w-2 h-5 bg-blue-400 animate-pulse ml-1" />
+                  {/* Code Content with Typing Animation */}
+                  <div className="p-6 min-h-[320px] bg-gradient-to-br from-card to-muted/20">
+                    <CodeTypingAnimation />
                   </div>
                 </div>
 
                 {/* Floating Terminal */}
-                <div className="absolute -bottom-6 -left-6 sm:-left-12 w-64 rounded-xl overflow-hidden bg-slate-900 border border-slate-700/50 shadow-xl animate-float-slower">
-                  <div className="flex items-center gap-2 px-3 py-2 bg-slate-800/50 border-b border-slate-700/50">
-                    <div className="w-2 h-2 rounded-full bg-green-400" />
-                    <span className="text-xs text-slate-500 font-mono">terminal</span>
+                <div className="absolute -bottom-4 -left-4 sm:-left-8 w-56 sm:w-64 rounded-xl overflow-hidden bg-slate-900 border border-slate-700 shadow-xl animate-float-slower">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-slate-800 border-b border-slate-700">
+                    <Terminal className="w-3 h-3 text-green-400" />
+                    <span className="text-xs text-slate-400 font-mono">terminal</span>
                   </div>
                   <div className="p-3 font-mono text-xs">
                     <div className="text-green-400">$ npm run deploy</div>
                     <div className="text-slate-500 mt-1">✓ Build completed</div>
                     <div className="text-slate-500">✓ Tests passed</div>
-                    <div className="text-cyan-400">→ Deploying to production...</div>
+                    <div className="text-cyan-400">→ Deploying...</div>
                     <div className="text-green-400 mt-1">✓ Live at advora.app</div>
                   </div>
                 </div>
 
                 {/* Floating Stats Card */}
-                <div className="absolute -top-4 -right-4 sm:-right-8 rounded-xl overflow-hidden bg-slate-900/90 backdrop-blur-sm border border-slate-700/50 shadow-xl p-4 animate-float-slow">
+                <div className="absolute -top-4 -right-4 sm:-right-6 rounded-xl overflow-hidden bg-card border border-border shadow-xl p-4 animate-float-slow">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                      <CheckCircle className="h-5 w-5 text-green-400" />
+                    <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                      <CheckCircle className="h-5 w-5 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-white font-semibold text-sm">150+ Shipped</p>
-                      <p className="text-xs text-slate-500">Projects delivered</p>
+                      <p className="text-foreground font-semibold text-sm">150+ Shipped</p>
+                      <p className="text-xs text-muted-foreground">Projects delivered</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating API Response */}
-                <div className="hidden lg:block absolute top-1/3 -right-16 rounded-lg overflow-hidden bg-slate-900/90 backdrop-blur-sm border border-slate-700/50 shadow-xl p-3 animate-float-slow">
+                <div className="hidden lg:block absolute top-1/3 -right-12 rounded-lg overflow-hidden bg-card border border-border shadow-xl p-3 animate-float-slow">
                   <div className="font-mono text-xs">
-                    <div className="text-slate-500">{"{"}</div>
-                    <div className="pl-2"><span className="text-cyan-400">"status"</span><span className="text-slate-300">:</span> <span className="text-green-400">"success"</span><span className="text-slate-500">,</span></div>
-                    <div className="pl-2"><span className="text-cyan-400">"code"</span><span className="text-slate-300">:</span> <span className="text-orange-400">200</span></div>
-                    <div className="text-slate-500">{"}"}</div>
+                    <div className="text-muted-foreground">{"{"}</div>
+                    <div className="pl-2"><span className="text-cyan-600">"status"</span><span className="text-foreground">:</span> <span className="text-green-600">"success"</span><span className="text-muted-foreground">,</span></div>
+                    <div className="pl-2"><span className="text-cyan-600">"code"</span><span className="text-foreground">:</span> <span className="text-orange-500">200</span></div>
+                    <div className="text-muted-foreground">{"}"}</div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Bottom Stats */}
-            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in opacity-0 [animation-delay:900ms] [animation-fill-mode:forwards]">
-              {stats.map((stat, index) => (
-                <div key={stat.label} className="text-center p-6 rounded-2xl bg-slate-800/30 border border-slate-700/30 backdrop-blur-sm">
-                  <div className="text-3xl sm:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-sm text-slate-500">{stat.label}</div>
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-fade-in opacity-0 [animation-delay:900ms] [animation-fill-mode:forwards]">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 transition-colors">
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-1">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
             </div>
