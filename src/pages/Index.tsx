@@ -118,131 +118,136 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Bento Grid */}
-        <section className="relative min-h-screen pt-24 sm:pt-28 pb-16 overflow-hidden">
-          {/* Subtle Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background" />
-          <div 
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-              backgroundSize: '32px 32px'
-            }}
-          />
+        {/* Hero Section - Creative/Artistic */}
+        <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden">
+          {/* Abstract Background */}
+          <div className="absolute inset-0">
+            {/* Base gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-background to-cyan-50 dark:from-violet-950/20 dark:via-background dark:to-cyan-950/20" />
+            
+            {/* Floating shapes */}
+            <div className="absolute top-[15%] left-[8%] w-72 h-72 bg-gradient-to-br from-violet-400/30 to-fuchsia-400/20 rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute bottom-[20%] right-[5%] w-96 h-96 bg-gradient-to-br from-cyan-400/25 to-blue-400/15 rounded-full blur-3xl animate-float-slower" />
+            <div className="absolute top-[40%] right-[25%] w-64 h-64 bg-gradient-to-br from-amber-300/20 to-orange-300/10 rounded-full blur-2xl animate-float-slow" />
+            
+            {/* Decorative lines */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="creative-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                  <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#creative-grid)" />
+            </svg>
+          </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Bento Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(120px,auto)]">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+            {/* Asymmetric Layout */}
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh]">
               
-              {/* Main Hero Card - Spans 2 cols and 2 rows */}
-              <div className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-foreground to-foreground/90 rounded-3xl p-8 sm:p-10 lg:p-12 flex flex-col justify-between text-background animate-slide-up shadow-2xl">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/10 backdrop-blur-sm mb-6">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
-                    </span>
-                    <span className="text-xs font-medium text-background/90">Available for projects</span>
-                  </div>
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight">
-                    We build software
-                    <span className="block text-background/60 mt-2">that scales</span>
-                  </h1>
+              {/* Left Content - Offset */}
+              <div className="lg:col-span-6 lg:col-start-1 space-y-8 animate-slide-up">
+                {/* Decorative label */}
+                <div className="flex items-center gap-3">
+                  <div className="h-px w-12 bg-gradient-to-r from-primary to-transparent" />
+                  <span className="text-sm font-medium text-primary tracking-wider uppercase">Digital Agency</span>
                 </div>
-                <div className="mt-8">
-                  <p className="text-background/70 text-base sm:text-lg max-w-md mb-6">
-                    Premium development for startups & enterprises. Complex ideas, elegant solutions.
-                  </p>
+                
+                {/* Main Heading - Artistic typography */}
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9]">
+                  <span className="block">We</span>
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500">create</span>
+                  <span className="block">digital</span>
+                  <span className="block font-serif italic font-normal text-muted-foreground">experiences</span>
+                </h1>
+                
+                {/* Description */}
+                <p className="text-lg sm:text-xl text-muted-foreground max-w-md leading-relaxed">
+                  Crafting innovative software solutions that push boundaries and inspire possibilities.
+                </p>
+                
+                {/* CTA Row */}
+                <div className="flex flex-wrap items-center gap-6 pt-4">
                   <Link to="/contact">
-                    <Button className="bg-background text-foreground hover:bg-background/90 rounded-full px-6 py-5 text-base font-medium hover:scale-105 transition-all">
-                      Start a Project
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-base font-medium group">
+                      Let's Talk
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
+                  </Link>
+                  <Link to="/portfolio" className="group flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
+                    <span className="underline underline-offset-4">View Work</span>
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
-
-              {/* Stats Card */}
-              <div className="bento-card bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 animate-slide-up stagger-1 shadow-sm group">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-primary" />
+              
+              {/* Right Side - Floating Cards */}
+              <div className="lg:col-span-6 relative h-[400px] sm:h-[500px] lg:h-[600px]">
+                {/* Main floating card */}
+                <div className="absolute top-[10%] right-0 sm:right-[5%] w-[280px] sm:w-[320px] bg-card rounded-3xl p-6 shadow-2xl border border-border animate-slide-down rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+                      <Code className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold">Web Development</p>
+                      <p className="text-xs text-muted-foreground">React, Next.js, Node</p>
+                    </div>
                   </div>
-                  <span className="text-sm text-muted-foreground">Projects</span>
-                </div>
-                <div className="text-4xl sm:text-5xl font-bold group-hover:text-primary transition-colors">150+</div>
-                <p className="text-muted-foreground text-sm mt-2">Successfully delivered</p>
-              </div>
-
-              {/* Rating Card */}
-              <div className="bento-card bento-card-alt bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-3xl p-6 sm:p-8 border border-amber-200/50 dark:border-amber-800/30 animate-slide-up stagger-2 shadow-sm">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <div className="text-3xl sm:text-4xl font-bold text-amber-900 dark:text-amber-100">5.0</div>
-                <p className="text-amber-700 dark:text-amber-300/70 text-sm mt-2">Client rating</p>
-              </div>
-
-              {/* Image Card */}
-              <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-3xl overflow-hidden animate-slide-up stagger-2 shadow-lg relative group">
-                <img 
-                  src={heroWorkspace} 
-                  alt="Our workspace" 
-                  className="w-full h-full object-cover min-h-[200px] lg:min-h-full group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <span className="inline-block bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs font-medium">
-                    📍 San Francisco, CA
-                  </span>
-                </div>
-              </div>
-
-              {/* Tech Stack Card */}
-              <div className="bento-card bg-card rounded-3xl p-6 sm:p-8 border border-border animate-slide-up stagger-3 shadow-sm">
-                <p className="text-sm text-muted-foreground mb-4">Tech we love</p>
-                <div className="flex flex-wrap gap-2">
-                  {[SiReact, SiTypescript, SiNodedotjs, SiPostgresql].map((Icon, i) => (
-                    <div key={i} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
-                      <Icon className="h-5 w-5 text-muted-foreground" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Clients Card */}
-              <div className="bento-card bento-card-alt bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 animate-slide-up stagger-3 shadow-sm">
-                <p className="text-sm text-muted-foreground mb-4">Trusted by</p>
-                <div className="flex -space-x-3">
-                  {[logoTechcorp, logoStartupx, logoFinanceflow, logoHealthtrack].map((logo, i) => (
-                    <div key={i} className="w-10 h-10 rounded-full bg-white border-2 border-background flex items-center justify-center overflow-hidden shadow-md">
-                      <img src={logo} alt="" className="w-7 h-7 object-contain" />
-                    </div>
-                  ))}
-                  <div className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-medium text-muted-foreground">
-                    +46
+                  <div className="h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="h-full w-[85%] bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full" />
                   </div>
                 </div>
-                <p className="text-2xl font-bold mt-3">50+</p>
-                <p className="text-muted-foreground text-sm">Companies</p>
-              </div>
-
-              {/* CTA Card */}
-              <div className="bento-card md:col-span-2 bg-gradient-to-r from-primary to-primary/80 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-slide-up stagger-4 shadow-lg">
-                <div>
-                  <h3 className="text-xl font-bold text-primary-foreground">Ready to start?</h3>
-                  <p className="text-primary-foreground/80 text-sm mt-1">Let's discuss your next project</p>
+                
+                {/* Stats floating card */}
+                <div className="absolute top-[45%] left-0 sm:left-[10%] w-[200px] bg-foreground text-background rounded-2xl p-5 shadow-xl animate-slide-up stagger-2 -rotate-6 hover:rotate-0 transition-transform duration-500">
+                  <p className="text-4xl font-bold">150+</p>
+                  <p className="text-sm opacity-70">Projects Delivered</p>
+                  <div className="flex mt-3 -space-x-2">
+                    {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
+                      <div key={i} className="w-7 h-7 rounded-full bg-white flex items-center justify-center border-2 border-foreground">
+                        <img src={logo} alt="" className="w-5 h-5 object-contain" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <Link to="/portfolio">
-                  <Button variant="secondary" className="rounded-full px-6 py-5 hover:scale-105 transition-all">
-                    View Our Work
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
+                
+                {/* Rating badge */}
+                <div className="absolute bottom-[15%] right-[10%] sm:right-[15%] bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/50 dark:to-orange-900/50 rounded-2xl p-4 shadow-lg animate-slide-up stagger-3 rotate-6 hover:rotate-0 transition-transform duration-500">
+                  <div className="flex gap-1 mb-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-amber-500 text-amber-500" />
+                    ))}
+                  </div>
+                  <p className="text-2xl font-bold text-amber-900 dark:text-amber-100">5.0</p>
+                  <p className="text-xs text-amber-700 dark:text-amber-300">Client Rating</p>
+                </div>
+                
+                {/* Tech icons floating */}
+                <div className="absolute top-[5%] left-[20%] w-14 h-14 bg-card rounded-2xl shadow-lg flex items-center justify-center animate-float-slow border border-border">
+                  <SiReact className="h-7 w-7 text-cyan-500" />
+                </div>
+                <div className="absolute bottom-[30%] left-[5%] w-12 h-12 bg-card rounded-xl shadow-md flex items-center justify-center animate-float-slower border border-border">
+                  <SiTypescript className="h-6 w-6 text-blue-600" />
+                </div>
+                <div className="absolute bottom-[5%] right-[30%] w-10 h-10 bg-card rounded-lg shadow flex items-center justify-center animate-float-slow border border-border">
+                  <SiNodedotjs className="h-5 w-5 text-green-600" />
+                </div>
               </div>
-
+            </div>
+            
+            {/* Bottom Stats Row */}
+            <div className="mt-12 sm:mt-16 flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12 lg:gap-16 animate-slide-up stagger-4">
+              {[
+                { value: "50+", label: "Happy Clients" },
+                { value: "5+", label: "Years Experience" },
+                { value: "24/7", label: "Support" }
+              ].map((stat) => (
+                <div key={stat.label} className="text-center lg:text-left">
+                  <p className="text-3xl sm:text-4xl font-bold">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
