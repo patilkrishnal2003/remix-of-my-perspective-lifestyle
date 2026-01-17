@@ -146,18 +146,18 @@ const Index = () => {
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh]">
               
               {/* Left Content - Offset */}
-              <div className="lg:col-span-6 lg:col-start-1 space-y-8 animate-slide-up">
+              <div className="lg:col-span-5 lg:col-start-1 space-y-8 animate-slide-up">
                 {/* Decorative label */}
                 <div className="flex items-center gap-3">
                   <div className="h-px w-12 bg-gradient-to-r from-primary to-transparent" />
                   <span className="text-sm font-medium text-primary tracking-wider uppercase">Digital Agency</span>
                 </div>
                 
-                {/* Main Heading - Artistic typography */}
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9]">
-                  <span className="block">We</span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500">create</span>
-                  <span className="block">digital</span>
+                {/* Main Heading - Mixed typography like reference */}
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]">
+                  <span className="block font-serif italic font-normal">We</span>
+                  <span className="block font-bold text-primary">create</span>
+                  <span className="block font-bold">digital</span>
                   <span className="block font-serif italic font-normal text-muted-foreground">experiences</span>
                 </h1>
                 
@@ -181,66 +181,72 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Right Side - Floating Portfolio Images */}
-              <div className="lg:col-span-6 relative h-[400px] sm:h-[500px] lg:h-[600px]">
-                {/* Main Portfolio Card */}
-                <div className="absolute top-[5%] right-0 sm:right-[5%] w-[260px] sm:w-[300px] rounded-2xl overflow-hidden shadow-2xl animate-slide-down rotate-3 hover:rotate-0 transition-transform duration-500 group">
+              {/* Right Side - Floating Portfolio Images - Larger & Fuller */}
+              <div className="lg:col-span-7 relative h-[450px] sm:h-[550px] lg:h-[650px]">
+                {/* Main Portfolio Card - Laptop style */}
+                <div className="absolute top-0 right-0 w-[320px] sm:w-[380px] lg:w-[420px] rounded-2xl overflow-hidden shadow-2xl animate-slide-down bg-card border border-border">
+                  <div className="bg-muted/50 px-4 py-2 flex items-center gap-2 border-b border-border">
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-400" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                      <div className="w-3 h-3 rounded-full bg-green-400" />
+                    </div>
+                    <span className="text-xs text-muted-foreground ml-2">financeflow.app</span>
+                  </div>
                   <img 
                     src={projectFinanceFlow} 
                     alt="FinanceFlow Project" 
-                    className="w-full h-[180px] object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[200px] sm:h-[240px] object-cover object-top"
                   />
-                  <div className="bg-card p-4 border-t border-border">
-                    <p className="font-semibold">FinanceFlow</p>
-                    <p className="text-xs text-muted-foreground">Web Application</p>
+                  <div className="p-4">
+                    <p className="font-semibold text-lg">FinanceFlow</p>
+                    <p className="text-sm text-muted-foreground">Web Application</p>
+                  </div>
+                  {/* Stats Badge on card */}
+                  <div className="absolute top-16 left-4 bg-foreground text-background rounded-full px-4 py-2 shadow-xl">
+                    <p className="text-sm font-bold">150+ Projects</p>
                   </div>
                 </div>
                 
-                {/* Secondary Portfolio Card */}
-                <div className="absolute top-[40%] left-0 sm:left-[5%] w-[220px] sm:w-[260px] rounded-2xl overflow-hidden shadow-xl animate-slide-up stagger-2 -rotate-6 hover:rotate-0 transition-transform duration-500 group">
+                {/* Secondary Portfolio Card - Phone style */}
+                <div className="absolute top-[38%] left-0 sm:left-[5%] w-[200px] sm:w-[240px] rounded-3xl overflow-hidden shadow-xl animate-slide-up stagger-2 bg-card border-[6px] border-foreground/10">
                   <img 
                     src={projectHealthTrack} 
                     alt="HealthTrack Project" 
-                    className="w-full h-[140px] object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[180px] sm:h-[220px] object-cover"
                   />
-                  <div className="bg-card p-3 border-t border-border">
-                    <p className="font-semibold text-sm">HealthTrack Pro</p>
+                  <div className="p-3 bg-card">
+                    <p className="font-semibold">HealthTrack Pro</p>
                     <p className="text-xs text-muted-foreground">Mobile App</p>
+                    <div className="flex gap-2 mt-2">
+                      <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
+                        <Globe className="w-3 h-3 text-muted-foreground" />
+                      </div>
+                      <div className="w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+                        <span className="text-xs">✕</span>
+                      </div>
+                      <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                        <span className="text-xs text-primary-foreground">✓</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Third Portfolio Card */}
-                <div className="absolute bottom-[8%] right-[5%] sm:right-[10%] w-[180px] sm:w-[220px] rounded-2xl overflow-hidden shadow-lg animate-slide-up stagger-3 rotate-6 hover:rotate-0 transition-transform duration-500 group">
+                <div className="absolute bottom-[5%] right-[5%] sm:right-[8%] w-[200px] sm:w-[240px] rounded-2xl overflow-hidden shadow-lg animate-slide-up stagger-3 bg-card border border-border">
                   <img 
                     src={projectRetailHub} 
                     alt="RetailHub Project" 
-                    className="w-full h-[120px] object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[140px] sm:h-[160px] object-cover"
                   />
-                  <div className="bg-card p-3 border-t border-border">
-                    <p className="font-semibold text-sm">RetailHub</p>
+                  <div className="p-3">
+                    <p className="font-semibold">RetailHub</p>
                     <p className="text-xs text-muted-foreground">E-commerce</p>
                   </div>
-                </div>
-                
-                {/* Stats Badge */}
-                <div className="absolute top-[25%] left-[25%] sm:left-[35%] bg-foreground text-background rounded-full px-4 py-2 shadow-xl animate-float-slow">
-                  <p className="text-sm font-bold">150+ Projects</p>
-                </div>
-                
-                {/* Rating Badge */}
-                <div className="absolute bottom-[35%] right-[0%] sm:right-[5%] bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/80 dark:to-orange-900/80 rounded-full px-4 py-2 shadow-lg animate-float-slower flex items-center gap-2">
-                  <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                  <span className="text-sm font-bold text-amber-900 dark:text-amber-100">5.0</span>
-                </div>
-                
-                {/* Client Avatars */}
-                <div className="absolute bottom-[20%] left-[15%] bg-card rounded-full p-2 shadow-lg animate-float-slow border border-border">
-                  <div className="flex -space-x-2">
-                    {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
-                      <div key={i} className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-card shadow-sm">
-                        <img src={logo} alt="" className="w-5 h-5 object-contain" />
-                      </div>
-                    ))}
+                  {/* Rating Badge */}
+                  <div className="absolute -top-3 -right-3 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/80 dark:to-orange-900/80 rounded-full px-3 py-1.5 shadow-lg flex items-center gap-1.5">
+                    <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+                    <span className="text-sm font-bold text-amber-900 dark:text-amber-100">5.0</span>
                   </div>
                 </div>
               </div>
