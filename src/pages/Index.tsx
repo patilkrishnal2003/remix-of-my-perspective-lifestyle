@@ -118,148 +118,131 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Split Layout with Gradient */}
-        <section className="relative overflow-hidden min-h-screen flex items-center pt-20 sm:pt-24">
-          {/* Animated Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-violet-500/15 to-cyan-400/20 dark:from-blue-600/15 dark:via-violet-500/10 dark:to-cyan-400/15 animate-gradient-shift" />
-          <div className="absolute inset-0 bg-gradient-to-tl from-indigo-500/10 via-transparent to-purple-500/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-          
-          {/* Mesh Gradient Overlay */}
+        {/* Hero Section - Bento Grid */}
+        <section className="relative min-h-screen pt-24 sm:pt-28 pb-16 overflow-hidden">
+          {/* Subtle Background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background" />
           <div 
-            className="absolute inset-0 opacity-30 dark:opacity-20"
+            className="absolute inset-0 opacity-[0.03]"
             style={{
-              background: `
-                radial-gradient(at 20% 30%, hsl(var(--primary) / 0.3) 0px, transparent 50%),
-                radial-gradient(at 80% 20%, hsl(221 83% 53% / 0.25) 0px, transparent 40%),
-                radial-gradient(at 60% 80%, hsl(262 83% 58% / 0.2) 0px, transparent 45%),
-                radial-gradient(at 30% 70%, hsl(188 94% 43% / 0.15) 0px, transparent 50%)
-              `
+              backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+              backgroundSize: '32px 32px'
             }}
           />
           
-          {/* Floating Gradient Orbs - Blue/Purple/Cyan */}
-          <div className="absolute top-1/4 left-[5%] w-96 h-96 bg-blue-500/25 rounded-full blur-[100px] animate-float-slow" />
-          <div className="absolute bottom-1/4 right-[5%] w-80 h-80 bg-violet-500/30 rounded-full blur-[80px] animate-float-slower" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[120px]" />
-          <div className="absolute top-[10%] right-[20%] w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px] animate-float-slow" />
-          
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 w-full">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              {/* Left Content */}
-              <div className="space-y-6 sm:space-y-8 animate-slide-down">
-                {/* Status Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                  </span>
-                  <span className="text-sm font-medium">Available for new projects</span>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Bento Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 auto-rows-[minmax(120px,auto)]">
+              
+              {/* Main Hero Card - Spans 2 cols and 2 rows */}
+              <div className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-foreground to-foreground/90 rounded-3xl p-8 sm:p-10 lg:p-12 flex flex-col justify-between text-background animate-slide-up shadow-2xl">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/10 backdrop-blur-sm mb-6">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                    </span>
+                    <span className="text-xs font-medium text-background/90">Available for projects</span>
+                  </div>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight">
+                    We build software
+                    <span className="block text-background/60 mt-2">that scales</span>
+                  </h1>
                 </div>
-
-                {/* Main Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-                  We craft software
-                  <span className="block mt-2 pb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                    that drives growth
-                  </span>
-                </h1>
-
-                {/* Subheading */}
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed">
-                  Premium software development for startups and enterprises. 
-                  We turn complex ideas into elegant, scalable solutions.
-                </p>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                <div className="mt-8">
+                  <p className="text-background/70 text-base sm:text-lg max-w-md mb-6">
+                    Premium development for startups & enterprises. Complex ideas, elegant solutions.
+                  </p>
                   <Link to="/contact">
-                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all shadow-lg">
+                    <Button className="bg-background text-foreground hover:bg-background/90 rounded-full px-6 py-5 text-base font-medium hover:scale-105 transition-all">
                       Start a Project
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
-                  <Link to="/portfolio">
-                    <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20">
-                      View Case Studies
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
                 </div>
+              </div>
 
-                {/* Trust Indicators */}
-                <div className="pt-6 sm:pt-8">
-                  <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <div className="flex -space-x-2">
-                        {[logoTechcorp, logoStartupx, logoFinanceflow].map((logo, i) => (
-                          <div key={i} className="w-8 h-8 rounded-full bg-white border-2 border-background flex items-center justify-center overflow-hidden shadow-md">
-                            <img src={logo} alt="" className="w-6 h-6 object-contain" />
-                          </div>
-                        ))}
-                      </div>
-                      <span>50+ companies trust us</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                      <span>5.0 rating</span>
-                    </div>
+              {/* Stats Card */}
+              <div className="bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all animate-slide-up stagger-1 shadow-sm hover:shadow-lg group">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-primary" />
                   </div>
+                  <span className="text-sm text-muted-foreground">Projects</span>
+                </div>
+                <div className="text-4xl sm:text-5xl font-bold group-hover:text-primary transition-colors">150+</div>
+                <p className="text-muted-foreground text-sm mt-2">Successfully delivered</p>
+              </div>
+
+              {/* Rating Card */}
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 rounded-3xl p-6 sm:p-8 border border-amber-200/50 dark:border-amber-800/30 animate-slide-up stagger-2 shadow-sm">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <div className="text-3xl sm:text-4xl font-bold text-amber-900 dark:text-amber-100">5.0</div>
+                <p className="text-amber-700 dark:text-amber-300/70 text-sm mt-2">Client rating</p>
+              </div>
+
+              {/* Image Card */}
+              <div className="md:col-span-2 lg:col-span-1 lg:row-span-2 rounded-3xl overflow-hidden animate-slide-up stagger-2 shadow-lg relative group">
+                <img 
+                  src={heroWorkspace} 
+                  alt="Our workspace" 
+                  className="w-full h-full object-cover min-h-[200px] lg:min-h-full group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block bg-white/90 dark:bg-black/70 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs font-medium">
+                    📍 San Francisco, CA
+                  </span>
                 </div>
               </div>
 
-              {/* Right Video */}
-              <div className="relative animate-slide-up lg:animate-slide-down stagger-2">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
-                    poster={heroWorkspace}
-                  >
-                    <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4" type="video/mp4" />
-                    <img src={heroWorkspace} alt="Advora workspace" className="w-full h-full object-cover" />
-                  </video>
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                </div>
-                
-                {/* Floating Stats Card */}
-                <div className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-card/95 backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow-xl border border-border">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <CheckCircle className="h-6 w-6 text-primary" />
+              {/* Tech Stack Card */}
+              <div className="bg-card rounded-3xl p-6 sm:p-8 border border-border animate-slide-up stagger-3 shadow-sm">
+                <p className="text-sm text-muted-foreground mb-4">Tech we love</p>
+                <div className="flex flex-wrap gap-2">
+                  {[SiReact, SiTypescript, SiNodedotjs, SiPostgresql].map((Icon, i) => (
+                    <div key={i} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
+                      <Icon className="h-5 w-5 text-muted-foreground" />
                     </div>
-                    <div>
-                      <div className="text-2xl sm:text-3xl font-bold">150+</div>
-                      <div className="text-sm text-muted-foreground">Projects Delivered</div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Floating Badge */}
-                <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-accent text-accent-foreground rounded-full px-4 py-2 shadow-lg font-medium text-sm">
-                  ⚡ Fast Delivery
+                  ))}
                 </div>
               </div>
-            </div>
 
-            {/* Stats Row */}
-            <div className="mt-16 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-slide-up stagger-3">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label} 
-                  className="group p-6 sm:p-8 rounded-2xl bg-white/50 dark:bg-card/50 backdrop-blur-md border border-white/30 dark:border-border hover:border-primary/30 hover:bg-white/70 dark:hover:bg-card transition-all duration-300 text-center shadow-sm"
-                >
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">{stat.value}</div>
-                  <div className="text-sm sm:text-base text-muted-foreground mt-1">{stat.label}</div>
+              {/* Clients Card */}
+              <div className="bg-card rounded-3xl p-6 sm:p-8 border border-border hover:border-primary/30 transition-all animate-slide-up stagger-3 shadow-sm">
+                <p className="text-sm text-muted-foreground mb-4">Trusted by</p>
+                <div className="flex -space-x-3">
+                  {[logoTechcorp, logoStartupx, logoFinanceflow, logoHealthtrack].map((logo, i) => (
+                    <div key={i} className="w-10 h-10 rounded-full bg-white border-2 border-background flex items-center justify-center overflow-hidden shadow-md">
+                      <img src={logo} alt="" className="w-7 h-7 object-contain" />
+                    </div>
+                  ))}
+                  <div className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-medium text-muted-foreground">
+                    +46
+                  </div>
                 </div>
-              ))}
+                <p className="text-2xl font-bold mt-3">50+</p>
+                <p className="text-muted-foreground text-sm">Companies</p>
+              </div>
+
+              {/* CTA Card */}
+              <div className="md:col-span-2 bg-gradient-to-r from-primary to-primary/80 rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-slide-up stagger-4 shadow-lg">
+                <div>
+                  <h3 className="text-xl font-bold text-primary-foreground">Ready to start?</h3>
+                  <p className="text-primary-foreground/80 text-sm mt-1">Let's discuss your next project</p>
+                </div>
+                <Link to="/portfolio">
+                  <Button variant="secondary" className="rounded-full px-6 py-5 hover:scale-105 transition-all">
+                    View Our Work
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+
             </div>
           </div>
         </section>
