@@ -1,10 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, ArrowUpRight } from "lucide-react";
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import aboutWorkspaceImage from "@/assets/about-workspace.jpg";
 import teamAlex from "@/assets/team-alex.jpg";
 import teamSarah from "@/assets/team-sarah.jpg";
 import teamMichael from "@/assets/team-michael.jpg";
@@ -101,68 +99,83 @@ const About = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Card Style */}
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 md:pb-16">
-          <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card overflow-hidden shadow-lg animate-slide-up">
-            <div className="grid lg:grid-cols-2 gap-0">
-              {/* Left Image */}
-              <div className="relative h-64 sm:h-80 lg:h-auto min-h-[280px] lg:min-h-[400px]">
-                <img
-                  src={aboutWorkspaceImage}
-                  alt="Advora team workspace"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Right Content */}
-              <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                {/* Heading - Serif style like reference */}
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif leading-[1.15] tracking-tight mb-6 text-foreground">
-                  Journey
-                  <br />
-                  Through Life's
-                  <br />
-                  Spectrum
-                </h1>
-
-                {/* Description */}
-                <p className="text-muted-foreground leading-relaxed mb-8 max-w-md text-sm sm:text-base">
-                  Welcome to Advora Digital: A Realm of Reflection, Inspiration, and Discovery. Where Words Illuminate Paths of Meaning and Thoughts Unravel the Mysteries of Life's Spectrum.
-                </p>
-
-                {/* CTA + Social Icons */}
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link to="/contact">
-                    <Button className="bg-foreground hover:bg-foreground/90 text-background rounded-full px-8 py-5 text-base hover:scale-105 transition-all">
-                      Join Now
-                    </Button>
-                  </Link>
-                  
-                  {/* Social Icons */}
-                  <div className="flex items-center gap-3">
-                    <a href="#" className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/5 transition-colors">
-                      <FaInstagram className="w-4 h-4 text-foreground/70" />
-                    </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/5 transition-colors">
-                      <FaFacebookF className="w-4 h-4 text-foreground/70" />
-                    </a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-foreground/5 transition-colors">
-                      <FaLinkedinIn className="w-4 h-4 text-foreground/70" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Hero Section - Matching Home Page Style */}
+        <section className="relative overflow-hidden min-h-[80vh] flex items-center pt-20 sm:pt-24">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            {/* Grid Pattern */}
+            <div 
+              className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+              style={{
+                backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
+                backgroundSize: '60px 60px'
+              }}
+            />
+            
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/3 to-transparent" />
+            
+            {/* Floating Shapes */}
+            <div className="absolute top-20 left-[10%] w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+            <div className="absolute bottom-20 right-[10%] w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-slower" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full" />
+            
+            {/* Geometric Shapes */}
+            <div className="hidden lg:block absolute top-32 right-[15%] w-16 h-16 border-2 border-primary/20 rounded-2xl rotate-12 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-40 left-[12%] w-12 h-12 border-2 border-accent/20 rounded-full animate-float-slower" />
+            <div className="hidden lg:block absolute top-1/3 left-[8%] w-8 h-8 bg-primary/10 rounded-lg rotate-45 animate-float-slow" />
+            <div className="hidden lg:block absolute bottom-1/3 right-[8%] w-6 h-6 bg-accent/15 rounded-full animate-float-slower" />
+            
+            {/* Decorative Lines */}
+            <svg className="absolute top-0 left-0 w-full h-full opacity-[0.015] dark:opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="about-hero-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                  <circle cx="50" cy="50" r="1" fill="currentColor" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#about-hero-pattern)" />
+            </svg>
           </div>
           
-          {/* Tagline below card - Italic serif style like reference */}
-          <div className="text-center mt-16 max-w-3xl mx-auto">
-            <p className="text-xl sm:text-2xl md:text-3xl font-serif italic text-foreground leading-relaxed mb-6">
-              Advora is a space for exploring ideas, finding inspiration, and discovering new ways of seeing the world.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-              From mindful living and personal growth to travel experiences and creative pursuits, we share perspectives that enrich daily life. Join us as we explore topics that inspire curiosity and meaningful conversation.
-            </p>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-10 sm:pb-12 w-full">
+            {/* Main Hero Content - Centered */}
+            <div className="text-center max-w-4xl mx-auto space-y-6 sm:space-y-8 animate-slide-down">
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm">
+                <Users className="h-4 w-4 text-primary" />
+                <span className="text-sm font-medium">Meet the team behind Advora</span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2]">
+                Crafting digital
+                <span className="block mt-2 pb-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  excellence together
+                </span>
+              </h1>
+
+              {/* Subheading */}
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                We're a passionate team of developers, designers, and strategists dedicated to 
+                building software that transforms businesses and delights users.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Link to="/contact">
+                  <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all shadow-lg">
+                    Work With Us
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/portfolio">
+                  <Button variant="outline" className="rounded-full px-8 py-6 text-lg font-medium hover:scale-105 transition-all">
+                    View Our Work
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
 
