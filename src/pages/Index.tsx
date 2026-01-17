@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import HeroBackground from "@/components/HeroBackground";
 import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -119,8 +120,12 @@ const Index = () => {
       
       <main>
         {/* Hero Section - Centered */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-16 sm:pb-20">
-          <div className="text-center max-w-4xl mx-auto">
+        <section className="relative overflow-hidden">
+          {/* Animated Background */}
+          <HeroBackground />
+          
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-8">
+            <div className="text-center max-w-4xl mx-auto">
             {/* Status Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8 animate-fade-in">
               <span className="relative flex h-2 w-2">
@@ -175,16 +180,19 @@ const Index = () => {
                 ))}
               </div>
             </div>
+            </div>
           </div>
           
           {/* Stats Row */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-fade-in opacity-0 [animation-delay:800ms] [animation-fill-mode:forwards]">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-colors">
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">{stat.value}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 animate-fade-in opacity-0 [animation-delay:800ms] [animation-fill-mode:forwards]">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border hover:border-primary/30 transition-colors">
+                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-1">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
