@@ -117,24 +117,24 @@ const CodeTypingAnimation = () => {
   }, []);
 
   return (
-    <div className="bg-[#1e1e2e] rounded-lg p-4 font-mono text-sm shadow-2xl border border-[#3b82f6]/30 overflow-hidden">
+    <div className="bg-slate-900 rounded-xl p-4 font-mono text-sm shadow-2xl border border-slate-700 overflow-hidden w-[300px]">
       {/* Window header */}
-      <div className="flex items-center gap-2 mb-3 pb-2 border-b border-[#3b82f6]/20">
-        <div className="w-3 h-3 rounded-full bg-red-500/80" />
-        <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-        <div className="w-3 h-3 rounded-full bg-green-500/80" />
-        <span className="text-[#808080] text-xs ml-2">App.tsx</span>
+      <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-700">
+        <div className="w-3 h-3 rounded-full bg-red-500" />
+        <div className="w-3 h-3 rounded-full bg-yellow-500" />
+        <div className="w-3 h-3 rounded-full bg-green-500" />
+        <span className="text-slate-500 text-xs ml-2">App.tsx</span>
       </div>
       
       {/* Code content */}
-      <div className="h-[140px] overflow-hidden">
-        <pre className="whitespace-pre-wrap leading-relaxed">
+      <div className="h-[160px] overflow-hidden">
+        <pre className="whitespace-pre-wrap leading-relaxed text-xs">
           {displayedCode.map((segment, i) => (
             <span key={i} className={getColorClass(segment.type)}>
               {segment.text}
             </span>
           ))}
-          <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-[#3b82f6]`}>|</span>
+          <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-sky-400`}>|</span>
         </pre>
       </div>
     </div>
