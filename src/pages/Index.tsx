@@ -123,11 +123,11 @@ const Index = () => {
           {/* Tech Background with Circuit Lines */}
           <div className="absolute inset-0 overflow-hidden">
             {/* Circuit lines SVG */}
-            <svg className="absolute inset-0 w-full h-full circuit-glow" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute inset-0 w-full h-full circuit-glow" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
                 </linearGradient>
                 {/* Glowing dot filter */}
                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -139,88 +139,83 @@ const Index = () => {
                 </filter>
               </defs>
               
-              {/* Left side circuit lines - animated */}
+              {/* Circuit lines with proper coordinates */}
               <g stroke="url(#circuit-gradient)" strokeWidth="2" fill="none">
-                {/* Bottom left laptop area */}
-                <path id="path-left-1" d="M 0 70% L 8% 70% L 8% 55% L 15% 55%" className="animate-draw-line" />
-                <path id="path-left-2" d="M 15% 55% L 15% 45% L 25% 45%" className="animate-draw-line-delay-1" />
+                {/* Bottom left circuit - connects to laptop area */}
+                <path id="path-left-1" d="M 0,560 L 80,560 L 80,440 L 150,440" className="animate-draw-line" />
+                <path id="path-left-2" d="M 150,440 L 150,360 L 250,360" className="animate-draw-line-delay-1" />
                 
-                {/* Top right circuit */}
-                <path id="path-right-1" d="M 75% 0 L 75% 8% L 85% 8% L 85% 18%" className="animate-draw-line-delay-1" />
-                <path id="path-right-2" d="M 85% 18% L 92% 18% L 92% 30% L 100% 30%" className="animate-draw-line-delay-2" />
+                {/* Top right circuit - connects to CPU */}
+                <path id="path-right-1" d="M 750,0 L 750,64 L 850,64 L 850,144" className="animate-draw-line-delay-1" />
+                <path id="path-right-2" d="M 850,144 L 920,144 L 920,240 L 1000,240" className="animate-draw-line-delay-2" />
                 
-                {/* Bottom right circuit */}
-                <path id="path-bottom-1" d="M 100% 75% L 88% 75% L 88% 65% L 80% 65%" className="animate-draw-line-reverse" />
-                <path id="path-bottom-2" d="M 80% 65% L 80% 80% L 70% 80% L 70% 90%" className="animate-draw-line-delay-3" />
+                {/* Bottom right circuit - connects to cloud */}
+                <path id="path-bottom-1" d="M 1000,600 L 880,600 L 880,520 L 800,520" className="animate-draw-line-reverse" />
+                <path id="path-bottom-2" d="M 800,520 L 800,640 L 700,640 L 700,720" className="animate-draw-line-delay-3" />
               </g>
               
               {/* Traveling data dots */}
               <g filter="url(#glow)">
-                {/* Dot traveling on left path 1 */}
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.9">
+                <circle r="5" fill="hsl(var(--primary))" opacity="0.9">
                   <animateMotion dur="3s" repeatCount="indefinite" begin="2s">
                     <mpath href="#path-left-1" />
                   </animateMotion>
                 </circle>
                 
-                {/* Dot traveling on left path 2 */}
-                <circle r="3" fill="hsl(var(--primary))" opacity="0.8">
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.8">
                   <animateMotion dur="2.5s" repeatCount="indefinite" begin="2.5s">
                     <mpath href="#path-left-2" />
                   </animateMotion>
                 </circle>
                 
-                {/* Dot traveling on right path 1 */}
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.9">
+                <circle r="5" fill="hsl(var(--primary))" opacity="0.9">
                   <animateMotion dur="2.8s" repeatCount="indefinite" begin="2.2s">
                     <mpath href="#path-right-1" />
                   </animateMotion>
                 </circle>
                 
-                {/* Dot traveling on right path 2 */}
-                <circle r="3" fill="hsl(var(--primary))" opacity="0.8">
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.8">
                   <animateMotion dur="3.2s" repeatCount="indefinite" begin="2.8s">
                     <mpath href="#path-right-2" />
                   </animateMotion>
                 </circle>
                 
-                {/* Dot traveling on bottom path 1 */}
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.85">
+                <circle r="5" fill="hsl(var(--primary))" opacity="0.85">
                   <animateMotion dur="2.6s" repeatCount="indefinite" begin="3s">
                     <mpath href="#path-bottom-1" />
                   </animateMotion>
                 </circle>
                 
-                {/* Dot traveling on bottom path 2 */}
-                <circle r="3" fill="hsl(var(--primary))" opacity="0.75">
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.75">
                   <animateMotion dur="3s" repeatCount="indefinite" begin="3.5s">
                     <mpath href="#path-bottom-2" />
                   </animateMotion>
                 </circle>
                 
-                {/* Second wave of dots for denser effect */}
-                <circle r="3" fill="hsl(var(--primary))" opacity="0.6">
+                {/* Second wave */}
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.6">
                   <animateMotion dur="3s" repeatCount="indefinite" begin="3.5s">
                     <mpath href="#path-left-1" />
                   </animateMotion>
                 </circle>
-                <circle r="3" fill="hsl(var(--primary))" opacity="0.6">
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.6">
                   <animateMotion dur="2.8s" repeatCount="indefinite" begin="4s">
                     <mpath href="#path-right-1" />
                   </animateMotion>
                 </circle>
               </g>
               
-              {/* Circuit nodes - appear after lines draw */}
+              {/* Circuit nodes */}
               <g>
-                <circle cx="8%" cy="70%" r="5" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-1" />
-                <circle cx="15%" cy="55%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-2" />
-                <circle cx="75%" cy="8%" r="5" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-2" />
-                <circle cx="85%" cy="18%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-3" />
-                <circle cx="92%" cy="30%" r="5" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-4" />
-                <circle cx="88%" cy="75%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-3" />
-                <circle cx="80%" cy="65%" r="5" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-4" />
-                <circle cx="70%" cy="80%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-5" />
+                <circle cx="80" cy="560" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-1" />
+                <circle cx="150" cy="440" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-2" />
+                <circle cx="250" cy="360" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-3" />
+                <circle cx="750" cy="64" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-2" />
+                <circle cx="850" cy="144" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-3" />
+                <circle cx="920" cy="240" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-4" />
+                <circle cx="880" cy="600" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-3" />
+                <circle cx="800" cy="520" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-4" />
+                <circle cx="700" cy="640" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-5" />
               </g>
             </svg>
             
