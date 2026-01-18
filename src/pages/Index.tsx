@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target } from "lucide-react";
+import CodeTypingAnimation from "@/components/CodeTypingAnimation";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Laptop, Cpu, Cloud, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
@@ -118,20 +119,18 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Tech-themed with circuit lines */}
-        <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/10">
+        {/* Hero Section - Dark tech-themed with circuit lines */}
+        <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden bg-[#0a1628]">
           {/* Tech Background with Circuit Lines */}
           <div className="absolute inset-0 overflow-hidden">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628] via-[#0d1d35] to-[#0a1628]" />
+            
             {/* Circuit lines SVG */}
-            <svg className="absolute inset-0 w-full h-full circuit-glow" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
-                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.2" />
-                </linearGradient>
-                {/* Glowing dot filter */}
                 <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -139,143 +138,123 @@ const Index = () => {
                 </filter>
               </defs>
               
-              {/* Circuit lines with proper coordinates */}
-              <g stroke="url(#circuit-gradient)" strokeWidth="2" fill="none">
-                {/* Bottom left circuit - connects to laptop area */}
-                <path id="path-left-1" d="M 0,560 L 80,560 L 80,440 L 150,440" className="animate-draw-line" />
-                <path id="path-left-2" d="M 150,440 L 150,360 L 250,360" className="animate-draw-line-delay-1" />
+              {/* Left side circuits - connecting from laptop */}
+              <g stroke="#3b82f6" strokeWidth="2" fill="none" opacity="0.6">
+                {/* Horizontal line from left edge */}
+                <path id="path-left-main" d="M 0,580 L 120,580 L 120,480 L 200,480" className="animate-draw-line" />
+                <path id="path-left-up" d="M 200,480 L 200,400 L 280,400" className="animate-draw-line-delay-1" />
+                <path id="path-left-branch" d="M 120,480 L 120,380 L 60,380 L 60,320" className="animate-draw-line-delay-2" />
                 
-                {/* Top right circuit - connects to CPU */}
-                <path id="path-right-1" d="M 750,0 L 750,64 L 850,64 L 850,144" className="animate-draw-line-delay-1" />
-                <path id="path-right-2" d="M 850,144 L 920,144 L 920,240 L 1000,240" className="animate-draw-line-delay-2" />
+                {/* Top horizontal line */}
+                <path id="path-top" d="M 280,400 L 400,400 L 400,350 L 900,350" className="animate-draw-line-delay-2" />
                 
-                {/* Bottom right circuit - connects to cloud */}
-                <path id="path-bottom-1" d="M 1000,600 L 880,600 L 880,520 L 800,520" className="animate-draw-line-reverse" />
-                <path id="path-bottom-2" d="M 800,520 L 800,640 L 700,640 L 700,720" className="animate-draw-line-delay-3" />
+                {/* Right side circuits - connecting to CPU */}
+                <path id="path-right-1" d="M 900,350 L 900,200 L 1000,200" className="animate-draw-line-delay-3" />
+                <path id="path-right-2" d="M 1000,200 L 1050,200 L 1050,120 L 1100,120" className="animate-draw-line-delay-3" />
+                <path id="path-right-branch" d="M 1050,200 L 1050,280 L 1100,280" className="animate-draw-line-delay-4" />
+                
+                {/* Bottom right circuits - connecting to cloud */}
+                <path id="path-bottom-main" d="M 900,350 L 900,500 L 1000,500" className="animate-draw-line-delay-3" />
+                <path id="path-bottom-down" d="M 1000,500 L 1000,600 L 1100,600" className="animate-draw-line-delay-4" />
+                <path id="path-bottom-branch" d="M 1000,600 L 1000,700 L 1200,700" className="animate-draw-line-delay-5" />
               </g>
               
               {/* Traveling data dots */}
               <g filter="url(#glow)">
-                <circle r="5" fill="hsl(var(--primary))" opacity="0.9">
-                  <animateMotion dur="3s" repeatCount="indefinite" begin="2s">
-                    <mpath href="#path-left-1" />
+                <circle r="4" fill="#3b82f6">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="2s">
+                    <mpath href="#path-left-main" />
                   </animateMotion>
                 </circle>
-                
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.8">
-                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="2.5s">
-                    <mpath href="#path-left-2" />
+                <circle r="3" fill="#60a5fa">
+                  <animateMotion dur="2s" repeatCount="indefinite" begin="2.5s">
+                    <mpath href="#path-left-up" />
                   </animateMotion>
                 </circle>
-                
-                <circle r="5" fill="hsl(var(--primary))" opacity="0.9">
-                  <animateMotion dur="2.8s" repeatCount="indefinite" begin="2.2s">
+                <circle r="4" fill="#3b82f6">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="3s">
+                    <mpath href="#path-top" />
+                  </animateMotion>
+                </circle>
+                <circle r="3" fill="#60a5fa">
+                  <animateMotion dur="2s" repeatCount="indefinite" begin="3.5s">
                     <mpath href="#path-right-1" />
                   </animateMotion>
                 </circle>
-                
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.8">
-                  <animateMotion dur="3.2s" repeatCount="indefinite" begin="2.8s">
-                    <mpath href="#path-right-2" />
+                <circle r="4" fill="#3b82f6">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="4s">
+                    <mpath href="#path-bottom-main" />
                   </animateMotion>
                 </circle>
-                
-                <circle r="5" fill="hsl(var(--primary))" opacity="0.85">
-                  <animateMotion dur="2.6s" repeatCount="indefinite" begin="3s">
-                    <mpath href="#path-bottom-1" />
-                  </animateMotion>
-                </circle>
-                
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.75">
-                  <animateMotion dur="3s" repeatCount="indefinite" begin="3.5s">
-                    <mpath href="#path-bottom-2" />
-                  </animateMotion>
-                </circle>
-                
-                {/* Second wave */}
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.6">
-                  <animateMotion dur="3s" repeatCount="indefinite" begin="3.5s">
-                    <mpath href="#path-left-1" />
-                  </animateMotion>
-                </circle>
-                <circle r="4" fill="hsl(var(--primary))" opacity="0.6">
-                  <animateMotion dur="2.8s" repeatCount="indefinite" begin="4s">
-                    <mpath href="#path-right-1" />
+                <circle r="3" fill="#60a5fa">
+                  <animateMotion dur="2s" repeatCount="indefinite" begin="4.5s">
+                    <mpath href="#path-bottom-down" />
                   </animateMotion>
                 </circle>
               </g>
               
               {/* Circuit nodes */}
-              <g>
-                <circle cx="80" cy="560" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-1" />
-                <circle cx="150" cy="440" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-2" />
-                <circle cx="250" cy="360" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-3" />
-                <circle cx="750" cy="64" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-2" />
-                <circle cx="850" cy="144" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-3" />
-                <circle cx="920" cy="240" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-4" />
-                <circle cx="880" cy="600" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-3" />
-                <circle cx="800" cy="520" r="6" fill="hsl(var(--primary))" fillOpacity="0.5" className="animate-node-appear animate-node-delay-4" />
-                <circle cx="700" cy="640" r="5" fill="hsl(var(--primary))" fillOpacity="0.4" className="animate-node-appear animate-node-delay-5" />
+              <g fill="#3b82f6">
+                <circle cx="120" cy="580" r="5" opacity="0.8" className="animate-node-appear" />
+                <circle cx="120" cy="480" r="4" opacity="0.6" className="animate-node-appear animate-node-delay-1" />
+                <circle cx="200" cy="480" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-1" />
+                <circle cx="200" cy="400" r="4" opacity="0.6" className="animate-node-appear animate-node-delay-2" />
+                <circle cx="280" cy="400" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-2" />
+                <circle cx="400" cy="400" r="4" opacity="0.6" className="animate-node-appear animate-node-delay-3" />
+                <circle cx="400" cy="350" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-3" />
+                <circle cx="900" cy="350" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-4" />
+                <circle cx="900" cy="200" r="4" opacity="0.6" className="animate-node-appear animate-node-delay-4" />
+                <circle cx="1000" cy="200" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-5" />
+                <circle cx="1050" cy="200" r="4" opacity="0.6" className="animate-node-appear animate-node-delay-5" />
+                <circle cx="900" cy="500" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-4" />
+                <circle cx="1000" cy="500" r="4" opacity="0.6" className="animate-node-appear animate-node-delay-5" />
+                <circle cx="1000" cy="600" r="5" opacity="0.8" className="animate-node-appear animate-node-delay-5" />
               </g>
             </svg>
             
-            {/* Floating tech icons */}
-            {/* Code brackets - left side */}
-            <div className="absolute left-[3%] top-[40%] text-primary/30 animate-float-slow hidden md:block">
-              <svg width="60" height="80" viewBox="0 0 60 80" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M20 10 L5 40 L20 70" />
-                <path d="M40 10 L55 40 L40 70" />
-              </svg>
+            {/* Laptop icon - bottom left */}
+            <div className="absolute left-[8%] bottom-[18%] hidden md:block animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <div className="relative">
+                <Laptop className="w-24 h-24 text-[#3b82f6]/70 stroke-[1.5]" />
+                {/* Screen glow */}
+                <div className="absolute inset-0 bg-[#3b82f6]/10 blur-xl rounded-lg" />
+              </div>
             </div>
             
-            {/* Laptop icon - bottom left */}
-            <div className="absolute left-[5%] bottom-[20%] text-primary/25 animate-float-slower hidden md:block">
-              <svg width="100" height="70" viewBox="0 0 100 70" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="10" y="5" width="60" height="40" rx="3" />
-                <path d="M5 50 L75 50 L80 60 L0 60 Z" />
-                {/* Screen lines */}
-                <line x1="18" y1="15" x2="50" y2="15" strokeOpacity="0.5" />
-                <line x1="18" y1="22" x2="45" y2="22" strokeOpacity="0.5" />
-                <line x1="18" y1="29" x2="55" y2="29" strokeOpacity="0.5" />
-              </svg>
+            {/* Code typing animation - left side */}
+            <div className="absolute left-[3%] top-[28%] hidden lg:block animate-fade-in w-[280px]" style={{ animationDelay: '0.8s' }}>
+              <CodeTypingAnimation />
             </div>
             
             {/* CPU chip - top right */}
-            <div className="absolute right-[8%] top-[15%] text-primary/30 animate-float-slow hidden lg:block">
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="20" y="20" width="40" height="40" rx="4" />
-                <rect x="28" y="28" width="24" height="24" rx="2" fill="hsl(var(--primary))" fillOpacity="0.2" />
-                {/* Pins */}
-                <line x1="30" y1="20" x2="30" y2="10" />
-                <line x1="40" y1="20" x2="40" y2="10" />
-                <line x1="50" y1="20" x2="50" y2="10" />
-                <line x1="30" y1="60" x2="30" y2="70" />
-                <line x1="40" y1="60" x2="40" y2="70" />
-                <line x1="50" y1="60" x2="50" y2="70" />
-                <line x1="20" y1="30" x2="10" y2="30" />
-                <line x1="20" y1="40" x2="10" y2="40" />
-                <line x1="20" y1="50" x2="10" y2="50" />
-                <line x1="60" y1="30" x2="70" y2="30" />
-                <line x1="60" y1="40" x2="70" y2="40" />
-                <line x1="60" y1="50" x2="70" y2="50" />
-              </svg>
+            <div className="absolute right-[8%] top-[12%] hidden lg:block animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <div className="relative p-3 rounded-lg border border-[#3b82f6]/30 bg-[#3b82f6]/5">
+                <Cpu className="w-16 h-16 text-[#3b82f6]/80 stroke-[1.5]" />
+                <div className="absolute inset-0 bg-[#3b82f6]/10 blur-xl rounded-lg" />
+              </div>
             </div>
             
             {/* Cloud icon - right side */}
-            <div className="absolute right-[3%] top-[45%] text-primary/25 animate-float-slower hidden lg:block">
-              <svg width="90" height="60" viewBox="0 0 90 60" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M25 45 C10 45 10 30 20 25 C20 10 40 5 50 15 C60 5 85 10 80 30 C95 35 90 50 75 50 L25 50" />
-                {/* Connection lines */}
-                <line x1="90" y1="35" x2="100" y2="35" strokeOpacity="0.5" />
-                <line x1="90" y1="42" x2="105" y2="42" strokeOpacity="0.5" />
-              </svg>
+            <div className="absolute right-[5%] top-[55%] hidden lg:block animate-fade-in" style={{ animationDelay: '0.7s' }}>
+              <div className="relative">
+                <Cloud className="w-20 h-20 text-[#3b82f6]/70 stroke-[1.5]" />
+                <div className="absolute inset-0 bg-[#3b82f6]/10 blur-xl rounded-lg" />
+              </div>
+            </div>
+            
+            {/* Small monitor/terminal - bottom right */}
+            <div className="absolute right-[12%] bottom-[15%] hidden lg:block animate-fade-in" style={{ animationDelay: '0.9s' }}>
+              <div className="relative p-2 rounded border border-[#3b82f6]/30 bg-[#1e1e2e]/80">
+                <Monitor className="w-10 h-10 text-[#3b82f6]/70 stroke-[1.5]" />
+              </div>
             </div>
             
             {/* Small decorative circles */}
-            <div className="absolute left-[20%] top-[25%] w-3 h-3 rounded-full bg-primary/20 animate-pulse hidden md:block" />
-            <div className="absolute right-[25%] top-[60%] w-2 h-2 rounded-full bg-primary/30 animate-pulse hidden md:block" style={{ animationDelay: '1s' }} />
-            <div className="absolute left-[45%] bottom-[30%] w-4 h-4 rounded-full border-2 border-primary/20 animate-pulse hidden md:block" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute right-[15%] bottom-[25%] w-3 h-3 rounded-full bg-primary/15 animate-pulse hidden md:block" style={{ animationDelay: '1.5s' }} />
+            <div className="absolute left-[25%] top-[20%] w-2 h-2 rounded-full bg-[#3b82f6]/40 animate-pulse hidden md:block" />
+            <div className="absolute right-[30%] top-[25%] w-3 h-3 rounded-full border border-[#3b82f6]/30 animate-pulse hidden md:block" style={{ animationDelay: '1s' }} />
+            <div className="absolute left-[40%] bottom-[25%] w-2 h-2 rounded-full bg-[#3b82f6]/30 animate-pulse hidden md:block" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute right-[20%] bottom-[35%] w-3 h-3 rounded-full border border-[#3b82f6]/40 animate-pulse hidden md:block" style={{ animationDelay: '1.5s' }} />
+            <div className="absolute left-[15%] top-[50%] w-2 h-2 rounded-full bg-[#3b82f6]/20 animate-pulse hidden md:block" style={{ animationDelay: '2s' }} />
           </div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32">
@@ -283,12 +262,12 @@ const Index = () => {
             <div className="text-center max-w-4xl mx-auto space-y-8 animate-slide-up">
               {/* Main Heading */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.1]">
-                <span className="block">Inspiring Digital</span>
-                <span className="block text-primary">Innovators</span>
+                <span className="block text-white">Inspiring Digital</span>
+                <span className="block text-[#3b82f6]">Innovators</span>
               </h1>
               
               {/* Description */}
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-300/80 max-w-2xl mx-auto leading-relaxed">
                 Advora Digital is where ambitious ideas thrive in the world of technology.
                 <span className="block mt-2">Unleash your potential and join us to shape the future together!</span>
               </p>
@@ -296,7 +275,7 @@ const Index = () => {
               {/* CTA Button */}
               <div className="pt-4">
                 <Link to="/contact">
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium group shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
+                  <Button className="bg-[#3b82f6] text-white hover:bg-[#2563eb] rounded-full px-10 py-7 text-lg font-medium group shadow-lg shadow-[#3b82f6]/25 hover:shadow-xl hover:shadow-[#3b82f6]/30 transition-all">
                     Get Started Today!
                   </Button>
                 </Link>
@@ -305,8 +284,8 @@ const Index = () => {
             
             {/* Scroll Indicator */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-              <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
-                <ArrowRight className="h-5 w-5 text-primary rotate-90" />
+              <div className="w-10 h-10 rounded-full bg-[#3b82f6]/20 border border-[#3b82f6]/40 flex items-center justify-center">
+                <ArrowRight className="h-5 w-5 text-[#3b82f6] rotate-90" />
               </div>
             </div>
           </div>
