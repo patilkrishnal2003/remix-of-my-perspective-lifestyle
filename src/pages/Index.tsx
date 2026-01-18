@@ -57,19 +57,22 @@ const Index = () => {
     { icon: Users, title: "Dedicated Team", description: "Expert developers assigned to your project" }
   ];
 
-  const techStack = [
-    { name: "React", icon: SiReact },
-    { name: "Next.js", icon: SiNextdotjs },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "Node.js", icon: SiNodedotjs },
-    { name: "Python", icon: SiPython },
-    { name: "PostgreSQL", icon: SiPostgresql },
-    { name: "MongoDB", icon: SiMongodb },
-    { name: "AWS", icon: SiAmazonwebservices },
-    { name: "Docker", icon: SiDocker },
-    { name: "GraphQL", icon: SiGraphql },
-    { name: "React Native", icon: TbBrandReactNative },
-    { name: "Tailwind CSS", icon: SiTailwindcss }
+  const techStackRow1 = [
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  ];
+
+  const techStackRow2 = [
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
+    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+    { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+    { name: "React Native", icon: TbBrandReactNative, color: "#61DAFB" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   ];
 
   const testimonials = [
@@ -333,21 +336,80 @@ const Index = () => {
         {/* Tech Stack Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+              ⚡ Technologies
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-            {techStack.map((tech, index) => (
-              <div
-                key={tech.name}
-                className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
-                  <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
+          
+          {/* Scrolling Marquee */}
+          <div className="relative overflow-hidden">
+            {/* Row 1 - scrolling left */}
+            <div className="flex gap-6 mb-6 animate-marquee">
+              {[...techStackRow1, ...techStackRow1, ...techStackRow1, ...techStackRow1].map((tech, index) => (
+                <div
+                  key={`row1-${index}`}
+                  className="group flex flex-col items-center gap-2 flex-shrink-0"
+                >
+                  <div 
+                    className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                    style={{ 
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = `0 0 20px ${tech.color}40, 0 0 40px ${tech.color}20`;
+                      e.currentTarget.style.borderColor = tech.color;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+                      e.currentTarget.style.borderColor = "";
+                    }}
+                  >
+                    <tech.icon 
+                      className="w-8 h-8 transition-colors duration-300" 
+                      style={{ color: tech.color }}
+                    />
+                  </div>
+                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
                 </div>
-                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Row 2 - scrolling right */}
+            <div className="flex gap-6 animate-marquee-reverse">
+              {[...techStackRow2, ...techStackRow2, ...techStackRow2, ...techStackRow2].map((tech, index) => (
+                <div
+                  key={`row2-${index}`}
+                  className="group flex flex-col items-center gap-2 flex-shrink-0"
+                >
+                  <div 
+                    className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                    style={{ 
+                      boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = `0 0 20px ${tech.color}40, 0 0 40px ${tech.color}20`;
+                      e.currentTarget.style.borderColor = tech.color;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+                      e.currentTarget.style.borderColor = "";
+                    }}
+                  >
+                    <tech.icon 
+                      className="w-8 h-8 transition-colors duration-300" 
+                      style={{ color: tech.color }}
+                    />
+                  </div>
+                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Fade overlays */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
           </div>
         </section>
 
