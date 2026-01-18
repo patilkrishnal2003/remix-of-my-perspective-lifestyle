@@ -129,105 +129,107 @@ const Index = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             {/* Left side pipelines: Code card → Laptop → Center */}
-            <g stroke="#94a3b8" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* From code card to laptop */}
-              <path d="M 180,280 L 180,480 L 220,480" opacity="0.4" />
-              <path d="M 220,520 L 180,520 L 180,600" opacity="0.4" />
+            <g stroke="#cbd5e1" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              {/* From code card bottom to laptop */}
+              <path d="M 120,340 L 120,520 L 200,520" opacity="0.6" />
               
-              {/* From laptop area to center */}
-              <path d="M 300,560 L 400,560 L 400,480 L 550,480" opacity="0.4" />
-              <path d="M 300,520 L 380,520 L 380,420 L 500,420" opacity="0.4" />
+              {/* From laptop to center */}
+              <path d="M 280,520 L 380,520 L 380,450 L 520,450" opacity="0.5" />
+              <path d="M 280,480 L 340,480 L 340,400 L 480,400" opacity="0.5" />
               
-              {/* Connecting lines going to center area */}
-              <path d="M 550,480 L 650,480 L 650,450" opacity="0.3" />
-              <path d="M 500,420 L 600,420 L 600,400" opacity="0.3" />
+              {/* Branch lines toward center */}
+              <path d="M 520,450 L 620,450" opacity="0.4" />
+              <path d="M 480,400 L 580,400" opacity="0.4" />
             </g>
             
             {/* Right side pipelines: CPU → Server → Cloud → Center */}
-            <g stroke="#94a3b8" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* From CPU down to server */}
-              <path d="M 1200,200 L 1200,320 L 1280,320" opacity="0.4" />
-              <path d="M 1260,180 L 1260,280 L 1300,280" opacity="0.4" />
+            <g stroke="#cbd5e1" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              {/* From CPU to Server */}
+              <path d="M 1280,220 L 1280,360 L 1340,360" opacity="0.6" />
+              <path d="M 1320,200 L 1320,320 L 1360,320" opacity="0.5" />
               
-              {/* From server area to cloud */}
-              <path d="M 1240,380 L 1240,480 L 1300,480" opacity="0.4" />
-              <path d="M 1200,400 L 1200,520 L 1260,520" opacity="0.4" />
+              {/* From Server to Cloud */}
+              <path d="M 1340,420 L 1340,560 L 1260,560" opacity="0.6" />
+              <path d="M 1300,400 L 1300,520 L 1220,520" opacity="0.5" />
               
-              {/* From cloud/server toward center */}
-              <path d="M 1140,350 L 1000,350 L 1000,420 L 850,420" opacity="0.4" />
-              <path d="M 1160,420 L 1050,420 L 1050,480 L 900,480" opacity="0.4" />
+              {/* From right icons toward center */}
+              <path d="M 1200,360 L 1050,360 L 1050,420 L 900,420" opacity="0.5" />
+              <path d="M 1180,400 L 1000,400 L 1000,450 L 850,450" opacity="0.5" />
               
-              {/* Additional connecting lines */}
-              <path d="M 850,420 L 800,420 L 800,400" opacity="0.3" />
-              <path d="M 900,480 L 820,480 L 820,450" opacity="0.3" />
+              {/* Branch lines toward center */}
+              <path d="M 900,420 L 820,420" opacity="0.4" />
+              <path d="M 850,450 L 780,450" opacity="0.4" />
             </g>
             
-            {/* Small circuit nodes/dots at junctions */}
+            {/* Small circuit nodes/dots at key junctions */}
             <g fill="#94a3b8">
               {/* Left side nodes */}
-              <circle cx="180" cy="280" r="3" opacity="0.5" />
-              <circle cx="180" cy="480" r="3" opacity="0.5" />
-              <circle cx="220" cy="480" r="2.5" opacity="0.4" />
-              <circle cx="180" cy="520" r="3" opacity="0.5" />
-              <circle cx="300" cy="560" r="3" opacity="0.5" />
-              <circle cx="400" cy="560" r="2.5" opacity="0.4" />
-              <circle cx="400" cy="480" r="3" opacity="0.5" />
-              <circle cx="550" cy="480" r="2.5" opacity="0.4" />
-              <circle cx="650" cy="480" r="3" opacity="0.5" />
+              <circle cx="120" cy="340" r="3" opacity="0.6" />
+              <circle cx="120" cy="520" r="3" opacity="0.6" />
+              <circle cx="200" cy="520" r="3" opacity="0.5" />
+              <circle cx="280" cy="520" r="3" opacity="0.6" />
+              <circle cx="380" cy="520" r="2.5" opacity="0.5" />
+              <circle cx="380" cy="450" r="3" opacity="0.5" />
+              <circle cx="520" cy="450" r="3" opacity="0.6" />
+              <circle cx="620" cy="450" r="2.5" opacity="0.4" />
+              <circle cx="280" cy="480" r="3" opacity="0.5" />
+              <circle cx="340" cy="400" r="2.5" opacity="0.5" />
+              <circle cx="480" cy="400" r="3" opacity="0.5" />
               
               {/* Right side nodes */}
-              <circle cx="1200" cy="200" r="3" opacity="0.5" />
-              <circle cx="1200" cy="320" r="2.5" opacity="0.4" />
-              <circle cx="1260" cy="180" r="3" opacity="0.5" />
-              <circle cx="1260" cy="280" r="2.5" opacity="0.4" />
-              <circle cx="1240" cy="380" r="3" opacity="0.5" />
-              <circle cx="1240" cy="480" r="2.5" opacity="0.4" />
-              <circle cx="1140" cy="350" r="3" opacity="0.5" />
-              <circle cx="1000" cy="350" r="2.5" opacity="0.4" />
-              <circle cx="1000" cy="420" r="3" opacity="0.5" />
-              <circle cx="850" cy="420" r="2.5" opacity="0.4" />
+              <circle cx="1280" cy="220" r="3" opacity="0.6" />
+              <circle cx="1280" cy="360" r="3" opacity="0.5" />
+              <circle cx="1340" cy="360" r="3" opacity="0.6" />
+              <circle cx="1340" cy="420" r="3" opacity="0.5" />
+              <circle cx="1340" cy="560" r="3" opacity="0.6" />
+              <circle cx="1260" cy="560" r="3" opacity="0.5" />
+              <circle cx="1200" cy="360" r="3" opacity="0.5" />
+              <circle cx="1050" cy="360" r="2.5" opacity="0.5" />
+              <circle cx="1050" cy="420" r="3" opacity="0.5" />
+              <circle cx="900" cy="420" r="3" opacity="0.6" />
+              <circle cx="820" cy="420" r="2.5" opacity="0.4" />
             </g>
           </svg>
           
           {/* Left Side Elements */}
           {/* Code Editor Card - floating slow animation */}
-          <div className="absolute left-[4%] top-[22%] hidden lg:block z-10" style={{ animation: 'floatSlow 6s ease-in-out infinite' }}>
+          <div className="absolute left-[3%] top-[20%] hidden lg:block z-10" style={{ animation: 'floatSlow 6s ease-in-out infinite' }}>
             <CodeTypingAnimation />
           </div>
           
-          {/* Laptop Icon - bottom left area */}
-          <div className="absolute left-[12%] bottom-[28%] hidden md:block z-10" style={{ animation: 'floatSlower 8s ease-in-out infinite' }}>
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200">
-              <Laptop className="w-12 h-12 text-primary stroke-[1.5]" />
+          {/* Laptop Icon - below code card, connected by pipeline */}
+          <div className="absolute left-[8%] top-[52%] hidden md:block z-10 group" style={{ animation: 'floatSlower 8s ease-in-out infinite' }}>
+            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Laptop className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Right Side Elements */}
           {/* CPU/Chip Icon - top right */}
-          <div className="absolute right-[8%] top-[18%] hidden lg:block z-10" style={{ animation: 'floatSlow 7s ease-in-out infinite' }}>
-            <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200">
-              <Cpu className="w-14 h-14 text-primary stroke-[1.5]" />
+          <div className="absolute right-[6%] top-[16%] hidden lg:block z-10 group" style={{ animation: 'floatSlow 7s ease-in-out infinite' }}>
+            <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Cpu className="w-14 h-14 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
-          {/* Server/Database Icon - mid right */}
-          <div className="absolute right-[5%] top-[42%] hidden lg:block z-10" style={{ animation: 'floatSlower 9s ease-in-out infinite' }}>
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200">
-              <Database className="w-10 h-10 text-primary stroke-[1.5]" />
+          {/* Server/Database Icon - mid right, below CPU */}
+          <div className="absolute right-[3%] top-[38%] hidden lg:block z-10 group" style={{ animation: 'floatSlower 9s ease-in-out infinite' }}>
+            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Database className="w-10 h-10 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
-          {/* Cloud Icon - lower right */}
-          <div className="absolute right-[10%] bottom-[22%] hidden lg:block z-10" style={{ animation: 'floatSlow 8s ease-in-out infinite' }}>
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200">
-              <Cloud className="w-12 h-12 text-primary stroke-[1.5]" />
+          {/* Cloud Icon - lower right, below server */}
+          <div className="absolute right-[8%] top-[58%] hidden lg:block z-10 group" style={{ animation: 'floatSlow 8s ease-in-out infinite' }}>
+            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Cloud className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
-          {/* Monitor Icon - far right */}
-          <div className="absolute right-[3%] bottom-[40%] hidden xl:block z-10" style={{ animation: 'floatSlower 7s ease-in-out infinite' }}>
-            <div className="p-2 rounded-lg bg-white shadow-md border border-slate-200">
-              <Monitor className="w-8 h-8 text-primary stroke-[1.5]" />
+          {/* Monitor Icon - far right edge */}
+          <div className="absolute right-[2%] top-[48%] hidden xl:block z-10 group" style={{ animation: 'floatSlower 7s ease-in-out infinite' }}>
+            <div className="p-2 rounded-lg bg-white shadow-md border border-slate-200 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:border-primary/30">
+              <Monitor className="w-8 h-8 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
