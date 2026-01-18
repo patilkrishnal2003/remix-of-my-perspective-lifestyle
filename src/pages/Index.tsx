@@ -186,37 +186,37 @@ const Index = () => {
           
           {/* Laptop Icon - below code card */}
           <div className="absolute left-[6%] top-[45%] hidden md:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
-              <Laptop className="w-10 h-10 text-primary stroke-[1.5]" />
+            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Laptop className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* CPU Icon - bottom left */}
           <div className="absolute left-[10%] bottom-[20%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
-              <Cpu className="w-10 h-10 text-primary stroke-[1.5]" />
+            <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Cpu className="w-14 h-14 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Right Side Elements - Stacked vertically */}
           {/* Database Icon - top right */}
           <div className="absolute right-[6%] top-[22%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
-              <Database className="w-10 h-10 text-primary stroke-[1.5]" />
+            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Database className="w-10 h-10 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Monitor Icon - middle right */}
           <div className="absolute right-[8%] top-[42%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
-              <Monitor className="w-10 h-10 text-primary stroke-[1.5]" />
+            <div className="p-2 rounded-lg bg-white shadow-md border border-slate-200 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:border-primary/30">
+              <Monitor className="w-8 h-8 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Cloud Icon - bottom right */}
           <div className="absolute right-[6%] bottom-[22%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
-              <Cloud className="w-10 h-10 text-primary stroke-[1.5]" />
+            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
+              <Cloud className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
