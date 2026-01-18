@@ -308,18 +308,13 @@ export default function HeroSectionWithGradient() {
           </AnimatedGroup>
         </div>
 
-        {/* Brands Grid */}
-        <div className="mt-20 w-full max-w-4xl">
-          <BrandsGrid />
-        </div>
-
         {/* Decorative Blurs */}
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
 
       {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[70%] flex justify-center px-4 sm:px-6 lg:px-8">
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
