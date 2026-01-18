@@ -136,10 +136,10 @@ const Index = () => {
             <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
             
             {/* Marquee container */}
-            <div className="flex animate-marquee">
+            <div className="flex animate-marquee hover:[animation-play-state:paused]">
               {/* First set of logos */}
-              {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex items-center gap-10 sm:gap-16 md:gap-20 px-5 sm:px-8">
+              {[...Array(4)].map((_, setIndex) => (
+                <div key={setIndex} className="flex items-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
                   {[
                     { name: "TechCorp", logo: logoTechcorp },
                     { name: "StartupX", logo: logoStartupx },
@@ -152,7 +152,7 @@ const Index = () => {
                       <img 
                         src={company.logo} 
                         alt={company.name}
-                        className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                        className="h-14 sm:h-16 md:h-20 w-auto object-contain"
                       />
                     </div>
                   ))}
