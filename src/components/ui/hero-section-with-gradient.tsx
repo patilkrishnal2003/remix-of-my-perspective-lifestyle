@@ -50,28 +50,24 @@ const transitionVariants = {
   },
 };
 
-// Orbital icon component - each icon orbits independently
-const OrbitingIcon = ({ 
-  IconComponent, 
+// Single orbit ring with all its icons rotating together
+const OrbitRing = ({ 
   radius, 
   duration, 
-  startAngle, 
-  direction = 1 
+  direction,
+  icons 
 }: { 
-  IconComponent: React.ElementType;
   radius: number; 
   duration: number; 
-  startAngle: number; 
-  direction?: number;
+  direction: number;
+  icons: { Icon: React.ElementType; startAngle: number }[];
 }) => {
   return (
     <motion.div
-      className="absolute left-1/2 top-1/2"
+      className="absolute rounded-full"
       style={{
         width: radius * 2,
         height: radius * 2,
-        marginLeft: -radius,
-        marginTop: -radius,
       }}
       animate={{ rotate: direction * 360 }}
       transition={{
@@ -80,26 +76,35 @@ const OrbitingIcon = ({
         ease: "linear",
       }}
     >
-      {/* The icon positioned at the edge of the orbit */}
-      <motion.div
-        className="absolute"
-        style={{
-          left: "50%",
-          top: 0,
-          transform: "translateX(-50%)",
-        }}
-        // Counter-rotate to keep icon upright
-        animate={{ rotate: -direction * 360 }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-background/90 backdrop-blur-sm border border-border/50 shadow-lg shadow-primary/10 flex items-center justify-center">
-          <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-        </div>
-      </motion.div>
+      {/* All icons on this orbit */}
+      {icons.map((iconData, index) => {
+        const { Icon, startAngle } = iconData;
+        const rad = (startAngle * Math.PI) / 180;
+        const x = Math.cos(rad) * radius;
+        const y = Math.sin(rad) * radius;
+
+        return (
+          <motion.div
+            key={index}
+            className="absolute left-1/2 top-1/2 flex items-center justify-center"
+            style={{
+              marginLeft: x - 24,
+              marginTop: y - 24,
+            }}
+            // Counter-rotate to keep icon upright
+            animate={{ rotate: -direction * 360 }}
+            transition={{
+              duration,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          >
+            <div className="w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm border border-border/50 shadow-lg shadow-primary/10 flex items-center justify-center">
+              <Icon className="w-5 h-5 text-primary" />
+            </div>
+          </motion.div>
+        );
+      })}
     </motion.div>
   );
 };
@@ -169,27 +174,15 @@ const CircularOrbits = () => {
         />
       ))}
 
-      {/* Orbiting icons */}
+      {/* Orbiting icons - one rotating container per orbit */}
       {orbits.map((orbit, orbitIndex) => (
-        <React.Fragment key={`orbit-${orbitIndex}`}>
-          {orbit.icons.map((icon, iconIndex) => (
-            <div
-              key={`icon-${orbitIndex}-${iconIndex}`}
-              className="absolute left-1/2 top-1/2"
-              style={{
-                transform: `rotate(${icon.startAngle}deg)`,
-              }}
-            >
-              <OrbitingIcon
-                IconComponent={icon.Icon}
-                radius={orbit.radius}
-                duration={orbit.duration}
-                startAngle={icon.startAngle}
-                direction={orbit.direction}
-              />
-            </div>
-          ))}
-        </React.Fragment>
+        <OrbitRing
+          key={`orbit-${orbitIndex}`}
+          radius={orbit.radius}
+          duration={orbit.duration}
+          direction={orbit.direction}
+          icons={orbit.icons}
+        />
       ))}
 
       {/* Center glow effect */}
