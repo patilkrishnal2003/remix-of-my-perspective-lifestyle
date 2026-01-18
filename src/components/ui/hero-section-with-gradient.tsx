@@ -208,9 +208,6 @@ const CircularOrbits = () => {
         />
       ))}
 
-      {/* Center glow effect */}
-      <div className="absolute w-40 h-40 rounded-full bg-primary/15 blur-3xl" />
-      <div className="absolute w-24 h-24 rounded-full bg-primary/25 blur-2xl" />
     </div>
   );
 };
@@ -239,7 +236,7 @@ export default function HeroSectionWithGradient() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       {/* Circular Orbiting Icons */}
       <CircularOrbits />
@@ -297,9 +294,6 @@ export default function HeroSectionWithGradient() {
           </AnimatedGroup>
         </div>
 
-        {/* Decorative Blurs */}
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
 
       {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
