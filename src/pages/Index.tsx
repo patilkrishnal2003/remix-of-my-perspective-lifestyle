@@ -5,16 +5,13 @@ import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient"
 import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, MessageSquare, Lightbulb, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { getFeaturedPosts } from "@/data/blogPosts";
+
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
-import projectFinanceFlow from "@/assets/project-financeflow.jpg";
-import projectHealthTrack from "@/assets/project-healthtrack.jpg";
-import projectRetailHub from "@/assets/project-retailhub.jpg";
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
 import logoFinanceflow from "@/assets/logo-financeflow.png";
@@ -164,7 +161,7 @@ const Index = () => {
     },
   ];
 
-  const featuredPosts = getFeaturedPosts().slice(0, 3);
+  
 
   return (
     <div className="min-h-screen bg-background animate-fade-in">
@@ -292,51 +289,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Featured Work Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
-              <p className="text-xl text-muted-foreground">Some of our recent projects</p>
-            </div>
-          </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { image: projectFinanceFlow, title: "FinanceFlow", category: "Web Application" },
-              { image: projectHealthTrack, title: "HealthTrack Pro", category: "Mobile App" },
-              { image: projectRetailHub, title: "RetailHub", category: "E-commerce" }
-            ].map((project, index) => (
-              <ScrollReveal key={project.title} delay={index * 100}>
-                <Link 
-                  to="/portfolio"
-                  className="group rounded-2xl overflow-hidden border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] block"
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-4 bg-card">
-                    <span className="text-xs text-primary font-medium">{project.category}</span>
-                    <h3 className="font-bold mt-1 group-hover:text-primary transition-colors">{project.title}</h3>
-                  </div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal delay={300}>
-            <div className="text-center mt-10">
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6">
-                  View All Projects
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </ScrollReveal>
-        </section>
 
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -473,48 +425,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Featured Blog Posts */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="flex items-center justify-between mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">From Our Blog</h2>
-              <p className="text-muted-foreground">Insights and expertise from our team</p>
-            </div>
-            <Link to="/blog" className="hidden md:flex items-center gap-2 text-primary hover:underline">
-              View all posts
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {featuredPosts.map((post, index) => (
-              <Link
-                key={post.id}
-                to={`/blog/${post.id}`}
-                className={`group rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
-              >
-                <div className="h-40 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                  <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium">
-                    {post.category}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{post.excerpt}</p>
-                  <div className="text-sm text-muted-foreground">{post.readTime}</div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-8 md:hidden">
-            <Link to="/blog">
-              <Button variant="outline" className="rounded-full px-8">
-                View All Posts
-              </Button>
-            </Link>
-          </div>
-        </section>
 
         {/* How It Works Section */}
         <section className="section-divider py-20 pt-24">
