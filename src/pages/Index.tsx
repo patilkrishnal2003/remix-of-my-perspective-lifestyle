@@ -1,16 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
-import CodeTypingAnimation from "@/components/CodeTypingAnimation";
-import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, CheckCircle, Star, MessageSquare, Award, Lightbulb, Clock, Target, Laptop, Cpu, Cloud, Monitor } from "lucide-react";
+import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, MessageSquare, Lightbulb, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss, SiGit } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
-import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
 import projectRetailHub from "@/assets/project-retailhub.jpg";
@@ -119,141 +118,8 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Light theme with circuit lines */}
-        <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden bg-gradient-to-b from-white to-slate-50">
-          {/* Circuit/Pipeline SVG - Static clean lines flowing left to right */}
-          <svg 
-            className="absolute inset-0 w-full h-full pointer-events-none" 
-            viewBox="0 0 1440 900" 
-            preserveAspectRatio="xMidYMid slice" 
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Left side pipeline: Code card → Laptop → CPU → Center */}
-            <g stroke="#94a3b8" strokeWidth="1" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* Code card to Laptop */}
-              <path d="M 180,320 L 180,420 L 220,420" opacity="0.5" />
-              
-              {/* Laptop to CPU */}
-              <path d="M 220,450 L 220,620 L 260,620" opacity="0.5" />
-              
-              {/* CPU toward center */}
-              <path d="M 320,620 L 480,620 L 480,500 L 620,500" opacity="0.4" />
-              
-              {/* Laptop toward center (upper branch) */}
-              <path d="M 260,420 L 400,420 L 400,460 L 620,460" opacity="0.4" />
-            </g>
-            
-            {/* Right side pipeline: Database → Monitor → Cloud → Center */}
-            <g stroke="#94a3b8" strokeWidth="1" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* Database to Monitor */}
-              <path d="M 1260,280 L 1260,400 L 1220,400" opacity="0.5" />
-              
-              {/* Monitor to Cloud */}
-              <path d="M 1220,440 L 1220,560 L 1260,560" opacity="0.5" />
-              
-              {/* From right icons toward center */}
-              <path d="M 1180,400 L 1000,400 L 1000,460 L 820,460" opacity="0.4" />
-              <path d="M 1180,560 L 1000,560 L 1000,500 L 820,500" opacity="0.4" />
-            </g>
-            
-            {/* Minimal circuit nodes at key junctions */}
-            <g fill="#94a3b8">
-              {/* Left side */}
-              <circle cx="180" cy="320" r="2" opacity="0.5" />
-              <circle cx="180" cy="420" r="2" opacity="0.5" />
-              <circle cx="220" cy="420" r="2" opacity="0.5" />
-              <circle cx="220" cy="620" r="2" opacity="0.5" />
-              <circle cx="320" cy="620" r="2" opacity="0.5" />
-              <circle cx="620" cy="460" r="2" opacity="0.4" />
-              <circle cx="620" cy="500" r="2" opacity="0.4" />
-              
-              {/* Right side */}
-              <circle cx="1260" cy="280" r="2" opacity="0.5" />
-              <circle cx="1260" cy="400" r="2" opacity="0.5" />
-              <circle cx="1220" cy="400" r="2" opacity="0.5" />
-              <circle cx="1220" cy="560" r="2" opacity="0.5" />
-              <circle cx="1260" cy="560" r="2" opacity="0.5" />
-              <circle cx="820" cy="460" r="2" opacity="0.4" />
-              <circle cx="820" cy="500" r="2" opacity="0.4" />
-            </g>
-          </svg>
-          
-          {/* Left Side Elements */}
-          {/* Code Editor Card - top left */}
-          <div className="absolute left-[4%] top-[18%] hidden lg:block z-10">
-            <CodeTypingAnimation />
-          </div>
-          
-          {/* Laptop Icon - below code card */}
-          <div className="absolute left-[6%] top-[45%] hidden md:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Laptop className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
-            </div>
-          </div>
-          
-          {/* CPU Icon - bottom left */}
-          <div className="absolute left-[10%] bottom-[20%] hidden lg:block z-10 group">
-            <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Cpu className="w-14 h-14 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
-            </div>
-          </div>
-          
-          {/* Right Side Elements - Stacked vertically */}
-          {/* Database Icon - top right */}
-          <div className="absolute right-[6%] top-[22%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Database className="w-10 h-10 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
-            </div>
-          </div>
-          
-          {/* Monitor Icon - middle right */}
-          <div className="absolute right-[8%] top-[42%] hidden lg:block z-10 group">
-            <div className="p-2 rounded-lg bg-white shadow-md border border-slate-200 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:border-primary/30">
-              <Monitor className="w-8 h-8 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
-            </div>
-          </div>
-          
-          {/* Cloud Icon - bottom right */}
-          <div className="absolute right-[6%] bottom-[22%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Cloud className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
-            </div>
-          </div>
-          
-          {/* Hero Content - Centered */}
-          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-40">
-            <div className="text-center max-w-4xl mx-auto space-y-10">
-              {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.15]">
-                <span className="block text-foreground">Inspiring Digital</span>
-                <span className="block text-primary">Innovators</span>
-              </h1>
-              
-              {/* Description */}
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Advora Digital is where ambitious ideas thrive in the world of technology.
-                <span className="block mt-2">Unleash your potential and join us to shape the future together!</span>
-              </p>
-              
-              {/* CTA Button */}
-              <div className="pt-6">
-                <Link to="/contact">
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium shadow-lg hover:shadow-xl transition-all">
-                    Get Started
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
-            <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center shadow-sm">
-              <ArrowRight className="h-5 w-5 text-muted-foreground rotate-90" />
-            </div>
-          </div>
-        </section>
+        {/* New Hero Section with Gradient */}
+        <HeroSectionWithGradient />
 
         {/* Trusted By Section - Marquee */}
         <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16 overflow-hidden">
