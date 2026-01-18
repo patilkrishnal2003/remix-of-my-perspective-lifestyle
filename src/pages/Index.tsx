@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { RoadmapCard } from "@/components/ui/roadmap-card";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
@@ -479,27 +480,45 @@ const Index = () => {
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
+                🚀 Our Process
+              </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 A transparent, collaborative process designed for your success
               </p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { icon: MessageSquare, title: "1. Consultation", description: "We discuss your vision, goals, and requirements in detail." },
-                { icon: Lightbulb, title: "2. Strategy", description: "We create a comprehensive plan and technical roadmap." },
-                { icon: Code, title: "3. Development", description: "Our team builds your solution with regular updates." },
-                { icon: Target, title: "4. Launch", description: "We deploy and provide ongoing support for success." }
-              ].map((step, index) => (
-                <div key={step.title} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                    <step.icon className="h-8 w-8 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
-                </div>
-              ))}
-            </div>
+            
+            <RoadmapCard
+              title="Our Development Process"
+              description="From idea to launch, we guide you through every step"
+              items={[
+                {
+                  quarter: "Step 1",
+                  title: "Consultation & Discovery",
+                  description: "We discuss your vision, goals, and requirements in detail to understand your needs.",
+                  status: "done"
+                },
+                {
+                  quarter: "Step 2",
+                  title: "Strategy & Planning",
+                  description: "We create a comprehensive plan and technical roadmap tailored to your project.",
+                  status: "done"
+                },
+                {
+                  quarter: "Step 3",
+                  title: "Design & Development",
+                  description: "Our team builds your solution with regular updates and collaborative feedback.",
+                  status: "in-progress"
+                },
+                {
+                  quarter: "Step 4",
+                  title: "Launch & Support",
+                  description: "We deploy your project and provide ongoing support for continued success.",
+                  status: "upcoming"
+                }
+              ]}
+            />
           </div>
         </section>
 
