@@ -1,34 +1,36 @@
 "use client";
 
-import React, { useEffect, useRef, ReactNode } from "react";
+import React, { useEffect, useRef, ReactNode, useState } from "react";
 import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
 import { 
-  Code, 
-  Database, 
-  Cloud, 
-  Cpu, 
-  Monitor, 
-  Smartphone, 
-  Globe, 
-  Zap, 
-  Layers, 
-  Settings, 
-  Palette, 
-  Sparkles,
-  Terminal,
-  Server,
-  Wifi,
-  Shield,
-  Lock,
-  FileCode,
-  GitBranch,
-  Boxes,
-  Braces,
-} from "lucide-react";
+  SiReact, 
+  SiTypescript, 
+  SiNodedotjs, 
+  SiNextdotjs, 
+  SiTailwindcss, 
+  SiPython,
+  SiDocker,
+  SiGit,
+  SiPostgresql,
+  SiMongodb,
+  SiAmazon,
+  SiVercel,
+  SiFigma,
+  SiGraphql,
+  SiJavascript,
+  SiVuedotjs,
+  SiAngular,
+  SiSupabase,
+  SiFirebase,
+  SiStripe,
+  SiGithub,
+  SiLinux,
+  SiRedis,
+} from "react-icons/si";
 
 const transitionVariants = {
   item: {
@@ -60,8 +62,10 @@ const OrbitRing = ({
   radius: number; 
   duration: number; 
   direction: number;
-  icons: { Icon: React.ElementType; startAngle: number }[];
+  icons: { Icon: React.ElementType; startAngle: number; color: string }[];
 }) => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <motion.div
       className="absolute rounded-full"
@@ -78,15 +82,16 @@ const OrbitRing = ({
     >
       {/* All icons on this orbit */}
       {icons.map((iconData, index) => {
-        const { Icon, startAngle } = iconData;
+        const { Icon, startAngle, color } = iconData;
         const rad = (startAngle * Math.PI) / 180;
         const x = Math.cos(rad) * radius;
         const y = Math.sin(rad) * radius;
+        const isHovered = hoveredIndex === index;
 
         return (
           <motion.div
             key={index}
-            className="absolute left-1/2 top-1/2 flex items-center justify-center"
+            className="absolute left-1/2 top-1/2 flex items-center justify-center pointer-events-auto cursor-pointer"
             style={{
               marginLeft: x - 24,
               marginTop: y - 24,
@@ -98,9 +103,27 @@ const OrbitRing = ({
               repeat: Infinity,
               ease: "linear",
             }}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm border border-border/50 shadow-lg shadow-primary/10 flex items-center justify-center">
-              <Icon className="w-5 h-5 text-primary" />
+            <div 
+              className={cn(
+                "w-12 h-12 rounded-full bg-background/95 backdrop-blur-sm border border-border/50 flex items-center justify-center transition-all duration-300",
+                isHovered && "scale-125 border-primary/50"
+              )}
+              style={{
+                boxShadow: isHovered 
+                  ? `0 0 20px ${color}60, 0 0 40px ${color}30, 0 8px 32px rgba(0,0,0,0.2)` 
+                  : "0 4px 12px rgba(0,0,0,0.1)",
+              }}
+            >
+              <Icon 
+                className={cn(
+                  "w-6 h-6 transition-all duration-300",
+                  isHovered && "scale-110"
+                )}
+                style={{ color: isHovered ? color : "hsl(var(--primary))" }} 
+              />
             </div>
           </motion.div>
         );
@@ -111,51 +134,51 @@ const OrbitRing = ({
 
 // Circular orbits with icons component
 const CircularOrbits = () => {
-  // Define orbits with their icons - larger radii to clear center content
+  // Define orbits with official tech brand icons and their brand colors
   const orbits = [
     { 
       radius: 320, 
-      duration: 25, 
+      duration: 30, 
       direction: 1,
       icons: [
-        { Icon: Code, startAngle: 0 },
-        { Icon: Database, startAngle: 60 },
-        { Icon: Cloud, startAngle: 120 },
-        { Icon: Terminal, startAngle: 180 },
-        { Icon: Server, startAngle: 240 },
-        { Icon: Wifi, startAngle: 300 },
+        { Icon: SiReact, startAngle: 0, color: "#61DAFB" },
+        { Icon: SiTypescript, startAngle: 60, color: "#3178C6" },
+        { Icon: SiNodedotjs, startAngle: 120, color: "#339933" },
+        { Icon: SiNextdotjs, startAngle: 180, color: "#000000" },
+        { Icon: SiTailwindcss, startAngle: 240, color: "#06B6D4" },
+        { Icon: SiPython, startAngle: 300, color: "#3776AB" },
       ]
     },
     { 
       radius: 450, 
-      duration: 35, 
+      duration: 40, 
       direction: -1,
       icons: [
-        { Icon: Cpu, startAngle: 0 },
-        { Icon: Monitor, startAngle: 45 },
-        { Icon: Globe, startAngle: 90 },
-        { Icon: Zap, startAngle: 135 },
-        { Icon: Shield, startAngle: 180 },
-        { Icon: Lock, startAngle: 225 },
-        { Icon: FileCode, startAngle: 270 },
-        { Icon: GitBranch, startAngle: 315 },
+        { Icon: SiDocker, startAngle: 0, color: "#2496ED" },
+        { Icon: SiGit, startAngle: 45, color: "#F05032" },
+        { Icon: SiPostgresql, startAngle: 90, color: "#4169E1" },
+        { Icon: SiMongodb, startAngle: 135, color: "#47A248" },
+        { Icon: SiAmazon, startAngle: 180, color: "#FF9900" },
+        { Icon: SiVercel, startAngle: 225, color: "#000000" },
+        { Icon: SiFigma, startAngle: 270, color: "#F24E1E" },
+        { Icon: SiGraphql, startAngle: 315, color: "#E10098" },
       ]
     },
     { 
       radius: 580, 
-      duration: 45, 
+      duration: 50, 
       direction: 1,
       icons: [
-        { Icon: Layers, startAngle: 0 },
-        { Icon: Settings, startAngle: 36 },
-        { Icon: Palette, startAngle: 72 },
-        { Icon: Sparkles, startAngle: 108 },
-        { Icon: Boxes, startAngle: 144 },
-        { Icon: Braces, startAngle: 180 },
-        { Icon: Smartphone, startAngle: 216 },
-        { Icon: Code, startAngle: 252 },
-        { Icon: Database, startAngle: 288 },
-        { Icon: Cloud, startAngle: 324 },
+        { Icon: SiJavascript, startAngle: 0, color: "#F7DF1E" },
+        { Icon: SiVuedotjs, startAngle: 36, color: "#4FC08D" },
+        { Icon: SiAngular, startAngle: 72, color: "#DD0031" },
+        { Icon: SiSupabase, startAngle: 108, color: "#3FCF8E" },
+        { Icon: SiFirebase, startAngle: 144, color: "#FFCA28" },
+        { Icon: SiStripe, startAngle: 180, color: "#635BFF" },
+        { Icon: SiGithub, startAngle: 216, color: "#181717" },
+        { Icon: SiLinux, startAngle: 252, color: "#FCC624" },
+        { Icon: SiRedis, startAngle: 288, color: "#DC382D" },
+        { Icon: SiReact, startAngle: 324, color: "#61DAFB" },
       ]
     },
   ];
