@@ -310,6 +310,107 @@ All colors MUST be HSL.
     }
   }
 
+  /* Circuit line drawing animation */
+  @keyframes draw-line {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes draw-line-reverse {
+    0% {
+      stroke-dashoffset: -1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes circuit-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 2px hsl(var(--primary) / 0.3));
+    }
+    50% {
+      filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.6));
+    }
+  }
+
+  .animate-draw-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 2s ease-out forwards;
+  }
+
+  .animate-draw-line-delay-1 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 2s ease-out 0.3s forwards;
+  }
+
+  .animate-draw-line-delay-2 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 2s ease-out 0.6s forwards;
+  }
+
+  .animate-draw-line-delay-3 {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 2s ease-out 0.9s forwards;
+  }
+
+  .animate-draw-line-reverse {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: -1000;
+    animation: draw-line-reverse 2s ease-out 0.5s forwards;
+  }
+
+  .circuit-glow {
+    animation: circuit-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes node-appear {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-node-appear {
+    opacity: 0;
+    animation: node-appear 0.4s ease-out forwards;
+  }
+
+  .animate-node-delay-1 {
+    animation-delay: 1s;
+  }
+
+  .animate-node-delay-2 {
+    animation-delay: 1.3s;
+  }
+
+  .animate-node-delay-3 {
+    animation-delay: 1.6s;
+  }
+
+  .animate-node-delay-4 {
+    animation-delay: 1.9s;
+  }
+
+  .animate-node-delay-5 {
+    animation-delay: 2.2s;
+  }
+
   @keyframes gradient-shift {
     0%, 100% {
       background-position: 0% 50%;
