@@ -118,152 +118,131 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Creative/Artistic */}
-        <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden">
-          {/* Abstract Background */}
-          <div className="absolute inset-0">
-            {/* Base gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-violet-50 via-background to-cyan-50 dark:from-violet-950/20 dark:via-background dark:to-cyan-950/20" />
-            
-            {/* Floating shapes */}
-            <div className="absolute top-[15%] left-[8%] w-72 h-72 bg-gradient-to-br from-violet-400/30 to-fuchsia-400/20 rounded-full blur-3xl animate-float-slow" />
-            <div className="absolute bottom-[20%] right-[5%] w-96 h-96 bg-gradient-to-br from-cyan-400/25 to-blue-400/15 rounded-full blur-3xl animate-float-slower" />
-            <div className="absolute top-[40%] right-[25%] w-64 h-64 bg-gradient-to-br from-amber-300/20 to-orange-300/10 rounded-full blur-2xl animate-float-slow" />
-            
-            {/* Decorative lines */}
-            <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+        {/* Hero Section - Tech-themed with circuit lines */}
+        <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/10">
+          {/* Tech Background with Circuit Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Circuit lines SVG */}
+            <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <pattern id="creative-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                  <path d="M 80 0 L 0 0 0 80" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-                </pattern>
+                <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.1" />
+                </linearGradient>
               </defs>
-              <rect width="100%" height="100%" fill="url(#creative-grid)" />
+              
+              {/* Left side circuit lines */}
+              <g stroke="url(#circuit-gradient)" strokeWidth="2" fill="none">
+                {/* Bottom left laptop area */}
+                <path d="M 0 70% L 8% 70% L 8% 55% L 15% 55%" className="animate-draw" />
+                <path d="M 15% 55% L 15% 45% L 25% 45%" />
+                <circle cx="8%" cy="70%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" />
+                <circle cx="15%" cy="55%" r="3" fill="hsl(var(--primary))" fillOpacity="0.3" />
+                
+                {/* Top right circuit */}
+                <path d="M 75% 0 L 75% 8% L 85% 8% L 85% 18%" />
+                <path d="M 85% 18% L 92% 18% L 92% 30% L 100% 30%" />
+                <circle cx="75%" cy="8%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" />
+                <circle cx="85%" cy="18%" r="3" fill="hsl(var(--primary))" fillOpacity="0.3" />
+                <circle cx="92%" cy="30%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" />
+                
+                {/* Bottom right circuit */}
+                <path d="M 100% 75% L 88% 75% L 88% 65% L 80% 65%" />
+                <path d="M 80% 65% L 80% 80% L 70% 80% L 70% 90%" />
+                <circle cx="88%" cy="75%" r="3" fill="hsl(var(--primary))" fillOpacity="0.3" />
+                <circle cx="80%" cy="65%" r="4" fill="hsl(var(--primary))" fillOpacity="0.4" />
+              </g>
             </svg>
+            
+            {/* Floating tech icons */}
+            {/* Code brackets - left side */}
+            <div className="absolute left-[3%] top-[40%] text-primary/30 animate-float-slow hidden md:block">
+              <svg width="60" height="80" viewBox="0 0 60 80" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M20 10 L5 40 L20 70" />
+                <path d="M40 10 L55 40 L40 70" />
+              </svg>
+            </div>
+            
+            {/* Laptop icon - bottom left */}
+            <div className="absolute left-[5%] bottom-[20%] text-primary/25 animate-float-slower hidden md:block">
+              <svg width="100" height="70" viewBox="0 0 100 70" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="10" y="5" width="60" height="40" rx="3" />
+                <path d="M5 50 L75 50 L80 60 L0 60 Z" />
+                {/* Screen lines */}
+                <line x1="18" y1="15" x2="50" y2="15" strokeOpacity="0.5" />
+                <line x1="18" y1="22" x2="45" y2="22" strokeOpacity="0.5" />
+                <line x1="18" y1="29" x2="55" y2="29" strokeOpacity="0.5" />
+              </svg>
+            </div>
+            
+            {/* CPU chip - top right */}
+            <div className="absolute right-[8%] top-[15%] text-primary/30 animate-float-slow hidden lg:block">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="20" y="20" width="40" height="40" rx="4" />
+                <rect x="28" y="28" width="24" height="24" rx="2" fill="hsl(var(--primary))" fillOpacity="0.2" />
+                {/* Pins */}
+                <line x1="30" y1="20" x2="30" y2="10" />
+                <line x1="40" y1="20" x2="40" y2="10" />
+                <line x1="50" y1="20" x2="50" y2="10" />
+                <line x1="30" y1="60" x2="30" y2="70" />
+                <line x1="40" y1="60" x2="40" y2="70" />
+                <line x1="50" y1="60" x2="50" y2="70" />
+                <line x1="20" y1="30" x2="10" y2="30" />
+                <line x1="20" y1="40" x2="10" y2="40" />
+                <line x1="20" y1="50" x2="10" y2="50" />
+                <line x1="60" y1="30" x2="70" y2="30" />
+                <line x1="60" y1="40" x2="70" y2="40" />
+                <line x1="60" y1="50" x2="70" y2="50" />
+              </svg>
+            </div>
+            
+            {/* Cloud icon - right side */}
+            <div className="absolute right-[3%] top-[45%] text-primary/25 animate-float-slower hidden lg:block">
+              <svg width="90" height="60" viewBox="0 0 90 60" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M25 45 C10 45 10 30 20 25 C20 10 40 5 50 15 C60 5 85 10 80 30 C95 35 90 50 75 50 L25 50" />
+                {/* Connection lines */}
+                <line x1="90" y1="35" x2="100" y2="35" strokeOpacity="0.5" />
+                <line x1="90" y1="42" x2="105" y2="42" strokeOpacity="0.5" />
+              </svg>
+            </div>
+            
+            {/* Small decorative circles */}
+            <div className="absolute left-[20%] top-[25%] w-3 h-3 rounded-full bg-primary/20 animate-pulse hidden md:block" />
+            <div className="absolute right-[25%] top-[60%] w-2 h-2 rounded-full bg-primary/30 animate-pulse hidden md:block" style={{ animationDelay: '1s' }} />
+            <div className="absolute left-[45%] bottom-[30%] w-4 h-4 rounded-full border-2 border-primary/20 animate-pulse hidden md:block" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute right-[15%] bottom-[25%] w-3 h-3 rounded-full bg-primary/15 animate-pulse hidden md:block" style={{ animationDelay: '1.5s' }} />
           </div>
           
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
-            {/* Asymmetric Layout */}
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[70vh]">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32">
+            {/* Centered Content */}
+            <div className="text-center max-w-4xl mx-auto space-y-8 animate-slide-up">
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.1]">
+                <span className="block">Inspiring Digital</span>
+                <span className="block text-primary">Innovators</span>
+              </h1>
               
-              {/* Left Content - Offset */}
-              <div className="lg:col-span-5 lg:col-start-1 space-y-8 animate-slide-up">
-                {/* Decorative label */}
-                <div className="flex items-center gap-3">
-                  <div className="h-px w-12 bg-gradient-to-r from-primary to-transparent" />
-                  <span className="text-sm font-medium text-primary tracking-wider uppercase">Digital Agency</span>
-                </div>
-                
-                {/* Main Heading - Mixed typography like reference */}
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]">
-                  <span className="block font-serif italic font-normal">We</span>
-                  <span className="block font-bold text-primary">create</span>
-                  <span className="block font-bold">digital</span>
-                  <span className="block font-serif italic font-normal text-muted-foreground">experiences</span>
-                </h1>
-                
-                {/* Description */}
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-md leading-relaxed">
-                  Crafting innovative software solutions that push boundaries and inspire possibilities.
-                </p>
-                
-                {/* CTA Row */}
-                <div className="flex flex-wrap items-center gap-6 pt-4">
-                  <Link to="/contact">
-                    <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 text-base font-medium group">
-                      Let's Talk
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <Link to="/portfolio" className="group flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
-                    <span className="underline underline-offset-4">View Work</span>
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
+              {/* Description */}
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Advora Digital is where ambitious ideas thrive in the world of technology.
+                <span className="block mt-2">Unleash your potential and join us to shape the future together!</span>
+              </p>
               
-              {/* Right Side - Floating Portfolio Images - Larger & Fuller */}
-              <div className="lg:col-span-7 relative h-[450px] sm:h-[550px] lg:h-[650px]">
-                {/* Main Portfolio Card - Laptop style */}
-                <div className="absolute top-0 right-0 w-[320px] sm:w-[380px] lg:w-[420px] rounded-2xl overflow-hidden shadow-2xl animate-slide-down bg-card border border-border">
-                  <div className="bg-muted/50 px-4 py-2 flex items-center gap-2 border-b border-border">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-400" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                      <div className="w-3 h-3 rounded-full bg-green-400" />
-                    </div>
-                    <span className="text-xs text-muted-foreground ml-2">financeflow.app</span>
-                  </div>
-                  <img 
-                    src={projectFinanceFlow} 
-                    alt="FinanceFlow Project" 
-                    className="w-full h-[200px] sm:h-[240px] object-cover object-top"
-                  />
-                  <div className="p-4">
-                    <p className="font-semibold text-lg">FinanceFlow</p>
-                    <p className="text-sm text-muted-foreground">Web Application</p>
-                  </div>
-                  {/* Stats Badge on card */}
-                  <div className="absolute top-16 left-4 bg-foreground text-background rounded-full px-4 py-2 shadow-xl">
-                    <p className="text-sm font-bold">150+ Projects</p>
-                  </div>
-                </div>
-                
-                {/* Secondary Portfolio Card - Phone style */}
-                <div className="absolute top-[38%] left-0 sm:left-[5%] w-[200px] sm:w-[240px] rounded-3xl overflow-hidden shadow-xl animate-slide-up stagger-2 bg-card border-[6px] border-foreground/10">
-                  <img 
-                    src={projectHealthTrack} 
-                    alt="HealthTrack Project" 
-                    className="w-full h-[180px] sm:h-[220px] object-cover"
-                  />
-                  <div className="p-3 bg-card">
-                    <p className="font-semibold">HealthTrack Pro</p>
-                    <p className="text-xs text-muted-foreground">Mobile App</p>
-                    <div className="flex gap-2 mt-2">
-                      <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
-                        <Globe className="w-3 h-3 text-muted-foreground" />
-                      </div>
-                      <div className="w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
-                        <span className="text-xs">✕</span>
-                      </div>
-                      <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
-                        <span className="text-xs text-primary-foreground">✓</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Third Portfolio Card */}
-                <div className="absolute bottom-[5%] right-[5%] sm:right-[8%] w-[200px] sm:w-[240px] rounded-2xl overflow-hidden shadow-lg animate-slide-up stagger-3 bg-card border border-border">
-                  <img 
-                    src={projectRetailHub} 
-                    alt="RetailHub Project" 
-                    className="w-full h-[140px] sm:h-[160px] object-cover"
-                  />
-                  <div className="p-3">
-                    <p className="font-semibold">RetailHub</p>
-                    <p className="text-xs text-muted-foreground">E-commerce</p>
-                  </div>
-                  {/* Rating Badge */}
-                  <div className="absolute -top-3 -right-3 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/80 dark:to-orange-900/80 rounded-full px-3 py-1.5 shadow-lg flex items-center gap-1.5">
-                    <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
-                    <span className="text-sm font-bold text-amber-900 dark:text-amber-100">5.0</span>
-                  </div>
-                </div>
+              {/* CTA Button */}
+              <div className="pt-4">
+                <Link to="/contact">
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium group shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all">
+                    Get Started Today!
+                  </Button>
+                </Link>
               </div>
             </div>
             
-            {/* Bottom Stats Row */}
-            <div className="mt-12 sm:mt-16 flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12 lg:gap-16 animate-slide-up stagger-4">
-              {[
-                { value: "50+", label: "Happy Clients" },
-                { value: "5+", label: "Years Experience" },
-                { value: "24/7", label: "Support" }
-              ].map((stat) => (
-                <div key={stat.label} className="text-center lg:text-left">
-                  <p className="text-3xl sm:text-4xl font-bold">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
-                </div>
-              ))}
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+              <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
+                <ArrowRight className="h-5 w-5 text-primary rotate-90" />
+              </div>
             </div>
           </div>
         </section>
