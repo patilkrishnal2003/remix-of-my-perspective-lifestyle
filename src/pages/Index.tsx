@@ -6,7 +6,8 @@ import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, Mess
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/data/blogPosts";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { type Testimonial } from "@/components/TestimonialCard";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
@@ -76,43 +77,91 @@ const Index = () => {
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
-      quote: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional.",
-      author: "Jennifer Martinez",
-      role: "CEO, RetailHub",
-      rating: 5
+      id: "1",
+      platform: "google",
+      title: "Exceptional delivery!",
+      rating: 5,
+      snippet: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional and the team was incredibly professional throughout.",
+      readMoreUrl: "#",
+      user: {
+        name: "Jennifer Martinez",
+        role: "CEO, RetailHub",
+        avatar: "https://ui-avatars.com/api/?name=Jennifer+Martinez&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
     },
     {
-      quote: "The team understood our vision from day one. Our mobile app has received outstanding user reviews.",
-      author: "David Kim",
-      role: "Founder, HealthTrack Pro",
-      rating: 5
+      id: "2",
+      platform: "google",
+      title: "Outstanding user experience!",
+      rating: 5,
+      snippet: "The team understood our vision from day one. Our mobile app has received outstanding user reviews and downloads have exceeded our expectations.",
+      readMoreUrl: "#",
+      user: {
+        name: "David Kim",
+        role: "Founder, HealthTrack Pro",
+        avatar: "https://ui-avatars.com/api/?name=David+Kim&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
     },
     {
-      quote: "Professional, communicative, and technically excellent. Advora is our go-to development partner.",
-      author: "Sarah Thompson",
-      role: "CTO, FinanceFlow",
-      rating: 5
+      id: "3",
+      platform: "google",
+      title: "Go-to development partner!",
+      rating: 5,
+      snippet: "Professional, communicative, and technically excellent. Advora is our go-to development partner for all our digital projects.",
+      readMoreUrl: "#",
+      user: {
+        name: "Sarah Thompson",
+        role: "CTO, FinanceFlow",
+        avatar: "https://ui-avatars.com/api/?name=Sarah+Thompson&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
     },
     {
-      quote: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months.",
-      author: "Marcus Chen",
-      role: "Director, TechCorp",
-      rating: 5
+      id: "4",
+      platform: "google",
+      title: "Revenue increased by 40%!",
+      rating: 5,
+      snippet: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months of the launch.",
+      readMoreUrl: "#",
+      user: {
+        name: "Marcus Chen",
+        role: "Director, TechCorp",
+        avatar: "https://ui-avatars.com/api/?name=Marcus+Chen&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
     },
     {
-      quote: "Outstanding work on our learning management system. The user experience is intuitive and students love it.",
-      author: "Dr. Amanda Foster",
-      role: "Dean, EduLearn Academy",
-      rating: 5
+      id: "5",
+      platform: "google",
+      title: "Students love it!",
+      rating: 5,
+      snippet: "Outstanding work on our learning management system. The user experience is intuitive and students love it. Highly recommend their services!",
+      readMoreUrl: "#",
+      user: {
+        name: "Dr. Amanda Foster",
+        role: "Dean, EduLearn Academy",
+        avatar: "https://ui-avatars.com/api/?name=Amanda+Foster&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
     },
     {
-      quote: "Advora's team went above and beyond. They delivered features we didn't even know we needed.",
-      author: "Robert Patel",
-      role: "Founder, StartupX",
-      rating: 5
-    }
+      id: "6",
+      platform: "google",
+      title: "Above and beyond!",
+      rating: 5,
+      snippet: "Advora's team went above and beyond. They delivered features we didn't even know we needed but have become essential to our operations.",
+      readMoreUrl: "#",
+      user: {
+        name: "Robert Patel",
+        role: "Founder, StartupX",
+        avatar: "https://ui-avatars.com/api/?name=Robert+Patel&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
+    },
   ];
 
   const featuredPosts = getFeaturedPosts().slice(0, 3);
@@ -411,12 +460,8 @@ const Index = () => {
 
         {/* Testimonials Section */}
         <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10 sm:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-              <p className="text-lg sm:text-xl text-muted-foreground">Don't just take our word for it</p>
-            </div>
-            <TestimonialCarousel testimonials={testimonials} />
+          <div className="px-4 sm:px-6 lg:px-8">
+            <TestimonialsSection testimonials={testimonials} />
             <div className="text-center mt-10 sm:mt-12">
               <Link to="/portfolio">
                 <Button variant="outline" className="rounded-full px-8 py-6">
