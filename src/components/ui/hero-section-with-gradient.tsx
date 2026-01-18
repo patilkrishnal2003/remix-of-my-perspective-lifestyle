@@ -228,7 +228,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-background pb-48">
+    <section className="relative min-h-[85vh] bg-background pb-48">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -245,23 +245,12 @@ export default function HeroSectionWithGradient() {
       <CircularOrbits />
 
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedGroup
             preset="blur-slide"
             className="flex flex-col items-center gap-6"
           >
-            {/* Badge */}
-            <motion.div
-              variants={transitionVariants.item}
-              className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/80 backdrop-blur-sm px-4 py-2 text-sm text-muted-foreground"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
-              </span>
-              Advora: Design Systems for the Visionary Web
-            </motion.div>
 
             {/* Headline */}
             <motion.h1
