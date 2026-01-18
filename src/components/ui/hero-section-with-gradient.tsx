@@ -228,7 +228,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background pb-32">
+    <section className="relative min-h-screen bg-background pb-48">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -319,7 +319,7 @@ export default function HeroSectionWithGradient() {
       </div>
 
       {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
-      <div className="relative z-20 w-full flex justify-center px-4 sm:px-6 lg:px-8 -mt-16">
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[70%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
