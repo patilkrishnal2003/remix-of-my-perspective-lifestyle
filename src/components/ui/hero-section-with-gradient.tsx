@@ -277,9 +277,9 @@ export default function HeroSectionWithGradient() {
             {/* Description */}
             <motion.p
               variants={transitionVariants.item}
-              className="max-w-2xl text-lg sm:text-xl text-muted-foreground leading-relaxed"
+              className="max-w-4xl text-lg sm:text-xl text-muted-foreground leading-relaxed whitespace-nowrap"
             >
-              Whether you're designing interfaces or building full-scale apps, our tools empower creators to move fast, stay consistent, and ship beautiful products — every time.
+              Empowering creators to move fast, stay consistent, and ship beautiful products — every time.
             </motion.p>
 
             {/* CTA Buttons */}
