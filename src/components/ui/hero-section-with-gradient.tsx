@@ -97,11 +97,11 @@ const OrbitingIcon = ({
 
 // Circular orbits with icons component
 const CircularOrbits = () => {
-  // Define orbits with their icons
+  // Define orbits with their icons - larger radii to clear center content
   const orbits = [
     { 
-      radius: 180, 
-      duration: 20, 
+      radius: 320, 
+      duration: 25, 
       direction: 1,
       icons: [
         { Icon: Code, startAngle: 0 },
@@ -110,8 +110,8 @@ const CircularOrbits = () => {
       ]
     },
     { 
-      radius: 280, 
-      duration: 30, 
+      radius: 450, 
+      duration: 35, 
       direction: -1,
       icons: [
         { Icon: Cpu, startAngle: 45 },
@@ -121,8 +121,8 @@ const CircularOrbits = () => {
       ]
     },
     { 
-      radius: 380, 
-      duration: 40, 
+      radius: 580, 
+      duration: 45, 
       direction: 1,
       icons: [
         { Icon: Layers, startAngle: 30 },
