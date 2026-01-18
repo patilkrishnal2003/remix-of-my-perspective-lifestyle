@@ -6,6 +6,20 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import { 
+  Code, 
+  Database, 
+  Cloud, 
+  Cpu, 
+  Monitor, 
+  Smartphone, 
+  Globe, 
+  Zap, 
+  Layers, 
+  Settings, 
+  Palette, 
+  Sparkles 
+} from "lucide-react";
 
 const transitionVariants = {
   item: {
@@ -25,6 +39,91 @@ const transitionVariants = {
       },
     },
   },
+};
+
+// Circular rotating icons component
+const CircularIcons = () => {
+  const icons = [
+    { Icon: Code, ring: 1, angle: 0 },
+    { Icon: Database, ring: 1, angle: 90 },
+    { Icon: Cloud, ring: 1, angle: 180 },
+    { Icon: Cpu, ring: 1, angle: 270 },
+    { Icon: Monitor, ring: 2, angle: 30 },
+    { Icon: Smartphone, ring: 2, angle: 90 },
+    { Icon: Globe, ring: 2, angle: 150 },
+    { Icon: Zap, ring: 2, angle: 210 },
+    { Icon: Layers, ring: 2, angle: 270 },
+    { Icon: Settings, ring: 2, angle: 330 },
+    { Icon: Palette, ring: 3, angle: 45 },
+    { Icon: Sparkles, ring: 3, angle: 135 },
+    { Icon: Code, ring: 3, angle: 225 },
+    { Icon: Database, ring: 3, angle: 315 },
+  ];
+
+  const ringConfigs = [
+    { size: 300, duration: 60, direction: 1 },   // Inner ring - clockwise
+    { size: 450, duration: 80, direction: -1 },  // Middle ring - counter-clockwise
+    { size: 600, duration: 100, direction: 1 },  // Outer ring - clockwise
+  ];
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      {/* Spinning rings with icons */}
+      {ringConfigs.map((config, ringIndex) => (
+        <motion.div
+          key={ringIndex}
+          className="absolute rounded-full border border-primary/10"
+          style={{
+            width: config.size,
+            height: config.size,
+          }}
+          animate={{ rotate: config.direction * 360 }}
+          transition={{
+            duration: config.duration,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {/* Icons on this ring */}
+          {icons
+            .filter((icon) => icon.ring === ringIndex + 1)
+            .map((iconData, iconIndex) => {
+              const { Icon, angle } = iconData;
+              const radius = config.size / 2;
+              const rad = (angle * Math.PI) / 180;
+              const x = Math.cos(rad) * radius;
+              const y = Math.sin(rad) * radius;
+
+              return (
+                <motion.div
+                  key={iconIndex}
+                  className="absolute flex items-center justify-center"
+                  style={{
+                    left: "50%",
+                    top: "50%",
+                    transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
+                  }}
+                  // Counter-rotate icons to keep them upright
+                  animate={{ rotate: -config.direction * 360 }}
+                  transition={{
+                    duration: config.duration,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-background/80 backdrop-blur-sm border border-border/50 shadow-lg flex items-center justify-center">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary/70" />
+                  </div>
+                </motion.div>
+              );
+            })}
+        </motion.div>
+      ))}
+
+      {/* Center glow */}
+      <div className="absolute w-32 h-32 rounded-full bg-primary/20 blur-3xl" />
+    </div>
+  );
 };
 
 export default function HeroSectionWithGradient() {
@@ -52,6 +151,9 @@ export default function HeroSectionWithGradient() {
 
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+      {/* Circular Rotating Icons */}
+      <CircularIcons />
 
       {/* Main Content */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
@@ -122,9 +224,9 @@ export default function HeroSectionWithGradient() {
           <BrandsGrid />
         </div>
 
-        {/* Decorative Elements */}
+        {/* Decorative Blurs */}
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse delay-1000" />
+        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
     </section>
   );
