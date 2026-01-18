@@ -353,7 +353,7 @@ const Index = () => {
                   className="group flex flex-col items-center gap-2 flex-shrink-0"
                 >
                   <div 
-                    className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                    className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
                     style={{ 
                       boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
                     }}
@@ -384,7 +384,7 @@ const Index = () => {
                   className="group flex flex-col items-center gap-2 flex-shrink-0"
                 >
                   <div 
-                    className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                    className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
                     style={{ 
                       boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
                     }}
