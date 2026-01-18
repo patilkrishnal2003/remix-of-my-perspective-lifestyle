@@ -228,100 +228,104 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] bg-background pb-48">
-      {/* Gradient Background */}
-      <div
-        ref={gradientRef}
-        className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-background"
-      />
-      
-      {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+    <>
+      {/* Hero Section */}
+      <section className="relative min-h-[85vh] bg-background overflow-hidden">
+        {/* Gradient Background */}
+        <div
+          ref={gradientRef}
+          className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-background"
+        />
+        
+        {/* Radial Gradient Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-      {/* Circular Orbiting Icons */}
-      <CircularOrbits />
+        {/* Circular Orbiting Icons */}
+        <CircularOrbits />
 
-      {/* Main Content */}
-      <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <AnimatedGroup
-            preset="blur-slide"
-            className="flex flex-col items-center gap-6"
-          >
-
-            {/* Headline */}
-            <motion.h1
-              variants={transitionVariants.item}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+        {/* Main Content */}
+        <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="max-w-4xl mx-auto text-center">
+            <AnimatedGroup
+              preset="blur-slide"
+              className="flex flex-col items-center gap-6"
             >
-              <span className="block text-foreground">Inspiring Digital</span>
-              <span className="block bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
-                Innovators
-              </span>
-            </motion.h1>
+              {/* Headline */}
+              <motion.h1
+                variants={transitionVariants.item}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+              >
+                <span className="block text-foreground">Inspiring Digital</span>
+                <span className="block bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
+                  Innovators
+                </span>
+              </motion.h1>
 
-            {/* Description */}
-            <motion.p
-              variants={transitionVariants.item}
-              className="max-w-4xl text-lg sm:text-xl text-muted-foreground leading-relaxed whitespace-nowrap"
-            >
-              Empowering creators to move fast, stay consistent, and ship beautiful products — every time.
-            </motion.p>
+              {/* Description */}
+              <motion.p
+                variants={transitionVariants.item}
+                className="max-w-4xl text-lg sm:text-xl text-muted-foreground leading-relaxed whitespace-nowrap"
+              >
+                Empowering creators to move fast, stay consistent, and ship beautiful products — every time.
+              </motion.p>
 
-            {/* CTA Buttons */}
-            <motion.div
-              variants={transitionVariants.item}
-              className="flex flex-col sm:flex-row items-center gap-4 pt-4"
-            >
-              <Link to="/contact">
-                <Button
-                  size="lg"
-                  className="rounded-full px-8 py-6 text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
-                >
-                  Start Building
-                </Button>
-              </Link>
-              <Link to="/services">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full px-8 py-6 text-base font-medium"
-                >
-                  Request a demo
-                </Button>
-              </Link>
-            </motion.div>
-          </AnimatedGroup>
-        </div>
-
-        {/* Decorative Blurs */}
-        <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
-      </div>
-
-      {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-4xl"
-        >
-          <div className="relative rounded-2xl overflow-hidden border-2 border-border bg-background p-2 shadow-2xl shadow-primary/10">
-            <div className="rounded-xl overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop"
-                alt="Dashboard preview"
-                className="w-full h-auto aspect-[16/9] object-cover"
-              />
-            </div>
+              {/* CTA Buttons */}
+              <motion.div
+                variants={transitionVariants.item}
+                className="flex flex-col sm:flex-row items-center gap-4 pt-4"
+              >
+                <Link to="/contact">
+                  <Button
+                    size="lg"
+                    className="rounded-full px-8 py-6 text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                  >
+                    Start Building
+                  </Button>
+                </Link>
+                <Link to="/services">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="rounded-full px-8 py-6 text-base font-medium"
+                  >
+                    Request a demo
+                  </Button>
+                </Link>
+              </motion.div>
+            </AnimatedGroup>
           </div>
-        </motion.div>
+
+          {/* Decorative Blurs */}
+          <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
+        </div>
+      </section>
+
+      {/* Overlapping Image Section - Positioned outside hero, pulls up visually */}
+      <div className="relative z-20 -mt-32 pb-16">
+        <div className="flex justify-center px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+            className="w-full max-w-4xl"
+          >
+            <div className="relative rounded-2xl overflow-hidden border-2 border-border bg-background p-2 shadow-2xl shadow-primary/10">
+              <div className="rounded-xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop"
+                  alt="Dashboard preview"
+                  className="w-full h-auto aspect-[16/9] object-cover"
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </section>
+    </>
   );
 }
 
