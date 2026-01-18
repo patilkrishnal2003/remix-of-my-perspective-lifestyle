@@ -348,10 +348,10 @@ const Index = () => {
               {[...techStackRow1, ...techStackRow1, ...techStackRow1, ...techStackRow1].map((tech, index) => (
                 <div
                   key={`row1-${index}`}
-                  className="group flex flex-col items-center gap-2 flex-shrink-0"
+                  className="group flex-shrink-0"
                 >
                   <div 
-                    className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                    className="w-16 h-16 bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
                     style={{ 
                       boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
                     }}
@@ -369,7 +369,6 @@ const Index = () => {
                       style={{ color: tech.color }}
                     />
                   </div>
-                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
                 </div>
               ))}
             </div>
@@ -379,10 +378,10 @@ const Index = () => {
               {[...techStackRow2, ...techStackRow2, ...techStackRow2, ...techStackRow2].map((tech, index) => (
                 <div
                   key={`row2-${index}`}
-                  className="group flex flex-col items-center gap-2 flex-shrink-0"
+                  className="group flex-shrink-0"
                 >
                   <div 
-                    className="w-16 h-16 rounded-full bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                    className="w-16 h-16 bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
                     style={{ 
                       boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
                     }}
@@ -400,7 +399,6 @@ const Index = () => {
                       style={{ color: tech.color }}
                     />
                   </div>
-                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
                 </div>
               ))}
             </div>
