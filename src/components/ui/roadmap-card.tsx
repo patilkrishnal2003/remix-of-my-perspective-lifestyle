@@ -22,7 +22,7 @@ export function RoadmapCard({
   items,
 }: RoadmapCardProps) {
   return (
-    <Card className="w-full max-w-4xl mx-auto">
+    <Card className="w-full mx-auto">
       <CardHeader className="text-center">
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
