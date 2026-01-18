@@ -129,21 +129,86 @@ const Index = () => {
                   <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.4" />
                   <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" />
                 </linearGradient>
+                {/* Glowing dot filter */}
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
               </defs>
               
               {/* Left side circuit lines - animated */}
               <g stroke="url(#circuit-gradient)" strokeWidth="2" fill="none">
                 {/* Bottom left laptop area */}
-                <path d="M 0 70% L 8% 70% L 8% 55% L 15% 55%" className="animate-draw-line" />
-                <path d="M 15% 55% L 15% 45% L 25% 45%" className="animate-draw-line-delay-1" />
+                <path id="path-left-1" d="M 0 70% L 8% 70% L 8% 55% L 15% 55%" className="animate-draw-line" />
+                <path id="path-left-2" d="M 15% 55% L 15% 45% L 25% 45%" className="animate-draw-line-delay-1" />
                 
                 {/* Top right circuit */}
-                <path d="M 75% 0 L 75% 8% L 85% 8% L 85% 18%" className="animate-draw-line-delay-1" />
-                <path d="M 85% 18% L 92% 18% L 92% 30% L 100% 30%" className="animate-draw-line-delay-2" />
+                <path id="path-right-1" d="M 75% 0 L 75% 8% L 85% 8% L 85% 18%" className="animate-draw-line-delay-1" />
+                <path id="path-right-2" d="M 85% 18% L 92% 18% L 92% 30% L 100% 30%" className="animate-draw-line-delay-2" />
                 
                 {/* Bottom right circuit */}
-                <path d="M 100% 75% L 88% 75% L 88% 65% L 80% 65%" className="animate-draw-line-reverse" />
-                <path d="M 80% 65% L 80% 80% L 70% 80% L 70% 90%" className="animate-draw-line-delay-3" />
+                <path id="path-bottom-1" d="M 100% 75% L 88% 75% L 88% 65% L 80% 65%" className="animate-draw-line-reverse" />
+                <path id="path-bottom-2" d="M 80% 65% L 80% 80% L 70% 80% L 70% 90%" className="animate-draw-line-delay-3" />
+              </g>
+              
+              {/* Traveling data dots */}
+              <g filter="url(#glow)">
+                {/* Dot traveling on left path 1 */}
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.9">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="2s">
+                    <mpath href="#path-left-1" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Dot traveling on left path 2 */}
+                <circle r="3" fill="hsl(var(--primary))" opacity="0.8">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="2.5s">
+                    <mpath href="#path-left-2" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Dot traveling on right path 1 */}
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.9">
+                  <animateMotion dur="2.8s" repeatCount="indefinite" begin="2.2s">
+                    <mpath href="#path-right-1" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Dot traveling on right path 2 */}
+                <circle r="3" fill="hsl(var(--primary))" opacity="0.8">
+                  <animateMotion dur="3.2s" repeatCount="indefinite" begin="2.8s">
+                    <mpath href="#path-right-2" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Dot traveling on bottom path 1 */}
+                <circle r="4" fill="hsl(var(--primary))" opacity="0.85">
+                  <animateMotion dur="2.6s" repeatCount="indefinite" begin="3s">
+                    <mpath href="#path-bottom-1" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Dot traveling on bottom path 2 */}
+                <circle r="3" fill="hsl(var(--primary))" opacity="0.75">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="3.5s">
+                    <mpath href="#path-bottom-2" />
+                  </animateMotion>
+                </circle>
+                
+                {/* Second wave of dots for denser effect */}
+                <circle r="3" fill="hsl(var(--primary))" opacity="0.6">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="3.5s">
+                    <mpath href="#path-left-1" />
+                  </animateMotion>
+                </circle>
+                <circle r="3" fill="hsl(var(--primary))" opacity="0.6">
+                  <animateMotion dur="2.8s" repeatCount="indefinite" begin="4s">
+                    <mpath href="#path-right-1" />
+                  </animateMotion>
+                </circle>
               </g>
               
               {/* Circuit nodes - appear after lines draw */}
