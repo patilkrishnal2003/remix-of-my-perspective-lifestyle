@@ -128,33 +128,34 @@ const Index = () => {
             preserveAspectRatio="xMidYMid slice" 
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Left side pipelines: Code card → Laptop → Center */}
+            {/* Left side pipelines: Code card → Laptop → CPU → Center */}
             <g stroke="#cbd5e1" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
               {/* From code card bottom to laptop */}
               <path d="M 120,340 L 120,520 L 200,520" opacity="0.6" />
               
-              {/* From laptop to center */}
-              <path d="M 280,520 L 380,520 L 380,450 L 520,450" opacity="0.5" />
-              <path d="M 280,480 L 340,480 L 340,400 L 480,400" opacity="0.5" />
+              {/* From laptop to CPU (bottom left) */}
+              <path d="M 280,520 L 340,520 L 340,680 L 280,680" opacity="0.6" />
+              
+              {/* From CPU toward center */}
+              <path d="M 340,680 L 500,680 L 500,550 L 620,550" opacity="0.5" />
+              
+              {/* From laptop toward center */}
+              <path d="M 280,480 L 380,480 L 380,450 L 520,450" opacity="0.5" />
               
               {/* Branch lines toward center */}
               <path d="M 520,450 L 620,450" opacity="0.4" />
-              <path d="M 480,400 L 580,400" opacity="0.4" />
+              <path d="M 620,550 L 700,550" opacity="0.4" />
             </g>
             
-            {/* Right side pipelines: CPU → Server → Cloud → Center */}
+            {/* Right side pipelines: Server → Cloud → Center */}
             <g stroke="#cbd5e1" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* From CPU to Server */}
-              <path d="M 1280,220 L 1280,360 L 1340,360" opacity="0.6" />
-              <path d="M 1320,200 L 1320,320 L 1360,320" opacity="0.5" />
-              
               {/* From Server to Cloud */}
-              <path d="M 1340,420 L 1340,560 L 1260,560" opacity="0.6" />
-              <path d="M 1300,400 L 1300,520 L 1220,520" opacity="0.5" />
+              <path d="M 1340,360 L 1340,480 L 1260,480" opacity="0.6" />
+              <path d="M 1300,380 L 1300,460 L 1220,460" opacity="0.5" />
               
               {/* From right icons toward center */}
-              <path d="M 1200,360 L 1050,360 L 1050,420 L 900,420" opacity="0.5" />
-              <path d="M 1180,400 L 1000,400 L 1000,450 L 850,450" opacity="0.5" />
+              <path d="M 1180,360 L 1050,360 L 1050,420 L 900,420" opacity="0.5" />
+              <path d="M 1160,400 L 1000,400 L 1000,450 L 850,450" opacity="0.5" />
               
               {/* Branch lines toward center */}
               <path d="M 900,420 L 820,420" opacity="0.4" />
@@ -168,22 +169,23 @@ const Index = () => {
               <circle cx="120" cy="520" r="3" opacity="0.6" />
               <circle cx="200" cy="520" r="3" opacity="0.5" />
               <circle cx="280" cy="520" r="3" opacity="0.6" />
-              <circle cx="380" cy="520" r="2.5" opacity="0.5" />
-              <circle cx="380" cy="450" r="3" opacity="0.5" />
-              <circle cx="520" cy="450" r="3" opacity="0.6" />
-              <circle cx="620" cy="450" r="2.5" opacity="0.4" />
+              <circle cx="340" cy="520" r="2.5" opacity="0.5" />
+              <circle cx="340" cy="680" r="3" opacity="0.6" />
+              <circle cx="280" cy="680" r="3" opacity="0.6" />
+              <circle cx="500" cy="680" r="2.5" opacity="0.5" />
+              <circle cx="500" cy="550" r="3" opacity="0.5" />
+              <circle cx="620" cy="550" r="3" opacity="0.5" />
+              <circle cx="700" cy="550" r="2.5" opacity="0.4" />
               <circle cx="280" cy="480" r="3" opacity="0.5" />
-              <circle cx="340" cy="400" r="2.5" opacity="0.5" />
-              <circle cx="480" cy="400" r="3" opacity="0.5" />
+              <circle cx="380" cy="450" r="2.5" opacity="0.5" />
+              <circle cx="520" cy="450" r="3" opacity="0.5" />
+              <circle cx="620" cy="450" r="2.5" opacity="0.4" />
               
               {/* Right side nodes */}
-              <circle cx="1280" cy="220" r="3" opacity="0.6" />
-              <circle cx="1280" cy="360" r="3" opacity="0.5" />
               <circle cx="1340" cy="360" r="3" opacity="0.6" />
-              <circle cx="1340" cy="420" r="3" opacity="0.5" />
-              <circle cx="1340" cy="560" r="3" opacity="0.6" />
-              <circle cx="1260" cy="560" r="3" opacity="0.5" />
-              <circle cx="1200" cy="360" r="3" opacity="0.5" />
+              <circle cx="1340" cy="480" r="3" opacity="0.5" />
+              <circle cx="1260" cy="480" r="3" opacity="0.6" />
+              <circle cx="1180" cy="360" r="3" opacity="0.5" />
               <circle cx="1050" cy="360" r="2.5" opacity="0.5" />
               <circle cx="1050" cy="420" r="3" opacity="0.5" />
               <circle cx="900" cy="420" r="3" opacity="0.6" />
@@ -204,9 +206,8 @@ const Index = () => {
             </div>
           </div>
           
-          {/* Right Side Elements */}
-          {/* CPU/Chip Icon - top right */}
-          <div className="absolute right-[6%] top-[16%] hidden lg:block z-10 group">
+          {/* CPU/Chip Icon - bottom left area */}
+          <div className="absolute left-[18%] bottom-[18%] hidden lg:block z-10 group">
             <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
               <Cpu className="w-14 h-14 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
