@@ -337,9 +337,6 @@ const Index = () => {
         {/* Tech Stack Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              ⚡ Technologies
-            </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
@@ -480,9 +477,6 @@ const Index = () => {
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-                🚀 Our Process
-              </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 A transparent, collaborative process designed for your success
@@ -490,7 +484,6 @@ const Index = () => {
             </div>
             
             <RoadmapCard
-              title="Our Development Process"
               description="From idea to launch, we guide you through every step"
               items={[
                 {
@@ -522,32 +515,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* FAQ Preview */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-muted-foreground">Quick answers to common questions</p>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
-              {[
-                { q: "How long does a typical project take?", a: "Project timelines vary based on scope. Most web applications take 8-16 weeks, while simpler websites can be completed in 4-6 weeks." },
-                { q: "What is your pricing model?", a: "We offer flexible pricing including fixed-price projects and time & materials arrangements. We'll recommend the best approach based on your needs." },
-                { q: "Do you provide ongoing support?", a: "Yes! We offer maintenance and support packages to keep your application running smoothly after launch." },
-                { q: "What technologies do you specialize in?", a: "We specialize in React, Node.js, React Native, and cloud platforms like AWS and Azure. We choose the best tech for each project." }
-              ].map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`} className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50">
-                  <AccordionTrigger className="text-left font-bold hover:no-underline py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
