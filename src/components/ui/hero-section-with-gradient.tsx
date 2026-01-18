@@ -228,7 +228,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background">
+    <section className="relative min-h-screen overflow-hidden bg-background pb-32">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -317,6 +317,24 @@ export default function HeroSectionWithGradient() {
         <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
+
+      {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[70%] w-full max-w-4xl px-4 sm:px-6 lg:px-8 z-20"
+      >
+        <div className="relative rounded-xl overflow-hidden shadow-2xl shadow-primary/10 border border-border/50 bg-background">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop"
+            alt="Dashboard preview"
+            className="w-full h-auto aspect-[16/9] object-cover"
+          />
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+        </div>
+      </motion.div>
     </section>
   );
 }
