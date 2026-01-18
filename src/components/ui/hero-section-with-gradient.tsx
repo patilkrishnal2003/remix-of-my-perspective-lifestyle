@@ -18,7 +18,16 @@ import {
   Layers, 
   Settings, 
   Palette, 
-  Sparkles 
+  Sparkles,
+  Terminal,
+  Server,
+  Wifi,
+  Shield,
+  Lock,
+  FileCode,
+  GitBranch,
+  Boxes,
+  Braces,
 } from "lucide-react";
 
 const transitionVariants = {
@@ -105,8 +114,11 @@ const CircularOrbits = () => {
       direction: 1,
       icons: [
         { Icon: Code, startAngle: 0 },
-        { Icon: Database, startAngle: 120 },
-        { Icon: Cloud, startAngle: 240 },
+        { Icon: Database, startAngle: 60 },
+        { Icon: Cloud, startAngle: 120 },
+        { Icon: Terminal, startAngle: 180 },
+        { Icon: Server, startAngle: 240 },
+        { Icon: Wifi, startAngle: 300 },
       ]
     },
     { 
@@ -114,10 +126,14 @@ const CircularOrbits = () => {
       duration: 35, 
       direction: -1,
       icons: [
-        { Icon: Cpu, startAngle: 45 },
-        { Icon: Monitor, startAngle: 135 },
-        { Icon: Globe, startAngle: 225 },
-        { Icon: Zap, startAngle: 315 },
+        { Icon: Cpu, startAngle: 0 },
+        { Icon: Monitor, startAngle: 45 },
+        { Icon: Globe, startAngle: 90 },
+        { Icon: Zap, startAngle: 135 },
+        { Icon: Shield, startAngle: 180 },
+        { Icon: Lock, startAngle: 225 },
+        { Icon: FileCode, startAngle: 270 },
+        { Icon: GitBranch, startAngle: 315 },
       ]
     },
     { 
@@ -125,10 +141,16 @@ const CircularOrbits = () => {
       duration: 45, 
       direction: 1,
       icons: [
-        { Icon: Layers, startAngle: 30 },
-        { Icon: Settings, startAngle: 120 },
-        { Icon: Palette, startAngle: 210 },
-        { Icon: Sparkles, startAngle: 300 },
+        { Icon: Layers, startAngle: 0 },
+        { Icon: Settings, startAngle: 36 },
+        { Icon: Palette, startAngle: 72 },
+        { Icon: Sparkles, startAngle: 108 },
+        { Icon: Boxes, startAngle: 144 },
+        { Icon: Braces, startAngle: 180 },
+        { Icon: Smartphone, startAngle: 216 },
+        { Icon: Code, startAngle: 252 },
+        { Icon: Database, startAngle: 288 },
+        { Icon: Cloud, startAngle: 324 },
       ]
     },
   ];
