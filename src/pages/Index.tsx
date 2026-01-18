@@ -148,7 +148,7 @@ const Index = () => {
                     { name: "RetailHub", logo: logoRetailhub },
                     { name: "EduLearn", logo: logoEdulearn }
                   ].map((company) => (
-                    <div key={`${setIndex}-${company.name}`} className="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 flex-shrink-0">
+                    <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0">
                       <img 
                         src={company.logo} 
                         alt={company.name}
