@@ -174,7 +174,7 @@ const Index = () => {
                 <div
                   className="group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] h-full"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                  <div className="w-14 h-14 rounded-none bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
                     <service.icon className="h-7 w-7 text-accent" />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
