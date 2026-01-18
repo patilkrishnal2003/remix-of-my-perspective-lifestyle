@@ -193,12 +193,12 @@ const Index = () => {
           
           {/* Left Side Elements */}
           {/* Code Editor Card - floating slow animation */}
-          <div className="absolute left-[3%] top-[20%] hidden lg:block z-10" style={{ animation: 'floatSlow 6s ease-in-out infinite' }}>
+          <div className="absolute left-[3%] top-[20%] hidden lg:block z-10">
             <CodeTypingAnimation />
           </div>
           
           {/* Laptop Icon - below code card, connected by pipeline */}
-          <div className="absolute left-[8%] top-[52%] hidden md:block z-10 group" style={{ animation: 'floatSlower 8s ease-in-out infinite' }}>
+          <div className="absolute left-[8%] top-[52%] hidden md:block z-10 group">
             <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
               <Laptop className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
@@ -206,28 +206,28 @@ const Index = () => {
           
           {/* Right Side Elements */}
           {/* CPU/Chip Icon - top right */}
-          <div className="absolute right-[6%] top-[16%] hidden lg:block z-10 group" style={{ animation: 'floatSlow 7s ease-in-out infinite' }}>
+          <div className="absolute right-[6%] top-[16%] hidden lg:block z-10 group">
             <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
               <Cpu className="w-14 h-14 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Server/Database Icon - mid right, below CPU */}
-          <div className="absolute right-[3%] top-[38%] hidden lg:block z-10 group" style={{ animation: 'floatSlower 9s ease-in-out infinite' }}>
+          <div className="absolute right-[3%] top-[38%] hidden lg:block z-10 group">
             <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
               <Database className="w-10 h-10 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Cloud Icon - lower right, below server */}
-          <div className="absolute right-[8%] top-[58%] hidden lg:block z-10 group" style={{ animation: 'floatSlow 8s ease-in-out infinite' }}>
+          <div className="absolute right-[8%] top-[58%] hidden lg:block z-10 group">
             <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
               <Cloud className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
           </div>
           
           {/* Monitor Icon - far right edge */}
-          <div className="absolute right-[2%] top-[48%] hidden xl:block z-10 group" style={{ animation: 'floatSlower 7s ease-in-out infinite' }}>
+          <div className="absolute right-[2%] top-[48%] hidden xl:block z-10 group">
             <div className="p-2 rounded-lg bg-white shadow-md border border-slate-200 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:border-primary/30">
               <Monitor className="w-8 h-8 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
             </div>
