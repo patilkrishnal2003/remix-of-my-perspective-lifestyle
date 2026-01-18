@@ -85,7 +85,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
 
         {/* Carousel */}
         <div className="relative">
-          <div className="overflow-hidden px-4">
+          <div className="overflow-visible px-4 pt-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={idx}
