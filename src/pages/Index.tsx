@@ -121,124 +121,110 @@ const Index = () => {
       <main>
         {/* Hero Section - Light theme with circuit lines */}
         <section className="relative min-h-screen pt-20 sm:pt-24 pb-16 overflow-hidden bg-gradient-to-b from-white to-slate-50">
-          {/* Circuit/Pipeline SVG - Static lines connecting icons */}
+          {/* Circuit/Pipeline SVG - Static clean lines flowing left to right */}
           <svg 
             className="absolute inset-0 w-full h-full pointer-events-none" 
             viewBox="0 0 1440 900" 
             preserveAspectRatio="xMidYMid slice" 
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Left side pipelines: Code card → Laptop → CPU → Center */}
-            <g stroke="#cbd5e1" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* From code card bottom to laptop */}
-              <path d="M 120,340 L 120,520 L 200,520" opacity="0.6" />
+            {/* Left side pipeline: Code card → Laptop → CPU → Center */}
+            <g stroke="#94a3b8" strokeWidth="1" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              {/* Code card to Laptop */}
+              <path d="M 180,320 L 180,420 L 220,420" opacity="0.5" />
               
-              {/* From laptop to CPU (bottom left) */}
-              <path d="M 280,520 L 340,520 L 340,680 L 280,680" opacity="0.6" />
+              {/* Laptop to CPU */}
+              <path d="M 220,450 L 220,620 L 260,620" opacity="0.5" />
               
-              {/* From CPU toward center */}
-              <path d="M 340,680 L 500,680 L 500,550 L 620,550" opacity="0.5" />
+              {/* CPU toward center */}
+              <path d="M 320,620 L 480,620 L 480,500 L 620,500" opacity="0.4" />
               
-              {/* From laptop toward center */}
-              <path d="M 280,480 L 380,480 L 380,450 L 520,450" opacity="0.5" />
-              
-              {/* Branch lines toward center */}
-              <path d="M 520,450 L 620,450" opacity="0.4" />
-              <path d="M 620,550 L 700,550" opacity="0.4" />
+              {/* Laptop toward center (upper branch) */}
+              <path d="M 260,420 L 400,420 L 400,460 L 620,460" opacity="0.4" />
             </g>
             
-            {/* Right side pipelines: Server → Cloud → Center */}
-            <g stroke="#cbd5e1" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              {/* From Server to Cloud */}
-              <path d="M 1340,360 L 1340,480 L 1260,480" opacity="0.6" />
-              <path d="M 1300,380 L 1300,460 L 1220,460" opacity="0.5" />
+            {/* Right side pipeline: Database → Monitor → Cloud → Center */}
+            <g stroke="#94a3b8" strokeWidth="1" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              {/* Database to Monitor */}
+              <path d="M 1260,280 L 1260,400 L 1220,400" opacity="0.5" />
+              
+              {/* Monitor to Cloud */}
+              <path d="M 1220,440 L 1220,560 L 1260,560" opacity="0.5" />
               
               {/* From right icons toward center */}
-              <path d="M 1180,360 L 1050,360 L 1050,420 L 900,420" opacity="0.5" />
-              <path d="M 1160,400 L 1000,400 L 1000,450 L 850,450" opacity="0.5" />
-              
-              {/* Branch lines toward center */}
-              <path d="M 900,420 L 820,420" opacity="0.4" />
-              <path d="M 850,450 L 780,450" opacity="0.4" />
+              <path d="M 1180,400 L 1000,400 L 1000,460 L 820,460" opacity="0.4" />
+              <path d="M 1180,560 L 1000,560 L 1000,500 L 820,500" opacity="0.4" />
             </g>
             
-            {/* Small circuit nodes/dots at key junctions */}
+            {/* Minimal circuit nodes at key junctions */}
             <g fill="#94a3b8">
-              {/* Left side nodes */}
-              <circle cx="120" cy="340" r="3" opacity="0.6" />
-              <circle cx="120" cy="520" r="3" opacity="0.6" />
-              <circle cx="200" cy="520" r="3" opacity="0.5" />
-              <circle cx="280" cy="520" r="3" opacity="0.6" />
-              <circle cx="340" cy="520" r="2.5" opacity="0.5" />
-              <circle cx="340" cy="680" r="3" opacity="0.6" />
-              <circle cx="280" cy="680" r="3" opacity="0.6" />
-              <circle cx="500" cy="680" r="2.5" opacity="0.5" />
-              <circle cx="500" cy="550" r="3" opacity="0.5" />
-              <circle cx="620" cy="550" r="3" opacity="0.5" />
-              <circle cx="700" cy="550" r="2.5" opacity="0.4" />
-              <circle cx="280" cy="480" r="3" opacity="0.5" />
-              <circle cx="380" cy="450" r="2.5" opacity="0.5" />
-              <circle cx="520" cy="450" r="3" opacity="0.5" />
-              <circle cx="620" cy="450" r="2.5" opacity="0.4" />
+              {/* Left side */}
+              <circle cx="180" cy="320" r="2" opacity="0.5" />
+              <circle cx="180" cy="420" r="2" opacity="0.5" />
+              <circle cx="220" cy="420" r="2" opacity="0.5" />
+              <circle cx="220" cy="620" r="2" opacity="0.5" />
+              <circle cx="320" cy="620" r="2" opacity="0.5" />
+              <circle cx="620" cy="460" r="2" opacity="0.4" />
+              <circle cx="620" cy="500" r="2" opacity="0.4" />
               
-              {/* Right side nodes */}
-              <circle cx="1340" cy="360" r="3" opacity="0.6" />
-              <circle cx="1340" cy="480" r="3" opacity="0.5" />
-              <circle cx="1260" cy="480" r="3" opacity="0.6" />
-              <circle cx="1180" cy="360" r="3" opacity="0.5" />
-              <circle cx="1050" cy="360" r="2.5" opacity="0.5" />
-              <circle cx="1050" cy="420" r="3" opacity="0.5" />
-              <circle cx="900" cy="420" r="3" opacity="0.6" />
-              <circle cx="820" cy="420" r="2.5" opacity="0.4" />
+              {/* Right side */}
+              <circle cx="1260" cy="280" r="2" opacity="0.5" />
+              <circle cx="1260" cy="400" r="2" opacity="0.5" />
+              <circle cx="1220" cy="400" r="2" opacity="0.5" />
+              <circle cx="1220" cy="560" r="2" opacity="0.5" />
+              <circle cx="1260" cy="560" r="2" opacity="0.5" />
+              <circle cx="820" cy="460" r="2" opacity="0.4" />
+              <circle cx="820" cy="500" r="2" opacity="0.4" />
             </g>
           </svg>
           
           {/* Left Side Elements */}
-          {/* Code Editor Card - floating slow animation */}
-          <div className="absolute left-[3%] top-[20%] hidden lg:block z-10">
+          {/* Code Editor Card - top left */}
+          <div className="absolute left-[4%] top-[18%] hidden lg:block z-10">
             <CodeTypingAnimation />
           </div>
           
-          {/* Laptop Icon - below code card, connected by pipeline */}
-          <div className="absolute left-[8%] top-[52%] hidden md:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Laptop className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
+          {/* Laptop Icon - below code card */}
+          <div className="absolute left-[6%] top-[45%] hidden md:block z-10 group">
+            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
+              <Laptop className="w-10 h-10 text-primary stroke-[1.5]" />
             </div>
           </div>
           
-          {/* CPU/Chip Icon - bottom left area */}
-          <div className="absolute left-[18%] bottom-[18%] hidden lg:block z-10 group">
-            <div className="p-4 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Cpu className="w-14 h-14 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
+          {/* CPU Icon - bottom left */}
+          <div className="absolute left-[10%] bottom-[20%] hidden lg:block z-10 group">
+            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
+              <Cpu className="w-10 h-10 text-primary stroke-[1.5]" />
             </div>
           </div>
           
-          {/* Server/Database Icon - mid right, below CPU */}
-          <div className="absolute right-[3%] top-[38%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Database className="w-10 h-10 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
+          {/* Right Side Elements - Stacked vertically */}
+          {/* Database Icon - top right */}
+          <div className="absolute right-[6%] top-[22%] hidden lg:block z-10 group">
+            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
+              <Database className="w-10 h-10 text-primary stroke-[1.5]" />
             </div>
           </div>
           
-          {/* Cloud Icon - lower right, below server */}
-          <div className="absolute right-[8%] top-[58%] hidden lg:block z-10 group">
-            <div className="p-3 rounded-xl bg-white shadow-lg border border-slate-200 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:border-primary/30">
-              <Cloud className="w-12 h-12 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
+          {/* Monitor Icon - middle right */}
+          <div className="absolute right-[8%] top-[42%] hidden lg:block z-10 group">
+            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
+              <Monitor className="w-10 h-10 text-primary stroke-[1.5]" />
             </div>
           </div>
           
-          {/* Monitor Icon - far right edge */}
-          <div className="absolute right-[2%] top-[48%] hidden xl:block z-10 group">
-            <div className="p-2 rounded-lg bg-white shadow-md border border-slate-200 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110 group-hover:border-primary/30">
-              <Monitor className="w-8 h-8 text-primary stroke-[1.5] transition-colors group-hover:text-primary/80" />
+          {/* Cloud Icon - bottom right */}
+          <div className="absolute right-[6%] bottom-[22%] hidden lg:block z-10 group">
+            <div className="p-3 rounded-xl bg-white shadow-md border border-slate-200/80 transition-all duration-300 group-hover:shadow-lg group-hover:scale-105 group-hover:border-primary/20">
+              <Cloud className="w-10 h-10 text-primary stroke-[1.5]" />
             </div>
           </div>
           
           {/* Hero Content - Centered */}
-          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 lg:pt-36">
-            <div className="text-center max-w-4xl mx-auto space-y-8">
+          <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-40">
+            <div className="text-center max-w-4xl mx-auto space-y-10">
               {/* Main Heading */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.15]">
                 <span className="block text-foreground">Inspiring Digital</span>
                 <span className="block text-primary">Innovators</span>
               </h1>
@@ -250,7 +236,7 @@ const Index = () => {
               </p>
               
               {/* CTA Button */}
-              <div className="pt-4">
+              <div className="pt-6">
                 <Link to="/contact">
                   <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium shadow-lg hover:shadow-xl transition-all">
                     Get Started
