@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
+import ResourcesTabSection from "@/components/ResourcesTabSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
@@ -451,6 +452,9 @@ const Index = () => {
             />
           </div>
         </section>
+
+        {/* Resources Tab Section */}
+        <ResourcesTabSection />
 
         {/* Testimonials Section */}
         <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
