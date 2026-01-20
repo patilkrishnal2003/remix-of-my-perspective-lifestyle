@@ -178,7 +178,7 @@ const Index = () => {
         <HeroSectionWithGradient />
 
         {/* Trusted By Section - Marquee */}
-        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16 overflow-hidden">
+        <section className="section-divider py-8 sm:py-12 pt-12 sm:pt-16 overflow-hidden relative z-30 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
           </div>
