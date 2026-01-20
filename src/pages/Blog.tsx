@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CTASection from "@/components/CTASection";
 import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -198,21 +199,11 @@ const Blog = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="rounded-3xl bg-accent text-accent-foreground p-12 md:p-16 text-center animate-scale-in">
-          <div className="max-w-3xl mx-auto space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">Have a project in mind?</h2>
-            <p className="text-xl opacity-90">
-              Let's turn your ideas into reality. Our team is ready to help.
-            </p>
-            <Link to="/contact">
-              <Button className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 rounded-full px-10 py-6 text-lg hover:scale-105 transition-all mt-4">
-                Get in Touch
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </section>
+        <CTASection
+          title="Have a project in mind?"
+          description="Let's turn your ideas into reality. Our team is ready to help."
+          buttonText="Get in Touch"
+        />
         </div>
       </main>
 

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
 import ResourcesTabSection from "@/components/ResourcesTabSection";
+import CTASection from "@/components/CTASection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
@@ -483,28 +484,7 @@ const Index = () => {
         {/* Resources Tab Section */}
         <ResourcesTabSection />
 
-        {/* CTA Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="relative rounded-[2.5rem] bg-gradient-to-br from-foreground via-foreground to-primary/80 text-background p-12 md:p-16 text-center animate-scale-in overflow-hidden">
-            {/* Decorative gradient orbs */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/30 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/20 rounded-full blur-2xl" />
-            <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-background/5 rounded-full blur-xl" />
-            
-            <div className="relative z-10 max-w-3xl mx-auto space-y-6">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Ready to start your project?</h2>
-              <p className="text-xl opacity-80 leading-relaxed">
-                Let's discuss how we can help bring your vision to life. Get a free consultation today.
-              </p>
-              <Link to="/contact">
-                <Button className="bg-background text-foreground hover:bg-background/90 rounded-full px-10 py-6 text-lg hover:scale-105 transition-all mt-4 shadow-lg">
-                  Get Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CTASection />
       </main>
 
       <Footer />

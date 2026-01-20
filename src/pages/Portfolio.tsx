@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CTASection from "@/components/CTASection";
 import { ArrowRight, Globe, Smartphone, Code, Star, ExternalLink, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -314,23 +315,11 @@ const Portfolio = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="rounded-[2.5rem] bg-accent text-accent-foreground p-12 md:p-16 text-center">
-            <div className="max-w-3xl mx-auto space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold">Want to be our next success story?</h2>
-              <p className="text-xl opacity-90">
-                Let's discuss your project and create something amazing together.
-              </p>
-              <Link to="/contact">
-                <Button className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 rounded-full px-10 py-6 text-lg hover:scale-105 transition-all mt-4">
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <CTASection
+          title="Want to be our next success story?"
+          description="Let's discuss your project and create something amazing together."
+          buttonText="Start Your Project"
+        />
       </main>
 
       <Footer />
