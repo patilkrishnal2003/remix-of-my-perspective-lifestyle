@@ -267,7 +267,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-background pb-32 sm:pb-40 md:pb-48">
+    <section className="relative z-10 min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-background pb-32 sm:pb-40 md:pb-48">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -339,7 +339,7 @@ export default function HeroSectionWithGradient() {
       </div>
 
       {/* Overlapping Hero Image - balanced overlap across devices */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
+      <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -351,7 +351,7 @@ export default function HeroSectionWithGradient() {
               <img
                 src={heroDashboard}
                 alt="Dashboard preview"
-                className="w-full h-auto aspect-[16/9] object-cover"
+                className="w-full h-auto aspect-[16/9] object-contain bg-muted/20"
               />
             </div>
           </div>
