@@ -3,14 +3,21 @@ import { Twitter, Linkedin, Github, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border mt-12 sm:mt-16 bg-card">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <footer className="relative mt-12 sm:mt-16 bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden">
+      {/* Background grid pattern to match hero */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      
+      {/* Decorative gradient orbs */}
+      <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-2xl" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10 sm:mb-12">
           {/* Logo & Description */}
           <div className="sm:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-accent rounded-xl flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg sm:text-xl">A</span>
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-lg sm:text-xl">A</span>
               </div>
               <span className="text-xl sm:text-2xl font-bold font-serif">Advora</span>
             </Link>
@@ -18,16 +25,16 @@ const Footer = () => {
               Building exceptional digital products that help businesses thrive. Your trusted partner for software and web development.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
                 <Twitter className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
                 <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
                 <Github className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
-              <a href="mailto:advora.in@gmail.com" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-accent/10 transition-colors">
+              <a href="mailto:advora.in@gmail.com" className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
@@ -73,7 +80,7 @@ const Footer = () => {
         </div>
         
         {/* Newsletter */}
-        <div className="py-6 sm:py-8 border-y border-border mb-6 sm:mb-8">
+        <div className="py-6 sm:py-8 border-y border-border/50 mb-6 sm:mb-8">
           <div className="flex flex-col gap-4">
             <div className="text-center sm:text-left">
               <h3 className="font-semibold mb-1 text-sm sm:text-base">Subscribe to our newsletter</h3>
@@ -83,9 +90,9 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent text-sm"
+                className="flex-1 px-4 py-3 rounded-full border border-border bg-background/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary text-sm"
               />
-              <button className="px-6 py-3 rounded-full bg-accent text-accent-foreground font-medium hover:bg-accent/90 transition-colors text-sm whitespace-nowrap">
+              <button className="px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors text-sm whitespace-nowrap">
                 Subscribe
               </button>
             </div>
