@@ -105,7 +105,7 @@ const About = () => {
         <section className="pt-24 sm:pt-28 pb-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Card */}
-            <div className="rounded-3xl bg-[#f5f0eb] dark:bg-card p-6 sm:p-10 md:p-12">
+            <div className="rounded-3xl bg-primary/5 dark:bg-card p-6 sm:p-10 md:p-12">
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 {/* Image */}
                 <div className="rounded-2xl overflow-hidden">
