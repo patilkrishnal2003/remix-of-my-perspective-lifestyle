@@ -102,34 +102,34 @@ const About = () => {
       
       <main>
         {/* Hero Section - Editorial Split Layout */}
-        <section className="pt-24 sm:pt-28 pb-16">
+        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Card */}
-            <div className="rounded-3xl bg-primary/10 dark:bg-card p-6 sm:p-10 md:p-12">
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                 {/* Image */}
-                <div className="rounded-2xl overflow-hidden">
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img
                     src={aboutHero}
                     alt="Advora workspace"
-                    className="w-full h-full object-cover aspect-[4/3]"
+                    className="w-full h-auto object-cover aspect-[4/3]"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="space-y-6">
-                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-[1.1] text-foreground">
+                <div className="space-y-4 sm:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
                     Crafting Digital
                     <span className="block">Excellence</span>
                   </h1>
 
-                  <p className="text-muted-foreground text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
                     Welcome to Advora: A space for innovation, collaboration, and digital transformation. Where technology meets creativity to build solutions that shape the future.
                   </p>
 
-                  <div className="flex items-center gap-4 pt-2">
-                    <Link to="/contact">
-                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-8 py-6 font-medium">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
+                    <Link to="/contact" className="w-full sm:w-auto">
+                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
                         Work With Us
                       </Button>
                     </Link>
