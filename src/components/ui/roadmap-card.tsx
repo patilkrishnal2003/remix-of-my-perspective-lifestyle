@@ -32,8 +32,19 @@ export function RoadmapCard({
           <CardDescription className="text-center mb-8">{description}</CardDescription>
         )}
         <div className="relative">
-          {/* Horizontal Timeline Line - Black with dynamic progress */}
-          <div className="absolute top-3 left-0 right-0 h-1 bg-muted-foreground/20 rounded-full overflow-hidden">
+          {/* Vertical Timeline Line for Mobile */}
+          <div className="absolute top-0 bottom-0 left-3 w-1 bg-muted-foreground/20 rounded-full overflow-hidden md:hidden">
+            <motion.div 
+              className="w-full bg-foreground rounded-full"
+              initial={{ height: 0 }}
+              whileInView={{ height: `${progressPercentage}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+            />
+          </div>
+
+          {/* Horizontal Timeline Line - Desktop only */}
+          <div className="hidden md:block absolute top-3 left-0 right-0 h-1 bg-muted-foreground/20 rounded-full overflow-hidden">
             <motion.div 
               className="h-full bg-foreground rounded-full"
               initial={{ width: 0 }}
@@ -43,7 +54,8 @@ export function RoadmapCard({
             />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* Mobile: Single column, Desktop: 4 columns */}
+          <div className="flex flex-col gap-6 md:grid md:grid-cols-4 md:gap-6">
             {items.map((item, index) => (
               <motion.div
                 key={index}
@@ -51,10 +63,10 @@ export function RoadmapCard({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
-                className="relative flex flex-col items-center text-center pt-10"
+                className="relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center pl-10 md:pl-0 md:pt-10"
               >
-                {/* Timeline Dot */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2">
+                {/* Timeline Dot - Left on mobile, Top on desktop */}
+                <div className="absolute left-0 top-1 md:top-0 md:left-1/2 md:-translate-x-1/2">
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -78,19 +90,22 @@ export function RoadmapCard({
                   </motion.div>
                 </div>
 
-                {/* Quarter Badge */}
-                <Badge 
-                  variant={item.status === "done" ? "default" : "secondary"} 
-                  className={`mb-3 ${item.status === "done" ? "bg-foreground text-background hover:bg-foreground/90" : ""}`}
-                >
-                  {item.quarter}
-                </Badge>
+                {/* Content */}
+                <div className="flex flex-col">
+                  {/* Quarter Badge */}
+                  <Badge 
+                    variant={item.status === "done" ? "default" : "secondary"} 
+                    className={`mb-2 md:mb-3 w-fit ${item.status === "done" ? "bg-foreground text-background hover:bg-foreground/90" : ""}`}
+                  >
+                    {item.quarter}
+                  </Badge>
 
-                {/* Title + Description */}
-                <h4 className="font-semibold leading-tight mb-1">{item.title}</h4>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
+                  {/* Title + Description */}
+                  <h4 className="font-semibold leading-tight mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

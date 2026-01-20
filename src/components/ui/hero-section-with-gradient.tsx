@@ -149,12 +149,16 @@ const OrbitRing = ({
 // Circular orbits with icons component
 const CircularOrbits = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isVerySmall, setIsVerySmall] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const checkSize = () => {
+      setIsMobile(window.innerWidth < 768);
+      setIsVerySmall(window.innerWidth < 480);
+    };
+    checkSize();
+    window.addEventListener('resize', checkSize);
+    return () => window.removeEventListener('resize', checkSize);
   }, []);
 
   // Define orbits with official tech brand icons and their brand colors
@@ -212,10 +216,15 @@ const CircularOrbits = () => {
     },
   ];
 
-  const activeOrbits = isMobile ? orbits.slice(0, 2) : orbits;
+  // On very small screens, hide orbits entirely for cleaner mobile view
+  if (isVerySmall) {
+    return null;
+  }
+
+  const activeOrbits = isMobile ? orbits.slice(0, 1) : orbits;
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-40 md:opacity-100">
       {/* Orbit rings (visual circles) */}
       {activeOrbits.map((orbit, orbitIndex) => (
         <div
