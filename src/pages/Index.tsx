@@ -453,9 +453,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Resources Tab Section */}
-        <ResourcesTabSection />
-
         {/* Testimonials Section */}
         <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
           <div className="px-4 sm:px-6 lg:px-8">
@@ -470,6 +467,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Resources Tab Section */}
+        <ResourcesTabSection />
 
         {/* CTA Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
