@@ -338,16 +338,16 @@ export default function HeroSectionWithGradient() {
 
       </div>
 
-      {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[50%] sm:translate-y-[60%] flex justify-center px-2 sm:px-6 lg:px-8">
+      {/* Overlapping Hero Image - same as desktop, scaled for mobile */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[50%] sm:translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-4xl"
+          className="w-full max-w-[90%] sm:max-w-4xl"
         >
-          <div className="relative rounded-lg sm:rounded-2xl overflow-hidden border sm:border-2 border-border bg-background p-1 sm:p-2 shadow-2xl shadow-primary/10">
-            <div className="rounded-md sm:rounded-xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden border-2 border-border bg-background p-2 shadow-2xl shadow-primary/10">
+            <div className="rounded-xl overflow-hidden">
               <img
                 src={heroDashboard}
                 alt="Dashboard preview"
