@@ -267,7 +267,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-[70vh] sm:min-h-[85vh] bg-background pb-24 sm:pb-48 overflow-hidden">
+    <section className="relative min-h-[70vh] sm:min-h-[85vh] bg-background pb-24 sm:pb-48">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -339,15 +339,15 @@ export default function HeroSectionWithGradient() {
       </div>
 
       {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[50%] sm:translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[50%] sm:translate-y-[60%] flex justify-center px-2 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-4xl"
         >
-          <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border sm:border-2 border-border bg-background p-1 sm:p-2 shadow-2xl shadow-primary/10">
-            <div className="rounded-lg sm:rounded-xl overflow-hidden">
+          <div className="relative rounded-lg sm:rounded-2xl overflow-hidden border sm:border-2 border-border bg-background p-1 sm:p-2 shadow-2xl shadow-primary/10">
+            <div className="rounded-md sm:rounded-xl overflow-hidden">
               <img
                 src={heroDashboard}
                 alt="Dashboard preview"
