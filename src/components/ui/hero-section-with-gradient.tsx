@@ -56,23 +56,30 @@ const transitionVariants = {
 // Single orbit ring with all its icons rotating together
 const OrbitRing = ({ 
   radius, 
+  mobileRadius,
   duration, 
   direction,
-  icons 
+  icons,
+  isMobile
 }: { 
   radius: number; 
+  mobileRadius: number;
   duration: number; 
   direction: number;
   icons: { Icon: React.ElementType; startAngle: number; color: string }[];
+  isMobile: boolean;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const activeRadius = isMobile ? mobileRadius : radius;
+  const iconSize = isMobile ? 10 : 12;
+  const containerSize = isMobile ? 36 : 48;
 
   return (
     <motion.div
       className="absolute rounded-full"
       style={{
-        width: radius * 2,
-        height: radius * 2,
+        width: activeRadius * 2,
+        height: activeRadius * 2,
       }}
       animate={{ rotate: direction * 360 }}
       transition={{
@@ -85,8 +92,8 @@ const OrbitRing = ({
       {icons.map((iconData, index) => {
         const { Icon, startAngle, color } = iconData;
         const rad = (startAngle * Math.PI) / 180;
-        const x = Math.cos(rad) * radius;
-        const y = Math.sin(rad) * radius;
+        const x = Math.cos(rad) * activeRadius;
+        const y = Math.sin(rad) * activeRadius;
         const isHovered = hoveredIndex === index;
 
         return (
@@ -94,8 +101,8 @@ const OrbitRing = ({
             key={index}
             className="absolute left-1/2 top-1/2 flex items-center justify-center pointer-events-auto cursor-pointer"
             style={{
-              marginLeft: x - 24,
-              marginTop: y - 24,
+              marginLeft: x - (containerSize / 2),
+              marginTop: y - (containerSize / 2),
             }}
             // Counter-rotate to keep icon upright
             animate={{ rotate: -direction * 360 }}
@@ -109,10 +116,12 @@ const OrbitRing = ({
           >
             <div 
               className={cn(
-                "w-12 h-12 rounded-full bg-background/95 backdrop-blur-sm border border-border/50 flex items-center justify-center transition-all duration-300",
+                "rounded-full bg-background/95 backdrop-blur-sm border border-border/50 flex items-center justify-center transition-all duration-300",
                 isHovered && "scale-125 border-primary/50"
               )}
               style={{
+                width: containerSize,
+                height: containerSize,
                 boxShadow: isHovered 
                   ? `0 0 20px ${color}60, 0 0 40px ${color}30, 0 8px 32px rgba(0,0,0,0.2)` 
                   : "0 4px 12px rgba(0,0,0,0.1)",
@@ -120,10 +129,14 @@ const OrbitRing = ({
             >
               <Icon 
                 className={cn(
-                  "w-6 h-6 transition-all duration-300",
+                  "transition-all duration-300",
                   isHovered && "scale-110"
                 )}
-                style={{ color: isHovered ? color : "hsl(var(--primary))" }} 
+                style={{ 
+                  color: isHovered ? color : "hsl(var(--primary))",
+                  width: iconSize * 2,
+                  height: iconSize * 2,
+                }} 
               />
             </div>
           </motion.div>
@@ -135,41 +148,56 @@ const OrbitRing = ({
 
 // Circular orbits with icons component
 const CircularOrbits = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Define orbits with official tech brand icons and their brand colors
+  // Mobile radii are scaled down to fit smaller screens
   const orbits = [
     { 
       radius: 320, 
+      mobileRadius: 140,
       duration: 30, 
       direction: 1,
       icons: [
         { Icon: SiReact, startAngle: 0, color: "#61DAFB" },
-        { Icon: SiTypescript, startAngle: 60, color: "#3178C6" },
-        { Icon: SiNodedotjs, startAngle: 120, color: "#339933" },
-        { Icon: SiNextdotjs, startAngle: 180, color: "#000000" },
-        { Icon: SiTailwindcss, startAngle: 240, color: "#06B6D4" },
-        { Icon: SiPython, startAngle: 300, color: "#3776AB" },
+        { Icon: SiTypescript, startAngle: 90, color: "#3178C6" },
+        { Icon: SiNodedotjs, startAngle: 180, color: "#339933" },
+        { Icon: SiNextdotjs, startAngle: 270, color: "#000000" },
       ]
     },
     { 
       radius: 450, 
+      mobileRadius: 200,
       duration: 40, 
       direction: -1,
       icons: [
         { Icon: SiDocker, startAngle: 0, color: "#2496ED" },
-        { Icon: SiGit, startAngle: 45, color: "#F05032" },
-        { Icon: SiPostgresql, startAngle: 90, color: "#4169E1" },
-        { Icon: SiMongodb, startAngle: 135, color: "#47A248" },
-        { Icon: SiAmazon, startAngle: 180, color: "#FF9900" },
-        { Icon: SiVercel, startAngle: 225, color: "#000000" },
-        { Icon: SiFigma, startAngle: 270, color: "#F24E1E" },
-        { Icon: SiGraphql, startAngle: 315, color: "#E10098" },
+        { Icon: SiGit, startAngle: 60, color: "#F05032" },
+        { Icon: SiPostgresql, startAngle: 120, color: "#4169E1" },
+        { Icon: SiMongodb, startAngle: 180, color: "#47A248" },
+        { Icon: SiAmazon, startAngle: 240, color: "#FF9900" },
+        { Icon: SiVercel, startAngle: 300, color: "#000000" },
       ]
     },
     { 
       radius: 580, 
+      mobileRadius: 260,
       duration: 50, 
       direction: 1,
-      icons: [
+      icons: isMobile ? [
+        { Icon: SiJavascript, startAngle: 0, color: "#F7DF1E" },
+        { Icon: SiVuedotjs, startAngle: 72, color: "#4FC08D" },
+        { Icon: SiAngular, startAngle: 144, color: "#DD0031" },
+        { Icon: SiSupabase, startAngle: 216, color: "#3FCF8E" },
+        { Icon: SiFirebase, startAngle: 288, color: "#FFCA28" },
+      ] : [
         { Icon: SiJavascript, startAngle: 0, color: "#F7DF1E" },
         { Icon: SiVuedotjs, startAngle: 36, color: "#4FC08D" },
         { Icon: SiAngular, startAngle: 72, color: "#DD0031" },
@@ -184,28 +212,32 @@ const CircularOrbits = () => {
     },
   ];
 
+  const activeOrbits = isMobile ? orbits.slice(0, 2) : orbits;
+
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
       {/* Orbit rings (visual circles) */}
-      {orbits.map((orbit, orbitIndex) => (
+      {activeOrbits.map((orbit, orbitIndex) => (
         <div
           key={`ring-${orbitIndex}`}
           className="absolute rounded-full border border-primary/20"
           style={{
-            width: orbit.radius * 2,
-            height: orbit.radius * 2,
+            width: (isMobile ? orbit.mobileRadius : orbit.radius) * 2,
+            height: (isMobile ? orbit.mobileRadius : orbit.radius) * 2,
           }}
         />
       ))}
 
       {/* Orbiting icons - one rotating container per orbit */}
-      {orbits.map((orbit, orbitIndex) => (
+      {activeOrbits.map((orbit, orbitIndex) => (
         <OrbitRing
           key={`orbit-${orbitIndex}`}
           radius={orbit.radius}
+          mobileRadius={orbit.mobileRadius}
           duration={orbit.duration}
           direction={orbit.direction}
           icons={orbit.icons}
+          isMobile={isMobile}
         />
       ))}
 
@@ -226,7 +258,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-[85vh] bg-background pb-48">
+    <section className="relative min-h-[70vh] sm:min-h-[85vh] bg-background pb-24 sm:pb-48 overflow-hidden">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -237,23 +269,23 @@ export default function HeroSectionWithGradient() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:4rem_4rem]" />
 
       {/* Circular Orbiting Icons */}
       <CircularOrbits />
 
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+      <div className="relative z-10 flex min-h-[70vh] sm:min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-16">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedGroup
             preset="blur-slide"
-            className="flex flex-col items-center gap-6"
+            className="flex flex-col items-center gap-4 sm:gap-6"
           >
 
             {/* Headline */}
             <motion.h1
               variants={transitionVariants.item}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
             >
               <span className="block text-foreground">Inspiring Digital</span>
               <span className="block bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
@@ -264,7 +296,7 @@ export default function HeroSectionWithGradient() {
             {/* Description */}
             <motion.p
               variants={transitionVariants.item}
-              className="max-w-4xl text-lg sm:text-xl text-muted-foreground leading-relaxed whitespace-nowrap"
+              className="max-w-xs sm:max-w-xl md:max-w-4xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
             >
               Empowering creators to move fast, stay consistent, and ship beautiful products — every time.
             </motion.p>
@@ -272,21 +304,21 @@ export default function HeroSectionWithGradient() {
             {/* CTA Buttons */}
             <motion.div
               variants={transitionVariants.item}
-              className="flex flex-col sm:flex-row items-center gap-4 pt-4"
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 sm:pt-4 w-full sm:w-auto"
             >
-              <Link to="/contact">
+              <Link to="/contact" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="rounded-full px-8 py-6 text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                  className="rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all w-full sm:w-auto"
                 >
                   Start Building
                 </Button>
               </Link>
-              <Link to="/services">
+              <Link to="/services" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="lg"
-                  className="rounded-full px-8 py-6 text-base font-medium"
+                  className="rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base font-medium w-full sm:w-auto"
                 >
                   Request a demo
                 </Button>
@@ -298,15 +330,15 @@ export default function HeroSectionWithGradient() {
       </div>
 
       {/* Overlapping Hero Image - 30% inside hero, 70% outside */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[50%] sm:translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-4xl"
         >
-          <div className="relative rounded-2xl overflow-hidden border-2 border-border bg-background p-2 shadow-2xl shadow-primary/10">
-            <div className="rounded-xl overflow-hidden">
+          <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border sm:border-2 border-border bg-background p-1 sm:p-2 shadow-2xl shadow-primary/10">
+            <div className="rounded-lg sm:rounded-xl overflow-hidden">
               <img
                 src={heroDashboard}
                 alt="Dashboard preview"
