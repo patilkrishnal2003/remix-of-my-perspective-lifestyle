@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import heroDashboard from "@/assets/hero-dashboard.jpg";
 import { 
   SiReact, 
   SiTypescript, 
@@ -307,7 +308,7 @@ export default function HeroSectionWithGradient() {
           <div className="relative rounded-2xl overflow-hidden border-2 border-border bg-background p-2 shadow-2xl shadow-primary/10">
             <div className="rounded-xl overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=600&fit=crop"
+                src={heroDashboard}
                 alt="Dashboard preview"
                 className="w-full h-auto aspect-[16/9] object-cover"
               />
