@@ -12,6 +12,7 @@ import ResourcesTabSection from "@/components/ResourcesTabSection";
 import CTASection from "@/components/CTASection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
+import FlipImageCarousel from "@/components/FlipImageCarousel";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import logoTechcorp from "@/assets/logo-techcorp.png";
@@ -20,6 +21,9 @@ import logoFinanceflow from "@/assets/logo-financeflow.png";
 import logoHealthtrack from "@/assets/logo-healthtrack.png";
 import logoRetailhub from "@/assets/logo-retailhub.png";
 import logoEdulearn from "@/assets/logo-edulearn.png";
+import whyChoose1 from "@/assets/why-choose-1.jpg";
+import whyChoose2 from "@/assets/why-choose-2.jpg";
+import whyChoose3 from "@/assets/why-choose-3.jpg";
 
 const Index = () => {
   const services = [
@@ -312,48 +316,41 @@ const Index = () => {
         </section>
 
 
+        {/* Why Choose Advora - Flip Image Carousel */}
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <ScrollReveal animation="fade-right">
-                <div className="space-y-8">
-                  <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
-                  </p>
-                  <div className="space-y-4">
-                    {features.map((feature) => (
-                      <div key={feature.title} className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <feature.icon className="h-6 w-6 text-accent" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold mb-1">{feature.title}</h3>
-                          <p className="text-muted-foreground">{feature.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal animation="fade-left" delay={200}>
-                <div className="space-y-6">
-                  <div className="p-8 rounded-3xl bg-background border border-border">
-                    <h3 className="text-2xl font-bold mb-6">Our Process</h3>
-                    <div className="space-y-4">
-                      {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
-                        <div key={step} className="flex items-center gap-4">
-                          <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
-                            {index + 1}
-                          </div>
-                          <span className="font-medium">{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
+            <ScrollReveal>
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose Advora?</h2>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  We're your technology partners, delivering excellence at every step
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={150}>
+              <FlipImageCarousel
+                items={[
+                  {
+                    image: whyChoose1,
+                    title: "Collaborative Team",
+                    subtitle: "Working Together for Success",
+                    description: "Our expert team collaborates closely with you to understand your vision and deliver solutions that exceed expectations. We believe in transparent communication and partnership-driven development."
+                  },
+                  {
+                    image: whyChoose2,
+                    title: "Technical Excellence",
+                    subtitle: "Cutting-Edge Development",
+                    description: "Our developers use modern technologies and best practices to build scalable, maintainable solutions. From architecture to deployment, we ensure enterprise-grade quality in every line of code."
+                  },
+                  {
+                    image: whyChoose3,
+                    title: "24/7 Support",
+                    subtitle: "Always Here When You Need Us",
+                    description: "Our dedicated support team is available around the clock to assist you. We provide ongoing maintenance, updates, and rapid response to ensure your applications run smoothly."
+                  }
+                ]}
+              />
+            </ScrollReveal>
           </div>
         </section>
 
