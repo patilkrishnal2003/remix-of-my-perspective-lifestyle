@@ -12,9 +12,9 @@ const Footer = () => {
       <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-2xl" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10 sm:mb-12 text-center sm:text-left">
           {/* Logo & Description */}
-          <div className="sm:col-span-2">
+          <div className="sm:col-span-2 flex flex-col items-center sm:items-start">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg sm:text-xl">A</span>
