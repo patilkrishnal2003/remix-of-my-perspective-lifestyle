@@ -267,7 +267,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative min-h-[70vh] sm:min-h-[85vh] bg-background pb-24 sm:pb-48">
+    <section className="relative min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-background pb-32 sm:pb-40 md:pb-48">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -284,7 +284,7 @@ export default function HeroSectionWithGradient() {
       <CircularOrbits />
 
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-[70vh] sm:min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-16">
+      <div className="relative z-10 flex min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-16">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedGroup
             preset="blur-slide"
@@ -338,16 +338,16 @@ export default function HeroSectionWithGradient() {
 
       </div>
 
-      {/* Overlapping Hero Image - same as desktop, scaled for mobile */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[50%] sm:translate-y-[60%] flex justify-center px-4 sm:px-6 lg:px-8">
+      {/* Overlapping Hero Image - balanced overlap across devices */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-[90%] sm:max-w-4xl"
+          className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
         >
-          <div className="relative rounded-2xl overflow-hidden border-2 border-border bg-background p-2 shadow-2xl shadow-primary/10">
-            <div className="rounded-xl overflow-hidden">
+          <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-1.5 sm:p-2 shadow-2xl shadow-primary/10">
+            <div className="rounded-lg sm:rounded-xl overflow-hidden">
               <img
                 src={heroDashboard}
                 alt="Dashboard preview"
