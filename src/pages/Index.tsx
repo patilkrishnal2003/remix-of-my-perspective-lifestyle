@@ -223,13 +223,33 @@ const Index = () => {
             {services.map((service, index) => (
               <ScrollReveal key={service.title} delay={index * 100}>
                 <div
-                  className="group p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 hover:scale-[1.02] h-full"
+                  className="group relative p-8 rounded-3xl bg-gradient-to-br from-card to-muted/30 border border-border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full"
                 >
-                  <div className="w-14 h-14 rounded-none bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="h-7 w-7 text-accent" />
+                  {/* Decorative gradient blob */}
+                  <div className="absolute -top-12 -right-12 w-32 h-32 bg-accent/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  
+                  {/* Icon with glow effect */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-accent/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative w-16 h-16 rounded-none bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center group-hover:border-accent/40 transition-all duration-300">
+                      <service.icon className="h-8 w-8 text-accent transition-transform duration-300 group-hover:scale-110" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                  
+                  {/* Content */}
+                  <div className="relative">
+                    <h3 className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-accent">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{service.description}</p>
+                  </div>
+                  
+                  {/* Hover arrow indicator */}
+                  <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <ArrowRight className="w-4 h-4 text-accent" />
+                  </div>
+                  
+                  {/* Border glow on hover */}
+                  <div className="absolute inset-0 rounded-3xl border-2 border-accent/0 group-hover:border-accent/30 transition-colors duration-500 pointer-events-none" />
                 </div>
               </ScrollReveal>
             ))}
