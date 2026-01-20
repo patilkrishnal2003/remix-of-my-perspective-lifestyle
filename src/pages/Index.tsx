@@ -457,14 +457,6 @@ const Index = () => {
         <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
           <div className="px-4 sm:px-6 lg:px-8">
             <TestimonialsSection testimonials={testimonials} />
-            <div className="text-center mt-10 sm:mt-12">
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6">
-                  View More Case Studies
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
           </div>
         </section>
 
