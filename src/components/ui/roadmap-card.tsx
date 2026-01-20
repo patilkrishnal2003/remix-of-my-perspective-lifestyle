@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,16 +15,38 @@ export interface RoadmapCardProps {
   title?: string;
   description?: string;
   items: RoadmapItem[];
+  autoPlay?: boolean;
+  interval?: number;
 }
 
 export function RoadmapCard({
   description = "Upcoming features and releases",
   items,
+  autoPlay = true,
+  interval = 1000,
 }: RoadmapCardProps) {
-  // Calculate progress percentage based on completed items
-  const doneCount = items.filter(item => item.status === "done").length;
-  const inProgressCount = items.filter(item => item.status === "in-progress").length;
-  const progressPercentage = ((doneCount + inProgressCount * 0.5) / items.length) * 100;
+  const [activeStep, setActiveStep] = useState(0);
+
+  // Auto-progression through steps
+  useEffect(() => {
+    if (!autoPlay) return;
+
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % items.length);
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [autoPlay, interval, items.length]);
+
+  // Calculate progress percentage based on active step
+  const progressPercentage = ((activeStep + 1) / items.length) * 100;
+
+  // Determine status based on active step
+  const getStepStatus = (index: number) => {
+    if (index < activeStep) return "done";
+    if (index === activeStep) return "in-progress";
+    return "upcoming";
+  };
 
   return (
     <Card className="w-full mx-auto">
@@ -36,10 +59,8 @@ export function RoadmapCard({
           <div className="absolute top-0 bottom-0 left-3 w-1 bg-muted-foreground/20 rounded-full overflow-hidden md:hidden">
             <motion.div 
               className="w-full bg-foreground rounded-full"
-              initial={{ height: 0 }}
-              whileInView={{ height: `${progressPercentage}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+              animate={{ height: `${progressPercentage}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             />
           </div>
 
@@ -47,67 +68,73 @@ export function RoadmapCard({
           <div className="hidden md:block absolute top-3 left-0 right-0 h-1 bg-muted-foreground/20 rounded-full overflow-hidden">
             <motion.div 
               className="h-full bg-foreground rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: `${progressPercentage}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
+              animate={{ width: `${progressPercentage}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             />
           </div>
 
           {/* Mobile: Single column, Desktop: 4 columns */}
           <div className="flex flex-col gap-6 md:grid md:grid-cols-4 md:gap-6">
-            {items.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                className="relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center pl-10 md:pl-0 md:pt-10"
-              >
-                {/* Timeline Dot - Left on mobile, Top on desktop */}
-                <div className="absolute left-0 top-1 md:top-0 md:left-1/2 md:-translate-x-1/2">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 + 0.3, type: "spring", stiffness: 200 }}
-                    className={`w-7 h-7 rounded-full border-[3px] ${
-                      item.status === "done"
-                        ? "bg-foreground border-foreground"
-                        : item.status === "in-progress"
-                        ? "bg-foreground/50 border-foreground"
-                        : "bg-background border-muted-foreground/40"
-                    }`}
-                  >
-                    {item.status === "in-progress" && (
-                      <motion.div
-                        className="absolute inset-0 rounded-full border-[3px] border-foreground"
-                        animate={{ scale: [1, 1.4, 1], opacity: [1, 0, 1] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    )}
-                  </motion.div>
-                </div>
+            {items.map((item, index) => {
+              const status = getStepStatus(index);
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                  className="relative flex flex-row md:flex-col items-start md:items-center text-left md:text-center pl-10 md:pl-0 md:pt-10"
+                >
+                  {/* Timeline Dot - Left on mobile, Top on desktop */}
+                  <div className="absolute left-0 top-1 md:top-0 md:left-1/2 md:-translate-x-1/2">
+                    <motion.div
+                      animate={{ 
+                        scale: status === "in-progress" ? 1.1 : 1,
+                        backgroundColor: status === "done" || status === "in-progress" 
+                          ? "hsl(var(--foreground))" 
+                          : "hsl(var(--background))"
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-7 h-7 rounded-full border-[3px] ${
+                        status === "done"
+                          ? "border-foreground"
+                          : status === "in-progress"
+                          ? "border-foreground"
+                          : "border-muted-foreground/40"
+                      }`}
+                    >
+                      {status === "in-progress" && (
+                        <motion.div
+                          className="absolute inset-0 rounded-full border-[3px] border-foreground"
+                          animate={{ scale: [1, 1.4, 1], opacity: [1, 0, 1] }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+                        />
+                      )}
+                    </motion.div>
+                  </div>
 
-                {/* Content */}
-                <div className="flex flex-col">
-                  {/* Quarter Badge */}
-                  <Badge 
-                    variant={item.status === "done" ? "default" : "secondary"} 
-                    className={`mb-2 md:mb-3 w-fit ${item.status === "done" ? "bg-foreground text-background hover:bg-foreground/90" : ""}`}
-                  >
-                    {item.quarter}
-                  </Badge>
+                  {/* Content */}
+                  <div className="flex flex-col">
+                    {/* Quarter Badge */}
+                    <Badge 
+                      variant={status === "done" ? "default" : "secondary"} 
+                      className={`mb-2 md:mb-3 w-fit transition-colors duration-300 ${status === "done" ? "bg-foreground text-background hover:bg-foreground/90" : ""}`}
+                    >
+                      {item.quarter}
+                    </Badge>
 
-                  {/* Title + Description */}
-                  <h4 className="font-semibold leading-tight mb-1">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                    {/* Title + Description */}
+                    <h4 className={`font-semibold leading-tight mb-1 transition-colors duration-300 ${status === "in-progress" ? "text-foreground" : status === "done" ? "text-foreground" : "text-muted-foreground"}`}>
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </CardContent>
