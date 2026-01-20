@@ -1,0 +1,162 @@
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+interface CarouselItem {
+  image: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+interface FlipImageCarouselProps {
+  items: CarouselItem[];
+}
+
+export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const goToNext = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % items.length);
+  };
+
+  const goToPrevious = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  // Auto-advance every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(goToNext, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentItem = items[currentIndex];
+
+  const variants = {
+    enter: (direction: number) => ({
+      rotateY: direction > 0 ? 90 : -90,
+      opacity: 0,
+    }),
+    center: {
+      rotateY: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      rotateY: direction > 0 ? -90 : 90,
+      opacity: 0,
+    }),
+  };
+
+  return (
+    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      {/* Left side - Flipping Image */}
+      <div className="relative">
+        {/* Decorative frame */}
+        <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-3xl" />
+        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
+        
+        <div className="relative aspect-square rounded-2xl overflow-hidden" style={{ perspective: "1000px" }}>
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute inset-0"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <img
+                src={currentItem.image}
+                alt={currentItem.title}
+                className="w-full h-full object-cover rounded-2xl"
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent rounded-2xl" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Navigation arrows */}
+        <div className="flex justify-center gap-4 mt-6">
+          <button
+            onClick={goToPrevious}
+            className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 shadow-lg"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 shadow-lg"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Dots indicator */}
+        <div className="flex justify-center gap-2 mt-4">
+          {items.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setDirection(index > currentIndex ? 1 : -1);
+                setCurrentIndex(index);
+              }}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex
+                  ? "w-6 bg-accent"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Right side - Content */}
+      <div className="space-y-6">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-4"
+          >
+            <h3 className="text-3xl md:text-4xl font-bold">{currentItem.title}</h3>
+            <p className="text-lg text-primary font-medium">{currentItem.subtitle}</p>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              {currentItem.description}
+            </p>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Feature highlights */}
+        <div className="pt-4 border-t border-border">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-2xl font-bold text-accent">150+</p>
+              <p className="text-sm text-muted-foreground">Projects</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-accent">50+</p>
+              <p className="text-sm text-muted-foreground">Clients</p>
+            </div>
+            <div>
+              <p className="text-2xl font-bold text-accent">5+</p>
+              <p className="text-sm text-muted-foreground">Years</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
