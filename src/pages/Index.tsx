@@ -52,11 +52,6 @@ const Index = () => {
     { value: "24/7", label: "Support" }
   ];
 
-  const features = [
-    { icon: Zap, title: "Fast Delivery", description: "Agile development for quick turnaround" },
-    { icon: Shield, title: "Secure & Reliable", description: "Enterprise-grade security standards" },
-    { icon: Users, title: "Dedicated Team", description: "Expert developers assigned to your project" }
-  ];
 
   const techStackRow1 = [
     { name: "React", icon: SiReact, color: "#61DAFB" },
@@ -312,48 +307,10 @@ const Index = () => {
         </section>
 
 
-        <section className="section-divider py-20 pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <ScrollReveal animation="fade-right">
-                <div className="space-y-8">
-                  <h2 className="text-3xl md:text-5xl font-bold">Why choose Advora?</h2>
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    We're not just developers—we're your technology partners. We combine technical expertise with business acumen to deliver solutions that drive real results.
-                  </p>
-                  <div className="space-y-4">
-                    {features.map((feature) => (
-                      <div key={feature.title} className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                          <feature.icon className="h-6 w-6 text-accent" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold mb-1">{feature.title}</h3>
-                          <p className="text-muted-foreground">{feature.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal animation="fade-left" delay={200}>
-                <div className="space-y-6">
-                  <div className="p-8 rounded-3xl bg-background border border-border">
-                    <h3 className="text-2xl font-bold mb-6">Our Process</h3>
-                    <div className="space-y-4">
-                      {["Discovery & Planning", "Design & Prototyping", "Development & Testing", "Launch & Support"].map((step, index) => (
-                        <div key={step} className="flex items-center gap-4">
-                          <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-bold">
-                            {index + 1}
-                          </div>
-                          <span className="font-medium">{step}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
+        {/* Testimonials Section */}
+        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <TestimonialsSection testimonials={testimonials} />
           </div>
         </section>
 
@@ -474,12 +431,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
-          <div className="px-4 sm:px-6 lg:px-8">
-            <TestimonialsSection testimonials={testimonials} />
-          </div>
-        </section>
 
         {/* Resources Tab Section */}
         <ResourcesTabSection />
