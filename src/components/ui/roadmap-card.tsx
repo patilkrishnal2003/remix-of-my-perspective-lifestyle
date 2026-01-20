@@ -26,17 +26,18 @@ export function RoadmapCard({
   interval = 1000,
 }: RoadmapCardProps) {
   const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Auto-progression through steps
   useEffect(() => {
-    if (!autoPlay) return;
+    if (!autoPlay || isPaused) return;
 
     const timer = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % items.length);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [autoPlay, interval, items.length]);
+  }, [autoPlay, interval, items.length, isPaused]);
 
   // Calculate progress percentage based on active step
   const progressPercentage = ((activeStep + 1) / items.length) * 100;
@@ -48,8 +49,11 @@ export function RoadmapCard({
     return "upcoming";
   };
 
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
   return (
-    <Card className="w-full mx-auto">
+    <Card className="w-full mx-auto" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <CardContent className="pt-6">
         {description && (
           <CardDescription className="text-center mb-8">{description}</CardDescription>
