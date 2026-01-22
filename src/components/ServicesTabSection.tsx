@@ -122,14 +122,14 @@ const ServicesTabSection = () => {
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
                   <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
                   
-                  <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-8">
+                  <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
-                    <div className={`w-20 h-20 rounded-2xl ${service.accentColor} flex items-center justify-center flex-shrink-0`}>
+                    <div className={`w-20 h-20 rounded-2xl ${service.accentColor} flex items-center justify-center`}>
                       <service.icon className="w-10 h-10 text-white" />
                     </div>
                     
                     {/* Content */}
-                    <div className="flex-grow">
+                    <div>
                       <p className="text-sm font-medium text-muted-foreground mb-1">
                         {service.tagline}
                       </p>
@@ -141,7 +141,7 @@ const ServicesTabSection = () => {
                       </p>
                       
                       {/* Features */}
-                      <div className="flex flex-wrap gap-3 mb-6">
+                      <div className="flex flex-wrap justify-center gap-3 mb-6">
                         {service.features.map((feature) => (
                           <span
                             key={feature}
@@ -153,7 +153,7 @@ const ServicesTabSection = () => {
                       </div>
                       
                       {/* CTA Buttons */}
-                      <div className="flex flex-wrap gap-4">
+                      <div className="flex flex-wrap justify-center gap-4">
                         <Link to="/contact">
                           <Button className={`${service.accentColor} hover:opacity-90 text-white rounded-full px-6`}>
                             Get Started
