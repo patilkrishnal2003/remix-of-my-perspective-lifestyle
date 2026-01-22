@@ -20,7 +20,7 @@ export default function CTASection({
   return (
     <section className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${compact ? "py-8" : "py-10 sm:py-12"}`}>
       <div
-        className="relative rounded-2xl bg-gray-100 hover:bg-gray-200/80 border border-gray-200 text-foreground p-6 sm:p-8 md:p-10 text-center overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-gray-300 group"
+        className="relative rounded-full bg-gray-500 hover:bg-gray-600 text-white p-6 sm:p-8 md:p-10 text-center overflow-hidden transition-all duration-300 hover:shadow-lg group"
       >
         {/* Subtle decorative elements */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl transition-opacity duration-300 group-hover:opacity-70" />
