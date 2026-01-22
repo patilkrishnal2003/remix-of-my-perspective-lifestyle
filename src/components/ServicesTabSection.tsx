@@ -160,7 +160,7 @@ const ServicesTabSection = () => {
                           </Button>
                         </Link>
                         <Link to="/services">
-                          <Button variant="outline" className="rounded-full px-6 bg-white/60 backdrop-blur-sm border-foreground/20 hover:bg-white/80">
+                          <Button variant="outline" className="rounded-full px-6 bg-white/60 backdrop-blur-sm border-foreground/20 hover:bg-white/80 hover:text-foreground">
                             Learn More
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
