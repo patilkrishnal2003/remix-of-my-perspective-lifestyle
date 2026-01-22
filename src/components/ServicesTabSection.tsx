@@ -81,7 +81,7 @@ const ServicesTabSection = () => {
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Solutions tailor-made for you
+          Our Services
         </h2>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Comprehensive development solutions tailored to your business needs
