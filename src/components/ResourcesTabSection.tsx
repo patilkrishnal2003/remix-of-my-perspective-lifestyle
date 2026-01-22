@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Briefcase, FileText, FolderOpen } from "lucide-react";
+import { ArrowRight, Briefcase, FileText, FolderOpen, Code, Globe, Smartphone, Database } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ScrollReveal from "@/components/ScrollReveal";
 
 // Project images
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
@@ -18,7 +19,30 @@ import blogFutureWeb from "@/assets/blog-future-web.jpg";
 import blogReactScalable from "@/assets/blog-react-scalable.jpg";
 import blogFinanceflowCase from "@/assets/blog-financeflow-case.jpg";
 
-type TabType = "portfolio" | "projects" | "blog";
+type TabType = "services" | "portfolio" | "projects" | "blog";
+
+const servicesData = [
+  {
+    icon: Globe,
+    title: "Web Development",
+    description: "Custom websites and web applications built with modern technologies for optimal performance.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Apps",
+    description: "Cross-platform mobile applications that deliver seamless user experiences.",
+  },
+  {
+    icon: Code,
+    title: "Custom Software",
+    description: "Tailored software solutions designed to solve your unique business challenges.",
+  },
+  {
+    icon: Database,
+    title: "Backend Systems",
+    description: "Scalable APIs and database architectures that power your applications.",
+  },
+];
 
 const portfolioItems = [
   {
@@ -159,10 +183,43 @@ function ResourceCard({ image, title, category, description, excerpt, results, r
   return content;
 }
 
+function ServiceCard({ icon: Icon, title, description }: { icon: typeof Globe; title: string; description: string }) {
+  return (
+    <div className="group relative p-8 rounded-3xl bg-gradient-to-br from-card to-muted/30 border border-border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full">
+      {/* Decorative gradient blob */}
+      <div className="absolute -top-12 -right-12 w-32 h-32 bg-accent/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      
+      {/* Icon with glow effect */}
+      <div className="relative mb-6">
+        <div className="absolute inset-0 bg-accent/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative w-16 h-16 rounded-none bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center group-hover:border-accent/40 transition-all duration-300">
+          <Icon className="h-8 w-8 text-accent transition-transform duration-300 group-hover:scale-110" />
+        </div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative">
+        <h3 className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-accent">{title}</h3>
+        <p className="text-muted-foreground leading-relaxed text-sm">{description}</p>
+      </div>
+      
+      {/* Hover arrow indicator */}
+      <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+        <ArrowRight className="w-4 h-4 text-accent" />
+      </div>
+      
+      {/* Border glow on hover */}
+      <div className="absolute inset-0 rounded-3xl border-2 border-accent/0 group-hover:border-accent/30 transition-colors duration-500 pointer-events-none" />
+    </div>
+  );
+}
+
 export default function ResourcesTabSection() {
-  const [activeTab, setActiveTab] = useState<TabType>("portfolio");
+  const [activeTab, setActiveTab] = useState<TabType>("services");
 
   const tabs: { id: TabType; label: string; icon: typeof Briefcase }[] = [
+    { id: "services", label: "Services", icon: Code },
     { id: "portfolio", label: "Portfolio", icon: FolderOpen },
     { id: "projects", label: "Projects", icon: Briefcase },
     { id: "blog", label: "Blog", icon: FileText },
@@ -170,6 +227,8 @@ export default function ResourcesTabSection() {
 
   const getViewAllLink = () => {
     switch (activeTab) {
+      case "services":
+        return "/services";
       case "portfolio":
       case "projects":
         return "/portfolio";
@@ -180,6 +239,8 @@ export default function ResourcesTabSection() {
 
   const getViewAllText = () => {
     switch (activeTab) {
+      case "services":
+        return "View All Services";
       case "portfolio":
         return "View Full Portfolio";
       case "projects":
@@ -193,14 +254,16 @@ export default function ResourcesTabSection() {
     <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured Resources
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our latest projects and insights
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Explore Our Work
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive solutions tailored to your business needs
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Tab Buttons */}
         <div className="flex justify-center gap-2 mb-10 flex-wrap">
@@ -238,8 +301,23 @@ export default function ResourcesTabSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className={cn(
+              "grid gap-6",
+              activeTab === "services" ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-3"
+            )}
           >
+            {activeTab === "services" &&
+              servicesData.map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <ServiceCard {...service} />
+                </motion.div>
+              ))}
+
             {activeTab === "portfolio" &&
               portfolioItems.map((item, index) => (
                 <motion.div
