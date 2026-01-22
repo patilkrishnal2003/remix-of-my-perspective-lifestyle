@@ -342,20 +342,8 @@ export default function HeroSectionWithGradient() {
       <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
-          animate={{ 
-            opacity: 1, 
-            y: [0, -8, 0],
-          }}
-          transition={{ 
-            opacity: { delay: 0.8, duration: 0.8, ease: "easeOut" },
-            y: { 
-              delay: 1.6,
-              duration: 4, 
-              ease: "easeInOut", 
-              repeat: Infinity,
-              repeatType: "loop"
-            }
-          }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
           className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
         >
           <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-1.5 sm:p-2 shadow-2xl shadow-primary/10">

@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
-import { ArrowRight, Zap, Shield, Users, MessageSquare, Lightbulb, Target } from "lucide-react";
+import { ArrowRight, Code, Globe, Smartphone, Database, Zap, Shield, Users, MessageSquare, Lightbulb, Target } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -26,6 +26,29 @@ import whyChoose2 from "@/assets/why-choose-2.jpg";
 import whyChoose3 from "@/assets/why-choose-3.jpg";
 
 const Index = () => {
+  const services = [
+    {
+      icon: Globe,
+      title: "Web Development",
+      description: "Custom websites and web applications built with modern technologies for optimal performance."
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Apps",
+      description: "Cross-platform mobile applications that deliver seamless user experiences."
+    },
+    {
+      icon: Code,
+      title: "Custom Software",
+      description: "Tailored software solutions designed to solve your unique business challenges."
+    },
+    {
+      icon: Database,
+      title: "Backend Systems",
+      description: "Scalable APIs and database architectures that power your applications."
+    }
+  ];
+
   const stats = [
     { value: "150+", label: "Projects Delivered" },
     { value: "50+", label: "Happy Clients" },
@@ -191,8 +214,60 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Resources Tab Section - includes Services, Portfolio, Projects, Blog */}
-        <ResourcesTabSection />
+        {/* Services Section */}
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Our Services</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive development solutions tailored to your business needs
+              </p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <ScrollReveal key={service.title} delay={index * 100}>
+                <div
+                  className="group relative p-8 rounded-3xl bg-gradient-to-br from-card to-muted/30 border border-border overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full"
+                >
+                  {/* Decorative gradient blob */}
+                  <div className="absolute -top-12 -right-12 w-32 h-32 bg-accent/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  
+                  {/* Icon with glow effect */}
+                  <div className="relative mb-6">
+                    <div className="absolute inset-0 bg-accent/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative w-16 h-16 rounded-none bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center group-hover:border-accent/40 transition-all duration-300">
+                      <service.icon className="h-8 w-8 text-accent transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="relative">
+                    <h3 className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-accent">{service.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{service.description}</p>
+                  </div>
+                  
+                  {/* Hover arrow indicator */}
+                  <div className="absolute bottom-6 right-6 w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <ArrowRight className="w-4 h-4 text-accent" />
+                  </div>
+                  
+                  {/* Border glow on hover */}
+                  <div className="absolute inset-0 rounded-3xl border-2 border-accent/0 group-hover:border-accent/30 transition-colors duration-500 pointer-events-none" />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link to="/services">
+              <Button variant="outline" className="rounded-full px-8 py-6">
+                View All Services
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </section>
 
         {/* Focus Section */}
         <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
@@ -403,6 +478,8 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Resources Tab Section */}
+        <ResourcesTabSection />
 
         <CTASection />
       </main>
