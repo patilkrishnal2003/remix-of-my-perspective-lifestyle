@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
+import ValuesTabSection from "@/components/ValuesTabSection";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import aboutHero from "@/assets/about-hero.jpg";
@@ -243,23 +244,7 @@ const About = () => {
         </section>
 
         {/* Values Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
-            <p className="text-xl text-muted-foreground">The principles that guide everything we do</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <div key={value.title} className={`p-8 rounded-3xl bg-card border border-border hover:border-accent/50 transition-all animate-slide-up stagger-${index + 1}`}>
-                <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
-                  <value.icon className="h-7 w-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">{value.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ValuesTabSection />
 
         {/* Team Section */}
         <section className="section-divider py-20 pt-24">
