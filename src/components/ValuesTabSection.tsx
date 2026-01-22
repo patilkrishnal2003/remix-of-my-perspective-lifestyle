@@ -55,22 +55,22 @@ const ValuesTabSection = () => {
 
         <div className="flex flex-col lg:flex-row gap-8 lg:items-stretch">
           {/* Left Sidebar - Value Tabs */}
-          <div className="lg:w-80 flex-shrink-0 flex flex-col justify-between gap-3">
+          <div className="lg:w-80 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 lg:flex lg:flex-col lg:justify-between gap-3">
             {valuesData.map((value) => (
               <button
                 key={value.id}
                 onClick={() => setActiveValue(value.id)}
-                className={`flex-1 flex items-center justify-between px-5 py-4 rounded-lg transition-all duration-300 text-left ${
+                className={`lg:flex-1 flex items-center justify-between px-4 py-3 lg:px-5 lg:py-4 rounded-lg transition-all duration-300 text-left ${
                   activeValue === value.id
                     ? "bg-background border-2 border-primary text-foreground shadow-md"
                     : "bg-gray-700 hover:bg-gray-600 text-white"
                 }`}
               >
-                <div className="flex items-center gap-4">
-                  <value.icon className={`w-5 h-5 ${activeValue === value.id ? value.iconColor : "text-white"}`} />
-                  <span className="font-medium">{value.title}</span>
+                <div className="flex items-center gap-2 lg:gap-4">
+                  <value.icon className={`w-4 h-4 lg:w-5 lg:h-5 ${activeValue === value.id ? value.iconColor : "text-white"}`} />
+                  <span className="font-medium text-sm lg:text-base">{value.title}</span>
                 </div>
-                <ChevronRight className={`w-5 h-5 ${activeValue === value.id ? value.iconColor : "text-white"}`} />
+                <ChevronRight className={`w-4 h-4 lg:w-5 lg:h-5 hidden lg:block ${activeValue === value.id ? value.iconColor : "text-white"}`} />
               </button>
             ))}
           </div>
