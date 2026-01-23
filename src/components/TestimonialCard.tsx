@@ -55,8 +55,8 @@ export default function TestimonialCard({ t, highlight = false }: { t: Testimoni
       )}
     >
       {/* Quote badge */}
-      <div className="absolute -top-5 left-6 rounded-full bg-primary p-4 shadow-lg transition-colors duration-300 hover:bg-yellow-400">
-        <Quote className="w-6 h-6 text-primary-foreground transition-colors duration-300" />
+      <div className="absolute -top-5 left-6 rounded-full bg-primary p-4 shadow-lg">
+        <Quote className="w-6 h-6 text-primary-foreground transition-colors duration-300 group-hover:text-yellow-400" />
       </div>
 
       <h4 className="mt-4 text-lg font-semibold">{t.title}</h4>
