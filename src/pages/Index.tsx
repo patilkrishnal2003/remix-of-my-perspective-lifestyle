@@ -131,154 +131,156 @@ const Index = () => {
   
 
   return (
-    <div className="min-h-screen bg-background animate-fade-in mb-[200px]">
-      <Header />
-      
-      <main>
-        {/* New Hero Section with Gradient */}
-        <HeroSectionWithGradient />
+    <>
+      <div className="min-h-screen animate-fade-in bg-background">
+        <Header />
+        
+        <main>
+          {/* New Hero Section with Gradient */}
+          <HeroSectionWithGradient />
 
-        {/* Trusted By Section - Marquee */}
-        <section className="section-divider py-8 sm:py-12 pt-44 sm:pt-52 md:pt-60 overflow-hidden relative z-0 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
-          </div>
-          <div className="relative">
-            {/* Fade edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
-            
-            {/* Marquee container */}
-            <div className="flex animate-marquee hover:[animation-play-state:paused]">
-              {/* First set of logos */}
-              {[...Array(4)].map((_, setIndex) => (
-                <div key={setIndex} className="flex items-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
-                  {[
-                    { name: "TechCorp", logo: logoTechcorp },
-                    { name: "StartupX", logo: logoStartupx },
-                    { name: "FinanceFlow", logo: logoFinanceflow },
-                    { name: "HealthTrack", logo: logoHealthtrack },
-                    { name: "RetailHub", logo: logoRetailhub },
-                    { name: "EduLearn", logo: logoEdulearn }
-                  ].map((company) => (
-                    <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0">
-                      <img 
-                        src={company.logo} 
-                        alt={company.name}
-                        className="h-14 sm:h-16 md:h-20 w-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
+          {/* Trusted By Section - Marquee */}
+          <section className="section-divider py-8 sm:py-12 pt-44 sm:pt-52 md:pt-60 overflow-hidden relative z-0 bg-background">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
             </div>
-          </div>
-        </section>
+            <div className="relative">
+              {/* Fade edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
+              
+              {/* Marquee container */}
+              <div className="flex animate-marquee hover:[animation-play-state:paused]">
+                {/* First set of logos */}
+                {[...Array(4)].map((_, setIndex) => (
+                  <div key={setIndex} className="flex items-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
+                    {[
+                      { name: "TechCorp", logo: logoTechcorp },
+                      { name: "StartupX", logo: logoStartupx },
+                      { name: "FinanceFlow", logo: logoFinanceflow },
+                      { name: "HealthTrack", logo: logoHealthtrack },
+                      { name: "RetailHub", logo: logoRetailhub },
+                      { name: "EduLearn", logo: logoEdulearn }
+                    ].map((company) => (
+                      <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0">
+                        <img 
+                          src={company.logo} 
+                          alt={company.name}
+                          className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
 
-        {/* Services Section */}
-        <ServicesTabSection />
+          {/* Services Section */}
+          <ServicesTabSection />
 
+          {/* Why Choose Advora - Flip Image Carousel */}
+          <section className="section-divider py-16 pt-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <ScrollReveal>
+                <div className="text-center mb-10">
+                  <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose Advora?</h2>
+                  <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    We're your technology partners, delivering excellence at every step
+                  </p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={150}>
+                <FlipImageCarousel
+                  items={[
+                    {
+                      image: whyChoose1,
+                      title: "Collaborative Team",
+                      subtitle: "Working Together for Success",
+                      description: "Our expert team collaborates closely with you to understand your vision and deliver solutions that exceed expectations. We believe in transparent communication and partnership-driven development."
+                    },
+                    {
+                      image: whyChoose2,
+                      title: "Technical Excellence",
+                      subtitle: "Cutting-Edge Development",
+                      description: "Our developers use modern technologies and best practices to build scalable, maintainable solutions. From architecture to deployment, we ensure enterprise-grade quality in every line of code."
+                    },
+                    {
+                      image: whyChoose3,
+                      title: "24/7 Support",
+                      subtitle: "Always Here When You Need Us",
+                      description: "Our dedicated support team is available around the clock to assist you. We provide ongoing maintenance, updates, and rapid response to ensure your applications run smoothly."
+                    }
+                  ]}
+                />
+              </ScrollReveal>
+            </div>
+          </section>
 
+          {/* Tech Stack Section */}
+          <TechStackSection showTwoRows={true} />
 
-        {/* Why Choose Advora - Flip Image Carousel */}
-        <section className="section-divider py-16 pt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal>
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose Advora?</h2>
+          {/* How It Works Section */}
+          <section className="section-divider py-20 pt-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  We're your technology partners, delivering excellence at every step
+                  A transparent, collaborative process designed for your success
                 </p>
               </div>
-            </ScrollReveal>
-            <ScrollReveal delay={150}>
-              <FlipImageCarousel
+              
+              <RoadmapCard
+                description="From idea to launch, we guide you through every step"
                 items={[
                   {
-                    image: whyChoose1,
-                    title: "Collaborative Team",
-                    subtitle: "Working Together for Success",
-                    description: "Our expert team collaborates closely with you to understand your vision and deliver solutions that exceed expectations. We believe in transparent communication and partnership-driven development."
+                    quarter: "Step 1",
+                    title: "Consultation & Discovery",
+                    description: "We discuss your vision, goals, and requirements in detail to understand your needs.",
+                    status: "done"
                   },
                   {
-                    image: whyChoose2,
-                    title: "Technical Excellence",
-                    subtitle: "Cutting-Edge Development",
-                    description: "Our developers use modern technologies and best practices to build scalable, maintainable solutions. From architecture to deployment, we ensure enterprise-grade quality in every line of code."
+                    quarter: "Step 2",
+                    title: "Strategy & Planning",
+                    description: "We create a comprehensive plan and technical roadmap tailored to your project.",
+                    status: "done"
                   },
                   {
-                    image: whyChoose3,
-                    title: "24/7 Support",
-                    subtitle: "Always Here When You Need Us",
-                    description: "Our dedicated support team is available around the clock to assist you. We provide ongoing maintenance, updates, and rapid response to ensure your applications run smoothly."
+                    quarter: "Step 3",
+                    title: "Design & Development",
+                    description: "Our team builds your solution with regular updates and collaborative feedback.",
+                    status: "in-progress"
+                  },
+                  {
+                    quarter: "Step 4",
+                    title: "Launch & Support",
+                    description: "We deploy your project and provide ongoing support for continued success.",
+                    status: "upcoming"
                   }
                 ]}
               />
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Tech Stack Section */}
-        <TechStackSection showTwoRows={true} />
-
-        {/* How It Works Section */}
-        <section className="section-divider py-20 pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A transparent, collaborative process designed for your success
-              </p>
             </div>
-            
-            <RoadmapCard
-              description="From idea to launch, we guide you through every step"
-              items={[
-                {
-                  quarter: "Step 1",
-                  title: "Consultation & Discovery",
-                  description: "We discuss your vision, goals, and requirements in detail to understand your needs.",
-                  status: "done"
-                },
-                {
-                  quarter: "Step 2",
-                  title: "Strategy & Planning",
-                  description: "We create a comprehensive plan and technical roadmap tailored to your project.",
-                  status: "done"
-                },
-                {
-                  quarter: "Step 3",
-                  title: "Design & Development",
-                  description: "Our team builds your solution with regular updates and collaborative feedback.",
-                  status: "in-progress"
-                },
-                {
-                  quarter: "Step 4",
-                  title: "Launch & Support",
-                  description: "We deploy your project and provide ongoing support for continued success.",
-                  status: "upcoming"
-                }
-              ]}
-            />
-          </div>
-        </section>
+          </section>
 
-        {/* Testimonials Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
-          <div className="px-4 sm:px-6 lg:px-8">
-            <TestimonialsSection testimonials={testimonials} />
-          </div>
-        </section>
+          {/* Testimonials Section */}
+          <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
+            <div className="px-4 sm:px-6 lg:px-8">
+              <TestimonialsSection testimonials={testimonials} />
+            </div>
+          </section>
 
-        {/* Resources Tab Section */}
-        <ResourcesTabSection />
+          {/* Resources Tab Section */}
+          <ResourcesTabSection />
 
-        <CTASection />
-      </main>
+          <CTASection />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
+      {/* Transparent spacer to reveal black FooterRevealSection */}
+      <div className="h-[200px]" />
       <FooterRevealSection />
-    </div>
+    </>
   );
 };
 
