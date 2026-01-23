@@ -84,7 +84,7 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
           </div>
         </div>
         {/* Dots indicator - now above arrows */}
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-4 -mb-2">
           {items.map((_, index) => (
             <button
               key={index}
