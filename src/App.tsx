@@ -30,32 +30,34 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <BackToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/web-development" element={<WebDevelopment />} />
-          <Route path="/services/mobile-apps" element={<MobileApps />} />
-          <Route path="/services/custom-software" element={<CustomSoftware />} />
-          <Route path="/services/backend-systems" element={<BackendSystems />} />
-          <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
-          <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/community" element={<Community />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <div className="min-h-screen bg-background">
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
+          <BackToTop />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/mobile-apps" element={<MobileApps />} />
+            <Route path="/services/custom-software" element={<CustomSoftware />} />
+            <Route path="/services/backend-systems" element={<BackendSystems />} />
+            <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
+            <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/community" element={<Community />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </TooltipProvider>
   </QueryClientProvider>
 );
