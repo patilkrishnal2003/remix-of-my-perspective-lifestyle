@@ -73,7 +73,7 @@ const BlogPost = () => {
         </header>
 
         {/* Featured Image */}
-        <div className="mb-12 rounded-3xl overflow-hidden animate-slide-up stagger-1">
+        <div className="mb-12 rounded-[2rem] overflow-hidden animate-slide-up stagger-1">
           {post.image ? (
             <img 
               src={post.image} 
@@ -97,7 +97,7 @@ const BlogPost = () => {
         />
 
         {/* Share Section */}
-        <div className="mb-16 p-6 rounded-2xl bg-card border border-border animate-slide-up stagger-3">
+        <div className="mb-16 p-6 rounded-[1.5rem] bg-card border border-border animate-slide-up stagger-3">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Share2 className="h-5 w-5" />
@@ -115,7 +115,7 @@ const BlogPost = () => {
         </div>
 
         {/* Author Bio */}
-        <div className="mb-16 p-8 rounded-3xl bg-card border border-border animate-slide-up stagger-4">
+        <div className="mb-16 p-8 rounded-[2rem] bg-card border border-border animate-slide-up stagger-4">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
             <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
               <span className="text-3xl font-bold text-accent">{post.author.charAt(0)}</span>
@@ -142,7 +142,7 @@ const BlogPost = () => {
                 <Link
                   key={relatedPost.id}
                   to={`/blog/${relatedPost.id}`}
-                  className={`group rounded-2xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all animate-slide-up stagger-${index + 1}`}
+                  className={`group rounded-[1.5rem] bg-card border border-border hover:border-accent/50 overflow-hidden transition-all animate-slide-up stagger-${index + 1}`}
                 >
                   {relatedPost.image && (
                     <div className="h-32 overflow-hidden">
