@@ -3,8 +3,7 @@ import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-re
 
 const Footer = () => {
   return (
-    <>
-      <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
+    <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
         {/* Upper Footer - with curved bottom corners */}
         <div className="relative bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]">
           {/* Background grid pattern to match hero */}
@@ -123,28 +122,21 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </footer>
 
-      {/* Spacer for reveal effect */}
-      <div style={{ height: "200px" }} />
-
-      {/* Black sticky reveal section */}
-      <div
-        className="fixed bottom-0 left-0 right-0 w-full bg-foreground -z-10"
-        style={{ height: "200px" }}
-      >
-        <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <span className="text-foreground font-bold text-xl">A</span>
-            </div>
-            <span className="text-2xl sm:text-3xl font-bold text-background transition-colors duration-300 group-hover:text-background/80">
-              Advora
-            </span>
-          </Link>
+        {/* Black logo bar (was previously the fixed "reveal" section) */}
+        <div className="bg-foreground" style={{ height: "200px" }}>
+          <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <span className="text-foreground font-bold text-xl">A</span>
+              </div>
+              <span className="text-2xl sm:text-3xl font-bold text-background transition-colors duration-300 group-hover:text-background/80">
+                Advora
+              </span>
+            </Link>
+          </div>
         </div>
-      </div>
-    </>
+      </footer>
   );
 };
 
