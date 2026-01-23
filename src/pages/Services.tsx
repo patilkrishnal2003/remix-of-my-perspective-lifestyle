@@ -1,14 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock, ChevronLeft, ChevronRight, Search, FileText, Rocket, Headphones } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock, ChevronRight, Search, FileText, Rocket } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPostgresql, SiMongodb, SiRedis, SiAmazonwebservices, SiDocker, SiKubernetes, SiGraphql, SiFlutter, SiTailwindcss, SiFigma, SiGit } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 // Service images
 import serviceWebDev from "@/assets/service-web-dev.jpg";
@@ -40,61 +39,7 @@ const techStackRow2 = [
   { name: "Git", icon: SiGit, color: "#F05032" },
 ];
 
-// Hero carousel slides data
-const heroSlides = [
-  {
-    category: "WEB DEVELOPMENT",
-    title: "Custom Web Solutions That Drive Results",
-    description: "From responsive websites to complex web applications, we build digital experiences that engage users and grow your business.",
-    image: serviceWebDev,
-    features: ["React & Next.js", "E-commerce", "PWA"],
-  },
-  {
-    category: "MOBILE APP DEVELOPMENT",
-    title: "Native & Cross-Platform Mobile Apps",
-    description: "Deliver exceptional mobile experiences on iOS and Android with apps that users love and businesses rely on.",
-    image: serviceMobileDev,
-    features: ["React Native", "iOS & Android", "App Store Ready"],
-  },
-  {
-    category: "CLOUD SOLUTIONS",
-    title: "Scalable Cloud Infrastructure",
-    description: "Enterprise-grade cloud architecture that grows with your business. Secure, reliable, and cost-effective.",
-    image: serviceCloud,
-    features: ["AWS & Azure", "DevOps", "CI/CD"],
-  },
-  {
-    category: "UI/UX DESIGN",
-    title: "User-Centered Design Excellence",
-    description: "Beautiful, intuitive interfaces that delight users and drive conversions through research-backed design.",
-    image: serviceDesign,
-    features: ["User Research", "Prototyping", "Visual Design"],
-  },
-];
-
 const Services = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  // Auto-advance slides
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [isAutoPlaying]);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-    setIsAutoPlaying(false);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-    setIsAutoPlaying(false);
-  };
-
   const services = [
     {
       icon: Globe,
@@ -205,99 +150,41 @@ const Services = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Card */}
             <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentSlide}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
-                >
-                  {/* Image */}
-                  <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                    <img
-                      src={heroSlides[currentSlide].image}
-                      alt={heroSlides[currentSlide].category}
-                      className="w-full h-auto object-cover aspect-[4/3]"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4 sm:space-y-6">
-                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs sm:text-sm font-semibold tracking-wide">
-                      {heroSlides[currentSlide].category}
-                    </span>
-                    
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
-                      {heroSlides[currentSlide].title}
-                    </h1>
-
-                    <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                      {heroSlides[currentSlide].description}
-                    </p>
-
-                    {/* Feature tags */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {heroSlides[currentSlide].features.map((feature) => (
-                        <span key={feature} className="px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/10 text-sm font-medium text-foreground">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-                      <Link to="/contact" className="w-full sm:w-auto">
-                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                          Get Started
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </Link>
-                      <Link to="/portfolio" className="w-full sm:w-auto">
-                        <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                          View Our Work
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Navigation Dots */}
-              <div className="flex items-center justify-center gap-4 mt-8">
-                <button
-                  onClick={prevSlide}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-white/20 transition-colors"
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="w-5 h-5 text-muted-foreground" />
-                </button>
-
-                <div className="flex items-center gap-2">
-                  {heroSlides.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setCurrentSlide(index);
-                        setIsAutoPlaying(false);
-                      }}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        index === currentSlide 
-                          ? "w-8 bg-primary" 
-                          : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                {/* Image */}
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
+                  <img
+                    src={serviceWebDev}
+                    alt="Our Services"
+                    className="w-full h-auto object-cover aspect-[4/3]"
+                  />
                 </div>
 
-                <button
-                  onClick={nextSlide}
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-white/20 transition-colors"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="w-5 h-5 text-muted-foreground" />
-                </button>
+                {/* Content */}
+                <div className="space-y-4 sm:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                    Expert Solutions
+                    <span className="block">For Your Business</span>
+                  </h1>
+
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                    From web and mobile development to cloud infrastructure and UI/UX design, we deliver comprehensive digital solutions that drive growth.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
+                    <Link to="/contact" className="w-full sm:w-auto">
+                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
+                        Get Started
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <Link to="/portfolio" className="w-full sm:w-auto">
+                      <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
+                        View Our Work
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
