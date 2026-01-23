@@ -58,7 +58,8 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-2xl" />
         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
         
-        <div className="relative aspect-[16/9] rounded-2xl overflow-hidden" style={{ perspective: "1000px" }}>
+        <div className="relative p-4 sm:p-6">
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden" style={{ perspective: "1000px" }}>
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentIndex}
@@ -80,8 +81,8 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent rounded-2xl" />
             </motion.div>
           </AnimatePresence>
+          </div>
         </div>
-
         {/* Navigation arrows */}
         <div className="flex justify-center gap-4 mt-6">
           <button
