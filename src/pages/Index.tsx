@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FooterRevealSection from "@/components/FooterRevealSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
 import ServicesTabSection from "@/components/ServicesTabSection";
@@ -277,9 +276,6 @@ const Index = () => {
 
         <Footer />
       </div>
-      {/* Transparent spacer to reveal black FooterRevealSection */}
-      <div className="h-[200px]" />
-      <FooterRevealSection />
     </>
   );
 };
