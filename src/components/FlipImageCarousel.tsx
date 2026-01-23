@@ -58,7 +58,7 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-2xl" />
         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
         
-        <div className="relative p-4 sm:p-6">
+        <div className="relative pt-6 sm:pt-8 px-4 sm:px-6 pb-4 sm:pb-6">
           <div className="relative aspect-[16/9] rounded-2xl overflow-hidden" style={{ perspective: "1000px" }}>
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
