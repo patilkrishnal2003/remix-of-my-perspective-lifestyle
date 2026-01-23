@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
 import TechStackSection from "@/components/TechStackSection";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 
 // Service images
 import serviceWebDev from "@/assets/service-web-dev.jpg";
@@ -14,65 +16,91 @@ import serviceMobileDev from "@/assets/service-mobile-dev.jpg";
 import serviceCloud from "@/assets/service-cloud.jpg";
 import serviceDesign from "@/assets/service-design.jpg";
 
+const servicesData = [
+  {
+    id: "web",
+    label: "Web Development",
+    icon: Globe,
+    title: "Custom Web Solutions",
+    tagline: "Build powerful web experiences",
+    description: "From responsive websites to complex web applications, we create digital solutions that drive business growth and user engagement.",
+    features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Secure"],
+    path: "/services/web-development",
+  },
+  {
+    id: "mobile",
+    label: "Mobile Apps",
+    icon: Smartphone,
+    title: "Cross-Platform Mobile Apps",
+    tagline: "Reach users everywhere",
+    description: "Native and cross-platform mobile applications built with React Native and Flutter for seamless experiences on iOS and Android.",
+    features: ["iOS & Android", "Offline Support", "Push Notifications", "App Store Ready"],
+    path: "/services/mobile-apps",
+  },
+  {
+    id: "software",
+    label: "Custom Software",
+    icon: Code,
+    title: "Enterprise Software",
+    tagline: "Tailored to your business",
+    description: "Bespoke software solutions designed to automate processes, improve efficiency, and solve your unique business challenges.",
+    features: ["Process Automation", "Integration Ready", "Scalable", "Maintainable"],
+    path: "/services/custom-software",
+  },
+  {
+    id: "backend",
+    label: "Backend Systems",
+    icon: Database,
+    title: "Robust Backend Architecture",
+    tagline: "Power your applications",
+    description: "Scalable APIs, microservices, and database architectures that form the backbone of high-performance applications.",
+    features: ["RESTful APIs", "GraphQL", "Cloud Native", "High Availability"],
+    path: "/services/backend-systems",
+  },
+  {
+    id: "design",
+    label: "UI/UX Design",
+    icon: Palette,
+    title: "User-Centered Design",
+    tagline: "Design that converts",
+    description: "Beautiful, intuitive interfaces backed by user research and design thinking to maximize engagement and conversions.",
+    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+    path: "/services/ui-ux-design",
+  },
+  {
+    id: "cloud",
+    label: "Cloud Solutions",
+    icon: Cloud,
+    title: "Cloud Infrastructure",
+    tagline: "Scale with confidence",
+    description: "AWS, Azure, and Google Cloud solutions for hosting, deployment, and infrastructure management with 99.9% uptime.",
+    features: ["Auto Scaling", "CI/CD Pipelines", "Monitoring", "Cost Optimized"],
+    path: "/services/cloud-solutions",
+  },
+  {
+    id: "maintenance",
+    label: "Maintenance",
+    icon: Settings,
+    title: "Ongoing Support & Maintenance",
+    tagline: "Keep your systems running",
+    description: "Ongoing technical support and maintenance to keep your applications running smoothly and securely with 24/7 monitoring.",
+    features: ["24/7 Monitoring", "Bug Fixes", "Performance Optimization", "Security Patches"],
+    path: "/contact",
+  },
+  {
+    id: "consulting",
+    label: "Consulting",
+    icon: LineChart,
+    title: "Technical Consulting",
+    tagline: "Strategic technology advice",
+    description: "Strategic technology advice to help you make informed decisions, plan architecture, and prepare for future growth.",
+    features: ["Tech Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"],
+    path: "/contact",
+  },
+];
+
 const Services = () => {
-  const services = [
-    {
-      icon: Globe,
-      title: "Web Development",
-      description: "Custom websites and web applications built with cutting-edge technologies. From landing pages to complex enterprise platforms, we create responsive, fast, and SEO-optimized solutions.",
-      features: ["React & Next.js", "Custom CMS Integration", "E-commerce Solutions", "Progressive Web Apps"],
-      path: "/services/web-development"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-      features: ["React Native", "iOS & Android Native", "App Store Deployment", "Push Notifications"],
-      path: "/services/mobile-apps"
-    },
-    {
-      icon: Code,
-      title: "Custom Software Development",
-      description: "Tailored software solutions designed to solve your unique business challenges and streamline operations.",
-      features: ["Business Process Automation", "Legacy System Modernization", "Custom Integrations", "Scalable Architecture"],
-      path: "/services/custom-software"
-    },
-    {
-      icon: Database,
-      title: "Backend Development",
-      description: "Robust server-side solutions and APIs that power your applications with reliability and performance.",
-      features: ["RESTful & GraphQL APIs", "Database Design", "Microservices", "Real-time Systems"],
-      path: "/services/backend-systems"
-    },
-    {
-      icon: Cloud,
-      title: "Cloud Solutions",
-      description: "Cloud infrastructure setup, migration, and management for scalable and cost-effective operations.",
-      features: ["AWS & Azure", "Cloud Migration", "DevOps & CI/CD", "Infrastructure as Code"],
-      path: "/services/cloud-solutions"
-    },
-    {
-      icon: Palette,
-      title: "UI/UX Design",
-      description: "User-centered design that combines aesthetics with functionality to create engaging digital experiences.",
-      features: ["User Research", "Wireframing & Prototyping", "Visual Design", "Usability Testing"],
-      path: "/services/ui-ux-design"
-    },
-    {
-      icon: Settings,
-      title: "Maintenance & Support",
-      description: "Ongoing technical support and maintenance to keep your applications running smoothly and securely.",
-      features: ["24/7 Monitoring", "Bug Fixes & Updates", "Performance Optimization", "Security Patches"],
-      path: "/contact"
-    },
-    {
-      icon: LineChart,
-      title: "Technical Consulting",
-      description: "Strategic technology advice to help you make informed decisions and plan for future growth.",
-      features: ["Technology Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"],
-      path: "/contact"
-    }
-  ];
+  const [activeTab, setActiveTab] = useState("web");
 
   const pricingTiers = [
     {
@@ -173,54 +201,138 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Grid - 3 per row with unique cards */}
+        {/* Services Tab Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
-            <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">What We Offer</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Full-stack development expertise for every need
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all duration-300 overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4 }}
-              >
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
-                <div className="relative">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
-                    <service.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {service.features.slice(0, 3).map((feature) => (
-                      <span key={feature} className="px-2.5 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground">
-                        {feature}
-                      </span>
-                    ))}
-                    {service.features.length > 3 && (
-                      <span className="px-2.5 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
-                        +{service.features.length - 3}
-                      </span>
-                    )}
-                  </div>
-                  <Link to={service.path}>
-                    <Button variant="outline" className="w-full rounded-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            {/* Tab Navigation */}
+            <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
+              {servicesData.map((service) => (
+                <button
+                  key={service.id}
+                  onClick={() => setActiveTab(service.id)}
+                  className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                    activeTab === service.id
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {service.label}
+                  {activeTab === service.id && (
+                    <motion.div
+                      layoutId="activeServicesPageTabUnderline"
+                      className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </button>
+              ))}
+              {/* Full-width line below tabs */}
+              <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
+            </div>
+
+            {/* Tab Content */}
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                {servicesData.map((service) => (
+                  <TabsContent
+                    key={service.id}
+                    value={service.id}
+                    className="mt-0 focus-visible:outline-none focus-visible:ring-0"
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-full rounded-3xl p-8 md:p-12 relative overflow-hidden ${
+                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                          ? "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50"
+                          : "bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10"
+                      }`}
+                    >
+                      {/* Decorative elements */}
+                      <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${
+                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                          ? "bg-slate-200/40 dark:bg-slate-700/30"
+                          : "bg-primary/20 dark:bg-primary/30"
+                      }`} />
+                      <div className={`absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 ${
+                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                          ? "bg-slate-300/30 dark:bg-slate-600/20"
+                          : "bg-primary/15 dark:bg-primary/25"
+                      }`} />
+                      
+                      <div className="relative z-10 flex flex-col items-center text-center gap-6">
+                        {/* Icon */}
+                        <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
+                          servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                            ? "bg-slate-800 dark:bg-slate-200"
+                            : "bg-primary"
+                        }`}>
+                          <service.icon className={`w-10 h-10 ${
+                            servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                              ? "text-white dark:text-slate-800"
+                              : "text-primary-foreground"
+                          }`} />
+                        </div>
+                        
+                        {/* Content */}
+                        <div>
+                          <p className="text-sm font-medium text-muted-foreground mb-1">
+                            {service.tagline}
+                          </p>
+                          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                            {service.title}
+                          </h3>
+                          <p className="text-muted-foreground max-w-2xl mb-6">
+                            {service.description}
+                          </p>
+                          
+                          {/* Features - Transparent badges */}
+                          <div className="flex flex-wrap justify-center gap-3 mb-6">
+                            {service.features.map((feature) => (
+                              <span
+                                key={feature}
+                                className="px-3 py-1 bg-transparent border border-foreground/20 rounded-full text-sm font-medium text-foreground"
+                              >
+                                {feature}
+                              </span>
+                            ))}
+                          </div>
+                          
+                          {/* CTA Buttons */}
+                          <div className="flex flex-wrap justify-center gap-4">
+                            <Link to="/contact">
+                              <Button className={`rounded-full px-6 ${
+                                servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                                  ? "bg-slate-800 hover:bg-slate-900 dark:bg-slate-200 dark:hover:bg-slate-100 dark:text-slate-800"
+                                  : "bg-primary hover:bg-primary/90"
+                              }`}>
+                                Get Started
+                              </Button>
+                            </Link>
+                            <Link to={service.path}>
+                              <Button variant="outline" className="rounded-full px-6 bg-white/60 backdrop-blur-sm border-foreground/20 hover:bg-white/80 hover:text-foreground">
+                                Learn More
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </TabsContent>
+                ))}
+              </AnimatePresence>
+            </div>
+          </Tabs>
         </section>
 
         {/* Process Section - Minimal Timeline */}
