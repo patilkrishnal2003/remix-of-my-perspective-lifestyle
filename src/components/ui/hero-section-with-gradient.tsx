@@ -333,7 +333,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative z-10 min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-background pb-32 sm:pb-40 md:pb-48">
+    <section className="relative z-10 min-h-[55vh] sm:min-h-[65vh] md:min-h-[75vh] bg-background pb-24 sm:pb-32 md:pb-40">
       {/* Gradient Background */}
       <div
         ref={gradientRef}
@@ -343,14 +343,14 @@ export default function HeroSectionWithGradient() {
       {/* Radial Gradient Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:4rem_4rem]" />
+      {/* Grid Pattern - lines only, no dots */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:3rem_3rem] sm:bg-[size:5rem_5rem]" />
 
       {/* Circular Orbiting Icons */}
       <CircularOrbits />
 
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-16">
+      <div className="relative z-10 flex min-h-[55vh] sm:min-h-[65vh] md:min-h-[75vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 sm:pt-12">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedGroup
             preset="blur-slide"
