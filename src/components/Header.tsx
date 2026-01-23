@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, ChevronDown } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, Globe, Smartphone, Code, Database, Palette, Cloud, ArrowRight, Briefcase, BookOpen, Users, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -54,19 +53,19 @@ const Header = () => {
   };
 
   const servicesItems = [
-    { label: "Web Development", path: "/services#web" },
-    { label: "Mobile Apps", path: "/services#mobile" },
-    { label: "Custom Software", path: "/services#software" },
-    { label: "Backend Systems", path: "/services#backend" },
-    { label: "UI/UX Design", path: "/services#design" },
-    { label: "Cloud Solutions", path: "/services#cloud" },
+    { label: "Web Development", path: "/services#web", icon: Globe, description: "Modern websites & apps" },
+    { label: "Mobile Apps", path: "/services#mobile", icon: Smartphone, description: "iOS & Android solutions" },
+    { label: "Custom Software", path: "/services#software", icon: Code, description: "Tailored for your needs" },
+    { label: "Backend Systems", path: "/services#backend", icon: Database, description: "Scalable infrastructure" },
+    { label: "UI/UX Design", path: "/services#design", icon: Palette, description: "Beautiful experiences" },
+    { label: "Cloud Solutions", path: "/services#cloud", icon: Cloud, description: "AWS, Azure & more" },
   ];
 
   const resourcesItems = [
-    { label: "Portfolio", path: "/portfolio" },
-    { label: "Blog", path: "/blog" },
-    { label: "Community", path: "/community" },
-    { label: "Support", path: "/contact" },
+    { label: "Portfolio", path: "/portfolio", icon: Briefcase, description: "Our best work" },
+    { label: "Blog", path: "/blog", icon: BookOpen, description: "Insights & tutorials" },
+    { label: "Community", path: "/community", icon: Users, description: "Join developers" },
+    { label: "Support", path: "/contact", icon: Headphones, description: "Get help" },
   ];
 
   return (
@@ -134,23 +133,50 @@ const Header = () => {
                   }`}
                 >
                   Services
-                  <ChevronDown className="h-3.5 w-3.5" />
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   {isActive("/services") && (
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
                   )}
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56 bg-card border border-border shadow-lg z-50">
-                {servicesItems.map((item) => (
-                  <DropdownMenuItem key={item.path} asChild>
+              <DropdownMenuContent 
+                align="start" 
+                className="w-[340px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+              >
+                {/* Gradient Header */}
+                <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-4 border-b border-border/50">
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Our Services</p>
+                </div>
+                
+                {/* Services Grid */}
+                <div className="p-2 grid grid-cols-1 gap-1">
+                  {servicesItems.map((item) => (
                     <Link 
+                      key={item.path}
                       to={item.path} 
-                      className="w-full cursor-pointer hover:bg-muted"
+                      className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
                     >
-                      {item.label}
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                        <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                        <p className="text-xs text-muted-foreground">{item.description}</p>
+                      </div>
                     </Link>
-                  </DropdownMenuItem>
-                ))}
+                  ))}
+                </div>
+                
+                {/* All Services Button */}
+                <div className="p-3 border-t border-border/50 bg-muted/30">
+                  <Link 
+                    to="/services" 
+                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                  >
+                    View All Services
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -165,23 +191,50 @@ const Header = () => {
                   }`}
                 >
                   Resources
-                  <ChevronDown className="h-3.5 w-3.5" />
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   {(isActive("/portfolio") || isActive("/blog") || isActive("/community")) && (
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
                   )}
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48 bg-card border border-border shadow-lg z-50">
-                {resourcesItems.map((item) => (
-                  <DropdownMenuItem key={item.path} asChild>
+              <DropdownMenuContent 
+                align="start" 
+                className="w-[280px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+              >
+                {/* Gradient Header */}
+                <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-4 border-b border-border/50">
+                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Resources</p>
+                </div>
+                
+                {/* Resources List */}
+                <div className="p-2">
+                  {resourcesItems.map((item) => (
                     <Link 
+                      key={item.path}
                       to={item.path} 
-                      className="w-full cursor-pointer hover:bg-muted"
+                      className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
                     >
-                      {item.label}
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                        <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                        <p className="text-xs text-muted-foreground">{item.description}</p>
+                      </div>
                     </Link>
-                  </DropdownMenuItem>
-                ))}
+                  ))}
+                </div>
+                
+                {/* All Resources Button */}
+                <div className="p-3 border-t border-border/50 bg-muted/30">
+                  <Link 
+                    to="/portfolio" 
+                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                  >
+                    Explore All Resources
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </nav>
@@ -251,12 +304,21 @@ const Header = () => {
                   <Link 
                     key={item.path}
                     to={item.path} 
-                    className="block text-base font-medium py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                    className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {item.label}
+                    <item.icon className="w-4 h-4 text-primary" />
+                    <span className="text-base font-medium">{item.label}</span>
                   </Link>
                 ))}
+                <Link 
+                  to="/services" 
+                  className="flex items-center gap-2 mt-2 py-2 px-2 rounded-lg bg-primary/10 text-primary font-medium text-sm"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  View All Services
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
 
               {/* Resources Section */}
@@ -266,10 +328,11 @@ const Header = () => {
                   <Link 
                     key={item.path}
                     to={item.path} 
-                    className="block text-base font-medium py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                    className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {item.label}
+                    <item.icon className="w-4 h-4 text-primary" />
+                    <span className="text-base font-medium">{item.label}</span>
                   </Link>
                 ))}
               </div>
