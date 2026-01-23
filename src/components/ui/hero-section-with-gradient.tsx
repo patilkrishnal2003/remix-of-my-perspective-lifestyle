@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroImage1 from "@/assets/hero-dashboard.jpg";
-import heroImage2 from "@/assets/project-financeflow.jpg";
-import heroImage3 from "@/assets/project-healthtrack.jpg";
-import heroImage4 from "@/assets/project-retailhub.jpg";
+import heroImage1 from "@/assets/project-edulearn.jpg";
+import heroImage2 from "@/assets/project-logitrack.jpg";
+import heroImage3 from "@/assets/project-mediconnect.jpg";
+import heroImage4 from "@/assets/project-propertypro.jpg";
 import { 
   SiReact, 
   SiTypescript, 
