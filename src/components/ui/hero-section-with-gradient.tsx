@@ -282,7 +282,7 @@ const HeroImageCarousel = () => {
         transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
       >
-        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-4 sm:p-6 shadow-2xl shadow-primary/10">
+        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-6 sm:p-8 shadow-2xl shadow-primary/10">
           <div className="rounded-lg sm:rounded-xl overflow-hidden relative aspect-[16/9]">
             <AnimatePresence mode="wait">
               <motion.img
@@ -296,23 +296,6 @@ const HeroImageCarousel = () => {
                 className="w-full h-full object-cover absolute inset-0"
               />
             </AnimatePresence>
-          </div>
-          
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mt-3 pb-1">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  index === currentIndex
-                    ? "w-6 bg-primary"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
           </div>
         </div>
       </motion.div>
