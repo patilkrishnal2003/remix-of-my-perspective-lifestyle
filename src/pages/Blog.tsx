@@ -85,7 +85,7 @@ const Blog = () => {
               {categories.map((category) => (
                 <button
                   key={category}
-                  className="px-5 py-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all text-sm font-medium"
+                  className="px-5 py-2.5 rounded-[1.25rem] bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all text-sm font-medium"
                 >
                   {category}
                 </button>
@@ -104,7 +104,7 @@ const Blog = () => {
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
-                className={`group rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
+                className={`group rounded-[1.25rem] sm:rounded-[1.5rem] bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
               >
                 <div className="h-36 sm:h-48 overflow-hidden">
                   {post.image ? (
@@ -151,7 +151,7 @@ const Blog = () => {
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
-                className={`group flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
+                className={`group flex flex-col sm:flex-row gap-4 sm:gap-6 p-5 sm:p-6 rounded-[1.25rem] sm:rounded-[1.5rem] bg-card border border-border hover:border-accent/50 transition-all duration-300 animate-slide-up stagger-${(index % 4) + 1}`}
               >
                 <div className="w-full sm:w-32 h-32 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0">
                   {post.image ? (
@@ -191,7 +191,7 @@ const Blog = () => {
         </section>
 
         {/* Newsletter Section */}
-        <section className="mb-20 rounded-3xl bg-card p-8 md:p-12">
+        <section className="mb-20 rounded-[2rem] sm:rounded-[2.5rem] bg-card p-8 md:p-12">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
@@ -230,7 +230,7 @@ const Blog = () => {
             ].map((topic) => (
               <div
                 key={topic.name}
-                className="p-4 rounded-2xl bg-card border border-border hover:border-accent/50 transition-all cursor-pointer text-center"
+                className="p-4 rounded-[1.25rem] bg-card border border-border hover:border-accent/50 transition-all cursor-pointer text-center"
               >
                 <div className="font-semibold mb-1">{topic.name}</div>
                 <div className="text-sm text-muted-foreground">{topic.count} articles</div>
