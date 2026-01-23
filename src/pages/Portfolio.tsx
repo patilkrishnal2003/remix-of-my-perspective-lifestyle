@@ -3,10 +3,9 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
-import { ArrowRight, Globe, Smartphone, Code, Star, ExternalLink, Filter, DollarSign, HeartPulse, ShoppingCart, GraduationCap, Home, Truck, Film, Layers, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, DollarSign, HeartPulse, ShoppingCart, GraduationCap, Home, Truck, Film, Layers, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
@@ -28,81 +27,29 @@ const industries = [
   { icon: Layers, title: "SaaS", description: "B2B tools, dashboards, APIs" },
 ];
 
-function useIndustryVisibleCount() {
-  const [count, setCount] = useState(4);
-  useEffect(() => {
-    const calc = () => {
-      const w = window.innerWidth;
-      setCount(w >= 1024 ? 4 : w >= 768 ? 3 : w >= 640 ? 2 : 1);
-    };
-    calc();
-    window.addEventListener("resize", calc);
-    return () => window.removeEventListener("resize", calc);
-  }, []);
-  return count;
-}
-
 function IndustriesCarousel() {
-  const visible = useIndustryVisibleCount();
-  const [idx, setIdx] = useState(0);
-  const n = industries.length;
-
-  const wrap = (i: number) => (n === 0 ? 0 : (i + n) % n);
-  const next = () => setIdx((i) => wrap(i + 1));
-  const prev = () => setIdx((i) => wrap(i - 1));
-
-  const page = Array.from({ length: Math.min(visible, n) }, (_, k) => industries[wrap(idx + k)]);
-
-  // Auto-advance carousel
-  useEffect(() => {
-    if (n <= visible) return;
-    const interval = setInterval(next, 4000);
-    return () => clearInterval(interval);
-  }, [n, visible]);
+  const allIndustries = [...industries, ...industries, ...industries, ...industries];
 
   return (
-    <div className="relative">
-      <motion.div
-        key={idx}
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3 }}
-        className="grid gap-6"
-        style={{ gridTemplateColumns: `repeat(${visible}, 1fr)` }}
-      >
-        {page.map((industry, i) => (
+    <div className="relative overflow-hidden group">
+      {/* Gradient masks */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      
+      <div className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused]">
+        {allIndustries.map((industry, i) => (
           <div
             key={`${industry.title}-${i}`}
-            className="group p-8 rounded-2xl bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300"
+            className="flex-shrink-0 w-64 p-8 rounded-2xl bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300"
           >
-            <div className="w-14 h-14 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/30 transition-colors">
+            <div className="w-14 h-14 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4 hover:bg-primary/30 transition-colors">
               <industry.icon className="w-7 h-7 text-primary" />
             </div>
             <h3 className="text-lg font-bold mb-1">{industry.title}</h3>
             <p className="text-sm text-muted-foreground">{industry.description}</p>
           </div>
         ))}
-      </motion.div>
-
-      {/* Navigation Arrows */}
-      {n > visible && (
-        <div className="flex justify-center gap-4 mt-8">
-          <button
-            onClick={prev}
-            className="p-3 rounded-full border border-border bg-card hover:bg-muted transition-colors"
-            aria-label="Previous industry"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={next}
-            className="p-3 rounded-full border border-border bg-card hover:bg-muted transition-colors"
-            aria-label="Next industry"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-      )}
+      </div>
     </div>
   );
 }
