@@ -18,24 +18,44 @@ const Blog = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="relative overflow-hidden pt-24 sm:pt-28">
-          <div className="absolute inset-0">
-            <img 
-              src={blogHero} 
-              alt="Blog background"
-              className="w-full h-full object-cover opacity-40"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background"></div>
-          </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
-            <div className="text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-                Advora Blog
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-                Insights, tutorials, and case studies from our team of experts. Stay updated with the latest in software development.
-              </p>
+        {/* Hero Section - Editorial Style */}
+        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-6 sm:p-10 md:p-14">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                {/* Image */}
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
+                  <img
+                    src={blogHero}
+                    alt="Advora Blog"
+                    className="w-full h-auto object-cover aspect-[4/3]"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="space-y-4 sm:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                    Advora Blog
+                  </h1>
+
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                    Insights, tutorials, and case studies from our team of experts. Stay updated with the latest in software development.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
+                    <Link to="/contact" className="w-full sm:w-auto">
+                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
+                        Contact Us
+                      </Button>
+                    </Link>
+                    <Link to="/portfolio" className="w-full sm:w-auto">
+                      <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
+                        View Portfolio
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
