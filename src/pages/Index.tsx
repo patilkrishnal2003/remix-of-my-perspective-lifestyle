@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FooterRevealSection from "@/components/FooterRevealSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
 import ServicesTabSection from "@/components/ServicesTabSection";
@@ -412,6 +413,7 @@ const Index = () => {
       </main>
 
       <Footer />
+      <FooterRevealSection />
     </div>
   );
 };
