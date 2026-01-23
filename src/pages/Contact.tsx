@@ -32,30 +32,51 @@ const Contact = () => {
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
       
-      {/* Hero Section with Background */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: `url(${aboutHero})`,
-            opacity: 0.4
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-10 sm:pb-12 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down mb-4 sm:mb-6">
-            Let's Build Something Great
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1 px-2">
-            Ready to start your project? Get in touch and we'll provide a free consultation and quote.
-          </p>
-        </div>
-      </section>
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12">
+      <main>
+        {/* Hero Section - Editorial Split Layout */}
+        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Hero Card */}
+            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+                {/* Image */}
+                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
+                  <img
+                    src={aboutHero}
+                    alt="Contact us"
+                    className="w-full h-auto object-cover aspect-[4/3]"
+                  />
+                </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
+                {/* Content */}
+                <div className="space-y-4 sm:space-y-6">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                    Let's Build
+                    <span className="block">Something Great</span>
+                  </h1>
+
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                    Ready to start your project? Get in touch and we'll provide a free consultation and quote.
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 pt-2">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Clock className="w-4 h-4 text-primary" />
+                      <span>Response within 24h</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Mail className="w-4 h-4 text-primary" />
+                      <span>hello@advora.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
           <div className="rounded-2xl sm:rounded-3xl bg-card p-6 sm:p-8 md:p-10 animate-slide-up stagger-2">
             <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Send us a message</h2>
@@ -216,6 +237,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </main>
 
