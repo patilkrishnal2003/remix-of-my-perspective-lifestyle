@@ -282,7 +282,7 @@ const HeroImageCarousel = () => {
         transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
       >
-        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-3 sm:p-4 shadow-2xl shadow-primary/10">
+        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background pt-6 sm:pt-8 px-6 sm:px-8 pb-3 sm:pb-4 shadow-2xl shadow-primary/10">
           <div className="rounded-lg sm:rounded-xl overflow-hidden relative aspect-[16/9]">
             <AnimatePresence mode="wait">
               <motion.img
@@ -296,6 +296,23 @@ const HeroImageCarousel = () => {
                 className="w-full h-full object-cover absolute inset-0"
               />
             </AnimatePresence>
+          </div>
+          
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-2 mt-3 pb-1">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={cn(
+                  "w-2 h-2 rounded-full transition-all duration-300",
+                  index === currentIndex
+                    ? "w-6 bg-primary"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
       </motion.div>
@@ -326,6 +343,8 @@ export default function HeroSectionWithGradient() {
       {/* Radial Gradient Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:4rem_4rem]" />
 
       {/* Circular Orbiting Icons */}
       <CircularOrbits />
