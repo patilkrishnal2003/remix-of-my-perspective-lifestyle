@@ -10,37 +10,30 @@ const Footer = () => {
     offset: ["start end", "end end"]
   });
 
-  // Footer slides up to reveal 30% of background
-  const footerY = useTransform(scrollYProgress, [0.7, 1], ["0%", "-30%"]);
+  // Footer slides up to reveal background section
+  const footerY = useTransform(scrollYProgress, [0.5, 1], ["0%", "-30%"]);
 
   return (
-    <div ref={containerRef} className="relative">
-      {/* Static Background - Revealed Section (Black) */}
-      <div className="fixed bottom-0 left-0 right-0 h-[50vh] bg-black flex items-center justify-center z-0">
+    <div ref={containerRef} className="relative mt-12 sm:mt-16">
+      {/* Hidden Background Section - Only visible on over-scroll */}
+      <div className="absolute bottom-0 left-0 right-0 h-[60vh] bg-black flex items-center justify-center -z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm text-white/70 mb-4">
-              All featured work on this website is presented for illustrative purposes only, showcasing real-life examples of digital solutions. Advora does not claim ownership of any of the displayed works. All rights remain with their respective creators.
-            </p>
-            <p className="text-xs text-white/50">
-              Logos, assets, and other branded content are the property of their original owners and are not to be used, reproduced, or redistributed. If you are the rightful owner of any content and would like it credited differently or removed, please contact us at{" "}
-              <a href="mailto:advora.in@gmail.com" className="text-primary-foreground hover:underline">
-                advora.in@gmail.com
-              </a>
-            </p>
-          </motion.div>
+          <p className="text-sm text-white/70 mb-4">
+            All featured work on this website is presented for illustrative purposes only, showcasing real-life examples of digital solutions. Advora does not claim ownership of any of the displayed works. All rights remain with their respective creators.
+          </p>
+          <p className="text-xs text-white/50">
+            Logos, assets, and other branded content are the property of their original owners and are not to be used, reproduced, or redistributed. If you are the rightful owner of any content and would like it credited differently or removed, please contact us at{" "}
+            <a href="mailto:advora.in@gmail.com" className="text-blue-400 hover:underline">
+              advora.in@gmail.com
+            </a>
+          </p>
         </div>
       </div>
 
-      {/* Animated Footer - Slides up like curtain */}
+      {/* Main Footer - Slides up like curtain */}
       <motion.footer 
         style={{ y: footerY }}
-        className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden z-10"
+        className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden"
       >
         {/* Background grid pattern to match hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
