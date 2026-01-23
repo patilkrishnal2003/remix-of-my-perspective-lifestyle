@@ -1,7 +1,7 @@
 const FooterRevealSection = () => {
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 w-full bg-foreground -z-10"
+      className="fixed bottom-0 left-0 right-0 w-full bg-foreground -z-10 rounded-t-[3rem] sm:rounded-t-[4rem] lg:rounded-t-[5rem]"
       style={{ height: "400px" }}
     >
       <div className="h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 text-center">
