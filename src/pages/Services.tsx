@@ -45,49 +45,57 @@ const Services = () => {
       icon: Globe,
       title: "Web Development",
       description: "Custom websites and web applications built with cutting-edge technologies. From landing pages to complex enterprise platforms, we create responsive, fast, and SEO-optimized solutions.",
-      features: ["React & Next.js", "Custom CMS Integration", "E-commerce Solutions", "Progressive Web Apps"]
+      features: ["React & Next.js", "Custom CMS Integration", "E-commerce Solutions", "Progressive Web Apps"],
+      path: "/services/web-development"
     },
     {
       icon: Smartphone,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android devices.",
-      features: ["React Native", "iOS & Android Native", "App Store Deployment", "Push Notifications"]
+      features: ["React Native", "iOS & Android Native", "App Store Deployment", "Push Notifications"],
+      path: "/services/mobile-apps"
     },
     {
       icon: Code,
       title: "Custom Software Development",
       description: "Tailored software solutions designed to solve your unique business challenges and streamline operations.",
-      features: ["Business Process Automation", "Legacy System Modernization", "Custom Integrations", "Scalable Architecture"]
+      features: ["Business Process Automation", "Legacy System Modernization", "Custom Integrations", "Scalable Architecture"],
+      path: "/services/custom-software"
     },
     {
       icon: Database,
       title: "Backend Development",
       description: "Robust server-side solutions and APIs that power your applications with reliability and performance.",
-      features: ["RESTful & GraphQL APIs", "Database Design", "Microservices", "Real-time Systems"]
+      features: ["RESTful & GraphQL APIs", "Database Design", "Microservices", "Real-time Systems"],
+      path: "/services/backend-systems"
     },
     {
       icon: Cloud,
       title: "Cloud Solutions",
       description: "Cloud infrastructure setup, migration, and management for scalable and cost-effective operations.",
-      features: ["AWS & Azure", "Cloud Migration", "DevOps & CI/CD", "Infrastructure as Code"]
+      features: ["AWS & Azure", "Cloud Migration", "DevOps & CI/CD", "Infrastructure as Code"],
+      path: "/services/cloud-solutions"
     },
     {
       icon: Palette,
       title: "UI/UX Design",
       description: "User-centered design that combines aesthetics with functionality to create engaging digital experiences.",
-      features: ["User Research", "Wireframing & Prototyping", "Visual Design", "Usability Testing"]
+      features: ["User Research", "Wireframing & Prototyping", "Visual Design", "Usability Testing"],
+      path: "/services/ui-ux-design"
     },
     {
       icon: Settings,
       title: "Maintenance & Support",
       description: "Ongoing technical support and maintenance to keep your applications running smoothly and securely.",
-      features: ["24/7 Monitoring", "Bug Fixes & Updates", "Performance Optimization", "Security Patches"]
+      features: ["24/7 Monitoring", "Bug Fixes & Updates", "Performance Optimization", "Security Patches"],
+      path: "/contact"
     },
     {
       icon: LineChart,
       title: "Technical Consulting",
       description: "Strategic technology advice to help you make informed decisions and plan for future growth.",
-      features: ["Technology Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"]
+      features: ["Technology Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"],
+      path: "/contact"
     }
   ];
 
@@ -216,7 +224,7 @@ const Services = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {service.features.slice(0, 3).map((feature) => (
                       <span key={feature} className="px-2.5 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground">
                         {feature}
@@ -228,6 +236,12 @@ const Services = () => {
                       </span>
                     )}
                   </div>
+                  <Link to={service.path}>
+                    <Button variant="outline" className="w-full rounded-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
