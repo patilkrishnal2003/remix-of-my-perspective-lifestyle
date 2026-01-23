@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import { type Testimonial } from "@/components/TestimonialCard";
 import { ArrowRight, Globe, Smartphone, Code, Star, ExternalLink, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -84,30 +86,62 @@ const Portfolio = () => {
 
   const categories = ["All", "Web Application", "Mobile App", "E-commerce Platform", "SaaS Application", "Enterprise Software"];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
-      quote: "Advora transformed our outdated system into a modern, efficient platform. Their team was professional, communicative, and delivered beyond our expectations.",
-      author: "Jennifer Martinez",
-      role: "CEO, FinanceFlow",
-      rating: 5
+      id: "1",
+      platform: "google",
+      title: "Outstanding Digital Transformation",
+      rating: 5,
+      snippet: "Advora transformed our outdated system into a modern, efficient platform. Their team was professional, communicative, and delivered beyond our expectations.",
+      readMoreUrl: "#",
+      user: {
+        name: "Jennifer Martinez",
+        role: "CEO, FinanceFlow",
+        avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+        profileUrl: "#"
+      }
     },
     {
-      quote: "Working with Advora was a game-changer for our startup. They understood our vision and built an app that our users love.",
-      author: "David Kim",
-      role: "Founder, HealthTrack Pro",
-      rating: 5
+      id: "2",
+      platform: "linkedin",
+      title: "Game-Changer for Our Startup",
+      rating: 5,
+      snippet: "Working with Advora was a game-changer for our startup. They understood our vision and built an app that our users love.",
+      readMoreUrl: "#",
+      user: {
+        name: "David Kim",
+        role: "Founder, HealthTrack Pro",
+        avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+        profileUrl: "#"
+      }
     },
     {
-      quote: "The Advora team's technical expertise and attention to detail made all the difference. Our e-commerce platform handles thousands of transactions daily without issues.",
-      author: "Sarah Thompson",
-      role: "CTO, RetailHub",
-      rating: 5
+      id: "3",
+      platform: "google",
+      title: "Technical Excellence",
+      rating: 5,
+      snippet: "The Advora team's technical expertise and attention to detail made all the difference. Our e-commerce platform handles thousands of transactions daily without issues.",
+      readMoreUrl: "#",
+      user: {
+        name: "Sarah Thompson",
+        role: "CTO, RetailHub",
+        avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+        profileUrl: "#"
+      }
     },
     {
-      quote: "They didn't just build software—they became true partners in our success. The team understood our industry challenges and delivered solutions that made a real impact.",
-      author: "Robert Chen",
-      role: "COO, LogiTrack",
-      rating: 5
+      id: "4",
+      platform: "linkedin",
+      title: "True Partners in Success",
+      rating: 5,
+      snippet: "They didn't just build software—they became true partners in our success. The team understood our industry challenges and delivered solutions that made a real impact.",
+      readMoreUrl: "#",
+      user: {
+        name: "Robert Chen",
+        role: "COO, LogiTrack",
+        avatar: "https://randomuser.me/api/portraits/men/75.jpg",
+        profileUrl: "#"
+      }
     }
   ];
 
@@ -327,26 +361,7 @@ const Portfolio = () => {
 
         {/* Testimonials Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-muted-foreground">Hear from the businesses we've helped succeed</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={testimonial.author} className={`p-8 rounded-3xl bg-card border border-border animate-slide-up stagger-${(index % 4) + 1}`}>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="text-lg leading-relaxed mb-6">"{testimonial.quote}"</p>
-                <div>
-                  <p className="font-bold">{testimonial.author}</p>
-                  <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialsSection testimonials={testimonials} />
         </section>
 
         {/* Industries Section */}
