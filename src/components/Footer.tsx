@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
       {/* Upper Footer - with curved bottom corners */}
-      <div className="relative rounded-b-[3rem] sm:rounded-b-[4rem]">
+      <div className="relative bg-background rounded-b-[3rem] sm:rounded-b-[4rem]">
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
           {/* Logo & Description - Full width on mobile */}
