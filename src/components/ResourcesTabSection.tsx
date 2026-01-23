@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Briefcase, FileText, FolderOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+
 
 // Project images
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
@@ -190,111 +190,108 @@ export default function ResourcesTabSection() {
   };
 
   return (
-    <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-10 sm:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured Resources
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our latest projects and insights
-          </p>
-        </div>
+    <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          Featured Resources
+        </h2>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Explore our latest projects and insights
+        </p>
+      </div>
 
-        {/* Tab Buttons - Underline Style */}
-        <div className="relative flex justify-center gap-6 sm:gap-10 mb-10">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={cn(
-                "relative flex items-center gap-2 px-2 py-4 text-sm sm:text-base font-medium transition-all duration-300",
-                activeTab === tab.id
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
-              )}
-            >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
-              {activeTab === tab.id && (
-                <motion.div
-                  layoutId="activeResourceTabUnderline"
-                  className="absolute -bottom-[1px] left-0 right-0 h-0.5 bg-primary z-10"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-            </button>
-          ))}
-          {/* Full-width line below tabs */}
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
-        </div>
-
-        {/* Tab Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+      {/* Tab Navigation - Same style as Services */}
+      <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all duration-300 ${
+              activeTab === tab.id
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
           >
-            {activeTab === "portfolio" &&
-              portfolioItems.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <ResourceCard {...item} />
-                </motion.div>
-              ))}
+            <tab.icon className="w-4 h-4" />
+            {tab.label}
+            {activeTab === tab.id && (
+              <motion.div
+                layoutId="activeResourceTabUnderline"
+                className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+          </button>
+        ))}
+        {/* Full-width line below tabs */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
+      </div>
 
-            {activeTab === "projects" &&
-              projects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <ResourceCard {...project} />
-                </motion.div>
-              ))}
+      {/* Tab Content */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {activeTab === "portfolio" &&
+            portfolioItems.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <ResourceCard {...item} />
+              </motion.div>
+            ))}
 
-            {activeTab === "blog" &&
-              blogPosts.map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <ResourceCard
-                    image={post.image}
-                    title={post.title}
-                    category={post.category}
-                    excerpt={post.excerpt}
-                    readTime={post.readTime}
-                    isLink
-                    to={`/blog/${post.id}`}
-                  />
-                </motion.div>
-              ))}
-          </motion.div>
-        </AnimatePresence>
+          {activeTab === "projects" &&
+            projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <ResourceCard {...project} />
+              </motion.div>
+            ))}
 
-        {/* View All Button */}
-        <div className="text-center mt-10">
-          <Link to={getViewAllLink()}>
-            <Button variant="outline" className="rounded-full px-8 py-6 group">
-              {getViewAllText()}
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
-        </div>
+          {activeTab === "blog" &&
+            blogPosts.map((post, index) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <ResourceCard
+                  image={post.image}
+                  title={post.title}
+                  category={post.category}
+                  excerpt={post.excerpt}
+                  readTime={post.readTime}
+                  isLink
+                  to={`/blog/${post.id}`}
+                />
+              </motion.div>
+            ))}
+        </motion.div>
+      </AnimatePresence>
+
+      {/* View All Button */}
+      <div className="text-center mt-10">
+        <Link to={getViewAllLink()}>
+          <Button variant="outline" className="rounded-full px-8 py-6 group">
+            {getViewAllText()}
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </Link>
       </div>
     </section>
   );
