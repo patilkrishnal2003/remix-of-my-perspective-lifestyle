@@ -275,7 +275,7 @@ const HeroImageCarousel = () => {
   }, [images.length]);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
+    <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[25%] sm:translate-y-[35%] md:translate-y-[40%] flex justify-center px-4 sm:px-6 lg:px-8">
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
