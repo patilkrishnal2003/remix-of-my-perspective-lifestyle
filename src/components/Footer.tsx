@@ -6,7 +6,9 @@ const Footer = () => {
     <div className="bg-foreground mt-12 sm:mt-16">
       <footer className="relative overflow-hidden z-10">
         {/* Upper Footer - with curved bottom corners */}
-        <div className="relative bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]">
+        <div className="relative bg-background rounded-b-[3rem] sm:rounded-b-[4rem]">
+          {/* Gradient overlay to match hero */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]" />
           {/* Background grid pattern to match hero */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[3rem] sm:rounded-b-[4rem]" />
           
