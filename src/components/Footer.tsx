@@ -10,33 +10,38 @@ const Footer = () => {
     offset: ["start end", "end end"]
   });
 
-  // Footer slides up to reveal background section
-  const footerY = useTransform(scrollYProgress, [0.6, 1], ["0%", "-25%"]);
+  // Footer slides up to reveal background section (30%)
+  const footerY = useTransform(scrollYProgress, [0.35, 1], ["0%", "-30%"]);
 
   return (
-    <>
-      {/* Black Background Section - Fixed at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 h-[40vh] bg-black flex items-center justify-center z-0">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-sm text-white/70 mb-4">
-            All featured work on this website is presented for illustrative purposes only, showcasing real-life examples of digital solutions. Advora Digital does not claim ownership of any of the displayed works. All rights remain with their respective creators.
-          </p>
-          <p className="text-xs text-white/50">
-            Logos, assets, and other branded content are the property of their original owners and are not to be used, reproduced, or redistributed. If you are the rightful owner of any content and would like it credited differently or removed, please contact us at{" "}
-            <a href="mailto:advora.in@gmail.com" className="text-blue-400 hover:underline">
-              advora.in@gmail.com
-            </a>
-          </p>
+    // pb gives us the "over-scroll" space that reveals the panel behind
+    <div ref={containerRef} className="relative mt-12 sm:mt-16 pb-[40vh]">
+      {/* Behind-footer panel (Jitter-style) */}
+      <div className="sticky bottom-0 z-0 h-[40vh] bg-foreground">
+        <div className="h-full max-w-4xl mx-auto px-6 flex items-center justify-center text-center">
+          <div>
+            <p className="text-sm text-background/70 mb-4">
+              All featured work on this website is presented for illustrative purposes only, showcasing real-life examples of digital solutions. Advora Digital does not claim ownership of any of the displayed works. All rights remain with their respective creators.
+            </p>
+            <p className="text-xs text-background/50">
+              Logos, assets, and other branded content are the property of their original owners and are not to be used, reproduced, or redistributed. If you are the rightful owner of any content and would like it credited differently or removed, please contact us at{" "}
+              <a
+                href="mailto:advora.in@gmail.com"
+                className="text-background underline underline-offset-4 decoration-background/30 hover:decoration-background/60"
+              >
+                advora.in@gmail.com
+              </a>
+              .
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Footer Container */}
-      <div ref={containerRef} className="relative z-10 mt-12 sm:mt-16">
-        {/* Main Footer - Slides up like curtain */}
-        <motion.footer 
-          style={{ y: footerY }}
-          className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden"
-        >
+      {/* Main footer (curtain) */}
+      <motion.footer
+        style={{ y: footerY }}
+        className="sticky bottom-0 z-10 bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden"
+      >
           {/* Background grid pattern to match hero */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
           
@@ -142,12 +147,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </motion.footer>
-
-        {/* Spacer to allow scrolling past footer */}
-        <div className="h-[30vh] bg-transparent pointer-events-none" />
-      </div>
-    </>
+      </motion.footer>
+    </div>
   );
 };
 
