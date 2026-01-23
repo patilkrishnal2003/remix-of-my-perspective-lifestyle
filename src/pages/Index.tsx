@@ -262,10 +262,8 @@ const Index = () => {
           </section>
 
           {/* Testimonials Section */}
-          <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24 overflow-hidden">
-            <div className="px-4 sm:px-6 lg:px-8">
-              <TestimonialsSection testimonials={testimonials} />
-            </div>
+          <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
+            <TestimonialsSection testimonials={testimonials} />
           </section>
 
           {/* Resources Tab Section */}
