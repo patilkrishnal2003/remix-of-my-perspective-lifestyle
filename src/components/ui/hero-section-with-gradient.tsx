@@ -282,7 +282,7 @@ const HeroImageCarousel = () => {
         transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
       >
-        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-6 sm:p-8 shadow-2xl shadow-primary/10">
+        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-3 sm:p-4 shadow-2xl shadow-primary/10">
           <div className="rounded-lg sm:rounded-xl overflow-hidden relative aspect-[16/9]">
             <AnimatePresence mode="wait">
               <motion.img
