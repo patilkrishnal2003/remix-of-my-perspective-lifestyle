@@ -3,7 +3,7 @@ import { Twitter, Linkedin, Github, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10 mb-[200px]">
+    <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
       {/* Upper Footer - with curved bottom corners */}
       <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 rounded-b-[3rem] sm:rounded-b-[4rem]">
         {/* Background grid pattern to match hero */}

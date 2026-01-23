@@ -131,7 +131,7 @@ const Index = () => {
   
 
   return (
-    <div className="min-h-screen bg-background animate-fade-in mb-[400px]">
+    <div className="min-h-screen bg-background animate-fade-in mb-[200px]">
       <Header />
       
       <main>
