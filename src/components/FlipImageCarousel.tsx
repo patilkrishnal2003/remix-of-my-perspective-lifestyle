@@ -54,11 +54,11 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
     <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
       {/* Left side - Flipping Image */}
       <div className="relative lg:col-span-3">
-        {/* Decorative frame */}
-        <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-3xl" />
-        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
+        {/* Decorative frame - contained within bounds */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-2xl" />
+        <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
         
-        <div className="relative aspect-[16/10] rounded-2xl overflow-hidden" style={{ perspective: "1000px" }}>
+        <div className="relative aspect-[16/9] rounded-2xl overflow-hidden" style={{ perspective: "1000px" }}>
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentIndex}
