@@ -5,13 +5,7 @@ const Footer = () => {
   return (
     <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
       {/* Upper Footer - with curved bottom corners */}
-      <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 rounded-b-[3rem] sm:rounded-b-[4rem]">
-        {/* Background grid pattern to match hero */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[3rem] sm:rounded-b-[4rem]" />
-        
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-2xl" />
+      <div className="relative rounded-b-[3rem] sm:rounded-b-[4rem]">
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
           {/* Logo & Description - Full width on mobile */}
