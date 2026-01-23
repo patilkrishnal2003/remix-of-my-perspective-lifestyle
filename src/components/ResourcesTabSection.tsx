@@ -203,7 +203,7 @@ export default function ResourcesTabSection() {
         </div>
 
         {/* Tab Buttons - Underline Style */}
-        <div className="flex justify-center gap-6 sm:gap-10 mb-10 border-b border-border">
+        <div className="relative flex justify-center gap-6 sm:gap-10 mb-10">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -220,12 +220,14 @@ export default function ResourcesTabSection() {
               {activeTab === tab.id && (
                 <motion.div
                   layoutId="activeResourceTabUnderline"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                  className="absolute -bottom-[1px] left-0 right-0 h-0.5 bg-primary z-10"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
             </button>
           ))}
+          {/* Full-width line below tabs */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
         </div>
 
         {/* Tab Content */}
