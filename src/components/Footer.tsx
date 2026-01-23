@@ -15,8 +15,8 @@ const Footer = () => {
 
   return (
     <div ref={containerRef} className="relative">
-      {/* Static Background - Revealed Section */}
-      <div className="sticky bottom-0 left-0 right-0 h-[50vh] bg-background flex items-center justify-center z-0">
+      {/* Static Background - Revealed Section (Black) */}
+      <div className="fixed bottom-0 left-0 right-0 h-[50vh] bg-black flex items-center justify-center z-0">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -24,12 +24,12 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-white/70 mb-4">
               All featured work on this website is presented for illustrative purposes only, showcasing real-life examples of digital solutions. Advora does not claim ownership of any of the displayed works. All rights remain with their respective creators.
             </p>
-            <p className="text-xs text-muted-foreground/60">
+            <p className="text-xs text-white/50">
               Logos, assets, and other branded content are the property of their original owners and are not to be used, reproduced, or redistributed. If you are the rightful owner of any content and would like it credited differently or removed, please contact us at{" "}
-              <a href="mailto:advora.in@gmail.com" className="text-primary hover:underline">
+              <a href="mailto:advora.in@gmail.com" className="text-primary-foreground hover:underline">
                 advora.in@gmail.com
               </a>
             </p>
