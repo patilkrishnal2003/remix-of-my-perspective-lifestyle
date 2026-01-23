@@ -202,30 +202,28 @@ export default function ResourcesTabSection() {
           </p>
         </div>
 
-        {/* Tab Buttons */}
-        <div className="flex justify-center gap-2 mb-10 flex-wrap">
+        {/* Tab Buttons - Underline Style */}
+        <div className="flex justify-center gap-6 sm:gap-10 mb-10 border-b border-border">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                "relative flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 overflow-hidden",
+                "relative flex items-center gap-2 px-2 py-4 text-sm sm:text-base font-medium transition-all duration-300",
                 activeTab === tab.id
-                  ? "bg-foreground text-background shadow-lg"
-                  : "bg-muted text-foreground hover:bg-muted/80"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
+              <tab.icon className="w-4 h-4" />
+              {tab.label}
               {activeTab === tab.id && (
                 <motion.div
-                  layoutId="activeTabBg"
-                  className="absolute inset-0 bg-foreground rounded-full"
+                  layoutId="activeResourceTabUnderline"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-              <span className="relative z-10 flex items-center gap-2">
-                <tab.icon className="w-4 h-4" />
-                {tab.label}
-              </span>
             </button>
           ))}
         </div>
