@@ -3,7 +3,7 @@ import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-re
 
 const Footer = () => {
   return (
-    <footer className="relative mt-12 sm:mt-16">
+    <footer className="relative mt-12 sm:mt-16 bg-foreground">
       {/* Lower Footer (Reveal Section) - Fixed behind */}
       <div className="sticky bottom-0 bg-foreground" style={{ height: "200px" }}>
         <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
