@@ -4,9 +4,12 @@ import React, { useEffect, useRef, ReactNode, useState } from "react";
 import { gsap } from "gsap";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { motion, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroDashboard from "@/assets/hero-dashboard.jpg";
+import heroImage1 from "@/assets/hero-dashboard.jpg";
+import heroImage2 from "@/assets/project-financeflow.jpg";
+import heroImage3 from "@/assets/project-healthtrack.jpg";
+import heroImage4 from "@/assets/project-retailhub.jpg";
 import { 
   SiReact, 
   SiTypescript, 
@@ -254,6 +257,69 @@ const CircularOrbits = () => {
   );
 };
 
+// Hero Image Carousel Component
+const HeroImageCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [
+    { src: heroImage1, alt: "Dashboard preview" },
+    { src: heroImage2, alt: "Finance flow project" },
+    { src: heroImage3, alt: "Health track project" },
+    { src: heroImage4, alt: "Retail hub project" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+        className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
+      >
+        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-1.5 sm:p-2 shadow-2xl shadow-primary/10">
+          <div className="rounded-lg sm:rounded-xl overflow-hidden relative aspect-[16/9]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentIndex}
+                src={images[currentIndex].src}
+                alt={images[currentIndex].alt}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full h-full object-cover absolute inset-0"
+              />
+            </AnimatePresence>
+          </div>
+          
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-2 mt-3 pb-1">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={cn(
+                  "w-2 h-2 rounded-full transition-all duration-300",
+                  index === currentIndex
+                    ? "w-6 bg-primary"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                )}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 export default function HeroSectionWithGradient() {
   const gradientRef = useRef<HTMLDivElement>(null);
 
@@ -338,25 +404,8 @@ export default function HeroSectionWithGradient() {
 
       </div>
 
-      {/* Overlapping Hero Image - balanced overlap across devices */}
-      <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
-        >
-          <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-1.5 sm:p-2 shadow-2xl shadow-primary/10">
-            <div className="rounded-lg sm:rounded-xl overflow-hidden">
-              <img
-                src={heroDashboard}
-                alt="Dashboard preview"
-                className="w-full h-auto aspect-[16/9] object-contain bg-muted/20"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </div>
+      {/* Overlapping Hero Image Carousel - balanced overlap across devices */}
+      <HeroImageCarousel />
     </section>
   );
 }
