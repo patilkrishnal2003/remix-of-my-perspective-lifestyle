@@ -83,26 +83,8 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
           </AnimatePresence>
           </div>
         </div>
-        {/* Navigation arrows */}
-        <div className="flex justify-center gap-4 mt-6">
-          <button
-            onClick={goToPrevious}
-            className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 shadow-lg"
-            aria-label="Previous"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={goToNext}
-            className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 shadow-lg"
-            aria-label="Next"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Dots indicator */}
-        <div className="flex justify-center gap-2 mt-4">
+        {/* Dots indicator - now above arrows */}
+        <div className="flex justify-center gap-2 mt-6">
           {items.map((_, index) => (
             <button
               key={index}
@@ -118,6 +100,24 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
+        </div>
+
+        {/* Navigation arrows - now below dots */}
+        <div className="flex justify-center gap-4 mt-4">
+          <button
+            onClick={goToPrevious}
+            className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 shadow-lg"
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={goToNext}
+            className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300 shadow-lg"
+            aria-label="Next"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       </div>
 
