@@ -1,12 +1,52 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import { ArrowRight, Calendar, Clock, User, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Calendar, Clock, User, Mail, Sparkles, Code, Smartphone, Cloud, Palette, Shield, Zap, Database, Globe, Layers, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getFeaturedPosts } from "@/data/blogPosts";
 import { motion } from "framer-motion";
 import blogHero from "@/assets/blog-future-web.jpg";
+
+const topics = [
+  { icon: Code, title: "React", count: 12 },
+  { icon: Terminal, title: "TypeScript", count: 8 },
+  { icon: Database, title: "Node.js", count: 10 },
+  { icon: Smartphone, title: "Mobile Apps", count: 6 },
+  { icon: Cloud, title: "DevOps", count: 5 },
+  { icon: Layers, title: "API Design", count: 7 },
+  { icon: Globe, title: "Cloud", count: 9 },
+  { icon: Palette, title: "UI/UX", count: 4 },
+  { icon: Shield, title: "Security", count: 3 },
+  { icon: Zap, title: "Performance", count: 6 },
+];
+
+function TopicsCarousel() {
+  const allTopics = [...topics, ...topics, ...topics, ...topics];
+
+  return (
+    <div className="relative overflow-hidden group">
+      {/* Gradient masks */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+      
+      <div className="flex gap-6 animate-marquee group-hover:[animation-play-state:paused]" style={{ animationDuration: '5s' }}>
+        {allTopics.map((topic, i) => (
+          <div
+            key={`${topic.title}-${i}`}
+            className="flex-shrink-0 w-56 p-6 rounded-[1.5rem] bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300 cursor-pointer"
+          >
+            <div className="w-12 h-12 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-3 hover:bg-primary/30 transition-colors">
+              <topic.icon className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-bold mb-1">{topic.title}</h3>
+            <p className="text-sm text-muted-foreground">{topic.count} articles</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const Blog = () => {
   const featuredPosts = getFeaturedPosts();
@@ -212,31 +252,10 @@ const Blog = () => {
           </div>
         </section>
 
-        {/* Topics Section */}
+        {/* Topics Section - Marquee Carousel */}
         <section className="mb-20">
           <h2 className="text-2xl font-bold mb-8 text-center">Explore by Topic</h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[
-              { name: "React", count: 12 },
-              { name: "TypeScript", count: 8 },
-              { name: "Node.js", count: 10 },
-              { name: "Mobile Apps", count: 6 },
-              { name: "DevOps", count: 5 },
-              { name: "API Design", count: 7 },
-              { name: "Cloud", count: 9 },
-              { name: "UI/UX", count: 4 },
-              { name: "Security", count: 3 },
-              { name: "Performance", count: 6 }
-            ].map((topic) => (
-              <div
-                key={topic.name}
-                className="p-4 rounded-[1.25rem] bg-card border border-border hover:border-accent/50 transition-all cursor-pointer text-center"
-              >
-                <div className="font-semibold mb-1">{topic.name}</div>
-                <div className="text-sm text-muted-foreground">{topic.count} articles</div>
-              </div>
-            ))}
-          </div>
+          <TopicsCarousel />
         </section>
 
         <CTASection
