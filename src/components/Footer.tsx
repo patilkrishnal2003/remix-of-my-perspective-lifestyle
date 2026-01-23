@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="relative mt-12 sm:mt-16 bg-foreground">
       {/* Lower Footer (Reveal Section) - Fixed behind */}
-      <div className="sticky bottom-0 bg-foreground" style={{ height: "200px" }}>
+      <div className="sticky bottom-0 bg-foreground" style={{ height: "300px" }}>
         <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -19,7 +19,7 @@ const Footer = () => {
       </div>
 
       {/* Upper Footer - with curved bottom corners */}
-      <div className="relative z-10 bg-background rounded-b-[3rem] sm:rounded-b-[4rem]" style={{ marginTop: "-200px" }}>
+      <div className="relative z-10 bg-background rounded-b-[3rem] sm:rounded-b-[4rem]" style={{ marginTop: "-300px" }}>
         {/* Gradient overlay to match hero */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]" />
         {/* Background grid pattern to match hero */}
