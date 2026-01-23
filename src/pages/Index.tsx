@@ -42,16 +42,13 @@ const Index = () => {
     { icon: Users, title: "Dedicated Team", description: "Expert developers assigned to your project" }
   ];
 
-  const techStackRow1 = [
+  const techStack = [
     { name: "React", icon: SiReact, color: "#61DAFB" },
     { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
     { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
     { name: "Python", icon: SiPython, color: "#3776AB" },
     { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-  ];
-
-  const techStackRow2 = [
     { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
     { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
     { name: "Docker", icon: SiDocker, color: "#2496ED" },
@@ -289,43 +286,12 @@ const Index = () => {
             <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
           </div>
           
-          {/* Scrolling Marquee */}
+          {/* Scrolling Marquee - Single Row */}
           <div className="relative overflow-hidden">
-            {/* Row 1 - scrolling left */}
-            <div className="flex gap-6 mb-6 animate-marquee">
-              {[...techStackRow1, ...techStackRow1, ...techStackRow1, ...techStackRow1].map((tech, index) => (
+            <div className="flex gap-6 animate-marquee">
+              {[...techStack, ...techStack, ...techStack, ...techStack].map((tech, index) => (
                 <div
-                  key={`row1-${index}`}
-                  className="group flex-shrink-0"
-                >
-                  <div 
-                    className="w-16 h-16 rounded-xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
-                    style={{ 
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = `0 0 20px ${tech.color}40, 0 0 40px ${tech.color}20`;
-                      e.currentTarget.style.borderColor = tech.color;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
-                      e.currentTarget.style.borderColor = "";
-                    }}
-                  >
-                    <tech.icon 
-                      className="w-8 h-8 transition-colors duration-300" 
-                      style={{ color: tech.color }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Row 2 - scrolling right */}
-            <div className="flex gap-6 animate-marquee-reverse">
-              {[...techStackRow2, ...techStackRow2, ...techStackRow2, ...techStackRow2].map((tech, index) => (
-                <div
-                  key={`row2-${index}`}
+                  key={`tech-${index}`}
                   className="group flex-shrink-0"
                 >
                   <div 
