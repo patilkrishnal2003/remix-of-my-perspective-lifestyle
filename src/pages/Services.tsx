@@ -349,10 +349,10 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Process Section - Enhanced */}
+        {/* Process Section - Minimal Timeline */}
         <section className="section-divider py-20 pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <motion.span 
                 className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -377,129 +377,82 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                A proven methodology for delivering successful projects on time and within budget
+                A proven methodology for delivering successful projects
               </motion.p>
             </div>
 
-            {/* Process Cards */}
-            <div className="relative">
-              {/* Connecting Line - Desktop */}
-              <div className="hidden lg:block absolute top-24 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+            {/* Minimal Timeline */}
+            <div className="relative max-w-5xl mx-auto">
+              {/* Vertical Line */}
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-primary/20" />
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-                {[
-                  { 
-                    step: "01", 
-                    title: "Discovery", 
-                    icon: Search,
-                    description: "We dive deep into your business goals, target audience, and requirements through comprehensive research and stakeholder interviews.",
-                    highlights: ["Requirements Gathering", "Market Analysis", "User Research"]
-                  },
-                  { 
-                    step: "02", 
-                    title: "Planning", 
-                    icon: FileText,
-                    description: "We architect solutions and create detailed specifications, wireframes, and project roadmaps with clear milestones.",
-                    highlights: ["Technical Architecture", "Timeline & Milestones", "Resource Planning"]
-                  },
-                  { 
-                    step: "03", 
-                    title: "Development", 
-                    icon: Code,
-                    description: "Our expert team builds your solution using agile sprints with regular demos, feedback loops, and iterative improvements.",
-                    highlights: ["Agile Sprints", "Code Reviews", "Quality Assurance"]
-                  },
-                  { 
-                    step: "04", 
-                    title: "Launch & Support", 
-                    icon: Rocket,
-                    description: "We ensure a smooth deployment and provide ongoing maintenance, monitoring, and support for long-term success.",
-                    highlights: ["Deployment", "Training", "24/7 Support"]
-                  }
-                ].map((phase, index) => (
-                  <motion.div 
-                    key={phase.step}
-                    className="group relative"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.15 }}
-                  >
-                    {/* Card */}
-                    <div className="relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-500 h-full">
-                      {/* Step Number Badge - On the line */}
-                      <div className="flex justify-center mb-6">
-                        <motion.div 
-                          className="relative w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
-                          whileHover={{ rotate: [0, -5, 5, 0] }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <phase.icon className="w-7 h-7 text-primary-foreground" />
-                          {/* Step number badge */}
-                          <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-background border-2 border-primary flex items-center justify-center text-xs font-bold text-primary">
-                            {phase.step}
-                          </div>
-                        </motion.div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                          {phase.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                          {phase.description}
-                        </p>
-                        
-                        {/* Highlights */}
-                        <div className="flex flex-wrap justify-center gap-1.5">
-                          {phase.highlights.map((highlight, hIndex) => (
-                            <motion.span 
-                              key={highlight}
-                              className="px-2.5 py-1 rounded-full bg-primary/5 text-xs font-medium text-primary border border-primary/10"
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              whileInView={{ opacity: 1, scale: 1 }}
-                              viewport={{ once: true }}
-                              transition={{ delay: 0.3 + index * 0.1 + hIndex * 0.05 }}
-                            >
-                              {highlight}
-                            </motion.span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Arrow indicator for next step - Desktop only */}
-                      {index < 3 && (
-                        <div className="hidden lg:flex absolute -right-4 top-24 w-8 h-8 rounded-full bg-background border border-border items-center justify-center z-10 group-hover:border-primary group-hover:text-primary transition-colors">
-                          <ChevronRight className="w-4 h-4" />
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Bottom Stats */}
-            <motion.div 
-              className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
               {[
-                { value: "2 Weeks", label: "Avg. Sprint Duration" },
-                { value: "98%", label: "Client Satisfaction" },
-                { value: "150+", label: "Projects Delivered" },
-                { value: "24/7", label: "Support Available" }
-              ].map((stat, index) => (
-                <div key={stat.label} className="text-center p-4 rounded-xl bg-muted/30 border border-border">
-                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
+                { 
+                  step: "01", 
+                  title: "Discovery", 
+                  icon: Search,
+                  description: "Deep dive into your business goals, target audience, and requirements through comprehensive research.",
+                },
+                { 
+                  step: "02", 
+                  title: "Planning", 
+                  icon: FileText,
+                  description: "Architect solutions with detailed specifications, wireframes, and project roadmaps.",
+                },
+                { 
+                  step: "03", 
+                  title: "Development", 
+                  icon: Code,
+                  description: "Build your solution using agile sprints with regular demos and feedback loops.",
+                },
+                { 
+                  step: "04", 
+                  title: "Launch", 
+                  icon: Rocket,
+                  description: "Smooth deployment with ongoing maintenance, monitoring, and dedicated support.",
+                }
+              ].map((phase, index) => (
+                <motion.div 
+                  key={phase.step}
+                  className={`relative flex items-start gap-8 md:gap-16 mb-16 last:mb-0 ${
+                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                >
+                  {/* Timeline Node */}
+                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-10">
+                    <motion.div 
+                      className="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/25"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <phase.icon className="w-7 h-7 text-primary-foreground" />
+                    </motion.div>
+                  </div>
+
+                  {/* Content - Left or Right */}
+                  <div className={`flex-1 pl-24 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
+                    <div className="inline-flex items-center gap-3 mb-2">
+                      <span className={`text-5xl md:text-6xl font-bold text-primary/10 ${index % 2 === 0 ? 'md:order-2' : ''}`}>
+                        {phase.step}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
+                      {phase.title}
+                    </h3>
+                    <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-md inline-block">
+                      {phase.description}
+                    </p>
+                  </div>
+
+                  {/* Empty space for the other side */}
+                  <div className="hidden md:block flex-1" />
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
