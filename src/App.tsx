@@ -17,6 +17,14 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 
+// Service pages
+import WebDevelopment from "./pages/services/WebDevelopment";
+import MobileApps from "./pages/services/MobileApps";
+import CustomSoftware from "./pages/services/CustomSoftware";
+import BackendSystems from "./pages/services/BackendSystems";
+import UIUXDesign from "./pages/services/UIUXDesign";
+import CloudSolutions from "./pages/services/CloudSolutions";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -31,6 +39,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/web-development" element={<WebDevelopment />} />
+          <Route path="/services/mobile-apps" element={<MobileApps />} />
+          <Route path="/services/custom-software" element={<CustomSoftware />} />
+          <Route path="/services/backend-systems" element={<BackendSystems />} />
+          <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
+          <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
