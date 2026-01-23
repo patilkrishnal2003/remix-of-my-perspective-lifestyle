@@ -9,6 +9,30 @@ import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 
+const techStackRow1 = [
+  { name: "React", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "Go", icon: SiGo, color: "#00ADD8" },
+  { name: "Redis", icon: SiRedis, color: "#DC382D" },
+  { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
+];
+
+const techStackRow2 = [
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
+  { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+  { name: "React Native", icon: TbBrandReactNative, color: "#61DAFB" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
+];
+
 const Services = () => {
   const services = [
     {
@@ -115,158 +139,110 @@ const Services = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Centered with Floating Icons */}
-        <section className="pt-24 sm:pt-32 md:pt-36 pb-16 sm:pb-20 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08)_0%,transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.06)_0%,transparent_50%)]" />
-          
-          {/* Floating Service Icons */}
-          <div className="absolute inset-0 hidden lg:block">
-            <motion.div 
-              className="absolute top-32 left-[10%] w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Globe className="w-7 h-7 text-primary" />
-            </motion.div>
-            <motion.div 
-              className="absolute top-48 right-[12%] w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            >
-              <Smartphone className="w-6 h-6 text-primary" />
-            </motion.div>
-            <motion.div 
-              className="absolute bottom-40 left-[15%] w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            >
-              <Code className="w-6 h-6 text-primary" />
-            </motion.div>
-            <motion.div 
-              className="absolute bottom-32 right-[10%] w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-            >
-              <Cloud className="w-7 h-7 text-primary" />
-            </motion.div>
-            <motion.div 
-              className="absolute top-1/2 left-[5%] w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-            >
-              <Database className="w-5 h-5 text-primary" />
-            </motion.div>
-            <motion.div 
-              className="absolute top-1/3 right-[6%] w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-            >
-              <Palette className="w-5 h-5 text-primary" />
-            </motion.div>
-          </div>
-
-          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-                Full-Stack Development Expertise
-              </span>
-            </motion.div>
-            
-            <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] text-foreground mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              Services That
-              <span className="block text-primary">Drive Growth</span>
-            </motion.h1>
-
-            <motion.p 
-              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              From web applications to cloud infrastructure, we deliver comprehensive solutions tailored to your business needs.
-            </motion.p>
-
-            <motion.div 
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <Link to="/contact">
-                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium text-base">
-                  Get a Free Quote
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link to="/portfolio">
-                <Button variant="outline" className="rounded-full px-8 py-6 font-medium text-base">
-                  View Our Work
-                </Button>
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Advantages Section */}
-        <section className="section-divider py-16 pt-20">
+        {/* Hero Section - Split Layout with Stats */}
+        <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {advantages.map((advantage, index) => (
-                <div key={advantage.title} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                    <advantage.icon className="h-7 w-7 text-accent" />
-                  </div>
-                  <h3 className="font-bold mb-2">{advantage.title}</h3>
-                  <p className="text-sm text-muted-foreground">{advantage.description}</p>
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Content */}
+              <motion.div 
+                className="space-y-6"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                  End-to-End Solutions
+                </span>
+                
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-[1.1] text-foreground">
+                  Expert Services for
+                  <span className="block text-primary">Digital Success</span>
+                </h1>
+
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+                  We deliver comprehensive development solutions - from concept to launch. Our expert team brings your vision to life with cutting-edge technology.
+                </p>
+
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <Link to="/contact">
+                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium">
+                      Get a Free Quote
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Link to="/portfolio">
+                    <Button variant="outline" className="rounded-full px-8 py-6 font-medium">
+                      View Our Work
+                    </Button>
+                  </Link>
                 </div>
-              ))}
+              </motion.div>
+
+              {/* Stats Grid */}
+              <motion.div 
+                className="grid grid-cols-2 gap-4"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {advantages.map((advantage, index) => (
+                  <motion.div 
+                    key={advantage.title}
+                    className="p-6 rounded-2xl bg-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-300 group"
+                    whileHover={{ y: -4 }}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                      <advantage.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-foreground mb-1">{advantage.title}</h3>
+                    <p className="text-sm text-muted-foreground">{advantage.description}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* Services Grid - 3 per row with unique cards */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
             <p className="text-xl text-muted-foreground">Full-stack development expertise for every need</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={service.title}
-                className={`group relative p-8 rounded-3xl bg-gradient-to-br from-card via-card to-accent/5 border border-border hover:border-accent/50 hover:shadow-xl transition-all duration-500 animate-slide-up stagger-${(index % 4) + 1} overflow-hidden`}
+                className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -4 }}
               >
-                {/* Decorative gradient blob */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
-                <div className="relative flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-primary flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="h-8 w-8 text-white" />
+                <div className="relative">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
+                    <service.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">{service.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {service.features.map((feature) => (
-                        <span key={feature} className="px-3 py-1.5 rounded-full bg-accent/10 text-sm font-medium text-accent border border-accent/20">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {service.features.slice(0, 3).map((feature) => (
+                      <span key={feature} className="px-2.5 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground">
+                        {feature}
+                      </span>
+                    ))}
+                    {service.features.length > 3 && (
+                      <span className="px-2.5 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
+                        +{service.features.length - 3}
+                      </span>
+                    )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
@@ -297,44 +273,63 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Technologies Section */}
+        {/* Technologies Section - Marquee Style */}
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Technologies We Use</h2>
               <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
             </div>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              {[
-                { name: "React", icon: SiReact },
-                { name: "Next.js", icon: SiNextdotjs },
-                { name: "TypeScript", icon: SiTypescript },
-                { name: "Node.js", icon: SiNodedotjs },
-                { name: "Python", icon: SiPython },
-                { name: "Go", icon: SiGo },
-                { name: "PostgreSQL", icon: SiPostgresql },
-                { name: "MongoDB", icon: SiMongodb },
-                { name: "Redis", icon: SiRedis },
-                { name: "AWS", icon: SiAmazonwebservices },
-                { name: "Docker", icon: SiDocker },
-                { name: "Kubernetes", icon: SiKubernetes },
-                { name: "GraphQL", icon: SiGraphql },
-                { name: "React Native", icon: TbBrandReactNative },
-                { name: "Flutter", icon: SiFlutter },
-                { name: "Tailwind CSS", icon: SiTailwindcss },
-                { name: "Figma", icon: SiFigma },
-                { name: "Git", icon: SiGit }
-              ].map((tech, index) => (
-                <div
-                  key={tech.name}
-                  className={`group flex flex-col items-center gap-2 animate-slide-up stagger-${(index % 6) + 1}`}
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-background border border-border flex items-center justify-center group-hover:border-accent/50 group-hover:scale-110 transition-all duration-300">
-                    <tech.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors" />
+            
+            {/* Scrolling Marquee */}
+            <div className="relative overflow-hidden">
+              {/* Row 1 - scrolling left */}
+              <div className="flex gap-6 mb-6 animate-marquee">
+                {[...techStackRow1, ...techStackRow1, ...techStackRow1, ...techStackRow1].map((tech, index) => (
+                  <div key={`row1-${index}`} className="group flex-shrink-0">
+                    <div 
+                      className="w-16 h-16 rounded-xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                      style={{ boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = `0 0 20px ${tech.color}40, 0 0 40px ${tech.color}20`;
+                        e.currentTarget.style.borderColor = tech.color;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+                        e.currentTarget.style.borderColor = "";
+                      }}
+                    >
+                      <tech.icon className="w-8 h-8 transition-colors duration-300" style={{ color: tech.color }} />
+                    </div>
                   </div>
-                  <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{tech.name}</span>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              {/* Row 2 - scrolling right */}
+              <div className="flex gap-6 animate-marquee-reverse">
+                {[...techStackRow2, ...techStackRow2, ...techStackRow2, ...techStackRow2].map((tech, index) => (
+                  <div key={`row2-${index}`} className="group flex-shrink-0">
+                    <div 
+                      className="w-16 h-16 rounded-xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
+                      style={{ boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = `0 0 20px ${tech.color}40, 0 0 40px ${tech.color}20`;
+                        e.currentTarget.style.borderColor = tech.color;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
+                        e.currentTarget.style.borderColor = "";
+                      }}
+                    >
+                      <tech.icon className="w-8 h-8 transition-colors duration-300" style={{ color: tech.color }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Fade overlays */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
             </div>
           </div>
         </section>
