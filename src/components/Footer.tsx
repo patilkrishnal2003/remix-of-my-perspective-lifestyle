@@ -3,9 +3,23 @@ import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-re
 
 const Footer = () => {
   return (
-    <div className="bg-foreground mt-12 sm:mt-16">
-      <footer className="relative overflow-hidden z-10">
-        {/* Upper Footer - with curved bottom corners */}
+    <div className="relative mt-12 sm:mt-16">
+      {/* Black logo bar - sticky at bottom, revealed as upper footer scrolls away */}
+      <div className="sticky bottom-0 left-0 right-0 bg-foreground z-0" style={{ height: "200px" }}>
+        <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+              <span className="text-foreground font-bold text-xl">A</span>
+            </div>
+            <span className="text-2xl sm:text-3xl font-bold text-background transition-colors duration-300 group-hover:text-background/80">
+              Advora
+            </span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Upper Footer - scrolls over the sticky black section */}
+      <footer className="relative z-10 -mt-[200px]">
         <div className="relative bg-background rounded-b-[3rem] sm:rounded-b-[4rem]">
           {/* Gradient overlay to match hero */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]" />
@@ -126,19 +140,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Black logo bar (was previously the fixed "reveal" section) */}
-        <div className="bg-foreground" style={{ height: "200px" }}>
-          <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-                <span className="text-foreground font-bold text-xl">A</span>
-              </div>
-              <span className="text-2xl sm:text-3xl font-bold text-background transition-colors duration-300 group-hover:text-background/80">
-                Advora
-              </span>
-            </Link>
-          </div>
-        </div>
+        {/* Spacer to reveal the sticky black section */}
+        <div style={{ height: "200px" }} />
       </footer>
     </div>
   );
