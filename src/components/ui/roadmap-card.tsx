@@ -29,21 +29,20 @@ export function RoadmapCard({
   const [isPaused, setIsPaused] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Auto-progression through steps with pause at each step
+  // Auto-progression through steps - 1 second per step, restart from beginning
   useEffect(() => {
     if (!autoPlay || isPaused) return;
 
     const timer = setTimeout(() => {
       setIsTransitioning(true);
-      // Small delay before moving to next step
       setTimeout(() => {
         setActiveStep((prev) => (prev + 1) % items.length);
         setIsTransitioning(false);
-      }, 300);
-    }, interval);
+      }, 200);
+    }, 1000); // 1 second per step
 
     return () => clearTimeout(timer);
-  }, [autoPlay, interval, items.length, isPaused, activeStep]);
+  }, [autoPlay, isPaused, items.length, activeStep]);
 
   // Calculate progress percentage based on active step
   const progressPercentage = ((activeStep + 1) / items.length) * 100;
