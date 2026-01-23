@@ -109,7 +109,7 @@ interface CardProps {
 
 function ResourceCard({ image, title, category, description, excerpt, results, readTime, isLink, to }: CardProps) {
   const content = (
-    <div className="group relative rounded-2xl overflow-hidden bg-card border border-border transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2">
+    <div className="group relative rounded-2xl overflow-hidden bg-card border border-border transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
       {/* Image with zoom effect */}
       <div className="aspect-[4/3] overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
@@ -121,7 +121,7 @@ function ResourceCard({ image, title, category, description, excerpt, results, r
       </div>
       
       {/* Content */}
-      <div className="p-6 transition-all duration-300 group-hover:bg-muted/30">
+      <div className="p-6 transition-all duration-300 group-hover:bg-muted/30 flex-1 flex flex-col">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
             {category}
@@ -135,7 +135,7 @@ function ResourceCard({ image, title, category, description, excerpt, results, r
         <h3 className="text-lg font-bold mb-2 transition-colors duration-300 group-hover:text-primary">
           {title}
         </h3>
-        <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+        <p className="text-muted-foreground text-sm mb-3 line-clamp-2 flex-1">
           {description || excerpt}
         </p>
         {results && (
