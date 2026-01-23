@@ -3,13 +3,18 @@ import { Twitter, Linkedin, Github, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="relative mt-12 sm:mt-16 bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden z-10 rounded-b-[2.5rem] sm:rounded-b-[3rem]">
-      {/* Background grid pattern to match hero */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+    <div className="relative">
+      {/* Corner fills to match reveal section background */}
+      <div className="absolute bottom-0 left-0 w-[2.5rem] sm:w-[3rem] h-[2.5rem] sm:h-[3rem] bg-foreground" />
+      <div className="absolute bottom-0 right-0 w-[2.5rem] sm:w-[3rem] h-[2.5rem] sm:h-[3rem] bg-foreground" />
       
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-2xl" />
+      <footer className="relative mt-12 sm:mt-16 bg-gradient-to-br from-primary/10 via-primary/5 to-background overflow-hidden z-10 rounded-b-[2.5rem] sm:rounded-b-[3rem]">
+        {/* Background grid pattern to match hero */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        
+        {/* Decorative gradient orbs */}
+        <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-primary/5 rounded-full blur-2xl" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         {/* Logo & Description - Full width on mobile */}
@@ -109,7 +114,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 
