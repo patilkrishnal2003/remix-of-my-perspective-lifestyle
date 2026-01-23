@@ -454,7 +454,7 @@ const Portfolio = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="section-divider py-20 pt-24">
           <TestimonialsSection testimonials={testimonials} />
         </section>
 
