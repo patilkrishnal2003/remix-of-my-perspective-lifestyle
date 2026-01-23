@@ -61,25 +61,11 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
             What Our Clients Say
           </h2>
 
-          {/* Filter pills */}
-          <div className="flex justify-center gap-2 mt-6">
-            {[
-              { v: "all", label: "All Reviews" },
-              { v: "google", label: "Google" },
-            ].map((opt) => (
-              <button
-                key={opt.v}
-                onClick={() => setFilter(opt.v as Filter)}
-                className={cn(
-                  "px-4 py-2 text-sm rounded-full transition-colors",
-                  filter === (opt.v as Filter)
-                    ? "bg-foreground text-background"
-                    : "text-foreground hover:bg-muted"
-                )}
-              >
-                {opt.label}
-              </button>
-            ))}
+          {/* Reviews badge */}
+          <div className="flex justify-center mt-6">
+            <span className="px-4 py-2 text-sm rounded-full bg-foreground text-background">
+              Reviews
+            </span>
           </div>
         </div>
 
