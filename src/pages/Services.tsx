@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock, ChevronLeft, ChevronRight, Search, FileText, Rocket, Headphones } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPostgresql, SiMongodb, SiRedis, SiAmazonwebservices, SiDocker, SiKubernetes, SiGraphql, SiFlutter, SiTailwindcss, SiFigma, SiGit } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
@@ -349,29 +349,157 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Process Section */}
-        <section className="section-divider py-20 pt-24">
+        {/* Process Section - Enhanced */}
+        <section className="section-divider py-20 pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Development Process</h2>
-              <p className="text-xl text-muted-foreground">A proven methodology for delivering successful projects</p>
+              <motion.span 
+                className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                HOW WE WORK
+              </motion.span>
+              <motion.h2 
+                className="text-3xl md:text-4xl font-bold mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                Our Development Process
+              </motion.h2>
+              <motion.p 
+                className="text-xl text-muted-foreground max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                A proven methodology for delivering successful projects on time and within budget
+              </motion.p>
             </div>
-            <div className="grid md:grid-cols-4 gap-8">
+
+            {/* Process Cards */}
+            <div className="relative">
+              {/* Connecting Line - Desktop */}
+              <div className="hidden lg:block absolute top-24 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+                {[
+                  { 
+                    step: "01", 
+                    title: "Discovery", 
+                    icon: Search,
+                    description: "We dive deep into your business goals, target audience, and requirements through comprehensive research and stakeholder interviews.",
+                    highlights: ["Requirements Gathering", "Market Analysis", "User Research"]
+                  },
+                  { 
+                    step: "02", 
+                    title: "Planning", 
+                    icon: FileText,
+                    description: "We architect solutions and create detailed specifications, wireframes, and project roadmaps with clear milestones.",
+                    highlights: ["Technical Architecture", "Timeline & Milestones", "Resource Planning"]
+                  },
+                  { 
+                    step: "03", 
+                    title: "Development", 
+                    icon: Code,
+                    description: "Our expert team builds your solution using agile sprints with regular demos, feedback loops, and iterative improvements.",
+                    highlights: ["Agile Sprints", "Code Reviews", "Quality Assurance"]
+                  },
+                  { 
+                    step: "04", 
+                    title: "Launch & Support", 
+                    icon: Rocket,
+                    description: "We ensure a smooth deployment and provide ongoing maintenance, monitoring, and support for long-term success.",
+                    highlights: ["Deployment", "Training", "24/7 Support"]
+                  }
+                ].map((phase, index) => (
+                  <motion.div 
+                    key={phase.step}
+                    className="group relative"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                  >
+                    {/* Card */}
+                    <div className="relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-500 h-full">
+                      {/* Step Number Badge - On the line */}
+                      <div className="flex justify-center mb-6">
+                        <motion.div 
+                          className="relative w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                          whileHover={{ rotate: [0, -5, 5, 0] }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <phase.icon className="w-7 h-7 text-primary-foreground" />
+                          {/* Step number badge */}
+                          <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-background border-2 border-primary flex items-center justify-center text-xs font-bold text-primary">
+                            {phase.step}
+                          </div>
+                        </motion.div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="text-center">
+                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                          {phase.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                          {phase.description}
+                        </p>
+                        
+                        {/* Highlights */}
+                        <div className="flex flex-wrap justify-center gap-1.5">
+                          {phase.highlights.map((highlight, hIndex) => (
+                            <motion.span 
+                              key={highlight}
+                              className="px-2.5 py-1 rounded-full bg-primary/5 text-xs font-medium text-primary border border-primary/10"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.3 + index * 0.1 + hIndex * 0.05 }}
+                            >
+                              {highlight}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Arrow indicator for next step - Desktop only */}
+                      {index < 3 && (
+                        <div className="hidden lg:flex absolute -right-4 top-24 w-8 h-8 rounded-full bg-background border border-border items-center justify-center z-10 group-hover:border-primary group-hover:text-primary transition-colors">
+                          <ChevronRight className="w-4 h-4" />
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Bottom Stats */}
+            <motion.div 
+              className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+            >
               {[
-                { step: "01", title: "Discovery", description: "We learn about your business, goals, and requirements through in-depth discussions and research." },
-                { step: "02", title: "Planning", description: "We create detailed specifications, timelines, and project roadmaps with clear milestones." },
-                { step: "03", title: "Development", description: "Our team builds your solution using agile methodologies with regular updates and demos." },
-                { step: "04", title: "Launch", description: "We deploy your project and provide ongoing support to ensure long-term success." }
-              ].map((phase, index) => (
-                <div key={phase.step} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="w-16 h-16 rounded-full bg-accent text-accent-foreground flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                    {phase.step}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{phase.title}</h3>
-                  <p className="text-muted-foreground">{phase.description}</p>
+                { value: "2 Weeks", label: "Avg. Sprint Duration" },
+                { value: "98%", label: "Client Satisfaction" },
+                { value: "150+", label: "Projects Delivered" },
+                { value: "24/7", label: "Support Available" }
+              ].map((stat, index) => (
+                <div key={stat.label} className="text-center p-4 rounded-xl bg-muted/30 border border-border">
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
