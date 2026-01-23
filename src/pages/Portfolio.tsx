@@ -4,6 +4,7 @@ import CTASection from "@/components/CTASection";
 import { ArrowRight, Globe, Smartphone, Code, Star, ExternalLink, Filter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
 import projectRetailHub from "@/assets/project-retailhub.jpg";
@@ -122,61 +123,102 @@ const Portfolio = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Editorial Style */}
-        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-6 sm:p-10 md:p-14">
-              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                {/* Image */}
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                  <img
-                    src={projectFinanceFlow}
-                    alt="Our portfolio"
-                    className="w-full h-auto object-cover aspect-[4/3]"
-                  />
+        {/* Hero Section - Masonry Image Grid */}
+        <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Content */}
+              <motion.div 
+                className="space-y-6 order-2 lg:order-1"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                  150+ Projects Delivered
+                </span>
+                
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-[1.1] text-foreground">
+                  Work That
+                  <span className="block">Speaks for Itself</span>
+                </h1>
+
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+                  From startups to enterprises, we've helped businesses across industries achieve their digital ambitions.
+                </p>
+
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <Link to="/contact">
+                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium">
+                      Start Your Project
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
 
-                {/* Content */}
-                <div className="space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
-                    Our Portfolio
-                  </h1>
-
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                    Explore our latest projects and see how we've helped businesses achieve their digital goals.
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-                    <Link to="/contact" className="w-full sm:w-auto">
-                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        Start a Project
-                      </Button>
-                    </Link>
-                    <Link to="/services" className="w-full sm:w-auto">
-                      <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        View Services
-                      </Button>
-                    </Link>
+                {/* Quick Stats */}
+                <div className="flex gap-8 pt-4">
+                  <div>
+                    <div className="text-3xl font-bold text-primary">4.9</div>
+                    <div className="text-sm text-muted-foreground">Avg Rating</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-primary">95%</div>
+                    <div className="text-sm text-muted-foreground">Client Retention</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-bold text-primary">50+</div>
+                    <div className="text-sm text-muted-foreground">Happy Clients</div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
+
+              {/* Masonry Grid */}
+              <motion.div 
+                className="order-1 lg:order-2"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="space-y-3 sm:space-y-4">
+                    <motion.div 
+                      className="rounded-2xl overflow-hidden aspect-[4/5]"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img src={projectFinanceFlow} alt="FinanceFlow" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.div 
+                      className="rounded-2xl overflow-hidden aspect-square"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img src={projectHealthTrack} alt="HealthTrack" className="w-full h-full object-cover" />
+                    </motion.div>
+                  </div>
+                  <div className="space-y-3 sm:space-y-4 pt-8">
+                    <motion.div 
+                      className="rounded-2xl overflow-hidden aspect-square"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img src={projectRetailHub} alt="RetailHub" className="w-full h-full object-cover" />
+                    </motion.div>
+                    <motion.div 
+                      className="rounded-2xl overflow-hidden aspect-[4/5]"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <img src={projectTaskMaster} alt="TaskMaster" className="w-full h-full object-cover" />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="section-divider py-16 pt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={stat.label} className={`text-center animate-slide-up stagger-${index + 1}`}>
-                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Filter Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-16">

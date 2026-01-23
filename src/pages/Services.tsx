@@ -7,7 +7,7 @@ import { TbBrandReactNative } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
-import servicesHero from "@/assets/services-hero.jpg";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const services = [
@@ -115,45 +115,106 @@ const Services = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Editorial Style */}
-        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-6 sm:p-10 md:p-14">
-              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                {/* Image */}
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                  <img
-                    src={servicesHero}
-                    alt="Our services"
-                    className="w-full h-auto object-cover aspect-[4/3]"
-                  />
-                </div>
+        {/* Hero Section - Centered with Floating Icons */}
+        <section className="pt-24 sm:pt-32 md:pt-36 pb-16 sm:pb-20 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--primary)/0.08)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.06)_0%,transparent_50%)]" />
+          
+          {/* Floating Service Icons */}
+          <div className="absolute inset-0 hidden lg:block">
+            <motion.div 
+              className="absolute top-32 left-[10%] w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Globe className="w-7 h-7 text-primary" />
+            </motion.div>
+            <motion.div 
+              className="absolute top-48 right-[12%] w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            >
+              <Smartphone className="w-6 h-6 text-primary" />
+            </motion.div>
+            <motion.div 
+              className="absolute bottom-40 left-[15%] w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            >
+              <Code className="w-6 h-6 text-primary" />
+            </motion.div>
+            <motion.div 
+              className="absolute bottom-32 right-[10%] w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+            >
+              <Cloud className="w-7 h-7 text-primary" />
+            </motion.div>
+            <motion.div 
+              className="absolute top-1/2 left-[5%] w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
+            >
+              <Database className="w-5 h-5 text-primary" />
+            </motion.div>
+            <motion.div 
+              className="absolute top-1/3 right-[6%] w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+            >
+              <Palette className="w-5 h-5 text-primary" />
+            </motion.div>
+          </div>
 
-                {/* Content */}
-                <div className="space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
-                    Our Services
-                  </h1>
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+                Full-Stack Development Expertise
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-[1.1] text-foreground mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Services That
+              <span className="block text-primary">Drive Growth</span>
+            </motion.h1>
 
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                    Comprehensive development solutions to bring your digital vision to life. From concept to deployment, we've got you covered.
-                  </p>
+            <motion.p 
+              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              From web applications to cloud infrastructure, we deliver comprehensive solutions tailored to your business needs.
+            </motion.p>
 
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-                    <Link to="/contact" className="w-full sm:w-auto">
-                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        Get a Quote
-                      </Button>
-                    </Link>
-                    <Link to="/portfolio" className="w-full sm:w-auto">
-                      <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        View Our Work
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <Link to="/contact">
+                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium text-base">
+                  Get a Free Quote
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/portfolio">
+                <Button variant="outline" className="rounded-full px-8 py-6 font-medium text-base">
+                  View Our Work
+                </Button>
+              </Link>
+            </motion.div>
           </div>
         </section>
 

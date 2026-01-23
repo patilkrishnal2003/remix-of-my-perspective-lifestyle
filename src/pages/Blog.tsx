@@ -1,10 +1,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import { ArrowRight, Calendar, Clock, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock, User, Mail, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { blogPosts, getFeaturedPosts } from "@/data/blogPosts";
+import { motion } from "framer-motion";
 import blogHero from "@/assets/blog-future-web.jpg";
 
 const Blog = () => {
@@ -18,63 +19,85 @@ const Blog = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Editorial Style */}
-        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-6 sm:p-10 md:p-14">
-              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                {/* Image */}
-                <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                  <img
-                    src={blogHero}
-                    alt="Advora Blog"
-                    className="w-full h-auto object-cover aspect-[4/3]"
-                  />
-                </div>
-
+        {/* Hero Section - Featured Article Spotlight */}
+        <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Main Featured Card */}
+            <motion.div 
+              className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary to-primary/80 text-primary-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="grid lg:grid-cols-2">
                 {/* Content */}
-                <div className="space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
-                    Advora Blog
+                <div className="p-8 sm:p-10 md:p-14 flex flex-col justify-center order-2 lg:order-1">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles className="w-5 h-5" />
+                    <span className="text-sm font-medium opacity-90">Featured Article</span>
+                  </div>
+                  
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-[1.1] mb-4">
+                    Insights &
+                    <span className="block">Expert Knowledge</span>
                   </h1>
 
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                    Insights, tutorials, and case studies from our team of experts. Stay updated with the latest in software development.
+                  <p className="text-base sm:text-lg opacity-90 leading-relaxed mb-6 max-w-md">
+                    Stay ahead with tutorials, case studies, and industry insights from our team of developers and designers.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-                    <Link to="/contact" className="w-full sm:w-auto">
-                      <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        Contact Us
-                      </Button>
-                    </Link>
-                    <Link to="/portfolio" className="w-full sm:w-auto">
-                      <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        View Portfolio
-                      </Button>
-                    </Link>
+                  {/* Newsletter Inline */}
+                  <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                    <div className="relative flex-1 max-w-sm">
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="w-full pl-12 pr-4 py-4 rounded-full bg-background text-foreground border-0 focus:outline-none focus:ring-2 focus:ring-white/30"
+                      />
+                    </div>
+                    <Button className="bg-white text-primary hover:bg-white/90 rounded-full px-6 py-4 font-medium">
+                      Subscribe
+                    </Button>
+                  </div>
+
+                  <p className="text-xs opacity-70">Join 2,000+ developers. No spam, unsubscribe anytime.</p>
+                </div>
+
+                {/* Image */}
+                <div className="relative order-1 lg:order-2">
+                  <div className="aspect-[4/3] lg:aspect-auto lg:absolute lg:inset-0">
+                    <img
+                      src={blogHero}
+                      alt="Featured blog"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent lg:bg-gradient-to-r" />
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Quick Category Pills */}
+            <motion.div 
+              className="flex flex-wrap justify-center gap-3 mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className="px-5 py-2.5 rounded-full bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all text-sm font-medium"
+                >
+                  {category}
+                </button>
+              ))}
+            </motion.div>
           </div>
         </section>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-
-        {/* Categories */}
-        <section className="mb-12 animate-slide-up stagger-2">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className="px-5 py-2 rounded-full bg-card border border-border hover:border-accent/50 hover:bg-accent/10 transition-all text-sm font-medium"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </section>
 
         {/* Featured Posts */}
         <section className="mb-16 sm:mb-20">
