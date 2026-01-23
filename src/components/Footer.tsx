@@ -104,29 +104,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Lower Footer - Compact with centered logo */}
-      <div className="bg-background py-4 sm:py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-3">
-            {/* Centered Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">A</span>
-              </div>
-              <span className="text-lg font-bold font-serif">Advora</span>
-            </Link>
-            
-            {/* Copyright and Links */}
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-xs text-muted-foreground">
-              <p>© 2026 Advora. All rights reserved.</p>
-              <div className="flex gap-4">
-                <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-                <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </footer>
   );
 };
