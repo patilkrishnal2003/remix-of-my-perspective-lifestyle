@@ -142,6 +142,62 @@ const Portfolio = () => {
         avatar: "https://randomuser.me/api/portraits/men/75.jpg",
         profileUrl: "#"
       }
+    },
+    {
+      id: "5",
+      platform: "google",
+      title: "Exceeded All Expectations",
+      rating: 5,
+      snippet: "From initial concept to final deployment, Advora exceeded all expectations. Their attention to UX design resulted in a 40% increase in user engagement.",
+      readMoreUrl: "#",
+      user: {
+        name: "Amanda Foster",
+        role: "Product Director, EduLearn",
+        avatar: "https://randomuser.me/api/portraits/women/33.jpg",
+        profileUrl: "#"
+      }
+    },
+    {
+      id: "6",
+      platform: "linkedin",
+      title: "Reliable and Innovative",
+      rating: 5,
+      snippet: "Advora delivered a robust real estate platform that has become essential to our operations. Their innovative approach to virtual tours set us apart from competitors.",
+      readMoreUrl: "#",
+      user: {
+        name: "Michael Torres",
+        role: "CEO, PropertyPro",
+        avatar: "https://randomuser.me/api/portraits/men/52.jpg",
+        profileUrl: "#"
+      }
+    },
+    {
+      id: "7",
+      platform: "google",
+      title: "Healthcare Expertise",
+      rating: 5,
+      snippet: "Their understanding of healthcare compliance and patient privacy was impressive. MediConnect has facilitated over 100,000 consultations thanks to their solid architecture.",
+      readMoreUrl: "#",
+      user: {
+        name: "Dr. Emily Watson",
+        role: "Medical Director, MediConnect",
+        avatar: "https://randomuser.me/api/portraits/women/55.jpg",
+        profileUrl: "#"
+      }
+    },
+    {
+      id: "8",
+      platform: "linkedin",
+      title: "Seamless Collaboration",
+      rating: 5,
+      snippet: "The team integrated seamlessly with our internal developers. Their agile methodology and clear communication made the entire project a pleasure to manage.",
+      readMoreUrl: "#",
+      user: {
+        name: "James Patterson",
+        role: "VP Engineering, TaskMaster",
+        avatar: "https://randomuser.me/api/portraits/men/41.jpg",
+        profileUrl: "#"
+      }
     }
   ];
 
