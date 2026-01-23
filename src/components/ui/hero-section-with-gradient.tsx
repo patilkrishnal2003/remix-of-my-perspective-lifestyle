@@ -275,7 +275,7 @@ const HeroImageCarousel = () => {
   }, [images.length]);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[40%] sm:translate-y-[50%] md:translate-y-[55%] flex justify-center px-4 sm:px-6 lg:px-8">
+    <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[50%] sm:translate-y-[60%] md:translate-y-[65%] flex justify-center px-4 sm:px-6 lg:px-8">
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -379,7 +379,7 @@ export default function HeroSectionWithGradient() {
             {/* CTA Buttons */}
             <motion.div
               variants={transitionVariants.item}
-              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-2 sm:pt-4 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-0 sm:pt-2 w-full sm:w-auto"
             >
               <Link to="/contact" className="w-full sm:w-auto">
                 <Button
