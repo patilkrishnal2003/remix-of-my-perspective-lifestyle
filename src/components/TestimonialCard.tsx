@@ -50,7 +50,7 @@ export default function TestimonialCard({ t, highlight = false }: { t: Testimoni
   return (
     <div
       className={cn(
-        "group relative flex flex-col justify-between rounded-3xl border bg-card p-6 transition-all duration-300 cursor-pointer hover:scale-[1.03] hover:shadow-xl",
+        "group relative flex flex-col justify-between rounded-[1.5rem] border bg-card p-6 transition-all duration-300 cursor-pointer hover:scale-[1.03] hover:shadow-xl",
         highlight ? "shadow-xl scale-[1.02] border-primary/30" : "shadow-md border-border"
       )}
     >
