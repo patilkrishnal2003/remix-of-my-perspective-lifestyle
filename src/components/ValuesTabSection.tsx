@@ -47,13 +47,14 @@ const ValuesTabSection = () => {
   const activeData = valuesData.find(v => v.id === activeValue) || valuesData[0];
 
   return (
-    <section className="section-divider py-20 pt-24 bg-background">
+    <section className="section-divider py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Our Values</h2>
-        </div>
+        <div className="bg-muted/50 rounded-3xl p-6 sm:p-10 lg:p-12">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold">Our Values</h2>
+          </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:items-stretch">
+          <div className="flex flex-col lg:flex-row gap-8 lg:items-stretch">
           {/* Left Sidebar - Value Tabs */}
           <div className="lg:w-80 flex-shrink-0 grid grid-cols-2 lg:grid-cols-1 lg:flex lg:flex-col lg:justify-between gap-3">
             {valuesData.map((value) => (
@@ -106,6 +107,7 @@ const ValuesTabSection = () => {
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
         </div>
       </div>
     </section>
