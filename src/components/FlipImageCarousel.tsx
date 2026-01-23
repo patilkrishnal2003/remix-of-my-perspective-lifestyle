@@ -51,9 +51,9 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
       {/* Left side - Flipping Image */}
-      <div className="relative">
+      <div className="relative lg:col-span-3">
         {/* Decorative frame */}
         <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-3xl" />
         <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
@@ -121,7 +121,7 @@ export default function FlipImageCarousel({ items }: FlipImageCarouselProps) {
       </div>
 
       {/* Right side - Content */}
-      <div className="space-y-6">
+      <div className="space-y-6 lg:col-span-2">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
