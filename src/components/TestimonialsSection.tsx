@@ -66,9 +66,8 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
           </div>
         </div>
 
-        {/* Carousel */}
         <div className="relative">
-          <div className="overflow-hidden pt-4">
+          <div className="overflow-hidden py-6 -my-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={idx}
