@@ -411,10 +411,10 @@ const Services = () => {
                   icon: Rocket,
                   description: "Smooth deployment with ongoing maintenance, monitoring, and dedicated support.",
                 }
-              ].map((phase, index) => (
+              ].map((phase, index, arr) => (
                 <motion.div 
                   key={phase.step}
-                  className={`relative flex items-start gap-8 md:gap-16 mb-16 last:mb-0 ${
+                  className={`relative flex items-start gap-8 md:gap-16 mb-20 last:mb-0 ${
                     index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
@@ -432,6 +432,41 @@ const Services = () => {
                       <phase.icon className="w-7 h-7 text-primary-foreground" />
                     </motion.div>
                   </div>
+
+                  {/* Connecting Arrow - Between steps */}
+                  {index < arr.length - 1 && (
+                    <motion.div 
+                      className="absolute left-8 md:left-1/2 -translate-x-1/2 top-20 flex flex-col items-center gap-1"
+                      initial={{ opacity: 0, y: -10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.15 + 0.3 }}
+                    >
+                      {/* Animated dots */}
+                      <motion.div
+                        className="w-1.5 h-1.5 rounded-full bg-primary/60"
+                        animate={{ y: [0, 4, 0], opacity: [0.4, 1, 0.4] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
+                      />
+                      <motion.div
+                        className="w-1.5 h-1.5 rounded-full bg-primary/50"
+                        animate={{ y: [0, 4, 0], opacity: [0.3, 0.8, 0.3] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+                      />
+                      <motion.div
+                        className="w-1.5 h-1.5 rounded-full bg-primary/40"
+                        animate={{ y: [0, 4, 0], opacity: [0.2, 0.6, 0.2] }}
+                        transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
+                      />
+                      {/* Arrow head */}
+                      <motion.div
+                        animate={{ y: [0, 3, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ChevronRight className="w-4 h-4 text-primary/60 rotate-90" />
+                      </motion.div>
+                    </motion.div>
+                  )}
 
                   {/* Content - Left or Right */}
                   <div className={`flex-1 pl-24 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
