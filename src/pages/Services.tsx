@@ -1,13 +1,20 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiGo, SiPostgresql, SiMongodb, SiRedis, SiAmazonwebservices, SiDocker, SiKubernetes, SiGraphql, SiFlutter, SiTailwindcss, SiFigma, SiGit } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+
+// Service images
+import serviceWebDev from "@/assets/service-web-dev.jpg";
+import serviceMobileDev from "@/assets/service-mobile-dev.jpg";
+import serviceCloud from "@/assets/service-cloud.jpg";
+import serviceDesign from "@/assets/service-design.jpg";
 
 const techStackRow1 = [
   { name: "React", icon: SiReact, color: "#61DAFB" },
@@ -33,7 +40,61 @@ const techStackRow2 = [
   { name: "Git", icon: SiGit, color: "#F05032" },
 ];
 
+// Hero carousel slides data
+const heroSlides = [
+  {
+    category: "WEB DEVELOPMENT",
+    title: "Custom Web Solutions That Drive Results",
+    description: "From responsive websites to complex web applications, we build digital experiences that engage users and grow your business.",
+    image: serviceWebDev,
+    features: ["React & Next.js", "E-commerce", "PWA"],
+  },
+  {
+    category: "MOBILE APP DEVELOPMENT",
+    title: "Native & Cross-Platform Mobile Apps",
+    description: "Deliver exceptional mobile experiences on iOS and Android with apps that users love and businesses rely on.",
+    image: serviceMobileDev,
+    features: ["React Native", "iOS & Android", "App Store Ready"],
+  },
+  {
+    category: "CLOUD SOLUTIONS",
+    title: "Scalable Cloud Infrastructure",
+    description: "Enterprise-grade cloud architecture that grows with your business. Secure, reliable, and cost-effective.",
+    image: serviceCloud,
+    features: ["AWS & Azure", "DevOps", "CI/CD"],
+  },
+  {
+    category: "UI/UX DESIGN",
+    title: "User-Centered Design Excellence",
+    description: "Beautiful, intuitive interfaces that delight users and drive conversions through research-backed design.",
+    image: serviceDesign,
+    features: ["User Research", "Prototyping", "Visual Design"],
+  },
+];
+
 const Services = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-advance slides
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+    setIsAutoPlaying(false);
+  };
+
   const services = [
     {
       icon: Globe,
@@ -139,66 +200,107 @@ const Services = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Split Layout with Stats */}
+        {/* Hero Section - Carousel */}
         <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              {/* Content */}
-              <motion.div 
-                className="space-y-6"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
               >
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                  End-to-End Solutions
-                </span>
-                
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold leading-[1.1] text-foreground">
-                  Expert Services for
-                  <span className="block text-primary">Digital Success</span>
-                </h1>
+                {/* Content */}
+                <div className="space-y-5 order-2 lg:order-1">
+                  <div className="flex items-center gap-4">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold tracking-wide">
+                      {heroSlides[currentSlide].category}
+                    </span>
+                  </div>
+                  
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-[1.15] text-foreground">
+                    {heroSlides[currentSlide].title}
+                  </h1>
 
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                  We deliver comprehensive development solutions - from concept to launch. Our expert team brings your vision to life with cutting-edge technology.
-                </p>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
+                    {heroSlides[currentSlide].description}
+                  </p>
 
-                <div className="flex flex-wrap gap-4 pt-2">
-                  <Link to="/contact">
-                    <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium">
-                      Get a Free Quote
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                  <Link to="/portfolio">
-                    <Button variant="outline" className="rounded-full px-8 py-6 font-medium">
-                      View Our Work
-                    </Button>
-                  </Link>
+                  {/* Feature tags */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {heroSlides[currentSlide].features.map((feature) => (
+                      <span key={feature} className="px-3 py-1.5 rounded-full bg-muted text-sm font-medium text-muted-foreground">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-4 pt-4">
+                    <Link to="/contact">
+                      <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium">
+                        Get Started
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <Link to="/portfolio">
+                      <Button variant="outline" className="rounded-full px-8 py-6 font-medium">
+                        View Our Work
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Image */}
+                <div className="order-1 lg:order-2">
+                  <div className="rounded-2xl sm:rounded-3xl overflow-hidden bg-primary/5 border border-border shadow-lg">
+                    <img
+                      src={heroSlides[currentSlide].image}
+                      alt={heroSlides[currentSlide].title}
+                      className="w-full h-auto aspect-[4/3] object-cover"
+                    />
+                  </div>
                 </div>
               </motion.div>
+            </AnimatePresence>
 
-              {/* Stats Grid */}
-              <motion.div 
-                className="grid grid-cols-2 gap-4"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+            {/* Navigation */}
+            <div className="flex items-center justify-center gap-4 mt-10">
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Previous slide"
               >
-                {advantages.map((advantage, index) => (
-                  <motion.div 
-                    key={advantage.title}
-                    className="p-6 rounded-2xl bg-primary/5 border border-primary/10 hover:border-primary/30 transition-all duration-300 group"
-                    whileHover={{ y: -4 }}
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                      <advantage.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="font-bold text-foreground mb-1">{advantage.title}</h3>
-                    <p className="text-sm text-muted-foreground">{advantage.description}</p>
-                  </motion.div>
+                <ChevronLeft className="w-5 h-5 text-muted-foreground" />
+              </button>
+
+              {/* Dots */}
+              <div className="flex items-center gap-2">
+                {heroSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      setIsAutoPlaying(false);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide 
+                        ? "w-8 bg-primary" 
+                        : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
                 ))}
-              </motion.div>
+              </div>
+
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-5 h-5 text-muted-foreground" />
+              </button>
             </div>
           </div>
         </section>
