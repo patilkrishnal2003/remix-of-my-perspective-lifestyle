@@ -3,7 +3,8 @@ import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-re
 
 const Footer = () => {
   return (
-    <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
+    <div className="bg-foreground mt-12 sm:mt-16">
+      <footer className="relative overflow-hidden z-10">
         {/* Upper Footer - with curved bottom corners */}
         <div className="relative bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]">
           {/* Background grid pattern to match hero */}
@@ -137,6 +138,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+    </div>
   );
 };
 
