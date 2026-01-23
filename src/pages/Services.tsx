@@ -200,107 +200,105 @@ const Services = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Carousel */}
-        <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-              >
-                {/* Content */}
-                <div className="space-y-5 order-2 lg:order-1">
-                  <div className="flex items-center gap-4">
-                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-semibold tracking-wide">
-                      {heroSlides[currentSlide].category}
-                    </span>
-                  </div>
-                  
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold leading-[1.15] text-foreground">
-                    {heroSlides[currentSlide].title}
-                  </h1>
-
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">
-                    {heroSlides[currentSlide].description}
-                  </p>
-
-                  {/* Feature tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {heroSlides[currentSlide].features.map((feature) => (
-                      <span key={feature} className="px-3 py-1.5 rounded-full bg-muted text-sm font-medium text-muted-foreground">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-4 pt-4">
-                    <Link to="/contact">
-                      <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 font-medium">
-                        Get Started
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
-                    <Link to="/portfolio">
-                      <Button variant="outline" className="rounded-full px-8 py-6 font-medium">
-                        View Our Work
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Image */}
-                <div className="order-1 lg:order-2">
-                  <div className="rounded-2xl sm:rounded-3xl overflow-hidden bg-primary/5 border border-border shadow-lg">
+        {/* Hero Section - Editorial Split Layout */}
+        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Hero Card */}
+            <div className="rounded-2xl sm:rounded-3xl bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center"
+                >
+                  {/* Image */}
+                  <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                     <img
                       src={heroSlides[currentSlide].image}
-                      alt={heroSlides[currentSlide].title}
-                      className="w-full h-auto aspect-[4/3] object-cover"
+                      alt={heroSlides[currentSlide].category}
+                      className="w-full h-auto object-cover aspect-[4/3]"
                     />
                   </div>
+
+                  {/* Content */}
+                  <div className="space-y-4 sm:space-y-6">
+                    <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-xs sm:text-sm font-semibold tracking-wide">
+                      {heroSlides[currentSlide].category}
+                    </span>
+                    
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                      {heroSlides[currentSlide].title}
+                    </h1>
+
+                    <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                      {heroSlides[currentSlide].description}
+                    </p>
+
+                    {/* Feature tags */}
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {heroSlides[currentSlide].features.map((feature) => (
+                        <span key={feature} className="px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/10 text-sm font-medium text-foreground">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
+                      <Link to="/contact" className="w-full sm:w-auto">
+                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
+                          Get Started
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                      <Link to="/portfolio" className="w-full sm:w-auto">
+                        <Button variant="outline" className="rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
+                          View Our Work
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Navigation Dots */}
+              <div className="flex items-center justify-center gap-4 mt-8">
+                <button
+                  onClick={prevSlide}
+                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-white/20 transition-colors"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft className="w-5 h-5 text-muted-foreground" />
+                </button>
+
+                <div className="flex items-center gap-2">
+                  {heroSlides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentSlide(index);
+                        setIsAutoPlaying(false);
+                      }}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        index === currentSlide 
+                          ? "w-8 bg-primary" 
+                          : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
                 </div>
-              </motion.div>
-            </AnimatePresence>
 
-            {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-10">
-              <button
-                onClick={prevSlide}
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="w-5 h-5 text-muted-foreground" />
-              </button>
-
-              {/* Dots */}
-              <div className="flex items-center gap-2">
-                {heroSlides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setCurrentSlide(index);
-                      setIsAutoPlaying(false);
-                    }}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentSlide 
-                        ? "w-8 bg-primary" 
-                        : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+                <button
+                  onClick={nextSlide}
+                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-white/20 transition-colors"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                </button>
               </div>
-
-              <button
-                onClick={nextSlide}
-                className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="w-5 h-5 text-muted-foreground" />
-              </button>
             </div>
           </div>
         </section>

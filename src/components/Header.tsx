@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,12 +53,20 @@ const Header = () => {
     return location.pathname.startsWith(path);
   };
 
-  const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/services", label: "Services" },
-    { path: "/portfolio", label: "Portfolio" },
-    { path: "/blog", label: "Blog" },
-    { path: "/about", label: "About" },
+  const servicesItems = [
+    { label: "Web Development", path: "/services#web" },
+    { label: "Mobile Apps", path: "/services#mobile" },
+    { label: "Custom Software", path: "/services#software" },
+    { label: "Backend Systems", path: "/services#backend" },
+    { label: "UI/UX Design", path: "/services#design" },
+    { label: "Cloud Solutions", path: "/services#cloud" },
+  ];
+
+  const resourcesItems = [
+    { label: "Portfolio", path: "/portfolio" },
+    { label: "Blog", path: "/blog" },
+    { label: "Community", path: "/community" },
+    { label: "Support", path: "/contact" },
   ];
 
   return (
@@ -79,22 +93,97 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.path}
-                to={link.path} 
-                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                  isActive(link.path) 
-                    ? "text-accent bg-accent/10" 
-                    : "hover:bg-muted/60"
-                }`}
-              >
-                {link.label}
-                {isActive(link.path) && (
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
-                )}
-              </Link>
-            ))}
+            {/* Home */}
+            <Link 
+              to="/" 
+              className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                isActive("/") && location.pathname === "/"
+                  ? "text-accent bg-accent/10" 
+                  : "hover:bg-muted/60"
+              }`}
+            >
+              Home
+              {isActive("/") && location.pathname === "/" && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+              )}
+            </Link>
+
+            {/* About */}
+            <Link 
+              to="/about" 
+              className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                isActive("/about") 
+                  ? "text-accent bg-accent/10" 
+                  : "hover:bg-muted/60"
+              }`}
+            >
+              About
+              {isActive("/about") && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+              )}
+            </Link>
+
+            {/* Services Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative flex items-center gap-1 ${
+                    isActive("/services") 
+                      ? "text-accent bg-accent/10" 
+                      : "hover:bg-muted/60"
+                  }`}
+                >
+                  Services
+                  <ChevronDown className="h-3.5 w-3.5" />
+                  {isActive("/services") && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+                  )}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56 bg-card border border-border shadow-lg z-50">
+                {servicesItems.map((item) => (
+                  <DropdownMenuItem key={item.path} asChild>
+                    <Link 
+                      to={item.path} 
+                      className="w-full cursor-pointer hover:bg-muted"
+                    >
+                      {item.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Resources Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button 
+                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative flex items-center gap-1 ${
+                    isActive("/portfolio") || isActive("/blog") || isActive("/community")
+                      ? "text-accent bg-accent/10" 
+                      : "hover:bg-muted/60"
+                  }`}
+                >
+                  Resources
+                  <ChevronDown className="h-3.5 w-3.5" />
+                  {(isActive("/portfolio") || isActive("/blog") || isActive("/community")) && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+                  )}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48 bg-card border border-border shadow-lg z-50">
+                {resourcesItems.map((item) => (
+                  <DropdownMenuItem key={item.path} asChild>
+                    <Link 
+                      to={item.path} 
+                      className="w-full cursor-pointer hover:bg-muted"
+                    >
+                      {item.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Actions */}
@@ -132,31 +221,59 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in">
             <nav className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.path}
-                  to={link.path} 
-                  className={`text-base font-medium py-3 px-4 rounded-xl transition-colors ${
-                    isActive(link.path) 
-                      ? "bg-accent/10 text-accent" 
-                      : "hover:bg-muted"
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
               <Link 
-                to="/contact" 
+                to="/" 
                 className={`text-base font-medium py-3 px-4 rounded-xl transition-colors ${
-                  isActive("/contact") 
+                  isActive("/") && location.pathname === "/"
                     ? "bg-accent/10 text-accent" 
                     : "hover:bg-muted"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                Home
               </Link>
+              <Link 
+                to="/about" 
+                className={`text-base font-medium py-3 px-4 rounded-xl transition-colors ${
+                  isActive("/about") 
+                    ? "bg-accent/10 text-accent" 
+                    : "hover:bg-muted"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              
+              {/* Services Section */}
+              <div className="py-2 px-4">
+                <p className="text-xs font-semibold text-muted-foreground mb-2">SERVICES</p>
+                {servicesItems.map((item) => (
+                  <Link 
+                    key={item.path}
+                    to={item.path} 
+                    className="block text-base font-medium py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Resources Section */}
+              <div className="py-2 px-4">
+                <p className="text-xs font-semibold text-muted-foreground mb-2">RESOURCES</p>
+                {resourcesItems.map((item) => (
+                  <Link 
+                    key={item.path}
+                    to={item.path} 
+                    className="block text-base font-medium py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
               <div className="pt-3 mt-2 border-t border-border">
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                   <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full w-full py-6 text-base">
