@@ -4,9 +4,6 @@ import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-re
 const Footer = () => {
   return (
     <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10">
-      {/* Black background only at the bottom so the curved corners blend into the lower footer */}
-      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-36 bg-black" aria-hidden="true" />
-      
       {/* Upper Footer - with curved bottom corners */}
       <div className="relative bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[3rem] sm:rounded-b-[4rem]">
         {/* Background grid pattern to match hero */}
