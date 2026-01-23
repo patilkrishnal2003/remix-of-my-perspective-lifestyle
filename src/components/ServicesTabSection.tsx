@@ -90,17 +90,30 @@ const ServicesTabSection = () => {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         {/* Tab Navigation */}
-        <TabsList className="w-full flex flex-wrap justify-center gap-2 bg-transparent h-auto p-0 mb-8">
+        <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
           {servicesData.map((service) => (
-            <TabsTrigger
+            <button
               key={service.id}
-              value={service.id}
-              className="relative px-6 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 data-[state=active]:text-foreground data-[state=active]:bg-transparent bg-transparent rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:shadow-none hover:text-foreground"
+              onClick={() => setActiveTab(service.id)}
+              className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                activeTab === service.id
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               {service.label}
-            </TabsTrigger>
+              {activeTab === service.id && (
+                <motion.div
+                  layoutId="activeServiceTabUnderline"
+                  className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+            </button>
           ))}
-        </TabsList>
+          {/* Full-width line below tabs */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
+        </div>
 
         {/* Tab Content */}
         <div className="relative">
@@ -116,15 +129,15 @@ const ServicesTabSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className={`w-full rounded-2xl bg-gradient-to-br ${service.bgColor} p-8 md:p-12 relative overflow-hidden`}
+                  className="w-full rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 p-8 md:p-12 relative overflow-hidden"
                 >
                   {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-200/30 dark:bg-emerald-800/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-teal-200/30 dark:bg-teal-800/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
                   
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
-                    <div className={`w-20 h-20 rounded-2xl ${service.accentColor} flex items-center justify-center`}>
+                    <div className="w-20 h-20 rounded-2xl bg-emerald-500 flex items-center justify-center">
                       <service.icon className="w-10 h-10 text-white" />
                     </div>
                     
@@ -140,22 +153,10 @@ const ServicesTabSection = () => {
                         {service.description}
                       </p>
                       
-                      {/* Features */}
-                      <div className="flex flex-wrap justify-center gap-3 mb-6">
-                        {service.features.map((feature) => (
-                          <span
-                            key={feature}
-                            className="px-3 py-1 bg-white/60 backdrop-blur-sm rounded-full text-sm font-medium text-foreground"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                      
                       {/* CTA Buttons */}
-                      <div className="flex flex-wrap justify-center gap-4">
+                      <div className="flex flex-wrap justify-center gap-4 mb-6">
                         <Link to="/contact">
-                          <Button className={`${service.accentColor} hover:opacity-90 text-white rounded-full px-6`}>
+                          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-6">
                             Get Started
                           </Button>
                         </Link>
@@ -165,6 +166,18 @@ const ServicesTabSection = () => {
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </Link>
+                      </div>
+                      
+                      {/* Features - Transparent badges */}
+                      <div className="flex flex-wrap justify-center gap-3">
+                        {service.features.map((feature) => (
+                          <span
+                            key={feature}
+                            className="px-3 py-1 bg-transparent border border-foreground/20 rounded-full text-sm font-medium text-foreground"
+                          >
+                            {feature}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>

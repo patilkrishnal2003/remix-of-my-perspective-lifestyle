@@ -15,8 +15,7 @@ import CTASection from "@/components/CTASection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
 import FlipImageCarousel from "@/components/FlipImageCarousel";
-import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiMongodb, SiAmazonwebservices, SiDocker, SiGraphql, SiTailwindcss } from "react-icons/si";
-import { TbBrandReactNative } from "react-icons/tb";
+import TechStackSection from "@/components/TechStackSection";
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
 import logoFinanceflow from "@/assets/logo-financeflow.png";
@@ -40,21 +39,6 @@ const Index = () => {
     { icon: Zap, title: "Fast Delivery", description: "Agile development for quick turnaround" },
     { icon: Shield, title: "Secure & Reliable", description: "Enterprise-grade security standards" },
     { icon: Users, title: "Dedicated Team", description: "Expert developers assigned to your project" }
-  ];
-
-  const techStack = [
-    { name: "React", icon: SiReact, color: "#61DAFB" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-    { name: "Python", icon: SiPython, color: "#3776AB" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
-    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-    { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
-    { name: "Docker", icon: SiDocker, color: "#2496ED" },
-    { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
-    { name: "React Native", icon: TbBrandReactNative, color: "#61DAFB" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   ];
 
   const testimonials: Testimonial[] = [
@@ -194,51 +178,6 @@ const Index = () => {
         {/* Services Section */}
         <ServicesTabSection />
 
-        {/* Focus Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal>
-              <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  I build high quality apps that your
-                  <span className="block">users love</span>
-                </h2>
-                <p className="text-primary font-medium text-lg">here's what I focus on</p>
-              </div>
-            </ScrollReveal>
-            <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
-              {[
-                {
-                  number: "1",
-                  title: "Functionality first.",
-                  description: "I go for buttery smooth UX that solves user problems."
-                },
-                {
-                  number: "2",
-                  title: "Mobile first, Minimalistic design.",
-                  description: "Pixel perfect development."
-                },
-                {
-                  number: "3",
-                  title: "App is adaptable",
-                  description: "for future enhancements or feature expansions."
-                }
-              ].map((item, index) => (
-                <ScrollReveal key={item.number} delay={index * 150}>
-                  <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-foreground text-background flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl sm:text-3xl font-bold">{item.number}</span>
-                    </div>
-                    <div className="pt-2">
-                      <span className="font-bold text-lg">{item.title}</span>{" "}
-                      <span className="text-muted-foreground">{item.description}</span>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
 
 
         {/* Why Choose Advora - Flip Image Carousel */}
@@ -280,48 +219,7 @@ const Index = () => {
         </section>
 
         {/* Tech Stack Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Technology Stack</h2>
-            <p className="text-xl text-muted-foreground">Modern tools for modern solutions</p>
-          </div>
-          
-          {/* Scrolling Marquee - Single Row */}
-          <div className="relative overflow-hidden">
-            <div className="flex gap-6 animate-marquee">
-              {[...techStack, ...techStack, ...techStack, ...techStack].map((tech, index) => (
-                <div
-                  key={`tech-${index}`}
-                  className="group flex-shrink-0"
-                >
-                  <div 
-                    className="w-16 h-16 rounded-xl bg-card border border-border flex items-center justify-center group-hover:scale-110 transition-all duration-300 cursor-pointer"
-                    style={{ 
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = `0 0 20px ${tech.color}40, 0 0 40px ${tech.color}20`;
-                      e.currentTarget.style.borderColor = tech.color;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.05)";
-                      e.currentTarget.style.borderColor = "";
-                    }}
-                  >
-                    <tech.icon 
-                      className="w-8 h-8 transition-colors duration-300" 
-                      style={{ color: tech.color }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Fade overlays */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
-          </div>
-        </section>
+        <TechStackSection showTwoRows={true} />
 
         {/* How It Works Section */}
         <section className="section-divider py-20 pt-24">

@@ -50,13 +50,13 @@ export default function TestimonialCard({ t, highlight = false }: { t: Testimoni
   return (
     <div
       className={cn(
-        "relative flex flex-col justify-between rounded-3xl border bg-card p-6 transition-all duration-300 cursor-pointer hover:scale-[1.03] hover:shadow-xl hover:border-primary/40",
+        "group relative flex flex-col justify-between rounded-3xl border bg-card p-6 transition-all duration-300 cursor-pointer hover:scale-[1.03] hover:shadow-xl hover:border-primary/40",
         highlight ? "shadow-xl scale-[1.02] border-primary/30" : "shadow-md border-border"
       )}
     >
       {/* Quote badge */}
-      <div className="absolute -top-3 left-6 rounded-full bg-primary p-2 shadow-lg">
-        <Quote className="w-4 h-4 text-primary-foreground" />
+      <div className="absolute -top-4 left-6 rounded-full bg-primary p-3 shadow-lg group-hover:bg-accent transition-colors duration-300">
+        <Quote className="w-5 h-5 text-primary-foreground group-hover:text-accent-foreground transition-colors duration-300" />
       </div>
 
       <h4 className="mt-4 text-lg font-semibold">{t.title}</h4>

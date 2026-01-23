@@ -227,7 +227,7 @@ const CircularOrbits = () => {
   const activeOrbits = isMobile ? orbits.slice(0, 1) : orbits;
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-40 md:opacity-100">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-40 md:opacity-100 pt-16 md:pt-24">
       {/* Orbit rings (visual circles) */}
       {activeOrbits.map((orbit, orbitIndex) => (
         <div
@@ -282,7 +282,7 @@ const HeroImageCarousel = () => {
         transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
       >
-        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-1.5 sm:p-2 shadow-2xl shadow-primary/10">
+        <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border bg-background p-3 sm:p-4 shadow-2xl shadow-primary/10">
           <div className="rounded-lg sm:rounded-xl overflow-hidden relative aspect-[16/9]">
             <AnimatePresence mode="wait">
               <motion.img
