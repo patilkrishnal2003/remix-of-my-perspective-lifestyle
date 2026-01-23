@@ -227,7 +227,7 @@ const CircularOrbits = () => {
   const activeOrbits = isMobile ? orbits.slice(0, 1) : orbits;
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-40 md:opacity-100 pt-16 md:pt-24">
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-40 md:opacity-100 pt-24 md:pt-32">
       {/* Orbit rings (visual circles) */}
       {activeOrbits.map((orbit, orbitIndex) => (
         <div

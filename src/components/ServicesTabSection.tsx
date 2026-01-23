@@ -129,16 +129,36 @@ const ServicesTabSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full rounded-3xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 p-8 md:p-12 relative overflow-hidden"
+                  className={`w-full rounded-3xl p-8 md:p-12 relative overflow-hidden ${
+                    servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                      ? "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50"
+                      : "bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10"
+                  }`}
                 >
                   {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-200/30 dark:bg-emerald-800/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-teal-200/30 dark:bg-teal-800/20 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+                  <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${
+                    servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                      ? "bg-slate-200/40 dark:bg-slate-700/30"
+                      : "bg-primary/20 dark:bg-primary/30"
+                  }`} />
+                  <div className={`absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 ${
+                    servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                      ? "bg-slate-300/30 dark:bg-slate-600/20"
+                      : "bg-primary/15 dark:bg-primary/25"
+                  }`} />
                   
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
-                    <div className="w-20 h-20 rounded-2xl bg-emerald-500 flex items-center justify-center">
-                      <service.icon className="w-10 h-10 text-white" />
+                    <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
+                      servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                        ? "bg-slate-800 dark:bg-slate-200"
+                        : "bg-primary"
+                    }`}>
+                      <service.icon className={`w-10 h-10 ${
+                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                          ? "text-white dark:text-slate-800"
+                          : "text-primary-foreground"
+                      }`} />
                     </div>
                     
                     {/* Content */}
@@ -153,10 +173,26 @@ const ServicesTabSection = () => {
                         {service.description}
                       </p>
                       
+                      {/* Features - Transparent badges */}
+                      <div className="flex flex-wrap justify-center gap-3 mb-6">
+                        {service.features.map((feature) => (
+                          <span
+                            key={feature}
+                            className="px-3 py-1 bg-transparent border border-foreground/20 rounded-full text-sm font-medium text-foreground"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                      
                       {/* CTA Buttons */}
-                      <div className="flex flex-wrap justify-center gap-4 mb-6">
+                      <div className="flex flex-wrap justify-center gap-4">
                         <Link to="/contact">
-                          <Button className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-6">
+                          <Button className={`rounded-full px-6 ${
+                            servicesData.findIndex(s => s.id === service.id) % 2 === 0
+                              ? "bg-slate-800 hover:bg-slate-900 dark:bg-slate-200 dark:hover:bg-slate-100 dark:text-slate-800"
+                              : "bg-primary hover:bg-primary/90"
+                          }`}>
                             Get Started
                           </Button>
                         </Link>
@@ -166,18 +202,6 @@ const ServicesTabSection = () => {
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </Link>
-                      </div>
-                      
-                      {/* Features - Transparent badges */}
-                      <div className="flex flex-wrap justify-center gap-3">
-                        {service.features.map((feature) => (
-                          <span
-                            key={feature}
-                            className="px-3 py-1 bg-transparent border border-foreground/20 rounded-full text-sm font-medium text-foreground"
-                          >
-                            {feature}
-                          </span>
-                        ))}
                       </div>
                     </div>
                   </div>
