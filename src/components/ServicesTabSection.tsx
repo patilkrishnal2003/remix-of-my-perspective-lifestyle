@@ -14,7 +14,7 @@ const servicesData = [
     tagline: "Build powerful web experiences",
     description: "From responsive websites to complex web applications, we create digital solutions that drive business growth and user engagement.",
     features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Secure"],
-    bgColor: "from-primary/10 to-primary/5",
+    bgColor: "from-primary/20 to-primary/10",
     accentColor: "bg-primary",
   },
   {
@@ -25,7 +25,7 @@ const servicesData = [
     tagline: "Reach users everywhere",
     description: "Native and cross-platform mobile applications built with React Native and Flutter for seamless experiences on iOS and Android.",
     features: ["iOS & Android", "Offline Support", "Push Notifications", "App Store Ready"],
-    bgColor: "from-primary/20 to-primary/10",
+    bgColor: "from-primary/30 to-primary/20",
     accentColor: "bg-primary",
   },
   {
@@ -36,7 +36,7 @@ const servicesData = [
     tagline: "Tailored to your business",
     description: "Bespoke software solutions designed to automate processes, improve efficiency, and solve your unique business challenges.",
     features: ["Process Automation", "Integration Ready", "Scalable", "Maintainable"],
-    bgColor: "from-primary/10 to-primary/5",
+    bgColor: "from-primary/20 to-primary/10",
     accentColor: "bg-primary",
   },
   {
@@ -47,7 +47,7 @@ const servicesData = [
     tagline: "Power your applications",
     description: "Scalable APIs, microservices, and database architectures that form the backbone of high-performance applications.",
     features: ["RESTful APIs", "GraphQL", "Cloud Native", "High Availability"],
-    bgColor: "from-primary/20 to-primary/10",
+    bgColor: "from-primary/30 to-primary/20",
     accentColor: "bg-primary",
   },
   {
@@ -58,7 +58,7 @@ const servicesData = [
     tagline: "Design that converts",
     description: "Beautiful, intuitive interfaces backed by user research and design thinking to maximize engagement and conversions.",
     features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-    bgColor: "from-primary/10 to-primary/5",
+    bgColor: "from-primary/20 to-primary/10",
     accentColor: "bg-primary",
   },
   {
@@ -69,7 +69,7 @@ const servicesData = [
     tagline: "Scale with confidence",
     description: "AWS, Azure, and Google Cloud solutions for hosting, deployment, and infrastructure management with 99.9% uptime.",
     features: ["Auto Scaling", "CI/CD Pipelines", "Monitoring", "Cost Optimized"],
-    bgColor: "from-primary/20 to-primary/10",
+    bgColor: "from-primary/30 to-primary/20",
     accentColor: "bg-primary",
   },
 ];
