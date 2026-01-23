@@ -53,9 +53,6 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
     <div className="w-full">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 sm:mb-12">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Client Reviews
-          </span>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             What Our Clients Say
