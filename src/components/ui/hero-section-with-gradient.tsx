@@ -363,7 +363,7 @@ export default function HeroSectionWithGradient() {
             {/* CTA Buttons */}
             <motion.div
               variants={transitionVariants.item}
-              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-0 sm:pt-2 w-full sm:w-auto"
+              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-0 sm:pt-2 pb-8 sm:pb-12 w-full sm:w-auto"
             >
               <Link to="/contact" className="w-full sm:w-auto">
                 <Button
