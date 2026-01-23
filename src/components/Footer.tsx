@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="relative mt-12 sm:mt-16 overflow-hidden z-10 mb-[200px]">
       {/* Upper Footer - with curved bottom corners */}
-      <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-b-[3rem] sm:rounded-b-[4rem]">
+      <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 rounded-b-[3rem] sm:rounded-b-[4rem]">
         {/* Background grid pattern to match hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[3rem] sm:rounded-b-[4rem]" />
         
@@ -83,7 +83,7 @@ const Footer = () => {
           </div>
           
           {/* Newsletter */}
-          <div className="py-6 sm:py-8 border-y border-border/50 mb-6 sm:mb-8">
+          <div className="py-6 sm:py-8 border-y border-border/50">
             <div className="flex flex-col gap-4">
               <div className="text-center sm:text-left">
                 <h3 className="font-semibold mb-1 text-sm sm:text-base">Subscribe to our newsletter</h3>
