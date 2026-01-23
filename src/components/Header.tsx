@@ -53,12 +53,12 @@ const Header = () => {
   };
 
   const servicesItems = [
-    { label: "Web Development", path: "/services#web", icon: Globe, description: "Modern websites & apps" },
-    { label: "Mobile Apps", path: "/services#mobile", icon: Smartphone, description: "iOS & Android solutions" },
-    { label: "Custom Software", path: "/services#software", icon: Code, description: "Tailored for your needs" },
-    { label: "Backend Systems", path: "/services#backend", icon: Database, description: "Scalable infrastructure" },
-    { label: "UI/UX Design", path: "/services#design", icon: Palette, description: "Beautiful experiences" },
-    { label: "Cloud Solutions", path: "/services#cloud", icon: Cloud, description: "AWS, Azure & more" },
+    { label: "Web Development", path: "/services/web-development", icon: Globe, description: "Modern websites & apps" },
+    { label: "Mobile Apps", path: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android solutions" },
+    { label: "Custom Software", path: "/services/custom-software", icon: Code, description: "Tailored for your needs" },
+    { label: "Backend Systems", path: "/services/backend-systems", icon: Database, description: "Scalable infrastructure" },
+    { label: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette, description: "Beautiful experiences" },
+    { label: "Cloud Solutions", path: "/services/cloud-solutions", icon: Cloud, description: "AWS, Azure & more" },
   ];
 
   const resourcesItems = [
@@ -143,11 +143,6 @@ const Header = () => {
                 align="start" 
                 className="w-[340px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
               >
-                {/* Gradient Header */}
-                <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-4 border-b border-border/50">
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Our Services</p>
-                </div>
-                
                 {/* Services Grid */}
                 <div className="p-2 grid grid-cols-1 gap-1">
                   {servicesItems.map((item) => (
@@ -201,11 +196,6 @@ const Header = () => {
                 align="start" 
                 className="w-[280px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
               >
-                {/* Gradient Header */}
-                <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-4 border-b border-border/50">
-                  <p className="text-xs font-semibold text-primary uppercase tracking-wider">Resources</p>
-                </div>
-                
                 {/* Resources List */}
                 <div className="p-2">
                   {resourcesItems.map((item) => (
