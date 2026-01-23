@@ -298,22 +298,6 @@ const HeroImageCarousel = () => {
             </AnimatePresence>
           </div>
           
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mt-3 pb-1">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300",
-                  index === currentIndex
-                    ? "w-6 bg-primary"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </motion.div>
     </div>
