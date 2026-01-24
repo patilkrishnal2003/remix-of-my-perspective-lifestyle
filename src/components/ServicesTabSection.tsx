@@ -131,8 +131,8 @@ const ServicesTabSection = () => {
                   transition={{ duration: 0.3 }}
                   className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden ${
                     servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                      ? "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50"
-                      : "bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10"
+                      ? "bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900/60 dark:to-slate-800/60"
+                      : "bg-gradient-to-br from-primary/15 to-primary/10 dark:from-primary/25 dark:to-primary/15"
                   }`}
                 >
                   {/* Decorative elements */}
