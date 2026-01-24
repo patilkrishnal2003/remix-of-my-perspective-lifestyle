@@ -243,7 +243,7 @@ const Header = () => {
 
           {/* Mobile Menu - shown when isMenuOpen is true */}
           {isMenuOpen && (
-            <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in">
+            <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in max-h-[calc(100vh-6rem)] overflow-y-auto">
               <nav className="flex flex-col gap-1">
                 <Link 
                   to="/" 
@@ -510,7 +510,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in">
+          <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in max-h-[calc(100vh-6rem)] overflow-y-auto">
             <nav className="flex flex-col gap-1">
               <Link 
                 to="/" 
