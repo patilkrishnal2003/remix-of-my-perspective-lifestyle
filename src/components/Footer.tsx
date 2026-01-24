@@ -19,11 +19,11 @@ const Footer = () => {
       </div>
 
       {/* Upper Footer - with curved bottom corners */}
-      <div className="relative z-10 bg-background rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" style={{ marginTop: "-200px" }}>
+      <div className="relative z-10 bg-background rounded-b-[4rem] sm:rounded-b-[6rem]" style={{ marginTop: "-200px" }}>
         {/* Gradient overlay to match hero */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[4rem] sm:rounded-b-[6rem]" />
         {/* Background grid pattern to match hero */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[4rem] sm:rounded-b-[6rem]" />
         
         {/* Decorative gradient orbs */}
         <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/15 rounded-full blur-3xl" />

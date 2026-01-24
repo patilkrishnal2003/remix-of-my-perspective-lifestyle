@@ -251,7 +251,7 @@ const Services = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
-                      className={`w-full rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 relative overflow-hidden ${
+                      className={`w-full rounded-[4rem] p-8 md:p-12 relative overflow-hidden ${
                         servicesData.findIndex(s => s.id === service.id) % 2 === 0
                           ? "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50"
                           : "bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10"
@@ -338,7 +338,7 @@ const Services = () => {
         {/* Process Section - Minimal Timeline */}
         <section className="section-divider py-20 pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-muted/50 rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 lg:p-16">
+            <div className="bg-muted/50 rounded-[4rem] p-8 md:p-12 lg:p-16">
             <div className="text-center mb-20">
               <motion.span 
                 className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
