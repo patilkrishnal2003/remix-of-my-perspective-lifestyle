@@ -6,6 +6,8 @@ import { normalizePost, UiPost } from "../api/normalize";
 import { useBlogData } from "../state/BlogDataProvider";
 import CommentsList from "./components/CommentsList";
 import CommentForm from "./components/CommentForm";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 function formatDate(d: string | Date) {
   const date = typeof d === "string" ? new Date(d) : d;
@@ -112,7 +114,7 @@ export default function PostDetail() {
       <main className="min-h-screen bg-background p-6">
         <div className="max-w-4xl mx-auto text-center py-20">
           <h1 className="text-3xl font-bold text-slate-900 mb-4">{error || "Post not found"}</h1>
-          <Link to="/resources/blog" className="text-[#0074ED] hover:underline">
+          <Link to="/blog" className="text-[#0074ED] hover:underline">
             ← Back to Blog
           </Link>
         </div>
@@ -128,8 +130,10 @@ export default function PostDetail() {
   const authorDesignation = post.authorDesignation;
 
   return (
-    <main className="min-h-screen bg-background">
-      <style>{`
+    <>
+      <Header />
+      <main className="min-h-screen bg-background">
+        <style>{`
         /* ---------- BODY (2-col with sticky right rail) ---------- */
         .two-col {
           display:grid; gap: 28px; align-items: start;
@@ -230,18 +234,18 @@ export default function PostDetail() {
         }
       `}</style>
 
-      {/* ---------- HERO SECTION ---------- */}
-      <section className="overflow-hidden bg-[#ffffff] rounded-b-[40px] relative">
-        {/* Grid Pattern with Radial Fade */}
-        <div
-          className="absolute inset-0 pointer-events-none rounded-b-[40px]"
-          style={{
-            backgroundImage: `
+        {/* ---------- HERO SECTION ---------- */}
+        <section className="overflow-hidden bg-[#ffffff] rounded-b-[40px] relative">
+          {/* Grid Pattern with Radial Fade */}
+          <div
+            className="absolute inset-0 pointer-events-none rounded-b-[40px]"
+            style={{
+              backgroundImage: `
             linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
           `,
-            backgroundSize: "44px 44px",
-            maskImage: `
+              backgroundSize: "44px 44px",
+              maskImage: `
             radial-gradient(
               ellipse 80% 60% at 50% 45%,
               black 0%,
@@ -252,7 +256,7 @@ export default function PostDetail() {
               transparent 100%
             )
           `,
-            WebkitMaskImage: `
+              WebkitMaskImage: `
             radial-gradient(
               ellipse 80% 60% at 50% 45%,
               black 0%,
@@ -263,149 +267,151 @@ export default function PostDetail() {
               transparent 100%
             )
           `,
-          }}
-        ></div>
+            }}
+          ></div>
 
-        {/* Content */}
-        <div className="relative z-10">
-          <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-            <div className="mx-auto max-w-6xl">
-              {/* Header */}
-              <motion.div variants={containerVariants} initial="hidden" animate="visible" className="mb-10 sm:mb-12">
-                {/* Breadcrumb */}
-                <motion.nav variants={itemVariants} className="text-sm text-slate-600 mb-6">
-                  <Link to="/resources/blog" className="text-[#0074ED] hover:underline">
-                    Blog
-                  </Link>
-                  {" › "}
-                  <Link to={`/resources/blog/${post.category}`} className="text-[#0074ED] hover:underline">
-                    {catLabel}
-                  </Link>
-                </motion.nav>
+          {/* Content */}
+          <div className="relative z-10">
+            <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+              <div className="mx-auto max-w-6xl">
+                {/* Header */}
+                <motion.div variants={containerVariants} initial="hidden" animate="visible" className="mb-10 sm:mb-12">
+                  {/* Breadcrumb */}
+                  <motion.nav variants={itemVariants} className="text-sm text-slate-600 mb-6">
+                    <Link to="/blog" className="text-[#0074ED] hover:underline">
+                      Blog
+                    </Link>
+                    {" › "}
+                    <Link to={`/blog/${post.category}`} className="text-[#0074ED] hover:underline">
+                      {catLabel}
+                    </Link>
+                  </motion.nav>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  {/* Left Content */}
-                  <motion.div variants={itemVariants} className="order-2 lg:order-1">
-                    {/* Category Badge (left) + Date (right) */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-md bg-[#FEF3E2] text-[#8B6914] font-medium text-xs uppercase tracking-wide">
-                        {catLabel}
-                      </span>
-                      <time className="text-slate-500 text-sm" dateTime={post.date}>
-                        {formatDate(post.date)}
-                      </time>
-                    </div>
-
-                    {/* Title */}
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 leading-tight">
-                      {post.title}
-                    </h1>
-
-                    {/* Excerpt */}
-                    {post.excerpt && <p className="text-base text-slate-600 leading-relaxed mb-4">{post.excerpt}</p>}
-
-                    {/* Read Time */}
-                    {readTime && <p className="text-sm text-slate-500 mb-6">{readTime}</p>}
-
-                    {/* Author Info */}
-                    <div className="flex items-center gap-3">
-                      {authorImage ? (
-                        <img src={authorImage} alt={authorName} className="w-12 h-12 rounded-full object-cover" />
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center font-semibold">
-                          {authorName.charAt(0).toUpperCase()}
-                        </div>
-                      )}
-                      <div className="flex flex-col">
-                        <p className="text-sm font-semibold text-slate-900">{authorName}</p>
-                        {authorDesignation && <p className="text-xs text-slate-500">{authorDesignation}</p>}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    {/* Left Content */}
+                    <motion.div variants={itemVariants} className="order-2 lg:order-1">
+                      {/* Category Badge (left) + Date (right) */}
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-md bg-[#FEF3E2] text-[#8B6914] font-medium text-xs uppercase tracking-wide">
+                          {catLabel}
+                        </span>
+                        <time className="text-slate-500 text-sm" dateTime={post.date}>
+                          {formatDate(post.date)}
+                        </time>
                       </div>
-                    </div>
-                  </motion.div>
 
-                  {/* Right Image - Centered */}
-                  {post.cover && (
-                    <motion.figure
-                      variants={itemVariants}
-                      className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white flex items-center justify-center min-h-[300px] lg:min-h-[400px]"
-                    >
-                      <img
-                        src={post.cover}
-                        alt={post.title}
-                        className="w-full h-full object-cover"
-                        loading="eager"
-                        decoding="async"
-                      />
-                    </motion.figure>
-                  )}
-                </div>
-              </motion.div>
+                      {/* Title */}
+                      <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 leading-tight">
+                        {post.title}
+                      </h1>
+
+                      {/* Excerpt */}
+                      {post.excerpt && <p className="text-base text-slate-600 leading-relaxed mb-4">{post.excerpt}</p>}
+
+                      {/* Read Time */}
+                      {readTime && <p className="text-sm text-slate-500 mb-6">{readTime}</p>}
+
+                      {/* Author Info */}
+                      <div className="flex items-center gap-3">
+                        {authorImage ? (
+                          <img src={authorImage} alt={authorName} className="w-12 h-12 rounded-full object-cover" />
+                        ) : (
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center font-semibold">
+                            {authorName.charAt(0).toUpperCase()}
+                          </div>
+                        )}
+                        <div className="flex flex-col">
+                          <p className="text-sm font-semibold text-slate-900">{authorName}</p>
+                          {authorDesignation && <p className="text-xs text-slate-500">{authorDesignation}</p>}
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Right Image - Centered */}
+                    {post.cover && (
+                      <motion.figure
+                        variants={itemVariants}
+                        className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white flex items-center justify-center min-h-[300px] lg:min-h-[400px]"
+                      >
+                        <img
+                          src={post.cover}
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                          loading="eager"
+                          decoding="async"
+                        />
+                      </motion.figure>
+                    )}
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ---------- CONTENT SECTION ---------- */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="mx-auto max-w-6xl">
-          {/* Two-column layout: Article + Sidebar */}
-          <div className="two-col">
-            {/* LEFT: Article content from WordPress */}
-            <article className="article">
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        {/* ---------- CONTENT SECTION ---------- */}
+        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="mx-auto max-w-6xl">
+            {/* Two-column layout: Article + Sidebar */}
+            <div className="two-col">
+              {/* LEFT: Article content from WordPress */}
+              <article className="article">
+                <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
-              {/* Comments Section */}
-              <div className="mt-16 pt-8 border-t border-slate-200">
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Comments</h2>
-                <CommentsList comments={comments} />
-                <div className="mt-8">
-                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Leave a Comment</h3>
-                  <CommentForm
-                    postId={post.wpId}
-                    onSubmitted={async () => {
-                      const updated = await fetchComments(post.wpId);
-                      setComments(updated);
-                    }}
-                  />
+                {/* Comments Section */}
+                <div className="mt-16 pt-8 border-t border-slate-200">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-6">Comments</h2>
+                  <CommentsList comments={comments} />
+                  <div className="mt-8">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-4">Leave a Comment</h3>
+                    <CommentForm
+                      postId={post.wpId}
+                      onSubmitted={async () => {
+                        const updated = await fetchComments(post.wpId);
+                        setComments(updated);
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
 
-            {/* RIGHT: Sticky cards */}
-            <aside className="rail" aria-label="Sidebar">
-              {/* Card 1: Consultation */}
-              <div className="card">
-                <h3>Get Free Consultation</h3>
-                <p>Talk to an expert to plan your next move.</p>
-                <div className="grid gap-3">
-                  <input className="input" placeholder="Your name" />
-                  <input className="input" placeholder="Phone number" />
-                  <button className="btn-primary">Submit</button>
+              {/* RIGHT: Sticky cards */}
+              <aside className="rail" aria-label="Sidebar">
+                {/* Card 1: Consultation */}
+                <div className="card">
+                  <h3>Get Free Consultation</h3>
+                  <p>Talk to an expert to plan your next move.</p>
+                  <div className="grid gap-3">
+                    <input className="input" placeholder="Your name" />
+                    <input className="input" placeholder="Phone number" />
+                    <button className="btn-primary">Submit</button>
+                  </div>
+                  <div className="legal">
+                    By submitting, you accept our{" "}
+                    <a href="#" className="text-[#0074ED] hover:underline">
+                      Privacy Policy
+                    </a>
+                    .
+                  </div>
                 </div>
-                <div className="legal">
-                  By submitting, you accept our{" "}
-                  <a href="#" className="text-[#0074ED] hover:underline">
-                    Privacy Policy
-                  </a>
-                  .
-                </div>
-              </div>
 
-              {/* Card 2: Guide download */}
-              <div className="card">
-                <h3>Ready to learn more?</h3>
-                <p>Download our quick guide to get started.</p>
-                <div className="chip">
-                  <span role="img" aria-hidden>
-                    ⬇️
-                  </span>{" "}
-                  Download Guide
+                {/* Card 2: Guide download */}
+                <div className="card">
+                  <h3>Ready to learn more?</h3>
+                  <p>Download our quick guide to get started.</p>
+                  <div className="chip">
+                    <span role="img" aria-hidden>
+                      ⬇️
+                    </span>{" "}
+                    Download Guide
+                  </div>
                 </div>
-              </div>
-            </aside>
+              </aside>
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
