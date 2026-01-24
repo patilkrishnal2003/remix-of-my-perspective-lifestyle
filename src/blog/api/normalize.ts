@@ -37,7 +37,7 @@ const authorAvatar = (p: WpPost) =>
 // Maps WordPress category IDs to our frontend route slugs
 const CATEGORY_ID_MAP: Record<number, string> = {
   2: "performance-marketing",
-  1: "linkedin-growth",
+  : "linkedin-growth",
   6: "content-creative",
   7: "growth-demand-generation", // WordPress slug is 'growth-demand-generation'
   1: "analytics-ai",
