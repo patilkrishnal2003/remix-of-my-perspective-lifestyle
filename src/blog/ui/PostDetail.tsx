@@ -104,25 +104,27 @@ export default function PostDetail() {
       <Header />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="overflow-hidden bg-background rounded-b-[3rem] relative">
-          <div
-            className="absolute inset-0 pointer-events-none rounded-b-[3rem]"
-            style={{
-              backgroundImage: `linear-gradient(to right, hsl(var(--foreground) / 0.03) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground) / 0.03) 1px, transparent 1px)`,
-              backgroundSize: "44px 44px",
-              maskImage: `radial-gradient(ellipse 80% 60% at 50% 45%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)`,
-              WebkitMaskImage: `radial-gradient(ellipse 80% 60% at 50% 45%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)`,
-            }}
-          />
+        <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Hero Card */}
+            <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12 relative overflow-hidden">
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: `linear-gradient(to right, hsl(var(--foreground) / 0.03) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground) / 0.03) 1px, transparent 1px)`,
+                  backgroundSize: "44px 44px",
+                  maskImage: `radial-gradient(ellipse 80% 60% at 50% 45%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)`,
+                  WebkitMaskImage: `radial-gradient(ellipse 80% 60% at 50% 45%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)`,
+                }}
+              />
 
-          <div className="relative z-10 px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16">
-            <div className="mx-auto max-w-7xl">
-              <motion.div variants={containerVariants} initial="hidden" animate="visible">
-                <motion.nav variants={itemVariants} className="text-sm text-muted-foreground mb-6">
-                  <Link to="/blog" className="text-primary hover:underline">Blog</Link>
-                  {" › "}
-                  <Link to={`/blog/${post.category}`} className="text-primary hover:underline">{catLabel}</Link>
-                </motion.nav>
+              <div className="relative z-10">
+                <motion.div variants={containerVariants} initial="hidden" animate="visible">
+                  <motion.nav variants={itemVariants} className="text-sm text-muted-foreground mb-6">
+                    <Link to="/blog" className="text-primary hover:underline">Blog</Link>
+                    {" › "}
+                    <Link to={`/blog/${post.category}`} className="text-primary hover:underline">{catLabel}</Link>
+                  </motion.nav>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                   {/* Left Content */}
@@ -177,7 +179,8 @@ export default function PostDetail() {
                     </motion.figure>
                   )}
                 </div>
-              </motion.div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
