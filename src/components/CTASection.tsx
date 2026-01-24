@@ -20,7 +20,7 @@ export default function CTASection({
   return (
     <section className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${compact ? "py-8" : "py-10 sm:py-12"}`}>
       <div
-        className="relative rounded-[4rem] bg-gradient-to-r from-primary via-primary/90 to-primary hover:from-primary/95 hover:via-primary/85 hover:to-primary/95 text-primary-foreground p-6 sm:p-8 md:p-10 text-center overflow-hidden transition-all duration-500 hover:shadow-xl group"
+        className="relative rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-r from-primary via-primary/90 to-primary hover:from-primary/95 hover:via-primary/85 hover:to-primary/95 text-primary-foreground p-6 sm:p-8 md:p-10 text-center overflow-hidden transition-all duration-500 hover:shadow-xl group"
       >
         {/* Subtle texture overlay */}
         <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_50%_50%,_white_1px,_transparent_1px)] bg-[length:20px_20px]" />

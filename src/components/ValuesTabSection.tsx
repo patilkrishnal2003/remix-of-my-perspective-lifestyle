@@ -49,7 +49,7 @@ const ValuesTabSection = () => {
   return (
     <section className="section-divider py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-muted/50 rounded-[4rem] p-6 sm:p-10 lg:p-12">
+        <div className="bg-muted/50 rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-10 lg:p-12">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold">Our Values</h2>
           </div>

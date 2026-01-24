@@ -109,7 +109,7 @@ interface CardProps {
 
 function ResourceCard({ image, title, category, description, excerpt, results, readTime, isLink, to }: CardProps) {
   const content = (
-    <div className="group relative rounded-[4rem] overflow-hidden bg-card border border-border transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
+    <div className="group relative rounded-[2rem] overflow-hidden bg-card border border-border transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
       {/* Image with zoom effect */}
       <div className="aspect-[4/3] overflow-hidden relative">
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
