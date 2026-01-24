@@ -209,7 +209,7 @@ export default function ResourcesTabSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="bg-primary/10 dark:bg-card rounded-2xl border border-border p-4 sm:p-6 shadow-sm h-full flex flex-col"
+                className="bg-background rounded-2xl border border-border p-4 sm:p-6 shadow-sm h-full flex flex-col"
               >
                 {/* Browser Chrome */}
                 <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border">
