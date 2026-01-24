@@ -12,8 +12,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showFullNav, setShowFullNav] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -29,27 +28,25 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Determine scroll direction
-      if (currentScrollY > lastScrollY) {
-        setScrollDirection('down');
-      } else if (currentScrollY < lastScrollY) {
-        setScrollDirection('up');
-      }
-      
-      setLastScrollY(currentScrollY);
-      setIsScrolled(currentScrollY > 100);
+      setIsScrolled(window.scrollY > 100);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
+    setShowFullNav(false);
   }, [location.pathname]);
+
+  // Reset showFullNav when scrolling back to top
+  useEffect(() => {
+    if (!isScrolled) {
+      setShowFullNav(false);
+    }
+  }, [isScrolled]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
@@ -100,8 +97,8 @@ const Header = () => {
     return (
       <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 animate-slide-down">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          {/* Full navbar when scrolling up */}
-          {scrollDirection === 'up' ? (
+          {/* Full navbar when menu is open */}
+          {showFullNav ? (
             <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 shadow-lg animate-fade-in">
               {/* Logo */}
               <div className="flex items-center min-w-0">
@@ -182,6 +179,14 @@ const Header = () => {
                     Get a Quote
                   </Button>
                 </Link>
+
+                <button
+                  className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
+                  onClick={() => setShowFullNav(false)}
+                  aria-label="Close menu"
+                >
+                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
+                </button>
               </div>
             </div>
           ) : (
@@ -208,10 +213,14 @@ const Header = () => {
                   {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
                 </button>
 
-                <div className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2">
+                <button
+                  className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg hover:bg-muted/60 transition-all flex items-center gap-2"
+                  onClick={() => setShowFullNav(true)}
+                  aria-label="Open menu"
+                >
                   <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </div>
+                </button>
               </div>
             </div>
           )}
