@@ -67,7 +67,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden py-6 -my-6 px-4 -mx-4">
+          <div className="overflow-hidden pt-8 pb-6 -mt-8 -mb-6 px-4 -mx-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={idx}
