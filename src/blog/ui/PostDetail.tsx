@@ -128,7 +128,7 @@ export default function PostDetail() {
                   {/* Left Content */}
                   <motion.div variants={itemVariants} className="order-2 lg:order-1 flex flex-col gap-6">
                     {/* Row 1: Category Badge + Date */}
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center justify-between">
                       <span className="inline-flex items-center px-3 py-1.5 rounded-md bg-amber-100 text-amber-800 font-semibold text-xs uppercase tracking-wide">
                         {catLabel}
                       </span>
