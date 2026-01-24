@@ -182,11 +182,6 @@ const Header = () => {
                     Get a Quote
                   </Button>
                 </Link>
-
-                <div className="p-2 sm:p-2.5 rounded-full flex items-center gap-2">
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </div>
               </div>
             </div>
           ) : (
