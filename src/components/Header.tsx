@@ -102,7 +102,7 @@ const Header = () => {
     return (
       <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 animate-slide-down">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between transition-all duration-300 ease-out">
+          <div className="flex items-center justify-between transition-all duration-500 ease-out">
             {/* Logo - Always visible */}
             <Link 
               to="/" 
@@ -120,7 +120,7 @@ const Header = () => {
 
             {/* Desktop Navigation - Animated visibility */}
             <nav 
-              className={`hidden md:flex items-center gap-1 transition-all duration-300 ease-out ${
+              className={`hidden md:flex items-center gap-1 transition-all duration-500 ease-out ${
                 showFullNav 
                   ? 'opacity-100 translate-x-0' 
                   : 'opacity-0 translate-x-4 pointer-events-none absolute'
@@ -182,7 +182,7 @@ const Header = () => {
             <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               <button
                 onClick={toggleTheme}
-                className={`p-2 sm:p-2.5 rounded-full transition-all duration-300 ${
+                className={`p-2 sm:p-2.5 rounded-full transition-all duration-500 ${
                   showFullNav 
                     ? 'hover:bg-muted/60' 
                     : 'pill-nav shadow-lg hover:bg-muted/60'
@@ -195,9 +195,9 @@ const Header = () => {
               {/* Get a Quote - Always visible on desktop when full nav */}
               <Link 
                 to="/contact" 
-                className={`hidden md:block transition-all duration-300 ease-out ${
+                className={`hidden md:block transition-all duration-500 ease-out ${
                   showFullNav 
-                    ? 'opacity-100 translate-x-0' 
+                    ? 'opacity-100 translate-x-0'
                     : 'opacity-0 translate-x-4 pointer-events-none absolute right-0'
                 }`}
               >
@@ -208,7 +208,7 @@ const Header = () => {
 
               {/* Menu button - Only visible in split mode */}
               <div 
-                className={`p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2 transition-all duration-300 ease-out ${
+                className={`p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2 transition-all duration-500 ease-out ${
                   showFullNav 
                     ? 'opacity-0 scale-90 pointer-events-none' 
                     : 'opacity-100 scale-100'
@@ -222,7 +222,7 @@ const Header = () => {
 
           {/* Full nav pill background - Animated */}
           <div 
-            className={`absolute inset-x-0 top-3 sm:top-4 mx-3 sm:mx-6 lg:mx-8 h-14 sm:h-16 pill-nav shadow-lg -z-10 transition-all duration-300 ease-out ${
+            className={`absolute inset-x-0 top-3 sm:top-4 mx-3 sm:mx-6 lg:mx-8 h-14 sm:h-16 pill-nav shadow-lg -z-10 transition-all duration-500 ease-out ${
               showFullNav 
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-95'
