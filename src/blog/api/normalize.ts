@@ -33,30 +33,15 @@ const authorName = (p: WpPost) => p?.acf?.author_name || (p?._embedded?.author?.
 const authorAvatar = (p: WpPost) =>
   p?.acf?.author_image || (p?._embedded?.author?.[0]?.avatar_urls?.["96"] as string | undefined);
 
-// WordPress Category ID to Slug mapping
-// Maps WordPress category IDs to our frontend route slugs
-const CATEGORY_ID_MAP: Record<number, string> = {
-  2: "performance-marketing",
-  8: "linkedin-growth",
-  6: "content-creative",
-  7: "growth-demand-generation", // WordPress slug is 'growth-demand-generation'
-  1: "analytics-ai",
-  9: "brand-reputation",
-};
-
 export function normalizePost(p: WpPost, cats: WpCategory[]): UiPost | null {
+  // Get the primary category ID from ACF or fall back to first category
   const primaryId = p?.acf?.primary_category ?? p?.categories?.[0];
 
-  // First, try to get the WordPress category
+  // Find the category from the fetched categories list
   const wpCat = cats.find((c) => c.id === primaryId);
 
-  // Use our hardcoded mapping first (for consistent routing)
-  let catSlug = CATEGORY_ID_MAP[primaryId];
-
-  // If no mapping exists, use WordPress slug directly
-  if (!catSlug && wpCat) {
-    catSlug = wpCat.slug;
-  }
+  // Get the slug from the category - this is now dynamic from WordPress
+  const catSlug = wpCat?.slug;
 
   // Filter out uncategorized posts - return null if no valid category
   if (!catSlug || catSlug === "uncategorized") {

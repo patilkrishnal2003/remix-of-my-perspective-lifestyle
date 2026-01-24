@@ -1,12 +1,7 @@
 // WordPress REST API helpers with caching
 import { getListFromCache, setListCache, getHeroFromCache, setHeroCache } from "./cache";
 import { normalizePost, type UiPost } from "./normalize";
-
-export const API_BASE = import.meta.env.VITE_BLOG_API_BASE as string;
-
-// Constants
-export const HERO_COUNT = 5;
-export const GRID_PER_PAGE = 9;
+import { API_BASE, HERO_COUNT, GRID_PER_PAGE } from "../config";
 
 function ok(r: Response) {
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -200,3 +195,6 @@ export async function postComment(input: {
     .then(ok)
     .then((r) => r.json());
 }
+
+// Re-export for backward compatibility
+export { HERO_COUNT, GRID_PER_PAGE };

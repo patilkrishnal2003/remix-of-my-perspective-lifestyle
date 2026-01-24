@@ -2,8 +2,7 @@
 import React, { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { getListFromCache, setListCache, getHeroFromCache, setHeroCache } from "../api/cache";
 import { normalizePost, type UiPost } from "../api/normalize";
-
-export const API_BASE = import.meta.env.VITE_BLOG_API_BASE as string;
+import { API_BASE } from "../config";
 
 // ============= React Context for Blog Data =============
 export type WpCategory = {
@@ -29,12 +28,18 @@ export function BlogDataProvider({ children }: { children: ReactNode }) {
     const fetchCats = async () => {
       try {
         const url = `${API_BASE}/wp/v2/categories?per_page=100&hide_empty=false&_fields=id,slug,name,description,count`;
+        if (import.meta.env.DEV) {
+          console.log("📡 Fetching blog categories from:", url);
+        }
         const resp = await fetch(url);
-        if (!resp.ok) throw new Error("Failed to fetch categories");
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}: Failed to fetch categories`);
         const data: WpCategory[] = await resp.json();
+        if (import.meta.env.DEV) {
+          console.log("✓ Categories loaded:", data.length, "categories");
+        }
         setCats(data);
       } catch (err) {
-        console.error("Failed to load categories:", err);
+        console.error("❌ Failed to load categories:", err);
       } finally {
         setLoading(false);
       }
@@ -42,11 +47,7 @@ export function BlogDataProvider({ children }: { children: ReactNode }) {
     fetchCats();
   }, []);
 
-  return (
-    <BlogDataContext.Provider value={{ cats, loading }}>
-      {children}
-    </BlogDataContext.Provider>
-  );
+  return <BlogDataContext.Provider value={{ cats, loading }}>{children}</BlogDataContext.Provider>;
 }
 
 export function useBlogData(): BlogDataContextType {
