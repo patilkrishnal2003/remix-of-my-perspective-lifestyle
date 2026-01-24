@@ -186,8 +186,8 @@ export default function PostDetail() {
         </section>
 
         {/* Content Section */}
-        <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="mx-auto max-w-7xl">
+        <section className="py-12 sm:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] items-start">
               {/* Article */}
               <article className="prose prose-slate max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-img:rounded-2xl prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:rounded-r-xl prose-blockquote:py-2">
