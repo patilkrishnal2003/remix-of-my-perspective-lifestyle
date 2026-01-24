@@ -173,20 +173,8 @@ const ServicesTabSection = () => {
                         {service.description}
                       </p>
                       
-                      {/* Features - Transparent badges */}
-                      <div className="flex flex-wrap justify-center gap-3 mb-6">
-                        {service.features.map((feature) => (
-                          <span
-                            key={feature}
-                            className="px-3 py-1 bg-transparent border border-foreground/20 rounded-full text-sm font-medium text-foreground"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-                      
                       {/* CTA Buttons */}
-                      <div className="flex flex-wrap justify-center gap-4">
+                      <div className="flex flex-wrap justify-center gap-4 mb-8">
                         <Link to="/contact">
                           <Button className={`rounded-full px-6 ${
                             servicesData.findIndex(s => s.id === service.id) % 2 === 0
@@ -202,6 +190,18 @@ const ServicesTabSection = () => {
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
                         </Link>
+                      </div>
+                      
+                      {/* Features - Transparent badges */}
+                      <div className="flex flex-wrap justify-between w-full gap-3">
+                        {service.features.map((feature) => (
+                          <span
+                            key={feature}
+                            className="px-4 py-2 bg-transparent border border-foreground/20 rounded-full text-base font-medium text-foreground"
+                          >
+                            {feature}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
