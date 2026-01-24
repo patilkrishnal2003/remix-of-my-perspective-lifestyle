@@ -309,6 +309,13 @@ const Header = () => {
                   {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
                 </button>
 
+                {/* Get a Quote Button - desktop only */}
+                <Link to="/contact" className="hidden md:block">
+                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 shadow-lg hover:scale-105 transition-all">
+                    Get a Quote
+                  </Button>
+                </Link>
+
                 {/* Mobile Menu Button - only on mobile */}
                 <button
                   className="md:hidden p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2"
