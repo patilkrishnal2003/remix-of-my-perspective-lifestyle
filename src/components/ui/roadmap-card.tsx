@@ -27,6 +27,7 @@ export function RoadmapCard({
 }: RoadmapCardProps) {
   const [activeStep, setActiveStep] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [cycleKey, setCycleKey] = useState(0);
 
   // Auto-progression through steps - 1 second per step, restart from beginning
   useEffect(() => {
@@ -35,7 +36,14 @@ export function RoadmapCard({
     const timer = setTimeout(() => {
       setIsTransitioning(true);
       setTimeout(() => {
-        setActiveStep((prev) => (prev + 1) % items.length);
+        setActiveStep((prev) => {
+          const nextStep = (prev + 1) % items.length;
+          // Increment cycle key when resetting to start
+          if (nextStep === 0) {
+            setCycleKey((k) => k + 1);
+          }
+          return nextStep;
+        });
         setIsTransitioning(false);
       }, 200);
     }, 1000); // 1 second per step
@@ -65,7 +73,9 @@ export function RoadmapCard({
           {/* Vertical Timeline Line for Mobile */}
           <div className="absolute top-0 bottom-0 left-3 w-1 bg-muted-foreground/20 rounded-full overflow-hidden md:hidden">
             <motion.div 
+              key={`mobile-${cycleKey}`}
               className="w-full bg-primary rounded-full"
+              initial={{ height: "0%" }}
               animate={{ height: `${progressPercentage}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
@@ -74,7 +84,9 @@ export function RoadmapCard({
           {/* Horizontal Timeline Line - Desktop only */}
           <div className="hidden md:block absolute top-3 left-0 right-0 h-1 bg-muted-foreground/20 rounded-full overflow-hidden">
             <motion.div 
+              key={`desktop-${cycleKey}`}
               className="h-full bg-primary rounded-full"
+              initial={{ width: "0%" }}
               animate={{ width: `${progressPercentage}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
