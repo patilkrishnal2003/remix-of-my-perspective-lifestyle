@@ -124,43 +124,56 @@ export default function PostDetail() {
                   <Link to={`/blog/${post.category}`} className="text-primary hover:underline">{catLabel}</Link>
                 </motion.nav>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                  <motion.div variants={itemVariants} className="order-2 lg:order-1 flex flex-col gap-5">
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center px-3 py-1.5 rounded-lg bg-primary/10 text-primary font-semibold text-xs uppercase tracking-wider">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+                  {/* Left Content */}
+                  <motion.div variants={itemVariants} className="order-2 lg:order-1 flex flex-col gap-6">
+                    {/* Row 1: Category Badge + Date */}
+                    <div className="flex items-center gap-6">
+                      <span className="inline-flex items-center px-3 py-1.5 rounded-md bg-amber-100 text-amber-800 font-semibold text-xs uppercase tracking-wide">
                         {catLabel}
                       </span>
-                      <time className="text-muted-foreground/70 text-sm" dateTime={post.date}>
+                      <time className="text-muted-foreground text-sm" dateTime={post.date}>
                         {formatDate(post.date)}
                       </time>
                     </div>
 
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-[1.2]">
+                    {/* Row 2: Title */}
+                    <h1 className="text-2xl sm:text-3xl lg:text-[2.5rem] font-bold text-foreground leading-[1.15] tracking-tight">
                       {post.title}
                     </h1>
 
-                    {post.excerpt && <p className="text-base text-muted-foreground leading-relaxed">{post.excerpt}</p>}
+                    {/* Row 3: Excerpt */}
+                    {post.excerpt && (
+                      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                        {post.excerpt}
+                      </p>
+                    )}
 
-                    {post.readTime && <p className="text-sm text-muted-foreground/60">{post.readTime}</p>}
+                    {/* Row 4: Read Time */}
+                    {post.readTime && (
+                      <p className="text-sm font-medium text-primary">{post.readTime}</p>
+                    )}
 
-                    <div className="flex items-center gap-3">
+                    {/* Row 5: Author Info */}
+                    <div className="flex items-center gap-3 pt-2">
                       {post.authorImage ? (
-                        <img src={post.authorImage} alt={post.authorName || "Author"} className="w-11 h-11 rounded-full object-cover ring-2 ring-border" />
+                        <img src={post.authorImage} alt={post.authorName || "Author"} className="w-10 h-10 rounded-full object-cover" />
                       ) : (
-                        <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground flex items-center justify-center font-semibold text-sm">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground flex items-center justify-center font-semibold text-sm">
                           {(post.authorName || "C").charAt(0).toUpperCase()}
                         </div>
                       )}
                       <div className="flex flex-col">
                         <p className="text-sm font-semibold text-foreground">{post.authorName || "Connecttly"}</p>
-                        {post.authorDesignation && <p className="text-xs text-muted-foreground/70">{post.authorDesignation}</p>}
+                        {post.authorDesignation && <p className="text-xs text-primary">{post.authorDesignation}</p>}
                       </div>
                     </div>
                   </motion.div>
 
+                  {/* Right Image */}
                   {post.cover && (
-                    <motion.figure variants={itemVariants} className="order-1 lg:order-2 rounded-[2rem] overflow-hidden border border-border shadow-xl bg-card flex items-center justify-center min-h-[280px] lg:min-h-[400px]">
-                      <img src={post.cover} alt={post.title} className="w-full h-full object-cover" loading="eager" />
+                    <motion.figure variants={itemVariants} className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-card">
+                      <img src={post.cover} alt={post.title} className="w-full aspect-[4/3] object-cover" loading="eager" />
                     </motion.figure>
                   )}
                 </div>
