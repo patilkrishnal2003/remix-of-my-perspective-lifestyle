@@ -220,7 +220,7 @@ export default function ResourcesTabSection() {
                   </div>
                   <div className="flex-1 flex justify-center">
                     <div className="bg-muted rounded-full px-4 py-1 text-xs text-muted-foreground">
-                      advora.dev/{activeTab}
+                      advora.in/{activeTab}
                     </div>
                   </div>
                 </div>
