@@ -127,6 +127,7 @@ const Header = () => {
 
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center gap-1">
+                {/* Home */}
                 <Link 
                   to="/" 
                   className={`text-sm font-medium px-4 py-2 transition-all relative ${
@@ -140,10 +141,14 @@ const Header = () => {
                     <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
                   )}
                 </Link>
+
+                {/* About */}
                 <Link 
                   to="/about" 
                   className={`text-sm font-medium px-4 py-2 transition-all relative ${
-                    isActive("/about") ? "text-accent" : "hover:text-accent"
+                    isActive("/about") 
+                      ? "text-accent" 
+                      : "hover:text-accent"
                   }`}
                 >
                   About
@@ -151,50 +156,106 @@ const Header = () => {
                     <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
                   )}
                 </Link>
-                <Link 
-                  to="/services" 
-                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
-                    isActive("/services") ? "text-accent" : "hover:text-accent"
-                  }`}
-                >
-                  Services
-                  {isActive("/services") && (
-                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
-                  )}
-                </Link>
-                <Link 
-                  to="/portfolio" 
-                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
-                    isActive("/portfolio") ? "text-accent" : "hover:text-accent"
-                  }`}
-                >
-                  Portfolio
-                  {isActive("/portfolio") && (
-                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
-                  )}
-                </Link>
-                <Link 
-                  to="/blog" 
-                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
-                    isActive("/blog") ? "text-accent" : "hover:text-accent"
-                  }`}
-                >
-                  Blog
-                  {isActive("/blog") && (
-                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
-                  )}
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
-                    isActive("/contact") ? "text-accent" : "hover:text-accent"
-                  }`}
-                >
-                  Contact
-                  {isActive("/contact") && (
-                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
-                  )}
-                </Link>
+
+                {/* Services Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button 
+                      className={`text-sm font-medium px-4 py-2 transition-all relative flex items-center gap-1 ${
+                        isActive("/services") 
+                          ? "text-accent" 
+                          : "hover:text-accent"
+                      }`}
+                    >
+                      Services
+                      <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                      {isActive("/services") && (
+                        <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                      )}
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    align="start" 
+                    className="w-[340px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+                  >
+                    <div className="p-2 grid grid-cols-1 gap-1">
+                      {servicesItems.map((item) => (
+                        <Link 
+                          key={item.path}
+                          to={item.path} 
+                          className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                        >
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                            <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                            <p className="text-xs text-muted-foreground">{item.description}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="p-3 border-t border-border/50 bg-muted/30">
+                      <Link 
+                        to="/services" 
+                        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                      >
+                        View All Services
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {/* Resources Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button 
+                      className={`text-sm font-medium px-4 py-2 transition-all relative flex items-center gap-1 ${
+                        isActive("/portfolio") || isActive("/blog") || isActive("/community")
+                          ? "text-accent" 
+                          : "hover:text-accent"
+                      }`}
+                    >
+                      Resources
+                      <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                      {(isActive("/portfolio") || isActive("/blog") || isActive("/community")) && (
+                        <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                      )}
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent 
+                    align="start" 
+                    className="w-[280px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+                  >
+                    <div className="p-2">
+                      {resourcesItems.map((item) => (
+                        <Link 
+                          key={item.path}
+                          to={item.path} 
+                          className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                        >
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                            <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                            <p className="text-xs text-muted-foreground">{item.description}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="p-3 border-t border-border/50 bg-muted/30">
+                      <Link 
+                        to="/portfolio" 
+                        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                      >
+                        Explore All Resources
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </nav>
 
               {/* Actions */}
