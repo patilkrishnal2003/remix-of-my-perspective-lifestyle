@@ -228,6 +228,84 @@ const Header = () => {
               </div>
             </div>
           )}
+
+          {/* Mobile Menu - shown when isMenuOpen is true */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in">
+              <nav className="flex flex-col gap-1">
+                <Link 
+                  to="/" 
+                  className={`text-base font-medium py-3 px-4 rounded-xl transition-colors ${
+                    isActive("/") && location.pathname === "/"
+                      ? "bg-accent/10 text-accent" 
+                      : "hover:bg-muted"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link 
+                  to="/about" 
+                  className={`text-base font-medium py-3 px-4 rounded-xl transition-colors ${
+                    isActive("/about") 
+                      ? "bg-accent/10 text-accent" 
+                      : "hover:bg-muted"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  About
+                </Link>
+                
+                {/* Services Section */}
+                <div className="py-2 px-4">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2">SERVICES</p>
+                  {servicesItems.map((item) => (
+                    <Link 
+                      key={item.path}
+                      to={item.path} 
+                      className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <item.icon className="w-4 h-4 text-primary" />
+                      <span className="text-base font-medium">{item.label}</span>
+                    </Link>
+                  ))}
+                  <Link 
+                    to="/services" 
+                    className="flex items-center gap-2 mt-2 py-2 px-2 rounded-lg bg-primary/10 text-primary font-medium text-sm"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    View All Services
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+
+                {/* Resources Section */}
+                <div className="py-2 px-4">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2">RESOURCES</p>
+                  {resourcesItems.map((item) => (
+                    <Link 
+                      key={item.path}
+                      to={item.path} 
+                      className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <item.icon className="w-4 h-4 text-primary" />
+                      <span className="text-base font-medium">{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="pt-3 mt-2 border-t border-border">
+                  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full w-full py-6 text-base">
+                      Get a Quote
+                    </Button>
+                  </Link>
+                </div>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
     );
