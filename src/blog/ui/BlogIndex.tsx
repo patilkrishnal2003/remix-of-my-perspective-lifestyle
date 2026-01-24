@@ -199,7 +199,7 @@ export default function BlogIndex() {
 
                           {/* Row 4: Read Time */}
                           {post.readTime && (
-                            <p className="text-sm font-medium text-primary">{post.readTime}</p>
+                            <p className="text-sm font-medium text-foreground/70">{post.readTime}</p>
                           )}
 
                           {/* Row 5: Author Info */}
@@ -213,7 +213,7 @@ export default function BlogIndex() {
                             )}
                             <div className="flex flex-col">
                               <p className="text-sm font-semibold text-foreground">{post.authorName || "Connecttly"}</p>
-                              {post.authorDesignation && <p className="text-xs text-primary">{post.authorDesignation}</p>}
+                              {post.authorDesignation && <p className="text-xs text-foreground/60">{post.authorDesignation}</p>}
                             </div>
                           </div>
                         </div>
