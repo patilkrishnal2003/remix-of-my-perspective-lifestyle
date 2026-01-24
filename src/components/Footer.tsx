@@ -21,9 +21,6 @@ const Footer = () => {
         {/* Background grid pattern to match hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
 
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-0 right-1/4 w-64 h-64 bg-primary/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-primary/10 rounded-full blur-2xl" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
           {/* Top Row: Logo & Newsletter in single line */}
