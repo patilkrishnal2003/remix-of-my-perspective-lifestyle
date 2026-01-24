@@ -94,7 +94,7 @@ export default function ResourcesTabSection() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
           {/* Left: Accordion Tabs */}
           <div className="space-y-3">
             {tabsData.map((tab) => {
@@ -140,7 +140,7 @@ export default function ResourcesTabSection() {
           </div>
 
           {/* Right: Preview Card */}
-          <div className="relative">
+          <div className="relative h-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -148,7 +148,7 @@ export default function ResourcesTabSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="bg-background rounded-2xl border border-border p-4 sm:p-6 shadow-sm"
+                className="bg-background rounded-2xl border border-border p-4 sm:p-6 shadow-sm h-full flex flex-col"
               >
                 {/* Browser Chrome */}
                 <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border">
@@ -165,7 +165,7 @@ export default function ResourcesTabSection() {
                 </div>
 
                 {/* Image Grid */}
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-3 flex-1">
                   {activeTabData.images.map((image, index) => (
                     <motion.div
                       key={index}
