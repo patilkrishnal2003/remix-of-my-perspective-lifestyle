@@ -199,7 +199,7 @@ const ServicesTabSection = () => {
                     {service.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-4 py-2 bg-transparent border border-foreground/20 rounded-full text-base font-medium text-foreground"
+                        className="flex-1 text-center px-4 py-2 bg-transparent border border-foreground/20 rounded-full text-base font-medium text-foreground"
                       >
                         {feature}
                       </span>
