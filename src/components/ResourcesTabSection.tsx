@@ -142,9 +142,9 @@ export default function ResourcesTabSection() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
           {/* Left: Accordion Tabs */}
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col justify-between gap-3">
             {tabsData.map((tab) => {
               const isActive = activeTab === tab.id;
               const Icon = tab.icon;
