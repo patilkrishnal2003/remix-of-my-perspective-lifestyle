@@ -262,8 +262,8 @@ export default function BlogIndex() {
         </section>
 
         {/* ===== POSTS GRID ===== */}
-        <section id="blogs" ref={blogsRef} className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="mx-auto max-w-7xl">
+        <section id="blogs" ref={blogsRef} className="py-12 sm:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Mobile filter */}
             <div className="md:hidden mb-8">
               <label htmlFor="blog-category" className="block text-sm font-medium text-muted-foreground mb-2">Filter by category</label>
