@@ -129,53 +129,71 @@ const Header = () => {
               <nav className="hidden md:flex items-center gap-1">
                 <Link 
                   to="/" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
                     isActive("/") && location.pathname === "/"
-                      ? "text-accent bg-accent/10" 
-                      : "hover:bg-muted/60"
+                      ? "text-accent" 
+                      : "hover:text-accent"
                   }`}
                 >
                   Home
+                  {isActive("/") && location.pathname === "/" && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
                 <Link 
                   to="/about" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/about") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
+                    isActive("/about") ? "text-accent" : "hover:text-accent"
                   }`}
                 >
                   About
+                  {isActive("/about") && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
                 <Link 
                   to="/services" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/services") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
+                    isActive("/services") ? "text-accent" : "hover:text-accent"
                   }`}
                 >
                   Services
+                  {isActive("/services") && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
                 <Link 
                   to="/portfolio" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/portfolio") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
+                    isActive("/portfolio") ? "text-accent" : "hover:text-accent"
                   }`}
                 >
                   Portfolio
+                  {isActive("/portfolio") && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
                 <Link 
                   to="/blog" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/blog") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
+                    isActive("/blog") ? "text-accent" : "hover:text-accent"
                   }`}
                 >
                   Blog
+                  {isActive("/blog") && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
                 <Link 
                   to="/contact" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/contact") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                  className={`text-sm font-medium px-4 py-2 transition-all relative ${
+                    isActive("/contact") ? "text-accent" : "hover:text-accent"
                   }`}
                 >
                   Contact
+                  {isActive("/contact") && (
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
+                  )}
                 </Link>
               </nav>
 
@@ -343,30 +361,30 @@ const Header = () => {
             {/* Home */}
             <Link 
               to="/" 
-              className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+              className={`text-sm font-medium px-4 py-2 transition-all relative ${
                 isActive("/") && location.pathname === "/"
-                  ? "text-accent bg-accent/10" 
-                  : "hover:bg-muted/60"
+                  ? "text-accent" 
+                  : "hover:text-accent"
               }`}
             >
               Home
               {isActive("/") && location.pathname === "/" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
               )}
             </Link>
 
             {/* About */}
             <Link 
               to="/about" 
-              className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+              className={`text-sm font-medium px-4 py-2 transition-all relative ${
                 isActive("/about") 
-                  ? "text-accent bg-accent/10" 
-                  : "hover:bg-muted/60"
+                  ? "text-accent" 
+                  : "hover:text-accent"
               }`}
             >
               About
               {isActive("/about") && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+                <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
               )}
             </Link>
 
@@ -374,16 +392,16 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative flex items-center gap-1 ${
+                  className={`text-sm font-medium px-4 py-2 transition-all relative flex items-center gap-1 ${
                     isActive("/services") 
-                      ? "text-accent bg-accent/10" 
-                      : "hover:bg-muted/60"
+                      ? "text-accent" 
+                      : "hover:text-accent"
                   }`}
                 >
                   Services
                   <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   {isActive("/services") && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
                   )}
                 </button>
               </DropdownMenuTrigger>
@@ -427,16 +445,16 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative flex items-center gap-1 ${
+                  className={`text-sm font-medium px-4 py-2 transition-all relative flex items-center gap-1 ${
                     isActive("/portfolio") || isActive("/blog") || isActive("/community")
-                      ? "text-accent bg-accent/10" 
-                      : "hover:bg-muted/60"
+                      ? "text-accent" 
+                      : "hover:text-accent"
                   }`}
                 >
                   Resources
                   <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
                   {(isActive("/portfolio") || isActive("/blog") || isActive("/community")) && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-accent rounded-full" />
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
                   )}
                 </button>
               </DropdownMenuTrigger>
