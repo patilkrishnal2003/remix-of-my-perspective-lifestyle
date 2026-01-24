@@ -1,8 +1,63 @@
-// WordPress REST API helpers with caching
-import { getListFromCache, setListCache, getHeroFromCache, setHeroCache } from "./cache";
-import { normalizePost, type UiPost } from "./normalize";
+// WordPress REST API helpers with caching and React Context
+import React, { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { getListFromCache, setListCache, getHeroFromCache, setHeroCache } from "../api/cache";
+import { normalizePost, type UiPost } from "../api/normalize";
 
 export const API_BASE = import.meta.env.VITE_BLOG_API_BASE as string;
+
+// ============= React Context for Blog Data =============
+export type WpCategory = {
+  id: number;
+  name: string;
+  slug: string;
+  description?: string;
+  count?: number;
+};
+
+type BlogDataContextType = {
+  cats: WpCategory[];
+  loading: boolean;
+};
+
+const BlogDataContext = createContext<BlogDataContextType | undefined>(undefined);
+
+export function BlogDataProvider({ children }: { children: ReactNode }) {
+  const [cats, setCats] = useState<WpCategory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCats = async () => {
+      try {
+        const url = `${API_BASE}/wp/v2/categories?per_page=100&hide_empty=false&_fields=id,slug,name,description,count`;
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error("Failed to fetch categories");
+        const data: WpCategory[] = await resp.json();
+        setCats(data);
+      } catch (err) {
+        console.error("Failed to load categories:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCats();
+  }, []);
+
+  return (
+    <BlogDataContext.Provider value={{ cats, loading }}>
+      {children}
+    </BlogDataContext.Provider>
+  );
+}
+
+export function useBlogData(): BlogDataContextType {
+  const context = useContext(BlogDataContext);
+  if (!context) {
+    throw new Error("useBlogData must be used within a BlogDataProvider");
+  }
+  return context;
+}
+
+// =============================================================
 
 // Constants
 export const HERO_COUNT = 5;
@@ -13,13 +68,7 @@ function ok(r: Response) {
   return r;
 }
 
-export type WpCategory = {
-  id: number;
-  name: string;
-  slug: string;
-  description?: string;
-  count?: number;
-};
+// WpCategory type is defined above in the React Context section
 
 export type WpEmbedded = {
   [k: string]: any;
