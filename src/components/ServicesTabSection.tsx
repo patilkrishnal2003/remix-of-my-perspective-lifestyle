@@ -174,7 +174,7 @@ const ServicesTabSection = () => {
                       </p>
                       
                       {/* CTA Buttons */}
-                      <div className="flex flex-wrap justify-center gap-4 mb-8">
+                      <div className="flex flex-wrap justify-center gap-4">
                         <Link to="/contact">
                           <Button className={`rounded-full px-6 ${
                             servicesData.findIndex(s => s.id === service.id) % 2 === 0
@@ -191,19 +191,19 @@ const ServicesTabSection = () => {
                           </Button>
                         </Link>
                       </div>
-                      
-                      {/* Features - Transparent badges */}
-                      <div className="flex flex-wrap justify-between w-full gap-3">
-                        {service.features.map((feature) => (
-                          <span
-                            key={feature}
-                            className="px-4 py-2 bg-transparent border border-foreground/20 rounded-full text-base font-medium text-foreground"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
                     </div>
+                  </div>
+                  
+                  {/* Features - Transparent badges at card bottom */}
+                  <div className="relative z-10 flex flex-wrap justify-between w-full gap-3 mt-8">
+                    {service.features.map((feature) => (
+                      <span
+                        key={feature}
+                        className="px-4 py-2 bg-transparent border border-foreground/20 rounded-full text-base font-medium text-foreground"
+                      >
+                        {feature}
+                      </span>
+                    ))}
                   </div>
                 </motion.div>
               </TabsContent>
