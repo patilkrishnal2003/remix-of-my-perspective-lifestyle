@@ -1,297 +1,203 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Briefcase, FileText, FolderOpen } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Users, HeadphonesIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-
 
 // Project images
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
 import projectRetailHub from "@/assets/project-retailhub.jpg";
-import projectTaskMaster from "@/assets/project-taskmaster.jpg";
-import projectEduLearn from "@/assets/project-edulearn.jpg";
-import projectPropertyPro from "@/assets/project-propertypro.jpg";
 
 // Blog images
 import blogFutureWeb from "@/assets/blog-future-web.jpg";
 import blogReactScalable from "@/assets/blog-react-scalable.jpg";
 import blogFinanceflowCase from "@/assets/blog-financeflow-case.jpg";
 
-type TabType = "portfolio" | "projects" | "blog";
+type TabType = "blog" | "portfolio" | "community" | "support";
 
-const portfolioItems = [
-  {
-    title: "FinanceFlow",
-    category: "Web Application",
-    description: "A comprehensive financial management platform for small businesses.",
-    image: projectFinanceFlow,
-    results: "300% user growth",
-  },
-  {
-    title: "HealthTrack Pro",
-    category: "Mobile App",
-    description: "Cross-platform health and fitness tracking app with personalized plans.",
-    image: projectHealthTrack,
-    results: "50,000 users in first month",
-  },
-  {
-    title: "RetailHub",
-    category: "E-commerce Platform",
-    description: "Multi-vendor marketplace with advanced inventory management.",
-    image: projectRetailHub,
-    results: "$2M in transactions",
-  },
-];
-
-const projects = [
-  {
-    title: "TaskMaster",
-    category: "SaaS Application",
-    description: "Project management tool with real-time collaboration and analytics.",
-    image: projectTaskMaster,
-    results: "Used by 200+ teams",
-  },
-  {
-    title: "EduLearn",
-    category: "Learning Platform",
-    description: "Online education platform with video courses and interactive quizzes.",
-    image: projectEduLearn,
-    results: "10,000+ course completions",
-  },
-  {
-    title: "PropertyPro",
-    category: "Mobile App",
-    description: "Real estate listing app with virtual tours and mortgage calculator.",
-    image: projectPropertyPro,
-    results: "4.8 star rating",
-  },
-];
-
-const blogPosts = [
-  {
-    id: "future-of-web-development-2026",
-    title: "The Future of Web Development in 2026",
-    category: "Technology Trends",
-    excerpt: "Explore the emerging technologies shaping web development.",
-    image: blogFutureWeb,
-    readTime: "8 min read",
-  },
-  {
-    id: "building-scalable-react-applications",
-    title: "Building Scalable React Applications",
-    category: "Web Development",
-    excerpt: "Best practices for building React apps that grow with your business.",
-    image: blogReactScalable,
-    readTime: "12 min read",
-  },
-  {
-    id: "financeflow-case-study",
-    title: "Case Study: FinanceFlow Platform",
-    category: "Case Study",
-    excerpt: "How we built FinanceFlow's platform in 12 weeks.",
-    image: blogFinanceflowCase,
-    readTime: "10 min read",
-  },
-];
-
-interface CardProps {
-  image: string;
-  title: string;
-  category: string;
-  description?: string;
-  excerpt?: string;
-  results?: string;
-  readTime?: string;
-  isLink?: boolean;
-  to?: string;
+interface TabData {
+  id: TabType;
+  label: string;
+  icon: typeof BookOpen;
+  description: string;
+  link: string;
+  linkText: string;
+  images: string[];
 }
 
-function ResourceCard({ image, title, category, description, excerpt, results, readTime, isLink, to }: CardProps) {
-  const content = (
-    <div className="group relative rounded-[2rem] overflow-hidden bg-card border border-border transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col">
-      {/* Image with zoom effect */}
-      <div className="aspect-[4/3] overflow-hidden relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-115"
-        />
-      </div>
-      
-      {/* Content */}
-      <div className="p-6 transition-all duration-300 group-hover:bg-muted/30 flex-1 flex flex-col">
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-            {category}
-          </span>
-          {readTime && (
-            <span className="text-xs text-muted-foreground">
-              {readTime}
-            </span>
-          )}
-        </div>
-        <h3 className="text-lg font-bold mb-2 transition-colors duration-300 group-hover:text-primary">
-          {title}
-        </h3>
-        <p className="text-muted-foreground text-sm mb-3 line-clamp-2 flex-1">
-          {description || excerpt}
-        </p>
-        {results && (
-          <p className="text-sm font-medium text-primary flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            {results}
-          </p>
-        )}
-      </div>
-      
-      {/* Hover overlay arrow */}
-      <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shadow-lg">
-        <ArrowRight className="w-4 h-4 text-primary" />
-      </div>
-    </div>
-  );
-
-  if (isLink && to) {
-    return <Link to={to}>{content}</Link>;
-  }
-  return content;
-}
+const tabsData: TabData[] = [
+  {
+    id: "blog",
+    label: "Blog",
+    icon: BookOpen,
+    description: "Stay updated with the latest insights, tutorials, and industry trends. Our blog covers everything from technical deep-dives to business strategies.",
+    link: "/blog",
+    linkText: "Read our blog",
+    images: [blogFutureWeb, blogReactScalable, blogFinanceflowCase],
+  },
+  {
+    id: "portfolio",
+    label: "Portfolio",
+    icon: Briefcase,
+    description: "Explore our showcase of successful projects. From web applications to mobile apps, see how we've helped businesses transform their digital presence.",
+    link: "/portfolio",
+    linkText: "View portfolio",
+    images: [projectFinanceFlow, projectHealthTrack, projectRetailHub],
+  },
+  {
+    id: "community",
+    label: "Community",
+    icon: Users,
+    description: "Join our growing community of developers, designers, and entrepreneurs. Connect, collaborate, and learn together in our vibrant ecosystem.",
+    link: "/community",
+    linkText: "Join community",
+    images: [projectFinanceFlow, blogFutureWeb, projectHealthTrack],
+  },
+  {
+    id: "support",
+    label: "Support",
+    icon: HeadphonesIcon,
+    description: "Get the help you need, when you need it. Our dedicated support team is here to assist you with any questions or technical challenges.",
+    link: "/contact",
+    linkText: "Get support",
+    images: [blogReactScalable, projectRetailHub, blogFinanceflowCase],
+  },
+];
 
 export default function ResourcesTabSection() {
-  const [activeTab, setActiveTab] = useState<TabType>("portfolio");
+  const [activeTab, setActiveTab] = useState<TabType>("blog");
 
-  const tabs: { id: TabType; label: string; icon: typeof Briefcase }[] = [
-    { id: "portfolio", label: "Portfolio", icon: FolderOpen },
-    { id: "projects", label: "Projects", icon: Briefcase },
-    { id: "blog", label: "Blog", icon: FileText },
-  ];
-
-  const getViewAllLink = () => {
-    switch (activeTab) {
-      case "portfolio":
-      case "projects":
-        return "/portfolio";
-      case "blog":
-        return "/blog";
-    }
-  };
-
-  const getViewAllText = () => {
-    switch (activeTab) {
-      case "portfolio":
-        return "View Full Portfolio";
-      case "projects":
-        return "View All Projects";
-      case "blog":
-        return "View All Articles";
-    }
-  };
+  const activeTabData = tabsData.find((tab) => tab.id === activeTab)!;
 
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Featured Resources
-        </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Explore our latest projects and insights
-        </p>
-      </div>
+      {/* Wrapper card matching the reference design */}
+      <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-muted/40 p-6 sm:p-10 md:p-14 lg:p-16">
+        {/* Header */}
+        <div className="mb-10 md:mb-14 max-w-xl">
+          <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
+            Resources
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+            Explore our resources, insights, and community
+          </h2>
+          <p className="text-muted-foreground text-base md:text-lg mb-6">
+            Everything you need to build exceptional digital products. From tutorials to templates, we've got you covered.
+          </p>
+          <Link to={activeTabData.link}>
+            <Button className="rounded-full px-6 py-5 bg-foreground text-background hover:bg-foreground/90">
+              {activeTabData.linkText}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
 
-      {/* Tab Navigation - Same style as Services */}
-      <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all duration-300 ${
-              activeTab === tab.id
-                ? "text-primary"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            <tab.icon className="w-4 h-4" />
-            {tab.label}
-            {activeTab === tab.id && (
-              <motion.div
-                layoutId="activeResourceTabUnderline"
-                className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-          </button>
-        ))}
-        {/* Full-width line below tabs */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
-      </div>
+        {/* Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10">
+          {/* Left: Accordion Tabs */}
+          <div className="space-y-3">
+            {tabsData.map((tab) => {
+              const isActive = activeTab === tab.id;
+              const Icon = tab.icon;
+              
+              return (
+                <motion.div
+                  key={tab.id}
+                  className={`rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden ${
+                    isActive
+                      ? "bg-background border-border shadow-sm"
+                      : "bg-transparent border-transparent hover:bg-background/50"
+                  }`}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  <div className="px-5 py-4 flex items-center gap-3">
+                    <Icon className={`w-5 h-5 transition-colors ${isActive ? "text-primary" : "text-muted-foreground"}`} />
+                    <span className={`font-semibold transition-colors ${isActive ? "text-primary" : "text-foreground"}`}>
+                      {tab.label}
+                    </span>
+                  </div>
+                  
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <div className="px-5 pb-5 pt-0">
+                          <p className="text-muted-foreground text-sm leading-relaxed">
+                            {tab.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
 
-      {/* Tab Content */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeTab}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {activeTab === "portfolio" &&
-            portfolioItems.map((item, index) => (
+          {/* Right: Preview Card */}
+          <div className="relative">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="bg-background rounded-2xl border border-border p-4 sm:p-6 shadow-sm"
               >
-                <ResourceCard {...item} />
-              </motion.div>
-            ))}
+                {/* Browser Chrome */}
+                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="bg-muted rounded-full px-4 py-1 text-xs text-muted-foreground">
+                      advora.dev/{activeTab}
+                    </div>
+                  </div>
+                </div>
 
-          {activeTab === "projects" &&
-            projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <ResourceCard {...project} />
-              </motion.div>
-            ))}
+                {/* Image Grid */}
+                <div className="grid grid-cols-3 gap-3">
+                  {activeTabData.images.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="aspect-square rounded-xl overflow-hidden"
+                    >
+                      <img
+                        src={image}
+                        alt={`${activeTabData.label} preview ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  ))}
+                </div>
 
-          {activeTab === "blog" &&
-            blogPosts.map((post, index) => (
-              <motion.div
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <ResourceCard
-                  image={post.image}
-                  title={post.title}
-                  category={post.category}
-                  excerpt={post.excerpt}
-                  readTime={post.readTime}
-                  isLink
-                  to={`/blog/${post.id}`}
-                />
+                {/* Bottom Dots Indicator */}
+                <div className="flex justify-center gap-1.5 mt-4 pt-3 border-t border-border">
+                  {[0, 1, 2].map((i) => (
+                    <div
+                      key={i}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        i === 0 ? "bg-primary" : "bg-muted-foreground/30"
+                      }`}
+                    />
+                  ))}
+                </div>
               </motion.div>
-            ))}
-        </motion.div>
-      </AnimatePresence>
-
-      {/* View All Button */}
-      <div className="text-center mt-10">
-        <Link to={getViewAllLink()}>
-          <Button variant="outline" className="rounded-full px-8 py-6 group">
-            {getViewAllText()}
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-          </Button>
-        </Link>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );
