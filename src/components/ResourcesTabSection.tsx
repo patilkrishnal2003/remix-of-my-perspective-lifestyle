@@ -16,6 +16,13 @@ import blogFinanceflowCase from "@/assets/blog-financeflow-case.jpg";
 
 type TabType = "blog" | "portfolio" | "community" | "support";
 
+interface ContentCard {
+  title: string;
+  description: string;
+  image: string;
+  tag?: string;
+}
+
 interface TabData {
   id: TabType;
   label: string;
@@ -23,7 +30,7 @@ interface TabData {
   description: string;
   link: string;
   linkText: string;
-  images: string[];
+  cards: ContentCard[];
 }
 
 const tabsData: TabData[] = [
@@ -34,7 +41,11 @@ const tabsData: TabData[] = [
     description: "Stay updated with the latest insights, tutorials, and industry trends. Our blog covers everything from technical deep-dives to business strategies.",
     link: "/blog",
     linkText: "Read our blog",
-    images: [blogFutureWeb, blogReactScalable, blogFinanceflowCase],
+    cards: [
+      { title: "The Future of Web Development", description: "Exploring emerging trends in modern web technologies", image: blogFutureWeb, tag: "Trends" },
+      { title: "Building Scalable React Apps", description: "Best practices for enterprise-level applications", image: blogReactScalable, tag: "Tutorial" },
+      { title: "FinanceFlow Case Study", description: "How we built a fintech platform", image: blogFinanceflowCase, tag: "Case Study" },
+    ],
   },
   {
     id: "portfolio",
@@ -43,7 +54,11 @@ const tabsData: TabData[] = [
     description: "Explore our showcase of successful projects. From web applications to mobile apps, see how we've helped businesses transform their digital presence.",
     link: "/portfolio",
     linkText: "View portfolio",
-    images: [projectFinanceFlow, projectHealthTrack, projectRetailHub],
+    cards: [
+      { title: "FinanceFlow", description: "Modern fintech dashboard platform", image: projectFinanceFlow, tag: "Fintech" },
+      { title: "HealthTrack", description: "Healthcare management system", image: projectHealthTrack, tag: "Healthcare" },
+      { title: "RetailHub", description: "E-commerce analytics solution", image: projectRetailHub, tag: "E-commerce" },
+    ],
   },
   {
     id: "community",
@@ -52,7 +67,11 @@ const tabsData: TabData[] = [
     description: "Join our growing community of developers, designers, and entrepreneurs. Connect, collaborate, and learn together in our vibrant ecosystem.",
     link: "/community",
     linkText: "Join community",
-    images: [projectFinanceFlow, blogFutureWeb, projectHealthTrack],
+    cards: [
+      { title: "Developer Meetups", description: "Monthly virtual events and workshops", image: projectFinanceFlow, tag: "Events" },
+      { title: "Open Source Projects", description: "Contribute to our public repositories", image: blogFutureWeb, tag: "Open Source" },
+      { title: "Discord Community", description: "Connect with 5,000+ developers", image: projectHealthTrack, tag: "Discord" },
+    ],
   },
   {
     id: "support",
@@ -61,7 +80,11 @@ const tabsData: TabData[] = [
     description: "Get the help you need, when you need it. Our dedicated support team is here to assist you with any questions or technical challenges.",
     link: "/contact",
     linkText: "Get support",
-    images: [blogReactScalable, projectRetailHub, blogFinanceflowCase],
+    cards: [
+      { title: "Documentation", description: "Comprehensive guides and API references", image: blogReactScalable, tag: "Docs" },
+      { title: "FAQ & Knowledge Base", description: "Quick answers to common questions", image: projectRetailHub, tag: "FAQ" },
+      { title: "Priority Support", description: "Direct access to our engineering team", image: blogFinanceflowCase, tag: "Premium" },
+    ],
   },
 ];
 
@@ -189,35 +212,42 @@ export default function ResourcesTabSection() {
                   </div>
                 </div>
 
-                {/* Image Grid */}
-                <div className="grid grid-cols-3 gap-3 flex-1">
-                  {activeTabData.images.map((image, index) => (
+                {/* Content Cards */}
+                <div className="space-y-3 flex-1">
+                  {activeTabData.cards.map((card, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="aspect-square rounded-xl overflow-hidden"
+                      className="flex gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors cursor-pointer group"
                     >
-                      <img
-                        src={image}
-                        alt={`${activeTabData.label} preview ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
+                      <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        {card.tag && (
+                          <span className="inline-block text-[10px] font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-1">
+                            {card.tag}
+                          </span>
+                        )}
+                        <h4 className="text-sm font-semibold text-foreground truncate">{card.title}</h4>
+                        <p className="text-xs text-muted-foreground line-clamp-1">{card.description}</p>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
 
-                {/* Bottom Dots Indicator */}
-                <div className="flex justify-center gap-1.5 mt-4 pt-3 border-t border-border">
-                  {[0, 1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        i === 0 ? "bg-primary" : "bg-muted-foreground/30"
-                      }`}
-                    />
-                  ))}
+                {/* Bottom Action */}
+                <div className="flex justify-center mt-4 pt-3 border-t border-border">
+                  <Link to={activeTabData.link} className="text-sm font-medium text-primary hover:underline flex items-center gap-1">
+                    {activeTabData.linkText}
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
                 </div>
               </motion.div>
             </AnimatePresence>
