@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, ChevronDown, Globe, Smartphone, Code, Database, Palette, Cloud, ArrowRight, Briefcase, BookOpen, Users, Headphones } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, Globe, Smartphone, Code, Database, Palette, Cloud, ArrowRight, Briefcase, BookOpen, Users, Headphones, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -94,6 +94,7 @@ const Header = () => {
     { label: "Portfolio", path: "/portfolio", icon: Briefcase, description: "Our best work" },
     { label: "Blog", path: "/blog", icon: BookOpen, description: "Insights & tutorials" },
     { label: "Community", path: "/community", icon: Users, description: "Join developers" },
+    { label: "Careers", path: "/careers", icon: GraduationCap, description: "Join our team" },
     { label: "Support", path: "/contact", icon: Headphones, description: "Get help" },
   ];
 
@@ -212,14 +213,14 @@ const Header = () => {
                   <DropdownMenuTrigger asChild>
                     <button 
                       className={`text-sm font-medium px-4 py-2 transition-all relative flex items-center gap-1 ${
-                        isActive("/portfolio") || isActive("/blog") || isActive("/community")
+                        isActive("/portfolio") || isActive("/blog") || isActive("/community") || isActive("/careers")
                           ? "text-accent" 
                           : "hover:text-accent"
                       }`}
                     >
                       Resources
                       <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                      {(isActive("/portfolio") || isActive("/blog") || isActive("/community")) && (
+                      {(isActive("/portfolio") || isActive("/blog") || isActive("/community") || isActive("/careers")) && (
                         <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
                       )}
                     </button>
@@ -507,14 +508,14 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <button 
                   className={`text-sm font-medium px-4 py-2 transition-all relative flex items-center gap-1 ${
-                    isActive("/portfolio") || isActive("/blog") || isActive("/community")
+                    isActive("/portfolio") || isActive("/blog") || isActive("/community") || isActive("/careers")
                       ? "text-accent" 
                       : "hover:text-accent"
                   }`}
                 >
                   Resources
                   <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                  {(isActive("/portfolio") || isActive("/blog") || isActive("/community")) && (
+                  {(isActive("/portfolio") || isActive("/blog") || isActive("/community") || isActive("/careers")) && (
                     <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-accent rounded-full" />
                   )}
                 </button>
