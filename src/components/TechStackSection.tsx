@@ -45,7 +45,7 @@ export default function TechStackSection({
         </div>
         
         {/* Scrolling Marquee */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden py-4">
           {/* Row 1 - scrolling left */}
           <div className={`flex gap-6 animate-marquee ${showTwoRows ? 'mb-6' : ''}`}>
             {[...techStackRow1, ...techStackRow1, ...techStackRow1, ...techStackRow1].map((tech, index) => (
