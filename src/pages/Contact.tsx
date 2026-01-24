@@ -37,7 +37,7 @@ const Contact = () => {
         <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Card */}
-            <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
+            <div className="rounded-[4rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                 {/* Image */}
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
@@ -78,7 +78,7 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
-          <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-card p-6 sm:p-8 md:p-10 animate-slide-up stagger-2">
+          <div className="rounded-[4rem] bg-card p-6 sm:p-8 md:p-10 animate-slide-up stagger-2">
             <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Send us a message</h2>
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
