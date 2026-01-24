@@ -137,8 +137,8 @@ export function RoadmapCard({
                   <div className="flex flex-col">
                     {/* Quarter Badge */}
                     <Badge 
-                      variant={status === "done" ? "default" : "secondary"} 
-                      className={`mb-2 md:mb-3 w-fit transition-colors duration-300 ${status === "done" ? "bg-primary text-primary-foreground hover:bg-primary/90" : ""}`}
+                      variant={status === "done" || status === "in-progress" ? "default" : "secondary"} 
+                      className={`mb-2 md:mb-3 w-fit transition-colors duration-300 ${status === "done" || status === "in-progress" ? "bg-primary text-primary-foreground hover:bg-primary/90" : ""}`}
                     >
                       {item.quarter}
                     </Badge>
