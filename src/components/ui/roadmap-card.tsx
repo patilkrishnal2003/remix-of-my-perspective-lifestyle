@@ -26,12 +26,11 @@ export function RoadmapCard({
   interval = 2500,
 }: RoadmapCardProps) {
   const [activeStep, setActiveStep] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Auto-progression through steps - 1 second per step, restart from beginning
   useEffect(() => {
-    if (!autoPlay || isPaused) return;
+    if (!autoPlay) return;
 
     const timer = setTimeout(() => {
       setIsTransitioning(true);
@@ -42,7 +41,7 @@ export function RoadmapCard({
     }, 1000); // 1 second per step
 
     return () => clearTimeout(timer);
-  }, [autoPlay, isPaused, items.length, activeStep]);
+  }, [autoPlay, items.length, activeStep]);
 
   // Calculate progress percentage - fill to dot position, or 100% for the last step
   const progressPercentage = activeStep === items.length - 1 
@@ -56,11 +55,8 @@ export function RoadmapCard({
     return "upcoming";
   };
 
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
-
   return (
-    <Card className="w-full mx-auto rounded-[2.5rem] sm:rounded-[3rem]" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Card className="w-full mx-auto rounded-[2.5rem] sm:rounded-[3rem]">
       <CardContent className="pt-6 sm:pt-8 pb-6 sm:pb-8 px-6 sm:px-10">
         {description && (
           <CardDescription className="text-center mb-8">{description}</CardDescription>
