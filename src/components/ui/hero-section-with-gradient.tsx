@@ -330,8 +330,6 @@ export default function HeroSectionWithGradient() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:4rem_4rem]" />
 
-      {/* Circular Orbiting Icons */}
-      <CircularOrbits />
 
       {/* Main Content */}
       <div className="relative z-10 flex min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-16">
