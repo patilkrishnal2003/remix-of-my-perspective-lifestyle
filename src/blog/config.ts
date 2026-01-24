@@ -3,22 +3,16 @@
  * Centralized place for all environment-dependent settings
  */
 
-const API_BASE = import.meta.env.VITE_BLOG_API_BASE;
-
-// Runtime validation - ensure env var is set
-if (!API_BASE) {
-  console.error(
-    "❌ VITE_BLOG_API_BASE is not defined. Blog API calls will fail.",
-    "Expected: VITE_BLOG_API_BASE=/wp-json in .env.local"
-  );
-  throw new Error(
-    "Missing VITE_BLOG_API_BASE environment variable. Check .env.local"
-  );
-}
+// Default to proxy path, fallback to direct URL if not set
+const API_BASE = import.meta.env.VITE_BLOG_API_BASE || "https://authors.advora.in/wp-json";
 
 // Log for debugging
 if (import.meta.env.DEV) {
-  console.log("✓ Blog API Base:", API_BASE);
+  if (!import.meta.env.VITE_BLOG_API_BASE) {
+    console.warn("⚠️ VITE_BLOG_API_BASE not set, using default:", API_BASE);
+  } else {
+    console.log("✓ Blog API Base:", API_BASE);
+  }
 }
 
 export { API_BASE };
