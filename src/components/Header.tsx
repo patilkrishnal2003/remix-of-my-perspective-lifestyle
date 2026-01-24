@@ -183,10 +183,14 @@ const Header = () => {
                   </Button>
                 </Link>
 
-                <div className="p-2 sm:p-2.5 rounded-full flex items-center gap-2">
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </div>
+                {/* Mobile Menu Button - only on mobile */}
+                <button
+                  className="md:hidden p-1.5 sm:p-2"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+                </button>
               </div>
             </div>
           ) : (
@@ -203,7 +207,7 @@ const Header = () => {
                 <span className="text-base sm:text-xl font-bold font-serif">Advora</span>
               </Link>
 
-              {/* Menu Button - Right Corner */}
+              {/* Right Corner Actions */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={toggleTheme}
@@ -213,10 +217,14 @@ const Header = () => {
                   {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
                 </button>
 
-                <div className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2">
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </div>
+                {/* Mobile Menu Button - only on mobile */}
+                <button
+                  className="md:hidden p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+                </button>
               </div>
             </div>
           )}
