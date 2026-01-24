@@ -44,8 +44,8 @@ export function RoadmapCard({
     return () => clearTimeout(timer);
   }, [autoPlay, isPaused, items.length, activeStep]);
 
-  // Calculate progress percentage based on active step
-  const progressPercentage = ((activeStep + 1) / items.length) * 100;
+  // Calculate progress percentage to align with dot positions (dots are centered in each column)
+  const progressPercentage = ((activeStep + 0.5) / items.length) * 100;
 
   // Determine status based on active step
   const getStepStatus = (index: number) => {
