@@ -12,7 +12,6 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showFullNav, setShowFullNav] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -38,15 +37,7 @@ const Header = () => {
   // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
-    setShowFullNav(false);
   }, [location.pathname]);
-
-  // Reset showFullNav when scrolling back to top
-  useEffect(() => {
-    if (!isScrolled) {
-      setShowFullNav(false);
-    }
-  }, [isScrolled]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
@@ -82,146 +73,137 @@ const Header = () => {
     { label: "Support", path: "/contact", icon: Headphones, description: "Get help" },
   ];
 
-  const mainNavItems = [
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Services", path: "/services" },
-    { label: "Portfolio", path: "/portfolio" },
-    { label: "Blog", path: "/blog" },
-    { label: "Community", path: "/community" },
-    { label: "Contact", path: "/contact" },
-  ];
-
-  // Scrolled state - Split navbar with logo left, menu button right
+  // Scrolled state - Full navbar appears
   if (isScrolled) {
     return (
       <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 animate-slide-down">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          {/* Full navbar when menu is open */}
-          {showFullNav ? (
-            <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 shadow-lg animate-fade-in">
-              {/* Logo */}
-              <div className="flex items-center min-w-0">
-                <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
-                  </div>
-                  <span className="text-base sm:text-xl font-bold font-serif truncate">Advora</span>
-                </Link>
-              </div>
-
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center gap-1">
-                <Link 
-                  to="/" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/") && location.pathname === "/"
-                      ? "text-accent bg-accent/10" 
-                      : "hover:bg-muted/60"
-                  }`}
-                >
-                  Home
-                </Link>
-                <Link 
-                  to="/about" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/about") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  About
-                </Link>
-                <Link 
-                  to="/services" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/services") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Services
-                </Link>
-                <Link 
-                  to="/portfolio" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/portfolio") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Portfolio
-                </Link>
-                <Link 
-                  to="/blog" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/blog") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Blog
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/contact") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Contact
-                </Link>
-              </nav>
-
-              {/* Actions */}
-              <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-                <button
-                  onClick={toggleTheme}
-                  className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
-                </button>
-                
-                <Link to="/contact" className="hidden md:block">
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 hover:scale-105 transition-all">
-                    Get a Quote
-                  </Button>
-                </Link>
-
-                <button
-                  className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
-                  onClick={() => setShowFullNav(false)}
-                  aria-label="Close menu"
-                >
-                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
-                </button>
-              </div>
-            </div>
-          ) : (
-            /* Split navbar - logo left, menu right */
-            <div className="flex items-center justify-between">
-              {/* Logo - Left Corner */}
-              <Link 
-                to="/" 
-                className="flex items-center gap-1.5 sm:gap-2 pill-nav px-3 sm:px-4 py-2 shadow-lg"
-              >
+          <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 shadow-lg">
+            {/* Logo */}
+            <div className="flex items-center min-w-0">
+              <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
                 <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
                 </div>
-                <span className="text-base sm:text-xl font-bold font-serif">Advora</span>
+                <span className="text-base sm:text-xl font-bold font-serif truncate">Advora</span>
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-1">
+              <Link 
+                to="/" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/") && location.pathname === "/"
+                    ? "text-accent bg-accent/10" 
+                    : "hover:bg-muted/60"
+                }`}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/about" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/about") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                About
+              </Link>
+              <Link 
+                to="/services" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/services") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Services
+              </Link>
+              <Link 
+                to="/portfolio" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/portfolio") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Portfolio
+              </Link>
+              <Link 
+                to="/blog" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/blog") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Blog
+              </Link>
+              <Link 
+                to="/contact" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/contact") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Contact
+              </Link>
+            </nav>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+              <button
+                onClick={toggleTheme}
+                className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
+              </button>
+              
+              <Link to="/contact" className="hidden md:block">
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 hover:scale-105 transition-all">
+                  Get a Quote
+                </Button>
               </Link>
 
-              {/* Menu Button - Right Corner */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg hover:bg-muted/60 transition-all"
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
-                </button>
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-1.5 sm:p-2"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
+              </button>
+            </div>
+          </div>
 
-                <button
-                  className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg hover:bg-muted/60 transition-all flex items-center gap-2"
-                  onClick={() => setShowFullNav(true)}
-                  aria-label="Open menu"
-                >
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </button>
-              </div>
+          {/* Mobile Menu for scrolled state */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in">
+              <nav className="flex flex-col gap-1">
+                {[
+                  { label: "Home", path: "/" },
+                  { label: "About", path: "/about" },
+                  { label: "Services", path: "/services" },
+                  { label: "Portfolio", path: "/portfolio" },
+                  { label: "Blog", path: "/blog" },
+                  { label: "Community", path: "/community" },
+                  { label: "Contact", path: "/contact" },
+                ].map((item) => (
+                  <Link 
+                    key={item.path}
+                    to={item.path} 
+                    className={`text-base font-medium py-3 px-4 rounded-xl transition-colors ${
+                      isActive(item.path) && (item.path !== "/" || location.pathname === "/")
+                        ? "bg-accent/10 text-accent" 
+                        : "hover:bg-muted"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <div className="pt-3 mt-2 border-t border-border">
+                  <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
+                    <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full w-full py-6 text-base">
+                      Get a Quote
+                    </Button>
+                  </Link>
+                </div>
+              </nav>
             </div>
           )}
         </div>
