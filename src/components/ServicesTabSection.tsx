@@ -129,7 +129,7 @@ const ServicesTabSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden ${
+                  className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
                     servicesData.findIndex(s => s.id === service.id) % 2 === 0
                       ? "bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900/60 dark:to-slate-800/60"
                       : "bg-gradient-to-br from-primary/15 to-primary/10 dark:from-primary/25 dark:to-primary/15"
