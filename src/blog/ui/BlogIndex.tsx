@@ -9,13 +9,12 @@ import BlogCard from "./components/BlogCard";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-type TabId = "all" | string; // 'all' or category.slug
+type TabId = "all" | string;
 
 export default function BlogIndex() {
   const { cats, loading: catsLoading } = useBlogData();
   const navigate = useNavigate();
 
-  // State management
   const [activeTab, setActiveTab] = useState<TabId>("all");
   const [pageByTab, setPageByTab] = useState<Record<TabId, number>>({ all: 1 });
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,31 +26,17 @@ export default function BlogIndex() {
 
   const blogsRef = useRef<HTMLDivElement | null>(null);
   const searchRef = useRef<HTMLInputElement | null>(null);
-
-  // Carousel state
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Initial load: fetch hero + grid for "all" tab
+  // Initial load
   useEffect(() => {
     if (catsLoading) return;
-
     (async () => {
       try {
-        // Fetch hero posts (cached)
         const hero = await fetchHeroLatest(cats);
         setHeroPosts(hero);
-
-        // Fetch initial grid for "all" tab, page 1, browse mode
         setIsLoading(true);
-        const result = await fetchPostList(
-          {
-            mode: "browse",
-            tabId: "all",
-            page: 1,
-            perPage: GRID_PER_PAGE,
-          },
-          cats,
-        );
+        const result = await fetchPostList({ mode: "browse", tabId: "all", page: 1, perPage: GRID_PER_PAGE }, cats);
         setGridPosts(result.posts);
         setTotalPages(result.totalPages);
       } catch (error) {
@@ -65,25 +50,20 @@ export default function BlogIndex() {
   // Auto-play carousel
   useEffect(() => {
     if (heroPosts.length === 0) return;
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroPosts.length);
-    }, 5000);
-
+    const timer = setInterval(() => setCurrentSlide((prev) => (prev + 1) % heroPosts.length), 5000);
     return () => clearInterval(timer);
   }, [heroPosts.length]);
 
-  // Build categories list
-  const categories = useMemo(() => {
-    return [{ name: "All", value: "all" }, ...cats.map((c) => ({ name: c.name, value: c.slug }))];
-  }, [cats]);
+  const categories = useMemo(
+    () => [{ name: "All", value: "all" }, ...cats.map((c) => ({ name: c.name, value: c.slug }))],
+    [cats]
+  );
 
-  // Quick search focus with "/" key
+  // Keyboard shortcut
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
-      const inInput =
-        target &&
-        (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || (target as HTMLElement).isContentEditable);
+      const inInput = target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable);
       if (!inInput && e.key === "/") {
         e.preventDefault();
         searchRef.current?.focus();
@@ -93,28 +73,16 @@ export default function BlogIndex() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Load grid when activeTab, page, or search changes
+  // Load grid
   useEffect(() => {
     if (catsLoading) return;
-
     const currentPage = pageByTab[activeTab] ?? 1;
     const trimmedSearch = searchQuery.trim();
     const mode: "browse" | "search" = trimmedSearch ? "search" : "browse";
-
     const categoryId = activeTab === "all" ? undefined : cats.find((c) => c.slug === activeTab)?.id;
 
     setIsLoading(true);
-    fetchPostList(
-      {
-        mode,
-        tabId: activeTab,
-        page: currentPage,
-        perPage: GRID_PER_PAGE,
-        categoryId,
-        search: trimmedSearch || undefined,
-      },
-      cats,
-    )
+    fetchPostList({ mode, tabId: activeTab, page: currentPage, perPage: GRID_PER_PAGE, categoryId, search: trimmedSearch || undefined }, cats)
       .then((result) => {
         setGridPosts(result.posts);
         setTotalPages(result.totalPages);
@@ -123,223 +91,124 @@ export default function BlogIndex() {
       .finally(() => setIsLoading(false));
   }, [activeTab, pageByTab, searchQuery, catsLoading, cats]);
 
-  // Display posts (no client-side pagination - API handles it)
   const currentPage = pageByTab[activeTab] ?? 1;
   const visiblePosts = gridPosts;
   const hasNextPage = currentPage < totalPages;
 
-  // Generate page numbers to display
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
     const maxVisible = 5;
-
     if (totalPages <= maxVisible + 2) {
-      for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-      }
+      for (let i = 1; i <= totalPages; i++) pages.push(i);
     } else {
       pages.push(1);
-
-      if (currentPage > 3) {
-        pages.push("...");
-      }
-
+      if (currentPage > 3) pages.push("...");
       const start = Math.max(2, currentPage - 1);
       const end = Math.min(totalPages - 1, currentPage + 1);
-
-      for (let i = start; i <= end; i++) {
-        pages.push(i);
-      }
-
-      if (currentPage < totalPages - 2) {
-        pages.push("...");
-      }
-
+      for (let i = start; i <= end; i++) pages.push(i);
+      if (currentPage < totalPages - 2) pages.push("...");
       pages.push(totalPages);
     }
-
     return pages;
   };
 
   const handleTabChange = (newTab: TabId) => {
     setActiveTab(newTab);
-    setPageByTab((prev) => ({
-      ...prev,
-      [newTab]: prev[newTab] ?? 1,
-    }));
+    setPageByTab((prev) => ({ ...prev, [newTab]: prev[newTab] ?? 1 }));
     setSearchQuery("");
   };
 
   const handlePageChange = (pageNum: number) => {
-    setPageByTab((prev) => ({
-      ...prev,
-      [activeTab]: pageNum,
-    }));
+    setPageByTab((prev) => ({ ...prev, [activeTab]: pageNum }));
     blogsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
-    setPageByTab((prev) => ({
-      ...prev,
-      [activeTab]: 1,
-    }));
+    setPageByTab((prev) => ({ ...prev, [activeTab]: 1 }));
   };
-
-  const jumpToFirst = () => handlePageChange(1);
-  const jumpToLast = () => handlePageChange(totalPages);
 
   const formatDate = (d: string | Date) => {
     const date = typeof d === "string" ? new Date(d) : d;
     return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
   };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroPosts.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroPosts.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroPosts.length) % heroPosts.length);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroPosts.length) % heroPosts.length);
-  };
-
-  if (catsLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (catsLoading) return <div className="min-h-screen flex items-center justify-center bg-background"><div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" /></div>;
 
   return (
     <>
       <Header />
       <main className="min-h-screen bg-background">
-        <style>{`
-        .cards-grid {
-          display: grid; gap: 24px;
-          grid-template-columns: repeat(3, 1fr);
-        }
-        
-        @media (max-width: 1024px) {
-          .cards-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        @media (max-width: 640px) {
-          .cards-grid { grid-template-columns: 1fr; }
-        }
-
-        .tabs-scroll::-webkit-scrollbar {
-          height: 6px;
-        }
-        .tabs-scroll::-webkit-scrollbar-track {
-          background: #f1f5f9;
-          border-radius: 10px;
-          margin: 0 8px;
-        }
-        .tabs-scroll::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
-          border-radius: 10px;
-          transition: background 0.2s ease;
-        }
-        .tabs-scroll::-webkit-scrollbar-thumb:hover {
-          background: #94a3b8;
-        }
-      `}</style>
-
         {/* ===== HERO CAROUSEL ===== */}
-        <section className="overflow-hidden bg-[#ffffff] rounded-b-[40px] relative">
+        <section className="overflow-hidden bg-background rounded-b-[3rem] relative">
           <div
-            className="absolute inset-0 pointer-events-none rounded-b-[40px]"
+            className="absolute inset-0 pointer-events-none rounded-b-[3rem]"
             style={{
-              backgroundImage: `
-            linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px)
-          `,
+              backgroundImage: `linear-gradient(to right, hsl(var(--foreground) / 0.03) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground) / 0.03) 1px, transparent 1px)`,
               backgroundSize: "44px 44px",
-              maskImage: `
-            radial-gradient(
-              ellipse 80% 60% at 50% 45%,
-              black 0%,
-              rgba(0, 0, 0, 0.8) 15%,
-              rgba(0, 0, 0, 0.6) 30%,
-              rgba(0, 0, 0, 0.3) 50%,
-              transparent 70%,
-              transparent 100%
-            )
-          `,
-              WebkitMaskImage: `
-            radial-gradient(
-              ellipse 80% 60% at 50% 45%,
-              black 0%,
-              rgba(0, 0, 0, 0.8) 15%,
-              rgba(0, 0, 0, 0.6) 30%,
-              rgba(0, 0, 0, 0.3) 50%,
-              transparent 70%,
-              transparent 100%
-            )
-          `,
+              maskImage: `radial-gradient(ellipse 80% 60% at 50% 45%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)`,
+              WebkitMaskImage: `radial-gradient(ellipse 80% 60% at 50% 45%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)`,
             }}
-          ></div>
+          />
 
           <div className="relative z-10">
-            <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-              <div className="mx-auto max-w-6xl">
+            <div className="px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:pt-28 sm:pb-16">
+              <div className="mx-auto max-w-7xl">
                 <AnimatePresence mode="wait">
                   {heroPosts.map((post, index) => {
                     if (index !== currentSlide) return null;
-
                     const cat = cats.find((c) => c.slug === post.category);
                     const catLabel = cat?.name ?? post.category;
-                    const authorName = post.authorName || "Connecttly";
-                    const authorImage = post.authorImage;
-                    const readTime = post.readTime;
-                    const authorDesignation = post.authorDesignation;
 
                     return (
                       <motion.div
                         key={post.id}
-                        initial={{ opacity: 0, x: 100 }}
+                        initial={{ opacity: 0, x: 60 }}
                         animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -100 }}
+                        exit={{ opacity: 0, x: -60 }}
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center cursor-pointer"
                         onClick={() => navigate(`/blog/${post.category}/${post.slug}`, { state: { post } })}
                       >
-                        <div className="order-2 lg:order-1 pointer-events-none flex flex-col justify-between h-full min-h-[400px]">
+                        <div className="order-2 lg:order-1 flex flex-col justify-between gap-5 min-h-[360px] lg:min-h-[400px]">
                           <div className="flex items-center justify-between">
-                            <span className="inline-flex items-center px-3 py-1 rounded-md bg-[#FEF3E2] text-[#8B6914] font-medium text-xs uppercase tracking-wide">
+                            <span className="inline-flex items-center px-3 py-1.5 rounded-lg bg-primary/10 text-primary font-semibold text-xs uppercase tracking-wider">
                               {catLabel}
                             </span>
-                            <time className="text-slate-500 text-sm" dateTime={String(post.date)}>
+                            <time className="text-muted-foreground/70 text-sm" dateTime={String(post.date)}>
                               {formatDate(post.date)}
                             </time>
                           </div>
 
-                          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+                          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-[1.2]">
                             {post.title}
                           </h1>
 
-                          {post.excerpt && <p className="text-base text-slate-600 leading-relaxed">{post.excerpt}</p>}
+                          {post.excerpt && <p className="text-base text-muted-foreground leading-relaxed line-clamp-3">{post.excerpt}</p>}
 
-                          {readTime && <p className="text-sm text-slate-500">{readTime}</p>}
+                          {post.readTime && <p className="text-sm text-muted-foreground/60">{post.readTime}</p>}
 
                           <div className="flex items-center gap-3">
-                            {authorImage ? (
-                              <img src={authorImage} alt={authorName} className="w-12 h-12 rounded-full object-cover" />
+                            {post.authorImage ? (
+                              <img src={post.authorImage} alt={post.authorName || "Author"} className="w-11 h-11 rounded-full object-cover ring-2 ring-border" />
                             ) : (
-                              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center font-semibold">
-                                {authorName.charAt(0).toUpperCase()}
+                              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground flex items-center justify-center font-semibold text-sm">
+                                {(post.authorName || "C").charAt(0).toUpperCase()}
                               </div>
                             )}
                             <div className="flex flex-col">
-                              <p className="text-sm font-semibold text-slate-900">{authorName}</p>
-                              {authorDesignation && <p className="text-xs text-slate-500">{authorDesignation}</p>}
+                              <p className="text-sm font-semibold text-foreground">{post.authorName || "Connecttly"}</p>
+                              {post.authorDesignation && <p className="text-xs text-muted-foreground/70">{post.authorDesignation}</p>}
                             </div>
                           </div>
                         </div>
 
                         {post.cover && (
-                          <figure className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-white flex items-center justify-center min-h-[300px] lg:min-h-[400px] pointer-events-none">
-                            <img
-                              src={post.cover}
-                              alt={post.title}
-                              className="w-full h-full object-cover"
-                              loading="eager"
-                            />
+                          <figure className="order-1 lg:order-2 rounded-[2rem] overflow-hidden border border-border shadow-xl bg-card flex items-center justify-center min-h-[280px] lg:min-h-[400px]">
+                            <img src={post.cover} alt={post.title} className="w-full h-full object-cover" loading="eager" />
                           </figure>
                         )}
                       </motion.div>
@@ -347,34 +216,30 @@ export default function BlogIndex() {
                   })}
                 </AnimatePresence>
 
-                <div className="flex items-center justify-center gap-4 mt-8">
+                <div className="flex items-center justify-center gap-4 mt-10">
                   <button
                     onClick={prevSlide}
-                    className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-md"
+                    className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-card hover:scale-110 transition-all shadow-md"
                     aria-label="Previous slide"
                   >
-                    <ChevronLeft className="w-5 h-5 text-slate-700" />
+                    <ChevronLeft className="w-5 h-5 text-foreground/70" />
                   </button>
-
                   <div className="flex gap-2">
                     {heroPosts.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`h-2 rounded-full transition-all ${
-                          index === currentSlide ? "w-8 bg-[#0074ED]" : "w-2 bg-slate-300 hover:bg-slate-400"
-                        }`}
+                        className={`h-2 rounded-full transition-all ${index === currentSlide ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
                         aria-label={`Go to slide ${index + 1}`}
                       />
                     ))}
                   </div>
-
                   <button
                     onClick={nextSlide}
-                    className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center hover:bg-white hover:scale-110 transition-all shadow-md"
+                    className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-card hover:scale-110 transition-all shadow-md"
                     aria-label="Next slide"
                   >
-                    <ChevronRight className="w-5 h-5 text-slate-700" />
+                    <ChevronRight className="w-5 h-5 text-foreground/70" />
                   </button>
                 </div>
               </div>
@@ -382,29 +247,23 @@ export default function BlogIndex() {
           </div>
         </section>
 
-        <section id="blogs" ref={blogsRef} className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 pb-12 sm:pb-16">
-          <div className="mx-auto max-w-6xl">
+        {/* ===== POSTS GRID ===== */}
+        <section id="blogs" ref={blogsRef} className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl">
+            {/* Mobile filter */}
             <div className="md:hidden mb-8">
-              <label htmlFor="blog-category" className="block text-sm font-medium text-slate-600 mb-2">
-                Filter blogs
-              </label>
+              <label htmlFor="blog-category" className="block text-sm font-medium text-muted-foreground mb-2">Filter by category</label>
               <select
                 id="blog-category"
                 value={activeTab}
-                onChange={(e) => {
-                  setShowSearch(false);
-                  handleTabChange(e.target.value);
-                }}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0074ED] focus:border-transparent"
+                onChange={(e) => { setShowSearch(false); handleTabChange(e.target.value); }}
+                className="w-full px-4 py-2.5 rounded-xl border border-border bg-card shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               >
-                {categories.map((c) => (
-                  <option key={c.value} value={c.value}>
-                    {c.name}
-                  </option>
-                ))}
+                {categories.map((c) => <option key={c.value} value={c.value}>{c.name}</option>)}
               </select>
             </div>
 
+            {/* Desktop tabs */}
             <div className="hidden md:block mb-12">
               {!showSearch ? (
                 <div className="flex items-center gap-3 flex-wrap">
@@ -412,25 +271,18 @@ export default function BlogIndex() {
                     <button
                       key={c.value}
                       onClick={() => handleTabChange(c.value)}
-                      className={`
-                      whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium transition-colors
-                      ${
+                      className={`whitespace-nowrap rounded-full border px-5 py-2.5 text-sm font-medium transition-all ${
                         activeTab === c.value
-                          ? "bg-[#0A1F3D] text-white border-[#0A1F3D]"
-                          : "bg-white text-slate-800 border-slate-200 hover:bg-slate-50"
-                      }
-                    `}
+                          ? "bg-primary text-primary-foreground border-primary shadow-md"
+                          : "bg-card text-foreground border-border hover:bg-muted/20 hover:border-muted-foreground/30"
+                      }`}
                     >
                       {c.name}
                     </button>
                   ))}
-
                   <button
-                    onClick={() => {
-                      setShowSearch(true);
-                      setSearchQuery("");
-                    }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition-colors text-sm font-medium ml-auto"
+                    onClick={() => { setShowSearch(true); setSearchQuery(""); }}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card text-foreground hover:bg-muted/20 transition-all text-sm font-medium ml-auto"
                     aria-label="Search blogs"
                   >
                     <Search className="h-4 w-4" />
@@ -440,14 +292,11 @@ export default function BlogIndex() {
               ) : (
                 <div className="flex items-center gap-3">
                   <button
-                    onClick={() => {
-                      setShowSearch(false);
-                      setSearchQuery("");
-                    }}
-                    className="flex items-center justify-center w-11 h-11 rounded-full border border-slate-200 bg-white hover:bg-slate-50 transition-colors"
+                    onClick={() => { setShowSearch(false); setSearchQuery(""); }}
+                    className="flex items-center justify-center w-11 h-11 rounded-full border border-border bg-card hover:bg-muted/20 transition-all"
                     aria-label="Back to categories"
                   >
-                    <ArrowLeft className="h-4 w-4 text-slate-600" />
+                    <ArrowLeft className="h-4 w-4 text-muted-foreground" />
                   </button>
                   <input
                     ref={searchRef}
@@ -455,7 +304,7 @@ export default function BlogIndex() {
                     value={searchQuery}
                     onChange={handleSearchChange}
                     placeholder="Search articles, topics, or tags…"
-                    className="flex-1 h-11 px-4 rounded-full bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0074ED] focus:border-transparent"
+                    className="flex-1 h-11 px-5 rounded-full bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
               )}
@@ -465,15 +314,15 @@ export default function BlogIndex() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               {isLoading ? (
-                <div className="flex items-center justify-center py-12">
-                  <div className="text-slate-500">Loading posts...</div>
+                <div className="flex items-center justify-center py-16">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
                 </div>
               ) : (
                 <>
-                  <ul className="cards-grid">
+                  <ul className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {visiblePosts.map((p) => (
                       <BlogCard
                         key={p.id}
@@ -491,9 +340,8 @@ export default function BlogIndex() {
                         authorDesignation={p.authorDesignation}
                       />
                     ))}
-
                     {visiblePosts.length === 0 && (
-                      <li className="col-span-full text-center text-slate-500 py-12">No posts match your search.</li>
+                      <li className="col-span-full text-center text-muted-foreground py-16">No posts match your search.</li>
                     )}
                   </ul>
 
@@ -501,101 +349,48 @@ export default function BlogIndex() {
                     <div className="flex flex-col items-center gap-4 mt-12">
                       <div className="flex justify-center items-center gap-2">
                         {currentPage > 1 && totalPages > 5 && (
-                          <button
-                            onClick={jumpToFirst}
-                            className="hidden sm:flex w-10 h-10 rounded-lg items-center justify-center bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all"
-                            aria-label="First page"
-                            title="First page"
-                          >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
-                              />
-                            </svg>
+                          <button onClick={() => handlePageChange(1)} className="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center bg-card border border-border text-foreground hover:bg-muted/20 transition-all" aria-label="First page">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
                           </button>
                         )}
-
                         <button
                           onClick={() => handlePageChange(currentPage - 1)}
                           disabled={currentPage === 1}
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-                            currentPage === 1
-                              ? "bg-slate-100 text-slate-400 cursor-not-allowed"
-                              : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300"
-                          }`}
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${currentPage === 1 ? "bg-muted/30 text-muted-foreground/40 cursor-not-allowed" : "bg-card border border-border text-foreground hover:bg-muted/20"}`}
                           aria-label="Previous page"
                         >
                           <ChevronLeft className="w-5 h-5" />
                         </button>
-
-                        {getPageNumbers().map((pageNum, index) => {
-                          if (pageNum === "...") {
-                            return (
-                              <span
-                                key={`ellipsis-${index}`}
-                                className="w-10 h-10 flex items-center justify-center text-slate-400 font-medium"
-                              >
-                                ...
-                              </span>
-                            );
-                          }
-
-                          const isActive = pageNum === currentPage;
-                          return (
+                        {getPageNumbers().map((pageNum, index) =>
+                          pageNum === "..." ? (
+                            <span key={`ellipsis-${index}`} className="w-10 h-10 flex items-center justify-center text-muted-foreground font-medium">...</span>
+                          ) : (
                             <button
                               key={pageNum}
                               onClick={() => handlePageChange(pageNum as number)}
-                              className={`w-10 h-10 rounded-lg flex items-center justify-center font-medium transition-all ${
-                                isActive
-                                  ? "bg-[#0074ED] text-white shadow-md"
-                                  : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300"
-                              }`}
+                              className={`w-10 h-10 rounded-xl flex items-center justify-center font-medium transition-all ${pageNum === currentPage ? "bg-primary text-primary-foreground shadow-md" : "bg-card border border-border text-foreground hover:bg-muted/20"}`}
                               aria-label={`Go to page ${pageNum}`}
-                              aria-current={isActive ? "page" : undefined}
+                              aria-current={pageNum === currentPage ? "page" : undefined}
                             >
                               {pageNum}
                             </button>
-                          );
-                        })}
-
+                          )
+                        )}
                         <button
                           onClick={() => handlePageChange(currentPage + 1)}
                           disabled={!hasNextPage}
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-                            !hasNextPage
-                              ? "bg-slate-100 text-slate-400 cursor-not-allowed"
-                              : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300"
-                          }`}
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${!hasNextPage ? "bg-muted/30 text-muted-foreground/40 cursor-not-allowed" : "bg-card border border-border text-foreground hover:bg-muted/20"}`}
                           aria-label="Next page"
                         >
                           <ChevronRight className="w-5 h-5" />
                         </button>
-
                         {hasNextPage && totalPages > 5 && (
-                          <button
-                            onClick={jumpToLast}
-                            className="hidden sm:flex w-10 h-10 rounded-lg items-center justify-center bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all"
-                            aria-label="Last page"
-                            title="Last page"
-                          >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M13 5l7 7-7 7M5 5l7 7-7 7"
-                              />
-                            </svg>
+                          <button onClick={() => handlePageChange(totalPages)} className="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center bg-card border border-border text-foreground hover:bg-muted/20 transition-all" aria-label="Last page">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
                           </button>
                         )}
                       </div>
-
-                      <div className="text-sm text-slate-600">
-                        Page {currentPage} of {totalPages}
-                      </div>
+                      <div className="text-sm text-muted-foreground">Page {currentPage} of {totalPages}</div>
                     </div>
                   )}
                 </>
