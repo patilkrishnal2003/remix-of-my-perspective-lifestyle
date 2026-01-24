@@ -67,7 +67,7 @@ export function RoadmapCard({
           {/* Vertical Timeline Line for Mobile */}
           <div className="absolute top-0 bottom-0 left-3 w-1 bg-muted-foreground/20 rounded-full overflow-hidden md:hidden">
             <motion.div 
-              className="w-full bg-foreground rounded-full"
+              className="w-full bg-primary rounded-full"
               animate={{ height: `${progressPercentage}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
@@ -76,7 +76,7 @@ export function RoadmapCard({
           {/* Horizontal Timeline Line - Desktop only */}
           <div className="hidden md:block absolute top-3 left-0 right-0 h-1 bg-muted-foreground/20 rounded-full overflow-hidden">
             <motion.div 
-              className="h-full bg-foreground rounded-full"
+              className="h-full bg-primary rounded-full"
               animate={{ width: `${progressPercentage}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
@@ -101,21 +101,21 @@ export function RoadmapCard({
                       animate={{ 
                         scale: status === "in-progress" ? 1.1 : 1,
                         backgroundColor: status === "done" || status === "in-progress" 
-                          ? "hsl(var(--foreground))" 
+                          ? "hsl(var(--primary))" 
                           : "hsl(var(--background))"
                       }}
                       transition={{ duration: 0.3 }}
                       className={`w-7 h-7 rounded-full border-[3px] ${
                         status === "done"
-                          ? "border-foreground"
+                          ? "border-primary"
                           : status === "in-progress"
-                          ? "border-foreground"
+                          ? "border-primary"
                           : "border-muted-foreground/40"
                       }`}
                     >
                       {status === "in-progress" && (
                         <motion.div
-                          className="absolute inset-0 rounded-full border-[3px] border-foreground"
+                          className="absolute inset-0 rounded-full border-[3px] border-primary"
                           animate={{ scale: [1, 1.4, 1], opacity: [1, 0, 1] }}
                           transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                         />
@@ -128,7 +128,7 @@ export function RoadmapCard({
                     {/* Quarter Badge */}
                     <Badge 
                       variant={status === "done" ? "default" : "secondary"} 
-                      className={`mb-2 md:mb-3 w-fit transition-colors duration-300 ${status === "done" ? "bg-foreground text-background hover:bg-foreground/90" : ""}`}
+                      className={`mb-2 md:mb-3 w-fit transition-colors duration-300 ${status === "done" ? "bg-primary text-primary-foreground hover:bg-primary/90" : ""}`}
                     >
                       {item.quarter}
                     </Badge>
