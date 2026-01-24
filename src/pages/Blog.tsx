@@ -34,7 +34,7 @@ function TopicsCarousel() {
         {allTopics.map((topic, i) => (
           <div
             key={`${topic.title}-${i}`}
-            className="flex-shrink-0 w-56 p-6 rounded-[1.5rem] bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300 cursor-pointer"
+            className="flex-shrink-0 w-56 p-6 rounded-[2rem] bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300 cursor-pointer"
           >
             <div className="w-12 h-12 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-3 hover:bg-primary/30 transition-colors">
               <topic.icon className="w-6 h-6 text-primary" />
@@ -64,7 +64,7 @@ const Blog = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Card */}
             <motion.div 
-              className="rounded-[2rem] sm:rounded-[2.5rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12"
+              className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -144,7 +144,7 @@ const Blog = () => {
               <Link
                 key={post.id}
                 to={`/blog/${post.id}`}
-                className={`group rounded-[1.25rem] sm:rounded-[1.5rem] bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
+                className={`group rounded-[1.75rem] sm:rounded-[2rem] bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${index + 1}`}
               >
                 <div className="h-36 sm:h-48 overflow-hidden">
                   {post.image ? (
