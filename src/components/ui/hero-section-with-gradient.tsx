@@ -324,8 +324,6 @@ export default function HeroSectionWithGradient() {
         className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-background"
       />
       
-      {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.08)_1px,transparent_1px)] bg-[size:2rem_2rem] sm:bg-[size:4rem_4rem]" />
