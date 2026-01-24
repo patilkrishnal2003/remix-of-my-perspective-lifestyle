@@ -74,6 +74,19 @@ const tabsData: TabData[] = [
     ],
   },
   {
+    id: "careers",
+    label: "Careers",
+    icon: GraduationCap,
+    description: "Join our talented team of innovators. We're always looking for passionate individuals who want to make an impact in the tech industry.",
+    link: "/careers",
+    linkText: "View openings",
+    cards: [
+      { title: "Senior Full-Stack Developer", description: "Remote · Full-time · Engineering", image: projectFinanceFlow, tag: "Engineering" },
+      { title: "Product Designer", description: "Hybrid · Full-time · Design", image: blogFutureWeb, tag: "Design" },
+      { title: "DevOps Engineer", description: "Remote · Full-time · Infrastructure", image: projectHealthTrack, tag: "DevOps" },
+    ],
+  },
+  {
     id: "support",
     label: "Support",
     icon: HeadphonesIcon,
@@ -86,26 +99,13 @@ const tabsData: TabData[] = [
       { title: "Priority Support", description: "Direct access to our engineering team", image: blogFinanceflowCase, tag: "Premium" },
     ],
   },
-  {
-    id: "careers",
-    label: "Careers",
-    icon: GraduationCap,
-    description: "Join our talented team of innovators. We're always looking for passionate individuals who want to make an impact in the tech industry.",
-    link: "/contact",
-    linkText: "View openings",
-    cards: [
-      { title: "Senior Full-Stack Developer", description: "Remote · Full-time · Engineering", image: projectFinanceFlow, tag: "Engineering" },
-      { title: "Product Designer", description: "Hybrid · Full-time · Design", image: blogFutureWeb, tag: "Design" },
-      { title: "DevOps Engineer", description: "Remote · Full-time · Infrastructure", image: projectHealthTrack, tag: "DevOps" },
-    ],
-  },
 ];
 
 export default function ResourcesTabSection() {
   const [activeTab, setActiveTab] = useState<TabType>("blog");
   const [isPaused, setIsPaused] = useState(false);
 
-  const tabOrder: TabType[] = ["blog", "portfolio", "community", "support", "careers"];
+  const tabOrder: TabType[] = ["blog", "portfolio", "community", "careers", "support"];
 
   const goToNextTab = useCallback(() => {
     setActiveTab((current) => {
