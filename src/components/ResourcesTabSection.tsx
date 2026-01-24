@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, BookOpen, Briefcase, Users, HeadphonesIcon } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -67,6 +67,31 @@ const tabsData: TabData[] = [
 
 export default function ResourcesTabSection() {
   const [activeTab, setActiveTab] = useState<TabType>("blog");
+  const [isPaused, setIsPaused] = useState(false);
+
+  const tabOrder: TabType[] = ["blog", "portfolio", "community", "support"];
+
+  const goToNextTab = useCallback(() => {
+    setActiveTab((current) => {
+      const currentIndex = tabOrder.indexOf(current);
+      const nextIndex = (currentIndex + 1) % tabOrder.length;
+      return tabOrder[nextIndex];
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    
+    const interval = setInterval(goToNextTab, 3000);
+    return () => clearInterval(interval);
+  }, [isPaused, goToNextTab]);
+
+  const handleTabClick = (tabId: TabType) => {
+    setActiveTab(tabId);
+    setIsPaused(true);
+    // Resume auto-rotation after 10 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 10000);
+  };
 
   const activeTabData = tabsData.find((tab) => tab.id === activeTab)!;
 
@@ -109,7 +134,7 @@ export default function ResourcesTabSection() {
                       ? "bg-background border-border shadow-sm"
                       : "bg-transparent border-transparent hover:bg-background/50"
                   }`}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => handleTabClick(tab.id)}
                 >
                   <div className="px-5 py-4 flex items-center gap-3">
                     <Icon className={`w-5 h-5 transition-colors ${isActive ? "text-primary" : "text-muted-foreground"}`} />
