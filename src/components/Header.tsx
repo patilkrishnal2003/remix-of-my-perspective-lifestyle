@@ -181,11 +181,12 @@ const Header = () => {
                 </Link>
 
                 <button
-                  className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
+                  className="p-2 sm:p-2.5 rounded-full hover:bg-muted/60 transition-all flex items-center gap-2"
                   onClick={() => setShowFullNav(false)}
                   aria-label="Close menu"
                 >
-                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
                 </button>
               </div>
             </div>
