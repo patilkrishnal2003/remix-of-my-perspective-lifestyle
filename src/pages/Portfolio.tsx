@@ -40,7 +40,7 @@ function IndustriesCarousel() {
         {allIndustries.map((industry, i) => (
           <div
             key={`${industry.title}-${i}`}
-            className="flex-shrink-0 w-64 p-8 rounded-[1.5rem] bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300"
+            className="flex-shrink-0 w-64 p-8 rounded-[2rem] bg-primary/10 text-center hover:bg-primary/15 transition-all duration-300"
           >
             <div className="w-14 h-14 mx-auto rounded-full bg-primary/20 flex items-center justify-center mb-4 hover:bg-primary/30 transition-colors">
               <industry.icon className="w-7 h-7 text-primary" />
@@ -255,7 +255,7 @@ const Portfolio = () => {
         <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Hero Card */}
-            <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
+            <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                 {/* Masonry Grid */}
                 <motion.div 
@@ -369,7 +369,7 @@ const Portfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={project.title}
-                className={`group rounded-[1.5rem] bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${(index % 6) + 1}`}
+                className={`group rounded-[2rem] bg-card border border-border hover:border-accent/50 overflow-hidden transition-all duration-300 hover:scale-[1.02] animate-slide-up stagger-${(index % 6) + 1}`}
               >
                 <div className="aspect-video overflow-hidden">
                   <img 

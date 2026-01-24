@@ -58,7 +58,7 @@ export function RoadmapCard({
   const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <Card className="w-full mx-auto rounded-[2rem] sm:rounded-[2.5rem]" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Card className="w-full mx-auto rounded-[2.5rem] sm:rounded-[3rem]" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <CardContent className="pt-6 sm:pt-8 pb-6 sm:pb-8 px-6 sm:px-10">
         {description && (
           <CardDescription className="text-center mb-8">{description}</CardDescription>
