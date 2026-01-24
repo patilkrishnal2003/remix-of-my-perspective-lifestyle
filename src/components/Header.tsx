@@ -27,18 +27,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
-    
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsScrolled(currentScrollY > 100);
-      
-      // Reset to split state when scrolling up
-      if (currentScrollY < lastScrollY) {
-        setShowFullNav(false);
-      }
-      
-      lastScrollY = currentScrollY;
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -50,6 +40,13 @@ const Header = () => {
     setIsMenuOpen(false);
     setShowFullNav(false);
   }, [location.pathname]);
+
+  // Reset showFullNav when scrolling back to top
+  useEffect(() => {
+    if (!isScrolled) {
+      setShowFullNav(false);
+    }
+  }, [isScrolled]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
