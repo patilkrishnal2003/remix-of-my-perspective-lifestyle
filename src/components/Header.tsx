@@ -97,129 +97,138 @@ const Header = () => {
 
   // Scrolled state - Split navbar with logo left, menu button right
   if (isScrolled) {
+    const showFullNav = scrollDirection === 'up';
+    
     return (
       <header className="fixed top-0 left-0 right-0 z-50 pt-3 sm:pt-4 animate-slide-down">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          {/* Full navbar when scrolling up */}
-          {scrollDirection === 'up' ? (
-            <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 shadow-lg animate-fade-in">
-              {/* Logo */}
-              <div className="flex items-center min-w-0">
-                <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
-                  </div>
-                  <span className="text-base sm:text-xl font-bold font-serif truncate">Advora</span>
-                </Link>
+          <div className="flex items-center justify-between transition-all duration-300 ease-out">
+            {/* Logo - Always visible */}
+            <Link 
+              to="/" 
+              className={`flex items-center gap-1.5 sm:gap-2 transition-all duration-300 ease-out ${
+                showFullNav 
+                  ? '' 
+                  : 'pill-nav px-3 sm:px-4 py-2 shadow-lg'
+              }`}
+            >
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
               </div>
+              <span className="text-base sm:text-xl font-bold font-serif">Advora</span>
+            </Link>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex items-center gap-1">
-                <Link 
-                  to="/" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/") && location.pathname === "/"
-                      ? "text-accent bg-accent/10" 
-                      : "hover:bg-muted/60"
-                  }`}
-                >
-                  Home
-                </Link>
-                <Link 
-                  to="/about" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/about") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  About
-                </Link>
-                <Link 
-                  to="/services" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/services") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Services
-                </Link>
-                <Link 
-                  to="/portfolio" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/portfolio") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Portfolio
-                </Link>
-                <Link 
-                  to="/blog" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/blog") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Blog
-                </Link>
-                <Link 
-                  to="/contact" 
-                  className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
-                    isActive("/contact") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
-                  }`}
-                >
-                  Contact
-                </Link>
-              </nav>
-
-              {/* Actions */}
-              <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
-                <button
-                  onClick={toggleTheme}
-                  className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
-                </button>
-                
-                <Link to="/contact" className="hidden md:block">
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 hover:scale-105 transition-all">
-                    Get a Quote
-                  </Button>
-                </Link>
-
-                <div className="p-2 sm:p-2.5 rounded-full flex items-center gap-2">
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* Split navbar - logo left, menu right */
-            <div className="flex items-center justify-between">
-              {/* Logo - Left Corner */}
+            {/* Desktop Navigation - Animated visibility */}
+            <nav 
+              className={`hidden md:flex items-center gap-1 transition-all duration-300 ease-out ${
+                showFullNav 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 translate-x-4 pointer-events-none absolute'
+              }`}
+            >
               <Link 
                 to="/" 
-                className="flex items-center gap-1.5 sm:gap-2 pill-nav px-3 sm:px-4 py-2 shadow-lg"
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/") && location.pathname === "/"
+                    ? "text-accent bg-accent/10" 
+                    : "hover:bg-muted/60"
+                }`}
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
-                </div>
-                <span className="text-base sm:text-xl font-bold font-serif">Advora</span>
+                Home
+              </Link>
+              <Link 
+                to="/about" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/about") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                About
+              </Link>
+              <Link 
+                to="/services" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/services") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Services
+              </Link>
+              <Link 
+                to="/portfolio" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/portfolio") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Portfolio
+              </Link>
+              <Link 
+                to="/blog" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/blog") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Blog
+              </Link>
+              <Link 
+                to="/contact" 
+                className={`text-sm font-medium rounded-full px-4 py-2 transition-all relative ${
+                  isActive("/contact") ? "text-accent bg-accent/10" : "hover:bg-muted/60"
+                }`}
+              >
+                Contact
+              </Link>
+            </nav>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+              <button
+                onClick={toggleTheme}
+                className={`p-2 sm:p-2.5 rounded-full transition-all duration-300 ${
+                  showFullNav 
+                    ? 'hover:bg-muted/60' 
+                    : 'pill-nav shadow-lg hover:bg-muted/60'
+                }`}
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
+              </button>
+              
+              {/* Get a Quote - Always visible on desktop when full nav */}
+              <Link 
+                to="/contact" 
+                className={`hidden md:block transition-all duration-300 ease-out ${
+                  showFullNav 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 translate-x-4 pointer-events-none absolute right-0'
+                }`}
+              >
+                <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 hover:scale-105 transition-all">
+                  Get a Quote
+                </Button>
               </Link>
 
-              {/* Menu Button - Right Corner */}
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={toggleTheme}
-                  className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg hover:bg-muted/60 transition-all"
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? <Sun className="h-4 w-4 sm:h-5 sm:w-5" /> : <Moon className="h-4 w-4 sm:h-5 sm:w-5" />}
-                </button>
-
-                <div className="p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2">
-                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
-                </div>
+              {/* Menu button - Only visible in split mode */}
+              <div 
+                className={`p-2 sm:p-2.5 rounded-full pill-nav shadow-lg flex items-center gap-2 transition-all duration-300 ease-out ${
+                  showFullNav 
+                    ? 'opacity-0 scale-90 pointer-events-none' 
+                    : 'opacity-100 scale-100'
+                }`}
+              >
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="hidden sm:inline text-sm font-medium pr-1">Menu</span>
               </div>
             </div>
-          )}
+          </div>
+
+          {/* Full nav pill background - Animated */}
+          <div 
+            className={`absolute inset-x-0 top-3 sm:top-4 mx-3 sm:mx-6 lg:mx-8 h-14 sm:h-16 pill-nav shadow-lg -z-10 transition-all duration-300 ease-out ${
+              showFullNav 
+                ? 'opacity-100 scale-100' 
+                : 'opacity-0 scale-95'
+            }`}
+            style={{ maxWidth: 'calc(100% - 1.5rem)', left: '50%', transform: showFullNav ? 'translateX(-50%)' : 'translateX(-50%) scale(0.95)' }}
+          />
         </div>
       </header>
     );
