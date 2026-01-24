@@ -209,7 +209,7 @@ export default function ResourcesTabSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="bg-primary/10 dark:bg-card rounded-2xl border border-border p-4 sm:p-6 shadow-sm h-full flex flex-col"
+                className="bg-background rounded-2xl border border-border p-4 sm:p-6 shadow-sm h-full flex flex-col"
               >
                 {/* Browser Chrome */}
                 <div className="flex items-center gap-2 mb-4 pb-3 border-b border-border">
@@ -219,7 +219,7 @@ export default function ResourcesTabSection() {
                     <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                   </div>
                   <div className="flex-1 flex justify-center">
-                    <div className="bg-muted rounded-full px-4 py-1 text-xs text-muted-foreground">
+                    <div className="bg-primary/10 rounded-full px-4 py-1 text-xs text-muted-foreground">
                       advora.in/{activeTab}
                     </div>
                   </div>
@@ -233,7 +233,7 @@ export default function ResourcesTabSection() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors cursor-pointer group"
+                      className="flex gap-3 p-3 rounded-xl bg-primary/10 hover:bg-primary/15 transition-colors cursor-pointer group"
                     >
                       <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                         <img
