@@ -130,35 +130,43 @@ const ServicesTabSection = () => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
                   className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
-                    servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                      ? "bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900/60 dark:to-slate-800/60"
-                      : "bg-gradient-to-br from-primary/15 to-primary/10 dark:from-primary/25 dark:to-primary/15"
+                    (() => {
+                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                      if (idx === 0) return "bg-[hsl(179_37%_54%/0.15)] dark:bg-[hsl(179_37%_54%/0.20)]"; // Teal
+                      if (idx === 1) return "bg-[hsl(97_45%_63%/0.15)] dark:bg-[hsl(97_45%_63%/0.20)]"; // Light Green
+                      return "bg-[hsl(7_75%_63%/0.15)] dark:bg-[hsl(7_75%_63%/0.20)]"; // Coral
+                    })()
                   }`}
                 >
                   {/* Decorative elements */}
                   <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${
-                    servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                      ? "bg-slate-200/40 dark:bg-slate-700/30"
-                      : "bg-primary/20 dark:bg-primary/30"
+                    (() => {
+                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                      if (idx === 0) return "bg-[hsl(179_37%_54%/0.25)] dark:bg-[hsl(179_37%_54%/0.35)]";
+                      if (idx === 1) return "bg-[hsl(97_45%_63%/0.25)] dark:bg-[hsl(97_45%_63%/0.35)]";
+                      return "bg-[hsl(7_75%_63%/0.25)] dark:bg-[hsl(7_75%_63%/0.35)]";
+                    })()
                   }`} />
                   <div className={`absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 ${
-                    servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                      ? "bg-slate-300/30 dark:bg-slate-600/20"
-                      : "bg-primary/15 dark:bg-primary/25"
+                    (() => {
+                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                      if (idx === 0) return "bg-[hsl(179_37%_54%/0.20)] dark:bg-[hsl(179_37%_54%/0.30)]";
+                      if (idx === 1) return "bg-[hsl(97_45%_63%/0.20)] dark:bg-[hsl(97_45%_63%/0.30)]";
+                      return "bg-[hsl(7_75%_63%/0.20)] dark:bg-[hsl(7_75%_63%/0.30)]";
+                    })()
                   }`} />
                   
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
                     <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
-                      servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                        ? "bg-slate-800 dark:bg-slate-200"
-                        : "bg-primary"
+                      (() => {
+                        const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                        if (idx === 0) return "bg-[hsl(179_37%_54%)] dark:bg-[hsl(179_37%_60%)]";
+                        if (idx === 1) return "bg-[hsl(97_45%_63%)] dark:bg-[hsl(97_45%_68%)]";
+                        return "bg-[hsl(7_75%_63%)] dark:bg-[hsl(7_75%_68%)]";
+                      })()
                     }`}>
-                      <service.icon className={`w-10 h-10 ${
-                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                          ? "text-white dark:text-slate-800"
-                          : "text-primary-foreground"
-                      }`} />
+                      <service.icon className="w-10 h-10 text-white" />
                     </div>
                     
                     {/* Content */}
