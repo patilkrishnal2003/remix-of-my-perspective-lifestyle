@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import TechStackSection from "@/components/TechStackSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Smartphone, CheckCircle, Zap, Bell, Wifi, Download } from "lucide-react";
@@ -123,6 +124,8 @@ const MobileApps = () => {
             </div>
           </div>
         </section>
+
+        <TechStackSection showTwoRows={true} />
 
         <CTASection 
           title="Ready to Build Your App?"
