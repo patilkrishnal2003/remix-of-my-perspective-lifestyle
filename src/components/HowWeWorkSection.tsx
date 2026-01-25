@@ -1,30 +1,26 @@
 import { motion } from "framer-motion";
-import { MessageSquare, Target, Code2, Rocket, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const steps = [
   {
     number: "01",
     title: "Consultation & Discovery",
     description: "We discuss your vision, goals, and requirements in detail to understand your needs.",
-    icon: MessageSquare,
   },
   {
     number: "02",
     title: "Strategy & Planning",
     description: "We create a comprehensive plan and technical roadmap tailored to your project.",
-    icon: Target,
   },
   {
     number: "03",
     title: "Design & Development",
     description: "Our team builds your solution with regular updates and collaborative feedback.",
-    icon: Code2,
   },
   {
     number: "04",
     title: "Launch & Support",
     description: "We deploy your project and provide ongoing support for continued success.",
-    icon: Rocket,
   },
 ];
 
@@ -76,25 +72,18 @@ export default function HowWeWorkSection() {
                 variants={itemVariants}
                 className="group relative"
               >
-                <div className="relative h-full bg-card border border-border rounded-[2rem] p-6 sm:p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+              <div className="relative h-full bg-card border border-border rounded-[2rem] p-6 sm:p-8 transition-all duration-300 hover:bg-foreground hover:border-foreground hover:shadow-xl">
                   {/* Large Number Background */}
-                  <div className="absolute top-4 right-4 text-[4rem] sm:text-[5rem] font-bold text-muted-foreground/10 leading-none select-none transition-colors duration-300 group-hover:text-primary/10">
+                  <div className="absolute top-4 right-4 text-[4rem] sm:text-[5rem] font-bold text-muted-foreground/10 leading-none select-none transition-colors duration-300 group-hover:text-background/20">
                     {step.number}
                   </div>
 
-                  {/* Icon */}
-                  <div className="relative z-10 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/20">
-                      <step.icon className="w-6 h-6 text-primary" />
-                    </div>
-                  </div>
-
                   {/* Content */}
-                  <div className="relative z-10">
-                    <h3 className="text-lg font-semibold mb-2 transition-colors duration-300 group-hover:text-primary">
+                  <div className="relative z-10 pt-4">
+                    <h3 className="text-lg font-semibold mb-2 transition-colors duration-300 group-hover:text-background">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-background/70">
                       {step.description}
                     </p>
                   </div>
