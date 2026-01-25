@@ -50,9 +50,9 @@ const Contact = () => {
 
                 {/* Content */}
                 <div className="space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
                     Let's Build
-                    <span className="block">Something Great</span>
+                    <span className="block text-primary">Something Great</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">

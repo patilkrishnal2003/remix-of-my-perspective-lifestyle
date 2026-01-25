@@ -49,9 +49,9 @@ const BackendSystems = () => {
                     <span className="text-sm font-medium">Backend Systems</span>
                   </div>
                   
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
                     Robust Backend
-                    <span className="block">Architecture</span>
+                    <span className="block text-primary">Architecture</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">

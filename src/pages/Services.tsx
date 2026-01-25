@@ -173,9 +173,9 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-foreground">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
                     Expert Solutions
-                    <span className="block">For Your Business</span>
+                    <span className="block text-primary">For Your Business</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
