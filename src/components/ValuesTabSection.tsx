@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Target, Award, Users, Heart, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { GlareCard } from "@/components/ui/glare-card";
 
 const valuesData = [
   {
@@ -84,26 +85,28 @@ const ValuesTabSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="relative rounded-2xl p-8 md:p-12 w-full flex flex-col justify-center overflow-hidden"
+                className="w-full"
               >
-                {/* Background Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${activeData.bgImage})` }}
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/70" />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 rounded-xl ${activeData.iconBg} flex items-center justify-center mb-6`}>
-                    <activeData.icon className={`w-8 h-8 ${activeData.iconColor}`} />
+                <GlareCard className="relative rounded-2xl p-8 md:p-12 w-full min-h-[300px] flex flex-col justify-center overflow-hidden">
+                  {/* Background Image */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${activeData.bgImage})` }}
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/70" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className={`w-16 h-16 rounded-xl ${activeData.iconBg} flex items-center justify-center mb-6`}>
+                      <activeData.icon className={`w-8 h-8 ${activeData.iconColor}`} />
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">{activeData.title}</h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {activeData.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">{activeData.title}</h3>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    {activeData.description}
-                  </p>
-                </div>
+                </GlareCard>
               </motion.div>
             </AnimatePresence>
           </div>
