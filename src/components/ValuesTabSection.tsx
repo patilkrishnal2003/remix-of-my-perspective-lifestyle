@@ -63,15 +63,15 @@ const ValuesTabSection = () => {
                 onClick={() => setActiveValue(value.id)}
                 className={`lg:flex-1 flex items-center justify-between px-4 py-3 lg:px-5 lg:py-4 rounded-lg transition-all duration-300 text-left ${
                   activeValue === value.id
-                    ? "bg-background border-2 border-primary text-foreground shadow-md"
-                    : "bg-gray-700 hover:bg-gray-600 text-white"
+                    ? "bg-gray-800 text-white shadow-md"
+                    : "bg-white hover:bg-gray-100 text-foreground border border-border"
                 }`}
               >
                 <div className="flex items-center gap-2 lg:gap-4">
-                  <value.icon className={`w-4 h-4 lg:w-5 lg:h-5 ${activeValue === value.id ? value.iconColor : "text-white"}`} />
+                  <value.icon className={`w-4 h-4 lg:w-5 lg:h-5 ${activeValue === value.id ? "text-white" : value.iconColor}`} />
                   <span className="font-medium text-sm lg:text-base">{value.title}</span>
                 </div>
-                <ChevronRight className={`w-4 h-4 lg:w-5 lg:h-5 hidden lg:block ${activeValue === value.id ? value.iconColor : "text-white"}`} />
+                <ChevronRight className={`w-4 h-4 lg:w-5 lg:h-5 hidden lg:block ${activeValue === value.id ? "text-white" : value.iconColor}`} />
               </button>
             ))}
           </div>
