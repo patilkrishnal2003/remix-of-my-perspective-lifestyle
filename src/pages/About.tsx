@@ -202,20 +202,8 @@ const About = () => {
           </div>
         </section>
 
-        {/* Editorial Tagline Section */}
-        <section className="py-16 sm:py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-foreground leading-relaxed mb-6">
-              Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the digital world.
-            </p>
-            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              From web development and mobile apps to custom software and cloud solutions, we share our expertise to help businesses thrive. Join us as we explore technologies that inspire innovation and meaningful growth.
-            </p>
-          </div>
-        </section>
-
         {/* Stats Section */}
-        <section className="section-divider py-16 pt-20">
+        <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -230,6 +218,18 @@ const About = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Editorial Tagline Section */}
+        <section className="section-divider py-16 sm:py-20 pt-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-foreground leading-relaxed mb-6">
+              Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the digital world.
+            </p>
+            <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              From web development and mobile apps to custom software and cloud solutions, we share our expertise to help businesses thrive. Join us as we explore technologies that inspire innovation and meaningful growth.
+            </p>
           </div>
         </section>
 
