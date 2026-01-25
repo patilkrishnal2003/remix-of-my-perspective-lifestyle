@@ -124,7 +124,7 @@ const Header = () => {
                   <img 
                     src={isDark ? logoLight : logoDark} 
                     alt="Advora Labs" 
-                    className="h-6 sm:h-7 w-auto" 
+                    className="h-5 sm:h-6 w-auto" 
                   />
                 </Link>
               </div>
@@ -299,7 +299,7 @@ const Header = () => {
                 <img 
                   src={isDark ? logoLight : logoDark} 
                   alt="Advora Labs" 
-                  className="h-6 sm:h-7 w-auto" 
+                  className="h-5 sm:h-6 w-auto" 
                 />
               </Link>
 
@@ -425,7 +425,7 @@ const Header = () => {
               <img 
                 src={isDark ? logoLight : logoDark} 
                 alt="Advora Labs" 
-                className="h-7 sm:h-8 w-auto" 
+                className="h-5 sm:h-6 w-auto" 
               />
             </Link>
           </div>
