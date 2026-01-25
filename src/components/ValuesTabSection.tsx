@@ -1,5 +1,7 @@
-import { Target, Award, Users, Heart } from "lucide-react";
+import { Target, Award, Users, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { GlareCard } from "@/components/ui/glare-card";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback } from "react";
 
 const valuesData = [
   {
@@ -37,6 +39,20 @@ const valuesData = [
 ];
 
 const ValuesTabSection = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    align: "start",
+    loop: true,
+    skipSnaps: false,
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   return (
     <section className="section-divider py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,18 +61,58 @@ const ValuesTabSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold">Our Values</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Desktop: 4-column grid */}
+          <div className="hidden lg:grid lg:grid-cols-4 gap-6">
             {valuesData.map((value) => (
-              <GlareCard key={value.id} className="p-8 md:p-10 flex flex-col justify-center min-h-[280px]">
-                <div className={`w-14 h-14 rounded-xl ${value.iconBg} flex items-center justify-center mb-5`}>
-                  <value.icon className={`w-7 h-7 ${value.iconColor}`} />
+              <GlareCard key={value.id} className="p-6 xl:p-8 flex flex-col justify-start min-h-[280px]">
+                <div className={`w-12 h-12 xl:w-14 xl:h-14 rounded-xl ${value.iconBg} flex items-center justify-center mb-5`}>
+                  <value.icon className={`w-6 h-6 xl:w-7 xl:h-7 ${value.iconColor}`} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground">{value.title}</h3>
-                <p className="text-muted-foreground text-base leading-relaxed">
+                <h3 className="text-lg xl:text-xl font-bold mb-3 text-foreground">{value.title}</h3>
+                <p className="text-muted-foreground text-sm xl:text-base leading-relaxed">
                   {value.description}
                 </p>
               </GlareCard>
             ))}
+          </div>
+
+          {/* Mobile/Tablet: Carousel */}
+          <div className="lg:hidden relative">
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-4">
+                {valuesData.map((value) => (
+                  <div key={value.id} className="flex-[0_0_85%] sm:flex-[0_0_45%] min-w-0">
+                    <GlareCard className="p-6 sm:p-8 flex flex-col justify-start min-h-[280px]">
+                      <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${value.iconBg} flex items-center justify-center mb-5`}>
+                        <value.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${value.iconColor}`} />
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-bold mb-3 text-foreground">{value.title}</h3>
+                      <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                        {value.description}
+                      </p>
+                    </GlareCard>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Carousel Navigation */}
+            <div className="flex justify-center gap-3 mt-6">
+              <button
+                onClick={scrollPrev}
+                className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={scrollNext}
+                className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
