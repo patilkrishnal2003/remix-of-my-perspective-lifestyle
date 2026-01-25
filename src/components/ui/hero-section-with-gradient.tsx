@@ -317,11 +317,11 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative z-10 min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-background pb-32 sm:pb-40 md:pb-48">
-      {/* Gradient Background */}
+    <section className="relative z-10 min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-sky-200/90 dark:bg-sky-800/30 pb-32 sm:pb-40 md:pb-48">
+      {/* Solid background matching other sections */}
       <div
         ref={gradientRef}
-        className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/5 to-background"
+        className="absolute inset-0"
       />
       
 
