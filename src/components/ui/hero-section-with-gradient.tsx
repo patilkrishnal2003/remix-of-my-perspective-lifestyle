@@ -317,7 +317,7 @@ export default function HeroSectionWithGradient() {
   }, []);
 
   return (
-    <section className="relative z-10 min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-sky-200/90 dark:bg-sky-800/30 pb-32 sm:pb-40 md:pb-48">
+    <section className="relative z-10 min-h-[65vh] sm:min-h-[75vh] md:min-h-[85vh] bg-sky-100/80 dark:bg-sky-800/20 pb-32 sm:pb-40 md:pb-48">
       {/* Gradient Background Overlay */}
       <div
         ref={gradientRef}
