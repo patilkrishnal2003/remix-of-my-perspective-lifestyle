@@ -5,7 +5,7 @@ import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, Arrow
 import ValuesTabSection from "@/components/ValuesTabSection";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+
 import aboutHero from "@/assets/about-hero.jpg";
 import teamAlex from "@/assets/team-alex.jpg";
 import teamSarah from "@/assets/team-sarah.jpg";
@@ -13,15 +13,9 @@ import teamMichael from "@/assets/team-michael.jpg";
 import teamEmily from "@/assets/team-emily.jpg";
 import teamJames from "@/assets/team-james.jpg";
 import teamLisa from "@/assets/team-lisa.jpg";
-import projectHealthtrack from "@/assets/project-healthtrack.jpg";
-import projectFinanceflow from "@/assets/project-financeflow.jpg";
-import projectEdulearn from "@/assets/project-edulearn.jpg";
-import projectRetailhub from "@/assets/project-retailhub.jpg";
-import projectLogitrack from "@/assets/project-logitrack.jpg";
-import projectMediaconnect from "@/assets/project-mediconnect.jpg";
 
 const About = () => {
-  const [activeYear, setActiveYear] = useState("2026");
+  
   const values = [
     {
       icon: Target,
@@ -90,44 +84,6 @@ const About = () => {
     }
   ];
 
-  const milestones = [
-    { 
-      year: "2021", 
-      title: "FOUNDED ADVORA: THE BEGINNING OF INNOVATION", 
-      highlights: ["Started with a vision to help businesses succeed", "Assembled a team of passionate developers", "Established core development methodologies"],
-      image: projectHealthtrack
-    },
-    { 
-      year: "2022", 
-      title: "FIRST MAJOR CLIENT: ENTERPRISE BREAKTHROUGH", 
-      highlights: ["Delivered first enterprise-level project", "Established reputation for quality", "Expanded service offerings"],
-      image: projectFinanceflow
-    },
-    { 
-      year: "2023", 
-      title: "TEAM EXPANSION: GROWING TOGETHER", 
-      highlights: ["Grew to 10+ team members", "Added specialized design team", "Opened remote-first culture"],
-      image: projectEdulearn
-    },
-    { 
-      year: "2024", 
-      title: "100+ PROJECTS: MILESTONE ACHIEVED", 
-      highlights: ["Reached 100 successfully delivered projects", "Served clients across industries", "Maintained 98% satisfaction rate"],
-      image: projectRetailhub
-    },
-    { 
-      year: "2025", 
-      title: "INTERNATIONAL REACH: GLOBAL EXPANSION", 
-      highlights: ["Expanded to North America and Europe", "Partnered with Fortune 500 companies", "Launched 24/7 support services"],
-      image: projectLogitrack
-    },
-    { 
-      year: "2026", 
-      title: "AI INTEGRATION: SHAPING THE FUTURE", 
-      highlights: ["Launched AI-powered development tools", "Integrated machine learning solutions", "Leading innovation in tech industry"],
-      image: projectMediaconnect
-    }
-  ];
 
   const benefits = [
     { icon: Globe, title: "Remote-First", description: "Work from anywhere with our distributed team model" },
@@ -263,99 +219,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Timeline Section */}
-        <section className="section-divider py-20 pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Journey</h2>
-              <p className="text-xl text-muted-foreground">Know about our journey and milestones achieved.</p>
-            </div>
-            
-            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-              {/* Left - Vertical Year Timeline */}
-              <div className="lg:w-48 flex-shrink-0">
-                <div className="flex lg:flex-col gap-4 lg:gap-0 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0">
-                  {milestones.slice().reverse().map((milestone, index) => {
-                    const isActive = activeYear === milestone.year;
-                    return (
-                      <button
-                        key={milestone.year}
-                        onClick={() => setActiveYear(milestone.year)}
-                        className="flex items-center gap-3 py-3 lg:py-4 transition-all duration-300 group min-w-fit"
-                      >
-                        {/* Dot indicator */}
-                        <div className={`w-3 h-3 rounded-full transition-all duration-300 flex-shrink-0 ${
-                          isActive 
-                            ? "bg-primary ring-4 ring-primary/20" 
-                            : "bg-gray-300 group-hover:bg-gray-400"
-                        }`} />
-                        {/* Year text */}
-                        <span className={`text-lg font-bold transition-all duration-300 ${
-                          isActive 
-                            ? "text-primary text-xl" 
-                            : "text-muted-foreground group-hover:text-foreground"
-                        }`}>
-                          {milestone.year}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Right - Content Panel */}
-              <div className="flex-1">
-                {milestones.filter(m => m.year === activeYear).map((milestone) => (
-                  <div key={milestone.year} className="flex flex-col lg:flex-row gap-8 animate-fade-in">
-                    {/* Content */}
-                    <div className="flex-1 space-y-6">
-                      <h3 className="text-3xl md:text-4xl font-bold text-foreground">{milestone.year}</h3>
-                      <h4 className="text-lg md:text-xl font-bold text-foreground uppercase tracking-wide">
-                        {milestone.title}
-                      </h4>
-                      <ul className="space-y-3">
-                        {milestone.highlights.map((highlight, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-muted-foreground">
-                            <span className="text-primary font-bold mt-0.5">{String.fromCharCode(97 + idx)}.</span>
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      {/* Progress indicator */}
-                      <div className="pt-6">
-                        <div className="flex items-center gap-2">
-                          {milestones.map((m, idx) => (
-                            <div 
-                              key={m.year}
-                              className={`h-1 w-8 rounded-full transition-all duration-300 ${
-                                m.year === activeYear ? "bg-primary" : "bg-gray-200"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-2">
-                          {milestones.findIndex(m => m.year === activeYear) + 1}/{milestones.length}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {/* Image */}
-                    <div className="lg:w-80 flex-shrink-0">
-                      <div className="rounded-2xl overflow-hidden shadow-lg">
-                        <img 
-                          src={milestone.image} 
-                          alt={milestone.title}
-                          className="w-full h-64 lg:h-72 object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Values Section */}
         <ValuesTabSection />
