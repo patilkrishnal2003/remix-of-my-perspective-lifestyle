@@ -197,7 +197,7 @@ const Footer = () => {
       {/* New Logo Section - Sticky Reveal */}
       <div className="sticky bottom-0 bg-foreground" style={{ height: "200px" }}>
         <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center group transition-transform duration-300 hover:scale-105">
+          <Link to="/" className="flex items-center">
             {/* Light logo on dark background */}
             <img src={logoLight} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
           </Link>
