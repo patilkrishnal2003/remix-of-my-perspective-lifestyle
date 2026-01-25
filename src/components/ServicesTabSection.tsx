@@ -184,7 +184,7 @@ const ServicesTabSection = () => {
                       {/* CTA Buttons */}
                       <div className="flex flex-wrap justify-center gap-4">
                         <Link to="/contact">
-                          <Button className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/70">
+                          <Button className="rounded-full px-6 bg-foreground text-background hover:bg-foreground/90">
                             Get Started
                           </Button>
                         </Link>
