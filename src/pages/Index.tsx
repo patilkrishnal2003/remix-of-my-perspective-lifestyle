@@ -12,7 +12,7 @@ import { type Testimonial } from "@/components/TestimonialCard";
 import ResourcesTabSection from "@/components/ResourcesTabSection";
 import CTASection from "@/components/CTASection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { RoadmapCard } from "@/components/ui/roadmap-card";
+import HowWeWorkSection from "@/components/HowWeWorkSection";
 import FlipImageCarousel from "@/components/FlipImageCarousel";
 
 import logoTechcorp from "@/assets/logo-techcorp.png";
@@ -216,47 +216,7 @@ const Index = () => {
             </div>
           </section>
 
-          {/* How It Works Section */}
-          <section className="section-divider py-20 pt-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                  A transparent, collaborative process designed for your success
-                </p>
-              </div>
-              
-              <RoadmapCard
-                description="From idea to launch, we guide you through every step"
-                items={[
-                  {
-                    quarter: "Step 1",
-                    title: "Consultation & Discovery",
-                    description: "We discuss your vision, goals, and requirements in detail to understand your needs.",
-                    status: "done"
-                  },
-                  {
-                    quarter: "Step 2",
-                    title: "Strategy & Planning",
-                    description: "We create a comprehensive plan and technical roadmap tailored to your project.",
-                    status: "done"
-                  },
-                  {
-                    quarter: "Step 3",
-                    title: "Design & Development",
-                    description: "Our team builds your solution with regular updates and collaborative feedback.",
-                    status: "in-progress"
-                  },
-                  {
-                    quarter: "Step 4",
-                    title: "Launch & Support",
-                    description: "We deploy your project and provide ongoing support for continued success.",
-                    status: "upcoming"
-                  }
-                ]}
-              />
-            </div>
-          </section>
+          <HowWeWorkSection />
 
           {/* Testimonials Section */}
           <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
