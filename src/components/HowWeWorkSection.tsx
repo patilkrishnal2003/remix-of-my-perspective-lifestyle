@@ -51,7 +51,7 @@ export default function HowWeWorkSection() {
     <section className="section-divider py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Background Container */}
-        <div className="bg-gradient-to-br from-primary/10 via-primary/8 to-primary/12 rounded-[3rem] p-8 sm:p-12 lg:p-16">
+        <div className="bg-gradient-to-br from-sky-100/80 via-blue-50/60 to-cyan-100/70 dark:from-sky-900/20 dark:via-blue-900/15 dark:to-cyan-900/20 rounded-[3rem] p-8 sm:p-12 lg:p-16">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
