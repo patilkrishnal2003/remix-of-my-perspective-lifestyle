@@ -199,7 +199,7 @@ const Footer = () => {
         <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center group transition-transform duration-300 hover:scale-105">
             {/* Light logo on dark background */}
-            <img src={logoLight} alt="Advora Labs" className="h-10 sm:h-12 w-auto" />
+            <img src={logoLight} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
           </Link>
         </div>
       </div>
