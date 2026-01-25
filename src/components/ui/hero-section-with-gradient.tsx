@@ -353,7 +353,7 @@ export default function HeroSectionWithGradient() {
               variants={transitionVariants.item}
               className="max-w-xs sm:max-w-xl md:max-w-4xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
             >
-              Empowering creators to move fast, stay consistent, and ship beautiful products — every time.
+              Empowering creators to move fast, stay consistent, and ship beautiful products every time.
             </motion.p>
 
             {/* CTA Buttons */}
