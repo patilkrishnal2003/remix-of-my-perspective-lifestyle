@@ -197,52 +197,36 @@ const About = () => {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">The journey that shaped who we are today</p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
-              {[
-                {
-                  number: "01",
-                  title: "The Beginning",
-                  description: "Advora was founded with a simple mission: to bridge the gap between innovative ideas and powerful technology. We saw too many businesses struggling with outdated software."
-                },
-                {
-                  number: "02", 
-                  title: "Growth & Evolution",
-                  description: "Today, we've grown into a full-service software and web development agency, serving clients across industries from startups to enterprises."
-                },
-                {
-                  number: "03",
-                  title: "Continuous Innovation",
-                  description: "Our team stays at the forefront of industry trends, continuously learning and adopting new tools and methodologies to deliver the best solutions."
-                }
-              ].map((item, index) => (
-                <div 
-                  key={item.number} 
-                  className={`group p-6 sm:p-8 rounded-3xl bg-muted/30 border border-border hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 animate-slide-up stagger-${index + 1}`}
-                >
-                  <span className="text-5xl sm:text-6xl font-bold text-primary/20 group-hover:text-primary/40 transition-colors">{item.number}</span>
-                  <h3 className="text-xl font-bold mt-4 mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                </div>
-              ))}
+            {/* Story Content - Clean text layout */}
+            <div className="max-w-4xl mx-auto space-y-8 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Advora was founded with a simple mission: to bridge the gap between innovative ideas and powerful technology. We saw too many businesses struggling with outdated software or unable to bring their digital visions to life.
+              </p>
+              <p>
+                Today, we've grown into a full-service software and web development agency, serving clients across industries. From startups launching their first product to enterprises modernizing their systems, we bring the same level of dedication and expertise to every project.
+              </p>
+              <p>
+                Our team combines years of experience with a genuine passion for technology. We stay at the forefront of industry trends, continuously learning and adopting new tools and methodologies to deliver the best possible solutions.
+              </p>
             </div>
 
-            {/* Mission & Vision Cards */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-8 sm:p-10 rounded-3xl bg-primary text-primary-foreground">
-                <div className="flex items-center gap-3 mb-4">
-                  <Target className="w-6 h-6" />
-                  <h3 className="text-xl font-bold">Our Mission</h3>
+            {/* Mission & Vision - Side by side text blocks */}
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mt-20 max-w-5xl mx-auto">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Target className="w-6 h-6 text-primary" />
+                  <h3 className="text-2xl font-bold">Our Mission</h3>
                 </div>
-                <p className="text-primary-foreground/90 leading-relaxed text-lg">
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   To empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage.
                 </p>
               </div>
-              <div className="p-8 sm:p-10 rounded-3xl bg-foreground text-background">
-                <div className="flex items-center gap-3 mb-4">
-                  <Award className="w-6 h-6" />
-                  <h3 className="text-xl font-bold">Our Vision</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Award className="w-6 h-6 text-primary" />
+                  <h3 className="text-2xl font-bold">Our Vision</h3>
                 </div>
-                <p className="text-background/90 leading-relaxed text-lg">
+                <p className="text-muted-foreground text-lg leading-relaxed">
                   To be the most trusted technology partner for businesses seeking to transform their digital presence.
                 </p>
               </div>
@@ -295,26 +279,25 @@ const About = () => {
               </p>
             </div>
 
-            {/* Benefits Grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* Benefits - Clean list layout */}
+            <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-x-12 gap-y-10 mb-16">
               {benefits.map((benefit, index) => (
-                <div 
-                  key={benefit.title} 
-                  className={`group p-6 rounded-3xl bg-muted/30 border border-border hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 text-center animate-slide-up stagger-${index + 1}`}
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                    <benefit.icon className="h-6 w-6 text-primary" />
+                <div key={benefit.title} className={`flex gap-4 animate-slide-up stagger-${index + 1}`}>
+                  <div className="flex-shrink-0">
+                    <benefit.icon className="h-6 w-6 text-primary mt-1" />
                   </div>
-                  <h3 className="font-bold text-lg mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  <div>
+                    <h3 className="font-bold text-lg mb-1">{benefit.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Join CTA Card */}
-            <div className="rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 sm:p-12 text-center">
+            {/* Join CTA - Simple text with button */}
+            <div className="text-center max-w-2xl mx-auto">
               <h3 className="text-2xl sm:text-3xl font-bold mb-4">Join Our Team</h3>
-              <p className="text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed text-lg">
+              <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
                 We're always looking for talented individuals who share our passion for building great software. If you're interested in joining Advora, we'd love to hear from you.
               </p>
               <Link to="/careers">
