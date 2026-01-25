@@ -134,7 +134,7 @@ const ServicesTabSection = () => {
                       const idx = servicesData.findIndex(s => s.id === service.id) % 3;
                       if (idx === 0) return "bg-[hsl(179_37%_54%/0.15)] dark:bg-[hsl(179_37%_54%/0.20)]"; // Teal
                       if (idx === 1) return "bg-[hsl(97_45%_63%/0.15)] dark:bg-[hsl(97_45%_63%/0.20)]"; // Light Green
-                      return "bg-[hsl(7_75%_63%/0.15)] dark:bg-[hsl(7_75%_63%/0.20)]"; // Coral
+                      return "bg-primary/15 dark:bg-primary/20"; // Primary blue (same as Resources)
                     })()
                   }`}
                 >
@@ -144,7 +144,7 @@ const ServicesTabSection = () => {
                       const idx = servicesData.findIndex(s => s.id === service.id) % 3;
                       if (idx === 0) return "bg-[hsl(179_37%_54%/0.25)] dark:bg-[hsl(179_37%_54%/0.35)]";
                       if (idx === 1) return "bg-[hsl(97_45%_63%/0.25)] dark:bg-[hsl(97_45%_63%/0.35)]";
-                      return "bg-[hsl(7_75%_63%/0.25)] dark:bg-[hsl(7_75%_63%/0.35)]";
+                      return "bg-primary/25 dark:bg-primary/35";
                     })()
                   }`} />
                   <div className={`absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 ${
@@ -152,7 +152,7 @@ const ServicesTabSection = () => {
                       const idx = servicesData.findIndex(s => s.id === service.id) % 3;
                       if (idx === 0) return "bg-[hsl(179_37%_54%/0.20)] dark:bg-[hsl(179_37%_54%/0.30)]";
                       if (idx === 1) return "bg-[hsl(97_45%_63%/0.20)] dark:bg-[hsl(97_45%_63%/0.30)]";
-                      return "bg-[hsl(7_75%_63%/0.20)] dark:bg-[hsl(7_75%_63%/0.30)]";
+                      return "bg-primary/20 dark:bg-primary/30";
                     })()
                   }`} />
                   
@@ -163,7 +163,7 @@ const ServicesTabSection = () => {
                         const idx = servicesData.findIndex(s => s.id === service.id) % 3;
                         if (idx === 0) return "bg-[hsl(179_37%_54%)] dark:bg-[hsl(179_37%_60%)]";
                         if (idx === 1) return "bg-[hsl(97_45%_63%)] dark:bg-[hsl(97_45%_68%)]";
-                        return "bg-[hsl(7_75%_63%)] dark:bg-[hsl(7_75%_68%)]";
+                        return "bg-primary";
                       })()
                     }`}>
                       <service.icon className="w-10 h-10 text-white" />
