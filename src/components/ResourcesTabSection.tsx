@@ -134,7 +134,7 @@ export default function ResourcesTabSection() {
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
       {/* Wrapper card matching the reference design */}
-      <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-sky-200/90 dark:bg-sky-800/30 p-6 sm:p-10 md:p-14 lg:p-16">
+      <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/15 dark:bg-primary/20 p-6 sm:p-10 md:p-14 lg:p-16">
         {/* Header */}
         <div className="mb-10 md:mb-14 max-w-xl">
           <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
@@ -147,7 +147,7 @@ export default function ResourcesTabSection() {
             Everything you need to build exceptional digital products. From tutorials to templates, we've got you covered.
           </p>
           <Link to={activeTabData.link}>
-            <Button className="rounded-full px-6 py-5 bg-foreground text-background hover:bg-foreground/90">
+            <Button className="rounded-full px-6 py-5 bg-primary text-primary-foreground hover:bg-primary/90">
               {activeTabData.linkText}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
