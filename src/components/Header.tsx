@@ -7,6 +7,8 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import logoDark from "@/assets/logo-dark.svg";
+import logoLight from "@/assets/logo-light.svg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -116,13 +118,14 @@ const Header = () => {
           {/* Full navbar when scrolling up */}
           {scrollDirection === 'up' ? (
             <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 shadow-lg animate-fade-in">
-              {/* Logo */}
+              {/* Logo - Dark on light bg, Light on dark mode */}
               <div className="flex items-center min-w-0">
-                <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
-                  </div>
-                  <span className="text-base sm:text-xl font-bold font-serif truncate">Advora</span>
+                <Link to="/" className="flex items-center">
+                  <img 
+                    src={isDark ? logoLight : logoDark} 
+                    alt="Advora Labs" 
+                    className="h-6 sm:h-7 w-auto" 
+                  />
                 </Link>
               </div>
 
@@ -291,12 +294,13 @@ const Header = () => {
               {/* Logo - Left Corner */}
               <Link 
                 to="/" 
-                className="flex items-center gap-1.5 sm:gap-2 pill-nav px-3 sm:px-4 py-2 shadow-lg"
+                className="flex items-center pill-nav px-3 sm:px-4 py-2 shadow-lg"
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
-                </div>
-                <span className="text-base sm:text-xl font-bold font-serif">Advora</span>
+                <img 
+                  src={isDark ? logoLight : logoDark} 
+                  alt="Advora Labs" 
+                  className="h-6 sm:h-7 w-auto" 
+                />
               </Link>
 
               {/* Right Corner Actions */}
@@ -415,13 +419,14 @@ const Header = () => {
     <header className="absolute top-0 left-0 right-0 z-50 pt-3 sm:pt-4 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 transition-all duration-300">
-          {/* Logo */}
+          {/* Logo - Dark on light bg, Light on dark mode */}
           <div className="flex items-center min-w-0">
-            <Link to="/" className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-accent-foreground font-bold text-base sm:text-lg">A</span>
-              </div>
-              <span className="text-base sm:text-xl font-bold font-serif truncate">Advora</span>
+            <Link to="/" className="flex items-center">
+              <img 
+                src={isDark ? logoLight : logoDark} 
+                alt="Advora Labs" 
+                className="h-7 sm:h-8 w-auto" 
+              />
             </Link>
           </div>
 

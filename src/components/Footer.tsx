@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-react";
+import logoDark from "@/assets/logo-dark.svg";
+import logoLight from "@/assets/logo-light.svg";
 
 const Footer = () => {
   return (
@@ -25,12 +27,9 @@ const Footer = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
           {/* Top Row: Logo & Newsletter in single line */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-12 sm:mb-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary rounded-xl flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg sm:text-xl">A</span>
-              </div>
-              <span className="text-xl sm:text-2xl font-bold font-serif">Advora</span>
+            {/* Logo - Dark logo on light background */}
+            <Link to="/" className="flex items-center">
+              <img src={logoDark} alt="Advora Labs" className="h-8 sm:h-10 w-auto" />
             </Link>
 
             {/* Newsletter - inline input with button */}
@@ -198,13 +197,9 @@ const Footer = () => {
       {/* New Logo Section - Sticky Reveal */}
       <div className="sticky bottom-0 bg-foreground" style={{ height: "200px" }}>
         <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-              <span className="text-foreground font-bold text-xl">A</span>
-            </div>
-            <span className="text-2xl sm:text-3xl font-bold text-background transition-colors duration-300 group-hover:text-background/80">
-              Advora
-            </span>
+          <Link to="/" className="flex items-center group transition-transform duration-300 hover:scale-105">
+            {/* Light logo on dark background */}
+            <img src={logoLight} alt="Advora Labs" className="h-10 sm:h-12 w-auto" />
           </Link>
         </div>
       </div>
