@@ -132,29 +132,12 @@ const ServicesTabSection = () => {
                   className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
                     (() => {
                       const idx = servicesData.findIndex(s => s.id === service.id) % 3;
-                      if (idx === 0) return "bg-[hsl(179_37%_54%/0.15)] dark:bg-[hsl(179_37%_54%/0.20)]"; // Teal
-                      if (idx === 1) return "bg-[hsl(97_45%_63%/0.15)] dark:bg-[hsl(97_45%_63%/0.20)]"; // Light Green
-                      return "bg-primary/15 dark:bg-primary/20"; // Primary blue (same as Resources)
+                      if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]"; // Teal
+                      if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]"; // Light Green
+                      return "bg-gradient-to-b from-primary/25 to-primary/5"; // Primary blue
                     })()
                   }`}
                 >
-                  {/* Decorative elements */}
-                  <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${
-                    (() => {
-                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
-                      if (idx === 0) return "bg-[hsl(179_37%_54%/0.25)] dark:bg-[hsl(179_37%_54%/0.35)]";
-                      if (idx === 1) return "bg-[hsl(97_45%_63%/0.25)] dark:bg-[hsl(97_45%_63%/0.35)]";
-                      return "bg-primary/25 dark:bg-primary/35";
-                    })()
-                  }`} />
-                  <div className={`absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 ${
-                    (() => {
-                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
-                      if (idx === 0) return "bg-[hsl(179_37%_54%/0.20)] dark:bg-[hsl(179_37%_54%/0.30)]";
-                      if (idx === 1) return "bg-[hsl(97_45%_63%/0.20)] dark:bg-[hsl(97_45%_63%/0.30)]";
-                      return "bg-primary/20 dark:bg-primary/30";
-                    })()
-                  }`} />
                   
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
