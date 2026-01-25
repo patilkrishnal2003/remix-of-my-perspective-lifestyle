@@ -14,7 +14,7 @@ import CTASection from "@/components/CTASection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { RoadmapCard } from "@/components/ui/roadmap-card";
 import FlipImageCarousel from "@/components/FlipImageCarousel";
-import TechStackSection from "@/components/TechStackSection";
+
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
 import logoFinanceflow from "@/assets/logo-financeflow.png";
@@ -215,9 +215,6 @@ const Index = () => {
               </ScrollReveal>
             </div>
           </section>
-
-          {/* Tech Stack Section */}
-          <TechStackSection showTwoRows={true} />
 
           {/* How It Works Section */}
           <section className="section-divider py-20 pt-24">
