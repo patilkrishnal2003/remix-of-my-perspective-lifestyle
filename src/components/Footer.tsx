@@ -15,12 +15,12 @@ const Footer = () => {
 
       {/* Upper Footer - with curved bottom corners */}
       <div
-        className="relative z-10 bg-sky-100/80 dark:bg-sky-800/20 rounded-b-[4.5rem] sm:rounded-b-[5.5rem]"
+        className="relative z-10 bg-background rounded-b-[4.5rem] sm:rounded-b-[5.5rem]"
         style={{ marginTop: "-200px" }}
       >
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-transparent rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
-        {/* Background grid pattern */}
+        {/* Gradient overlay to match hero */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-primary/15 rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
+        {/* Background grid pattern to match hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
 
 
