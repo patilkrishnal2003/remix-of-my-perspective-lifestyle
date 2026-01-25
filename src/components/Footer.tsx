@@ -18,6 +18,10 @@ const Footer = () => {
         className="relative z-10 bg-sky-200/90 dark:bg-sky-800/30 rounded-b-[4.5rem] sm:rounded-b-[5.5rem]"
         style={{ marginTop: "-200px" }}
       >
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 to-transparent rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
+        {/* Background grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.06)_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-b-[4.5rem] sm:rounded-b-[5.5rem]" />
 
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
