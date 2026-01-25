@@ -40,7 +40,7 @@ const Footer = () => {
                   placeholder="Enter your email for Weekly insights"
                   className="flex-1 px-5 py-3.5 bg-transparent focus:outline-none text-sm"
                 />
-                <button className="px-6 py-3 m-1 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors text-sm whitespace-nowrap">
+                <button className="px-6 py-3 m-1 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/70 transition-colors text-sm whitespace-nowrap">
                   Subscribe
                 </button>
               </div>

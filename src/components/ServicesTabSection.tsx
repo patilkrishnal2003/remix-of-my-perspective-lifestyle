@@ -176,16 +176,12 @@ const ServicesTabSection = () => {
                       {/* CTA Buttons */}
                       <div className="flex flex-wrap justify-center gap-4">
                         <Link to="/contact">
-                          <Button className={`rounded-full px-6 ${
-                            servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                              ? "bg-slate-800 hover:bg-slate-900 dark:bg-slate-200 dark:hover:bg-slate-100 dark:text-slate-800"
-                              : "bg-primary hover:bg-primary/90"
-                          }`}>
+                          <Button className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/70">
                             Get Started
                           </Button>
                         </Link>
                         <Link to="/services">
-                          <Button variant="outline" className="rounded-full px-6 bg-white/60 backdrop-blur-sm border-foreground/20 hover:bg-white/80 hover:text-foreground">
+                          <Button variant="outline" className="rounded-full px-6">
                             Learn More
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>

@@ -273,7 +273,7 @@ const Header = () => {
                 </button>
                 
                 <Link to="/contact" className="hidden md:block">
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 hover:scale-105 transition-all">
+                  <Button className="bg-primary hover:bg-primary/70 text-primary-foreground rounded-full px-6 py-2 transition-all">
                     Get a Quote
                   </Button>
                 </Link>
@@ -315,7 +315,7 @@ const Header = () => {
 
                 {/* Get a Quote Button - desktop only */}
                 <Link to="/contact" className="hidden md:block">
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6 py-2 shadow-lg hover:scale-105 transition-all">
+                  <Button className="bg-primary hover:bg-primary/70 text-primary-foreground rounded-full px-6 py-2 shadow-lg transition-all">
                     Get a Quote
                   </Button>
                 </Link>
