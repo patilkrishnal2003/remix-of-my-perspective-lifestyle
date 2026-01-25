@@ -20,14 +20,14 @@ const Community = () => {
       title: "Slack Community",
       description: "Join 500+ developers in our Slack workspace",
       link: "#",
-      color: "bg-purple-600",
+      color: "bg-primary",
     },
     {
       icon: Twitter,
       title: "Twitter",
       description: "Follow us for updates and tech insights",
       link: "#",
-      color: "bg-blue-500",
+      color: "bg-primary/80",
     },
   ];
 

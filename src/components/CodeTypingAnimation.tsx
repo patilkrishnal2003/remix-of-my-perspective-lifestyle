@@ -134,7 +134,7 @@ const CodeTypingAnimation = () => {
               {segment.text}
             </span>
           ))}
-          <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-sky-400`}>|</span>
+          <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-primary`}>|</span>
         </pre>
       </div>
     </div>

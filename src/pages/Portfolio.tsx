@@ -429,13 +429,13 @@ const Portfolio = () => {
                   </div>
                 </div>
                 <Link to="/blog/financeflow-case-study">
-                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-8">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
                     Read Full Case Study
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </div>
-              <div className="rounded-3xl bg-gradient-to-br from-blue-500/20 to-cyan-500/10 p-8 md:p-12 border border-border">
+              <div className="rounded-3xl bg-primary/15 dark:bg-primary/20 p-8 md:p-12 border border-border">
                 <blockquote className="text-xl leading-relaxed mb-6">
                   "Advora didn't just build us a new platform—they transformed our entire business. The team understood our challenges and delivered a solution that exceeded every expectation."
                 </blockquote>
