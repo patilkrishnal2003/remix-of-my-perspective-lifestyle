@@ -39,7 +39,7 @@ export default function CTASection({
           </p>
           <Link to={buttonLink} className="inline-block">
             <Button
-              className="bg-white text-primary hover:bg-white/90 rounded-full shadow-md mt-2 transition-all duration-300 hover:shadow-lg hover:scale-105 px-6 py-3 text-sm sm:px-8 sm:py-3 sm:text-base font-semibold"
+              className="bg-white text-primary hover:bg-white/85 rounded-full shadow-md mt-2 transition-all duration-300 hover:shadow-lg px-6 py-3 text-sm sm:px-8 sm:py-3 sm:text-base font-semibold"
             >
               {buttonText}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

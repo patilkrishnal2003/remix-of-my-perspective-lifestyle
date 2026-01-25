@@ -147,7 +147,7 @@ export default function ResourcesTabSection() {
             Everything you need to build exceptional digital products. From tutorials to templates, we've got you covered.
           </p>
           <Link to={activeTabData.link}>
-            <Button className="rounded-full px-6 py-5 bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button className="rounded-full px-6 py-5 bg-primary text-primary-foreground hover:bg-primary/70">
               {activeTabData.linkText}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
