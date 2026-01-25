@@ -15,7 +15,7 @@ const Footer = () => {
 
       {/* Upper Footer - with curved bottom corners */}
       <div
-        className="relative z-10 bg-sky-200/90 dark:bg-sky-800/30 rounded-b-[4.5rem] sm:rounded-b-[5.5rem]"
+        className="relative z-10 bg-sky-100/80 dark:bg-sky-800/20 rounded-b-[4.5rem] sm:rounded-b-[5.5rem]"
         style={{ marginTop: "-200px" }}
       >
         {/* Gradient overlay */}
