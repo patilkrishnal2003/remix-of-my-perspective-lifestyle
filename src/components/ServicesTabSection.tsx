@@ -76,6 +76,29 @@ const servicesData = [
 
 const ServicesTabSection = () => {
   const [activeTab, setActiveTab] = useState("web");
+  const [direction, setDirection] = useState(0);
+
+  const handleTabChange = (newTab: string) => {
+    const currentIndex = servicesData.findIndex(s => s.id === activeTab);
+    const newIndex = servicesData.findIndex(s => s.id === newTab);
+    setDirection(newIndex > currentIndex ? 1 : -1);
+    setActiveTab(newTab);
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -300 : 300,
+      opacity: 0,
+    }),
+  };
 
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
@@ -92,9 +115,9 @@ const ServicesTabSection = () => {
         {/* Tab Navigation */}
         <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
           {servicesData.map((service) => (
-            <button
+          <button
               key={service.id}
-              onClick={() => setActiveTab(service.id)}
+              onClick={() => handleTabChange(service.id)}
               className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
                 activeTab === service.id
                   ? "text-primary"
@@ -115,20 +138,18 @@ const ServicesTabSection = () => {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
         </div>
 
-        {/* Tab Content */}
-        <div className="relative">
-          <AnimatePresence mode="wait">
+        <div className="relative overflow-hidden">
+          <AnimatePresence mode="wait" custom={direction}>
             {servicesData.map((service) => (
-              <TabsContent
-                key={service.id}
-                value={service.id}
-                className="mt-0 focus-visible:outline-none focus-visible:ring-0"
-              >
+              activeTab === service.id && (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
+                  key={service.id}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
                     (() => {
                       const idx = servicesData.findIndex(s => s.id === service.id) % 3;
@@ -193,7 +214,7 @@ const ServicesTabSection = () => {
                     ))}
                   </div>
                 </motion.div>
-              </TabsContent>
+              )
             ))}
           </AnimatePresence>
         </div>
