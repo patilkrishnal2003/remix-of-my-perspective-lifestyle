@@ -138,56 +138,38 @@ const ServicesTabSection = () => {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Left/Right gradient masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-r from-background to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 bg-gradient-to-l from-background to-transparent z-20 pointer-events-none" />
-          
-          <div className="flex items-center justify-center gap-4 sm:gap-6">
-            {servicesData.map((service, index) => {
-              const activeIndex = servicesData.findIndex(s => s.id === activeTab);
-              const offset = index - activeIndex;
-              const isActive = offset === 0;
-              const isAdjacent = Math.abs(offset) === 1;
-              const isVisible = Math.abs(offset) <= 1;
-
-              if (!isVisible) return null;
-
-              const getGradientClass = () => {
-                const idx = index % 3;
-                if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]";
-                if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]";
-                return "bg-gradient-to-b from-primary/25 to-primary/5";
-              };
-
-              const getIconBgClass = () => {
-                const idx = index % 3;
-                if (idx === 0) return "bg-[hsl(179_37%_54%)] dark:bg-[hsl(179_37%_60%)]";
-                if (idx === 1) return "bg-[hsl(97_45%_63%)] dark:bg-[hsl(97_45%_68%)]";
-                return "bg-primary";
-              };
-
-              return (
+        <div className="relative overflow-hidden">
+          <AnimatePresence mode="wait" custom={direction}>
+            {servicesData.map((service) => (
+              activeTab === service.id && (
                 <motion.div
                   key={service.id}
-                  initial={false}
-                  animate={{
-                    x: offset * 85 + "%",
-                    scale: isActive ? 1 : 0.85,
-                    opacity: isActive ? 1 : 0.4,
-                    zIndex: isActive ? 10 : 5,
-                  }}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  onClick={() => !isActive && handleTabChange(service.id)}
-                  className={`${isActive ? "w-[85%] sm:w-[80%]" : "w-[15%] sm:w-[12%] cursor-pointer"} ${
-                    isAdjacent ? "absolute" : ""
-                  } ${offset === -1 ? "left-0" : offset === 1 ? "right-0" : ""} 
-                    rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${getGradientClass()}`}
+                  className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
+                    (() => {
+                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                      if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]"; // Teal
+                      if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]"; // Light Green
+                      return "bg-gradient-to-b from-primary/25 to-primary/5"; // Primary blue
+                    })()
+                  }`}
                 >
-                  <div className={`relative z-10 flex flex-col items-center text-center gap-6 ${!isActive ? "opacity-0" : ""}`}>
+                  
+                  <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
-                    <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${getIconBgClass()}`}>
+                    <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
+                      (() => {
+                        const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                        if (idx === 0) return "bg-[hsl(179_37%_54%)] dark:bg-[hsl(179_37%_60%)]";
+                        if (idx === 1) return "bg-[hsl(97_45%_63%)] dark:bg-[hsl(97_45%_68%)]";
+                        return "bg-primary";
+                      })()
+                    }`}>
                       <service.icon className="w-10 h-10 text-white" />
                     </div>
                     
@@ -221,7 +203,7 @@ const ServicesTabSection = () => {
                   </div>
                   
                   {/* Features - Transparent badges at card bottom */}
-                  <div className={`relative z-10 flex flex-wrap justify-between w-full gap-3 mt-8 ${!isActive ? "opacity-0" : ""}`}>
+                  <div className="relative z-10 flex flex-wrap justify-between w-full gap-3 mt-8">
                     {service.features.map((feature) => (
                       <span
                         key={feature}
@@ -232,9 +214,9 @@ const ServicesTabSection = () => {
                     ))}
                   </div>
                 </motion.div>
-              );
-            })}
-          </div>
+              )
+            ))}
+          </AnimatePresence>
         </div>
       </Tabs>
     </section>
