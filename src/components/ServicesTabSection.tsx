@@ -3,7 +3,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Smartphone, Code, Database, Palette, Cloud } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const servicesData = [
   {
@@ -76,28 +76,9 @@ const servicesData = [
 
 const ServicesTabSection = () => {
   const [activeTab, setActiveTab] = useState("web");
-  const [direction, setDirection] = useState(0);
 
   const handleTabChange = (newTab: string) => {
-    const currentIndex = servicesData.findIndex(s => s.id === activeTab);
-    const newIndex = servicesData.findIndex(s => s.id === newTab);
-    setDirection(newIndex > currentIndex ? 1 : -1);
     setActiveTab(newTab);
-  };
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 300 : -300,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -300 : 300,
-      opacity: 0,
-    }),
   };
 
   return (
@@ -138,33 +119,47 @@ const ServicesTabSection = () => {
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
         </div>
 
+        {/* Carousel Container */}
         <div className="relative overflow-hidden">
-          <AnimatePresence mode="wait" custom={direction}>
-            {servicesData.map((service) => (
-              activeTab === service.id && (
+          <div className="flex items-center justify-center">
+            {servicesData.map((service, index) => {
+              const activeIndex = servicesData.findIndex(s => s.id === activeTab);
+              const diff = index - activeIndex;
+              
+              // Only render cards within range (-1, 0, 1)
+              if (Math.abs(diff) > 1) return null;
+              
+              const isActive = diff === 0;
+              const isPrev = diff === -1;
+              const isNext = diff === 1;
+              
+              return (
                 <motion.div
                   key={service.id}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
+                  initial={false}
+                  animate={{
+                    x: diff * 85 + "%",
+                    scale: isActive ? 1 : 0.85,
+                    opacity: isActive ? 1 : 0.4,
+                    zIndex: isActive ? 10 : 5,
+                  }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
+                  className={`${isActive ? 'relative' : 'absolute'} w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 overflow-hidden cursor-pointer ${
                     (() => {
-                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
-                      if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]"; // Teal
-                      if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]"; // Light Green
-                      return "bg-gradient-to-b from-primary/25 to-primary/5"; // Primary blue
+                      const idx = index % 3;
+                      if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]";
+                      if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]";
+                      return "bg-gradient-to-b from-primary/25 to-primary/5";
                     })()
                   }`}
+                  onClick={() => !isActive && handleTabChange(service.id)}
                 >
                   
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
                     <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
                       (() => {
-                        const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                        const idx = index % 3;
                         if (idx === 0) return "bg-[hsl(179_37%_54%)] dark:bg-[hsl(179_37%_60%)]";
                         if (idx === 1) return "bg-[hsl(97_45%_63%)] dark:bg-[hsl(97_45%_68%)]";
                         return "bg-primary";
@@ -214,9 +209,9 @@ const ServicesTabSection = () => {
                     ))}
                   </div>
                 </motion.div>
-              )
-            ))}
-          </AnimatePresence>
+              );
+            })}
+          </div>
         </div>
       </Tabs>
     </section>
