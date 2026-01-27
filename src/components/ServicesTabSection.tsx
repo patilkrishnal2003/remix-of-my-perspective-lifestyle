@@ -82,46 +82,49 @@ const ServicesTabSection = () => {
   };
 
   return (
-    <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Our Services
-        </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Comprehensive development solutions tailored to your business needs
-        </p>
-      </div>
+    <section className="section-divider py-20 pt-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            Our Services
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive development solutions tailored to your business needs
+          </p>
+        </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         {/* Tab Navigation */}
-        <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
-          {servicesData.map((service) => (
-          <button
-              key={service.id}
-              onClick={() => handleTabChange(service.id)}
-              className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                activeTab === service.id
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {service.label}
-              {activeTab === service.id && (
-                <motion.div
-                  layoutId="activeServiceTabUnderline"
-                  className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-            </button>
-          ))}
-          {/* Full-width line below tabs */}
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
+            {servicesData.map((service) => (
+            <button
+                key={service.id}
+                onClick={() => handleTabChange(service.id)}
+                className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                  activeTab === service.id
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {service.label}
+                {activeTab === service.id && (
+                  <motion.div
+                    layoutId="activeServiceTabUnderline"
+                    className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </button>
+            ))}
+            {/* Full-width line below tabs */}
+            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
+          </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden">
-          <div className="flex items-center justify-center">
+        {/* Carousel Container - Full width */}
+        <div className="relative overflow-hidden px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center max-w-7xl mx-auto">
             {servicesData.map((service, index) => {
               const activeIndex = servicesData.findIndex(s => s.id === activeTab);
               const diff = index - activeIndex;
@@ -130,17 +133,15 @@ const ServicesTabSection = () => {
               if (Math.abs(diff) > 1) return null;
               
               const isActive = diff === 0;
-              const isPrev = diff === -1;
-              const isNext = diff === 1;
               
               return (
                 <motion.div
                   key={service.id}
                   initial={false}
                   animate={{
-                    x: diff * 85 + "%",
-                    scale: isActive ? 1 : 0.85,
-                    opacity: isActive ? 1 : 0.4,
+                    x: diff * 90 + "%",
+                    scale: isActive ? 1 : 0.9,
+                    opacity: isActive ? 1 : 0.5,
                     zIndex: isActive ? 10 : 5,
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -214,6 +215,7 @@ const ServicesTabSection = () => {
           </div>
         </div>
       </Tabs>
+      </div>
     </section>
   );
 };
