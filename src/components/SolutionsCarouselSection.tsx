@@ -17,7 +17,7 @@ const solutionsData = [
     label: "Web Development",
     title: "High-Performance",
     subtitle: "Web Platforms",
-    description: "Startup, SaaS & enterprise websites. Conversion-optimized landing pages, web apps, CMS-based & headless architectures built for performance.",
+    description: "Startup, SaaS & enterprise websites. Conversion-optimized landing pages, web applications, CMS-based & headless architectures with performance, security & scalability optimization.",
     mobileDescription: "Scalable websites & web apps built for performance.",
     outcome: "Fast, scalable, production-ready web platforms.",
     ctaText: "Start Your Project",
@@ -185,7 +185,7 @@ const SolutionsCarouselSection = () => {
                   >
                     <div className="flex flex-row h-full gap-6">
                       {/* Left - Text Content */}
-                      <div className="flex flex-col justify-end gap-5 w-[45%]">
+                      <div className="flex flex-col justify-between w-[45%]">
                         <div>
                           <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
                             {solution.title}
@@ -193,12 +193,12 @@ const SolutionsCarouselSection = () => {
                           <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
                             {solution.subtitle}
                           </p>
-                          <p className="text-white/80 text-sm max-w-md">
+                          <p className="text-white/80 text-sm max-w-md mb-4">
                             {solution.description}
                           </p>
                         </div>
 
-                        <div className="space-y-5">
+                        <div className="space-y-4">
                           <Link to={solution.ctaLink}>
                             <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
                               {solution.ctaText}
@@ -206,10 +206,10 @@ const SolutionsCarouselSection = () => {
                           </Link>
                           
                           {/* Feature Points */}
-                          <div className="space-y-3">
+                          <div className="space-y-2 pt-2">
                             {solution.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-3">
-                                <feature.icon className="w-4 h-4 text-white/60 flex-shrink-0" />
+                              <div key={idx} className="flex items-center gap-2">
+                                <feature.icon className="w-4 h-4 text-white/70" />
                                 <span className="text-white/80 text-sm">{feature.text}</span>
                               </div>
                             ))}
@@ -287,10 +287,10 @@ const SolutionsCarouselSection = () => {
                 </Link>
                 
                 {/* Feature Points */}
-                <div className="space-y-3 pt-3">
+                <div className="space-y-2 pt-2">
                   {solution.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <feature.icon className="w-4 h-4 text-white/60 flex-shrink-0" />
+                    <div key={idx} className="flex items-center gap-2">
+                      <feature.icon className="w-4 h-4 text-white/70" />
                       <span className="text-white/80 text-sm">{feature.text}</span>
                     </div>
                   ))}
