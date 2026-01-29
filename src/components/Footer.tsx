@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -6,10 +7,16 @@ import logoLight from "@/assets/logo-light.svg";
 
 const Footer = () => {
   const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   
   // In dark mode, bg-foreground becomes white, so use dark logo
   // In light mode, bg-foreground is dark, so use light logo
-  const lowerFooterLogo = resolvedTheme === "dark" ? logoDark : logoLight;
+  // Default to light logo before mount to avoid hydration mismatch
+  const lowerFooterLogo = mounted && resolvedTheme === "dark" ? logoDark : logoLight;
   
   return (
     <footer className="relative mt-12 sm:mt-16 bg-foreground">
