@@ -43,21 +43,7 @@ const MobileVerticalCanvas = ({ activeStep }: { activeStep: number }) => {
       className="w-full h-full"
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* Background Grid */}
       <defs>
-        <pattern
-          id="mobileGrid"
-          width="30"
-          height="30"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M 30 0 L 0 0 0 30"
-            fill="none"
-            stroke="rgba(255,255,255,0.03)"
-            strokeWidth="1"
-          />
-        </pattern>
         <linearGradient id="mobileNodeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
           <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
@@ -70,7 +56,6 @@ const MobileVerticalCanvas = ({ activeStep }: { activeStep: number }) => {
           </feMerge>
         </filter>
       </defs>
-      <rect width="300" height="450" fill="url(#mobileGrid)" />
 
       {/* Vertical Base Flow: Product → Growth → Revenue → Scale */}
       <g className="vertical-base-flow">
@@ -412,27 +397,12 @@ const DesktopHorizontalCanvas = ({
       preserveAspectRatio="xMidYMid meet"
       style={{ filter: "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
     >
-      {/* Background Grid */}
       <defs>
-        <pattern
-          id="grid"
-          width="40"
-          height="40"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M 40 0 L 0 0 0 40"
-            fill="none"
-            stroke="rgba(255,255,255,0.03)"
-            strokeWidth="1"
-          />
-        </pattern>
         <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
           <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
         </linearGradient>
       </defs>
-      <rect width="600" height="400" fill="url(#grid)" />
 
       {/* Base Flow: Product → Growth → Revenue → Scale */}
       <g className="base-flow">
@@ -837,7 +807,15 @@ const WhatMakesUsDifferentSection = () => {
 
   return (
     <section className="section-divider relative bg-[hsl(0_0%_6%)] text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
+      {/* Grid Background */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         {/* Header */}
         <div className="mb-8 sm:mb-12 lg:mb-16">
           <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50 mb-3 sm:mb-4">
