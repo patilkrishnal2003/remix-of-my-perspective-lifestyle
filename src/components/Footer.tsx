@@ -221,12 +221,31 @@ const Footer = () => {
       </div>
 
       {/* New Logo Section - Sticky Reveal */}
-      <div className="sticky bottom-0 bg-foreground" style={{ height: "200px" }}>
-        <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="sticky bottom-0 bg-foreground" style={{ height: "400px" }}>
+        <div className="h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8">
+          {/* Logo */}
           <Link to="/" className="flex items-center">
-            {/* Switches based on theme - dark logo on white bg (dark mode), light logo on dark bg (light mode) */}
             <img src={lowerFooterLogo} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
           </Link>
+          
+          {/* Title - matching style of "Ready to start your project?" */}
+          <h2 className="text-2xl sm:text-3xl font-bold text-background text-center">
+            Have something in mind?
+          </h2>
+          
+          {/* Email Form */}
+          <div className="w-full max-w-md">
+            <div className="relative flex w-full rounded-full border border-background/20 bg-background/10 backdrop-blur-sm overflow-hidden">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-5 py-3.5 bg-transparent focus:outline-none text-sm text-background placeholder:text-background/60"
+              />
+              <button className="px-6 py-3 m-1 rounded-full bg-background text-foreground font-medium hover:bg-background/90 transition-colors text-sm whitespace-nowrap">
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
