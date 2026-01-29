@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Github, Mail, Phone, MapPin, Clock } from "lucide-react";
+import { useTheme } from "next-themes";
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
 
 const Footer = () => {
+  const { resolvedTheme } = useTheme();
+  
+  // In dark mode, bg-foreground becomes white, so use dark logo
+  // In light mode, bg-foreground is dark, so use light logo
+  const lowerFooterLogo = resolvedTheme === "dark" ? logoDark : logoLight;
+  
   return (
     <footer className="relative mt-12 sm:mt-16 bg-foreground">
       {/* New Section - Sticky Reveal */}
@@ -198,8 +205,8 @@ const Footer = () => {
       <div className="sticky bottom-0 bg-foreground" style={{ height: "200px" }}>
         <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center">
-            {/* Light logo on dark background */}
-            <img src={logoLight} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
+            {/* Switches based on theme - dark logo on white bg (dark mode), light logo on dark bg (light mode) */}
+            <img src={lowerFooterLogo} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
           </Link>
         </div>
       </div>
