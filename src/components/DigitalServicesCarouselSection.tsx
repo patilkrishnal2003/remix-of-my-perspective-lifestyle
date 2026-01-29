@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ImageOff, Globe, TrendingUp, Target, Megaphone, BarChart3, Users, Wallet, Mail, LineChart, Gauge, Puzzle } from "lucide-react";
@@ -102,11 +103,14 @@ const DigitalServicesCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
+            <Badge variant="outline" className="mb-4 text-xs font-semibold tracking-wider">
+              GROW & SCALE
+            </Badge>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              Digital Growth & Scaling
+              How We Drive Growth That Actually Scales
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-              Grow visibility, acquire customers, and scale revenue with data-driven strategies.
+              We help you increase visibility, acquire customers, and build revenue systems that scale predictably — backed by data, not guesswork.
             </p>
           </div>
         </ScrollReveal>

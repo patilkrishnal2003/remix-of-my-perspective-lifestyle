@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ImageOff, Zap, Shield, Rocket, Smartphone, Cloud, Code, Palette, Users, Target, Layers, TrendingUp, BarChart3, Layout, PenTool, Award } from "lucide-react";
@@ -121,11 +122,14 @@ const SolutionsCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
+            <Badge variant="outline" className="mb-4 text-xs font-semibold tracking-wider">
+              BUILD
+            </Badge>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              Technology & Product Development
+              How We Build the Products That Power Your Business
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
-              Design, build, and scale reliable digital products with modern technology.
+              From first idea to scalable systems, we design and engineer digital products that are reliable, secure, and built to grow with your business.
             </p>
           </div>
         </ScrollReveal>
