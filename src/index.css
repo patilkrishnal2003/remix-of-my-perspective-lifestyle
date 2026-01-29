@@ -171,6 +171,24 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Premium smooth scrolling for mobile */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Enhanced smooth scrolling for mobile */
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      overscroll-behavior-y: contain;
+    }
+    
+    /* Apply momentum scrolling to all scrollable containers */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
