@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
-import ServicesTabSection from "@/components/ServicesTabSection";
+
 import { Zap, Shield, Users } from "lucide-react";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -176,19 +176,14 @@ const Index = () => {
               <SolutionsCarouselSection />
             </div>
 
-            {/* What Makes Us Different Section - order 2 on mobile/tablet, order 4 on desktop */}
-            <div className="order-2 lg:order-4">
+            {/* What Makes Us Different Section - order 2 on mobile/tablet, order 3 on desktop */}
+            <div className="order-2 lg:order-3">
               <WhatMakesUsDifferentSection />
             </div>
 
             {/* Digital Services Carousel Section - order 3 on mobile/tablet, order 2 on desktop */}
             <div className="order-3 lg:order-2">
               <DigitalServicesCarouselSection />
-            </div>
-
-            {/* Services Section - order 4 on mobile/tablet, order 3 on desktop */}
-            <div className="order-4 lg:order-3">
-              <ServicesTabSection />
             </div>
           </div>
 
