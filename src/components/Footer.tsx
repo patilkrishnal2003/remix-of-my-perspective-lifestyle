@@ -228,10 +228,15 @@ const Footer = () => {
             <img src={lowerFooterLogo} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
           </Link>
           
-          {/* Title - matching style of "Ready to start your project?" */}
-          <h2 className="text-2xl sm:text-3xl font-bold text-background text-center">
-            Have something in mind?
-          </h2>
+          {/* Title - dual-line pattern matching site sections */}
+          <div className="text-center">
+            <p className="font-serif italic text-lg sm:text-xl text-background/80">
+              Have something in mind, but not sure where to start?
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-background mt-2">
+              Let's <span className="text-primary">shape it</span> together
+            </h2>
+          </div>
           
           {/* Email Form */}
           <div className="w-full max-w-md">
