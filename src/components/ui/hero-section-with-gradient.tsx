@@ -340,11 +340,11 @@ export default function HeroSectionWithGradient() {
             {/* Headline */}
             <motion.h1
               variants={transitionVariants.item}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]"
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]"
             >
-              <span className="block text-foreground">Inspiring Digital</span>
-              <span className="block bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent">
-                Innovators
+              <span className="block font-serif italic font-normal">Inspiring Digital</span>
+              <span className="block font-bold text-foreground">
+                <span className="text-primary">Innovators</span>
               </span>
             </motion.h1>
 
