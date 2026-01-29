@@ -874,7 +874,7 @@ const WhatMakesUsDifferentSection = () => {
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
           {/* Left Navigator - Desktop only */}
           <nav className="hidden lg:block lg:w-[30%] flex-shrink-0">
-            <ul className="space-y-1">
+            <ul className="space-y-0">
               {navigatorItems.map((item, index) => (
                 <li key={item.id}>
                   <button
@@ -884,20 +884,30 @@ const WhatMakesUsDifferentSection = () => {
                         handleDesktopItemClick(index);
                       }
                     }}
-                    className={`w-full text-left py-4 px-4 rounded-lg transition-all duration-500 ease-out group ${
-                      activeIndex === index
-                        ? "bg-white/10"
-                        : "hover:bg-white/5"
-                    }`}
+                    className="w-full text-left py-3 pl-5 relative transition-all duration-300 ease-out group"
                     aria-pressed={activeIndex === index}
                   >
+                    {/* Left indicator bar */}
+                    <motion.div
+                      className="absolute left-0 top-1 bottom-1 w-[3px] rounded-full"
+                      initial={false}
+                      animate={{
+                        backgroundColor: activeIndex === index 
+                          ? "hsl(203, 98%, 47%)" 
+                          : visitedIndices.has(index) 
+                          ? "rgba(255,255,255,0.2)" 
+                          : "rgba(255,255,255,0.08)",
+                        scaleY: activeIndex === index ? 1 : 0.6,
+                      }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    />
                     <span
-                      className={`block text-lg sm:text-xl font-medium transition-colors duration-500 ${
+                      className={`block text-lg font-medium transition-colors duration-300 ${
                         activeIndex === index
                           ? "text-white"
                           : visitedIndices.has(index)
-                          ? "text-white/70"
-                          : "text-white/50 group-hover:text-white/70"
+                          ? "text-white/50"
+                          : "text-white/35 group-hover:text-white/50"
                       }`}
                     >
                       {item.title}
@@ -909,7 +919,7 @@ const WhatMakesUsDifferentSection = () => {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                          className="block text-sm text-white/60 mt-2 overflow-hidden"
+                          className="block text-sm text-white/50 mt-1.5 overflow-hidden"
                         >
                           {item.text}
                         </motion.span>
