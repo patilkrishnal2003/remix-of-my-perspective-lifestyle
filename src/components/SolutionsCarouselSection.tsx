@@ -125,10 +125,15 @@ const SolutionsCarouselSection = () => {
             <Badge variant="outline" className="mb-4 text-sm px-4 py-1 font-semibold tracking-wider">
               BUILD
             </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              How We Build the Products That <span className="text-primary">Power Your Business</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
+              <span className="block font-serif italic font-normal mb-1">
+                How We Build the Products
+              </span>
+              <span className="block font-bold">
+                That <span className="text-primary">Power Your Business</span>
+              </span>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
               From first idea to scalable systems, we design and engineer digital products that are reliable, secure, and built to grow with your business.
             </p>
           </div>

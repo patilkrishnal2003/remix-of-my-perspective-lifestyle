@@ -106,10 +106,15 @@ const DigitalServicesCarouselSection = () => {
             <Badge variant="outline" className="mb-4 text-sm px-4 py-1 font-semibold tracking-wider">
               GROW & SCALE
             </Badge>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              How We <span className="text-primary">Drive Growth</span> That Actually Scales
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
+              <span className="block font-serif italic font-normal mb-1">
+                How We Drive Growth
+              </span>
+              <span className="block font-bold">
+                That <span className="text-primary">Actually Scales</span>
+              </span>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
               We help you increase visibility, acquire customers, and build revenue systems that scale predictably — backed by data, not guesswork.
             </p>
           </div>
