@@ -132,7 +132,7 @@ const SolutionsCarouselSection = () => {
 
         {/* Tab Navigation - Desktop only */}
         <ScrollReveal delay={100}>
-          <div className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
+          <div className="hidden md:flex flex-wrap justify-center gap-4 md:gap-8 mb-10">
             {solutionsData.map((solution, index) => (
               <button
                 key={solution.id}
@@ -158,7 +158,7 @@ const SolutionsCarouselSection = () => {
       </div>
 
       {/* Desktop Carousel */}
-      <div className="hidden sm:block relative w-full">
+      <div className="hidden md:block relative w-full">
         <div className="relative w-full flex justify-center">
           <div className="relative w-[85vw] max-w-[1000px] h-[450px]">
             {solutionsData.map((solution, index) => {
@@ -241,8 +241,8 @@ const SolutionsCarouselSection = () => {
         </div>
       </div>
 
-      {/* Mobile Stacked Cards */}
-      <div className="sm:hidden px-4 space-y-5">
+      {/* Mobile & Tablet Stacked Cards */}
+      <div className="md:hidden px-4 space-y-5">
         {solutionsData.map((solution) => (
           <motion.div
             key={solution.id}
