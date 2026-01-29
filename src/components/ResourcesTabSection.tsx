@@ -152,6 +152,7 @@ export default function ResourcesTabSection() {
 
   const activeTabData = tabsData.find((tab) => tab.id === activeTab)!;
   const mobileTabData = tabsData[mobileIndex];
+  const mobilePreviewImage = mobileTabData?.cards?.[0]?.image ?? "/placeholder.svg";
 
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
@@ -195,13 +196,16 @@ export default function ResourcesTabSection() {
                   className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm"
                 >
                   {/* Preview Image */}
-                  <div className="relative h-48 sm:h-56 overflow-hidden bg-muted shrink-0">
+                  <div
+                    className="w-full overflow-hidden bg-muted border-b border-border shrink-0"
+                    style={{ aspectRatio: "16 / 9", backgroundImage: `url(${mobilePreviewImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
+                  >
                     <img
-                      src={mobileTabData.cards[0].image}
+                      src={mobilePreviewImage}
                       alt={mobileTabData.label}
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   
