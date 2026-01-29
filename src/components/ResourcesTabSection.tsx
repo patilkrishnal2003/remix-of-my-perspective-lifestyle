@@ -179,8 +179,8 @@ export default function ResourcesTabSection() {
           </Link>
         </div>
 
-        {/* Mobile Carousel */}
-        <div className="md:hidden">
+        {/* Mobile & Tablet Carousel */}
+        <div className="lg:hidden">
           <div className="relative">
             <AnimatePresence mode="wait">
               <motion.div
@@ -254,8 +254,8 @@ export default function ResourcesTabSection() {
           </div>
         </div>
 
-        {/* Desktop/Tablet Content Grid */}
-        <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-10 items-stretch">
+        {/* Desktop Content Grid */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
           {/* Left: Accordion Tabs */}
           <div className="flex flex-col justify-between gap-3">
             {tabsData.map((tab) => {
