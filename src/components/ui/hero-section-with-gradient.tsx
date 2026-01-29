@@ -340,7 +340,7 @@ export default function HeroSectionWithGradient() {
             {/* Headline */}
             <motion.h1
               variants={transitionVariants.item}
-              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]"
             >
               <span className="block font-serif italic font-normal">Inspiring Digital</span>
               <span className="block font-bold text-foreground">
@@ -351,7 +351,7 @@ export default function HeroSectionWithGradient() {
             {/* Description */}
             <motion.p
               variants={transitionVariants.item}
-              className="max-w-xs sm:max-w-xl md:max-w-4xl text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
+              className="max-w-xs sm:max-w-xl md:max-w-4xl text-lg sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
             >
               Empowering creators to move fast, stay consistent, and ship beautiful products every time.
             </motion.p>
