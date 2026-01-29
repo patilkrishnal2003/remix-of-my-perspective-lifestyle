@@ -70,7 +70,7 @@ const solutionsData = [
 ];
 
 const SolutionsCarouselSection = () => {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   const handleTabClick = (index: number) => {
     setActiveIndex(index);
@@ -81,11 +81,6 @@ const SolutionsCarouselSection = () => {
       setActiveIndex(index);
     }
   };
-
-  // Card width + gap for calculating slide offset
-  const cardWidth = 320; // approximate width of side cards
-  const activeCardWidth = 700; // approximate width of active card
-  const gap = 24;
 
   return (
     <section className="section-divider py-16 pt-20 overflow-hidden">
@@ -129,53 +124,54 @@ const SolutionsCarouselSection = () => {
       </div>
 
       {/* Full-width Sliding Carousel */}
-      <div className="relative w-full overflow-hidden">
-        <motion.div
-          className="flex items-center justify-center gap-6"
-          animate={{
-            x: `calc(50% - ${activeIndex * (cardWidth + gap)}px - ${activeCardWidth / 2}px)`,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 30,
-          }}
-          style={{
-            width: "fit-content",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
+      <div className="relative w-full overflow-hidden px-4">
+        <div className="flex items-stretch justify-center">
           {solutionsData.map((solution, index) => {
             const isActive = index === activeIndex;
+            const isPrev = index < activeIndex;
+            const isNext = index > activeIndex;
+            
+            // Calculate offset from active card
+            const offset = index - activeIndex;
 
             return (
               <motion.div
                 key={solution.id}
+                layout
                 animate={{
-                  scale: isActive ? 1 : 0.92,
-                  opacity: isActive ? 1 : 0.6,
+                  x: `${offset * 105}%`,
+                  scale: isActive ? 1 : 0.88,
+                  opacity: isActive ? 1 : 0.7,
+                  zIndex: isActive ? 10 : 1,
                 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                }}
                 onClick={() => handleCardClick(index)}
                 className={`
-                  flex-shrink-0
-                  ${isActive ? "w-[90vw] max-w-4xl" : "w-72 sm:w-80"}
-                  ${!isActive ? "cursor-pointer hover:opacity-80" : ""}
+                  absolute left-1/2 -translate-x-1/2
+                  ${isActive ? "w-[85vw] max-w-[900px]" : "w-[280px] sm:w-[320px]"}
+                  ${!isActive ? "cursor-pointer hover:opacity-90" : ""}
                 `}
+                style={{
+                  position: index === activeIndex ? 'relative' : 'absolute',
+                }}
               >
                 <div
                   className={`
                     ${solution.bgColor}
                     rounded-[2rem] sm:rounded-[2.5rem]
-                    ${isActive ? "p-6 sm:p-10 min-h-[380px] sm:min-h-[420px]" : "p-5 sm:p-6 min-h-[320px] sm:min-h-[380px]"}
-                    transition-all duration-300
+                    ${isActive ? "p-6 sm:p-8 md:p-10 min-h-[400px] sm:min-h-[450px]" : "p-5 sm:p-6 min-h-[380px] sm:min-h-[420px]"}
+                    transition-colors duration-300
                     overflow-hidden
+                    h-full
                   `}
                 >
                   <div className={`flex ${isActive ? "flex-col md:flex-row" : "flex-col"} h-full gap-4 sm:gap-6`}>
                     {/* Left side - Text content */}
-                    <div className={`flex flex-col justify-between ${isActive ? "md:w-1/2" : "w-full"} flex-1`}>
+                    <div className={`flex flex-col justify-between ${isActive ? "md:w-[45%]" : "w-full"} flex-1`}>
                       <div>
                         <h3 className={`${isActive ? "text-2xl sm:text-3xl md:text-4xl" : "text-xl sm:text-2xl"} font-bold text-foreground leading-tight mb-1`}>
                           {solution.title}
@@ -183,12 +179,12 @@ const SolutionsCarouselSection = () => {
                         <p className={`${isActive ? "text-2xl sm:text-3xl md:text-4xl" : "text-xl sm:text-2xl"} font-bold text-foreground leading-tight mb-4`}>
                           {solution.subtitle}
                         </p>
-                        <p className={`text-foreground/70 ${isActive ? "text-sm sm:text-base max-w-sm" : "text-xs sm:text-sm line-clamp-3"} mb-4 sm:mb-6`}>
+                        <p className={`text-foreground/70 ${isActive ? "text-sm sm:text-base max-w-md" : "text-xs sm:text-sm line-clamp-3"} mb-4 sm:mb-6`}>
                           {solution.description}
                         </p>
                       </div>
 
-                      <div>
+                      <div className="mt-auto">
                         <Link to={solution.ctaLink}>
                           <Button
                             className={`
@@ -207,8 +203,8 @@ const SolutionsCarouselSection = () => {
 
                     {/* Right side - Image mockup (only visible on active card on larger screens) */}
                     {isActive && (
-                      <div className="hidden md:flex md:w-1/2 items-center justify-center">
-                        <div className="relative w-full h-full min-h-[280px] rounded-2xl overflow-hidden bg-foreground/5">
+                      <div className="hidden md:flex md:w-[55%] items-center justify-center">
+                        <div className="relative w-full h-full min-h-[320px] rounded-2xl overflow-hidden">
                           <img 
                             src={solution.image} 
                             alt={solution.title}
@@ -222,7 +218,12 @@ const SolutionsCarouselSection = () => {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
+        
+        {/* Spacer to maintain height */}
+        <div className="invisible">
+          <div className="w-[85vw] max-w-[900px] mx-auto p-6 sm:p-8 md:p-10 min-h-[400px] sm:min-h-[450px]" />
+        </div>
       </div>
 
       {/* Navigation dots - Mobile only */}
