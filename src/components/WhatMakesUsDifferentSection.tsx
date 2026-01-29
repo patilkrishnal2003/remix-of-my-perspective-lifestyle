@@ -860,18 +860,18 @@ const WhatMakesUsDifferentSection = () => {
         </div>
 
         {/* Mobile Vertical Navigator with Left Indicator */}
-        <div className="lg:hidden mb-6">
-          <ul className="space-y-1">
+        <div className="lg:hidden mb-5">
+          <ul className="space-y-0">
             {navigatorItems.map((item, index) => (
               <li key={item.id}>
                 <button
                   onClick={() => handleMobileInteraction(index)}
-                  className="w-full text-left py-2 pl-4 relative transition-all duration-300 ease-out touch-manipulation"
+                  className="w-full text-left py-1.5 pl-3 relative transition-all duration-300 ease-out touch-manipulation"
                   aria-pressed={mobileStep === index}
                 >
                   {/* Left indicator bar */}
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full"
+                    className="absolute left-0 top-0.5 bottom-0.5 w-[2px] rounded-full"
                     initial={false}
                     animate={{
                       backgroundColor: mobileStep === index 
@@ -879,12 +879,12 @@ const WhatMakesUsDifferentSection = () => {
                         : visitedIndices.has(index) 
                         ? "rgba(255,255,255,0.2)" 
                         : "rgba(255,255,255,0.08)",
-                      scaleY: mobileStep === index ? 1 : 0.7,
+                      scaleY: mobileStep === index ? 1 : 0.6,
                     }}
                     transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                   />
                   <span
-                    className={`block text-base font-medium transition-colors duration-300 ${
+                    className={`block text-sm font-medium transition-colors duration-300 ${
                       mobileStep === index
                         ? "text-white"
                         : visitedIndices.has(index)
