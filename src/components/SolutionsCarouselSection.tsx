@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
+import { ImageOff } from "lucide-react";
 
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
@@ -75,9 +76,14 @@ const solutionsData = [
 
 const SolutionsCarouselSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
   const handleTabClick = (index: number) => {
     setActiveIndex(index);
+  };
+
+  const handleImageError = (id: string) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }));
   };
 
   return (
@@ -172,11 +178,18 @@ const SolutionsCarouselSection = () => {
 
                     {/* Right - Image */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      <img
-                        src={solution.image}
-                        alt={solution.title}
-                        className="w-full h-full object-cover rounded-2xl"
-                      />
+                      {imageErrors[solution.id] ? (
+                        <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
+                          <ImageOff className="w-16 h-16 text-white/40" />
+                        </div>
+                      ) : (
+                        <img
+                          src={solution.image}
+                          alt={solution.title}
+                          className="w-full h-full object-cover rounded-2xl"
+                          onError={() => handleImageError(solution.id)}
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
