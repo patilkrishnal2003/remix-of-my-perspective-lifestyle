@@ -133,8 +133,11 @@ export default function ResourcesTabSection() {
 
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-      {/* Wrapper card matching the reference design */}
-      <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/15 dark:bg-primary/20 p-6 sm:p-10 md:p-14 lg:p-16">
+      {/* Wrapper card with gradient background */}
+      <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-br from-primary/20 via-primary/10 to-accent/15 dark:from-primary/25 dark:via-primary/15 dark:to-accent/20 p-6 sm:p-10 md:p-14 lg:p-16 relative overflow-hidden">
+        {/* Decorative gradient orb */}
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-gradient-to-tr from-accent/15 to-transparent rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
         {/* Header */}
         <div className="mb-10 md:mb-14 max-w-xl">
           <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
