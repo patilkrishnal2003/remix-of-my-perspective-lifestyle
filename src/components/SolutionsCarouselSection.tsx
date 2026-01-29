@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Rocket, Users, BookOpen, Calendar, Headphones } from "lucide-react";
@@ -15,7 +15,7 @@ const solutionsData = [
     description: "Everything you need to create, market, and sell digital products. From ideation to launch, we handle the technical complexity.",
     ctaText: "Get Started",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(10_60%_35%)]", // Deep maroon/burgundy
+    bgColor: "bg-[hsl(10_60%_35%)]",
   },
   {
     id: "community",
@@ -26,7 +26,7 @@ const solutionsData = [
     description: "Create spaces where your audience connects, shares, and grows together. Foster engagement with powerful community tools.",
     ctaText: "Get Started",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(200_70%_40%)]", // Deep blue
+    bgColor: "bg-[hsl(200_70%_40%)]",
   },
   {
     id: "courses",
@@ -37,7 +37,7 @@ const solutionsData = [
     description: "Everything you need to launch a course and go from 0 to 100,000 students. Offer an end-to-end course experience that looks and works great.",
     ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(10_50%_30%)]", // Dark maroon
+    bgColor: "bg-[hsl(10_50%_30%)]",
   },
   {
     id: "events",
@@ -48,7 +48,7 @@ const solutionsData = [
     description: "Manage ticketing, payments, registrations, and communication with ease - for both online and offline events.",
     ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(10_40%_45%)]", // Lighter maroon/rose
+    bgColor: "bg-[hsl(10_40%_45%)]",
   },
   {
     id: "coaching",
@@ -59,13 +59,12 @@ const solutionsData = [
     description: "Streamline scheduling, payments, and client management. Grow your coaching practice with automated tools.",
     ctaText: "Get Started",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(180_30%_35%)]", // Teal
+    bgColor: "bg-[hsl(180_30%_35%)]",
   },
 ];
 
 const SolutionsCarouselSection = () => {
-  const [activeIndex, setActiveIndex] = useState(2); // Start with "Courses" in center
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(2);
 
   const handleTabClick = (index: number) => {
     setActiveIndex(index);
@@ -76,6 +75,11 @@ const SolutionsCarouselSection = () => {
       setActiveIndex(index);
     }
   };
+
+  // Card width + gap for calculating slide offset
+  const cardWidth = 320; // approximate width of side cards
+  const activeCardWidth = 700; // approximate width of active card
+  const gap = 24;
 
   return (
     <section className="section-divider py-16 pt-20 overflow-hidden">
@@ -118,36 +122,40 @@ const SolutionsCarouselSection = () => {
         </ScrollReveal>
       </div>
 
-      {/* Full-width Carousel */}
-      <div className="relative w-full" ref={carouselRef}>
-        <div className="flex items-center justify-center gap-4 sm:gap-6 px-4">
+      {/* Full-width Sliding Carousel */}
+      <div className="relative w-full overflow-hidden">
+        <motion.div
+          className="flex items-center justify-center gap-6"
+          animate={{
+            x: `calc(50% - ${activeIndex * (cardWidth + gap)}px - ${activeCardWidth / 2}px)`,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
+          }}
+          style={{
+            width: "fit-content",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           {solutionsData.map((solution, index) => {
             const isActive = index === activeIndex;
-            const isPrev = index === activeIndex - 1 || (activeIndex === 0 && index === solutionsData.length - 1);
-            const isNext = index === activeIndex + 1 || (activeIndex === solutionsData.length - 1 && index === 0);
-            const isVisible = isActive || isPrev || isNext;
-
-            // Calculate position offset
-            let xOffset = 0;
-            if (isPrev) xOffset = -100;
-            if (isNext) xOffset = 100;
 
             return (
               <motion.div
                 key={solution.id}
-                initial={false}
                 animate={{
-                  scale: isActive ? 1 : 0.85,
-                  opacity: isActive ? 1 : isVisible ? 0.5 : 0,
-                  zIndex: isActive ? 10 : 1,
+                  scale: isActive ? 1 : 0.9,
+                  opacity: isActive ? 1 : 0.5,
                 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 onClick={() => handleCardClick(index)}
                 className={`
-                  ${isActive ? "w-full max-w-3xl" : "w-64 sm:w-80"}
-                  ${!isActive ? "cursor-pointer" : ""}
-                  ${!isVisible ? "hidden" : ""}
                   flex-shrink-0
+                  ${isActive ? "w-[90vw] max-w-3xl" : "w-64 sm:w-80"}
+                  ${!isActive ? "cursor-pointer hover:opacity-70" : ""}
                 `}
               >
                 <div
@@ -190,20 +198,20 @@ const SolutionsCarouselSection = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
+      </div>
 
-        {/* Navigation dots - Mobile only */}
-        <div className="flex justify-center gap-2 mt-6 sm:hidden">
-          {solutionsData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === activeIndex ? "bg-foreground w-6" : "bg-foreground/30"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Navigation dots - Mobile only */}
+      <div className="flex justify-center gap-2 mt-6 sm:hidden">
+        {solutionsData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === activeIndex ? "bg-foreground w-6" : "bg-foreground/30"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
