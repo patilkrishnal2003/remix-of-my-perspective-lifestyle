@@ -13,60 +13,60 @@ import projectEdulearn from "@/assets/project-edulearn.jpg";
 
 const solutionsData = [
   {
-    id: "digital-products",
-    label: "Digital Products",
-    title: "Sell Digital Products",
-    subtitle: "with ease",
-    description: "Upload a PDF, a Video, a MP3 or any other digital file and set a price - a great looking high-converting landing page is ready for you to start selling.",
-    ctaText: "Try it Free",
+    id: "web-development",
+    label: "Web Development",
+    title: "Modern Web",
+    subtitle: "Applications",
+    description: "From responsive websites to complex web apps, we build fast, scalable solutions using React, Next.js, and modern frameworks that drive business growth.",
+    ctaText: "Start Your Project",
     ctaLink: "/contact",
     bgColor: "#438260",
     imageBgColor: "rgba(67, 130, 96, 0.6)",
-    image: "", // Removed for fallback testing
+    image: heroDashboard,
   },
   {
-    id: "community",
-    label: "Community",
-    title: "Launch your",
-    subtitle: "Community Business",
-    description: "Create and launch paid subscription based business on Telegram and Discord via SuperProfile in less than 10 minutes.",
-    ctaText: "Try it Free",
+    id: "mobile-apps",
+    label: "Mobile Apps",
+    title: "Native & Cross-Platform",
+    subtitle: "Mobile Solutions",
+    description: "Build powerful iOS and Android apps with seamless user experiences. We deliver apps that users love and businesses rely on.",
+    ctaText: "Build Your App",
     ctaLink: "/contact",
     bgColor: "#948149",
     imageBgColor: "rgba(148, 129, 73, 0.6)",
     image: heroWorkspace,
   },
   {
-    id: "courses",
-    label: "Courses",
-    title: "Build and launch",
-    subtitle: "your courses",
-    description: "Everything you need to launch a course and go from 0 to 100,000 students. Offer an end-to-end course experience that looks and works great.",
-    ctaText: "Try it Free",
+    id: "cloud-solutions",
+    label: "Cloud Solutions",
+    title: "Scalable Cloud",
+    subtitle: "Infrastructure",
+    description: "Deploy with confidence on AWS, Azure, or GCP. We architect cloud solutions that scale with your business and optimize costs.",
+    ctaText: "Go Cloud",
     ctaLink: "/contact",
     bgColor: "#711e1b",
     imageBgColor: "rgba(113, 30, 27, 0.6)",
     image: projectFinanceflow,
   },
   {
-    id: "events",
-    label: "Events",
-    title: "Host Events &",
-    subtitle: "Webinars",
-    description: "Manage ticketing, payments, registrations, and communication with ease - for both online and offline events.",
-    ctaText: "Try it Free",
+    id: "ui-ux-design",
+    label: "UI/UX Design",
+    title: "User-Centered",
+    subtitle: "Design Systems",
+    description: "Create intuitive interfaces that delight users. Our design process combines research, prototyping, and testing to deliver exceptional experiences.",
+    ctaText: "Design with Us",
     ctaLink: "/contact",
     bgColor: "#894f71",
     imageBgColor: "rgba(137, 79, 113, 0.6)",
     image: projectHealthtrack,
   },
   {
-    id: "coaching",
-    label: "1:1 Coaching",
-    title: "Scale Your Coaching",
-    subtitle: "Business",
-    description: "Streamline scheduling, payments, and client management. Grow your coaching practice with automated tools.",
-    ctaText: "Get Started",
+    id: "custom-software",
+    label: "Custom Software",
+    title: "Enterprise-Grade",
+    subtitle: "Solutions",
+    description: "Tailored software built for your unique workflows. From CRMs to ERPs, we develop robust systems that transform how you operate.",
+    ctaText: "Let's Build",
     ctaLink: "/contact",
     bgColor: "#485c81",
     imageBgColor: "rgba(72, 92, 129, 0.6)",
@@ -92,10 +92,10 @@ const SolutionsCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
-              <span className="italic font-serif">Drive more revenue</span>
+              <span className="italic font-serif">Solutions that scale</span>
             </h2>
             <p className="text-xl md:text-2xl text-foreground font-medium">
-              with tools for monetization
+              with your business
             </p>
           </div>
         </ScrollReveal>
