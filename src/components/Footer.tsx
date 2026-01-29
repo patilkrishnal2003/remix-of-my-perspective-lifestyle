@@ -221,7 +221,7 @@ const Footer = () => {
       </div>
 
       {/* New Logo Section - Sticky Reveal */}
-      <div className="sticky bottom-0 bg-foreground h-[500px] sm:h-[400px]">
+      <div className="sticky bottom-0 bg-foreground h-[90vh] sm:h-[400px]">
         <div className="h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8">
           {/* Logo */}
           <Link to="/" className="flex items-center">
