@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BookOpen, Briefcase, Users, HeadphonesIcon, GraduationCap } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Users, HeadphonesIcon, GraduationCap, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Project images
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
@@ -104,6 +105,8 @@ const tabsData: TabData[] = [
 export default function ResourcesTabSection() {
   const [activeTab, setActiveTab] = useState<TabType>("blog");
   const [isPaused, setIsPaused] = useState(false);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const isMobile = useIsMobile();
 
   const tabOrder: TabType[] = ["blog", "portfolio", "community", "careers", "support"];
 
@@ -115,21 +118,40 @@ export default function ResourcesTabSection() {
     });
   }, []);
 
+  // Desktop auto-rotation
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || isMobile) return;
     
     const interval = setInterval(goToNextTab, 3000);
     return () => clearInterval(interval);
-  }, [isPaused, goToNextTab]);
+  }, [isPaused, goToNextTab, isMobile]);
+
+  // Mobile auto-rotation
+  useEffect(() => {
+    if (!isMobile) return;
+    
+    const interval = setInterval(() => {
+      setMobileIndex((prev) => (prev + 1) % tabsData.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isMobile]);
 
   const handleTabClick = (tabId: TabType) => {
     setActiveTab(tabId);
     setIsPaused(true);
-    // Resume auto-rotation after 10 seconds of inactivity
     setTimeout(() => setIsPaused(false), 10000);
   };
 
+  const handleMobilePrev = () => {
+    setMobileIndex((prev) => (prev - 1 + tabsData.length) % tabsData.length);
+  };
+
+  const handleMobileNext = () => {
+    setMobileIndex((prev) => (prev + 1) % tabsData.length);
+  };
+
   const activeTabData = tabsData.find((tab) => tab.id === activeTab)!;
+  const mobileTabData = tabsData[mobileIndex];
 
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
@@ -157,8 +179,83 @@ export default function ResourcesTabSection() {
           </Link>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
+        {/* Mobile Carousel */}
+        <div className="lg:hidden">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={mobileIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm"
+              >
+                {/* Preview Image */}
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={mobileTabData.cards[0].image}
+                    alt={mobileTabData.label}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <mobileTabData.icon className="w-5 h-5 text-primary" />
+                    <span className="text-sm font-medium text-primary">{mobileTabData.label}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{mobileTabData.label}</h3>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                    {mobileTabData.description}
+                  </p>
+                  <Link to={mobileTabData.link}>
+                    <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
+                      {mobileTabData.linkText}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
+            <div className="flex justify-center gap-3 mt-4">
+              <button
+                onClick={handleMobilePrev}
+                className="p-2.5 rounded-full border border-border bg-background hover:bg-muted transition-colors"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={handleMobileNext}
+                className="p-2.5 rounded-full border border-border bg-background hover:bg-muted transition-colors"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-3">
+              {tabsData.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setMobileIndex(idx)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    idx === mobileIndex ? "bg-primary w-6" : "bg-border"
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Content Grid */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch">
           {/* Left: Accordion Tabs */}
           <div className="flex flex-col justify-between gap-3">
             {tabsData.map((tab) => {
