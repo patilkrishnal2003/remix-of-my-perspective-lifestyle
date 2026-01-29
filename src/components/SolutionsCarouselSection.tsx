@@ -96,20 +96,11 @@ const SolutionsCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">BUILD</p>
-            {/* Desktop title/description */}
-            <h2 className="hidden sm:block text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              Technology & Product Development Solutions
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
+              Technology & Product Development
             </h2>
-            <p className="hidden sm:block text-lg md:text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
-              We help startups and businesses design, build, and scale reliable digital products through strong engineering, thoughtful design, and modern technology.
-            </p>
-            {/* Mobile title/description */}
-            <h2 className="sm:hidden text-2xl font-bold tracking-tight mb-3">
-              Technology & Product Development Solutions
-            </h2>
-            <p className="sm:hidden text-base text-muted-foreground font-medium">
-              We help startups and businesses build and scale reliable digital products using modern technology.
+            <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
+              Design, build, and scale reliable digital products with modern technology.
             </p>
           </div>
         </ScrollReveal>
