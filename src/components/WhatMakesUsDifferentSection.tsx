@@ -523,7 +523,7 @@ const DesktopHorizontalCanvas = ({
           >
             <motion.rect
               x="40"
-              y="130"
+              y="110"
               width="80"
               height="40"
               rx="4"
@@ -533,7 +533,7 @@ const DesktopHorizontalCanvas = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             />
-            <text x="80" y="155" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">UX Design</text>
+            <text x="80" y="135" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">UX Design</text>
             
             <motion.rect
               x="40"
@@ -549,8 +549,9 @@ const DesktopHorizontalCanvas = ({
             />
             <text x="80" y="275" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">Engineering</text>
 
+            {/* Dotted line from Product to UX Design */}
             <motion.path
-              d="M 80 170 L 80 175"
+              d="M 80 175 L 80 150"
               stroke="rgba(255,255,255,0.3)"
               strokeWidth="1"
               strokeDasharray="2 2"
@@ -558,6 +559,7 @@ const DesktopHorizontalCanvas = ({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             />
+            {/* Dotted line from Product to Engineering */}
             <motion.path
               d="M 80 225 L 80 250"
               stroke="rgba(255,255,255,0.3)"
