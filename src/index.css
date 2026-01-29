@@ -557,4 +557,14 @@ All colors MUST be HSL.
   .tag-growth {
     @apply bg-[hsl(var(--tag-growth))] text-primary;
   }
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
