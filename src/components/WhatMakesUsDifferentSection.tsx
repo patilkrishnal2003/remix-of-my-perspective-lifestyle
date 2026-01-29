@@ -922,37 +922,33 @@ const WhatMakesUsDifferentSection = () => {
           </nav>
 
           {/* Canvas */}
-          <div className="lg:w-[70%] min-h-[380px] sm:min-h-[400px] lg:min-h-[500px] relative">
-            <div 
-              className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 overflow-hidden"
-              style={{
-                backgroundImage: `linear-gradient(to bottom right, rgba(255,255,255,0.03), transparent), 
-                  linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                  linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
-                backgroundSize: '100% 100%, 30px 30px, 30px 30px',
-              }}
+          <div 
+            className="lg:w-[70%] min-h-[380px] sm:min-h-[400px] lg:min-h-[500px] relative rounded-xl lg:rounded-2xl border border-white/10 overflow-hidden"
+            style={{
+              backgroundImage: `linear-gradient(to bottom right, rgba(255,255,255,0.03), transparent), 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+              backgroundSize: '100% 100%, 30px 30px, 30px 30px',
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute inset-0 flex items-center justify-center p-4"
             >
-              <div className="relative w-full h-full p-4 sm:p-6 lg:p-8">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="absolute inset-0 flex items-center justify-center p-4"
-                >
-                  {isMobile ? (
-                    <MobileVerticalCanvas activeStep={mobileStep} />
-                  ) : (
-                    <DesktopHorizontalCanvas
-                      showSystemDiagram={showSystemDiagram}
-                      showProductLayer={showProductLayer}
-                      showTimeline={showTimeline}
-                      showFocusedPath={showFocusedPath}
-                      showDecisionPoints={showDecisionPoints}
-                    />
-                  )}
-                </motion.div>
-              </div>
-            </div>
+              {isMobile ? (
+                <MobileVerticalCanvas activeStep={mobileStep} />
+              ) : (
+                <DesktopHorizontalCanvas
+                  showSystemDiagram={showSystemDiagram}
+                  showProductLayer={showProductLayer}
+                  showTimeline={showTimeline}
+                  showFocusedPath={showFocusedPath}
+                  showDecisionPoints={showDecisionPoints}
+                />
+              )}
+            </motion.div>
           </div>
         </div>
       </div>
