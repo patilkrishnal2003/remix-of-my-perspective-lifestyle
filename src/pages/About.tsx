@@ -4,6 +4,13 @@ import CTASection from "@/components/CTASection";
 import { Users, Target, Award, Heart, Globe, Clock, GraduationCap, Coffee, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import ValuesTabSection from "@/components/ValuesTabSection";
 import { Link } from "react-router-dom";
+import ScrollReveal from "@/components/ScrollReveal";
+import FlipImageCarousel from "@/components/FlipImageCarousel";
+import HowWeWorkSection from "@/components/HowWeWorkSection";
+
+import whyChoose1 from "@/assets/why-choose-1.jpg";
+import whyChoose2 from "@/assets/why-choose-2.jpg";
+import whyChoose3 from "@/assets/why-choose-3.jpg";
 import { Button } from "@/components/ui/button";
 
 import aboutHero from "@/assets/about-hero.jpg";
@@ -219,6 +226,46 @@ const About = () => {
           </div>
         </section>
 
+        {/* Why Choose Advora - Flip Image Carousel */}
+        <section className="section-divider py-16 pt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal>
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose Advora?</h2>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  We're your technology partners, delivering excellence at every step
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={150}>
+              <FlipImageCarousel
+                items={[
+                  {
+                    image: whyChoose1,
+                    title: "Collaborative Team",
+                    subtitle: "Working Together for Success",
+                    description: "Our expert team collaborates closely with you to understand your vision and deliver solutions that exceed expectations. We believe in transparent communication and partnership-driven development."
+                  },
+                  {
+                    image: whyChoose2,
+                    title: "Technical Excellence",
+                    subtitle: "Cutting-Edge Development",
+                    description: "Our developers use modern technologies and best practices to build scalable, maintainable solutions. From architecture to deployment, we ensure enterprise-grade quality in every line of code."
+                  },
+                  {
+                    image: whyChoose3,
+                    title: "24/7 Support",
+                    subtitle: "Always Here When You Need Us",
+                    description: "Our dedicated support team is available around the clock to assist you. We provide ongoing maintenance, updates, and rapid response to ensure your applications run smoothly."
+                  }
+                ]}
+              />
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* How We Work Section */}
+        <HowWeWorkSection />
 
         {/* Values Section */}
         <ValuesTabSection />
