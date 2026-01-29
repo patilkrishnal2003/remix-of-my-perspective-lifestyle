@@ -107,7 +107,7 @@ const DigitalServicesCarouselSection = () => {
               GROW & SCALE
             </Badge>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              How We Drive Growth That Actually Scales
+              How We <span className="text-primary">Drive Growth</span> That Actually Scales
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
               We help you increase visibility, acquire customers, and build revenue systems that scale predictably — backed by data, not guesswork.

@@ -126,7 +126,7 @@ const SolutionsCarouselSection = () => {
               BUILD
             </Badge>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              How We Build the Products That Power Your Business
+              How We Build the Products That <span className="text-primary">Power Your Business</span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-medium max-w-2xl mx-auto">
               From first idea to scalable systems, we design and engineer digital products that are reliable, secure, and built to grow with your business.
