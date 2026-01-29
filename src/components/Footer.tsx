@@ -242,7 +242,7 @@ const Footer = () => {
                 className="flex-1 px-5 py-3.5 bg-transparent focus:outline-none text-sm text-background placeholder:text-background/60"
               />
               <button className="px-6 py-3 m-1 rounded-full bg-background text-foreground font-medium hover:bg-background/90 transition-colors text-sm whitespace-nowrap">
-                Submit
+                Tell Us
               </button>
             </div>
           </div>
