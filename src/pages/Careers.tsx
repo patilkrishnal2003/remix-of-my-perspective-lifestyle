@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Briefcase, MapPin, Clock, ArrowRight, Users, Heart, Zap, Coffee } from "lucide-react";
+import { Briefcase, MapPin, Clock, ArrowRight, Users, Heart, Zap, Coffee, Globe, GraduationCap } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
 
 const Careers = () => {
@@ -176,6 +176,48 @@ const Careers = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Culture Section */}
+        <section className="section-divider">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold">Our Culture</h2>
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  We believe that great work comes from happy, supported team members. Our culture is built on trust, flexibility, and continuous growth.
+                </p>
+                <div className="grid grid-cols-2 gap-6">
+                  {[
+                    { icon: Globe, title: "Remote-First", description: "Work from anywhere with our distributed team model" },
+                    { icon: Clock, title: "Flexible Hours", description: "We trust our team to manage their time effectively" },
+                    { icon: GraduationCap, title: "Learning Budget", description: "Annual stipend for courses, conferences, and books" },
+                    { icon: Coffee, title: "Team Retreats", description: "Regular in-person gatherings to connect and collaborate" }
+                  ].map((benefit, index) => (
+                    <div key={benefit.title} className={`animate-slide-up stagger-${index + 1}`}>
+                      <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-3">
+                        <benefit.icon className="h-5 w-5 text-accent" />
+                      </div>
+                      <h3 className="font-bold mb-1">{benefit.title}</h3>
+                      <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-3xl bg-card p-8 md:p-12 border border-border">
+                <h3 className="text-2xl font-bold mb-6">Join Our Team</h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  We're always looking for talented individuals who share our passion for building great software. If you're interested in joining Advora, we'd love to hear from you.
+                </p>
+                <Link to="/contact">
+                  <Button className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-6">
+                    View Open Positions
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
