@@ -43,21 +43,7 @@ const MobileVerticalCanvas = ({ activeStep }: { activeStep: number }) => {
       className="w-full h-full"
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* Background Grid */}
       <defs>
-        <pattern
-          id="mobileGrid"
-          width="30"
-          height="30"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M 30 0 L 0 0 0 30"
-            fill="none"
-            stroke="rgba(255,255,255,0.03)"
-            strokeWidth="1"
-          />
-        </pattern>
         <linearGradient id="mobileNodeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
           <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
@@ -70,7 +56,6 @@ const MobileVerticalCanvas = ({ activeStep }: { activeStep: number }) => {
           </feMerge>
         </filter>
       </defs>
-      <rect width="300" height="450" fill="url(#mobileGrid)" />
 
       {/* Vertical Base Flow: Product → Growth → Revenue → Scale */}
       <g className="vertical-base-flow">
@@ -412,27 +397,12 @@ const DesktopHorizontalCanvas = ({
       preserveAspectRatio="xMidYMid meet"
       style={{ filter: "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
     >
-      {/* Background Grid */}
       <defs>
-        <pattern
-          id="grid"
-          width="40"
-          height="40"
-          patternUnits="userSpaceOnUse"
-        >
-          <path
-            d="M 40 0 L 0 0 0 40"
-            fill="none"
-            stroke="rgba(255,255,255,0.03)"
-            strokeWidth="1"
-          />
-        </pattern>
         <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
           <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
         </linearGradient>
       </defs>
-      <rect width="600" height="400" fill="url(#grid)" />
 
       {/* Base Flow: Product → Growth → Revenue → Scale */}
       <g className="base-flow">
@@ -953,7 +923,15 @@ const WhatMakesUsDifferentSection = () => {
 
           {/* Canvas */}
           <div className="lg:w-[70%] min-h-[380px] sm:min-h-[400px] lg:min-h-[500px] relative">
-            <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 overflow-hidden">
+            <div 
+              className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 overflow-hidden"
+              style={{
+                backgroundImage: `linear-gradient(to bottom right, rgba(255,255,255,0.03), transparent), 
+                  linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+                backgroundSize: '100% 100%, 30px 30px, 30px 30px',
+              }}
+            >
               <div className="relative w-full h-full p-4 sm:p-6 lg:p-8">
                 <motion.div
                   initial={{ opacity: 0 }}
