@@ -73,9 +73,6 @@ const solutionsData = [
   },
 ];
 
-const CARD_WIDTH = 85; // vw
-const CARD_GAP = 24; // px
-
 const SolutionsCarouselSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -97,7 +94,7 @@ const SolutionsCarouselSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Tab Navigation - 5 buttons for 5 cards */}
+        {/* Tab Navigation */}
         <ScrollReveal delay={100}>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
             {solutionsData.map((solution, index) => (
@@ -124,32 +121,30 @@ const SolutionsCarouselSection = () => {
         </ScrollReveal>
       </div>
 
-      {/* Carousel - slides based on activeIndex */}
-      <div className="relative w-full">
-        <motion.div
-          className="flex gap-6 px-4"
-          animate={{
-            x: `calc(50% - ${activeIndex * CARD_WIDTH}vw - ${activeIndex * CARD_GAP}px - ${CARD_WIDTH / 2}vw)`,
-          }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
+      {/* Carousel */}
+      <div className="relative w-full flex justify-center">
+        <div className="relative w-[85vw] max-w-[1000px] h-[420px] sm:h-[450px]">
           {solutionsData.map((solution, index) => {
             const isActive = index === activeIndex;
+            const offset = index - activeIndex;
 
             return (
               <motion.div
                 key={solution.id}
                 onClick={() => handleTabClick(index)}
-                className={`flex-shrink-0 w-[85vw] max-w-[1000px] ${!isActive ? "cursor-pointer" : ""}`}
+                initial={false}
+                animate={{
+                  x: `${offset * 105}%`,
+                  scale: isActive ? 1 : 0.92,
+                  opacity: isActive ? 1 : 0.4,
+                  zIndex: isActive ? 10 : 1,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className={`absolute inset-0 ${!isActive ? "cursor-pointer" : ""}`}
               >
-                <motion.div
-                  animate={{
-                    scale: isActive ? 1 : 0.95,
-                    opacity: isActive ? 1 : 0.4,
-                  }}
-                  transition={{ duration: 0.3 }}
+                <div
                   style={{ backgroundColor: solution.bgColor }}
-                  className="rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 h-[420px] sm:h-[450px]"
+                  className="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10"
                 >
                   <div className="flex flex-col md:flex-row h-full gap-6">
                     {/* Left - Text Content */}
@@ -175,9 +170,9 @@ const SolutionsCarouselSection = () => {
                       </div>
                     </div>
 
-                    {/* Right - Image with Background Container */}
+                    {/* Right - Image */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      <div 
+                      <div
                         style={{ backgroundColor: solution.imageBgColor }}
                         className="w-full h-full rounded-2xl p-6 flex items-center justify-center"
                       >
@@ -189,11 +184,11 @@ const SolutionsCarouselSection = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
 
       {/* Mobile Navigation Dots */}
