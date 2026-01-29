@@ -11,62 +11,62 @@ import projectFinanceflow from "@/assets/project-financeflow.jpg";
 import projectHealthtrack from "@/assets/project-healthtrack.jpg";
 import projectEdulearn from "@/assets/project-edulearn.jpg";
 
-const solutionsData = [
+const industriesData = [
   {
-    id: "web-development",
-    label: "Web Development",
-    title: "Modern Web",
-    subtitle: "Applications",
-    description: "From responsive websites to complex web apps, we build fast, scalable solutions using React, Next.js, and modern frameworks that drive business growth.",
-    ctaText: "Start Your Project",
+    id: "fintech",
+    label: "FinTech",
+    title: "Financial",
+    subtitle: "Technology",
+    description: "Secure payment systems, banking apps, and trading platforms. We build compliant, scalable solutions that handle millions of transactions.",
+    ctaText: "Explore FinTech",
     ctaLink: "/contact",
     bgColor: "#438260",
     imageBgColor: "rgba(67, 130, 96, 0.6)",
     image: heroDashboard,
   },
   {
-    id: "mobile-apps",
-    label: "Mobile Apps",
-    title: "Native & Cross-Platform",
-    subtitle: "Mobile Solutions",
-    description: "Build powerful iOS and Android apps with seamless user experiences. We deliver apps that users love and businesses rely on.",
-    ctaText: "Build Your App",
+    id: "healthcare",
+    label: "Healthcare",
+    title: "HealthTech",
+    subtitle: "Solutions",
+    description: "HIPAA-compliant platforms, telemedicine apps, and patient management systems that improve care delivery and operational efficiency.",
+    ctaText: "Explore Healthcare",
     ctaLink: "/contact",
     bgColor: "#948149",
     imageBgColor: "rgba(148, 129, 73, 0.6)",
     image: heroWorkspace,
   },
   {
-    id: "cloud-solutions",
-    label: "Cloud Solutions",
-    title: "Scalable Cloud",
-    subtitle: "Infrastructure",
-    description: "Deploy with confidence on AWS, Azure, or GCP. We architect cloud solutions that scale with your business and optimize costs.",
-    ctaText: "Go Cloud",
+    id: "ecommerce",
+    label: "E-Commerce",
+    title: "Retail &",
+    subtitle: "Marketplace",
+    description: "High-converting storefronts, inventory systems, and marketplace platforms that scale from startup to enterprise.",
+    ctaText: "Explore E-Commerce",
     ctaLink: "/contact",
     bgColor: "#711e1b",
     imageBgColor: "rgba(113, 30, 27, 0.6)",
     image: projectFinanceflow,
   },
   {
-    id: "ui-ux-design",
-    label: "UI/UX Design",
-    title: "User-Centered",
-    subtitle: "Design Systems",
-    description: "Create intuitive interfaces that delight users. Our design process combines research, prototyping, and testing to deliver exceptional experiences.",
-    ctaText: "Design with Us",
+    id: "edtech",
+    label: "EdTech",
+    title: "Learning",
+    subtitle: "Platforms",
+    description: "LMS solutions, virtual classrooms, and educational apps that engage learners and simplify administration.",
+    ctaText: "Explore EdTech",
     ctaLink: "/contact",
     bgColor: "#894f71",
     imageBgColor: "rgba(137, 79, 113, 0.6)",
     image: projectHealthtrack,
   },
   {
-    id: "custom-software",
-    label: "Custom Software",
-    title: "Enterprise-Grade",
-    subtitle: "Solutions",
-    description: "Tailored software built for your unique workflows. From CRMs to ERPs, we develop robust systems that transform how you operate.",
-    ctaText: "Let's Build",
+    id: "logistics",
+    label: "Logistics",
+    title: "Supply Chain",
+    subtitle: "& Operations",
+    description: "Fleet management, warehouse systems, and real-time tracking solutions that optimize your logistics operations.",
+    ctaText: "Explore Logistics",
     ctaLink: "/contact",
     bgColor: "#485c81",
     imageBgColor: "rgba(72, 92, 129, 0.6)",
@@ -74,7 +74,7 @@ const solutionsData = [
   },
 ];
 
-const SolutionsCarouselSection = () => {
+const IndustriesCarouselSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
@@ -92,10 +92,10 @@ const SolutionsCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
-              <span className="italic font-serif">Solutions that scale</span>
+              <span className="italic font-serif">Industries</span> we serve
             </h2>
-            <p className="text-xl md:text-2xl text-foreground font-medium">
-              with your business
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Deep expertise across sectors that demand reliability and scale
             </p>
           </div>
         </ScrollReveal>
@@ -103,9 +103,9 @@ const SolutionsCarouselSection = () => {
         {/* Tab Navigation */}
         <ScrollReveal delay={100}>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
-            {solutionsData.map((solution, index) => (
+            {industriesData.map((industry, index) => (
               <button
-                key={solution.id}
+                key={industry.id}
                 onClick={() => handleTabClick(index)}
                 className={`relative px-2 py-2 text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeIndex === index
@@ -113,10 +113,10 @@ const SolutionsCarouselSection = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {solution.label}
+                {industry.label}
                 {activeIndex === index && (
                   <motion.div
-                    layoutId="activeSolutionTab"
+                    layoutId="activeIndustryTab"
                     className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-foreground rounded-full"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
@@ -130,13 +130,13 @@ const SolutionsCarouselSection = () => {
       {/* Carousel */}
       <div className="relative w-full flex justify-center">
         <div className="relative w-[85vw] max-w-[1000px] h-[420px] sm:h-[450px]">
-          {solutionsData.map((solution, index) => {
+          {industriesData.map((industry, index) => {
             const isActive = index === activeIndex;
             const offset = index - activeIndex;
 
             return (
               <motion.div
-                key={solution.id}
+                key={industry.id}
                 onClick={() => handleTabClick(index)}
                 initial={false}
                 animate={{
@@ -149,7 +149,7 @@ const SolutionsCarouselSection = () => {
                 className={`absolute inset-0 ${!isActive ? "cursor-pointer" : ""}`}
               >
                 <div
-                  style={{ backgroundColor: solution.bgColor }}
+                  style={{ backgroundColor: industry.bgColor }}
                   className="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10"
                 >
                   <div className="flex flex-col md:flex-row h-full gap-6">
@@ -157,20 +157,20 @@ const SolutionsCarouselSection = () => {
                     <div className="flex flex-col justify-between md:w-[45%]">
                       <div>
                         <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
-                          {solution.title}
+                          {industry.title}
                         </h3>
                         <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-                          {solution.subtitle}
+                          {industry.subtitle}
                         </p>
                         <p className="text-white/80 text-sm sm:text-base max-w-md mb-6">
-                          {solution.description}
+                          {industry.description}
                         </p>
                       </div>
 
                       <div>
-                        <Link to={solution.ctaLink}>
+                        <Link to={industry.ctaLink}>
                           <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-sm sm:text-base border-0 rounded-full shadow-sm">
-                            {solution.ctaText}
+                            {industry.ctaText}
                           </Button>
                         </Link>
                       </div>
@@ -178,16 +178,16 @@ const SolutionsCarouselSection = () => {
 
                     {/* Right - Image */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      {imageErrors[solution.id] ? (
+                      {imageErrors[industry.id] ? (
                         <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
                           <ImageOff className="w-16 h-16 text-white/40" />
                         </div>
                       ) : (
                         <img
-                          src={solution.image}
-                          alt={solution.title}
+                          src={industry.image}
+                          alt={industry.title}
                           className="w-full h-full object-cover rounded-2xl"
-                          onError={() => handleImageError(solution.id)}
+                          onError={() => handleImageError(industry.id)}
                         />
                       )}
                     </div>
@@ -201,7 +201,7 @@ const SolutionsCarouselSection = () => {
 
       {/* Mobile Navigation Dots */}
       <div className="flex justify-center gap-2 mt-6 sm:hidden">
-        {solutionsData.map((_, index) => (
+        {industriesData.map((_, index) => (
           <button
             key={index}
             onClick={() => handleTabClick(index)}
@@ -215,4 +215,4 @@ const SolutionsCarouselSection = () => {
   );
 };
 
-export default SolutionsCarouselSection;
+export default IndustriesCarouselSection;
