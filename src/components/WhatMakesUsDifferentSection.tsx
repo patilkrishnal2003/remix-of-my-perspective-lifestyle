@@ -370,13 +370,15 @@ const DesktopHorizontalCanvas = ({
   showProductLayer, 
   showTimeline, 
   showFocusedPath, 
-  showDecisionPoints 
+  showDecisionPoints,
+  activeStep
 }: { 
   showSystemDiagram: boolean;
   showProductLayer: boolean;
   showTimeline: boolean;
   showFocusedPath: boolean;
   showDecisionPoints: boolean;
+  activeStep: number;
 }) => {
   return (
     <svg
@@ -509,20 +511,23 @@ const DesktopHorizontalCanvas = ({
               transition={{ duration: 1 }}
             />
             
-            {/* Step 1 Label */}
-            <motion.text
-              x="300"
-              y="80"
-              textAnchor="middle"
-              fill="rgba(255,255,255,0.4)"
-              fontSize="11"
-              fontWeight="500"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              End-to-End System Architecture
-            </motion.text>
+            {/* Step 1 Label - only show when this step is active */}
+            {activeStep === 0 && (
+              <motion.text
+                x="300"
+                y="80"
+                textAnchor="middle"
+                fill="rgba(255,255,255,0.4)"
+                fontSize="11"
+                fontWeight="500"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                End-to-End System Architecture
+              </motion.text>
+            )}
           </motion.g>
         )}
       </AnimatePresence>
@@ -585,20 +590,23 @@ const DesktopHorizontalCanvas = ({
               transition={{ delay: 0.5 }}
             />
             
-            {/* Step 2 Label */}
-            <motion.text
-              x="300"
-              y="80"
-              textAnchor="middle"
-              fill="rgba(255,255,255,0.4)"
-              fontSize="11"
-              fontWeight="500"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              Integrated Product Teams
-            </motion.text>
+            {/* Step 2 Label - only show when this step is active */}
+            {activeStep === 1 && (
+              <motion.text
+                x="300"
+                y="80"
+                textAnchor="middle"
+                fill="rgba(255,255,255,0.4)"
+                fontSize="11"
+                fontWeight="500"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Integrated Product Teams
+              </motion.text>
+            )}
           </motion.g>
         )}
       </AnimatePresence>
@@ -650,20 +658,23 @@ const DesktopHorizontalCanvas = ({
               </motion.g>
             ))}
             
-            {/* Step 3 Label */}
-            <motion.text
-              x="300"
-              y="80"
-              textAnchor="middle"
-              fill="rgba(255,255,255,0.4)"
-              fontSize="11"
-              fontWeight="500"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              Continuous Partnership Lifecycle
-            </motion.text>
+            {/* Step 3 Label - only show when this step is active */}
+            {activeStep === 2 && (
+              <motion.text
+                x="300"
+                y="80"
+                textAnchor="middle"
+                fill="rgba(255,255,255,0.4)"
+                fontSize="11"
+                fontWeight="500"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Continuous Partnership Lifecycle
+              </motion.text>
+            )}
           </motion.g>
         )}
       </AnimatePresence>
@@ -697,20 +708,23 @@ const DesktopHorizontalCanvas = ({
               transition={{ duration: 0.6, delay: 0.8 }}
             />
             
-            {/* Step 4 Label */}
-            <motion.text
-              x="300"
-              y="80"
-              textAnchor="middle"
-              fill="rgba(255,255,255,0.4)"
-              fontSize="11"
-              fontWeight="500"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              Focused Client Engagement
-            </motion.text>
+            {/* Step 4 Label - only show when this step is active */}
+            {activeStep === 3 && (
+              <motion.text
+                x="300"
+                y="80"
+                textAnchor="middle"
+                fill="rgba(255,255,255,0.4)"
+                fontSize="11"
+                fontWeight="500"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Focused Client Engagement
+              </motion.text>
+            )}
           </motion.g>
         )}
       </AnimatePresence>
@@ -748,19 +762,23 @@ const DesktopHorizontalCanvas = ({
               </motion.g>
             ))}
             
-            <motion.text
-              x="300"
-              y="80"
-              textAnchor="middle"
-              fill="rgba(255,255,255,0.4)"
-              fontSize="11"
-              fontWeight="500"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              Strategic Decision Points
-            </motion.text>
+            {/* Step 5 Label - only show when this step is active */}
+            {activeStep === 4 && (
+              <motion.text
+                x="300"
+                y="80"
+                textAnchor="middle"
+                fill="rgba(255,255,255,0.4)"
+                fontSize="11"
+                fontWeight="500"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                Strategic Decision Points
+              </motion.text>
+            )}
           </motion.g>
         )}
       </AnimatePresence>
@@ -1029,6 +1047,7 @@ const WhatMakesUsDifferentSection = () => {
                   showTimeline={showTimeline}
                   showFocusedPath={showFocusedPath}
                   showDecisionPoints={showDecisionPoints}
+                  activeStep={activeIndex}
                 />
               )}
             </motion.div>
