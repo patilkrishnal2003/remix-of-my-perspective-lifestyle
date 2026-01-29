@@ -79,6 +79,7 @@ const DigitalServicesCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
+            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Grow & Scale</p>
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
               <span className="italic font-serif">We drive demand, revenue, and scale</span>
             </h2>

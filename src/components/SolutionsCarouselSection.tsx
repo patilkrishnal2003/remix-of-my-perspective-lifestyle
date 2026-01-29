@@ -91,6 +91,7 @@ const SolutionsCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
+            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Build</p>
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
               <span className="italic font-serif">We build the digital engine</span>
             </h2>
