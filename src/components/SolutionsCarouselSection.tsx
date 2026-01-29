@@ -172,16 +172,11 @@ const SolutionsCarouselSection = () => {
 
                     {/* Right - Image */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      <div
-                        style={{ backgroundColor: solution.imageBgColor }}
-                        className="w-full h-full rounded-2xl p-6 flex items-center justify-center"
-                      >
-                        <img
-                          src={solution.image}
-                          alt={solution.title}
-                          className="w-full h-full object-cover rounded-xl"
-                        />
-                      </div>
+                      <img
+                        src={solution.image}
+                        alt={solution.title}
+                        className="w-full h-full object-cover rounded-2xl"
+                      />
                     </div>
                   </div>
                 </div>
