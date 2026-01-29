@@ -61,14 +61,14 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
             </Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
               <span className="block font-serif italic font-normal mb-1">
-                What Our Clients Say
+                Trusted by Teams
               </span>
               <span className="block font-bold">
-                About <span className="text-primary">Working With Us</span>
+                Who Care About <span className="text-primary">Results</span>
               </span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
-              Real feedback from founders and teams who've partnered with us to build products, drive growth, and scale their businesses.
+              Hear directly from clients about their experience working with us — from product delivery to measurable business outcomes.
             </p>
           </div>
         </ScrollReveal>
