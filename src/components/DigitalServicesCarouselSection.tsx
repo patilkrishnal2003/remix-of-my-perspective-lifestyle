@@ -11,70 +11,70 @@ import projectFinanceflow from "@/assets/project-financeflow.jpg";
 import projectHealthtrack from "@/assets/project-healthtrack.jpg";
 import projectEdulearn from "@/assets/project-edulearn.jpg";
 
-const solutionsData = [
+const digitalServicesData = [
   {
-    id: "web-development",
-    label: "Web Development",
-    title: "Modern Web",
-    subtitle: "Applications",
-    description: "From responsive websites to complex web apps, we build fast, scalable solutions using React, Next.js, and modern frameworks that drive business growth.",
-    ctaText: "Start Your Project",
+    id: "digital-marketing",
+    label: "Digital Marketing",
+    title: "Data-Driven",
+    subtitle: "Marketing Campaigns",
+    description: "Reach your target audience with precision. We craft marketing strategies powered by analytics, automation, and creative excellence.",
+    ctaText: "Boost Your Reach",
     ctaLink: "/contact",
-    bgColor: "#438260",
-    imageBgColor: "rgba(67, 130, 96, 0.6)",
+    bgColor: "#2d5a7b",
+    imageBgColor: "rgba(45, 90, 123, 0.6)",
     image: heroDashboard,
   },
   {
-    id: "mobile-apps",
-    label: "Mobile Apps",
-    title: "Native & Cross-Platform",
-    subtitle: "Mobile Solutions",
-    description: "Build powerful iOS and Android apps with seamless user experiences. We deliver apps that users love and businesses rely on.",
-    ctaText: "Build Your App",
+    id: "seo-content",
+    label: "SEO & Content",
+    title: "Search Engine",
+    subtitle: "Optimization",
+    description: "Dominate search rankings with strategic SEO and compelling content. We help you get found by the customers who matter most.",
+    ctaText: "Rank Higher",
     ctaLink: "/contact",
-    bgColor: "#948149",
-    imageBgColor: "rgba(148, 129, 73, 0.6)",
+    bgColor: "#5a4a3a",
+    imageBgColor: "rgba(90, 74, 58, 0.6)",
     image: heroWorkspace,
   },
   {
-    id: "cloud-solutions",
-    label: "Cloud Solutions",
-    title: "Scalable Cloud",
-    subtitle: "Infrastructure",
-    description: "Deploy with confidence on AWS, Azure, or GCP. We architect cloud solutions that scale with your business and optimize costs.",
-    ctaText: "Go Cloud",
+    id: "brand-strategy",
+    label: "Brand Strategy",
+    title: "Memorable",
+    subtitle: "Brand Identity",
+    description: "Build a brand that resonates. From logo design to brand guidelines, we create cohesive identities that stand out in crowded markets.",
+    ctaText: "Build Your Brand",
     ctaLink: "/contact",
-    bgColor: "#711e1b",
-    imageBgColor: "rgba(113, 30, 27, 0.6)",
+    bgColor: "#6b4c5a",
+    imageBgColor: "rgba(107, 76, 90, 0.6)",
     image: projectFinanceflow,
   },
   {
-    id: "ui-ux-design",
-    label: "UI/UX Design",
-    title: "User-Centered",
-    subtitle: "Design Systems",
-    description: "Create intuitive interfaces that delight users. Our design process combines research, prototyping, and testing to deliver exceptional experiences.",
-    ctaText: "Design with Us",
+    id: "social-media",
+    label: "Social Media",
+    title: "Engaging Social",
+    subtitle: "Presence",
+    description: "Connect with your audience where they spend their time. We manage and grow your social channels with authentic, engaging content.",
+    ctaText: "Grow Your Following",
     ctaLink: "/contact",
-    bgColor: "#894f71",
-    imageBgColor: "rgba(137, 79, 113, 0.6)",
+    bgColor: "#3a6b5a",
+    imageBgColor: "rgba(58, 107, 90, 0.6)",
     image: projectHealthtrack,
   },
   {
-    id: "custom-software",
-    label: "Custom Software",
-    title: "Enterprise-Grade",
-    subtitle: "Solutions",
-    description: "Tailored software built for your unique workflows. From CRMs to ERPs, we develop robust systems that transform how you operate.",
-    ctaText: "Let's Build",
+    id: "analytics",
+    label: "Analytics",
+    title: "Actionable",
+    subtitle: "Insights & Data",
+    description: "Turn data into decisions. Our analytics solutions help you understand user behavior, track KPIs, and optimize for growth.",
+    ctaText: "Get Insights",
     ctaLink: "/contact",
-    bgColor: "#485c81",
-    imageBgColor: "rgba(72, 92, 129, 0.6)",
+    bgColor: "#5a3a6b",
+    imageBgColor: "rgba(90, 58, 107, 0.6)",
     image: projectEdulearn,
   },
 ];
 
-const SolutionsCarouselSection = () => {
+const DigitalServicesCarouselSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
@@ -92,10 +92,10 @@ const SolutionsCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
-              <span className="italic font-serif">Tech Services</span>
+              <span className="italic font-serif">Digital Services</span>
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-              Engineering excellence for modern businesses
+              Amplify your digital presence
             </p>
           </div>
         </ScrollReveal>
@@ -103,7 +103,7 @@ const SolutionsCarouselSection = () => {
         {/* Tab Navigation */}
         <ScrollReveal delay={100}>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
-            {solutionsData.map((solution, index) => (
+            {digitalServicesData.map((solution, index) => (
               <button
                 key={solution.id}
                 onClick={() => handleTabClick(index)}
@@ -116,7 +116,7 @@ const SolutionsCarouselSection = () => {
                 {solution.label}
                 {activeIndex === index && (
                   <motion.div
-                    layoutId="activeSolutionTab"
+                    layoutId="activeDigitalTab"
                     className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-foreground rounded-full"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
@@ -130,7 +130,7 @@ const SolutionsCarouselSection = () => {
       {/* Carousel */}
       <div className="relative w-full flex justify-center">
         <div className="relative w-[85vw] max-w-[1000px] h-[420px] sm:h-[450px]">
-          {solutionsData.map((solution, index) => {
+          {digitalServicesData.map((solution, index) => {
             const isActive = index === activeIndex;
             const offset = index - activeIndex;
 
@@ -178,7 +178,7 @@ const SolutionsCarouselSection = () => {
 
                     {/* Right - Image */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      {imageErrors[solution.id] ? (
+                      {imageErrors[solution.id] || !solution.image ? (
                         <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
                           <ImageOff className="w-16 h-16 text-white/40" />
                         </div>
@@ -201,7 +201,7 @@ const SolutionsCarouselSection = () => {
 
       {/* Mobile Navigation Dots */}
       <div className="flex justify-center gap-2 mt-6 sm:hidden">
-        {solutionsData.map((_, index) => (
+        {digitalServicesData.map((_, index) => (
           <button
             key={index}
             onClick={() => handleTabClick(index)}
@@ -215,4 +215,4 @@ const SolutionsCarouselSection = () => {
   );
 };
 
-export default SolutionsCarouselSection;
+export default DigitalServicesCarouselSection;
