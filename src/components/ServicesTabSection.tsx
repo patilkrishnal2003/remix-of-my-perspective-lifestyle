@@ -3,7 +3,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Globe, Smartphone, Code, Database, Palette, Cloud } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const servicesData = [
   {
@@ -77,90 +77,73 @@ const servicesData = [
 const ServicesTabSection = () => {
   const [activeTab, setActiveTab] = useState("web");
 
-  const handleTabChange = (newTab: string) => {
-    setActiveTab(newTab);
-  };
-
   return (
-    <section className="section-divider py-20 pt-24 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            Our Services
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive development solutions tailored to your business needs
-          </p>
-        </div>
+    <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4">
+          Our Services
+        </h2>
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          Comprehensive development solutions tailored to your business needs
+        </p>
+      </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         {/* Tab Navigation */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
-            {servicesData.map((service) => (
+        <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
+          {servicesData.map((service) => (
             <button
-                key={service.id}
-                onClick={() => handleTabChange(service.id)}
-                className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                  activeTab === service.id
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {service.label}
-                {activeTab === service.id && (
-                  <motion.div
-                    layoutId="activeServiceTabUnderline"
-                    className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </button>
-            ))}
-            {/* Full-width line below tabs */}
-            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
-          </div>
+              key={service.id}
+              onClick={() => setActiveTab(service.id)}
+              className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                activeTab === service.id
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {service.label}
+              {activeTab === service.id && (
+                <motion.div
+                  layoutId="activeServiceTabUnderline"
+                  className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+            </button>
+          ))}
+          {/* Full-width line below tabs */}
+          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
         </div>
 
-        {/* Carousel Container - Full width */}
-        <div className="relative overflow-hidden px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center max-w-7xl mx-auto">
-            {servicesData.map((service, index) => {
-              const activeIndex = servicesData.findIndex(s => s.id === activeTab);
-              const diff = index - activeIndex;
-              
-              // Only render cards within range (-1, 0, 1)
-              if (Math.abs(diff) > 1) return null;
-              
-              const isActive = diff === 0;
-              
-              return (
+        {/* Tab Content */}
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            {servicesData.map((service) => (
+              <TabsContent
+                key={service.id}
+                value={service.id}
+                className="mt-0 focus-visible:outline-none focus-visible:ring-0"
+              >
                 <motion.div
-                  key={service.id}
-                  initial={false}
-                  animate={{
-                    x: diff * 90 + "%",
-                    scale: isActive ? 1 : 0.9,
-                    opacity: isActive ? 1 : 0.5,
-                    zIndex: isActive ? 10 : 5,
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  className={`${isActive ? 'relative' : 'absolute'} w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 overflow-hidden cursor-pointer ${
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className={`w-full rounded-[2rem] sm:rounded-[2.5rem] p-8 pb-6 md:p-12 md:pb-8 relative overflow-hidden ${
                     (() => {
-                      const idx = index % 3;
-                      if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]";
-                      if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]";
-                      return "bg-gradient-to-b from-primary/25 to-primary/5";
+                      const idx = servicesData.findIndex(s => s.id === service.id) % 3;
+                      if (idx === 0) return "bg-gradient-to-b from-[hsl(179_37%_54%/0.25)] to-[hsl(179_37%_54%/0.05)]"; // Teal
+                      if (idx === 1) return "bg-gradient-to-b from-[hsl(97_45%_63%/0.25)] to-[hsl(97_45%_63%/0.05)]"; // Light Green
+                      return "bg-gradient-to-b from-primary/25 to-primary/5"; // Primary blue
                     })()
                   }`}
-                  onClick={() => !isActive && handleTabChange(service.id)}
                 >
                   
                   <div className="relative z-10 flex flex-col items-center text-center gap-6">
                     {/* Icon */}
                     <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
                       (() => {
-                        const idx = index % 3;
+                        const idx = servicesData.findIndex(s => s.id === service.id) % 3;
                         if (idx === 0) return "bg-[hsl(179_37%_54%)] dark:bg-[hsl(179_37%_60%)]";
                         if (idx === 1) return "bg-[hsl(97_45%_63%)] dark:bg-[hsl(97_45%_68%)]";
                         return "bg-primary";
@@ -210,12 +193,11 @@ const ServicesTabSection = () => {
                     ))}
                   </div>
                 </motion.div>
-              );
-            })}
-          </div>
+              </TabsContent>
+            ))}
+          </AnimatePresence>
         </div>
       </Tabs>
-      </div>
     </section>
   );
 };
