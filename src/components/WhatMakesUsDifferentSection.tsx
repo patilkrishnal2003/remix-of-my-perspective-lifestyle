@@ -790,11 +790,35 @@ const WhatMakesUsDifferentSection = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [visitedIndices, setVisitedIndices] = useState<Set<number>>(new Set([0]));
   const [mobileStep, setMobileStep] = useState(0);
-  const [isAutoRunning, setIsAutoRunning] = useState(true);
+  const [isAutoRunning, setIsAutoRunning] = useState(false); // Start paused until section is in view
+  const [hasStarted, setHasStarted] = useState(false); // Track if animation has ever started
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const autoRunTimerRef = useRef<NodeJS.Timeout | null>(null);
   const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
+
+  // Start auto-run when section comes into view for the first time
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || hasStarted) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+            setIsAutoRunning(true);
+          }
+        });
+      },
+      { threshold: 0.3 } // Trigger when 30% of section is visible
+    );
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, [hasStarted]);
 
   // Auto-run logic for both mobile and desktop
   useEffect(() => {
@@ -901,7 +925,7 @@ const WhatMakesUsDifferentSection = () => {
   const showDecisionPoints = visitedIndices.has(4) || activeIndex === 4;
 
   return (
-    <section className="section-divider relative bg-[hsl(0_0%_6%)] text-white overflow-hidden">
+    <section ref={sectionRef} className="section-divider relative bg-[hsl(0_0%_6%)] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         {/* Header */}
         <div className="mb-8 sm:mb-12 lg:mb-16">
