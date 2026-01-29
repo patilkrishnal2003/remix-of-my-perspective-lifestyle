@@ -30,7 +30,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
   const [filter, setFilter] = useState<Filter>("all");
   const filtered = useMemo(
     () => (filter === "all" ? testimonials : testimonials.filter((t) => t.platform === filter)),
-    [filter, testimonials],
+    [filter, testimonials]
   );
 
   const visible = useVisibleCount();
@@ -60,14 +60,15 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
               TESTIMONIALS
             </Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
-              <span className="block font-serif italic font-normal mb-1">Trusted by Teams</span>
+              <span className="block font-serif italic font-normal mb-1">
+                Trusted by Teams
+              </span>
               <span className="block font-bold">
                 Who Care About <span className="text-primary">Results</span>
               </span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
-              Hear directly from clients about their experience working with us - from product delivery to measurable
-              business outcomes.
+              Hear directly from clients about their experience working with us — from product delivery to measurable business outcomes.
             </p>
           </div>
         </ScrollReveal>

@@ -4,20 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
-import {
-  ImageOff,
-  Globe,
-  TrendingUp,
-  Target,
-  Megaphone,
-  BarChart3,
-  Users,
-  Wallet,
-  Mail,
-  LineChart,
-  Gauge,
-  Puzzle,
-} from "lucide-react";
+import { ImageOff, Globe, TrendingUp, Target, Megaphone, BarChart3, Users, Wallet, Mail, LineChart, Gauge, Puzzle } from "lucide-react";
 
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
@@ -30,8 +17,7 @@ const digitalServicesData = [
     label: "Digital Presence",
     title: "Demand",
     subtitle: "Foundation",
-    description:
-      "Website & app ecosystem strategy, SEO & performance optimization, content structure & publishing framework, social presence strategy, and authority building.",
+    description: "Website & app ecosystem strategy, SEO & performance optimization, content structure & publishing framework, social presence strategy, and authority building.",
     mobileDescription: "Build a strong online presence that attracts the right audience.",
     outcome: "A strong digital presence that attracts and qualifies the right audience.",
     ctaText: "Build Presence",
@@ -49,8 +35,7 @@ const digitalServicesData = [
     label: "Growth Marketing",
     title: "Acquisition",
     subtitle: "Engine",
-    description:
-      "Growth marketing roadmap, paid ads strategy (Google, Meta, LinkedIn), funnel & campaign architecture, content & inbound marketing, and conversion rate optimization.",
+    description: "Growth marketing roadmap, paid ads strategy (Google, Meta, LinkedIn), funnel & campaign architecture, content & inbound marketing, and conversion rate optimization.",
     mobileDescription: "Predictable traffic, leads, and customer acquisition.",
     outcome: "Predictable traffic, leads, and customer acquisition.",
     ctaText: "Drive Growth",
@@ -68,8 +53,7 @@ const digitalServicesData = [
     label: "Sales & Revenue",
     title: "Revenue",
     subtitle: "Systems",
-    description:
-      "Lead funnel design (B2B/B2C), CRM selection & automation, email, WhatsApp & outbound systems, sales pipeline optimization, and marketing → sales handover.",
+    description: "Lead funnel design (B2B/B2C), CRM selection & automation, email, WhatsApp & outbound systems, sales pipeline optimization, and marketing → sales handover.",
     mobileDescription: "Automated systems that convert leads into revenue.",
     outcome: "A scalable, automated system that converts leads into revenue.",
     ctaText: "Boost Revenue",
@@ -87,8 +71,7 @@ const digitalServicesData = [
     label: "Strategy & Scaling",
     title: "Analytics &",
     subtitle: "Scaling",
-    description:
-      "Market analysis, product-market fit validation, monetization strategy, KPI frameworks, GA4/Mixpanel dashboards, process optimization, and automation systems.",
+    description: "Market analysis, product-market fit validation, monetization strategy, KPI frameworks, GA4/Mixpanel dashboards, process optimization, and automation systems.",
     mobileDescription: "Data-driven insights for efficient scaling.",
     outcome: "Data-driven growth, operational efficiency, and scale readiness.",
     ctaText: "Scale Smart",
@@ -112,7 +95,7 @@ const DigitalServicesCarouselSection = () => {
   };
 
   const handleImageError = (id: string) => {
-    setImageErrors((prev) => ({ ...prev, [id]: true }));
+    setImageErrors(prev => ({ ...prev, [id]: true }));
   };
 
   return (
@@ -124,14 +107,15 @@ const DigitalServicesCarouselSection = () => {
               GROW & SCALE
             </Badge>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
-              <span className="block font-serif italic font-normal mb-1">How We Drive Growth</span>
+              <span className="block font-serif italic font-normal mb-1">
+                How We Drive Growth
+              </span>
               <span className="block font-bold">
                 That <span className="text-primary">Actually Scales</span>
               </span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
-              We help you increase visibility, acquire customers, and build revenue systems that scale predictably -
-              backed by data, not guesswork.
+              We help you increase visibility, acquire customers, and build revenue systems that scale predictably — backed by data, not guesswork.
             </p>
           </div>
         </ScrollReveal>
@@ -144,7 +128,9 @@ const DigitalServicesCarouselSection = () => {
                 key={solution.id}
                 onClick={() => handleTabClick(index)}
                 className={`relative px-2 py-2 text-sm sm:text-base font-medium transition-all duration-300 ${
-                  activeIndex === index ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  activeIndex === index
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {solution.label}
@@ -213,7 +199,9 @@ const DigitalServicesCarouselSection = () => {
                           <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
                             {solution.subtitle}
                           </p>
-                          <p className="text-white/80 text-sm max-w-md mb-4">{solution.description}</p>
+                          <p className="text-white/80 text-sm max-w-md mb-4">
+                            {solution.description}
+                          </p>
                         </div>
 
                         <div className="space-y-4">
@@ -222,7 +210,7 @@ const DigitalServicesCarouselSection = () => {
                               {solution.ctaText}
                             </Button>
                           </Link>
-
+                          
                           {/* Feature Points */}
                           <div className="space-y-2 pt-2">
                             {solution.features.map((feature, idx) => (
@@ -253,7 +241,10 @@ const DigitalServicesCarouselSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div style={{ backgroundColor: solution.bgColor }} className="w-full rounded-[1.5rem] p-4">
+            <div
+              style={{ backgroundColor: solution.bgColor }}
+              className="w-full rounded-[1.5rem] p-4"
+            >
               {/* Image Section - Rounded inside card */}
               <div className="w-full h-48 rounded-2xl overflow-hidden mb-5">
                 {imageErrors[solution.id] || !solution.image ? (
@@ -269,7 +260,7 @@ const DigitalServicesCarouselSection = () => {
                   />
                 )}
               </div>
-
+              
               {/* Content Section */}
               <div className="px-1 pb-2">
                 <h3 className="text-2xl font-bold text-white leading-tight mb-2">
@@ -284,7 +275,7 @@ const DigitalServicesCarouselSection = () => {
                     {solution.ctaText}
                   </Button>
                 </Link>
-
+                
                 {/* Feature Points */}
                 <div className="space-y-2 pt-2">
                   {solution.features.map((feature, idx) => (
