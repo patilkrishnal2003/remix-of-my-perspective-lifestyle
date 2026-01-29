@@ -152,8 +152,24 @@ const DigitalServicesCarouselSection = () => {
                   style={{ backgroundColor: solution.bgColor }}
                   className="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10"
                 >
-                  <div className="flex flex-col md:flex-row h-full gap-6">
-                    {/* Left - Text Content */}
+                <div className="flex flex-col md:flex-row h-full gap-6">
+                    {/* Left - Image */}
+                    <div className="hidden md:flex md:w-[55%] items-center justify-center">
+                      {imageErrors[solution.id] || !solution.image ? (
+                        <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
+                          <ImageOff className="w-16 h-16 text-white/40" />
+                        </div>
+                      ) : (
+                        <img
+                          src={solution.image}
+                          alt={solution.title}
+                          className="w-full h-full object-cover rounded-2xl"
+                          onError={() => handleImageError(solution.id)}
+                        />
+                      )}
+                    </div>
+
+                    {/* Right - Text Content */}
                     <div className="flex flex-col justify-between md:w-[45%]">
                       <div>
                         <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
@@ -174,22 +190,6 @@ const DigitalServicesCarouselSection = () => {
                           </Button>
                         </Link>
                       </div>
-                    </div>
-
-                    {/* Right - Image */}
-                    <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      {imageErrors[solution.id] || !solution.image ? (
-                        <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
-                          <ImageOff className="w-16 h-16 text-white/40" />
-                        </div>
-                      ) : (
-                        <img
-                          src={solution.image}
-                          alt={solution.title}
-                          className="w-full h-full object-cover rounded-2xl"
-                          onError={() => handleImageError(solution.id)}
-                        />
-                      )}
                     </div>
                   </div>
                 </div>
