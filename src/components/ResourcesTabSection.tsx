@@ -168,7 +168,7 @@ export default function ResourcesTabSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
             Explore our resources, insights, and community
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg mb-6">
+          <p className="hidden lg:block text-muted-foreground text-base md:text-lg mb-6">
             Everything you need to build exceptional digital products. From tutorials to templates, we've got you covered.
           </p>
           <Link to={activeTabData.link}>
