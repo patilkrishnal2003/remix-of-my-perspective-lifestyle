@@ -164,25 +164,25 @@ const DigitalServicesCarouselSection = () => {
                     style={{ backgroundColor: solution.bgColor }}
                     className="w-full h-full rounded-[2.5rem] p-8 md:p-10"
                   >
-                    <div className="flex flex-row h-full gap-6">
-                      {/* Left - Image */}
-                      <div className="hidden md:flex w-[55%] items-center justify-center">
-                        {imageErrors[solution.id] || !solution.image ? (
-                          <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
+                    <div className="flex flex-col md:flex-row h-full gap-6">
+                      {/* Image (top on tablet, left on desktop) */}
+                      <div className="flex w-full md:w-[55%] items-center justify-center">
+                        <div className="w-full h-48 sm:h-56 md:h-full rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center">
+                          {imageErrors[solution.id] || !solution.image ? (
                             <ImageOff className="w-16 h-16 text-white/40" />
-                          </div>
-                        ) : (
-                          <img
-                            src={solution.image}
-                            alt={solution.title}
-                            className="w-full h-full object-cover rounded-2xl"
-                            onError={() => handleImageError(solution.id)}
-                          />
-                        )}
+                          ) : (
+                            <img
+                              src={solution.image}
+                              alt={solution.title}
+                              className="w-full h-full object-cover"
+                              onError={() => handleImageError(solution.id)}
+                            />
+                          )}
+                        </div>
                       </div>
 
-                      {/* Right - Text Content */}
-                      <div className="flex flex-col justify-between w-[45%]">
+                      {/* Text Content */}
+                      <div className="flex flex-col justify-between w-full md:w-[45%]">
                         <div>
                           <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
                             {solution.title}
