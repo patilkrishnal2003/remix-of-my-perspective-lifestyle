@@ -13,64 +13,52 @@ import projectEdulearn from "@/assets/project-edulearn.jpg";
 
 const digitalServicesData = [
   {
-    id: "digital-marketing",
-    label: "Digital Marketing",
-    title: "Data-Driven",
-    subtitle: "Marketing Campaigns",
-    description: "Reach your target audience with precision. We craft marketing strategies powered by analytics, automation, and creative excellence.",
-    ctaText: "Boost Your Reach",
+    id: "digital-presence",
+    label: "Digital Presence",
+    title: "Demand",
+    subtitle: "Foundation",
+    description: "Website & app ecosystem strategy, SEO & performance optimization, content structure & publishing framework, social presence strategy, and authority building.",
+    outcome: "A strong digital presence that attracts and qualifies the right audience.",
+    ctaText: "Build Presence",
     ctaLink: "/contact",
     bgColor: "#2d5a7b",
-    imageBgColor: "rgba(45, 90, 123, 0.6)",
     image: heroDashboard,
   },
   {
-    id: "seo-content",
-    label: "SEO & Content",
-    title: "Search Engine",
-    subtitle: "Optimization",
-    description: "Dominate search rankings with strategic SEO and compelling content. We help you get found by the customers who matter most.",
-    ctaText: "Rank Higher",
+    id: "growth-marketing",
+    label: "Growth Marketing",
+    title: "Acquisition",
+    subtitle: "Engine",
+    description: "Growth marketing roadmap, paid ads strategy (Google, Meta, LinkedIn), funnel & campaign architecture, content & inbound marketing, and conversion rate optimization.",
+    outcome: "Predictable traffic, leads, and customer acquisition.",
+    ctaText: "Drive Growth",
     ctaLink: "/contact",
     bgColor: "#5a4a3a",
-    imageBgColor: "rgba(90, 74, 58, 0.6)",
     image: heroWorkspace,
   },
   {
-    id: "brand-strategy",
-    label: "Brand Strategy",
-    title: "Memorable",
-    subtitle: "Brand Identity",
-    description: "Build a brand that resonates. From logo design to brand guidelines, we create cohesive identities that stand out in crowded markets.",
-    ctaText: "Build Your Brand",
+    id: "sales-revenue",
+    label: "Sales & Revenue",
+    title: "Revenue",
+    subtitle: "Systems",
+    description: "Lead funnel design (B2B/B2C), CRM selection & automation, email, WhatsApp & outbound systems, sales pipeline optimization, and marketing → sales handover.",
+    outcome: "A scalable, automated system that converts leads into revenue.",
+    ctaText: "Boost Revenue",
     ctaLink: "/contact",
     bgColor: "#6b4c5a",
-    imageBgColor: "rgba(107, 76, 90, 0.6)",
     image: projectFinanceflow,
   },
   {
-    id: "social-media",
-    label: "Social Media",
-    title: "Engaging Social",
-    subtitle: "Presence",
-    description: "Connect with your audience where they spend their time. We manage and grow your social channels with authentic, engaging content.",
-    ctaText: "Grow Your Following",
+    id: "growth-strategy",
+    label: "Strategy & Scaling",
+    title: "Analytics &",
+    subtitle: "Scaling",
+    description: "Market analysis, product-market fit validation, monetization strategy, KPI frameworks, GA4/Mixpanel dashboards, process optimization, and automation systems.",
+    outcome: "Data-driven growth, operational efficiency, and scale readiness.",
+    ctaText: "Scale Smart",
     ctaLink: "/contact",
     bgColor: "#3a6b5a",
-    imageBgColor: "rgba(58, 107, 90, 0.6)",
     image: projectHealthtrack,
-  },
-  {
-    id: "analytics",
-    label: "Analytics",
-    title: "Actionable",
-    subtitle: "Insights & Data",
-    description: "Turn data into decisions. Our analytics solutions help you understand user behavior, track KPIs, and optimize for growth.",
-    ctaText: "Get Insights",
-    ctaLink: "/contact",
-    bgColor: "#5a3a6b",
-    imageBgColor: "rgba(90, 58, 107, 0.6)",
-    image: projectEdulearn,
   },
 ];
 
@@ -92,10 +80,10 @@ const DigitalServicesCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
-              <span className="italic font-serif">Digital Services</span>
+              <span className="italic font-serif">We drive demand, revenue, and scale</span>
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-              Amplify your digital presence
+            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+              These services focus on visibility, growth, revenue systems, and long-term scaling. No coding, no design execution — only growth systems and strategy.
             </p>
           </div>
         </ScrollReveal>
@@ -178,9 +166,14 @@ const DigitalServicesCarouselSection = () => {
                         <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
                           {solution.subtitle}
                         </p>
-                        <p className="text-white/80 text-sm sm:text-base max-w-md mb-6">
+                        <p className="text-white/80 text-sm sm:text-base max-w-md mb-4">
                           {solution.description}
                         </p>
+                        {solution.outcome && (
+                          <p className="text-white/90 text-sm font-medium">
+                            🎯 {solution.outcome}
+                          </p>
+                        )}
                       </div>
 
                       <div>

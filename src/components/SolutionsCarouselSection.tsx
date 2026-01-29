@@ -15,61 +15,61 @@ const solutionsData = [
   {
     id: "web-development",
     label: "Web Development",
-    title: "Modern Web",
-    subtitle: "Applications",
-    description: "From responsive websites to complex web apps, we build fast, scalable solutions using React, Next.js, and modern frameworks that drive business growth.",
+    title: "High-Performance",
+    subtitle: "Web Platforms",
+    description: "Startup, SaaS & enterprise websites. Conversion-optimized landing pages, web applications, CMS-based & headless architectures with performance, security & scalability optimization.",
+    outcome: "Fast, scalable, production-ready web platforms.",
     ctaText: "Start Your Project",
     ctaLink: "/contact",
     bgColor: "#438260",
-    imageBgColor: "rgba(67, 130, 96, 0.6)",
     image: heroDashboard,
   },
   {
     id: "mobile-apps",
     label: "Mobile Apps",
-    title: "Native & Cross-Platform",
-    subtitle: "Mobile Solutions",
-    description: "Build powerful iOS and Android apps with seamless user experiences. We deliver apps that users love and businesses rely on.",
+    title: "iOS & Android",
+    subtitle: "Development",
+    description: "Native & cross-platform apps. MVP apps for startups, SaaS companion apps, performance optimization, and store readiness & deployment support.",
+    outcome: "Stable, user-ready mobile applications built for growth.",
     ctaText: "Build Your App",
     ctaLink: "/contact",
     bgColor: "#948149",
-    imageBgColor: "rgba(148, 129, 73, 0.6)",
     image: heroWorkspace,
   },
   {
-    id: "cloud-solutions",
-    label: "Cloud Solutions",
-    title: "Scalable Cloud",
-    subtitle: "Infrastructure",
-    description: "Deploy with confidence on AWS, Azure, or GCP. We architect cloud solutions that scale with your business and optimize costs.",
-    ctaText: "Go Cloud",
+    id: "custom-software",
+    label: "Custom Software",
+    title: "Business Tools &",
+    subtitle: "Automation",
+    description: "Internal tools, CRM/ERP/workflow platforms, API development & integrations, custom SaaS & enterprise software, and AI-enabled tools when relevant.",
+    outcome: "Tailor-made software that improves efficiency and operations.",
+    ctaText: "Let's Build",
     ctaLink: "/contact",
     bgColor: "#711e1b",
-    imageBgColor: "rgba(113, 30, 27, 0.6)",
     image: projectFinanceflow,
   },
   {
     id: "ui-ux-design",
     label: "UI/UX Design",
-    title: "User-Centered",
-    subtitle: "Design Systems",
-    description: "Create intuitive interfaces that delight users. Our design process combines research, prototyping, and testing to deliver exceptional experiences.",
+    title: "Product",
+    subtitle: "Experience",
+    description: "UX research & user journey mapping, wireframes & prototypes, conversion-focused UI design, design systems & component libraries, and usability optimization.",
+    outcome: "Intuitive, high-converting digital experiences.",
     ctaText: "Design with Us",
     ctaLink: "/contact",
     bgColor: "#894f71",
-    imageBgColor: "rgba(137, 79, 113, 0.6)",
     image: projectHealthtrack,
   },
   {
-    id: "custom-software",
-    label: "Custom Software",
-    title: "Enterprise-Grade",
-    subtitle: "Solutions",
-    description: "Tailored software built for your unique workflows. From CRMs to ERPs, we develop robust systems that transform how you operate.",
-    ctaText: "Let's Build",
+    id: "branding",
+    label: "Branding",
+    title: "Product",
+    subtitle: "Positioning",
+    description: "Brand identity (logo, color system, typography), messaging & value proposition, startup positioning, pitch decks & storytelling, and design consistency.",
+    outcome: "A clear, credible, and differentiated brand presence.",
+    ctaText: "Build Your Brand",
     ctaLink: "/contact",
     bgColor: "#485c81",
-    imageBgColor: "rgba(72, 92, 129, 0.6)",
     image: projectEdulearn,
   },
 ];
@@ -92,10 +92,10 @@ const SolutionsCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-2">
-              <span className="italic font-serif">Tech Services</span>
+              <span className="italic font-serif">We build the digital engine</span>
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-medium">
-              Engineering excellence for modern businesses
+            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
+              These services focus purely on building, engineering, and designing products. No marketing, no growth promises — just solid tech execution.
             </p>
           </div>
         </ScrollReveal>
@@ -162,9 +162,14 @@ const SolutionsCarouselSection = () => {
                         <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
                           {solution.subtitle}
                         </p>
-                        <p className="text-white/80 text-sm sm:text-base max-w-md mb-6">
+                        <p className="text-white/80 text-sm sm:text-base max-w-md mb-4">
                           {solution.description}
                         </p>
+                        {solution.outcome && (
+                          <p className="text-white/90 text-sm font-medium">
+                            🎯 {solution.outcome}
+                          </p>
+                        )}
                       </div>
 
                       <div>
