@@ -508,6 +508,21 @@ const DesktopHorizontalCanvas = ({
               animate={{ opacity: 0.5 }}
               transition={{ duration: 1 }}
             />
+            
+            {/* Step 1 Label */}
+            <motion.text
+              x="300"
+              y="80"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.4)"
+              fontSize="11"
+              fontWeight="500"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              End-to-End System Architecture
+            </motion.text>
           </motion.g>
         )}
       </AnimatePresence>
@@ -569,6 +584,21 @@ const DesktopHorizontalCanvas = ({
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             />
+            
+            {/* Step 2 Label */}
+            <motion.text
+              x="300"
+              y="80"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.4)"
+              fontSize="11"
+              fontWeight="500"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              Integrated Product Teams
+            </motion.text>
           </motion.g>
         )}
       </AnimatePresence>
@@ -619,6 +649,21 @@ const DesktopHorizontalCanvas = ({
                 </text>
               </motion.g>
             ))}
+            
+            {/* Step 3 Label */}
+            <motion.text
+              x="300"
+              y="80"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.4)"
+              fontSize="11"
+              fontWeight="500"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              Continuous Partnership Lifecycle
+            </motion.text>
           </motion.g>
         )}
       </AnimatePresence>
@@ -632,7 +677,6 @@ const DesktopHorizontalCanvas = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            
             <motion.path
               d="M 80 200 C 160 200, 200 150, 300 150 C 400 150, 450 200, 540 200"
               stroke="hsl(203, 98%, 47%)"
@@ -652,6 +696,21 @@ const DesktopHorizontalCanvas = ({
               animate={{ scale: [0, 1.3, 1] }}
               transition={{ duration: 0.6, delay: 0.8 }}
             />
+            
+            {/* Step 4 Label */}
+            <motion.text
+              x="300"
+              y="80"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.4)"
+              fontSize="11"
+              fontWeight="500"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              Focused Client Engagement
+            </motion.text>
           </motion.g>
         )}
       </AnimatePresence>
