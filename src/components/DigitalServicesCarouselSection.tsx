@@ -79,12 +79,12 @@ const DigitalServicesCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Grow & Scale</p>
+            <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">GROW & SCALE</p>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-3">
-              Digital Growth & Scaling Solutions
+              Digital Growth, Marketing & Business Scaling Solutions
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
-              We build growth systems that drive visibility, customer acquisition, revenue, and long-term business scale.
+              We help businesses increase visibility, acquire customers, and scale revenue through structured digital growth strategies and data-driven decision-making.
             </p>
           </div>
         </ScrollReveal>
