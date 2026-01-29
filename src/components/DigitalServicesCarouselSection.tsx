@@ -80,18 +80,26 @@ const DigitalServicesCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">GROW & SCALE</p>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-3">
+            {/* Desktop title/description */}
+            <h2 className="hidden sm:block text-3xl md:text-5xl font-bold tracking-tight mb-3">
               Digital Growth, Marketing & Business Scaling Solutions
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
+            <p className="hidden sm:block text-lg md:text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
               We help businesses increase visibility, acquire customers, and scale revenue through structured digital growth strategies and data-driven decision-making.
+            </p>
+            {/* Mobile title/description */}
+            <h2 className="sm:hidden text-2xl font-bold tracking-tight mb-3">
+              Digital Growth, Marketing & Business Scaling Solutions
+            </h2>
+            <p className="sm:hidden text-base text-muted-foreground font-medium">
+              We help businesses grow visibility, acquire customers, and scale revenue through structured digital growth strategies.
             </p>
           </div>
         </ScrollReveal>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation - Desktop only */}
         <ScrollReveal delay={100}>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
+          <div className="hidden sm:flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
             {digitalServicesData.map((solution, index) => (
               <button
                 key={solution.id}
@@ -116,93 +124,125 @@ const DigitalServicesCarouselSection = () => {
         </ScrollReveal>
       </div>
 
-      {/* Carousel */}
-      <div className="relative w-full flex justify-center">
-        <div className="relative w-[85vw] max-w-[1000px] h-[420px] sm:h-[450px]">
-          {digitalServicesData.map((solution, index) => {
-            const isActive = index === activeIndex;
-            const offset = index - activeIndex;
+      {/* Desktop Carousel */}
+      <div className="hidden sm:block relative w-full">
+        <div className="relative w-full flex justify-center">
+          <div className="relative w-[85vw] max-w-[1000px] h-[450px]">
+            {digitalServicesData.map((solution, index) => {
+              const isActive = index === activeIndex;
+              const offset = index - activeIndex;
 
-            return (
-              <motion.div
-                key={solution.id}
-                onClick={() => handleTabClick(index)}
-                initial={false}
-                animate={{
-                  x: `${offset * 105}%`,
-                  scale: isActive ? 1 : 0.92,
-                  opacity: isActive ? 1 : 0.4,
-                  zIndex: isActive ? 10 : 1,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className={`absolute inset-0 ${!isActive ? "cursor-pointer" : ""}`}
-              >
-                <div
-                  style={{ backgroundColor: solution.bgColor }}
-                  className="w-full h-full rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10"
+              return (
+                <motion.div
+                  key={solution.id}
+                  onClick={() => handleTabClick(index)}
+                  initial={false}
+                  animate={{
+                    x: `${offset * 105}%`,
+                    scale: isActive ? 1 : 0.92,
+                    opacity: isActive ? 1 : 0.4,
+                    zIndex: isActive ? 10 : 1,
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className={`absolute inset-0 ${!isActive ? "cursor-pointer" : ""}`}
                 >
-                <div className="flex flex-col md:flex-row h-full gap-6">
-                    {/* Left - Image */}
-                    <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      {imageErrors[solution.id] || !solution.image ? (
-                        <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
-                          <ImageOff className="w-16 h-16 text-white/40" />
-                        </div>
-                      ) : (
-                        <img
-                          src={solution.image}
-                          alt={solution.title}
-                          className="w-full h-full object-cover rounded-2xl"
-                          onError={() => handleImageError(solution.id)}
-                        />
-                      )}
-                    </div>
-
-                    {/* Right - Text Content */}
-                    <div className="flex flex-col justify-between md:w-[45%]">
-                      <div>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
-                          {solution.title}
-                        </h3>
-                        <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-                          {solution.subtitle}
-                        </p>
-                        <p className="text-white/80 text-sm sm:text-base max-w-md mb-4">
-                          {solution.description}
-                        </p>
-                        {solution.outcome && (
-                          <p className="text-white/90 text-sm font-medium">
-                            🎯 {solution.outcome}
-                          </p>
+                  <div
+                    style={{ backgroundColor: solution.bgColor }}
+                    className="w-full h-full rounded-[2.5rem] p-8 md:p-10"
+                  >
+                    <div className="flex flex-row h-full gap-6">
+                      {/* Left - Image */}
+                      <div className="hidden md:flex w-[55%] items-center justify-center">
+                        {imageErrors[solution.id] || !solution.image ? (
+                          <div className="w-full h-full rounded-2xl bg-white/10 flex items-center justify-center">
+                            <ImageOff className="w-16 h-16 text-white/40" />
+                          </div>
+                        ) : (
+                          <img
+                            src={solution.image}
+                            alt={solution.title}
+                            className="w-full h-full object-cover rounded-2xl"
+                            onError={() => handleImageError(solution.id)}
+                          />
                         )}
                       </div>
 
-                      <div>
-                        <Link to={solution.ctaLink}>
-                          <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-sm sm:text-base border-0 rounded-full shadow-sm">
-                            {solution.ctaText}
-                          </Button>
-                        </Link>
+                      {/* Right - Text Content */}
+                      <div className="flex flex-col justify-between w-[45%]">
+                        <div>
+                          <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
+                            {solution.title}
+                          </h3>
+                          <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                            {solution.subtitle}
+                          </p>
+                          <p className="text-white/80 text-base max-w-md mb-4">
+                            {solution.description}
+                          </p>
+                          {solution.outcome && (
+                            <p className="text-white/90 text-sm font-medium">
+                              🎯 {solution.outcome}
+                            </p>
+                          )}
+                        </div>
+
+                        <div>
+                          <Link to={solution.ctaLink}>
+                            <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
+                              {solution.ctaText}
+                            </Button>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Dots */}
-      <div className="flex justify-center gap-2 mt-6 sm:hidden">
-        {digitalServicesData.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleTabClick(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === activeIndex ? "bg-foreground w-6" : "bg-foreground/30"
-            }`}
-          />
+      {/* Mobile Stacked Cards */}
+      <div className="sm:hidden px-4 space-y-4">
+        {digitalServicesData.map((solution) => (
+          <motion.div
+            key={solution.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div
+              style={{ backgroundColor: solution.bgColor }}
+              className="w-full rounded-2xl p-6"
+            >
+              <div className="flex flex-col gap-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white leading-tight mb-1">
+                    {solution.title}
+                  </h3>
+                  <p className="text-xl font-bold text-white leading-tight mb-3">
+                    {solution.subtitle}
+                  </p>
+                  <p className="text-white/80 text-sm mb-3">
+                    {solution.description}
+                  </p>
+                  {solution.outcome && (
+                    <p className="text-white/90 text-xs font-medium">
+                      🎯 {solution.outcome}
+                    </p>
+                  )}
+                </div>
+
+                <Link to={solution.ctaLink}>
+                  <Button className="bg-white text-foreground hover:bg-white/90 px-5 py-2.5 text-sm border-0 rounded-full shadow-sm w-full">
+                    {solution.ctaText}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>
