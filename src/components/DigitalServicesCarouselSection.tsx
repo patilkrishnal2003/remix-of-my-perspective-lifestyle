@@ -203,10 +203,10 @@ const DigitalServicesCarouselSection = () => {
                           </Link>
                           
                           {/* Feature Points */}
-                          <div className="space-y-2 pt-2">
+                          <div className="space-y-3 pt-3">
                             {solution.features.map((feature, idx) => (
-                              <div key={idx} className="flex items-center gap-2">
-                                <feature.icon className="w-4 h-4 text-white/70" />
+                              <div key={idx} className="flex items-center gap-3">
+                                <feature.icon className="w-4 h-4 text-white/60 flex-shrink-0" />
                                 <span className="text-white/80 text-sm">{feature.text}</span>
                               </div>
                             ))}
@@ -268,10 +268,10 @@ const DigitalServicesCarouselSection = () => {
                 </Link>
                 
                 {/* Feature Points */}
-                <div className="space-y-2 pt-2">
+                <div className="space-y-3 pt-3">
                   {solution.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <feature.icon className="w-4 h-4 text-white/70" />
+                    <div key={idx} className="flex items-center gap-3">
+                      <feature.icon className="w-4 h-4 text-white/60 flex-shrink-0" />
                       <span className="text-white/80 text-sm">{feature.text}</span>
                     </div>
                   ))}
