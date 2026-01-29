@@ -20,7 +20,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "#438260",
-    imageBgColor: "#365e4c",
+    imageBgColor: "rgba(67, 130, 96, 0.6)",
     image: heroDashboard,
   },
   {
@@ -32,7 +32,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "#948149",
-    imageBgColor: "#756839",
+    imageBgColor: "rgba(148, 129, 73, 0.6)",
     image: heroWorkspace,
   },
   {
@@ -44,7 +44,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "#711e1b",
-    imageBgColor: "#551614",
+    imageBgColor: "rgba(113, 30, 27, 0.6)",
     image: projectFinanceflow,
   },
   {
@@ -56,7 +56,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "#894f71",
-    imageBgColor: "#6b3d58",
+    imageBgColor: "rgba(137, 79, 113, 0.6)",
     image: projectHealthtrack,
   },
   {
@@ -68,7 +68,7 @@ const solutionsData = [
     ctaText: "Get Started",
     ctaLink: "/contact",
     bgColor: "#485c81",
-    imageBgColor: "#384968",
+    imageBgColor: "rgba(72, 92, 129, 0.6)",
     image: projectEdulearn,
   },
 ];
