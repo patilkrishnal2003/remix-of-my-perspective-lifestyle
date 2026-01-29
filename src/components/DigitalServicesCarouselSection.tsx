@@ -18,6 +18,7 @@ const digitalServicesData = [
     title: "Demand",
     subtitle: "Foundation",
     description: "Website & app ecosystem strategy, SEO & performance optimization, content structure & publishing framework, social presence strategy, and authority building.",
+    mobileDescription: "Build a strong online presence that attracts the right audience.",
     outcome: "A strong digital presence that attracts and qualifies the right audience.",
     ctaText: "Build Presence",
     ctaLink: "/contact",
@@ -30,6 +31,7 @@ const digitalServicesData = [
     title: "Acquisition",
     subtitle: "Engine",
     description: "Growth marketing roadmap, paid ads strategy (Google, Meta, LinkedIn), funnel & campaign architecture, content & inbound marketing, and conversion rate optimization.",
+    mobileDescription: "Predictable traffic, leads, and customer acquisition.",
     outcome: "Predictable traffic, leads, and customer acquisition.",
     ctaText: "Drive Growth",
     ctaLink: "/contact",
@@ -42,6 +44,7 @@ const digitalServicesData = [
     title: "Revenue",
     subtitle: "Systems",
     description: "Lead funnel design (B2B/B2C), CRM selection & automation, email, WhatsApp & outbound systems, sales pipeline optimization, and marketing → sales handover.",
+    mobileDescription: "Automated systems that convert leads into revenue.",
     outcome: "A scalable, automated system that converts leads into revenue.",
     ctaText: "Boost Revenue",
     ctaLink: "/contact",
@@ -54,6 +57,7 @@ const digitalServicesData = [
     title: "Analytics &",
     subtitle: "Scaling",
     description: "Market analysis, product-market fit validation, monetization strategy, KPI frameworks, GA4/Mixpanel dashboards, process optimization, and automation systems.",
+    mobileDescription: "Data-driven insights for efficient scaling.",
     outcome: "Data-driven growth, operational efficiency, and scale readiness.",
     ctaText: "Scale Smart",
     ctaLink: "/contact",
@@ -215,25 +219,32 @@ const DigitalServicesCarouselSection = () => {
           >
             <div
               style={{ backgroundColor: solution.bgColor }}
-              className="w-full rounded-2xl p-6"
+              className="w-full rounded-2xl overflow-hidden"
             >
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white leading-tight mb-1">
-                    {solution.title}
-                  </h3>
-                  <p className="text-xl font-bold text-white leading-tight mb-3">
-                    {solution.subtitle}
-                  </p>
-                  <p className="text-white/80 text-sm mb-3">
-                    {solution.description}
-                  </p>
-                  {solution.outcome && (
-                    <p className="text-white/90 text-xs font-medium">
-                      🎯 {solution.outcome}
-                    </p>
-                  )}
-                </div>
+              {/* Image Section */}
+              <div className="w-full h-40">
+                {imageErrors[solution.id] || !solution.image ? (
+                  <div className="w-full h-full bg-white/10 flex items-center justify-center">
+                    <ImageOff className="w-10 h-10 text-white/40" />
+                  </div>
+                ) : (
+                  <img
+                    src={solution.image}
+                    alt={solution.title}
+                    className="w-full h-full object-cover"
+                    onError={() => handleImageError(solution.id)}
+                  />
+                )}
+              </div>
+              
+              {/* Content Section */}
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-white leading-tight mb-1">
+                  {solution.title} {solution.subtitle}
+                </h3>
+                <p className="text-white/80 text-sm mb-3 line-clamp-2">
+                  {solution.mobileDescription || solution.outcome}
+                </p>
 
                 <Link to={solution.ctaLink}>
                   <Button className="bg-white text-foreground hover:bg-white/90 px-5 py-2.5 text-sm border-0 rounded-full shadow-sm w-full">
