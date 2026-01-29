@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
+import ServicesTabSection from "@/components/ServicesTabSection";
 import { Zap, Shield, Users } from "lucide-react";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -173,6 +174,8 @@ const Index = () => {
           {/* Digital Services Carousel Section */}
           <DigitalServicesCarouselSection />
 
+          {/* Services Section */}
+          <ServicesTabSection />
 
           {/* Testimonials Section */}
           <section className="section-divider">
