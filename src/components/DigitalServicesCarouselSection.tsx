@@ -3,13 +3,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ImageOff } from "lucide-react";
+import { ImageOff, Globe, TrendingUp, Target, Megaphone, BarChart3, Users, Wallet, Mail, LineChart, Gauge, Puzzle } from "lucide-react";
 
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
 import projectFinanceflow from "@/assets/project-financeflow.jpg";
 import projectHealthtrack from "@/assets/project-healthtrack.jpg";
-import projectEdulearn from "@/assets/project-edulearn.jpg";
 
 const digitalServicesData = [
   {
@@ -24,6 +23,11 @@ const digitalServicesData = [
     ctaLink: "/contact",
     bgColor: "#2d5a7b",
     image: heroDashboard,
+    features: [
+      { icon: Globe, text: "Multi-channel visibility" },
+      { icon: TrendingUp, text: "SEO-driven traffic growth" },
+      { icon: Target, text: "Targeted audience reach" },
+    ],
   },
   {
     id: "growth-marketing",
@@ -37,6 +41,11 @@ const digitalServicesData = [
     ctaLink: "/contact",
     bgColor: "#5a4a3a",
     image: heroWorkspace,
+    features: [
+      { icon: Megaphone, text: "Multi-platform ad campaigns" },
+      { icon: BarChart3, text: "Continuous optimization" },
+      { icon: Users, text: "Lead generation at scale" },
+    ],
   },
   {
     id: "sales-revenue",
@@ -50,6 +59,11 @@ const digitalServicesData = [
     ctaLink: "/contact",
     bgColor: "#6b4c5a",
     image: projectFinanceflow,
+    features: [
+      { icon: Wallet, text: "Revenue pipeline automation" },
+      { icon: Mail, text: "Outbound & email sequences" },
+      { icon: Gauge, text: "Sales process optimization" },
+    ],
   },
   {
     id: "growth-strategy",
@@ -63,6 +77,11 @@ const digitalServicesData = [
     ctaLink: "/contact",
     bgColor: "#3a6b5a",
     image: projectHealthtrack,
+    features: [
+      { icon: LineChart, text: "Real-time KPI dashboards" },
+      { icon: Puzzle, text: "Process automation" },
+      { icon: TrendingUp, text: "Scalable growth frameworks" },
+    ],
   },
 ];
 
@@ -168,25 +187,30 @@ const DigitalServicesCarouselSection = () => {
                           <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
                             {solution.title}
                           </h3>
-                          <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                          <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
                             {solution.subtitle}
                           </p>
-                          <p className="text-white/80 text-base max-w-md mb-4">
+                          <p className="text-white/80 text-sm max-w-md mb-4">
                             {solution.description}
                           </p>
-                          {solution.outcome && (
-                            <p className="text-white/90 text-sm font-medium">
-                              🎯 {solution.outcome}
-                            </p>
-                          )}
                         </div>
 
-                        <div>
+                        <div className="space-y-4">
                           <Link to={solution.ctaLink}>
                             <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
                               {solution.ctaText}
                             </Button>
                           </Link>
+                          
+                          {/* Feature Points */}
+                          <div className="space-y-2 pt-2">
+                            {solution.features.map((feature, idx) => (
+                              <div key={idx} className="flex items-center gap-2">
+                                <feature.icon className="w-4 h-4 text-white/70" />
+                                <span className="text-white/80 text-sm">{feature.text}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -233,15 +257,25 @@ const DigitalServicesCarouselSection = () => {
                 <h3 className="text-2xl font-bold text-white leading-tight mb-2">
                   {solution.title} {solution.subtitle}
                 </h3>
-                <p className="text-white/80 text-base leading-relaxed mb-5">
+                <p className="text-white/80 text-base leading-relaxed mb-4">
                   {solution.mobileDescription || solution.outcome}
                 </p>
 
                 <Link to={solution.ctaLink}>
-                  <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm">
+                  <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm mb-4">
                     {solution.ctaText}
                   </Button>
                 </Link>
+                
+                {/* Feature Points */}
+                <div className="space-y-2 pt-2">
+                  {solution.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <feature.icon className="w-4 h-4 text-white/70" />
+                      <span className="text-white/80 text-sm">{feature.text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
