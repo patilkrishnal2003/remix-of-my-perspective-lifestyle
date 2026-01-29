@@ -193,12 +193,12 @@ const SolutionsCarouselSection = () => {
                           <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
                             {solution.subtitle}
                           </p>
-                          <p className="text-white/80 text-sm max-w-md mb-4">
+                          <p className="text-white/80 text-sm max-w-md">
                             {solution.description}
                           </p>
                         </div>
 
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                           <Link to={solution.ctaLink}>
                             <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
                               {solution.ctaText}
@@ -206,7 +206,7 @@ const SolutionsCarouselSection = () => {
                           </Link>
                           
                           {/* Feature Points */}
-                          <div className="space-y-3 pt-3">
+                          <div className="space-y-3">
                             {solution.features.map((feature, idx) => (
                               <div key={idx} className="flex items-center gap-3">
                                 <feature.icon className="w-4 h-4 text-white/60 flex-shrink-0" />
