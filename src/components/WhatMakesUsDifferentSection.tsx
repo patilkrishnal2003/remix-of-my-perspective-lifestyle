@@ -747,11 +747,23 @@ const WhatMakesUsDifferentSection = () => {
 
     autoRunTimerRef.current = setInterval(() => {
       if (isMobile) {
-        setMobileStep((prev) => (prev + 1) % 5);
+        setMobileStep((prev) => {
+          const next = (prev + 1) % 5;
+          // Reset visited indices when looping back to start
+          if (next === 0) {
+            setVisitedIndices(new Set([0]));
+          }
+          return next;
+        });
       } else {
         setActiveIndex((prev) => {
           const next = ((prev ?? 0) + 1) % 5;
-          setVisitedIndices((visited) => new Set([...visited, next]));
+          // Reset visited indices when looping back to start
+          if (next === 0) {
+            setVisitedIndices(new Set([0]));
+          } else {
+            setVisitedIndices((visited) => new Set([...visited, next]));
+          }
           return next;
         });
       }
