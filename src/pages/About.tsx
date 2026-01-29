@@ -166,7 +166,7 @@ const About = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16">
+        <section className="section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -185,7 +185,7 @@ const About = () => {
         </section>
 
         {/* Editorial Tagline Section */}
-        <section className="section-divider py-16 sm:py-20 pt-20">
+        <section className="section-divider">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-foreground leading-relaxed mb-6">
               Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the digital world.
@@ -197,7 +197,7 @@ const About = () => {
         </section>
 
         {/* Story Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-slide-up">
               <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
@@ -227,7 +227,7 @@ const About = () => {
         </section>
 
         {/* Why Choose Advora - Flip Image Carousel */}
-        <section className="section-divider py-16 pt-20">
+        <section className="section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-10">
@@ -271,7 +271,7 @@ const About = () => {
         <ValuesTabSection />
 
         {/* Team Section */}
-        <section className="section-divider py-20 pt-24">
+        <section className="section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
@@ -302,7 +302,7 @@ const About = () => {
         </section>
 
         {/* Culture Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Our Culture</h2>
