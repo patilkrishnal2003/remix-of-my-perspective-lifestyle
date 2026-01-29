@@ -195,11 +195,13 @@ export default function ResourcesTabSection() {
                   className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm"
                 >
                   {/* Preview Image */}
-                  <div className="h-48 overflow-hidden">
+                  <div className="relative h-48 sm:h-56 overflow-hidden bg-muted shrink-0">
                     <img
                       src={mobileTabData.cards[0].image}
                       alt={mobileTabData.label}
-                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
                   
