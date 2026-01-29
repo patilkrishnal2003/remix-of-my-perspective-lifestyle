@@ -859,47 +859,45 @@ const WhatMakesUsDifferentSection = () => {
           </p>
         </div>
 
-        {/* Mobile Horizontal Navigator */}
-        <div className="lg:hidden mb-4">
-          <div 
-            ref={scrollContainerRef}
-            className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide"
-            style={{ 
-              scrollbarWidth: 'none', 
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch'
-            }}
-          >
+        {/* Mobile Vertical Navigator with Left Indicator */}
+        <div className="lg:hidden mb-6">
+          <ul className="space-y-1">
             {navigatorItems.map((item, index) => (
-              <button
-                key={item.id}
-                onClick={() => handleMobileInteraction(index)}
-                className={`flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-out whitespace-nowrap touch-manipulation ${
-                  mobileStep === index
-                    ? "bg-primary text-primary-foreground"
-                    : visitedIndices.has(index)
-                    ? "bg-white/10 text-white/80"
-                    : "bg-white/5 text-white/50 active:bg-white/10"
-                }`}
-                aria-pressed={mobileStep === index}
-              >
-                {item.title}
-              </button>
+              <li key={item.id}>
+                <button
+                  onClick={() => handleMobileInteraction(index)}
+                  className="w-full text-left py-2 pl-4 relative transition-all duration-300 ease-out touch-manipulation"
+                  aria-pressed={mobileStep === index}
+                >
+                  {/* Left indicator bar */}
+                  <motion.div
+                    className="absolute left-0 top-0 bottom-0 w-[3px] rounded-full"
+                    initial={false}
+                    animate={{
+                      backgroundColor: mobileStep === index 
+                        ? "hsl(203, 98%, 47%)" 
+                        : visitedIndices.has(index) 
+                        ? "rgba(255,255,255,0.2)" 
+                        : "rgba(255,255,255,0.08)",
+                      scaleY: mobileStep === index ? 1 : 0.7,
+                    }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                  />
+                  <span
+                    className={`block text-base font-medium transition-colors duration-300 ${
+                      mobileStep === index
+                        ? "text-white"
+                        : visitedIndices.has(index)
+                        ? "text-white/50"
+                        : "text-white/35"
+                    }`}
+                  >
+                    {item.title}
+                  </span>
+                </button>
+              </li>
             ))}
-          </div>
-          {/* Active item description for mobile */}
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={mobileStep}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              className="text-sm text-white/60 mt-2 px-1 leading-relaxed min-h-[40px]"
-            >
-              {navigatorItems[mobileStep].shortText}
-            </motion.p>
-          </AnimatePresence>
+          </ul>
         </div>
 
         {/* Two-column layout for desktop */}
