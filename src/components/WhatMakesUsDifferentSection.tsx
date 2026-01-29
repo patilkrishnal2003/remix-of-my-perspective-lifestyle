@@ -873,10 +873,10 @@ const WhatMakesUsDifferentSection = () => {
         {/* Two-column layout for desktop */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
           {/* Left Navigator - Desktop only */}
-          <nav className="hidden lg:block lg:w-[30%] flex-shrink-0">
-            <ul className="space-y-0">
+          <nav className="hidden lg:flex lg:w-[30%] flex-shrink-0 min-h-[500px]">
+            <ul className="flex flex-col justify-between w-full h-full">
               {navigatorItems.map((item, index) => (
-                <li key={item.id}>
+                <li key={item.id} className="flex-1 flex">
                   <button
                     onClick={() => handleDesktopItemClick(index)}
                     onKeyDown={(e) => {
@@ -884,12 +884,12 @@ const WhatMakesUsDifferentSection = () => {
                         handleDesktopItemClick(index);
                       }
                     }}
-                    className="w-full text-left py-3 pl-5 relative transition-all duration-300 ease-out group"
+                    className="w-full text-left pl-5 relative transition-all duration-300 ease-out group flex flex-col justify-center"
                     aria-pressed={activeIndex === index}
                   >
                     {/* Left indicator bar */}
                     <motion.div
-                      className="absolute left-0 top-1 bottom-1 w-[3px] rounded-full"
+                      className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full"
                       initial={false}
                       animate={{
                         backgroundColor: activeIndex === index 
@@ -912,19 +912,15 @@ const WhatMakesUsDifferentSection = () => {
                     >
                       {item.title}
                     </span>
-                    <AnimatePresence>
-                      {activeIndex === index && (
-                        <motion.span
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                          className="block text-sm text-white/50 mt-1.5 overflow-hidden"
-                        >
-                          {item.text}
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
+                    <span
+                      className={`block text-sm mt-1.5 transition-colors duration-300 leading-relaxed ${
+                        activeIndex === index
+                          ? "text-white/60"
+                          : "text-white/30"
+                      }`}
+                    >
+                      {item.text}
+                    </span>
                   </button>
                 </li>
               ))}
