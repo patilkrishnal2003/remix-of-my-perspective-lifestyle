@@ -380,8 +380,8 @@ const DesktopHorizontalCanvas = ({
 }) => {
   return (
     <svg
-      viewBox="0 0 600 400"
-      className="w-full h-full max-w-[600px]"
+      viewBox="20 50 560 300"
+      className="w-full h-full"
       preserveAspectRatio="xMidYMid meet"
       style={{ filter: "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
     >
