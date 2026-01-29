@@ -140,8 +140,14 @@ const Index = () => {
           {/* New Hero Section with Gradient */}
           <HeroSectionWithGradient />
 
+          {/* Tech Services Carousel Section - BUILD */}
+          <SolutionsCarouselSection />
+
+          {/* Digital Services Carousel Section - GROW & SCALE */}
+          <DigitalServicesCarouselSection />
+
           {/* Trusted By Section - Marquee */}
-          <section className="section-divider py-8 sm:py-12 pt-44 sm:pt-52 md:pt-60 overflow-hidden relative z-0 bg-background">
+          <section className="section-divider py-8 sm:py-12 pt-16 sm:pt-20 overflow-hidden relative z-0 bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">Trusted by innovative companies</p>
             </div>
@@ -219,12 +225,6 @@ const Index = () => {
           </section>
 
           <HowWeWorkSection />
-
-          {/* Tech Services Carousel Section */}
-          <SolutionsCarouselSection />
-
-          {/* Digital Services Carousel Section */}
-          <DigitalServicesCarouselSection />
 
           {/* Resources Tab Section */}
           <ResourcesTabSection />
