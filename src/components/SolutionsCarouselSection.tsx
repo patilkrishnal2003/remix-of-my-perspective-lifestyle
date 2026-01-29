@@ -92,11 +92,11 @@ const SolutionsCarouselSection = () => {
         <ScrollReveal>
           <div className="text-center mb-10">
             <p className="text-sm font-medium tracking-widest uppercase text-primary mb-3">Build</p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-2">
-              <span className="italic font-serif">We build the digital engine</span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-3">
+              Technology & Product Solutions
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-2xl mx-auto">
-              These services focus purely on building, engineering, and designing products. No marketing, no growth promises — just solid tech execution.
+            <p className="text-lg md:text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
+              We design, engineer, and deliver scalable digital products — from websites and mobile apps to custom software and product experiences.
             </p>
           </div>
         </ScrollReveal>
