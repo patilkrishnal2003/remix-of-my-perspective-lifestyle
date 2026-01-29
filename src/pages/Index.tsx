@@ -15,6 +15,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import HowWeWorkSection from "@/components/HowWeWorkSection";
 import FlipImageCarousel from "@/components/FlipImageCarousel";
 import SolutionsCarouselSection from "@/components/SolutionsCarouselSection";
+import DigitalServicesCarouselSection from "@/components/DigitalServicesCarouselSection";
 
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
@@ -219,8 +220,11 @@ const Index = () => {
 
           <HowWeWorkSection />
 
-          {/* Solutions Carousel Section */}
+          {/* Tech Services Carousel Section */}
           <SolutionsCarouselSection />
+
+          {/* Digital Services Carousel Section */}
+          <DigitalServicesCarouselSection />
 
           {/* Resources Tab Section */}
           <ResourcesTabSection />
