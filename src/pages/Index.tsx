@@ -14,7 +14,7 @@ import CTASection from "@/components/CTASection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import HowWeWorkSection from "@/components/HowWeWorkSection";
 import FlipImageCarousel from "@/components/FlipImageCarousel";
-import SolutionsCarouselSection from "@/components/SolutionsCarouselSection";
+import IndustriesCarouselSection from "@/components/SolutionsCarouselSection";
 
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
@@ -219,8 +219,8 @@ const Index = () => {
 
           <HowWeWorkSection />
 
-          {/* Solutions Carousel Section */}
-          <SolutionsCarouselSection />
+          {/* Industries Carousel Section */}
+          <IndustriesCarouselSection />
 
           {/* Resources Tab Section */}
           <ResourcesTabSection />
