@@ -178,7 +178,7 @@ const Index = () => {
           <ServicesTabSection />
 
           {/* Testimonials Section */}
-          <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
+          <section className="section-divider">
             <TestimonialsSection testimonials={testimonials} />
           </section>
 

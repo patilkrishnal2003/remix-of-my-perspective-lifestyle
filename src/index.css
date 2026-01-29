@@ -209,14 +209,9 @@ All colors MUST be HSL.
   }
 }
 
-/* Section divider utility */
+/* Section spacing utility - standardized gaps between sections */
 .section-divider {
-  @apply relative;
-}
-
-.section-divider::before {
-  content: '';
-  @apply absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-border to-transparent;
+  @apply py-12 sm:py-16;
 }
 
 @layer utilities {
