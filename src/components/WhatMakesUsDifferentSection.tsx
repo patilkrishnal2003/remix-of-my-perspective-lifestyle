@@ -730,8 +730,8 @@ const DesktopHorizontalCanvas = ({
 };
 
 const WhatMakesUsDifferentSection = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [visitedIndices, setVisitedIndices] = useState<Set<number>>(new Set());
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [visitedIndices, setVisitedIndices] = useState<Set<number>>(new Set([0]));
   const [mobileStep, setMobileStep] = useState(0);
   const [isAutoRunning, setIsAutoRunning] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -739,13 +739,23 @@ const WhatMakesUsDifferentSection = () => {
   const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
-  // Auto-run logic for mobile
+  // Auto-run logic for both mobile and desktop
   useEffect(() => {
-    if (!isMobile || !isAutoRunning) return;
+    if (!isAutoRunning) return;
+
+    const interval = isMobile ? 2000 : 3000; // 2s for mobile, 3s for desktop
 
     autoRunTimerRef.current = setInterval(() => {
-      setMobileStep((prev) => (prev + 1) % 5);
-    }, 2000);
+      if (isMobile) {
+        setMobileStep((prev) => (prev + 1) % 5);
+      } else {
+        setActiveIndex((prev) => {
+          const next = ((prev ?? 0) + 1) % 5;
+          setVisitedIndices((visited) => new Set([...visited, next]));
+          return next;
+        });
+      }
+    }, interval);
 
     return () => {
       if (autoRunTimerRef.current) {
@@ -785,10 +795,26 @@ const WhatMakesUsDifferentSection = () => {
     }, 4500);
   }, []);
 
-  const handleDesktopItemClick = (index: number) => {
+  const handleDesktopItemClick = useCallback((index: number) => {
+    // Stop auto-run
+    setIsAutoRunning(false);
+    if (autoRunTimerRef.current) {
+      clearInterval(autoRunTimerRef.current);
+    }
+
     setActiveIndex(index);
     setVisitedIndices((prev) => new Set([...prev, index]));
-  };
+
+    // Clear any existing resume timer
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+    }
+
+    // Resume auto-run after 4 seconds of inactivity
+    resumeTimerRef.current = setTimeout(() => {
+      setIsAutoRunning(true);
+    }, 4000);
+  }, []);
 
   // Cleanup timers on unmount
   useEffect(() => {
