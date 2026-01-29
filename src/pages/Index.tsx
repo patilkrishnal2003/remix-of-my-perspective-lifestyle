@@ -10,6 +10,7 @@ import ResourcesTabSection from "@/components/ResourcesTabSection";
 import CTASection from "@/components/CTASection";
 import SolutionsCarouselSection from "@/components/SolutionsCarouselSection";
 import DigitalServicesCarouselSection from "@/components/DigitalServicesCarouselSection";
+import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSection";
 
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
@@ -176,6 +177,9 @@ const Index = () => {
 
           {/* Services Section */}
           <ServicesTabSection />
+
+          {/* What Makes Us Different Section */}
+          <WhatMakesUsDifferentSection />
 
           {/* Testimonials Section */}
           <section className="section-divider">
