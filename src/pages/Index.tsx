@@ -177,6 +177,12 @@ const Index = () => {
             </div>
           </section>
 
+          {/* Tech Services Carousel Section */}
+          <SolutionsCarouselSection />
+
+          {/* Digital Services Carousel Section */}
+          <DigitalServicesCarouselSection />
+
           {/* Services Section */}
           <ServicesTabSection />
 
@@ -219,12 +225,6 @@ const Index = () => {
           </section>
 
           <HowWeWorkSection />
-
-          {/* Tech Services Carousel Section */}
-          <SolutionsCarouselSection />
-
-          {/* Digital Services Carousel Section */}
-          <DigitalServicesCarouselSection />
 
           {/* Resources Tab Section */}
           <ResourcesTabSection />
