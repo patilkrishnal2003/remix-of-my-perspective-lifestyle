@@ -283,18 +283,6 @@ const MobileVerticalCanvas = ({ activeStep }: { activeStep: number }) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {/* Dim overlay */}
-            <motion.rect
-              x="0"
-              y="0"
-              width="300"
-              height="450"
-              fill="rgba(0,0,0,0.25)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: activeStep === 3 ? 1 : 0.3 }}
-              transition={{ duration: 0.4 }}
-            />
-            
             {/* Focused curved path */}
             <motion.path
               d="M 150 40 Q 100 100, 150 150 Q 200 200, 150 260 Q 100 320, 150 370"
@@ -642,16 +630,6 @@ const DesktopHorizontalCanvas = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.rect
-              x="0"
-              y="0"
-              width="600"
-              height="400"
-              fill="rgba(0,0,0,0.3)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            />
             
             <motion.path
               d="M 80 200 C 160 200, 200 150, 300 150 C 400 150, 450 200, 540 200"
