@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -6,42 +6,829 @@ const navigatorItems = [
   {
     id: 1,
     title: "Systems First",
-    text: "We design the full system before execution so scale doesn't break later.",
+    text: "We design the full system before execution.",
+    shortText: "We design the full system before execution.",
   },
   {
     id: 2,
     title: "Product Thinking",
     text: "We operate like a product team, not a task-based agency.",
+    shortText: "We operate like a product team, not a task-based agency.",
   },
   {
     id: 3,
     title: "Long-Term Partner",
-    text: "From first build to scale, we stay involved as your business grows.",
+    text: "We stay involved as your business grows.",
+    shortText: "We stay involved as your business grows.",
   },
   {
     id: 4,
     title: "Depth Over Volume",
-    text: "We work with fewer clients so we can go deeper and deliver real outcomes.",
+    text: "Fewer clients. Deeper involvement.",
+    shortText: "Fewer clients. Deeper involvement.",
   },
   {
     id: 5,
     title: "Built for Decision-Makers",
-    text: "Clear thinking, honest trade-offs, and decisions explained — not just execution.",
+    text: "Clear thinking and accountable decisions.",
+    shortText: "Clear thinking and accountable decisions.",
   },
 ];
+
+// Mobile Vertical Canvas Component
+const MobileVerticalCanvas = ({ activeStep }: { activeStep: number }) => {
+  return (
+    <svg
+      viewBox="0 0 300 450"
+      className="w-full h-full"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      {/* Background Grid */}
+      <defs>
+        <pattern
+          id="mobileGrid"
+          width="30"
+          height="30"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M 30 0 L 0 0 0 30"
+            fill="none"
+            stroke="rgba(255,255,255,0.03)"
+            strokeWidth="1"
+          />
+        </pattern>
+        <linearGradient id="mobileNodeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
+          <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect width="300" height="450" fill="url(#mobileGrid)" />
+
+      {/* Vertical Base Flow: Product → Growth → Revenue → Scale */}
+      <g className="vertical-base-flow">
+        {/* Connection Lines */}
+        <motion.path
+          d="M 150 60 L 150 130"
+          stroke="rgba(255,255,255,0.15)"
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        />
+        <motion.path
+          d="M 150 170 L 150 240"
+          stroke="rgba(255,255,255,0.15)"
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        />
+        <motion.path
+          d="M 150 280 L 150 350"
+          stroke="rgba(255,255,255,0.15)"
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+        />
+
+        {/* Nodes */}
+        {[
+          { y: 40, label: "Product" },
+          { y: 150, label: "Growth" },
+          { y: 260, label: "Revenue" },
+          { y: 370, label: "Scale" },
+        ].map((node, i) => (
+          <motion.g
+            key={node.label}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
+          >
+            <circle
+              cx="150"
+              cy={node.y}
+              r="20"
+              fill="rgba(255,255,255,0.05)"
+              stroke="rgba(255,255,255,0.2)"
+              strokeWidth="1"
+            />
+            <text
+              x="150"
+              y={node.y + 4}
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.7)"
+              fontSize="9"
+              fontWeight="500"
+            >
+              {node.label}
+            </text>
+          </motion.g>
+        ))}
+      </g>
+
+      {/* Step 1: Systems First - Highlight full vertical system */}
+      <AnimatePresence>
+        {activeStep >= 0 && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Enhanced vertical connections */}
+            <motion.path
+              d="M 150 60 L 150 370"
+              stroke="url(#mobileNodeGradient)"
+              strokeWidth="3"
+              fill="none"
+              filter="url(#glow)"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: activeStep >= 0 ? 1 : 0 }}
+              transition={{ duration: 1 }}
+            />
+            {/* System wrapper */}
+            <motion.rect
+              x="120"
+              y="20"
+              width="60"
+              height="380"
+              rx="8"
+              fill="none"
+              stroke="hsl(203, 98%, 47%)"
+              strokeWidth="1"
+              strokeDasharray="4 4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: activeStep === 0 ? 0.6 : 0.2 }}
+              transition={{ duration: 0.6 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Step 2: Product Thinking - UX/Engineering elements */}
+      <AnimatePresence>
+        {activeStep >= 1 && (
+          <motion.g
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* UX element */}
+            <motion.rect
+              x="40"
+              y="25"
+              width="60"
+              height="30"
+              rx="4"
+              fill="rgba(255,255,255,0.03)"
+              stroke={activeStep === 1 ? "hsl(203, 98%, 47%)" : "rgba(255,255,255,0.15)"}
+              strokeWidth={activeStep === 1 ? 1.5 : 1}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+            />
+            <text x="70" y="44" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">UX Design</text>
+            
+            {/* Engineering element */}
+            <motion.rect
+              x="200"
+              y="25"
+              width="60"
+              height="30"
+              rx="4"
+              fill="rgba(255,255,255,0.03)"
+              stroke={activeStep === 1 ? "hsl(203, 98%, 47%)" : "rgba(255,255,255,0.15)"}
+              strokeWidth={activeStep === 1 ? 1.5 : 1}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            />
+            <text x="230" y="44" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">Engineering</text>
+
+            {/* Connecting lines */}
+            <motion.path
+              d="M 100 40 L 130 40"
+              stroke={activeStep === 1 ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.2)"}
+              strokeWidth="1"
+              strokeDasharray="2 2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.15 }}
+            />
+            <motion.path
+              d="M 170 40 L 200 40"
+              stroke={activeStep === 1 ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.2)"}
+              strokeWidth="1"
+              strokeDasharray="2 2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.25 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Step 3: Long-Term Partner - Timeline phases */}
+      <AnimatePresence>
+        {activeStep >= 2 && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Timeline phases on the right */}
+            {["Build", "Launch", "Grow", "Scale"].map((phase, i) => (
+              <motion.g
+                key={phase}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 + i * 0.1 }}
+              >
+                <circle
+                  cx="230"
+                  cy={60 + i * 110}
+                  r="5"
+                  fill={activeStep === 2 ? "hsl(203, 98%, 47%)" : "hsl(203, 98%, 47%)"}
+                  opacity={activeStep === 2 ? 1 : 0.5}
+                />
+                <text
+                  x="250"
+                  y={64 + i * 110}
+                  fill={activeStep === 2 ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.4)"}
+                  fontSize="10"
+                >
+                  {phase}
+                </text>
+              </motion.g>
+            ))}
+            {/* Timeline connector */}
+            <motion.path
+              d="M 230 65 L 230 385"
+              stroke={activeStep === 2 ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.1)"}
+              strokeWidth="1"
+              strokeDasharray="3 3"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Step 4: Depth Over Volume - Focused path */}
+      <AnimatePresence>
+        {activeStep >= 3 && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Dim overlay */}
+            <motion.rect
+              x="0"
+              y="0"
+              width="300"
+              height="450"
+              fill="rgba(0,0,0,0.25)"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: activeStep === 3 ? 1 : 0.3 }}
+              transition={{ duration: 0.4 }}
+            />
+            
+            {/* Focused curved path */}
+            <motion.path
+              d="M 150 40 Q 100 100, 150 150 Q 200 200, 150 260 Q 100 320, 150 370"
+              stroke="hsl(203, 98%, 47%)"
+              strokeWidth="3"
+              fill="none"
+              filter="url(#glow)"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1 }}
+            />
+            
+            {/* Focus indicator */}
+            <motion.circle
+              cx="150"
+              cy="205"
+              r="8"
+              fill="hsl(203, 98%, 47%)"
+              initial={{ scale: 0 }}
+              animate={{ scale: activeStep === 3 ? [0, 1.3, 1] : 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Step 5: Built for Decision-Makers - Decision points */}
+      <AnimatePresence>
+        {activeStep >= 4 && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Decision markers */}
+            {[{ y: 95 }, { y: 205 }, { y: 315 }].map((pos, i) => (
+              <motion.g
+                key={i}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.15 + i * 0.15 }}
+              >
+                <polygon
+                  points={`70,${pos.y - 10} 80,${pos.y} 70,${pos.y + 10} 60,${pos.y}`}
+                  fill="hsl(203, 98%, 47%)"
+                  opacity={activeStep === 4 ? 0.9 : 0.5}
+                />
+                <text
+                  x="42"
+                  y={pos.y + 4}
+                  textAnchor="middle"
+                  fill={activeStep === 4 ? "rgba(255,255,255,0.7)" : "rgba(255,255,255,0.4)"}
+                  fontSize="7"
+                >
+                  D{i + 1}
+                </text>
+              </motion.g>
+            ))}
+            
+            {/* Strategic label */}
+            <motion.text
+              x="150"
+              y="430"
+              textAnchor="middle"
+              fill={activeStep === 4 ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)"}
+              fontSize="9"
+              fontWeight="500"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Strategic Decision Points
+            </motion.text>
+          </motion.g>
+        )}
+      </AnimatePresence>
+    </svg>
+  );
+};
+
+// Desktop Horizontal Canvas Component
+const DesktopHorizontalCanvas = ({ 
+  showSystemDiagram, 
+  showProductLayer, 
+  showTimeline, 
+  showFocusedPath, 
+  showDecisionPoints 
+}: { 
+  showSystemDiagram: boolean;
+  showProductLayer: boolean;
+  showTimeline: boolean;
+  showFocusedPath: boolean;
+  showDecisionPoints: boolean;
+}) => {
+  return (
+    <svg
+      viewBox="0 0 600 400"
+      className="w-full h-full max-w-[600px]"
+      preserveAspectRatio="xMidYMid meet"
+      style={{ filter: "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
+    >
+      {/* Background Grid */}
+      <defs>
+        <pattern
+          id="grid"
+          width="40"
+          height="40"
+          patternUnits="userSpaceOnUse"
+        >
+          <path
+            d="M 40 0 L 0 0 0 40"
+            fill="none"
+            stroke="rgba(255,255,255,0.03)"
+            strokeWidth="1"
+          />
+        </pattern>
+        <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
+          <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
+        </linearGradient>
+      </defs>
+      <rect width="600" height="400" fill="url(#grid)" />
+
+      {/* Base Flow: Product → Growth → Revenue → Scale */}
+      <g className="base-flow">
+        {/* Connection Lines */}
+        <motion.path
+          d="M 100 200 L 220 200"
+          stroke="rgba(255,255,255,0.2)"
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        />
+        <motion.path
+          d="M 270 200 L 390 200"
+          stroke="rgba(255,255,255,0.2)"
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, delay: 0.8 }}
+        />
+        <motion.path
+          d="M 440 200 L 560 200"
+          stroke="rgba(255,255,255,0.2)"
+          strokeWidth="2"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.5, delay: 1.1 }}
+        />
+
+        {/* Nodes */}
+        <motion.g
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <circle cx="80" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+          <text x="80" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Product</text>
+        </motion.g>
+        <motion.g
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <circle cx="245" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+          <text x="245" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Growth</text>
+        </motion.g>
+        <motion.g
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+        >
+          <circle cx="415" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+          <text x="415" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Revenue</text>
+        </motion.g>
+        <motion.g
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+        >
+          <circle cx="540" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+          <text x="540" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Scale</text>
+        </motion.g>
+      </g>
+
+      {/* Layer 1: Systems First */}
+      <AnimatePresence>
+        {showSystemDiagram && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.path
+              d="M 100 200 L 220 200"
+              stroke="url(#nodeGradient)"
+              strokeWidth="3"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8 }}
+            />
+            <motion.path
+              d="M 270 200 L 390 200"
+              stroke="url(#nodeGradient)"
+              strokeWidth="3"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            />
+            <motion.path
+              d="M 440 200 L 560 200"
+              stroke="url(#nodeGradient)"
+              strokeWidth="3"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            />
+            <motion.rect
+              x="50"
+              y="160"
+              width="520"
+              height="80"
+              rx="8"
+              fill="none"
+              stroke="hsl(203, 98%, 47%)"
+              strokeWidth="1"
+              strokeDasharray="4 4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              transition={{ duration: 1 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Layer 2: Product Thinking */}
+      <AnimatePresence>
+        {showProductLayer && (
+          <motion.g
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.rect
+              x="40"
+              y="130"
+              width="80"
+              height="40"
+              rx="4"
+              fill="rgba(255,255,255,0.03)"
+              stroke="rgba(255,255,255,0.15)"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            />
+            <text x="80" y="155" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">UX Design</text>
+            
+            <motion.rect
+              x="40"
+              y="250"
+              width="80"
+              height="40"
+              rx="4"
+              fill="rgba(255,255,255,0.03)"
+              stroke="rgba(255,255,255,0.15)"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 }}
+            />
+            <text x="80" y="275" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">Engineering</text>
+
+            <motion.path
+              d="M 80 170 L 80 175"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1"
+              strokeDasharray="2 2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            />
+            <motion.path
+              d="M 80 225 L 80 250"
+              stroke="rgba(255,255,255,0.3)"
+              strokeWidth="1"
+              strokeDasharray="2 2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Layer 3: Long-Term Partner */}
+      <AnimatePresence>
+        {showTimeline && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.rect
+              x="50"
+              y="310"
+              width="500"
+              height="4"
+              rx="2"
+              fill="rgba(255,255,255,0.1)"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              style={{ originX: 0 }}
+              transition={{ duration: 1 }}
+            />
+            
+            {["Build", "Launch", "Grow", "Scale"].map((phase, i) => (
+              <motion.g
+                key={phase}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.15 }}
+              >
+                <circle
+                  cx={100 + i * 140}
+                  cy="312"
+                  r="6"
+                  fill="hsl(203, 98%, 47%)"
+                />
+                <text
+                  x={100 + i * 140}
+                  y="340"
+                  textAnchor="middle"
+                  fill="rgba(255,255,255,0.6)"
+                  fontSize="10"
+                >
+                  {phase}
+                </text>
+              </motion.g>
+            ))}
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Layer 4: Depth Over Volume */}
+      <AnimatePresence>
+        {showFocusedPath && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.rect
+              x="0"
+              y="0"
+              width="600"
+              height="400"
+              fill="rgba(0,0,0,0.3)"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            />
+            
+            <motion.path
+              d="M 80 200 C 160 200, 200 150, 300 150 C 400 150, 450 200, 540 200"
+              stroke="hsl(203, 98%, 47%)"
+              strokeWidth="3"
+              fill="none"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.2 }}
+            />
+            
+            <motion.circle
+              cx="300"
+              cy="150"
+              r="8"
+              fill="hsl(203, 98%, 47%)"
+              initial={{ scale: 0 }}
+              animate={{ scale: [0, 1.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            />
+          </motion.g>
+        )}
+      </AnimatePresence>
+
+      {/* Layer 5: Built for Decision-Makers */}
+      <AnimatePresence>
+        {showDecisionPoints && (
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {[{ x: 160, y: 180 }, { x: 330, y: 180 }, { x: 480, y: 180 }].map((pos, i) => (
+              <motion.g
+                key={i}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 + i * 0.2 }}
+              >
+                <polygon
+                  points={`${pos.x},${pos.y - 12} ${pos.x + 10},${pos.y} ${pos.x},${pos.y + 12} ${pos.x - 10},${pos.y}`}
+                  fill="hsl(203, 98%, 47%)"
+                  opacity="0.8"
+                />
+                <text
+                  x={pos.x}
+                  y={pos.y - 20}
+                  textAnchor="middle"
+                  fill="rgba(255,255,255,0.6)"
+                  fontSize="8"
+                >
+                  Decision {i + 1}
+                </text>
+              </motion.g>
+            ))}
+            
+            <motion.text
+              x="300"
+              y="80"
+              textAnchor="middle"
+              fill="rgba(255,255,255,0.4)"
+              fontSize="11"
+              fontWeight="500"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              Strategic Decision Points
+            </motion.text>
+          </motion.g>
+        )}
+      </AnimatePresence>
+    </svg>
+  );
+};
 
 const WhatMakesUsDifferentSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [visitedIndices, setVisitedIndices] = useState<Set<number>>(new Set());
+  const [mobileStep, setMobileStep] = useState(0);
+  const [isAutoRunning, setIsAutoRunning] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const autoRunTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
   const isMobile = useIsMobile();
 
-  const handleItemClick = (index: number) => {
+  // Auto-run logic for mobile
+  useEffect(() => {
+    if (!isMobile || !isAutoRunning) return;
+
+    autoRunTimerRef.current = setInterval(() => {
+      setMobileStep((prev) => (prev + 1) % 5);
+    }, 2000);
+
+    return () => {
+      if (autoRunTimerRef.current) {
+        clearInterval(autoRunTimerRef.current);
+      }
+    };
+  }, [isMobile, isAutoRunning]);
+
+  // Sync mobile step with activeIndex for navigator display
+  useEffect(() => {
+    if (isMobile && isAutoRunning) {
+      setActiveIndex(mobileStep);
+      setVisitedIndices((prev) => new Set([...prev, mobileStep]));
+    }
+  }, [mobileStep, isMobile, isAutoRunning]);
+
+  const handleMobileInteraction = useCallback((index: number) => {
+    // Stop auto-run
+    setIsAutoRunning(false);
+    if (autoRunTimerRef.current) {
+      clearInterval(autoRunTimerRef.current);
+    }
+    
+    // Set the tapped step
+    setMobileStep(index);
+    setActiveIndex(index);
+    setVisitedIndices((prev) => new Set([...prev, index]));
+
+    // Clear any existing resume timer
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+    }
+
+    // Resume auto-run after 4.5 seconds of inactivity
+    resumeTimerRef.current = setTimeout(() => {
+      setIsAutoRunning(true);
+    }, 4500);
+  }, []);
+
+  const handleDesktopItemClick = (index: number) => {
     setActiveIndex(index);
     setVisitedIndices((prev) => new Set([...prev, index]));
   };
 
-  // Canvas layers visibility based on visited items
+  // Cleanup timers on unmount
+  useEffect(() => {
+    return () => {
+      if (autoRunTimerRef.current) clearInterval(autoRunTimerRef.current);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
+  // Desktop canvas layers visibility
   const showSystemDiagram = visitedIndices.has(0) || activeIndex === 0;
   const showProductLayer = visitedIndices.has(1) || activeIndex === 1;
   const showTimeline = visitedIndices.has(2) || activeIndex === 2;
@@ -73,7 +860,7 @@ const WhatMakesUsDifferentSection = () => {
         </div>
 
         {/* Mobile Horizontal Navigator */}
-        <div className="lg:hidden mb-6">
+        <div className="lg:hidden mb-4">
           <div 
             ref={scrollContainerRef}
             className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide"
@@ -86,15 +873,15 @@ const WhatMakesUsDifferentSection = () => {
             {navigatorItems.map((item, index) => (
               <button
                 key={item.id}
-                onClick={() => handleItemClick(index)}
+                onClick={() => handleMobileInteraction(index)}
                 className={`flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-out whitespace-nowrap touch-manipulation ${
-                  activeIndex === index
+                  mobileStep === index
                     ? "bg-primary text-primary-foreground"
                     : visitedIndices.has(index)
                     ? "bg-white/10 text-white/80"
                     : "bg-white/5 text-white/50 active:bg-white/10"
                 }`}
-                aria-pressed={activeIndex === index}
+                aria-pressed={mobileStep === index}
               >
                 {item.title}
               </button>
@@ -102,18 +889,16 @@ const WhatMakesUsDifferentSection = () => {
           </div>
           {/* Active item description for mobile */}
           <AnimatePresence mode="wait">
-            {activeIndex !== null && (
-              <motion.p
-                key={activeIndex}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                className="text-sm text-white/60 mt-3 px-1 leading-relaxed"
-              >
-                {navigatorItems[activeIndex].text}
-              </motion.p>
-            )}
+            <motion.p
+              key={mobileStep}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              className="text-sm text-white/60 mt-2 px-1 leading-relaxed min-h-[40px]"
+            >
+              {navigatorItems[mobileStep].shortText}
+            </motion.p>
           </AnimatePresence>
         </div>
 
@@ -125,10 +910,10 @@ const WhatMakesUsDifferentSection = () => {
               {navigatorItems.map((item, index) => (
                 <li key={item.id}>
                   <button
-                    onClick={() => handleItemClick(index)}
+                    onClick={() => handleDesktopItemClick(index)}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
-                        handleItemClick(index);
+                        handleDesktopItemClick(index);
                       }
                     }}
                     className={`w-full text-left py-4 px-4 rounded-lg transition-all duration-500 ease-out group ${
@@ -168,381 +953,28 @@ const WhatMakesUsDifferentSection = () => {
             </ul>
           </nav>
 
-          {/* Right Canvas */}
-          <div className="lg:w-[70%] min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] relative">
+          {/* Canvas */}
+          <div className="lg:w-[70%] min-h-[380px] sm:min-h-[400px] lg:min-h-[500px] relative">
             <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 overflow-hidden">
-              {/* Canvas Content */}
               <div className="relative w-full h-full p-4 sm:p-6 lg:p-8">
-                {/* Initial State / Base Layer */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="absolute inset-0 flex items-center justify-center"
+                  className="absolute inset-0 flex items-center justify-center p-4"
                 >
-                  <svg
-                    viewBox="0 0 600 400"
-                    className="w-full h-full max-w-[600px]"
-                    preserveAspectRatio="xMidYMid meet"
-                    style={{ filter: isMobile ? undefined : "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
-                  >
-                    {/* Background Grid */}
-                    <defs>
-                      <pattern
-                        id="grid"
-                        width="40"
-                        height="40"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <path
-                          d="M 40 0 L 0 0 0 40"
-                          fill="none"
-                          stroke="rgba(255,255,255,0.03)"
-                          strokeWidth="1"
-                        />
-                      </pattern>
-                      <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="hsl(203, 98%, 47%)" />
-                        <stop offset="100%" stopColor="hsl(210, 100%, 55%)" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="600" height="400" fill="url(#grid)" />
-
-                    {/* Base Flow: Product → Growth → Revenue → Scale */}
-                    <g className="base-flow">
-                      {/* Connection Lines */}
-                      <motion.path
-                        d="M 100 200 L 220 200"
-                        stroke="rgba(255,255,255,0.2)"
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 0.5 }}
-                      />
-                      <motion.path
-                        d="M 270 200 L 390 200"
-                        stroke="rgba(255,255,255,0.2)"
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 0.8 }}
-                      />
-                      <motion.path
-                        d="M 440 200 L 560 200"
-                        stroke="rgba(255,255,255,0.2)"
-                        strokeWidth="2"
-                        fill="none"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 1.1 }}
-                      />
-
-                      {/* Nodes */}
-                      <motion.g
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                      >
-                        <circle cx="80" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-                        <text x="80" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Product</text>
-                      </motion.g>
-                      <motion.g
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                      >
-                        <circle cx="245" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-                        <text x="245" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Growth</text>
-                      </motion.g>
-                      <motion.g
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.9 }}
-                      >
-                        <circle cx="415" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-                        <text x="415" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Revenue</text>
-                      </motion.g>
-                      <motion.g
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 1.2 }}
-                      >
-                        <circle cx="540" cy="200" r="24" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-                        <text x="540" y="205" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="10" fontWeight="500">Scale</text>
-                      </motion.g>
-                    </g>
-
-                    {/* Layer 1: Systems First - Highlight full system */}
-                    <AnimatePresence>
-                      {showSystemDiagram && (
-                        <motion.g
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.8 }}
-                        >
-                          {/* Enhanced connections */}
-                          <motion.path
-                            d="M 100 200 L 220 200"
-                            stroke="url(#nodeGradient)"
-                            strokeWidth="3"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.8 }}
-                          />
-                          <motion.path
-                            d="M 270 200 L 390 200"
-                            stroke="url(#nodeGradient)"
-                            strokeWidth="3"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                          />
-                          <motion.path
-                            d="M 440 200 L 560 200"
-                            stroke="url(#nodeGradient)"
-                            strokeWidth="3"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                          />
-                          {/* System wrapper */}
-                          <motion.rect
-                            x="50"
-                            y="160"
-                            width="520"
-                            height="80"
-                            rx="8"
-                            fill="none"
-                            stroke="hsl(203, 98%, 47%)"
-                            strokeWidth="1"
-                            strokeDasharray="4 4"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 0.5 }}
-                            transition={{ duration: 1 }}
-                          />
-                        </motion.g>
-                      )}
-                    </AnimatePresence>
-
-                    {/* Layer 2: Product Thinking - UX/Engineering elements */}
-                    <AnimatePresence>
-                      {showProductLayer && (
-                        <motion.g
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.8 }}
-                        >
-                          {/* UX elements around Product node */}
-                          <motion.rect
-                            x="40"
-                            y="130"
-                            width="80"
-                            height="40"
-                            rx="4"
-                            fill="rgba(255,255,255,0.03)"
-                            stroke="rgba(255,255,255,0.15)"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                          />
-                          <text x="80" y="155" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">UX Design</text>
-                          
-                          <motion.rect
-                            x="40"
-                            y="250"
-                            width="80"
-                            height="40"
-                            rx="4"
-                            fill="rgba(255,255,255,0.03)"
-                            stroke="rgba(255,255,255,0.15)"
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.4 }}
-                          />
-                          <text x="80" y="275" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8">Engineering</text>
-
-                          {/* Connecting lines */}
-                          <motion.path
-                            d="M 80 170 L 80 175"
-                            stroke="rgba(255,255,255,0.3)"
-                            strokeWidth="1"
-                            strokeDasharray="2 2"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
-                          />
-                          <motion.path
-                            d="M 80 225 L 80 250"
-                            stroke="rgba(255,255,255,0.3)"
-                            strokeWidth="1"
-                            strokeDasharray="2 2"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5 }}
-                          />
-                        </motion.g>
-                      )}
-                    </AnimatePresence>
-
-                    {/* Layer 3: Long-Term Partner - Timeline */}
-                    <AnimatePresence>
-                      {showTimeline && (
-                        <motion.g
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.8 }}
-                        >
-                          {/* Timeline bar */}
-                          <motion.rect
-                            x="50"
-                            y="310"
-                            width="500"
-                            height="4"
-                            rx="2"
-                            fill="rgba(255,255,255,0.1)"
-                            initial={{ scaleX: 0 }}
-                            animate={{ scaleX: 1 }}
-                            style={{ originX: 0 }}
-                            transition={{ duration: 1 }}
-                          />
-                          
-                          {/* Timeline phases */}
-                          {["Build", "Launch", "Grow", "Scale"].map((phase, i) => (
-                            <motion.g
-                              key={phase}
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.3 + i * 0.15 }}
-                            >
-                              <circle
-                                cx={100 + i * 140}
-                                cy="312"
-                                r="6"
-                                fill="hsl(203, 98%, 47%)"
-                              />
-                              <text
-                                x={100 + i * 140}
-                                y="340"
-                                textAnchor="middle"
-                                fill="rgba(255,255,255,0.6)"
-                                fontSize="10"
-                              >
-                                {phase}
-                              </text>
-                            </motion.g>
-                          ))}
-                        </motion.g>
-                      )}
-                    </AnimatePresence>
-
-                    {/* Layer 4: Depth Over Volume - Focused path */}
-                    <AnimatePresence>
-                      {showFocusedPath && (
-                        <motion.g
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.8 }}
-                        >
-                          {/* Dim overlay for other elements */}
-                          <motion.rect
-                            x="0"
-                            y="0"
-                            width="600"
-                            height="400"
-                            fill="rgba(0,0,0,0.3)"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                          />
-                          
-                          {/* Highlighted main path */}
-                          <motion.path
-                            d="M 80 200 C 160 200, 200 150, 300 150 C 400 150, 450 200, 540 200"
-                            stroke="hsl(203, 98%, 47%)"
-                            strokeWidth="3"
-                            fill="none"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 1.2 }}
-                          />
-                          
-                          {/* Focus indicator */}
-                          <motion.circle
-                            cx="300"
-                            cy="150"
-                            r="8"
-                            fill="hsl(203, 98%, 47%)"
-                            initial={{ scale: 0 }}
-                            animate={{ scale: [0, 1.3, 1] }}
-                            transition={{ duration: 0.6, delay: 0.8 }}
-                          />
-                        </motion.g>
-                      )}
-                    </AnimatePresence>
-
-                    {/* Layer 5: Built for Decision-Makers - Decision points */}
-                    <AnimatePresence>
-                      {showDecisionPoints && (
-                        <motion.g
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.8 }}
-                        >
-                          {/* Decision markers */}
-                          {[{ x: 160, y: 180 }, { x: 330, y: 180 }, { x: 480, y: 180 }].map((pos, i) => (
-                            <motion.g
-                              key={i}
-                              initial={{ opacity: 0, scale: 0 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: 0.2 + i * 0.2 }}
-                            >
-                              <polygon
-                                points={`${pos.x},${pos.y - 12} ${pos.x + 10},${pos.y} ${pos.x},${pos.y + 12} ${pos.x - 10},${pos.y}`}
-                                fill="hsl(203, 98%, 47%)"
-                                opacity="0.8"
-                              />
-                              <text
-                                x={pos.x}
-                                y={pos.y - 20}
-                                textAnchor="middle"
-                                fill="rgba(255,255,255,0.6)"
-                                fontSize="8"
-                              >
-                                Decision {i + 1}
-                              </text>
-                            </motion.g>
-                          ))}
-                          
-                          {/* Strategic overlay */}
-                          <motion.text
-                            x="300"
-                            y="80"
-                            textAnchor="middle"
-                            fill="rgba(255,255,255,0.4)"
-                            fontSize="11"
-                            fontWeight="500"
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 }}
-                          >
-                            Strategic Decision Points
-                          </motion.text>
-                        </motion.g>
-                      )}
-                    </AnimatePresence>
-                  </svg>
+                  {isMobile ? (
+                    <MobileVerticalCanvas activeStep={mobileStep} />
+                  ) : (
+                    <DesktopHorizontalCanvas
+                      showSystemDiagram={showSystemDiagram}
+                      showProductLayer={showProductLayer}
+                      showTimeline={showTimeline}
+                      showFocusedPath={showFocusedPath}
+                      showDecisionPoints={showDecisionPoints}
+                    />
+                  )}
                 </motion.div>
-
               </div>
             </div>
           </div>
