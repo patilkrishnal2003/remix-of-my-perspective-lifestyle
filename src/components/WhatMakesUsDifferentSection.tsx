@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const navigatorItems = [
   {
@@ -32,6 +33,8 @@ const navigatorItems = [
 const WhatMakesUsDifferentSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [visitedIndices, setVisitedIndices] = useState<Set<number>>(new Set());
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
@@ -47,13 +50,13 @@ const WhatMakesUsDifferentSection = () => {
 
   return (
     <section className="section-divider relative bg-[hsl(0_0%_6%)] text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24">
         {/* Header */}
-        <div className="mb-12 sm:mb-16">
-          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50 mb-4">
+        <div className="mb-8 sm:mb-12 lg:mb-16">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50 mb-3 sm:mb-4">
             Why Us
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.15] sm:leading-[1.1]">
             <span className="font-serif italic text-white/90">
               Not built like an agency.
             </span>
@@ -63,12 +66,61 @@ const WhatMakesUsDifferentSection = () => {
               <span className="text-primary">real businesses.</span>
             </span>
           </h2>
+          {/* Mobile supporting text */}
+          <p className="lg:hidden text-sm sm:text-base text-white/40 mt-4 max-w-md leading-relaxed">
+            We design systems that evolve as your business grows.
+          </p>
         </div>
 
-        {/* Two-column layout */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-          {/* Left Navigator */}
-          <nav className="lg:w-[30%] flex-shrink-0">
+        {/* Mobile Horizontal Navigator */}
+        <div className="lg:hidden mb-6">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            {navigatorItems.map((item, index) => (
+              <button
+                key={item.id}
+                onClick={() => handleItemClick(index)}
+                className={`flex-shrink-0 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-out whitespace-nowrap touch-manipulation ${
+                  activeIndex === index
+                    ? "bg-primary text-primary-foreground"
+                    : visitedIndices.has(index)
+                    ? "bg-white/10 text-white/80"
+                    : "bg-white/5 text-white/50 active:bg-white/10"
+                }`}
+                aria-pressed={activeIndex === index}
+              >
+                {item.title}
+              </button>
+            ))}
+          </div>
+          {/* Active item description for mobile */}
+          <AnimatePresence mode="wait">
+            {activeIndex !== null && (
+              <motion.p
+                key={activeIndex}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                className="text-sm text-white/60 mt-3 px-1 leading-relaxed"
+              >
+                {navigatorItems[activeIndex].text}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Two-column layout for desktop */}
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-12">
+          {/* Left Navigator - Desktop only */}
+          <nav className="hidden lg:block lg:w-[30%] flex-shrink-0">
             <ul className="space-y-1">
               {navigatorItems.map((item, index) => (
                 <li key={item.id}>
@@ -117,21 +169,22 @@ const WhatMakesUsDifferentSection = () => {
           </nav>
 
           {/* Right Canvas */}
-          <div className="lg:w-[70%] min-h-[400px] sm:min-h-[500px] relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 overflow-hidden">
+          <div className="lg:w-[70%] min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] relative">
+            <div className="absolute inset-0 rounded-xl lg:rounded-2xl bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 overflow-hidden">
               {/* Canvas Content */}
-              <div className="relative w-full h-full p-6 sm:p-8">
+              <div className="relative w-full h-full p-4 sm:p-6 lg:p-8">
                 {/* Initial State / Base Layer */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.3 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   <svg
                     viewBox="0 0 600 400"
                     className="w-full h-full max-w-[600px]"
-                    style={{ filter: "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
+                    preserveAspectRatio="xMidYMid meet"
+                    style={{ filter: isMobile ? undefined : "drop-shadow(0 0 40px rgba(0,150,255,0.1))" }}
                   >
                     {/* Background Grid */}
                     <defs>
