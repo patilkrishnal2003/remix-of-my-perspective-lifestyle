@@ -22,7 +22,7 @@ const solutionsData = [
     ctaLink: "/contact",
     bgColor: "#438260",
     imageBgColor: "rgba(67, 130, 96, 0.6)",
-    image: heroDashboard,
+    image: "", // Removed for fallback testing
   },
   {
     id: "community",
