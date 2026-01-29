@@ -177,13 +177,13 @@ const Index = () => {
           {/* Services Section */}
           <ServicesTabSection />
 
-          {/* Resources Tab Section */}
-          <ResourcesTabSection />
-
           {/* Testimonials Section */}
           <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
             <TestimonialsSection testimonials={testimonials} />
           </section>
+
+          {/* Resources Tab Section */}
+          <ResourcesTabSection />
 
           <CTASection />
         </main>
