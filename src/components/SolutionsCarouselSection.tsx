@@ -17,7 +17,7 @@ const solutionsData = [
     label: "Web Development",
     title: "High-Performance",
     subtitle: "Web Platforms",
-    description: "Startup, SaaS & enterprise websites. Conversion-optimized landing pages, web applications, CMS-based & headless architectures with performance, security & scalability optimization.",
+    description: "Startup, SaaS & enterprise websites. Landing pages, web apps, CMS-based & headless architectures with performance optimization.",
     mobileDescription: "Scalable websites & web apps built for performance.",
     outcome: "Fast, scalable, production-ready web platforms.",
     ctaText: "Start Your Project",
