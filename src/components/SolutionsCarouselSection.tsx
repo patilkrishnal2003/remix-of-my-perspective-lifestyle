@@ -19,8 +19,8 @@ const solutionsData = [
     description: "Upload a PDF, a Video, a MP3 or any other digital file and set a price - a great looking high-converting landing page is ready for you to start selling.",
     ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(155_35%_45%)]",
-    imageBgColor: "bg-[hsl(155_35%_35%)]",
+    bgColor: "hsl(155, 35%, 45%)",
+    imageBgColor: "hsl(155, 35%, 35%)",
     image: heroDashboard,
   },
   {
@@ -31,8 +31,8 @@ const solutionsData = [
     description: "Create and launch paid subscription based business on Telegram and Discord via SuperProfile in less than 10 minutes.",
     ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(45_35%_65%)]",
-    imageBgColor: "bg-[hsl(45_35%_55%)]",
+    bgColor: "hsl(45, 35%, 65%)",
+    imageBgColor: "hsl(45, 35%, 55%)",
     image: heroWorkspace,
   },
   {
@@ -43,8 +43,8 @@ const solutionsData = [
     description: "Everything you need to launch a course and go from 0 to 100,000 students. Offer an end-to-end course experience that looks and works great.",
     ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(350_20%_82%)]",
-    imageBgColor: "bg-[hsl(350_20%_72%)]",
+    bgColor: "hsl(350, 20%, 75%)",
+    imageBgColor: "hsl(350, 20%, 65%)",
     image: projectFinanceflow,
   },
   {
@@ -55,8 +55,8 @@ const solutionsData = [
     description: "Manage ticketing, payments, registrations, and communication with ease - for both online and offline events.",
     ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(200_25%_78%)]",
-    imageBgColor: "bg-[hsl(200_25%_68%)]",
+    bgColor: "hsl(200, 25%, 70%)",
+    imageBgColor: "hsl(200, 25%, 60%)",
     image: projectHealthtrack,
   },
   {
@@ -67,14 +67,21 @@ const solutionsData = [
     description: "Streamline scheduling, payments, and client management. Grow your coaching practice with automated tools.",
     ctaText: "Get Started",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(160_20%_75%)]",
-    imageBgColor: "bg-[hsl(160_20%_65%)]",
+    bgColor: "hsl(160, 20%, 65%)",
+    imageBgColor: "hsl(160, 20%, 55%)",
     image: projectEdulearn,
   },
 ];
 
+const CARD_WIDTH = 85; // vw
+const CARD_GAP = 24; // px
+
 const SolutionsCarouselSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleTabClick = (index: number) => {
+    setActiveIndex(index);
+  };
 
   return (
     <section className="section-divider py-16 pt-20 overflow-hidden">
@@ -90,13 +97,13 @@ const SolutionsCarouselSection = () => {
           </div>
         </ScrollReveal>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation - 5 buttons for 5 cards */}
         <ScrollReveal delay={100}>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-10">
             {solutionsData.map((solution, index) => (
               <button
                 key={solution.id}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => handleTabClick(index)}
                 className={`relative px-2 py-2 text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeIndex === index
                     ? "text-foreground"
@@ -117,12 +124,12 @@ const SolutionsCarouselSection = () => {
         </ScrollReveal>
       </div>
 
-      {/* Carousel Container */}
+      {/* Carousel - slides based on activeIndex */}
       <div className="relative w-full">
         <motion.div
           className="flex gap-6 px-4"
           animate={{
-            x: `calc(50% - ${activeIndex * 85}vw - ${activeIndex * 24}px - 42.5vw)`,
+            x: `calc(50% - ${activeIndex * CARD_WIDTH}vw - ${activeIndex * CARD_GAP}px - ${CARD_WIDTH / 2}vw)`,
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
@@ -132,16 +139,17 @@ const SolutionsCarouselSection = () => {
             return (
               <motion.div
                 key={solution.id}
-                onClick={() => setActiveIndex(index)}
-                animate={{
-                  scale: isActive ? 1 : 0.95,
-                  opacity: isActive ? 1 : 0.5,
-                }}
-                transition={{ duration: 0.3 }}
+                onClick={() => handleTabClick(index)}
                 className={`flex-shrink-0 w-[85vw] max-w-[1000px] ${!isActive ? "cursor-pointer" : ""}`}
               >
-                <div
-                  className={`${solution.bgColor} rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 h-[420px] sm:h-[450px]`}
+                <motion.div
+                  animate={{
+                    scale: isActive ? 1 : 0.95,
+                    opacity: isActive ? 1 : 0.4,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  style={{ backgroundColor: solution.bgColor }}
+                  className="rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 h-[420px] sm:h-[450px]"
                 >
                   <div className="flex flex-col md:flex-row h-full gap-6">
                     {/* Left - Text Content */}
@@ -169,7 +177,10 @@ const SolutionsCarouselSection = () => {
 
                     {/* Right - Image with Background Container */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      <div className={`${solution.imageBgColor} w-full h-full rounded-2xl p-6 flex items-center justify-center`}>
+                      <div 
+                        style={{ backgroundColor: solution.imageBgColor }}
+                        className="w-full h-full rounded-2xl p-6 flex items-center justify-center"
+                      >
                         <img
                           src={solution.image}
                           alt={solution.title}
@@ -178,7 +189,7 @@ const SolutionsCarouselSection = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}
@@ -190,7 +201,7 @@ const SolutionsCarouselSection = () => {
         {solutionsData.map((_, index) => (
           <button
             key={index}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => handleTabClick(index)}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === activeIndex ? "bg-foreground w-6" : "bg-foreground/30"
             }`}
