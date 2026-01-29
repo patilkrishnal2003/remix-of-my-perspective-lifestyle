@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
-import { ImageOff } from "lucide-react";
+import { ImageOff, Zap, Shield, Rocket, Smartphone, Cloud, Code, Palette, Users, Target, Layers, TrendingUp, BarChart3, Layout, PenTool, Award } from "lucide-react";
 
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
@@ -24,6 +24,11 @@ const solutionsData = [
     ctaLink: "/contact",
     bgColor: "#438260",
     image: heroDashboard,
+    features: [
+      { icon: Zap, text: "Lightning-fast load times" },
+      { icon: Shield, text: "Enterprise-grade security" },
+      { icon: Rocket, text: "SEO-optimized architecture" },
+    ],
   },
   {
     id: "mobile-apps",
@@ -37,6 +42,11 @@ const solutionsData = [
     ctaLink: "/contact",
     bgColor: "#948149",
     image: heroWorkspace,
+    features: [
+      { icon: Smartphone, text: "Native iOS & Android builds" },
+      { icon: Cloud, text: "Seamless cloud sync" },
+      { icon: TrendingUp, text: "Store-ready deployment" },
+    ],
   },
   {
     id: "custom-software",
@@ -50,6 +60,11 @@ const solutionsData = [
     ctaLink: "/contact",
     bgColor: "#711e1b",
     image: projectFinanceflow,
+    features: [
+      { icon: Code, text: "Custom API integrations" },
+      { icon: Layers, text: "Modular, scalable systems" },
+      { icon: BarChart3, text: "Real-time analytics" },
+    ],
   },
   {
     id: "ui-ux-design",
@@ -63,6 +78,11 @@ const solutionsData = [
     ctaLink: "/contact",
     bgColor: "#894f71",
     image: projectHealthtrack,
+    features: [
+      { icon: Palette, text: "User-centered design" },
+      { icon: Layout, text: "Consistent design systems" },
+      { icon: Target, text: "Conversion optimization" },
+    ],
   },
   {
     id: "branding",
@@ -76,6 +96,11 @@ const solutionsData = [
     ctaLink: "/contact",
     bgColor: "#485c81",
     image: projectEdulearn,
+    features: [
+      { icon: PenTool, text: "Distinctive visual identity" },
+      { icon: Users, text: "Audience-driven messaging" },
+      { icon: Award, text: "Memorable brand presence" },
+    ],
   },
 ];
 
@@ -165,25 +190,30 @@ const SolutionsCarouselSection = () => {
                           <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
                             {solution.title}
                           </h3>
-                          <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                          <p className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
                             {solution.subtitle}
                           </p>
-                          <p className="text-white/80 text-base max-w-md mb-4">
+                          <p className="text-white/80 text-sm max-w-md mb-4">
                             {solution.description}
                           </p>
-                          {solution.outcome && (
-                            <p className="text-white/90 text-sm font-medium">
-                              🎯 {solution.outcome}
-                            </p>
-                          )}
                         </div>
 
-                        <div>
+                        <div className="space-y-4">
                           <Link to={solution.ctaLink}>
                             <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
                               {solution.ctaText}
                             </Button>
                           </Link>
+                          
+                          {/* Feature Points */}
+                          <div className="space-y-2 pt-2">
+                            {solution.features.map((feature, idx) => (
+                              <div key={idx} className="flex items-center gap-2">
+                                <feature.icon className="w-4 h-4 text-white/70" />
+                                <span className="text-white/80 text-sm">{feature.text}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
 
@@ -246,15 +276,25 @@ const SolutionsCarouselSection = () => {
                 <h3 className="text-2xl font-bold text-white leading-tight mb-2">
                   {solution.title} {solution.subtitle}
                 </h3>
-                <p className="text-white/80 text-base leading-relaxed mb-5">
+                <p className="text-white/80 text-base leading-relaxed mb-4">
                   {solution.mobileDescription || solution.outcome}
                 </p>
 
                 <Link to={solution.ctaLink}>
-                  <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm">
+                  <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm mb-4">
                     {solution.ctaText}
                   </Button>
                 </Link>
+                
+                {/* Feature Points */}
+                <div className="space-y-2 pt-2">
+                  {solution.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <feature.icon className="w-4 h-4 text-white/70" />
+                      <span className="text-white/80 text-sm">{feature.text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
