@@ -103,7 +103,7 @@ const DigitalServicesCarouselSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10">
-            <Badge variant="outline" className="mb-4 text-xs font-semibold tracking-wider">
+            <Badge variant="outline" className="mb-4 text-sm px-4 py-1 font-semibold tracking-wider">
               GROW & SCALE
             </Badge>
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-3">
