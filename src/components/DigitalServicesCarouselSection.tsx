@@ -208,7 +208,7 @@ const DigitalServicesCarouselSection = () => {
       </div>
 
       {/* Mobile Stacked Cards */}
-      <div className="sm:hidden px-4 space-y-4">
+      <div className="sm:hidden px-4 space-y-5">
         {digitalServicesData.map((solution) => (
           <motion.div
             key={solution.id}
@@ -219,10 +219,10 @@ const DigitalServicesCarouselSection = () => {
           >
             <div
               style={{ backgroundColor: solution.bgColor }}
-              className="w-full rounded-2xl overflow-hidden"
+              className="w-full rounded-[1.5rem] p-4"
             >
-              {/* Image Section */}
-              <div className="w-full h-40">
+              {/* Image Section - Rounded inside card */}
+              <div className="w-full h-48 rounded-2xl overflow-hidden mb-5">
                 {imageErrors[solution.id] || !solution.image ? (
                   <div className="w-full h-full bg-white/10 flex items-center justify-center">
                     <ImageOff className="w-10 h-10 text-white/40" />
@@ -238,16 +238,16 @@ const DigitalServicesCarouselSection = () => {
               </div>
               
               {/* Content Section */}
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-white leading-tight mb-1">
+              <div className="px-1 pb-2">
+                <h3 className="text-2xl font-bold text-white leading-tight mb-2">
                   {solution.title} {solution.subtitle}
                 </h3>
-                <p className="text-white/80 text-sm mb-3 line-clamp-2">
+                <p className="text-white/80 text-base leading-relaxed mb-5">
                   {solution.mobileDescription || solution.outcome}
                 </p>
 
                 <Link to={solution.ctaLink}>
-                  <Button className="bg-white text-foreground hover:bg-white/90 px-5 py-2.5 text-sm border-0 rounded-full shadow-sm w-full">
+                  <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm">
                     {solution.ctaText}
                   </Button>
                 </Link>
