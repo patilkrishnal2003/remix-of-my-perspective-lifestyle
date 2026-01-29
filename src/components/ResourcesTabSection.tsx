@@ -206,10 +206,7 @@ export default function ResourcesTabSection() {
                     <mobileTabData.icon className="w-5 h-5 text-primary" />
                     <span className="text-sm font-medium text-primary">{mobileTabData.label}</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{mobileTabData.label}</h3>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {mobileTabData.description}
-                  </p>
+                  <h3 className="text-xl font-bold mb-4">{mobileTabData.label}</h3>
                   <Link to={mobileTabData.link}>
                     <Button className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90">
                       {mobileTabData.linkText}
