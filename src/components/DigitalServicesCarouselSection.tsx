@@ -182,7 +182,7 @@ const DigitalServicesCarouselSection = () => {
                       </div>
 
                       {/* Right - Text Content */}
-                      <div className="flex flex-col justify-between w-[45%]">
+                      <div className="flex flex-col justify-end gap-5 w-[45%]">
                         <div>
                           <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
                             {solution.title}
