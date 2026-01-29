@@ -244,13 +244,13 @@ All colors MUST be HSL.
 
   .pill-nav {
     @apply rounded-full border border-white/20 dark:border-white/10;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(200, 200, 210, 0.65);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
   }
 
   .dark .pill-nav {
-    background: rgba(30, 30, 30, 0.72);
+    background: rgba(45, 45, 50, 0.72);
   }
 
   .floating-button {
