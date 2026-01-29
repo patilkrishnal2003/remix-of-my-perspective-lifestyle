@@ -52,7 +52,7 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
   }, [n, visible]);
 
   return (
-    <div className="w-full py-16 pt-20">
+    <div className="w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
           <div className="text-center mb-10 sm:mb-12">
