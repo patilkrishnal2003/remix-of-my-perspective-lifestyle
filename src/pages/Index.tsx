@@ -182,6 +182,12 @@ const Index = () => {
 
           {/* Testimonials Section */}
           <section className="section-divider py-16 sm:py-20 pt-20 sm:pt-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">What Our Clients Say</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Don't just take our word for it — hear from the businesses we've helped succeed
+              </p>
+            </div>
             <TestimonialsSection testimonials={testimonials} />
           </section>
 
