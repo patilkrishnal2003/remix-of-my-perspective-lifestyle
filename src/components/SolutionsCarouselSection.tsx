@@ -14,12 +14,13 @@ const solutionsData = [
   {
     id: "digital-products",
     label: "Digital Products",
-    title: "Launch Digital Products",
-    subtitle: "with confidence",
-    description: "Everything you need to create, market, and sell digital products. From ideation to launch, we handle the technical complexity.",
-    ctaText: "Get Started",
+    title: "Sell Digital Products",
+    subtitle: "with ease",
+    description: "Upload a PDF, a Video, a MP3 or any other digital file and set a price - a great looking high-converting landing page is ready for you to start selling.",
+    ctaText: "Try it Free",
     ctaLink: "/contact",
-    bgColor: "bg-[hsl(45_30%_75%)]",
+    bgColor: "bg-[hsl(155_35%_45%)]",
+    imageBgColor: "bg-[hsl(155_35%_35%)]",
     image: heroDashboard,
   },
   {
@@ -31,6 +32,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "bg-[hsl(45_35%_65%)]",
+    imageBgColor: "bg-[hsl(45_35%_55%)]",
     image: heroWorkspace,
   },
   {
@@ -42,6 +44,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "bg-[hsl(350_20%_82%)]",
+    imageBgColor: "bg-[hsl(350_20%_72%)]",
     image: projectFinanceflow,
   },
   {
@@ -53,6 +56,7 @@ const solutionsData = [
     ctaText: "Try it Free",
     ctaLink: "/contact",
     bgColor: "bg-[hsl(200_25%_78%)]",
+    imageBgColor: "bg-[hsl(200_25%_68%)]",
     image: projectHealthtrack,
   },
   {
@@ -64,12 +68,13 @@ const solutionsData = [
     ctaText: "Get Started",
     ctaLink: "/contact",
     bgColor: "bg-[hsl(160_20%_75%)]",
+    imageBgColor: "bg-[hsl(160_20%_65%)]",
     image: projectEdulearn,
   },
 ];
 
 const SolutionsCarouselSection = () => {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="section-divider py-16 pt-20 overflow-hidden">
@@ -136,39 +141,39 @@ const SolutionsCarouselSection = () => {
                 className={`flex-shrink-0 w-[85vw] max-w-[1000px] ${!isActive ? "cursor-pointer" : ""}`}
               >
                 <div
-                  className={`${solution.bgColor} rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 min-h-[400px] sm:min-h-[450px]`}
+                  className={`${solution.bgColor} rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-10 h-[420px] sm:h-[450px]`}
                 >
                   <div className="flex flex-col md:flex-row h-full gap-6">
                     {/* Left - Text Content */}
-                    <div className="flex flex-col justify-between md:w-[45%] flex-1">
+                    <div className="flex flex-col justify-between md:w-[45%]">
                       <div>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-1">
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-1">
                           {solution.title}
                         </h3>
-                        <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-4">
+                        <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
                           {solution.subtitle}
                         </p>
-                        <p className="text-foreground/70 text-sm sm:text-base max-w-md mb-6">
+                        <p className="text-white/80 text-sm sm:text-base max-w-md mb-6">
                           {solution.description}
                         </p>
                       </div>
 
                       <div>
                         <Link to={solution.ctaLink}>
-                          <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-sm sm:text-base border border-foreground/20 rounded-full shadow-sm">
+                          <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-sm sm:text-base border-0 rounded-full shadow-sm">
                             {solution.ctaText}
                           </Button>
                         </Link>
                       </div>
                     </div>
 
-                    {/* Right - Image */}
+                    {/* Right - Image with Background Container */}
                     <div className="hidden md:flex md:w-[55%] items-center justify-center">
-                      <div className="relative w-full h-full min-h-[300px] rounded-2xl overflow-hidden">
+                      <div className={`${solution.imageBgColor} w-full h-full rounded-2xl p-6 flex items-center justify-center`}>
                         <img
                           src={solution.image}
                           alt={solution.title}
-                          className="w-full h-full object-cover rounded-2xl"
+                          className="w-full h-full object-cover rounded-xl"
                         />
                       </div>
                     </div>
