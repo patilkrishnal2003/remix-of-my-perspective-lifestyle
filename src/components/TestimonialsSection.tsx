@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import TestimonialCard, { type Testimonial } from "./TestimonialCard";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import ScrollReveal from "@/components/ScrollReveal";
 
 type Filter = "all" | "google";
 
@@ -50,21 +52,26 @@ export default function TestimonialsSection({ testimonials }: TestimonialsSectio
   }, [n, visible]);
 
   return (
-    <div className="w-full">
+    <div className="w-full py-16 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12">
-
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What Our Clients Say
-          </h2>
-
-          {/* Reviews badge */}
-          <div className="flex justify-center mt-6">
-            <span className="px-4 py-2 text-sm rounded-full bg-foreground text-background">
-              Reviews
-            </span>
+        <ScrollReveal>
+          <div className="text-center mb-10 sm:mb-12">
+            <Badge variant="outline" className="mb-4 text-sm px-4 py-1 font-semibold tracking-wider">
+              TESTIMONIALS
+            </Badge>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
+              <span className="block font-serif italic font-normal mb-1">
+                What Our Clients Say
+              </span>
+              <span className="block font-bold">
+                About <span className="text-primary">Working With Us</span>
+              </span>
+            </h2>
+            <p className="text-base md:text-lg text-muted-foreground font-normal max-w-2xl mx-auto">
+              Real feedback from founders and teams who've partnered with us to build products, drive growth, and scale their businesses.
+            </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         <div className="relative">
           <div className="overflow-hidden pt-8 pb-6 -mt-8 -mb-6 px-4 -mx-4">
