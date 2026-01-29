@@ -18,6 +18,7 @@ const solutionsData = [
     title: "High-Performance",
     subtitle: "Web Platforms",
     description: "Startup, SaaS & enterprise websites. Conversion-optimized landing pages, web applications, CMS-based & headless architectures with performance, security & scalability optimization.",
+    mobileDescription: "Scalable websites & web apps built for performance.",
     outcome: "Fast, scalable, production-ready web platforms.",
     ctaText: "Start Your Project",
     ctaLink: "/contact",
@@ -30,6 +31,7 @@ const solutionsData = [
     title: "iOS & Android",
     subtitle: "Development",
     description: "Native & cross-platform apps. MVP apps for startups, SaaS companion apps, performance optimization, and store readiness & deployment support.",
+    mobileDescription: "Native & cross-platform apps ready for growth.",
     outcome: "Stable, user-ready mobile applications built for growth.",
     ctaText: "Build Your App",
     ctaLink: "/contact",
@@ -42,6 +44,7 @@ const solutionsData = [
     title: "Business Tools &",
     subtitle: "Automation",
     description: "Internal tools, CRM/ERP/workflow platforms, API development & integrations, custom SaaS & enterprise software, and AI-enabled tools when relevant.",
+    mobileDescription: "Custom tools & automation for your business.",
     outcome: "Tailor-made software that improves efficiency and operations.",
     ctaText: "Let's Build",
     ctaLink: "/contact",
@@ -54,6 +57,7 @@ const solutionsData = [
     title: "Product",
     subtitle: "Experience",
     description: "UX research & user journey mapping, wireframes & prototypes, conversion-focused UI design, design systems & component libraries, and usability optimization.",
+    mobileDescription: "Intuitive designs that convert users.",
     outcome: "Intuitive, high-converting digital experiences.",
     ctaText: "Design with Us",
     ctaLink: "/contact",
@@ -66,6 +70,7 @@ const solutionsData = [
     title: "Product",
     subtitle: "Positioning",
     description: "Brand identity (logo, color system, typography), messaging & value proposition, startup positioning, pitch decks & storytelling, and design consistency.",
+    mobileDescription: "Clear brand identity that stands out.",
     outcome: "A clear, credible, and differentiated brand presence.",
     ctaText: "Build Your Brand",
     ctaLink: "/contact",
@@ -227,25 +232,32 @@ const SolutionsCarouselSection = () => {
           >
             <div
               style={{ backgroundColor: solution.bgColor }}
-              className="w-full rounded-2xl p-6"
+              className="w-full rounded-2xl overflow-hidden"
             >
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h3 className="text-xl font-bold text-white leading-tight mb-1">
-                    {solution.title}
-                  </h3>
-                  <p className="text-xl font-bold text-white leading-tight mb-3">
-                    {solution.subtitle}
-                  </p>
-                  <p className="text-white/80 text-sm mb-3">
-                    {solution.description}
-                  </p>
-                  {solution.outcome && (
-                    <p className="text-white/90 text-xs font-medium">
-                      🎯 {solution.outcome}
-                    </p>
-                  )}
-                </div>
+              {/* Image Section */}
+              <div className="w-full h-40">
+                {imageErrors[solution.id] ? (
+                  <div className="w-full h-full bg-white/10 flex items-center justify-center">
+                    <ImageOff className="w-10 h-10 text-white/40" />
+                  </div>
+                ) : (
+                  <img
+                    src={solution.image}
+                    alt={solution.title}
+                    className="w-full h-full object-cover"
+                    onError={() => handleImageError(solution.id)}
+                  />
+                )}
+              </div>
+              
+              {/* Content Section */}
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-white leading-tight mb-1">
+                  {solution.title} {solution.subtitle}
+                </h3>
+                <p className="text-white/80 text-sm mb-3 line-clamp-2">
+                  {solution.mobileDescription || solution.outcome}
+                </p>
 
                 <Link to={solution.ctaLink}>
                   <Button className="bg-white text-foreground hover:bg-white/90 px-5 py-2.5 text-sm border-0 rounded-full shadow-sm w-full">
