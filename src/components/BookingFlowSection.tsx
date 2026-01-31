@@ -237,13 +237,19 @@ const BookingFlowSection = () => {
       className="section-divider relative w-full overflow-hidden"
       style={{ backgroundColor: "hsl(0 0% 4%)" }}
     >
-      {/* Dotted grid background */}
+      {/* Premium dotted grid background */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)`,
-          backgroundSize: "24px 24px",
-          opacity: 0.03,
+          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)`,
+          backgroundSize: "32px 32px",
+        }}
+      />
+      {/* Subtle vignette overlay for depth */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 0%, hsl(0 0% 4% / 0.4) 100%)",
         }}
       />
 
