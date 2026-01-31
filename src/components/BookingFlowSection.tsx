@@ -256,8 +256,13 @@ const BookingFlowSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
-            What Happens After You Book Your First Call
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4">
+            <span className="block font-serif italic font-normal mb-1 text-white/90">
+              What Happens After
+            </span>
+            <span className="block font-bold text-white">
+              You Book Your <span className="text-primary">First Call</span>
+            </span>
           </h2>
         </div>
 
