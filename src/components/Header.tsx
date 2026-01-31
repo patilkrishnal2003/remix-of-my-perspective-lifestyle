@@ -191,46 +191,51 @@ const Header = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
                     align="start" 
-                    className="w-[380px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+                    className="w-[520px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
                   >
-                    <div className="p-3">
-                      <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">BUILD</p>
-                      <div className="grid grid-cols-1 gap-1">
-                        {buildServices.map((item) => (
-                          <Link 
-                            key={item.path}
-                            to={item.path} 
-                            className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
-                          >
-                            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
-                              <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
-                            </div>
-                            <div className="flex-1">
-                              <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
-                              <p className="text-xs text-muted-foreground">{item.description}</p>
-                            </div>
-                          </Link>
-                        ))}
+                    <div className="grid grid-cols-2 divide-x divide-border/30">
+                      {/* BUILD Column */}
+                      <div className="p-3">
+                        <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">BUILD</p>
+                        <div className="flex flex-col gap-1">
+                          {buildServices.map((item) => (
+                            <Link 
+                              key={item.path}
+                              to={item.path} 
+                              className="group flex items-center gap-2.5 p-2 rounded-lg hover:bg-primary/5 transition-all duration-200"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                                <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">{item.label}</p>
+                                <p className="text-xs text-muted-foreground truncate">{item.description}</p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    <div className="p-3 border-t border-border/30">
-                      <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">GROW & SCALE</p>
-                      <div className="grid grid-cols-1 gap-1">
-                        {growServices.map((item) => (
-                          <Link 
-                            key={item.path}
-                            to={item.path} 
-                            className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
-                          >
-                            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
-                              <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
-                            </div>
-                            <div className="flex-1">
-                              <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
-                              <p className="text-xs text-muted-foreground">{item.description}</p>
-                            </div>
-                          </Link>
-                        ))}
+                      
+                      {/* GROW & SCALE Column */}
+                      <div className="p-3">
+                        <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">GROW & SCALE</p>
+                        <div className="flex flex-col gap-1">
+                          {growServices.map((item) => (
+                            <Link 
+                              key={item.path}
+                              to={item.path} 
+                              className="group flex items-center gap-2.5 p-2 rounded-lg hover:bg-primary/5 transition-all duration-200"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                                <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">{item.label}</p>
+                                <p className="text-xs text-muted-foreground truncate">{item.description}</p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
                     <div className="p-3 border-t border-border/50 bg-muted/30">
@@ -531,46 +536,51 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent 
                 align="start" 
-                className="w-[380px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+                className="w-[520px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
               >
-                <div className="p-3">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">BUILD</p>
-                  <div className="grid grid-cols-1 gap-1">
-                    {buildServices.map((item) => (
-                      <Link 
-                        key={item.path}
-                        to={item.path} 
-                        className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
-                      >
-                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
-                          <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
-                          <p className="text-xs text-muted-foreground">{item.description}</p>
-                        </div>
-                      </Link>
-                    ))}
+                <div className="grid grid-cols-2 divide-x divide-border/30">
+                  {/* BUILD Column */}
+                  <div className="p-3">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">BUILD</p>
+                    <div className="flex flex-col gap-1">
+                      {buildServices.map((item) => (
+                        <Link 
+                          key={item.path}
+                          to={item.path} 
+                          className="group flex items-center gap-2.5 p-2 rounded-lg hover:bg-primary/5 transition-all duration-200"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                            <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">{item.label}</p>
+                            <p className="text-xs text-muted-foreground truncate">{item.description}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="p-3 border-t border-border/30">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">GROW & SCALE</p>
-                  <div className="grid grid-cols-1 gap-1">
-                    {growServices.map((item) => (
-                      <Link 
-                        key={item.path}
-                        to={item.path} 
-                        className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
-                      >
-                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
-                          <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
-                          <p className="text-xs text-muted-foreground">{item.description}</p>
-                        </div>
-                      </Link>
-                    ))}
+                  
+                  {/* GROW & SCALE Column */}
+                  <div className="p-3">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">GROW & SCALE</p>
+                    <div className="flex flex-col gap-1">
+                      {growServices.map((item) => (
+                        <Link 
+                          key={item.path}
+                          to={item.path} 
+                          className="group flex items-center gap-2.5 p-2 rounded-lg hover:bg-primary/5 transition-all duration-200"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                            <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors truncate">{item.label}</p>
+                            <p className="text-xs text-muted-foreground truncate">{item.description}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <div className="p-3 border-t border-border/50 bg-muted/30">
