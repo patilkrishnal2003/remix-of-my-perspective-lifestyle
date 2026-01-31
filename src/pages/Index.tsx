@@ -11,6 +11,7 @@ import CTASection from "@/components/CTASection";
 import SolutionsCarouselSection from "@/components/SolutionsCarouselSection";
 import DigitalServicesCarouselSection from "@/components/DigitalServicesCarouselSection";
 import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSection";
+import BookingFlowSection from "@/components/BookingFlowSection";
 
 import logoTechcorp from "@/assets/logo-techcorp.png";
 import logoStartupx from "@/assets/logo-startupx.png";
@@ -194,6 +195,9 @@ const Index = () => {
 
           {/* Resources Tab Section */}
           <ResourcesTabSection />
+
+          {/* Booking Flow Section */}
+          <BookingFlowSection />
 
           <CTASection />
         </main>
