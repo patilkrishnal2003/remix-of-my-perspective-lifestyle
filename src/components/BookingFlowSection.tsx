@@ -32,7 +32,7 @@ const BookingFlowSection = () => {
 
   // Responsive dimensions
   const canvasWidth = isMobile ? 320 : 800;
-  const canvasHeight = isMobile ? 1100 : 1000;
+  const canvasHeight = isMobile ? 1000 : 950;
   const centerX = canvasWidth / 2;
   const nodeWidth = isMobile ? 160 : 200;
   const smallNodeWidth = isMobile ? 130 : 160;
@@ -78,9 +78,9 @@ const BookingFlowSection = () => {
     // Step 9 - Direction
     { id: "next-steps", label: "Clear Next Steps", x: centerX, y: 705, type: "main", step: 9 },
     
-    // Step 10 - Final Split
-    { id: "forward", label: "Move Forward Together", x: centerX - branchOffset + 20, y: 805, type: "main", step: 10 },
-    { id: "independent", label: "Independent Next Steps", x: centerX + branchOffset - 20, y: 805, type: "main", step: 10 },
+    // Step 10 - Final Split (stacked vertically on mobile)
+    { id: "forward", label: "Move Forward Together", x: isMobile ? centerX : centerX - branchOffset + 20, y: isMobile ? 805 : 805, type: "main", step: 10 },
+    { id: "independent", label: "Independent Next Steps", x: isMobile ? centerX : centerX + branchOffset - 20, y: isMobile ? 880 : 805, type: "main", step: isMobile ? 11 : 10 },
   ], [centerX, branchOffset]);
 
   // Define connections with step numbers
@@ -99,11 +99,11 @@ const BookingFlowSection = () => {
     { from: "brand", to: "alignment", type: "merge-left", step: 8 },
     { from: "analytics", to: "alignment", type: "merge-right", step: 8 },
     { from: "alignment", to: "next-steps", type: "straight", step: 9 },
-    { from: "next-steps", to: "forward", type: "branch-left", step: 10 },
-    { from: "next-steps", to: "independent", type: "branch-right", step: 10 },
+    { from: "next-steps", to: "forward", type: isMobile ? "straight" : "branch-left", step: 10 },
+    { from: isMobile ? "forward" : "next-steps", to: "independent", type: isMobile ? "straight" : "branch-right", step: isMobile ? 11 : 10 },
   ], []);
 
-  const totalSteps = 11;
+  const totalSteps = isMobile ? 12 : 11;
 
   // Get node by ID
   const getNode = useCallback((id: string) => nodes.find(n => n.id === id), [nodes]);
