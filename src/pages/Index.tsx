@@ -193,11 +193,11 @@ const Index = () => {
             <TestimonialsSection testimonials={testimonials} />
           </section>
 
-          {/* Resources Tab Section */}
-          <ResourcesTabSection />
-
           {/* Booking Flow Section */}
           <BookingFlowSection />
+
+          {/* Resources Tab Section */}
+          <ResourcesTabSection />
 
           <CTASection />
         </main>
