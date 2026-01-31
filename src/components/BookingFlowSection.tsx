@@ -57,33 +57,30 @@ const BookingFlowSection = () => {
     { id: "growth-scale", label: "Growth / Scale", x: centerX + branchOffset, y: 260, type: "main", step: 3 },
     
     // Step 4 - First sub-items
-    { id: "website", label: "Website / Platform", x: centerX - branchOffset, y: 330, type: "secondary", step: 4 },
+    { id: "website", label: "Website / App", x: centerX - branchOffset, y: 330, type: "secondary", step: 4 },
     { id: "digital", label: "Digital Presence", x: centerX + branchOffset, y: 330, type: "secondary", step: 4 },
     
     // Step 5
-    { id: "mobile", label: "Mobile App", x: centerX - branchOffset, y: 385, type: "secondary", step: 5 },
+    { id: "custom", label: "Custom Software", x: centerX - branchOffset, y: 385, type: "secondary", step: 5 },
     { id: "acquisition", label: "User / Lead Acquisition", x: centerX + branchOffset, y: 385, type: "secondary", step: 5 },
     
     // Step 6
-    { id: "custom", label: "Custom Software", x: centerX - branchOffset, y: 440, type: "secondary", step: 6 },
+    { id: "uiux", label: "UI / UX & Product Experience", x: centerX - branchOffset, y: 440, type: "secondary", step: 6 },
     { id: "sales", label: "Sales & Revenue Systems", x: centerX + branchOffset, y: 440, type: "secondary", step: 6 },
     
     // Step 7
-    { id: "uiux", label: "UI / UX & Product Experience", x: centerX - branchOffset, y: 495, type: "secondary", step: 7 },
+    { id: "brand", label: "Brand & Product Positioning", x: centerX - branchOffset, y: 495, type: "secondary", step: 7 },
     { id: "analytics", label: "Growth Strategy & Analytics", x: centerX + branchOffset, y: 495, type: "secondary", step: 7 },
     
-    // Step 8
-    { id: "brand", label: "Brand & Product Positioning", x: centerX - branchOffset, y: 550, type: "secondary", step: 8 },
+    // Step 8 - Merge
+    { id: "alignment", label: "System-Level Alignment", x: centerX, y: 605, type: "main", step: 8 },
     
-    // Step 9 - Merge
-    { id: "alignment", label: "System-Level Alignment", x: centerX, y: 660, type: "main", step: 9 },
+    // Step 9 - Direction
+    { id: "next-steps", label: "Clear Next Steps", x: centerX, y: 705, type: "main", step: 9 },
     
-    // Step 10 - Direction
-    { id: "next-steps", label: "Clear Next Steps", x: centerX, y: 760, type: "main", step: 10 },
-    
-    // Step 11 - Final Split
-    { id: "forward", label: "Move Forward Together", x: centerX - branchOffset + 20, y: 860, type: "main", step: 11 },
-    { id: "independent", label: "Independent Next Steps", x: centerX + branchOffset - 20, y: 860, type: "main", step: 11 },
+    // Step 10 - Final Split
+    { id: "forward", label: "Move Forward Together", x: centerX - branchOffset + 20, y: 805, type: "main", step: 10 },
+    { id: "independent", label: "Independent Next Steps", x: centerX + branchOffset - 20, y: 805, type: "main", step: 10 },
   ], [centerX, branchOffset]);
 
   // Define connections with step numbers
@@ -92,22 +89,21 @@ const BookingFlowSection = () => {
     { from: "context", to: "product-tech", type: "branch-left", step: 3 },
     { from: "context", to: "growth-scale", type: "branch-right", step: 3 },
     { from: "product-tech", to: "website", type: "straight", step: 4 },
-    { from: "website", to: "mobile", type: "straight", step: 5 },
-    { from: "mobile", to: "custom", type: "straight", step: 6 },
-    { from: "custom", to: "uiux", type: "straight", step: 7 },
-    { from: "uiux", to: "brand", type: "straight", step: 8 },
+    { from: "website", to: "custom", type: "straight", step: 5 },
+    { from: "custom", to: "uiux", type: "straight", step: 6 },
+    { from: "uiux", to: "brand", type: "straight", step: 7 },
     { from: "growth-scale", to: "digital", type: "straight", step: 4 },
     { from: "digital", to: "acquisition", type: "straight", step: 5 },
     { from: "acquisition", to: "sales", type: "straight", step: 6 },
     { from: "sales", to: "analytics", type: "straight", step: 7 },
-    { from: "brand", to: "alignment", type: "merge-left", step: 9 },
-    { from: "analytics", to: "alignment", type: "merge-right", step: 9 },
-    { from: "alignment", to: "next-steps", type: "straight", step: 10 },
-    { from: "next-steps", to: "forward", type: "branch-left", step: 11 },
-    { from: "next-steps", to: "independent", type: "branch-right", step: 11 },
+    { from: "brand", to: "alignment", type: "merge-left", step: 8 },
+    { from: "analytics", to: "alignment", type: "merge-right", step: 8 },
+    { from: "alignment", to: "next-steps", type: "straight", step: 9 },
+    { from: "next-steps", to: "forward", type: "branch-left", step: 10 },
+    { from: "next-steps", to: "independent", type: "branch-right", step: 10 },
   ], []);
 
-  const totalSteps = 12;
+  const totalSteps = 11;
 
   // Get node by ID
   const getNode = useCallback((id: string) => nodes.find(n => n.id === id), [nodes]);
