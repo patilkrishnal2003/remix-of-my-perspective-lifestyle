@@ -3,8 +3,8 @@
  * Centralized place for all environment-dependent settings
  */
 
-// Default to proxy path, fallback to direct URL if not set
-const API_BASE = import.meta.env.VITE_BLOG_API_BASE || "https://authors.advora.in/wp-json";
+// Default to relative path for production (proxied via hosting)
+const API_BASE = import.meta.env.VITE_BLOG_API_BASE || "/wp-json";
 
 // Log for debugging
 if (import.meta.env.DEV) {
