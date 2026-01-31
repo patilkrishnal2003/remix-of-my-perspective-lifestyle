@@ -4,26 +4,26 @@ import CTASection from "@/components/CTASection";
 import TechStackSection from "@/components/TechStackSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Database, CheckCircle, Server, Zap, Shield, Activity } from "lucide-react";
-import serviceCloud from "@/assets/service-cloud.jpg";
+import { ArrowRight, PenTool, CheckCircle, Users, Award, Palette, MessageSquare } from "lucide-react";
+import serviceDesign from "@/assets/service-design.jpg";
 
-const BackendSystems = () => {
+const Branding = () => {
   const features = [
-    { icon: Server, title: "RESTful & GraphQL APIs", description: "Modern API design for seamless integrations." },
-    { icon: Database, title: "Database Architecture", description: "Optimized schemas for performance and scalability." },
-    { icon: Zap, title: "High Performance", description: "Efficient code and caching for fast response times." },
-    { icon: Activity, title: "Real-time Systems", description: "WebSocket and event-driven architectures." },
+    { icon: PenTool, title: "Brand Identity", description: "Logo, color systems, and typography that define your brand." },
+    { icon: MessageSquare, title: "Messaging & Voice", description: "Clear value propositions and brand messaging." },
+    { icon: Users, title: "Audience Positioning", description: "Strategic positioning for your target market." },
+    { icon: Award, title: "Brand Guidelines", description: "Comprehensive guidelines for consistent brand usage." },
   ];
 
-  const technologies = ["Node.js", "Python", "Go", "PostgreSQL", "MongoDB", "Redis", "GraphQL"];
+  const technologies = ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Brand.ai", "Notion", "Miro"];
 
   const benefits = [
-    "Scalable microservices architecture",
-    "Comprehensive API documentation",
-    "Robust error handling and logging",
-    "Security best practices",
-    "Performance optimization",
-    "24/7 monitoring and alerting",
+    "Distinctive visual identity",
+    "Consistent brand experience across channels",
+    "Clear value proposition & messaging",
+    "Pitch deck & storytelling support",
+    "Startup positioning expertise",
+    "Design system integration",
   ];
 
   return (
@@ -38,31 +38,31 @@ const BackendSystems = () => {
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img
-                    src={serviceCloud}
-                    alt="Backend Systems"
+                    src={serviceDesign}
+                    alt="Branding & Product Positioning"
                     className="w-full h-auto object-cover aspect-[4/3]"
                   />
                 </div>
 
                 <div className="space-y-4 sm:space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary">
-                    <Database className="w-4 h-4" />
-                    <span className="text-sm font-medium">Backend Systems</span>
+                    <PenTool className="w-4 h-4" />
+                    <span className="text-sm font-medium">Branding</span>
                   </div>
                   
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                    Robust Backend
-                    <span className="block text-primary">Architecture</span>
+                    Product
+                    <span className="block text-primary">Positioning</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                    Scalable APIs, microservices, and database architectures that form the backbone of high-performance applications.
+                    Build a clear, credible, and differentiated brand presence with strategic positioning, compelling messaging, and distinctive visual identity.
                   </p>
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                     <Link to="/contact" className="w-full sm:w-auto">
                       <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        Start Your Project
+                        Build Your Brand
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -101,7 +101,7 @@ const BackendSystems = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold mb-6">Technologies We Use</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6">Tools We Use</h2>
                 <div className="flex flex-wrap gap-3">
                   {technologies.map((tech) => (
                     <span key={tech} className="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm">
@@ -128,8 +128,8 @@ const BackendSystems = () => {
         <TechStackSection showTwoRows={true} />
 
         <CTASection 
-          title="Ready to Build Your Backend?"
-          description="Let's architect a powerful backend for your application."
+          title="Ready to Define Your Brand?"
+          description="Let's create a memorable brand identity together."
           buttonText="Get Started"
         />
       </main>
@@ -139,4 +139,4 @@ const BackendSystems = () => {
   );
 };
 
-export default BackendSystems;
+export default Branding;

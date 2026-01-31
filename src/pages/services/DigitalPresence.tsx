@@ -4,26 +4,26 @@ import CTASection from "@/components/CTASection";
 import TechStackSection from "@/components/TechStackSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Cloud, CheckCircle, Server, Zap, Shield, BarChart } from "lucide-react";
-import serviceCloud from "@/assets/service-cloud.jpg";
+import { ArrowRight, Globe, CheckCircle, TrendingUp, Target, Search, Share2 } from "lucide-react";
+import heroWorkspace from "@/assets/hero-workspace.jpg";
 
-const CloudSolutions = () => {
+const DigitalPresence = () => {
   const features = [
-    { icon: Server, title: "Auto Scaling", description: "Automatically scale resources based on demand." },
-    { icon: Zap, title: "CI/CD Pipelines", description: "Automated deployment for faster releases." },
-    { icon: Shield, title: "Security & Compliance", description: "Enterprise-grade security practices." },
-    { icon: BarChart, title: "Cost Optimization", description: "Efficient resource usage to reduce costs." },
+    { icon: Globe, title: "Website Strategy", description: "Comprehensive website & app ecosystem planning." },
+    { icon: Search, title: "SEO Optimization", description: "Search engine optimization for organic visibility." },
+    { icon: Share2, title: "Social Presence", description: "Strategic social media presence and authority." },
+    { icon: Target, title: "Audience Targeting", description: "Reach and engage your ideal audience." },
   ];
 
-  const technologies = ["AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform"];
+  const technologies = ["Google Analytics", "SEMrush", "Ahrefs", "Moz", "HubSpot", "Buffer"];
 
   const benefits = [
-    "99.9% uptime guarantee",
-    "Disaster recovery solutions",
-    "24/7 monitoring and support",
-    "Infrastructure as Code",
-    "Multi-cloud strategies",
-    "Compliance certifications",
+    "Multi-channel visibility strategy",
+    "SEO-driven organic traffic growth",
+    "Content structure & publishing framework",
+    "Authority building in your niche",
+    "Performance optimization",
+    "Targeted audience reach",
   ];
 
   return (
@@ -38,31 +38,31 @@ const CloudSolutions = () => {
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
                   <img
-                    src={serviceCloud}
-                    alt="Cloud Solutions"
+                    src={heroWorkspace}
+                    alt="Digital Presence"
                     className="w-full h-auto object-cover aspect-[4/3]"
                   />
                 </div>
 
                 <div className="space-y-4 sm:space-y-6">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary">
-                    <Cloud className="w-4 h-4" />
-                    <span className="text-sm font-medium">Cloud Solutions</span>
+                    <Globe className="w-4 h-4" />
+                    <span className="text-sm font-medium">Digital Presence</span>
                   </div>
                   
                   <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                    Scalable Cloud
-                    <span className="block text-primary">Infrastructure</span>
+                    Demand
+                    <span className="block text-primary">Foundation</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-                    AWS, Azure, and Google Cloud solutions for hosting, deployment, and infrastructure management with 99.9% uptime.
+                    Build a strong digital presence that attracts and qualifies the right audience through strategic visibility and authority building.
                   </p>
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                     <Link to="/contact" className="w-full sm:w-auto">
                       <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        Start Your Project
+                        Build Presence
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -101,7 +101,7 @@ const CloudSolutions = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold mb-6">Platforms We Use</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6">Tools We Use</h2>
                 <div className="flex flex-wrap gap-3">
                   {technologies.map((tech) => (
                     <span key={tech} className="px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm">
@@ -128,8 +128,8 @@ const CloudSolutions = () => {
         <TechStackSection showTwoRows={true} />
 
         <CTASection 
-          title="Ready to Move to the Cloud?"
-          description="Let's build a scalable cloud infrastructure for your business."
+          title="Ready to Grow Your Digital Presence?"
+          description="Let's build your online authority together."
           buttonText="Get Started"
         />
       </main>
@@ -139,4 +139,4 @@ const CloudSolutions = () => {
   );
 };
 
-export default CloudSolutions;
+export default DigitalPresence;

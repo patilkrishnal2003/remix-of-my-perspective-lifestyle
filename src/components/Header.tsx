@@ -83,14 +83,25 @@ const Header = () => {
     return location.pathname.startsWith(path);
   };
 
-  const servicesItems = [
-    { label: "Web Development", path: "/services/web-development", icon: Globe, description: "Modern websites & apps" },
-    { label: "Mobile Apps", path: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android solutions" },
-    { label: "Custom Software", path: "/services/custom-software", icon: Code, description: "Tailored for your needs" },
-    { label: "Backend Systems", path: "/services/backend-systems", icon: Database, description: "Scalable infrastructure" },
-    { label: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette, description: "Beautiful experiences" },
-    { label: "Cloud Solutions", path: "/services/cloud-solutions", icon: Cloud, description: "AWS, Azure & more" },
+  // BUILD - Technology & Product Services
+  const buildServices = [
+    { label: "Web Development", path: "/services/web-development", icon: Globe, description: "Websites & platforms" },
+    { label: "Mobile Apps", path: "/services/mobile-apps", icon: Smartphone, description: "iOS & Android apps" },
+    { label: "Custom Software", path: "/services/custom-software", icon: Code, description: "Business tools & automation" },
+    { label: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette, description: "Product experience" },
+    { label: "Branding", path: "/services/branding", icon: Database, description: "Product positioning" },
   ];
+
+  // GROW & SCALE - Digital Growth Services
+  const growServices = [
+    { label: "Digital Presence", path: "/services/digital-presence", icon: Globe, description: "Demand foundation" },
+    { label: "Growth Marketing", path: "/services/growth-marketing", icon: Cloud, description: "Acquisition engine" },
+    { label: "Sales & Revenue", path: "/services/sales-revenue", icon: Database, description: "Revenue systems" },
+    { label: "Strategy & Scaling", path: "/services/strategy-scaling", icon: Code, description: "Analytics & scaling" },
+  ];
+
+  // Combined for backwards compatibility
+  const servicesItems = [...buildServices, ...growServices];
 
   const resourcesItems = [
     { label: "Portfolio", path: "/portfolio", icon: Briefcase, description: "Our best work" },
@@ -180,24 +191,47 @@ const Header = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent 
                     align="start" 
-                    className="w-[340px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+                    className="w-[380px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
                   >
-                    <div className="p-2 grid grid-cols-1 gap-1">
-                      {servicesItems.map((item) => (
-                        <Link 
-                          key={item.path}
-                          to={item.path} 
-                          className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
-                            <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
-                            <p className="text-xs text-muted-foreground">{item.description}</p>
-                          </div>
-                        </Link>
-                      ))}
+                    <div className="p-3">
+                      <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">BUILD</p>
+                      <div className="grid grid-cols-1 gap-1">
+                        {buildServices.map((item) => (
+                          <Link 
+                            key={item.path}
+                            to={item.path} 
+                            className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                              <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                              <p className="text-xs text-muted-foreground">{item.description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="p-3 border-t border-border/30">
+                      <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">GROW & SCALE</p>
+                      <div className="grid grid-cols-1 gap-1">
+                        {growServices.map((item) => (
+                          <Link 
+                            key={item.path}
+                            to={item.path} 
+                            className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                          >
+                            <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                              <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                              <p className="text-xs text-muted-foreground">{item.description}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                     <div className="p-3 border-t border-border/50 bg-muted/30">
                       <Link 
@@ -359,10 +393,26 @@ const Header = () => {
                   About
                 </Link>
                 
-                {/* Services Section */}
+                {/* Services Section - BUILD */}
                 <div className="py-2 px-4">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2">SERVICES</p>
-                  {servicesItems.map((item) => (
+                  <p className="text-xs font-semibold text-muted-foreground mb-2">BUILD</p>
+                  {buildServices.map((item) => (
+                    <Link 
+                      key={item.path}
+                      to={item.path} 
+                      className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <item.icon className="w-4 h-4 text-primary" />
+                      <span className="text-base font-medium">{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+                
+                {/* Services Section - GROW & SCALE */}
+                <div className="py-2 px-4">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2">GROW & SCALE</p>
+                  {growServices.map((item) => (
                     <Link 
                       key={item.path}
                       to={item.path} 
@@ -481,28 +531,48 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent 
                 align="start" 
-                className="w-[340px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
+                className="w-[380px] p-0 bg-card/95 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl z-50 overflow-hidden"
               >
-                {/* Services Grid */}
-                <div className="p-2 grid grid-cols-1 gap-1">
-                  {servicesItems.map((item) => (
-                    <Link 
-                      key={item.path}
-                      to={item.path} 
-                      className="group flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
-                        <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
-                        <p className="text-xs text-muted-foreground">{item.description}</p>
-                      </div>
-                    </Link>
-                  ))}
+                <div className="p-3">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">BUILD</p>
+                  <div className="grid grid-cols-1 gap-1">
+                    {buildServices.map((item) => (
+                      <Link 
+                        key={item.path}
+                        to={item.path} 
+                        className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                      >
+                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                          <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                          <p className="text-xs text-muted-foreground">{item.description}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                
-                {/* All Services Button */}
+                <div className="p-3 border-t border-border/30">
+                  <p className="text-xs font-semibold text-muted-foreground mb-2 px-1">GROW & SCALE</p>
+                  <div className="grid grid-cols-1 gap-1">
+                    {growServices.map((item) => (
+                      <Link 
+                        key={item.path}
+                        to={item.path} 
+                        className="group flex items-center gap-3 p-2.5 rounded-xl hover:bg-primary/5 transition-all duration-200"
+                      >
+                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-105 transition-all duration-200">
+                          <item.icon className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item.label}</p>
+                          <p className="text-xs text-muted-foreground">{item.description}</p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <div className="p-3 border-t border-border/50 bg-muted/30">
                   <Link 
                     to="/services" 
@@ -627,10 +697,26 @@ const Header = () => {
                 About
               </Link>
               
-              {/* Services Section */}
+              {/* Services Section - BUILD */}
               <div className="py-2 px-4">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">SERVICES</p>
-                {servicesItems.map((item) => (
+                <p className="text-xs font-semibold text-muted-foreground mb-2">BUILD</p>
+                {buildServices.map((item) => (
+                  <Link 
+                    key={item.path}
+                    to={item.path} 
+                    className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <item.icon className="w-4 h-4 text-primary" />
+                    <span className="text-base font-medium">{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+              
+              {/* Services Section - GROW & SCALE */}
+              <div className="py-2 px-4">
+                <p className="text-xs font-semibold text-muted-foreground mb-2">GROW & SCALE</p>
+                {growServices.map((item) => (
                   <Link 
                     key={item.path}
                     to={item.path} 

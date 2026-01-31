@@ -16,13 +16,18 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
 
-// Service pages
+// Service pages - BUILD (Tech)
 import WebDevelopment from "./pages/services/WebDevelopment";
 import MobileApps from "./pages/services/MobileApps";
 import CustomSoftware from "./pages/services/CustomSoftware";
-import BackendSystems from "./pages/services/BackendSystems";
 import UIUXDesign from "./pages/services/UIUXDesign";
-import CloudSolutions from "./pages/services/CloudSolutions";
+import Branding from "./pages/services/Branding";
+
+// Service pages - GROW & SCALE (Digital)
+import DigitalPresence from "./pages/services/DigitalPresence";
+import GrowthMarketing from "./pages/services/GrowthMarketing";
+import SalesRevenue from "./pages/services/SalesRevenue";
+import StrategyScaling from "./pages/services/StrategyScaling";
 
 // Blog pages
 import { BlogDataProvider } from "./blog/state/BlogDataProvider";
@@ -48,9 +53,12 @@ const App = () => (
             <Route path="/services/web-development" element={<WebDevelopment />} />
             <Route path="/services/mobile-apps" element={<MobileApps />} />
             <Route path="/services/custom-software" element={<CustomSoftware />} />
-            <Route path="/services/backend-systems" element={<BackendSystems />} />
             <Route path="/services/ui-ux-design" element={<UIUXDesign />} />
-            <Route path="/services/cloud-solutions" element={<CloudSolutions />} />
+            <Route path="/services/branding" element={<Branding />} />
+            <Route path="/services/digital-presence" element={<DigitalPresence />} />
+            <Route path="/services/growth-marketing" element={<GrowthMarketing />} />
+            <Route path="/services/sales-revenue" element={<SalesRevenue />} />
+            <Route path="/services/strategy-scaling" element={<StrategyScaling />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
             {/* Blog routes */}
