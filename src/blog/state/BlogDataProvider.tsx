@@ -89,7 +89,8 @@ export type WpPost = {
     primary_category?: number; // Term ID
     author_image?: string; // URL
     author_name?: string; // custom display name
-    author_designation?: string; // NEW: author job title/role
+    author_designation?: string; // author job title/role
+    linekdin_profile_url?: string; // LinkedIn profile URL (note: intentional spelling)
   };
 };
 
