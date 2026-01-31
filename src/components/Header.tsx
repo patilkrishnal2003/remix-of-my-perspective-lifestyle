@@ -418,7 +418,7 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 pt-3 sm:pt-4 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 transition-all duration-300 border border-border/30">
+        <div className="flex items-center justify-between h-14 sm:h-16 pill-nav px-4 sm:px-6 transition-all duration-300 !border !border-foreground/15">
           {/* Logo - Dark on light bg, Light on dark mode */}
           <div className="flex items-center min-w-0">
             <Link to="/" className="flex items-center">
