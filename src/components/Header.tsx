@@ -238,10 +238,10 @@ const Header = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="p-3 border-t border-border/50 bg-muted/30">
+                    <div className="p-3 border-t border-border/50 bg-background">
                       <Link 
                         to="/services" 
-                        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
                       >
                         View All Services
                         <ArrowRight className="w-4 h-4" />
@@ -287,15 +287,6 @@ const Header = () => {
                           </div>
                         </Link>
                       ))}
-                    </div>
-                    <div className="p-3 border-t border-border/50 bg-muted/30">
-                      <Link 
-                        to="/portfolio" 
-                        className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
-                      >
-                        Explore All Resources
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
                     </div>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -583,10 +574,10 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-3 border-t border-border/50 bg-muted/30">
+                <div className="p-3 border-t border-border/50 bg-background">
                   <Link 
                     to="/services" 
-                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
+                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
                   >
                     View All Services
                     <ArrowRight className="w-4 h-4" />
@@ -633,17 +624,6 @@ const Header = () => {
                       </div>
                     </Link>
                   ))}
-                </div>
-                
-                {/* All Resources Button */}
-                <div className="p-3 border-t border-border/50 bg-muted/30">
-                  <Link 
-                    to="/portfolio" 
-                    className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:scale-[1.02]"
-                  >
-                    Explore All Resources
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
