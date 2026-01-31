@@ -1,5 +1,4 @@
-import { useEffect, useState, useRef, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface NodeData {
@@ -8,20 +7,24 @@ interface NodeData {
   x: number;
   y: number;
   type: "main" | "secondary" | "diagnostic";
+  step: number;
 }
 
 interface ConnectionData {
   from: string;
   to: string;
   type: "straight" | "branch-left" | "branch-right" | "merge-left" | "merge-right";
+  step: number;
 }
 
 const BookingFlowSection = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [isResetting, setIsResetting] = useState(false);
+  const [currentStep, setCurrentStep] = useState(-1);
   const [hasStarted, setHasStarted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const animationRef = useRef<number | null>(null);
+  const lastStepTime = useRef<number>(0);
   const isMobile = useIsMobile();
+  
   const prefersReducedMotion = useMemo(() => {
     if (typeof window === "undefined") return false;
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -29,118 +32,88 @@ const BookingFlowSection = () => {
 
   // Responsive dimensions
   const canvasWidth = isMobile ? 320 : 800;
-  const canvasHeight = isMobile ? 1400 : 1200;
+  const canvasHeight = isMobile ? 1100 : 1000;
   const centerX = canvasWidth / 2;
-  const nodeWidth = isMobile ? 180 : 200;
-  const smallNodeWidth = isMobile ? 140 : 160;
-  const branchOffset = isMobile ? 100 : 180;
+  const nodeWidth = isMobile ? 160 : 200;
+  const smallNodeWidth = isMobile ? 130 : 160;
+  const branchOffset = isMobile ? 90 : 180;
 
-  // Define all nodes with positions
+  // Define all nodes with positions and step numbers
   const nodes: NodeData[] = useMemo(() => [
-    // Step 1 - Start
-    { id: "call-booked", label: "Call Booked", x: centerX, y: 60, type: "main" },
+    // Step 0 - Start
+    { id: "call-booked", label: "Call Booked", x: centerX, y: 50, type: "main", step: 0 },
     
-    // Step 2 - Context
-    { id: "context", label: "Understanding Your Context", x: centerX, y: 160, type: "main" },
+    // Step 1 - Context
+    { id: "context", label: "Understanding Your Context", x: centerX, y: 130, type: "main", step: 1 },
     
-    // Diagnostic indicators
-    { id: "diag-product", label: "Product", x: centerX - 90, y: 220, type: "diagnostic" },
-    { id: "diag-growth", label: "Growth", x: centerX - 30, y: 220, type: "diagnostic" },
-    { id: "diag-team", label: "Team", x: centerX + 30, y: 220, type: "diagnostic" },
-    { id: "diag-priorities", label: "Priorities", x: centerX + 90, y: 220, type: "diagnostic" },
+    // Step 2 - Diagnostic indicators
+    { id: "diag-product", label: "Product", x: centerX - 70, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-growth", label: "Growth", x: centerX - 23, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-team", label: "Team", x: centerX + 23, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-priorities", label: "Priorities", x: centerX + 70, y: 185, type: "diagnostic", step: 2 },
     
     // Step 3 - Primary Split
-    { id: "product-tech", label: "Product / Technology", x: centerX - branchOffset, y: 300, type: "main" },
-    { id: "growth-scale", label: "Growth / Scale", x: centerX + branchOffset, y: 300, type: "main" },
+    { id: "product-tech", label: "Product / Technology", x: centerX - branchOffset, y: 260, type: "main", step: 3 },
+    { id: "growth-scale", label: "Growth / Scale", x: centerX + branchOffset, y: 260, type: "main", step: 3 },
     
-    // Step 4A - Product Path
-    { id: "website", label: "Website / Platform", x: centerX - branchOffset, y: 380, type: "secondary" },
-    { id: "mobile", label: "Mobile App", x: centerX - branchOffset, y: 440, type: "secondary" },
-    { id: "custom", label: "Custom Software", x: centerX - branchOffset, y: 500, type: "secondary" },
-    { id: "uiux", label: "UI / UX & Product Experience", x: centerX - branchOffset, y: 560, type: "secondary" },
-    { id: "brand", label: "Brand & Product Positioning", x: centerX - branchOffset, y: 620, type: "secondary" },
+    // Step 4 - First sub-items
+    { id: "website", label: "Website / Platform", x: centerX - branchOffset, y: 330, type: "secondary", step: 4 },
+    { id: "digital", label: "Digital Presence", x: centerX + branchOffset, y: 330, type: "secondary", step: 4 },
     
-    // Step 4B - Growth Path
-    { id: "digital", label: "Digital Presence", x: centerX + branchOffset, y: 380, type: "secondary" },
-    { id: "acquisition", label: "User / Lead Acquisition", x: centerX + branchOffset, y: 440, type: "secondary" },
-    { id: "sales", label: "Sales & Revenue Systems", x: centerX + branchOffset, y: 500, type: "secondary" },
-    { id: "analytics", label: "Growth Strategy & Analytics", x: centerX + branchOffset, y: 560, type: "secondary" },
+    // Step 5
+    { id: "mobile", label: "Mobile App", x: centerX - branchOffset, y: 385, type: "secondary", step: 5 },
+    { id: "acquisition", label: "User / Lead Acquisition", x: centerX + branchOffset, y: 385, type: "secondary", step: 5 },
     
-    // Step 5 - Merge
-    { id: "alignment", label: "System-Level Alignment", x: centerX, y: 720, type: "main" },
+    // Step 6
+    { id: "custom", label: "Custom Software", x: centerX - branchOffset, y: 440, type: "secondary", step: 6 },
+    { id: "sales", label: "Sales & Revenue Systems", x: centerX + branchOffset, y: 440, type: "secondary", step: 6 },
     
-    // Step 6 - Direction
-    { id: "next-steps", label: "Clear Next Steps", x: centerX, y: 820, type: "main" },
+    // Step 7
+    { id: "uiux", label: "UI / UX & Product Experience", x: centerX - branchOffset, y: 495, type: "secondary", step: 7 },
+    { id: "analytics", label: "Growth Strategy & Analytics", x: centerX + branchOffset, y: 495, type: "secondary", step: 7 },
     
-    // Step 7 - Final Split
-    { id: "forward", label: "Move Forward Together", x: centerX - branchOffset + 20, y: 920, type: "main" },
-    { id: "independent", label: "Independent Next Steps", x: centerX + branchOffset - 20, y: 920, type: "main" },
-  ], [centerX, branchOffset, isMobile]);
+    // Step 8
+    { id: "brand", label: "Brand & Product Positioning", x: centerX - branchOffset, y: 550, type: "secondary", step: 8 },
+    
+    // Step 9 - Merge
+    { id: "alignment", label: "System-Level Alignment", x: centerX, y: 660, type: "main", step: 9 },
+    
+    // Step 10 - Direction
+    { id: "next-steps", label: "Clear Next Steps", x: centerX, y: 760, type: "main", step: 10 },
+    
+    // Step 11 - Final Split
+    { id: "forward", label: "Move Forward Together", x: centerX - branchOffset + 20, y: 860, type: "main", step: 11 },
+    { id: "independent", label: "Independent Next Steps", x: centerX + branchOffset - 20, y: 860, type: "main", step: 11 },
+  ], [centerX, branchOffset]);
 
-  // Define connections between nodes
-  const connections: ConnectionData[] = [
-    { from: "call-booked", to: "context", type: "straight" },
-    { from: "context", to: "product-tech", type: "branch-left" },
-    { from: "context", to: "growth-scale", type: "branch-right" },
-    { from: "product-tech", to: "website", type: "straight" },
-    { from: "website", to: "mobile", type: "straight" },
-    { from: "mobile", to: "custom", type: "straight" },
-    { from: "custom", to: "uiux", type: "straight" },
-    { from: "uiux", to: "brand", type: "straight" },
-    { from: "growth-scale", to: "digital", type: "straight" },
-    { from: "digital", to: "acquisition", type: "straight" },
-    { from: "acquisition", to: "sales", type: "straight" },
-    { from: "sales", to: "analytics", type: "straight" },
-    { from: "brand", to: "alignment", type: "merge-left" },
-    { from: "analytics", to: "alignment", type: "merge-right" },
-    { from: "alignment", to: "next-steps", type: "straight" },
-    { from: "next-steps", to: "forward", type: "branch-left" },
-    { from: "next-steps", to: "independent", type: "branch-right" },
-  ];
+  // Define connections with step numbers
+  const connections: ConnectionData[] = useMemo(() => [
+    { from: "call-booked", to: "context", type: "straight", step: 1 },
+    { from: "context", to: "product-tech", type: "branch-left", step: 3 },
+    { from: "context", to: "growth-scale", type: "branch-right", step: 3 },
+    { from: "product-tech", to: "website", type: "straight", step: 4 },
+    { from: "website", to: "mobile", type: "straight", step: 5 },
+    { from: "mobile", to: "custom", type: "straight", step: 6 },
+    { from: "custom", to: "uiux", type: "straight", step: 7 },
+    { from: "uiux", to: "brand", type: "straight", step: 8 },
+    { from: "growth-scale", to: "digital", type: "straight", step: 4 },
+    { from: "digital", to: "acquisition", type: "straight", step: 5 },
+    { from: "acquisition", to: "sales", type: "straight", step: 6 },
+    { from: "sales", to: "analytics", type: "straight", step: 7 },
+    { from: "brand", to: "alignment", type: "merge-left", step: 9 },
+    { from: "analytics", to: "alignment", type: "merge-right", step: 9 },
+    { from: "alignment", to: "next-steps", type: "straight", step: 10 },
+    { from: "next-steps", to: "forward", type: "branch-left", step: 11 },
+    { from: "next-steps", to: "independent", type: "branch-right", step: 11 },
+  ], []);
 
-  // Step sequence for animation
-  const stepSequence = [
-    ["call-booked"],
-    ["context"],
-    ["diag-product", "diag-growth", "diag-team", "diag-priorities"],
-    ["product-tech", "growth-scale"],
-    ["website", "digital"],
-    ["mobile", "acquisition"],
-    ["custom", "sales"],
-    ["uiux", "analytics"],
-    ["brand"],
-    ["alignment"],
-    ["next-steps"],
-    ["forward", "independent"],
-  ];
-
-  // Get visible nodes based on current step
-  const visibleNodes = useMemo(() => {
-    const visible = new Set<string>();
-    for (let i = 0; i <= currentStep && i < stepSequence.length; i++) {
-      stepSequence[i].forEach(id => visible.add(id));
-    }
-    return visible;
-  }, [currentStep]);
-
-  // Get active nodes (current step)
-  const activeNodes = useMemo(() => {
-    if (currentStep < stepSequence.length) {
-      return new Set(stepSequence[currentStep]);
-    }
-    return new Set<string>();
-  }, [currentStep]);
-
-  // Check if connection should be visible
-  const isConnectionVisible = (conn: ConnectionData) => {
-    return visibleNodes.has(conn.from) && visibleNodes.has(conn.to);
-  };
+  const totalSteps = 12;
 
   // Get node by ID
-  const getNode = (id: string) => nodes.find(n => n.id === id);
+  const getNode = useCallback((id: string) => nodes.find(n => n.id === id), [nodes]);
 
   // Generate bezier path
-  const generatePath = (conn: ConnectionData) => {
+  const generatePath = useCallback((conn: ConnectionData) => {
     const fromNode = getNode(conn.from);
     const toNode = getNode(conn.to);
     if (!fromNode || !toNode) return "";
@@ -164,7 +137,7 @@ const BookingFlowSection = () => {
     }
 
     return "";
-  };
+  }, [getNode]);
 
   // Start animation when section is in view
   useEffect(() => {
@@ -176,121 +149,90 @@ const BookingFlowSection = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasStarted) {
             setHasStarted(true);
+            setCurrentStep(0);
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     observer.observe(section);
     return () => observer.disconnect();
   }, [hasStarted]);
 
-  // Auto-run animation
+  // Animation loop using requestAnimationFrame for smooth performance
   useEffect(() => {
     if (!hasStarted || prefersReducedMotion) return;
 
     const stepDuration = isMobile ? 1200 : 1000;
-    const totalSteps = stepSequence.length;
+    const resetDelay = 2000;
 
-    const interval = setInterval(() => {
-      setCurrentStep(prev => {
-        if (prev >= totalSteps - 1) {
-          // Start reset sequence
-          setIsResetting(true);
-          setTimeout(() => {
-            setCurrentStep(0);
-            setIsResetting(false);
-          }, 1500);
-          return prev;
+    const animate = (timestamp: number) => {
+      if (!lastStepTime.current) {
+        lastStepTime.current = timestamp;
+      }
+
+      const elapsed = timestamp - lastStepTime.current;
+
+      if (currentStep >= totalSteps) {
+        // Wait for reset
+        if (elapsed >= resetDelay) {
+          setCurrentStep(-1);
+          lastStepTime.current = timestamp;
+          // Small delay before restarting
+          setTimeout(() => setCurrentStep(0), 500);
         }
-        return prev + 1;
-      });
-    }, stepDuration);
+      } else if (elapsed >= stepDuration) {
+        setCurrentStep(prev => prev + 1);
+        lastStepTime.current = timestamp;
+      }
 
-    return () => clearInterval(interval);
-  }, [hasStarted, isMobile, prefersReducedMotion]);
+      animationRef.current = requestAnimationFrame(animate);
+    };
 
-  // Node component
-  const FlowNode = ({ node, isActive, isVisible }: { node: NodeData; isActive: boolean; isVisible: boolean }) => {
-    if (!isVisible) return null;
+    animationRef.current = requestAnimationFrame(animate);
 
-    const width = node.type === "secondary" ? smallNodeWidth : node.type === "diagnostic" ? 70 : nodeWidth;
-    const height = node.type === "diagnostic" ? 24 : node.type === "secondary" ? 36 : 44;
-    const fontSize = node.type === "diagnostic" ? "text-[10px]" : node.type === "secondary" ? "text-xs" : "text-sm";
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [hasStarted, currentStep, isMobile, prefersReducedMotion]);
 
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ 
-          opacity: isResetting ? 0 : (isActive ? 1 : node.type === "diagnostic" ? 0.4 : 0.7),
-          scale: isResetting ? 0.8 : 1
-        }}
-        transition={{ 
-          duration: prefersReducedMotion ? 0 : 0.5,
-          ease: "easeOut"
-        }}
-        className="absolute flex items-center justify-center text-center"
-        style={{
-          left: node.x - width / 2,
-          top: node.y - height / 2,
-          width,
-          height,
-        }}
-      >
-        <div
-          className={`
-            w-full h-full flex items-center justify-center px-3 rounded-full
-            transition-all duration-500
-            ${node.type === "diagnostic" 
-              ? "bg-transparent border-0" 
-              : isActive 
-                ? "bg-white/10 border border-white/30" 
-                : "bg-white/5 border border-white/10"
-            }
-          `}
-        >
-          <span className={`
-            ${fontSize} font-medium tracking-wide
-            ${node.type === "diagnostic" 
-              ? "text-white/40" 
-              : isActive 
-                ? "text-white" 
-                : "text-white/60"
-            }
-          `}>
-            {node.label}
-          </span>
-        </div>
-      </motion.div>
-    );
+  // Node styles based on visibility and activity
+  const getNodeStyles = (node: NodeData) => {
+    const isVisible = currentStep >= node.step;
+    const isActive = currentStep === node.step;
+    const isFading = currentStep === -1;
+
+    let opacity = 0;
+    if (isFading) {
+      opacity = 0;
+    } else if (isVisible) {
+      if (node.type === "diagnostic") {
+        opacity = 0.4;
+      } else if (isActive) {
+        opacity = 1;
+      } else {
+        opacity = 0.7;
+      }
+    }
+
+    return {
+      opacity,
+      transform: isVisible && !isFading ? "scale(1)" : "scale(0.85)",
+    };
   };
 
-  // Connection line component
-  const ConnectionLine = ({ conn }: { conn: ConnectionData }) => {
-    const isVisible = isConnectionVisible(conn);
-    if (!isVisible) return null;
+  // Connection styles
+  const getConnectionStyles = (conn: ConnectionData) => {
+    const isVisible = currentStep >= conn.step;
+    const isFading = currentStep === -1;
 
-    const path = generatePath(conn);
-    const isActive = activeNodes.has(conn.to);
-
-    return (
-      <motion.path
-        d={path}
-        fill="none"
-        stroke={isActive ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.15)"}
-        strokeWidth={1.5}
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ 
-          pathLength: isResetting ? 0 : 1, 
-          opacity: isResetting ? 0 : 1 
-        }}
-        transition={{ 
-          duration: prefersReducedMotion ? 0 : 0.6,
-          ease: "easeInOut"
-        }}
-      />
-    );
+    return {
+      strokeDashoffset: isVisible && !isFading ? 0 : 300,
+      opacity: isFading ? 0 : (isVisible ? 1 : 0),
+    };
   };
 
   return (
@@ -301,25 +243,20 @@ const BookingFlowSection = () => {
     >
       {/* Dotted grid background */}
       <div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)`,
           backgroundSize: "24px 24px",
+          opacity: 0.03,
         }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight"
-          >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
             What Happens After You Book Your First Call
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Canvas container */}
@@ -333,24 +270,89 @@ const BookingFlowSection = () => {
           >
             {/* SVG for connection lines */}
             <svg
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 w-full h-full pointer-events-none"
               viewBox={`0 0 ${canvasWidth} ${canvasHeight}`}
               preserveAspectRatio="xMidYMid meet"
             >
-              {connections.map((conn, idx) => (
-                <ConnectionLine key={idx} conn={conn} />
-              ))}
+              {connections.map((conn, idx) => {
+                const styles = getConnectionStyles(conn);
+                const isActive = currentStep === conn.step;
+                
+                return (
+                  <path
+                    key={idx}
+                    d={generatePath(conn)}
+                    fill="none"
+                    stroke={isActive ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)"}
+                    strokeWidth={1.5}
+                    strokeDasharray="300"
+                    style={{
+                      strokeDashoffset: styles.strokeDashoffset,
+                      opacity: styles.opacity,
+                      transition: prefersReducedMotion 
+                        ? "none" 
+                        : "stroke-dashoffset 0.8s ease-out, opacity 0.6s ease-out",
+                    }}
+                  />
+                );
+              })}
             </svg>
 
-            {/* Nodes */}
-            {nodes.map(node => (
-              <FlowNode
-                key={node.id}
-                node={node}
-                isActive={activeNodes.has(node.id)}
-                isVisible={visibleNodes.has(node.id)}
-              />
-            ))}
+            {/* Nodes - all rendered, visibility controlled by CSS */}
+            {nodes.map(node => {
+              const styles = getNodeStyles(node);
+              const width = node.type === "secondary" ? smallNodeWidth : node.type === "diagnostic" ? 60 : nodeWidth;
+              const height = node.type === "diagnostic" ? 22 : node.type === "secondary" ? 34 : 42;
+              const fontSize = node.type === "diagnostic" ? "text-[9px]" : node.type === "secondary" ? "text-[11px]" : "text-sm";
+              const isActive = currentStep === node.step;
+
+              return (
+                <div
+                  key={node.id}
+                  className="absolute flex items-center justify-center text-center pointer-events-none"
+                  style={{
+                    left: node.x - width / 2,
+                    top: node.y - height / 2,
+                    width,
+                    height,
+                    opacity: styles.opacity,
+                    transform: styles.transform,
+                    transition: prefersReducedMotion 
+                      ? "none" 
+                      : "opacity 0.5s ease-out, transform 0.5s ease-out",
+                  }}
+                >
+                  <div
+                    className={`
+                      w-full h-full flex items-center justify-center px-2 sm:px-3 rounded-full
+                      ${node.type === "diagnostic" 
+                        ? "" 
+                        : isActive 
+                          ? "bg-white/10 border border-white/30" 
+                          : "bg-white/[0.03] border border-white/10"
+                      }
+                    `}
+                    style={{
+                      transition: prefersReducedMotion ? "none" : "background-color 0.3s, border-color 0.3s",
+                    }}
+                  >
+                    <span 
+                      className={`
+                        ${fontSize} font-medium tracking-wide leading-tight
+                        ${node.type === "diagnostic" 
+                          ? "text-white/50" 
+                          : isActive 
+                            ? "text-white" 
+                            : "text-white/60"
+                        }
+                      `}
+                    >
+                      {node.label}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
