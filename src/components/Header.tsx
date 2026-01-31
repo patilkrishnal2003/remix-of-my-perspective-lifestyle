@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, ChevronDown, Globe, Smartphone, Code, Database, Palette, Cloud, ArrowRight, Briefcase, BookOpen, Users, Headphones, GraduationCap } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, ChevronRight, Globe, Smartphone, Code, Database, Palette, Cloud, ArrowRight, Briefcase, BookOpen, Users, Headphones, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -16,6 +16,10 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileBuildOpen, setMobileBuildOpen] = useState(false);
+  const [mobileGrowOpen, setMobileGrowOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -389,60 +393,119 @@ const Header = () => {
                   About
                 </Link>
                 
-                {/* Services Section - BUILD */}
-                <div className="py-2 px-4">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2">BUILD</p>
-                  {buildServices.map((item) => (
-                    <Link 
-                      key={item.path}
-                      to={item.path} 
-                      className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <item.icon className="w-4 h-4 text-primary" />
-                      <span className="text-base font-medium">{item.label}</span>
-                    </Link>
-                  ))}
-                </div>
-                
-                {/* Services Section - GROW & SCALE */}
-                <div className="py-2 px-4">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2">GROW & SCALE</p>
-                  {growServices.map((item) => (
-                    <Link 
-                      key={item.path}
-                      to={item.path} 
-                      className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <item.icon className="w-4 h-4 text-primary" />
-                      <span className="text-base font-medium">{item.label}</span>
-                    </Link>
-                  ))}
-                  <Link 
-                    to="/services" 
-                    className="flex items-center gap-2 mt-2 py-2 px-2 rounded-lg bg-primary/10 text-primary font-medium text-sm"
-                    onClick={() => setIsMenuOpen(false)}
+                {/* Services Dropdown */}
+                <div className="flex flex-col">
+                  <button 
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                    className={`text-base font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-between ${
+                      isActive("/services") 
+                        ? "bg-accent/10 text-accent" 
+                        : "hover:bg-muted"
+                    }`}
                   >
-                    View All Services
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                    Services
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileServicesOpen && (
+                    <div className="pl-4 flex flex-col gap-1 mt-1">
+                      {/* Build Sub-dropdown */}
+                      <button 
+                        onClick={() => setMobileBuildOpen(!mobileBuildOpen)}
+                        className="text-sm font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-between hover:bg-muted"
+                      >
+                        <span className="flex items-center gap-2">
+                          <Code className="w-4 h-4 text-primary" />
+                          Build
+                        </span>
+                        <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mobileBuildOpen ? 'rotate-90' : ''}`} />
+                      </button>
+                      
+                      {mobileBuildOpen && (
+                        <div className="pl-4 flex flex-col gap-0.5">
+                          {buildServices.map((item) => (
+                            <Link 
+                              key={item.path}
+                              to={item.path} 
+                              className="flex items-center gap-3 py-2 px-3 rounded-lg transition-colors hover:bg-muted"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <item.icon className="w-4 h-4 text-primary" />
+                              <span className="text-sm">{item.label}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {/* Grow & Scale Sub-dropdown */}
+                      <button 
+                        onClick={() => setMobileGrowOpen(!mobileGrowOpen)}
+                        className="text-sm font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-between hover:bg-muted"
+                      >
+                        <span className="flex items-center gap-2">
+                          <Cloud className="w-4 h-4 text-primary" />
+                          Grow & Scale
+                        </span>
+                        <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mobileGrowOpen ? 'rotate-90' : ''}`} />
+                      </button>
+                      
+                      {mobileGrowOpen && (
+                        <div className="pl-4 flex flex-col gap-0.5">
+                          {growServices.map((item) => (
+                            <Link 
+                              key={item.path}
+                              to={item.path} 
+                              className="flex items-center gap-3 py-2 px-3 rounded-lg transition-colors hover:bg-muted"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              <item.icon className="w-4 h-4 text-primary" />
+                              <span className="text-sm">{item.label}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                      
+                      <Link 
+                        to="/services" 
+                        className="flex items-center gap-2 mt-1 py-2 px-4 rounded-full bg-primary/10 text-primary font-medium text-sm"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        View All Services
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  )}
                 </div>
 
-                {/* Resources Section */}
-                <div className="py-2 px-4">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2">RESOURCES</p>
-                  {resourcesItems.map((item) => (
-                    <Link 
-                      key={item.path}
-                      to={item.path} 
-                      className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      <item.icon className="w-4 h-4 text-primary" />
-                      <span className="text-base font-medium">{item.label}</span>
-                    </Link>
-                  ))}
+                {/* Resources Dropdown */}
+                <div className="flex flex-col">
+                  <button 
+                    onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                    className={`text-base font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-between ${
+                      isActive("/portfolio") || isActive("/blog") || isActive("/community") || isActive("/careers")
+                        ? "bg-accent/10 text-accent" 
+                        : "hover:bg-muted"
+                    }`}
+                  >
+                    Resources
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {mobileResourcesOpen && (
+                    <div className="pl-4 flex flex-col gap-0.5 mt-1">
+                      {resourcesItems.map((item) => (
+                        <Link 
+                          key={item.path}
+                          to={item.path} 
+                          className="flex items-center gap-3 py-2 px-3 rounded-lg transition-colors hover:bg-muted"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <item.icon className="w-4 h-4 text-primary" />
+                          <span className="text-sm">{item.label}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <div className="pt-3 mt-2 border-t border-border">
@@ -687,60 +750,119 @@ const Header = () => {
                 About
               </Link>
               
-              {/* Services Section - BUILD */}
-              <div className="py-2 px-4">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">BUILD</p>
-                {buildServices.map((item) => (
-                  <Link 
-                    key={item.path}
-                    to={item.path} 
-                    className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <item.icon className="w-4 h-4 text-primary" />
-                    <span className="text-base font-medium">{item.label}</span>
-                  </Link>
-                ))}
-              </div>
-              
-              {/* Services Section - GROW & SCALE */}
-              <div className="py-2 px-4">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">GROW & SCALE</p>
-                {growServices.map((item) => (
-                  <Link 
-                    key={item.path}
-                    to={item.path} 
-                    className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <item.icon className="w-4 h-4 text-primary" />
-                    <span className="text-base font-medium">{item.label}</span>
-                  </Link>
-                ))}
-                <Link 
-                  to="/services" 
-                  className="flex items-center gap-2 mt-2 py-2 px-2 rounded-lg bg-primary/10 text-primary font-medium text-sm"
-                  onClick={() => setIsMenuOpen(false)}
+              {/* Services Dropdown */}
+              <div className="flex flex-col">
+                <button 
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className={`text-base font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-between ${
+                    isActive("/services") 
+                      ? "bg-accent/10 text-accent" 
+                      : "hover:bg-muted"
+                  }`}
                 >
-                  View All Services
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                  Services
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {mobileServicesOpen && (
+                  <div className="pl-4 flex flex-col gap-1 mt-1">
+                    {/* Build Sub-dropdown */}
+                    <button 
+                      onClick={() => setMobileBuildOpen(!mobileBuildOpen)}
+                      className="text-sm font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-between hover:bg-muted"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Code className="w-4 h-4 text-primary" />
+                        Build
+                      </span>
+                      <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mobileBuildOpen ? 'rotate-90' : ''}`} />
+                    </button>
+                    
+                    {mobileBuildOpen && (
+                      <div className="pl-4 flex flex-col gap-0.5">
+                        {buildServices.map((item) => (
+                          <Link 
+                            key={item.path}
+                            to={item.path} 
+                            className="flex items-center gap-3 py-2 px-3 rounded-lg transition-colors hover:bg-muted"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            <item.icon className="w-4 h-4 text-primary" />
+                            <span className="text-sm">{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {/* Grow & Scale Sub-dropdown */}
+                    <button 
+                      onClick={() => setMobileGrowOpen(!mobileGrowOpen)}
+                      className="text-sm font-medium py-2.5 px-4 rounded-lg transition-colors flex items-center justify-between hover:bg-muted"
+                    >
+                      <span className="flex items-center gap-2">
+                        <Cloud className="w-4 h-4 text-primary" />
+                        Grow & Scale
+                      </span>
+                      <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mobileGrowOpen ? 'rotate-90' : ''}`} />
+                    </button>
+                    
+                    {mobileGrowOpen && (
+                      <div className="pl-4 flex flex-col gap-0.5">
+                        {growServices.map((item) => (
+                          <Link 
+                            key={item.path}
+                            to={item.path} 
+                            className="flex items-center gap-3 py-2 px-3 rounded-lg transition-colors hover:bg-muted"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            <item.icon className="w-4 h-4 text-primary" />
+                            <span className="text-sm">{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                    
+                    <Link 
+                      to="/services" 
+                      className="flex items-center gap-2 mt-1 py-2 px-4 rounded-full bg-primary/10 text-primary font-medium text-sm"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      View All Services
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                )}
               </div>
 
-              {/* Resources Section */}
-              <div className="py-2 px-4">
-                <p className="text-xs font-semibold text-muted-foreground mb-2">RESOURCES</p>
-                {resourcesItems.map((item) => (
-                  <Link 
-                    key={item.path}
-                    to={item.path} 
-                    className="flex items-center gap-3 py-2 px-2 rounded-lg transition-colors hover:bg-muted"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <item.icon className="w-4 h-4 text-primary" />
-                    <span className="text-base font-medium">{item.label}</span>
-                  </Link>
-                ))}
+              {/* Resources Dropdown */}
+              <div className="flex flex-col">
+                <button 
+                  onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                  className={`text-base font-medium py-3 px-4 rounded-xl transition-colors flex items-center justify-between ${
+                    isActive("/portfolio") || isActive("/blog") || isActive("/community") || isActive("/careers")
+                      ? "bg-accent/10 text-accent" 
+                      : "hover:bg-muted"
+                  }`}
+                >
+                  Resources
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileResourcesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {mobileResourcesOpen && (
+                  <div className="pl-4 flex flex-col gap-0.5 mt-1">
+                    {resourcesItems.map((item) => (
+                      <Link 
+                        key={item.path}
+                        to={item.path} 
+                        className="flex items-center gap-3 py-2 px-3 rounded-lg transition-colors hover:bg-muted"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <item.icon className="w-4 h-4 text-primary" />
+                        <span className="text-sm">{item.label}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="pt-3 mt-2 border-t border-border">
