@@ -174,11 +174,36 @@
   gap: 0.125rem;
 }
 
+/* Author name row with LinkedIn */
+.blog-card__author-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
 /* Author name */
 .blog-card__author-name {
   font-size: 0.875rem;
   font-weight: 600;
   color: hsl(var(--foreground));
+}
+
+/* LinkedIn link */
+.blog-card__linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  color: #0A66C2;
+  transition: opacity 0.2s ease;
+}
+
+.blog-card__linkedin-link:hover {
+  opacity: 0.75;
+}
+
+.blog-card__linkedin-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: currentColor;
 }
 
 /* Author designation - primary/blue color */

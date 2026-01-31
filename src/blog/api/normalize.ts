@@ -11,7 +11,8 @@ export type UiPost = {
   readTime?: string;
   authorName?: string;
   authorImage?: string;
-  authorDesignation?: string; // NEW: author job title/role
+  authorDesignation?: string; // author job title/role
+  authorLinkedin?: string; // LinkedIn profile URL (from ACF field: linekdin_profile_url)
   html: string; // full post content HTML
   wpId: number; // numeric WP id (for comments)
 };
@@ -61,7 +62,8 @@ export function normalizePost(p: WpPost, cats: WpCategory[]): UiPost | null {
     readTime: p.acf?.read_time,
     authorName: authorName(p),
     authorImage: authorAvatar(p),
-    authorDesignation: p.acf?.author_designation || undefined, // NEW: use ACF field
+    authorDesignation: p.acf?.author_designation || undefined,
+    authorLinkedin: p.acf?.linekdin_profile_url || undefined,
     html: p.content?.rendered ?? "",
   };
 }
