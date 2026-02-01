@@ -369,9 +369,9 @@ const Header = () => {
           {/* Mobile Menu - shown when isMenuOpen is true */}
           {isMenuOpen && (
             <>
-              {/* Backdrop overlay */}
+              {/* Backdrop overlay - starts below navbar */}
               <div 
-                className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
+                className="fixed inset-x-0 top-[4.5rem] bottom-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
                 onClick={() => setIsMenuOpen(false)}
               />
               <div className="relative z-50 md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in max-h-[calc(100vh-6rem)] overflow-y-auto">
@@ -733,9 +733,9 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <>
-            {/* Backdrop overlay */}
+            {/* Backdrop overlay - starts below navbar */}
             <div 
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-x-0 top-[4rem] bottom-0 bg-background/80 backdrop-blur-sm z-40 md:hidden"
               onClick={() => setIsMenuOpen(false)}
             />
             <div className="relative z-50 md:hidden mt-2 py-4 px-4 rounded-2xl bg-card border border-border animate-fade-in max-h-[calc(100vh-6rem)] overflow-y-auto">
