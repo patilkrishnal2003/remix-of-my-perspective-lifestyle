@@ -232,8 +232,6 @@ const About = () => {
         {/* How We Work Section */}
         <HowWeWorkSection />
 
-        {/* Values Section */}
-        <ValuesTabSection />
 
         {/* Team Section */}
         <section className="section-divider">
