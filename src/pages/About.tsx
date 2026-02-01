@@ -190,35 +190,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Story Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 animate-slide-up">
-              <h2 className="text-3xl md:text-4xl font-bold">Our Story</h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Advora was founded with a simple mission: to bridge the gap between innovative ideas and powerful technology. We saw too many businesses struggling with outdated software or unable to bring their digital visions to life.
-                </p>
-                <p>
-                  Today, we've grown into a full-service software and web development agency, serving clients across industries. From startups launching their first product to enterprises modernizing their systems, we bring the same level of dedication and expertise to every project.
-                </p>
-                <p>
-                  Our team combines years of experience with a genuine passion for technology. We stay at the forefront of industry trends, continuously learning and adopting new tools and methodologies to deliver the best possible solutions.
-                </p>
-              </div>
-            </div>
-            <div className="rounded-3xl bg-gradient-to-br from-accent/20 to-accent/5 p-8 md:p-12 animate-slide-up stagger-2">
-              <h3 className="text-2xl font-bold mb-6">Our Mission</h3>
-              <p className="text-lg leading-relaxed mb-6">
-                To empower businesses with innovative technology solutions that drive growth, efficiency, and competitive advantage.
-              </p>
-              <h3 className="text-2xl font-bold mb-6">Our Vision</h3>
-              <p className="text-lg leading-relaxed">
-                To be the most trusted technology partner for businesses seeking to transform their digital presence.
-              </p>
-            </div>
-          </div>
-        </section>
 
         {/* Why Choose Advora - Flip Image Carousel */}
         <section className="section-divider">
