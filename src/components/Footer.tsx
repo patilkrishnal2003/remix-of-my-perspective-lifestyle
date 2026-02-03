@@ -73,120 +73,159 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Grid - 4 columns */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-12 sm:mb-16">
-            {/* Services */}
-            <div>
-              <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Services</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li>
-                  <Link to="/services/web-development" className="hover:text-primary transition-colors">
-                    Web Development
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/mobile-apps" className="hover:text-primary transition-colors">
-                    Mobile Apps
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/custom-software" className="hover:text-primary transition-colors">
-                    Custom Software
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/ui-ux-design" className="hover:text-primary transition-colors">
-                    UI/UX Design
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services/cloud-solutions" className="hover:text-primary transition-colors">
-                    Cloud Solutions
-                  </Link>
-                </li>
-              </ul>
+          {/* Links Grid - Services spanning top, then 3 columns below */}
+          <div className="mb-12 sm:mb-16">
+            {/* Services Section - Premium Layout */}
+            <div className="mb-10 sm:mb-12">
+              <h3 className="font-semibold mb-6 text-xs sm:text-sm uppercase tracking-wider text-center">Services</h3>
+              <div className="grid grid-cols-2 gap-8 sm:gap-12 max-w-md mx-auto">
+                {/* Digital Services - Left */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider text-primary mb-4 font-medium">Digital</h4>
+                  <ul className="space-y-3 text-sm text-muted-foreground">
+                    <li>
+                      <Link to="/services/digital-presence" className="hover:text-primary transition-colors">
+                        Digital Presence
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/growth-marketing" className="hover:text-primary transition-colors">
+                        Growth Marketing
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/sales-revenue" className="hover:text-primary transition-colors">
+                        Sales & Revenue
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/strategy-scaling" className="hover:text-primary transition-colors">
+                        Strategy & Scaling
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                
+                {/* Tech Services - Right */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider text-primary mb-4 font-medium">Tech</h4>
+                  <ul className="space-y-3 text-sm text-muted-foreground">
+                    <li>
+                      <Link to="/services/web-development" className="hover:text-primary transition-colors">
+                        Web Development
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/mobile-apps" className="hover:text-primary transition-colors">
+                        Mobile Apps
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/custom-software" className="hover:text-primary transition-colors">
+                        Custom Software
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/ui-ux-design" className="hover:text-primary transition-colors">
+                        UI/UX Design
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/services/branding" className="hover:text-primary transition-colors">
+                        Branding
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
-            {/* Company */}
-            <div>
-              <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Company</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li>
-                  <Link to="/about" className="hover:text-primary transition-colors">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/portfolio" className="hover:text-primary transition-colors">
-                    Portfolio
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/blog" className="hover:text-primary transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/privacy" className="hover:text-primary transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/terms" className="hover:text-primary transition-colors">
-                    Terms & Conditions
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            {/* Divider */}
+            <div className="border-t border-border/30 mb-10 sm:mb-12" />
 
-            {/* Resources */}
-            <div>
-              <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Resources</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li>
-                  <Link to="/blog" className="hover:text-primary transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/community" className="hover:text-primary transition-colors">
-                    Community
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-primary transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-primary transition-colors">
-                    FAQ
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            {/* Bottom 3 columns */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-10">
+              {/* Company */}
+              <div>
+                <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Company</h3>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li>
+                    <Link to="/about" className="hover:text-primary transition-colors">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/portfolio" className="hover:text-primary transition-colors">
+                      Portfolio
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blog" className="hover:text-primary transition-colors">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/privacy" className="hover:text-primary transition-colors">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/terms" className="hover:text-primary transition-colors">
+                      Terms & Conditions
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
-            {/* Contact */}
-            <div>
-              <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Contact</h3>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <span>+1 (555) 123-4567</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail className="h-4 w-4 text-primary" />
-                  <span>advora.in@gmail.com</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-primary" />
-                  <span>Mon-Fri, 9:00 AM - 6:00 PM</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <MapPin className="h-4 w-4 text-primary mt-0.5" />
-                  <span>New York, NY, USA</span>
-                </li>
-              </ul>
+              {/* Resources */}
+              <div>
+                <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Resources</h3>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li>
+                    <Link to="/blog" className="hover:text-primary transition-colors">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/community" className="hover:text-primary transition-colors">
+                      Community
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className="hover:text-primary transition-colors">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className="hover:text-primary transition-colors">
+                      FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Contact */}
+              <div className="col-span-2 sm:col-span-1">
+                <h3 className="font-semibold mb-4 text-xs sm:text-sm uppercase tracking-wider">Contact</h3>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <Phone className="h-4 w-4 text-primary" />
+                    <span>+1 (555) 123-4567</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-primary" />
+                    <span>advora.in@gmail.com</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-primary" />
+                    <span>Mon-Fri, 9:00 AM - 6:00 PM</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <MapPin className="h-4 w-4 text-primary mt-0.5" />
+                    <span>New York, NY, USA</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
