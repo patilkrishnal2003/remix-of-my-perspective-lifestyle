@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, BookOpen, Briefcase, Users, HeadphonesIcon, GraduationCap, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Users, HeadphonesIcon, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -106,6 +106,7 @@ export default function ResourcesTabSection() {
   const [activeTab, setActiveTab] = useState<TabType>("blog");
   const [isPaused, setIsPaused] = useState(false);
   const [mobileIndex, setMobileIndex] = useState(0);
+  const [swipeDirection, setSwipeDirection] = useState<1 | -1>(1);
   const isMobile = useIsMobile();
 
   const tabOrder: TabType[] = ["blog", "portfolio", "community", "careers", "support"];
@@ -131,6 +132,7 @@ export default function ResourcesTabSection() {
     if (!isMobile) return;
     
     const interval = setInterval(() => {
+      setSwipeDirection(1);
       setMobileIndex((prev) => (prev + 1) % tabsData.length);
     }, 4000);
     return () => clearInterval(interval);
@@ -143,15 +145,36 @@ export default function ResourcesTabSection() {
   };
 
   const handleMobilePrev = () => {
+    setSwipeDirection(-1);
     setMobileIndex((prev) => (prev - 1 + tabsData.length) % tabsData.length);
   };
 
   const handleMobileNext = () => {
+    setSwipeDirection(1);
     setMobileIndex((prev) => (prev + 1) % tabsData.length);
   };
 
   const activeTabData = tabsData.find((tab) => tab.id === activeTab)!;
   const mobileTabData = tabsData[mobileIndex];
+
+  // Swipe animation variants
+  const swipeVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0.5,
+      scale: 0.95,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? "-100%" : "100%",
+      opacity: 0.5,
+      scale: 0.95,
+    }),
+  };
 
   return (
     <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
@@ -185,24 +208,36 @@ export default function ResourcesTabSection() {
           {/* Mobile & Tablet Carousel with Swipe */}
           <div className="lg:hidden">
             <div className="relative overflow-hidden">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="popLayout" custom={swipeDirection}>
                 <motion.div
                   key={mobileIndex}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.3 }}
+                  custom={swipeDirection}
+                  variants={swipeVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 300, 
+                    damping: 30,
+                    opacity: { duration: 0.2 }
+                  }}
                   drag="x"
                   dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2}
+                  dragElastic={0.3}
                   onDragEnd={(_, info) => {
-                    if (info.offset.x > 50) {
+                    const threshold = 50;
+                    const velocity = info.velocity.x;
+                    const offset = info.offset.x;
+                    
+                    if (offset > threshold || velocity > 500) {
                       handleMobilePrev();
-                    } else if (info.offset.x < -50) {
+                    } else if (offset < -threshold || velocity < -500) {
                       handleMobileNext();
                     }
                   }}
                   className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm cursor-grab active:cursor-grabbing"
+                  style={{ touchAction: "pan-y" }}
                 >
                   {/* Preview Image */}
                   <div className="relative overflow-hidden bg-muted shrink-0">
