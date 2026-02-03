@@ -182,9 +182,9 @@ export default function ResourcesTabSection() {
             </Link>
           </div>
 
-          {/* Mobile & Tablet Carousel */}
+          {/* Mobile & Tablet Carousel with Swipe */}
           <div className="lg:hidden">
-            <div className="relative">
+            <div className="relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={mobileIndex}
@@ -192,7 +192,17 @@ export default function ResourcesTabSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.x > 50) {
+                      handleMobilePrev();
+                    } else if (info.offset.x < -50) {
+                      handleMobileNext();
+                    }
+                  }}
+                  className="bg-background rounded-2xl border border-border overflow-hidden shadow-sm cursor-grab active:cursor-grabbing"
                 >
                   {/* Preview Image */}
                   <div className="relative overflow-hidden bg-muted shrink-0">
@@ -201,7 +211,7 @@ export default function ResourcesTabSection() {
                       alt={mobileTabData.label}
                       loading="lazy"
                       decoding="async"
-                      className="block w-full h-48 sm:h-56 object-cover"
+                      className="block w-full h-48 sm:h-56 object-cover pointer-events-none"
                     />
                   </div>
                   
@@ -225,26 +235,8 @@ export default function ResourcesTabSection() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation Arrows */}
-              <div className="flex justify-center gap-3 mt-4">
-                <button
-                  onClick={handleMobilePrev}
-                  className="p-2.5 rounded-full border border-border bg-background hover:bg-muted transition-colors"
-                  aria-label="Previous"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={handleMobileNext}
-                  className="p-2.5 rounded-full border border-border bg-background hover:bg-muted transition-colors"
-                  aria-label="Next"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-
               {/* Dots Indicator */}
-              <div className="flex justify-center gap-2 mt-3">
+              <div className="flex justify-center gap-2 mt-4">
                 {tabsData.map((_, idx) => (
                   <button
                     key={idx}
