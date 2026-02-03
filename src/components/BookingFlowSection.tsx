@@ -32,7 +32,7 @@ const BookingFlowSection = () => {
 
   // Responsive dimensions
   const canvasWidth = isMobile ? 320 : 800;
-  const canvasHeight = isMobile ? 870 : 860;
+  const canvasHeight = isMobile ? 840 : 860;
   const centerX = canvasWidth / 2;
   const nodeWidth = isMobile ? 160 : 200;
   const smallNodeWidth = isMobile ? 130 : 160;
