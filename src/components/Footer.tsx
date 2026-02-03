@@ -1,8 +1,53 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin, Github, Mail, Phone, MapPin } from "lucide-react";
+import { Twitter, Linkedin, Github, Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
+
+// Collapsible section component for mobile
+const FooterSection = ({ 
+  title, 
+  children, 
+  isPrimary = false,
+  defaultOpen = false 
+}: { 
+  title: string; 
+  children: React.ReactNode; 
+  isPrimary?: boolean;
+  defaultOpen?: boolean;
+}) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className="lg:block">
+      {/* Mobile/Tablet: Collapsible */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="lg:hidden w-full flex items-center justify-between py-3 border-b border-border/30"
+      >
+        <h3 className={`font-semibold text-xs uppercase tracking-wider ${isPrimary ? 'text-primary' : ''}`}>
+          {title}
+        </h3>
+        <ChevronDown 
+          className={`h-4 w-4 text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} 
+        />
+      </button>
+      
+      {/* Mobile: Expandable content */}
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 py-3' : 'max-h-0'}`}>
+        {children}
+      </div>
+
+      {/* Desktop: Always visible */}
+      <div className="hidden lg:block">
+        <h3 className={`font-semibold mb-5 text-xs uppercase tracking-wider ${isPrimary ? 'text-primary' : ''}`}>
+          {title}
+        </h3>
+        {children}
+      </div>
+    </div>
+  );
+};
 
 const Footer = () => {
   const [isDark, setIsDark] = useState(false);
@@ -52,7 +97,7 @@ const Footer = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
           {/* Top Row: Logo & Newsletter in single line */}
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-12 sm:mb-16">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8 lg:mb-16">
             {/* Logo - Dark logo on light background */}
             <Link to="/" className="flex items-center">
               <img src={logoDark} alt="Advora Labs" className="h-8 sm:h-10 w-auto" />
@@ -73,11 +118,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Links Grid - Clean 5-column layout */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-6 mb-12 sm:mb-16">
-            {/* Digital Services */}
-            <div>
-              <h3 className="font-semibold mb-5 text-xs uppercase tracking-wider text-primary">Grow & Scale</h3>
+          {/* Mobile/Tablet: Collapsible sections | Desktop: 5-column grid */}
+          <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-6 mb-8 lg:mb-16">
+            {/* Grow & Scale */}
+            <FooterSection title="Grow & Scale" isPrimary>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <Link to="/services/digital-presence" className="hover:text-foreground transition-colors">
@@ -100,11 +144,10 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </FooterSection>
             
-            {/* Tech Services */}
-            <div>
-              <h3 className="font-semibold mb-5 text-xs uppercase tracking-wider text-primary">Build</h3>
+            {/* Build */}
+            <FooterSection title="Build" isPrimary>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <Link to="/services/web-development" className="hover:text-foreground transition-colors">
@@ -132,11 +175,10 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </FooterSection>
 
             {/* Company */}
-            <div>
-              <h3 className="font-semibold mb-5 text-xs uppercase tracking-wider">Company</h3>
+            <FooterSection title="Company">
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <Link to="/about" className="hover:text-foreground transition-colors">
@@ -159,11 +201,10 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </FooterSection>
 
             {/* Resources */}
-            <div>
-              <h3 className="font-semibold mb-5 text-xs uppercase tracking-wider">Resources</h3>
+            <FooterSection title="Resources">
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li>
                   <Link to="/community" className="hover:text-foreground transition-colors">
@@ -186,11 +227,11 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </FooterSection>
 
-            {/* Contact */}
-            <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-              <h3 className="font-semibold mb-5 text-xs uppercase tracking-wider">Get in Touch</h3>
+            {/* Get in Touch - Always visible, not collapsible */}
+            <div className="pt-6 lg:pt-0 border-t border-border/30 lg:border-0">
+              <h3 className="font-semibold mb-4 lg:mb-5 text-xs uppercase tracking-wider">Get in Touch</h3>
               <ul className="space-y-3 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2.5">
                   <Mail className="h-4 w-4 text-primary flex-shrink-0" />
