@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
 
-import { Zap, Shield, Users } from "lucide-react";
+import { Zap, Shield, Users, Building2, Rocket, TrendingUp, Heart, ShoppingBag, GraduationCap } from "lucide-react";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
@@ -13,12 +13,14 @@ import DigitalServicesCarouselSection from "@/components/DigitalServicesCarousel
 import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSection";
 import BookingFlowSection from "@/components/BookingFlowSection";
 
-import logoTechcorp from "@/assets/logo-techcorp.png";
-import logoStartupx from "@/assets/logo-startupx.png";
-import logoFinanceflow from "@/assets/logo-financeflow.png";
-import logoHealthtrack from "@/assets/logo-healthtrack.png";
-import logoRetailhub from "@/assets/logo-retailhub.png";
-import logoEdulearn from "@/assets/logo-edulearn.png";
+const trustedCompanies = [
+  { name: "TechCorp", icon: Building2 },
+  { name: "StartupX", icon: Rocket },
+  { name: "FinanceFlow", icon: TrendingUp },
+  { name: "HealthTrack", icon: Heart },
+  { name: "RetailHub", icon: ShoppingBag },
+  { name: "EduLearn", icon: GraduationCap }
+];
 
 const Index = () => {
 
@@ -145,23 +147,12 @@ const Index = () => {
               
               {/* Marquee container */}
               <div className="flex animate-marquee hover:[animation-play-state:paused]">
-                {/* First set of logos */}
-                {[...Array(2)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex items-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
-                    {[
-                      { name: "TechCorp", logo: logoTechcorp },
-                      { name: "StartupX", logo: logoStartupx },
-                      { name: "FinanceFlow", logo: logoFinanceflow },
-                      { name: "HealthTrack", logo: logoHealthtrack },
-                      { name: "RetailHub", logo: logoRetailhub },
-                      { name: "EduLearn", logo: logoEdulearn }
-                    ].map((company) => (
-                      <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0">
-                        <img 
-                          src={company.logo} 
-                          alt={company.name}
-                          className="h-12 sm:h-14 md:h-16 w-auto object-contain"
-                        />
+                {[...Array(3)].map((_, setIndex) => (
+                  <div key={setIndex} className="flex items-center gap-16 sm:gap-20 md:gap-28 px-8 sm:px-10">
+                    {trustedCompanies.map((company) => (
+                      <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex items-center gap-3">
+                        <company.icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-primary" strokeWidth={1.5} />
+                        <span className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground">{company.name}</span>
                       </div>
                     ))}
                   </div>
