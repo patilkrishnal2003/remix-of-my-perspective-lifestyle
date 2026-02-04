@@ -191,8 +191,9 @@ export default function ResourcesTabSection() {
             <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
               Resources
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-              Explore our resources, insights, and community
+            <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight mb-4 leading-tight">
+              <span className="block font-serif italic font-normal">Explore Our</span>
+              <span className="block font-bold">Resources & <span className="text-primary">Community</span></span>
             </h2>
             <p className="hidden lg:block text-muted-foreground text-base md:text-lg mb-6">
               Everything you need to build exceptional digital products. From tutorials to templates, we've got you covered.

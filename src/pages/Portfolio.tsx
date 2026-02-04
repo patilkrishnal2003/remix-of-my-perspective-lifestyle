@@ -405,8 +405,11 @@ const Portfolio = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
-                <span className="text-primary font-medium">Featured Case Study</span>
-                <h2 className="text-3xl md:text-4xl font-bold">How We Helped FinanceFlow Scale to 100K Users</h2>
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">Featured Case Study</span>
+                <h2 className="text-3xl md:text-4xl tracking-tight">
+                  <span className="block font-serif italic font-normal">How We Helped FinanceFlow</span>
+                  <span className="block font-bold">Scale to <span className="text-primary">100K Users</span></span>
+                </h2>
                 <p className="text-muted-foreground leading-relaxed">
                   FinanceFlow came to us with a legacy system that was struggling to keep up with demand. Through a complete platform redesign and modern technology stack, we helped them achieve 300% user growth in just 6 months.
                 </p>
@@ -462,7 +465,10 @@ const Portfolio = () => {
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Expertise Across Industries</h2>
+              <h2 className="text-3xl md:text-4xl tracking-tight mb-4">
+                <span className="block font-serif italic font-normal">Expertise Across</span>
+                <span className="block font-bold text-primary">Industries</span>
+              </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 We've shipped growth programs across SaaS, ecommerce, fintech, healthcare, and more.
               </p>

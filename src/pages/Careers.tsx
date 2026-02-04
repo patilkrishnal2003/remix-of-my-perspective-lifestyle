@@ -117,7 +117,10 @@ const Careers = () => {
         {/* Benefits */}
         <section className="py-12 sm:py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Why Work With Us</h2>
+            <h2 className="text-3xl md:text-4xl tracking-tight mb-8 text-center">
+              <span className="block font-serif italic font-normal">Why Work</span>
+              <span className="block font-bold">With <span className="text-primary">Us</span></span>
+            </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {benefits.map((benefit, index) => (
                 <div
@@ -138,7 +141,10 @@ const Careers = () => {
         {/* Open Positions */}
         <section className="py-12 sm:py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Open Positions</h2>
+            <h2 className="text-3xl md:text-4xl tracking-tight mb-8 text-center">
+              <span className="block font-serif italic font-normal">Open</span>
+              <span className="block font-bold text-primary">Positions</span>
+            </h2>
             <div className="space-y-4">
               {openPositions.map((position, index) => (
                 <div
@@ -185,7 +191,10 @@ const Careers = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">Our Culture</h2>
+                <h2 className="text-3xl md:text-4xl tracking-tight">
+                  <span className="block font-serif italic font-normal">Our</span>
+                  <span className="block font-bold text-primary">Culture</span>
+                </h2>
                 <p className="text-xl text-muted-foreground leading-relaxed">
                   We believe that great work comes from happy, supported team members. Our culture is built on trust, flexibility, and continuous growth.
                 </p>
