@@ -204,7 +204,10 @@ const Services = () => {
         {/* Services Tab Section */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">What We Offer</h2>
+            <h2 className="text-3xl md:text-5xl tracking-tight mb-4">
+              <span className="block font-serif italic font-normal">What We</span>
+              <span className="block font-bold">Offer <span className="text-primary">You</span></span>
+            </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Full-stack development expertise for every need
             </p>
