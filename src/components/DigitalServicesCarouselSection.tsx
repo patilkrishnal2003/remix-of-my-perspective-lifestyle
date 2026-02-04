@@ -206,7 +206,7 @@ const DigitalServicesCarouselSection = () => {
 
                         <div className="space-y-4">
                           <Link to={solution.ctaLink}>
-                            <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
+                            <Button className="bg-white text-gray-900 hover:bg-white/90 px-6 py-3 text-base border-0 rounded-full shadow-sm">
                               {solution.ctaText}
                             </Button>
                           </Link>
@@ -271,7 +271,7 @@ const DigitalServicesCarouselSection = () => {
                 </p>
 
                 <Link to={solution.ctaLink}>
-                  <Button className="bg-white text-foreground hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm mb-4">
+                  <Button className="bg-white text-gray-900 hover:bg-white/90 px-6 py-3 text-base font-medium border-0 rounded-full shadow-sm mb-4">
                     {solution.ctaText}
                   </Button>
                 </Link>
