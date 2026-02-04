@@ -167,11 +167,11 @@ const About = () => {
             <ScrollReveal>
               <div className="text-center mb-10">
                 <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
-                  <span className="block font-serif italic font-normal">Why Choose</span>
-                  <span className="block font-bold text-primary">Advora?</span>
+                  <span className="block font-serif italic font-normal">Your Success Is Our Mission</span>
+                  <span className="block font-bold text-primary">Here's What Sets Us Apart</span>
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  We're your technology partners, delivering excellence at every step
+                  We combine technical expertise with genuine partnership to deliver solutions that exceed expectations
                 </p>
               </div>
             </ScrollReveal>
@@ -211,10 +211,10 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
-                <span className="block font-serif italic font-normal">Meet Our</span>
-                <span className="block font-bold text-primary">Team</span>
+                <span className="block font-serif italic font-normal">The Passionate People Behind</span>
+                <span className="block font-bold text-primary">Every Successful Project</span>
               </h2>
-              <p className="text-lg text-muted-foreground">The talented people behind Advora</p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Our diverse team of experts brings creativity, technical excellence, and dedication to every challenge</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {team.map((member, index) => (

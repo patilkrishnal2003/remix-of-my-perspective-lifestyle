@@ -53,11 +53,11 @@ export default function HowWeWorkSection() {
         <div className="bg-primary/15 dark:bg-primary/20 rounded-[3rem] p-8 sm:p-12 lg:p-16">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
-              <span className="block font-serif italic font-normal">How We</span>
-              <span className="block font-bold text-primary">Work</span>
+              <span className="block font-serif italic font-normal">From Vision to Reality</span>
+              <span className="block font-bold text-primary">Our Proven Process</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A transparent, collaborative process designed for your success
+              A transparent, four-step journey designed to transform your ideas into exceptional digital experiences
             </p>
           </div>
 
