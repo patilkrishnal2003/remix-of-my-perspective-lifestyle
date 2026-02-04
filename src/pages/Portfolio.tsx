@@ -310,9 +310,9 @@ const Portfolio = () => {
                     150+ Projects Delivered
                   </span>
                   
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                    Work That
-                    <span className="block text-primary">Speaks for Itself</span>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                    <span className="block font-serif italic font-normal">Work That</span>
+                    <span className="block font-bold text-primary">Speaks for Itself</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
