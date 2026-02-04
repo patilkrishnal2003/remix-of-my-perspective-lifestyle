@@ -50,12 +50,12 @@ const UIUXDesign = () => {
                     <span className="text-sm font-medium">UI/UX Design</span>
                   </div>
                   
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                  <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]">
                     <span className="block font-serif italic font-normal">User-Centered</span>
                     <span className="block font-bold text-primary">Design Excellence</span>
                   </h1>
 
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-xl sm:text-lg md:text-xl leading-relaxed">
                     Beautiful, intuitive interfaces backed by user research and design thinking to maximize engagement and conversions.
                   </p>
 

@@ -50,12 +50,12 @@ const Branding = () => {
                     <span className="text-sm font-medium">Branding</span>
                   </div>
                   
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                  <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]">
                     <span className="block font-serif italic font-normal">Product</span>
                     <span className="block font-bold text-primary">Positioning</span>
                   </h1>
 
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-xl sm:text-lg md:text-xl leading-relaxed">
                     Build a clear, credible, and differentiated brand presence with strategic positioning, compelling messaging, and distinctive visual identity.
                   </p>
 
