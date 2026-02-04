@@ -85,9 +85,9 @@ const About = () => {
 
                 {/* Content */}
                 <div className="space-y-4 sm:space-y-6">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                    Crafting Digital
-                    <span className="block text-primary">Excellence</span>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                    <span className="block font-serif italic font-normal">Crafting Digital</span>
+                    <span className="block font-bold text-primary">Excellence</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
@@ -166,8 +166,11 @@ const About = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">Why Choose Advora?</h2>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
+                  <span className="block font-serif italic font-normal">Why Choose</span>
+                  <span className="block font-bold text-primary">Advora?</span>
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                   We're your technology partners, delivering excellence at every step
                 </p>
               </div>
@@ -207,8 +210,11 @@ const About = () => {
         <section className="section-divider">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
-              <p className="text-xl text-muted-foreground">The talented people behind Advora</p>
+              <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
+                <span className="block font-serif italic font-normal">Meet Our</span>
+                <span className="block font-bold text-primary">Team</span>
+              </h2>
+              <p className="text-lg text-muted-foreground">The talented people behind Advora</p>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
               {team.map((member, index) => (
