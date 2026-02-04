@@ -50,12 +50,12 @@ const GrowthMarketing = () => {
                     <span className="text-sm font-medium">Growth Marketing</span>
                   </div>
                   
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                  <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]">
                     <span className="block font-serif italic font-normal">Acquisition</span>
                     <span className="block font-bold text-primary">Engine</span>
                   </h1>
 
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-xl sm:text-lg md:text-xl leading-relaxed">
                     Drive predictable traffic, leads, and customer acquisition with data-driven growth marketing strategies and optimized campaigns.
                   </p>
 
