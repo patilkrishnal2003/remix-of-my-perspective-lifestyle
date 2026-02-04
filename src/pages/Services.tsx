@@ -338,10 +338,10 @@ const Services = () => {
         {/* Process Section - Minimal Timeline */}
         <section className="section-divider py-20 pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-muted/50 rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 lg:p-16">
+            <div className="bg-foreground text-background rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 lg:p-16">
             <div className="text-center mb-20">
               <motion.span 
-                className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
+                className="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -358,7 +358,7 @@ const Services = () => {
                 Our Development Process
               </motion.h2>
               <motion.p 
-                className="text-xl text-muted-foreground max-w-2xl mx-auto"
+                className="text-xl text-background/70 max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -458,14 +458,14 @@ const Services = () => {
                   {/* Content - Left or Right */}
                   <div className={`flex-1 pl-24 md:pl-0 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
                     <div className="inline-flex items-center gap-3 mb-2">
-                      <span className={`text-5xl md:text-6xl font-bold text-primary/10 ${index % 2 === 0 ? 'md:order-2' : ''}`}>
+                      <span className={`text-5xl md:text-6xl font-bold text-primary/20 ${index % 2 === 0 ? 'md:order-2' : ''}`}>
                         {phase.step}
                       </span>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3 text-background">
                       {phase.title}
                     </h3>
-                    <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-md inline-block">
+                    <p className="text-background/70 text-base md:text-lg leading-relaxed max-w-md inline-block">
                       {phase.description}
                     </p>
                   </div>
