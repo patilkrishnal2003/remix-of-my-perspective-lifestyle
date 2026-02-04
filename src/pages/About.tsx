@@ -15,12 +15,6 @@ import whyChoose3 from "@/assets/why-choose-3.jpg";
 import { Button } from "@/components/ui/button";
 
 import aboutHero from "@/assets/about-hero.jpg";
-import teamAlex from "@/assets/team-alex.jpg";
-import teamSarah from "@/assets/team-sarah.jpg";
-import teamMichael from "@/assets/team-michael.jpg";
-import teamEmily from "@/assets/team-emily.jpg";
-import teamJames from "@/assets/team-james.jpg";
-import teamLisa from "@/assets/team-lisa.jpg";
 
 const About = () => {
   
@@ -52,43 +46,19 @@ const About = () => {
       name: "Alex Chen",
       role: "Founder & Lead Developer",
       bio: "10+ years of experience in full-stack development and software architecture.",
-      skills: ["React", "Node.js", "System Design"],
-      image: teamAlex
+      skills: ["React", "Node.js", "System Design"]
     },
     {
       name: "Sarah Johnson",
       role: "UI/UX Designer",
       bio: "Passionate about creating intuitive and beautiful user experiences.",
-      skills: ["Figma", "User Research", "Prototyping"],
-      image: teamSarah
+      skills: ["Figma", "User Research", "Prototyping"]
     },
     {
       name: "Michael Roberts",
       role: "Backend Engineer",
       bio: "Expert in scalable systems and cloud infrastructure.",
-      skills: ["Python", "AWS", "PostgreSQL"],
-      image: teamMichael
-    },
-    {
-      name: "Emily Davis",
-      role: "Project Manager",
-      bio: "Ensures smooth delivery and exceptional client communication.",
-      skills: ["Agile", "Scrum", "Client Relations"],
-      image: teamEmily
-    },
-    {
-      name: "James Wilson",
-      role: "Mobile Developer",
-      bio: "Specialist in cross-platform mobile application development.",
-      skills: ["React Native", "iOS", "Android"],
-      image: teamJames
-    },
-    {
-      name: "Lisa Park",
-      role: "DevOps Engineer",
-      bio: "Focuses on automation, deployment, and infrastructure reliability.",
-      skills: ["Docker", "Kubernetes", "CI/CD"],
-      image: teamLisa
+      skills: ["Python", "AWS", "PostgreSQL"]
     }
   ];
 
@@ -181,7 +151,7 @@ const About = () => {
         {/* Editorial Tagline Section */}
         <section className="section-divider">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-foreground leading-relaxed mb-6">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-medium text-foreground leading-relaxed mb-6">
               Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the digital world.
             </p>
             <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -240,14 +210,9 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Team</h2>
               <p className="text-xl text-muted-foreground">The talented people behind Advora</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8">
               {team.map((member, index) => (
-                <div key={member.name} className={`p-8 rounded-3xl bg-background border border-border animate-slide-up stagger-${(index % 6) + 1}`}>
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-20 h-20 rounded-full object-cover mb-6"
-                  />
+                <div key={member.name} className={`p-8 rounded-3xl bg-card border border-border animate-slide-up stagger-${(index % 3) + 1} transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10`}>
                   <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                   <p className="text-primary mb-3">{member.role}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.bio}</p>
