@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
 
 const steps = [
   {
@@ -72,125 +71,22 @@ export default function HowWeWorkSection() {
                 variants={itemVariants}
                 className="group relative"
               >
-              <div className="relative h-full bg-card border border-border rounded-[2rem] p-6 sm:p-8 transition-all duration-300 hover:bg-foreground hover:border-foreground hover:shadow-xl">
+              <div className="relative h-full bg-card border border-border rounded-[2rem] p-6 sm:p-8 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10">
                   {/* Large Number Background */}
-                  <div className="absolute top-4 right-4 text-[4rem] sm:text-[5rem] font-bold text-muted-foreground/10 leading-none select-none transition-colors duration-300 group-hover:text-background/20">
+                  <div className="absolute top-4 right-4 text-[4rem] sm:text-[5rem] font-bold text-muted-foreground/10 leading-none select-none transition-colors duration-300 group-hover:text-primary/20">
                     {step.number}
                   </div>
 
                   {/* Content */}
                   <div className="relative z-10 pt-4">
-                    <h3 className="text-lg font-semibold mb-2 transition-colors duration-300 group-hover:text-background">
+                    <h3 className="text-lg font-semibold mb-2 transition-colors duration-300 group-hover:text-primary">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-background/70">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {step.description}
                     </p>
                   </div>
                 </div>
-
-                {/* Animated Connector - Desktop only */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:flex absolute top-1/2 -right-2 w-4 items-center justify-center z-30 -translate-y-1/2">
-                    {/* Animated flowing dots */}
-                    <div className="relative flex items-center gap-0.5">
-                      <motion.div
-                        className="w-1 h-1 rounded-full bg-primary"
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: 0,
-                        }}
-                      />
-                      <motion.div
-                        className="w-1 h-1 rounded-full bg-primary"
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: 0.2,
-                        }}
-                      />
-                      <motion.div
-                        className="w-1 h-1 rounded-full bg-primary"
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: 0.4,
-                        }}
-                      />
-                    </div>
-                    {/* Animated chevron */}
-                    <motion.div
-                      animate={{
-                        x: [0, 3, 0],
-                        opacity: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut" as const,
-                      }}
-                    >
-                      <ChevronRight className="w-3 h-3 text-primary" />
-                    </motion.div>
-                  </div>
-                )}
-
-                {/* Animated Connector - Mobile/Tablet vertical */}
-                {index < steps.length - 1 && (
-                  <div className="flex lg:hidden absolute -bottom-3 left-1/2 -translate-x-1/2 h-6 items-center justify-center z-30">
-                    <div className="relative flex flex-col items-center gap-0.5">
-                      <motion.div
-                        className="w-1 h-1 rounded-full bg-primary"
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: 0,
-                        }}
-                      />
-                      <motion.div
-                        className="w-1 h-1 rounded-full bg-primary"
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: 0.2,
-                        }}
-                      />
-                      <motion.div
-                        className="w-1 h-1 rounded-full bg-primary"
-                        animate={{
-                          opacity: [0.3, 1, 0.3],
-                          scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          delay: 0.4,
-                        }}
-                      />
-                    </div>
-                  </div>
-                )}
               </motion.div>
             ))}
           </motion.div>
