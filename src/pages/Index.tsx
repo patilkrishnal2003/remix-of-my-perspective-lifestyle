@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
 
-import { Zap, Shield, Users, Building2, Rocket, TrendingUp, Heart, ShoppingBag, GraduationCap } from "lucide-react";
+import { Zap, Shield, Users, Monitor, Lightbulb, Banknote, Stethoscope, Store, BookOpen } from "lucide-react";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
@@ -14,12 +14,12 @@ import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSectio
 import BookingFlowSection from "@/components/BookingFlowSection";
 
 const trustedCompanies = [
-  { name: "TechCorp", icon: Building2 },
-  { name: "StartupX", icon: Rocket },
-  { name: "FinanceFlow", icon: TrendingUp },
-  { name: "HealthTrack", icon: Heart },
-  { name: "RetailHub", icon: ShoppingBag },
-  { name: "EduLearn", icon: GraduationCap }
+  { name: "TechCorp", icon: Monitor },
+  { name: "StartupX", icon: Lightbulb },
+  { name: "FinanceFlow", icon: Banknote },
+  { name: "HealthTrack", icon: Stethoscope },
+  { name: "RetailHub", icon: Store },
+  { name: "EduLearn", icon: BookOpen }
 ];
 
 const Index = () => {
