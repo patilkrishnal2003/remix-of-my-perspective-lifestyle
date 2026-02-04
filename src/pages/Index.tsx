@@ -2,7 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
 
-import { Zap, Shield, Users, Monitor, Lightbulb, Banknote, Stethoscope, Store, BookOpen } from "lucide-react";
+import { Zap, Shield, Users } from "lucide-react";
+import { SiGoogle, SiAmazon, SiMeta, SiApple, SiNetflix, SiSpotify } from "react-icons/si";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { type Testimonial } from "@/components/TestimonialCard";
@@ -14,12 +15,12 @@ import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSectio
 import BookingFlowSection from "@/components/BookingFlowSection";
 
 const trustedCompanies = [
-  { name: "TechCorp", icon: Monitor },
-  { name: "StartupX", icon: Lightbulb },
-  { name: "FinanceFlow", icon: Banknote },
-  { name: "HealthTrack", icon: Stethoscope },
-  { name: "RetailHub", icon: Store },
-  { name: "EduLearn", icon: BookOpen }
+  { name: "Google", icon: SiGoogle, color: "#4285F4" },
+  { name: "Spotify", icon: SiSpotify, color: "#1DB954" },
+  { name: "Amazon", icon: SiAmazon, color: "#FF9900" },
+  { name: "Meta", icon: SiMeta, color: "#0081FB" },
+  { name: "Apple", icon: SiApple, color: "#A2AAAD" },
+  { name: "Netflix", icon: SiNetflix, color: "#E50914" }
 ];
 
 const Index = () => {
@@ -150,9 +151,11 @@ const Index = () => {
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex items-center gap-16 sm:gap-20 md:gap-28 px-8 sm:px-10">
                     {trustedCompanies.map((company) => (
-                      <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex items-center gap-3">
-                        <company.icon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-primary" strokeWidth={1.5} />
-                        <span className="text-lg sm:text-xl md:text-2xl font-semibold text-foreground">{company.name}</span>
+                      <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0">
+                        <company.icon 
+                          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16" 
+                          style={{ color: company.color }}
+                        />
                       </div>
                     ))}
                   </div>
