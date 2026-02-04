@@ -151,7 +151,7 @@ const About = () => {
         {/* Editorial Tagline Section */}
         <section className="section-divider">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-medium italic text-foreground leading-relaxed mb-6">
+            <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-foreground leading-relaxed mb-6">
               Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the digital world.
             </p>
             <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
