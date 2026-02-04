@@ -146,7 +146,7 @@ const Index = () => {
               {/* Marquee container */}
               <div className="flex animate-marquee hover:[animation-play-state:paused]">
                 {/* First set of logos */}
-                {[...Array(4)].map((_, setIndex) => (
+                {[...Array(2)].map((_, setIndex) => (
                   <div key={setIndex} className="flex items-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
                     {[
                       { name: "TechCorp", logo: logoTechcorp },
@@ -160,7 +160,7 @@ const Index = () => {
                         <img 
                           src={company.logo} 
                           alt={company.name}
-                          className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+                          className="h-8 sm:h-10 md:h-12 w-auto object-contain"
                         />
                       </div>
                     ))}
