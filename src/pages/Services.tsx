@@ -338,7 +338,7 @@ const Services = () => {
         {/* Process Section - Minimal Timeline */}
         <section className="section-divider py-20 pt-24 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-primary/15 dark:bg-primary/20 rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 lg:p-16">
+            <div className="bg-muted/50 rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 lg:p-16">
             <div className="text-center mb-20">
               <motion.span 
                 className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
