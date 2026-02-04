@@ -50,9 +50,9 @@ const Branding = () => {
                     <span className="text-sm font-medium">Branding</span>
                   </div>
                   
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
-                    Product
-                    <span className="block text-primary">Positioning</span>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                    <span className="block font-serif italic font-normal">Product</span>
+                    <span className="block font-bold text-primary">Positioning</span>
                   </h1>
 
                   <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
