@@ -52,8 +52,11 @@ export default function HowWeWorkSection() {
         {/* Background Container */}
         <div className="bg-primary/15 dark:bg-primary/20 rounded-[3rem] p-8 sm:p-12 lg:p-16">
           <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
+              <span className="block font-serif italic font-normal">How We</span>
+              <span className="block font-bold text-primary">Work</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A transparent, collaborative process designed for your success
             </p>
           </div>
