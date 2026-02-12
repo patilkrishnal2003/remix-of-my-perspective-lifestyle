@@ -6,12 +6,8 @@ import ValuesTabSection from "@/components/ValuesTabSection";
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import FlipImageCarousel from "@/components/FlipImageCarousel";
 import HowWeWorkSection from "@/components/HowWeWorkSection";
 
-import whyChoose1 from "@/assets/why-choose-1.jpg";
-import whyChoose2 from "@/assets/why-choose-2.jpg";
-import whyChoose3 from "@/assets/why-choose-3.jpg";
 import { Button } from "@/components/ui/button";
 
 import aboutHero from "@/assets/about-hero.jpg";
@@ -176,28 +172,17 @@ const About = () => {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={150}>
-              <FlipImageCarousel
-                items={[
-                  {
-                    image: whyChoose1,
-                    title: "Collaborative Team",
-                    subtitle: "Working Together for Success",
-                    description: "Our expert team collaborates closely with you to understand your vision and deliver solutions that exceed expectations. We believe in transparent communication and partnership-driven development."
-                  },
-                  {
-                    image: whyChoose2,
-                    title: "Technical Excellence",
-                    subtitle: "Cutting-Edge Development",
-                    description: "Our developers use modern technologies and best practices to build scalable, maintainable solutions. From architecture to deployment, we ensure enterprise-grade quality in every line of code."
-                  },
-                  {
-                    image: whyChoose3,
-                    title: "24/7 Support",
-                    subtitle: "Always Here When You Need Us",
-                    description: "Our dedicated support team is available around the clock to assist you. We provide ongoing maintenance, updates, and rapid response to ensure your applications run smoothly."
-                  }
-                ]}
-              />
+              <div className="rounded-2xl overflow-hidden" style={{ position: 'relative', paddingBottom: 'calc(43.083333333333336% + 41px)', height: '0', width: '100%' }}>
+                <iframe
+                  src="https://demo.arcade.software/DIF1B3LP6qteCKiQQteB?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+                  title="Configure payment gateways, taxes, and account settings"
+                  frameBorder="0"
+                  loading="lazy"
+                  allowFullScreen
+                  allow="clipboard-write"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', colorScheme: 'light' }}
+                />
+              </div>
             </ScrollReveal>
           </div>
         </section>
