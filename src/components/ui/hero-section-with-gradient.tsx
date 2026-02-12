@@ -6,11 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroImage1 from "@/assets/project-edulearn.jpg";
-import heroImage2 from "@/assets/project-logitrack.jpg";
-import heroImage3 from "@/assets/project-mediconnect.jpg";
-import heroImage4 from "@/assets/project-propertypro.jpg";
-import { 
+import {
   SiReact, 
   SiTypescript, 
   SiNodedotjs, 
@@ -257,23 +253,8 @@ const CircularOrbits = () => {
   );
 };
 
-// Hero Image Carousel Component
-const HeroImageCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [
-    { src: heroImage1, alt: "Dashboard preview" },
-    { src: heroImage2, alt: "Finance flow project" },
-    { src: heroImage3, alt: "Health track project" },
-    { src: heroImage4, alt: "Retail hub project" },
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, [images.length]);
-
+// Hero Arcade Embed Component
+const HeroArcadeEmbed = () => {
   return (
     <div className="absolute bottom-0 left-0 right-0 z-50 translate-y-[45%] sm:translate-y-[55%] md:translate-y-[58%] flex justify-center px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8 md:mb-10">
       <motion.div 
@@ -283,21 +264,17 @@ const HeroImageCarousel = () => {
         className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
       >
         <div className="relative rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden border-2 border-border bg-background p-3 sm:p-4 shadow-2xl shadow-primary/10">
-          <div className="rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden relative aspect-[16/9]">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentIndex}
-                src={images[currentIndex].src}
-                alt={images[currentIndex].alt}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="w-full h-full object-cover absolute inset-0"
-              />
-            </AnimatePresence>
+          <div className="rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden relative" style={{ position: 'relative', paddingBottom: 'calc(43.083333333333336% + 41px)', height: '0', width: '100%' }}>
+            <iframe
+              src="https://demo.arcade.software/DIF1B3LP6qteCKiQQteB?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+              title="Configure payment gateways, taxes, and account settings"
+              frameBorder="0"
+              loading="lazy"
+              allowFullScreen
+              allow="clipboard-write"
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', colorScheme: 'light' }}
+            />
           </div>
-          
         </div>
       </motion.div>
     </div>
@@ -385,7 +362,7 @@ export default function HeroSectionWithGradient() {
       </div>
 
       {/* Overlapping Hero Image Carousel - balanced overlap across devices */}
-      <HeroImageCarousel />
+      <HeroArcadeEmbed />
     </section>
   );
 }
