@@ -15,10 +15,30 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll get back to you within 24 hours.");
-    setFormData({ name: "", email: "", company: "", budget: "", message: "" });
+    setIsSubmitting(true);
+    try {
+      const formDataObj = new FormData(e.target as HTMLFormElement);
+      formDataObj.append("access_key", "9b766b1f-8a26-4ba4-b363-3829a818bc92");
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataObj,
+      });
+      const data = await response.json();
+      if (data.success) {
+        toast.success("Message sent! We'll get back to you within 24 hours.");
+        setFormData({ name: "", email: "", company: "", budget: "", message: "" });
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch {
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -164,9 +184,10 @@ const Contact = () => {
               </div>
               <Button 
                 type="submit"
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full py-5 sm:py-6 text-base sm:text-lg hover:scale-[1.02] transition-all"
+                disabled={isSubmitting}
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full py-5 sm:py-6 text-base sm:text-lg hover:scale-[1.02] transition-all disabled:opacity-70"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
