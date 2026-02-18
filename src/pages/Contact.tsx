@@ -128,7 +128,7 @@ const Contact = () => {
         </section>
 
         {/* Form + Info Section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
 
             {/* Contact Form — 3 cols */}
