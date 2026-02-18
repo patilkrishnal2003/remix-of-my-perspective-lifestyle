@@ -129,7 +129,7 @@ const Contact = () => {
 
         {/* Form + Info Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-          <div className="grid lg:grid-cols-5 gap-6 lg:gap-6">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
 
             {/* Contact Form — 3 cols */}
             <motion.div
@@ -240,44 +240,34 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* What happens next */}
+              <div className="rounded-2xl sm:rounded-3xl bg-primary/5 dark:bg-primary/10 border border-primary/10 p-6 sm:p-8 shadow-sm">
+                <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">Process</span>
+                <h3 className="text-lg font-bold tracking-tight mb-5">What happens next?</h3>
+                <div className="space-y-4">
+                  {steps.map((step, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                        {i + 1}
+                      </div>
+                      <p className="text-sm text-foreground/80 leading-relaxed">{step}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-primary/10">
+                  <a
+                    href="mailto:advora.in@gmail.com"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"
+                  >
+                    Or email us directly
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </motion.div>
 
           </div>
-
-          {/* What happens next — Full width below */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-8 lg:mt-12"
-          >
-            <div className="rounded-2xl sm:rounded-3xl bg-primary/5 dark:bg-primary/10 border border-primary/10 p-6 sm:p-8 md:p-10 shadow-sm">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-                <div>
-                  <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-2">Process</span>
-                  <h3 className="text-lg sm:text-xl font-bold tracking-tight">What happens next?</h3>
-                </div>
-                <a
-                  href="mailto:advora.in@gmail.com"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"
-                >
-                  Or email us directly
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
-              <div className="grid sm:grid-cols-3 gap-5">
-                {steps.map((step, i) => (
-                  <div key={i} className="flex items-start gap-3 sm:flex-col sm:items-center sm:text-center sm:gap-3 rounded-xl bg-background/60 p-4 sm:p-6">
-                    <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold flex-shrink-0">
-                      {i + 1}
-                    </div>
-                    <p className="text-sm text-foreground/80 leading-relaxed">{step}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </section>
       </main>
 
