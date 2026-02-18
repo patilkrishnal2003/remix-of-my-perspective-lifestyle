@@ -129,7 +129,7 @@ const Contact = () => {
 
         {/* Form + Info Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-stretch">
 
             {/* Contact Form — 3 cols */}
             <motion.div
@@ -139,7 +139,7 @@ const Contact = () => {
               transition={{ duration: 0.5 }}
               className="lg:col-span-3"
             >
-              <div className="rounded-2xl sm:rounded-3xl border border-border/40 bg-card/80 backdrop-blur-sm p-6 sm:p-8 md:p-10 shadow-sm">
+              <div className="rounded-2xl sm:rounded-3xl border border-border/40 bg-card/80 backdrop-blur-sm p-6 sm:p-8 md:p-10 shadow-sm h-full flex flex-col">
                 <div className="mb-8">
                   <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">Get in Touch</span>
                   <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
@@ -150,7 +150,7 @@ const Contact = () => {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col">
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className={labelClass}>Full Name *</label>
@@ -189,20 +189,22 @@ const Contact = () => {
                     <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className={`${inputClass} resize-none`} placeholder="Tell us about your project, goals, and timeline..." />
                   </div>
 
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl py-6 text-base font-semibold hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 disabled:opacity-70 group"
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <span className="flex items-center justify-center gap-2">
-                        Send Message
-                        <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                      </span>
-                    )}
-                  </Button>
+                  <div className="mt-auto pt-2">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl py-6 text-base font-semibold hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 disabled:opacity-70 group"
+                    >
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : (
+                        <span className="flex items-center justify-center gap-2">
+                          Send Message
+                          <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        </span>
+                      )}
+                    </Button>
+                  </div>
                 </form>
               </div>
             </motion.div>
@@ -213,7 +215,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="lg:col-span-2 space-y-6"
+              className="lg:col-span-2 flex flex-col gap-6"
             >
               {/* Contact Cards */}
               <div className="rounded-2xl sm:rounded-3xl border border-border/40 bg-card/80 backdrop-blur-sm p-6 sm:p-8 shadow-sm">
@@ -241,7 +243,7 @@ const Contact = () => {
               </div>
 
               {/* What happens next */}
-              <div className="rounded-2xl sm:rounded-3xl bg-primary/5 dark:bg-primary/10 border border-primary/10 p-6 sm:p-8 shadow-sm">
+              <div className="rounded-2xl sm:rounded-3xl bg-primary/5 dark:bg-primary/10 border border-primary/10 p-6 sm:p-8 shadow-sm flex-1 flex flex-col">
                 <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">Process</span>
                 <h3 className="text-lg font-bold tracking-tight mb-5">What happens next?</h3>
                 <div className="space-y-4">
@@ -255,7 +257,7 @@ const Contact = () => {
                   ))}
                 </div>
 
-                <div className="mt-6 pt-5 border-t border-primary/10">
+                <div className="mt-auto pt-5 border-t border-primary/10">
                   <a
                     href="mailto:advora.in@gmail.com"
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"
