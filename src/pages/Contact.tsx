@@ -10,6 +10,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     budget: "",
     message: "",
@@ -30,7 +31,7 @@ const Contact = () => {
       const data = await response.json();
       if (data.success) {
         toast.success("Message sent! We'll get back to you within 24 hours.");
-        setFormData({ name: "", email: "", company: "", budget: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", company: "", budget: "", message: "" });
       } else {
         toast.error("Something went wrong. Please try again.");
       }
@@ -135,6 +136,21 @@ const Contact = () => {
               </div>
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                    Phone *
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+                    placeholder="+91 XXXXX XXXXX"
+                  />
+                </div>
+                <div>
                   <label htmlFor="company" className="block text-sm font-medium mb-2">
                     Company
                   </label>
@@ -148,6 +164,8 @@ const Contact = () => {
                     placeholder="Your company name"
                   />
                 </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="budget" className="block text-sm font-medium mb-2">
                     Estimated Budget
