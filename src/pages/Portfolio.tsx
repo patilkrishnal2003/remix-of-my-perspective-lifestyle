@@ -436,12 +436,6 @@ const Portfolio = () => {
                       </div>
                     ))}
                   </div>
-                  <Link to="/blog/financeflow-case-study">
-                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 mt-2">
-                      Read Full Case Study
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
                 </div>
 
                 <div className="rounded-2xl sm:rounded-3xl bg-white/[0.04] backdrop-blur-sm p-8 md:p-10 border border-white/10">
