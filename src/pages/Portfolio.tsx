@@ -266,14 +266,14 @@ const Portfolio = () => {
                   <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     <div className="space-y-3 sm:space-y-4">
                       <motion.div 
-                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5]"
+                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3]"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                       >
                         <img src={projectFinanceFlow} alt="FinanceFlow" className="w-full h-full object-cover" />
                       </motion.div>
                       <motion.div 
-                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-square"
+                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[5/4]"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -282,14 +282,14 @@ const Portfolio = () => {
                     </div>
                     <div className="space-y-3 sm:space-y-4 pt-8">
                       <motion.div 
-                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-square"
+                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[5/4]"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                       >
                         <img src={projectRetailHub} alt="RetailHub" className="w-full h-full object-cover" />
                       </motion.div>
                       <motion.div 
-                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5]"
+                        className="rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/3]"
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.3 }}
                       >
