@@ -403,52 +403,64 @@ const Portfolio = () => {
         {/* Case Study Highlight */}
         <section className="section-divider py-20 pt-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-6">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">Featured Case Study</span>
-                <h2 className="text-3xl md:text-4xl tracking-tight">
-                  <span className="block font-serif italic font-normal">How We Helped FinanceFlow</span>
-                  <span className="block font-bold">Scale to <span className="text-primary">100K Users</span></span>
-                </h2>
-                <p className="text-muted-foreground leading-relaxed">
-                  FinanceFlow came to us with a legacy system that was struggling to keep up with demand. Through a complete platform redesign and modern technology stack, we helped them achieve 300% user growth in just 6 months.
-                </p>
-                <div className="grid grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-3xl font-bold text-primary mb-1">300%</div>
-                    <div className="text-muted-foreground">User Growth</div>
+            <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-[#0a0a0a] text-white p-8 sm:p-12 md:p-16 overflow-hidden relative">
+              {/* Subtle grid background */}
+              <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+              
+              {/* Glow accent */}
+              <div className="absolute -top-32 -right-32 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+              <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+
+              <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="space-y-6">
+                  <span className="inline-block px-4 py-2 rounded-full bg-white/10 text-primary text-sm font-medium backdrop-blur-sm border border-white/10">
+                    Featured Case Study
+                  </span>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl tracking-tight">
+                    <span className="block font-serif italic font-normal text-white/90">How We Helped FinanceFlow</span>
+                    <span className="block font-bold">Scale to <span className="text-primary">100K Users</span></span>
+                  </h2>
+                  <p className="text-white/60 leading-relaxed text-lg">
+                    FinanceFlow came to us with a legacy system that was struggling to keep up with demand. Through a complete platform redesign and modern technology stack, we helped them achieve 300% user growth in just 6 months.
+                  </p>
+                  <div className="grid grid-cols-2 gap-6 pt-2">
+                    {[
+                      { value: "300%", label: "User Growth" },
+                      { value: "50%", label: "Fewer Support Tickets" },
+                      { value: "12 wks", label: "Development Time" },
+                      { value: "99.9%", label: "Uptime" },
+                    ].map((stat) => (
+                      <div key={stat.label}>
+                        <div className="text-3xl font-bold text-primary mb-1">{stat.value}</div>
+                        <div className="text-white/40 text-sm">{stat.label}</div>
+                      </div>
+                    ))}
                   </div>
-                  <div>
-                    <div className="text-3xl font-bold text-primary mb-1">50%</div>
-                    <div className="text-muted-foreground">Fewer Support Tickets</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-primary mb-1">12 wks</div>
-                    <div className="text-muted-foreground">Development Time</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-primary mb-1">99.9%</div>
-                    <div className="text-muted-foreground">Uptime</div>
-                  </div>
+                  <Link to="/blog/financeflow-case-study">
+                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 mt-2">
+                      Read Full Case Study
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
-                <Link to="/blog/financeflow-case-study">
-                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
-                    Read Full Case Study
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-              <div className="rounded-3xl bg-primary/15 dark:bg-primary/20 p-8 md:p-12 border border-border">
-                <blockquote className="text-xl leading-relaxed mb-6">
-                  "Advora didn't just build us a new platform—they transformed our entire business. The team understood our challenges and delivered a solution that exceeded every expectation."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-background flex items-center justify-center">
-                    <span className="font-bold text-primary">JM</span>
+
+                <div className="rounded-2xl sm:rounded-3xl bg-white/[0.04] backdrop-blur-sm p-8 md:p-10 border border-white/10">
+                  <div className="flex gap-1.5 mb-6">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    ))}
                   </div>
-                  <div>
-                    <div className="font-bold">Jennifer Martinez</div>
-                    <div className="text-muted-foreground text-sm">CEO, FinanceFlow</div>
+                  <blockquote className="text-xl leading-relaxed mb-8 text-white/80 font-light">
+                    "Advora didn't just build us a new platform—they transformed our entire business. The team understood our challenges and delivered a solution that exceeded every expectation."
+                  </blockquote>
+                  <div className="flex items-center gap-4 pt-6 border-t border-white/10">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="font-bold text-primary text-sm">JM</span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-white/90">Jennifer Martinez</div>
+                      <div className="text-white/40 text-sm">CEO, FinanceFlow</div>
+                    </div>
                   </div>
                 </div>
               </div>
