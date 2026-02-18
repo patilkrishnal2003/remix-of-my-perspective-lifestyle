@@ -129,7 +129,7 @@ const Contact = () => {
 
         {/* Form + Info Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-5 gap-6 lg:gap-6">
 
             {/* Contact Form — 3 cols */}
             <motion.div
