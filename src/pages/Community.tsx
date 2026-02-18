@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import WorldMapSection from "@/components/WorldMapSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Users, MessageCircle, Calendar, Github, Slack, Twitter, ArrowRight, Heart, Star, Code } from "lucide-react";
@@ -157,6 +158,9 @@ const Community = () => {
             </div>
           </div>
         </section>
+
+        {/* Global Presence Map */}
+        <WorldMapSection />
 
         <CTASection 
           title="Ready to Get Involved?"
