@@ -66,7 +66,7 @@ const Contact = () => {
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Mail className="w-4 h-4 text-primary" />
-                      <span>hello@advora.com</span>
+                      <span>advora.in@gmail.com</span>
                     </div>
                   </div>
                 </div>
@@ -192,8 +192,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-muted-foreground text-sm">Mon-Fri, 9am-6pm EST</p>
+                    <p className="text-muted-foreground">+91 7219860213</p>
+                    <p className="text-muted-foreground text-sm">Mon-Fri, 9am-6pm IST</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -202,7 +202,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Location</h3>
-                    <p className="text-muted-foreground">New York, NY</p>
+                    <p className="text-muted-foreground">Kharadi, Pune</p>
                     <p className="text-muted-foreground text-sm">Remote-first team</p>
                   </div>
                 </div>
