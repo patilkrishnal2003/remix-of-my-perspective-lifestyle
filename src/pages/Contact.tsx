@@ -1,10 +1,51 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
+import { Mail, MapPin, Phone, Clock, Send, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "sonner";
 import aboutHero from "@/assets/about-hero.jpg";
+import { motion } from "framer-motion";
+
+const contactInfo = [
+  {
+    icon: Mail,
+    label: "Email Us",
+    value: "advora.in@gmail.com",
+    sub: "We respond within 24 hours",
+    href: "mailto:advora.in@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Call Us",
+    value: "+91 7219860213",
+    sub: "Mon–Fri, 9 am – 6 pm IST",
+    href: "tel:+917219860213",
+  },
+  {
+    icon: MapPin,
+    label: "Visit Us",
+    value: "Kharadi, Pune",
+    sub: "Remote-first team",
+  },
+  {
+    icon: Clock,
+    label: "Response Time",
+    value: "Within 24 hours",
+    sub: "Usually much faster!",
+  },
+];
+
+const steps = [
+  "We review your message & project requirements",
+  "Schedule a free 30-minute consultation call",
+  "You receive a detailed proposal & timeline",
+];
+
+const inputClass =
+  "w-full px-4 py-3.5 rounded-xl border border-border/60 bg-background/50 backdrop-blur-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all duration-200";
+
+const labelClass = "block text-sm font-medium text-foreground/80 mb-2";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -54,32 +95,22 @@ const Contact = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Editorial Split Layout */}
+        {/* Hero Section */}
         <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Hero Card */}
             <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                {/* Image */}
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                  <img
-                    src={aboutHero}
-                    alt="Contact us"
-                    className="w-full h-auto object-cover aspect-[4/3]"
-                  />
+                  <img src={aboutHero} alt="Contact us" className="w-full h-auto object-cover aspect-[4/3]" />
                 </div>
-
-                {/* Content */}
                 <div className="space-y-4 sm:space-y-6">
                   <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]">
                     <span className="block font-serif italic font-normal">Let's Build</span>
                     <span className="block font-bold text-primary">Something Great</span>
                   </h1>
-
                   <p className="text-muted-foreground text-xl sm:text-lg md:text-xl leading-relaxed">
                     Ready to start your project? Get in touch and we'll provide a free consultation and quote.
                   </p>
-
                   <div className="flex flex-wrap gap-4 pt-2">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="w-4 h-4 text-primary" />
@@ -96,188 +127,148 @@ const Contact = () => {
           </div>
         </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-12">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
-          {/* Contact Form */}
-          <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-card p-6 sm:p-8 md:p-10 animate-slide-up stagger-2">
-            <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Send us a message</h2>
-            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder="Your name"
-                  />
+        {/* Form + Info Section */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+
+            {/* Contact Form — 3 cols */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-3"
+            >
+              <div className="rounded-2xl sm:rounded-3xl border border-border/40 bg-card/80 backdrop-blur-sm p-6 sm:p-8 md:p-10 shadow-sm">
+                <div className="mb-8">
+                  <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">Get in Touch</span>
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                    Tell us about your project
+                  </h2>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Fill out the form below and we'll get back to you within 24 hours.
+                  </p>
                 </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Phone *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder="+91 XXXXX XXXXX"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium mb-2">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
-                    placeholder="Your company name"
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-                <div>
-                  <label htmlFor="budget" className="block text-sm font-medium mb-2">
-                    Estimated Budget
-                  </label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent"
+
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className={labelClass}>Full Name *</label>
+                      <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className={inputClass} placeholder="John Doe" />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className={labelClass}>Email Address *</label>
+                      <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className={inputClass} placeholder="john@company.com" />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="phone" className={labelClass}>Phone Number *</label>
+                      <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required className={inputClass} placeholder="+91 XXXXX XXXXX" />
+                    </div>
+                    <div>
+                      <label htmlFor="company" className={labelClass}>Company</label>
+                      <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className={inputClass} placeholder="Your company" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="budget" className={labelClass}>Estimated Budget</label>
+                    <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className={inputClass}>
+                      <option value="">Select budget range</option>
+                      <option value="5k-10k">$5,000 – $10,000</option>
+                      <option value="10k-25k">$10,000 – $25,000</option>
+                      <option value="25k-50k">$25,000 – $50,000</option>
+                      <option value="50k+">$50,000+</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className={labelClass}>Project Details *</label>
+                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} className={`${inputClass} resize-none`} placeholder="Tell us about your project, goals, and timeline..." />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl py-6 text-base font-semibold hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 disabled:opacity-70 group"
                   >
-                    <option value="">Select budget range</option>
-                    <option value="5k-10k">$5,000 - $10,000</option>
-                    <option value="10k-25k">$10,000 - $25,000</option>
-                    <option value="25k-50k">$25,000 - $50,000</option>
-                    <option value="50k+">$50,000+</option>
-                  </select>
-                </div>
+                    {isSubmitting ? (
+                      "Sending..."
+                    ) : (
+                      <span className="flex items-center justify-center gap-2">
+                        Send Message
+                        <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </span>
+                    )}
+                  </Button>
+                </form>
               </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Project Details *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-                  placeholder="Tell us about your project, goals, and timeline..."
-                />
-              </div>
-              <Button 
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-full py-5 sm:py-6 text-base sm:text-lg hover:scale-[1.02] transition-all disabled:opacity-70"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </div>
+            </motion.div>
 
-          {/* Contact Information */}
-          <div className="space-y-6 sm:space-y-8 animate-slide-up stagger-3">
-            <div className="rounded-2xl sm:rounded-3xl bg-card p-6 sm:p-8">
-              <h2 className="text-xl sm:text-2xl font-bold mb-5 sm:mb-6">Contact Information</h2>
-              <div className="space-y-5 sm:space-y-6">
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">advora.in@gmail.com</p>
-                    <p className="text-muted-foreground text-sm">We respond within 24 hours</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+91 7219860213</p>
-                    <p className="text-muted-foreground text-sm">Mon-Fri, 9am-6pm IST</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Location</h3>
-                    <p className="text-muted-foreground">Kharadi, Pune</p>
-                    <p className="text-muted-foreground text-sm">Remote-first team</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Response Time</h3>
-                    <p className="text-muted-foreground">Within 24 hours</p>
-                    <p className="text-muted-foreground text-sm">Usually much faster!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Contact Info — 2 cols */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="lg:col-span-2 space-y-6"
+            >
+              {/* Contact Cards */}
+              <div className="rounded-2xl sm:rounded-3xl border border-border/40 bg-card/80 backdrop-blur-sm p-6 sm:p-8 shadow-sm">
+                <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">Contact Info</span>
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-6">Reach out directly</h2>
 
-            <div className="rounded-2xl sm:rounded-3xl bg-accent/10 p-6 sm:p-8">
-              <h3 className="text-lg sm:text-xl font-bold mb-4">What happens next?</h3>
-              <div className="space-y-4 text-sm">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold flex-shrink-0">1</div>
-                  <p className="text-muted-foreground">We'll review your message and project requirements</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold flex-shrink-0">2</div>
-                  <p className="text-muted-foreground">Schedule a free 30-minute consultation call</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold flex-shrink-0">3</div>
-                  <p className="text-muted-foreground">Receive a detailed proposal and timeline</p>
+                <div className="space-y-5">
+                  {contactInfo.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href || "#"}
+                      className={`flex items-start gap-4 group rounded-xl p-3 -mx-3 transition-colors ${item.href ? "hover:bg-primary/5" : "cursor-default"}`}
+                    >
+                      <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors">
+                        <item.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs font-medium text-muted-foreground/70 uppercase tracking-wide">{item.label}</p>
+                        <p className="font-semibold text-foreground mt-0.5">{item.value}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{item.sub}</p>
+                      </div>
+                    </a>
+                  ))}
                 </div>
               </div>
-            </div>
+
+              {/* What happens next */}
+              <div className="rounded-2xl sm:rounded-3xl bg-primary/5 dark:bg-primary/10 border border-primary/10 p-6 sm:p-8 shadow-sm">
+                <span className="inline-block text-xs font-semibold tracking-widest uppercase text-primary mb-3">Process</span>
+                <h3 className="text-lg font-bold tracking-tight mb-5">What happens next?</h3>
+                <div className="space-y-4">
+                  {steps.map((step, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                        {i + 1}
+                      </div>
+                      <p className="text-sm text-foreground/80 leading-relaxed">{step}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 pt-5 border-t border-primary/10">
+                  <a
+                    href="mailto:advora.in@gmail.com"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"
+                  >
+                    Or email us directly
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
-        </div>
-        </div>
+        </section>
       </main>
 
       <Footer />
