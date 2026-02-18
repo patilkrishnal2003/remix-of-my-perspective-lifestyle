@@ -22,7 +22,7 @@ function generateDots(
   density: number
 ): { x: number; y: number }[] {
   const dots: { x: number; y: number }[] = [];
-  const step = 1.8;
+  const step = 1.2;
   let seed = xMin * 100 + yMin;
   const seededRandom = () => {
     seed = (seed * 9301 + 49297) % 233280;
@@ -68,7 +68,7 @@ function DottedWorldMap() {
           key={i}
           cx={`${dot.x}%`}
           cy={`${dot.y}%`}
-          r="0.7"
+          r="0.35"
           fill="hsl(var(--muted-foreground) / 0.25)"
         />
       ))}
