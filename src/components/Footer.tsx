@@ -301,58 +301,70 @@ const Footer = () => {
           
           {/* Email Form */}
           <div className="w-full max-w-md" ref={formContainerRef}>
-            <div 
-              className={`relative flex w-full rounded-full border border-background/20 backdrop-blur-sm overflow-hidden transition-all duration-700 ease-in-out ${
-                isSent ? 'bg-background/20' : 'bg-background/10'
-              }`}
-            >
-              {!isSent ? (
-                <>
-                  <input
-                    type="email"
-                    value={footerEmail}
-                    onChange={(e) => setFooterEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="flex-1 px-5 py-3.5 bg-transparent focus:outline-none text-sm text-background placeholder:text-background/60"
-                    disabled={isSending}
-                  />
-                  <button
-                    onClick={async () => {
-                      if (!footerEmail || !footerEmail.includes("@")) return;
-                      setIsSending(true);
-                      try {
-                        const formData = new FormData();
-                        formData.append("access_key", "9b766b1f-8a26-4ba4-b363-3829a818bc92");
-                        formData.append("email", footerEmail);
-                        formData.append("subject", "New inquiry from footer CTA");
-                        formData.append("message", `Email inquiry from: ${footerEmail}`);
-                        const res = await fetch("https://api.web3forms.com/submit", {
-                          method: "POST",
-                          body: formData,
-                        });
-                        if (res.ok) {
-                          setIsSent(true);
-                        }
-                      } catch {
-                        // silent fail
-                      } finally {
-                        setIsSending(false);
+            <div className="relative w-full rounded-full border border-background/20 bg-background/10 backdrop-blur-sm overflow-hidden h-[52px]">
+              {/* Input - shrinks to 0 when sent */}
+              <div
+                className="absolute left-0 top-0 bottom-0 overflow-hidden transition-all duration-700 ease-in-out"
+                style={{ right: isSent ? '100%' : '0%', opacity: isSent ? 0 : 1 }}
+              >
+                <input
+                  type="email"
+                  value={footerEmail}
+                  onChange={(e) => setFooterEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="w-full h-full px-5 bg-transparent focus:outline-none text-sm text-background placeholder:text-background/60 pr-32"
+                  disabled={isSending || isSent}
+                />
+              </div>
+
+              {/* Button - expands from right to fill entire capsule */}
+              <div
+                className="absolute top-0 bottom-0 transition-all duration-700 ease-in-out flex items-center"
+                style={{
+                  left: isSent ? '0%' : 'auto',
+                  right: '0%',
+                  width: isSent ? '100%' : 'auto',
+                }}
+              >
+                <button
+                  onClick={async () => {
+                    if (isSent) return;
+                    if (!footerEmail || !footerEmail.includes("@")) return;
+                    setIsSending(true);
+                    try {
+                      const formData = new FormData();
+                      formData.append("access_key", "9b766b1f-8a26-4ba4-b363-3829a818bc92");
+                      formData.append("email", footerEmail);
+                      formData.append("subject", "New inquiry from footer CTA");
+                      formData.append("message", `Email inquiry from: ${footerEmail}`);
+                      const res = await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: formData,
+                      });
+                      if (res.ok) {
+                        setIsSent(true);
                       }
-                    }}
-                    disabled={isSending}
-                    className="px-6 py-3 m-1 rounded-full bg-background text-foreground font-medium hover:bg-background/90 transition-colors text-sm whitespace-nowrap disabled:opacity-70"
-                  >
-                    {isSending ? "Sending..." : "Tell Us"}
-                  </button>
-                </>
-              ) : (
-                <div className="flex items-center justify-center w-full px-6 py-3.5 gap-2">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-sm font-medium text-background">We'll get in touch with you soon!</span>
-                </div>
-              )}
+                    } catch {
+                      // silent fail
+                    } finally {
+                      setIsSending(false);
+                    }
+                  }}
+                  disabled={isSending}
+                  className={`h-[calc(100%-8px)] m-1 rounded-full bg-background text-foreground font-medium hover:bg-background/90 transition-all duration-700 text-sm whitespace-nowrap disabled:opacity-70 flex items-center justify-center gap-2 ${
+                    isSent ? 'w-[calc(100%-8px)] cursor-default' : 'px-6'
+                  }`}
+                >
+                  {isSent ? (
+                    <>
+                      <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>We'll get in touch with you soon!</span>
+                    </>
+                  ) : isSending ? "Sending..." : "Tell Us"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
