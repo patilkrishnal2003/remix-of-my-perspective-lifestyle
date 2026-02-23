@@ -261,7 +261,7 @@ const HeroArcadeEmbed = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[96%] sm:max-w-4xl md:max-w-5xl"
+        className="w-full max-w-[92%] sm:max-w-3xl md:max-w-4xl"
       >
         <div className="relative rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden border-2 border-border bg-background p-3 sm:p-4 shadow-2xl shadow-primary/10">
           <div className="rounded-[1.25rem] sm:rounded-[1.5rem] overflow-hidden relative" style={{ position: 'relative', paddingBottom: 'calc(43.083333333333336% + 41px)', height: '0', width: '100%' }}>
