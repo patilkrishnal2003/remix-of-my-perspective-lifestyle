@@ -63,9 +63,9 @@ const Index = () => {
     {
       id: "2",
       platform: "google",
-      title: "Perfect for our ocean brand!",
+      title: "Our certification platform looks premium!",
       rating: 5,
-      snippet: "We needed a website that captured the spirit of ocean adventures and Advora nailed it. The visuals, booking flow, and mobile experience are exactly what our customers expect. Enquiries went up noticeably within the first month.",
+      snippet: "We run an education certification platform and needed a site that feels credible and professional. Advora built us a clean, user-friendly portal where students can browse courses, enroll, and track their certifications seamlessly. Enrolments picked up right away.",
       readMoreUrl: "#",
       user: {
         name: "Karamveer Singh",
@@ -105,9 +105,9 @@ const Index = () => {
     {
       id: "5",
       platform: "google",
-      title: "Patients love the new website!",
+      title: "Online appointments went up!",
       rating: 5,
-      snippet: "As a dentist, I needed a clean, trustworthy website where patients can book appointments easily. Advora created a professional site for Vidhan Dental Clinic that patients actually compliment us on. Online appointment requests have gone up significantly.",
+      snippet: "As a dentist, I wanted a clean and trustworthy website where people can learn about our treatments and book appointments easily. Advora delivered exactly that for Vidhan Dental Clinic — we now get far more appointment requests online than before.",
       readMoreUrl: "#",
       user: {
         name: "Dr. Rinni Raichandani",
