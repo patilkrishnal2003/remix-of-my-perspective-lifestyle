@@ -104,7 +104,10 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8 lg:mb-16">
             {/* Logo - theme-aware */}
             <Link to="/" className="flex items-center">
-              <img src={isDark ? logoLight : logoDark} alt="Advora Labs" className="h-8 sm:h-10 w-auto" />
+              <span className="relative inline-flex">
+                <img src={logoDark} alt="Advora Labs" className="h-8 sm:h-10 w-auto dark:hidden" />
+                <img src={logoLight} alt="Advora Labs" className="h-8 sm:h-10 w-auto hidden dark:block" />
+              </span>
             </Link>
 
             {/* Newsletter - inline input with button */}
@@ -286,7 +289,10 @@ const Footer = () => {
         <div className="h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={lowerFooterLogo} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto" />
+            <span className="relative inline-flex">
+              <img src={logoLight} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto dark:hidden" />
+              <img src={logoDark} alt="Advora Labs" className="h-16 sm:h-20 lg:h-24 w-auto hidden dark:block" />
+            </span>
           </Link>
           
           {/* Title - dual-line pattern matching site sections */}
