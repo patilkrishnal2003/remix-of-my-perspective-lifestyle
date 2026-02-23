@@ -1,7 +1,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const Terms = () => {
+  usePageSEO({
+    title: "Terms of Service",
+    description: "Review the Advora Digital terms of service governing your use of our website and services.",
+    canonical: "/terms",
+    noIndex: true,
+  });
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />

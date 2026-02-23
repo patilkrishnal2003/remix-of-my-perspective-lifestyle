@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, CheckCircle, TrendingUp, Target, Search, Share2 } from "lucide-react";
 import heroWorkspace from "@/assets/hero-workspace.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const DigitalPresence = () => {
+  usePageSEO({
+    title: "Digital Presence & Strategy",
+    description: "Build a powerful digital presence with Advora Digital — website strategy, SEO, social media, and omnichannel brand visibility.",
+    canonical: "/services/digital-presence",
+  });
   const features = [
     { icon: Globe, title: "Website Strategy", description: "Comprehensive website & app ecosystem planning." },
     { icon: Search, title: "SEO Optimization", description: "Search engine optimization for organic visibility." },

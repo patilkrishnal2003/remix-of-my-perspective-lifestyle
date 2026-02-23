@@ -1,7 +1,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const Privacy = () => {
+  usePageSEO({
+    title: "Privacy Policy",
+    description: "Read the Advora Digital privacy policy. Learn how we collect, use, and protect your personal information.",
+    canonical: "/privacy",
+    noIndex: true,
+  });
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import aboutHero from "@/assets/about-hero.jpg";
 import { motion } from "framer-motion";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const contactInfo = [
   {
@@ -48,6 +49,11 @@ const inputClass =
 const labelClass = "block text-sm font-medium text-foreground/80 mb-2";
 
 const Contact = () => {
+  usePageSEO({
+    title: "Contact Us",
+    description: "Get in touch with Advora Digital. Email advora.in@gmail.com or call +91 7219860213 for web development, mobile apps, and software consulting.",
+    canonical: "/contact",
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",

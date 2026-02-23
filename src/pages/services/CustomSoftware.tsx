@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code, CheckCircle, Cog, RefreshCw, Link2, BarChart3 } from "lucide-react";
 import serviceWebDev from "@/assets/service-web-dev.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const CustomSoftware = () => {
+  usePageSEO({
+    title: "Custom Software Development",
+    description: "Bespoke software solutions by Advora Digital — process automation, API integration, and scalable enterprise applications.",
+    canonical: "/services/custom-software",
+  });
   const features = [
     { icon: Cog, title: "Process Automation", description: "Streamline operations with automated workflows." },
     { icon: RefreshCw, title: "Legacy Modernization", description: "Upgrade outdated systems to modern tech stacks." },

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
@@ -6,6 +7,7 @@ import { Zap, Shield, Users } from "lucide-react";
 import { SiGoogle, SiAmazon, SiMeta, SiApple, SiNetflix, SiSpotify } from "react-icons/si";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
+import { usePageSEO } from "@/hooks/usePageSEO";
 import { type Testimonial } from "@/components/TestimonialCard";
 import ResourcesTabSection from "@/components/ResourcesTabSection";
 import CTASection from "@/components/CTASection";
@@ -24,6 +26,11 @@ const trustedCompanies = [
 ];
 
 const Index = () => {
+  usePageSEO({
+    title: "Software & Web Development Agency",
+    description: "Advora Digital transforms your ideas into powerful software solutions. Expert web development, mobile apps, and custom software for growing businesses in Pune, India.",
+    canonical: "/",
+  });
 
   const stats = [
     { value: "150+", label: "Projects Delivered" },
@@ -125,7 +132,41 @@ const Index = () => {
     },
   ];
 
-  
+  // JSON-LD structured data
+  useEffect(() => {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Advora Digital",
+      "url": "https://advora.in",
+      "logo": "https://advora.in/favicon.png",
+      "description": "Advora Digital transforms your ideas into powerful software solutions. Expert web development, mobile apps, and custom software.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-7219860213",
+        "contactType": "sales",
+        "email": "advora.in@gmail.com",
+        "availableLanguage": "English"
+      },
+      "sameAs": []
+    };
+    let script = document.querySelector('script[data-jsonld="org"]') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-jsonld", "org");
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(jsonLd);
+    return () => { script?.remove(); };
+  }, []);
+
 
   return (
     <>

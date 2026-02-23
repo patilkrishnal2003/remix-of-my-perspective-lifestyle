@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Users, MessageCircle, Calendar, Github, Slack, Twitter, ArrowRight, Heart, Star, Code } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const Community = () => {
+  usePageSEO({
+    title: "Community",
+    description: "Join the Advora Digital developer community. Connect with 500+ developers on Slack, GitHub, and social channels.",
+    canonical: "/community",
+  });
   const communityLinks = [
     {
       icon: Github,

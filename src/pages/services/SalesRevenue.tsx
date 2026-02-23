@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Wallet, CheckCircle, Mail, Gauge, Users, DollarSign } from "lucide-react";
 import projectFinanceflow from "@/assets/project-financeflow.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const SalesRevenue = () => {
+  usePageSEO({
+    title: "Sales & Revenue Optimization",
+    description: "Boost sales and revenue with Advora Digital — CRM setup, funnel optimization, payment integration, and revenue automation.",
+    canonical: "/services/sales-revenue",
+  });
   const features = [
     { icon: Wallet, title: "Revenue Automation", description: "Automated systems that convert leads into revenue." },
     { icon: Mail, title: "Outbound Systems", description: "Email, WhatsApp & outbound campaign sequences." },
