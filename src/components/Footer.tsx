@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin, Github, Mail, Phone, MapPin, ChevronDown } from "lucide-react";
+import { Linkedin, Instagram, Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
 
@@ -254,22 +254,20 @@ const Footer = () => {
             {/* Social Icons */}
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/advora-labs/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
               >
                 <Linkedin className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/advora.labs/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
               >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-              >
-                <Github className="h-4 w-4" />
+                <Instagram className="h-4 w-4" />
               </a>
             </div>
 
