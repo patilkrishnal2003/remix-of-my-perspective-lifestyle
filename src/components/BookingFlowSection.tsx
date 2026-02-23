@@ -47,10 +47,10 @@ const BookingFlowSection = () => {
     { id: "context", label: "Understanding Your Context", x: centerX, y: 130, type: "main", step: 1 },
     
     // Step 2 - Diagnostic indicators
-    { id: "diag-product", label: "Product", x: centerX - 70, y: 185, type: "diagnostic", step: 2 },
-    { id: "diag-growth", label: "Growth", x: centerX - 23, y: 185, type: "diagnostic", step: 2 },
-    { id: "diag-team", label: "Team", x: centerX + 23, y: 185, type: "diagnostic", step: 2 },
-    { id: "diag-priorities", label: "Priorities", x: centerX + 70, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-product", label: "Product", x: centerX - 105, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-growth", label: "Growth", x: centerX - 35, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-team", label: "Team", x: centerX + 35, y: 185, type: "diagnostic", step: 2 },
+    { id: "diag-priorities", label: "Priorities", x: centerX + 105, y: 185, type: "diagnostic", step: 2 },
     
     // Step 3 - Primary Split
     { id: "product-tech", label: "Product / Technology", x: centerX - branchOffset, y: 260, type: "main", step: 3 },
