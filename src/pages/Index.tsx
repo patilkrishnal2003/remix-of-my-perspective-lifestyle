@@ -63,7 +63,7 @@ const Index = () => {
     {
       id: "2",
       platform: "google",
-      title: "Our certification platform looks premium!",
+      title: "Our certification platform looks professional!",
       rating: 5,
       snippet: "We run an education certification platform and needed a site that feels credible and professional. Advora built us a clean, user-friendly portal where students can browse courses, enroll, and track their certifications seamlessly. Enrolments picked up right away.",
       readMoreUrl: "#",
@@ -77,9 +77,9 @@ const Index = () => {
     {
       id: "3",
       platform: "google",
-      title: "Bookings doubled after launch!",
+      title: "Direct bookings keep growing!",
       rating: 5,
-      snippet: "Running a resort near Tadoba Tiger Reserve, we needed a site that showcases the wildlife experience and makes booking effortless. Advora delivered exactly that — our direct bookings have nearly doubled since the new website went live.",
+      snippet: "Running a resort near Tadoba Tiger Reserve, we needed a site that showcases the wildlife experience and makes booking effortless. Advora delivered exactly that — we've seen a steady increase in direct bookings since the new website went live.",
       readMoreUrl: "#",
       user: {
         name: "Soni Patel",
