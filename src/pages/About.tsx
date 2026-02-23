@@ -45,22 +45,40 @@ const About = () => {
 
   const team = [
     {
-      name: "Alex Chen",
-      role: "Founder & Lead Developer",
-      bio: "10+ years of experience in full-stack development and software architecture.",
-      skills: ["React", "Node.js", "System Design"]
+      name: "Rahul Sharma",
+      role: "Founder & Full-Stack Developer",
+      bio: "Leads product strategy and development with deep expertise in scalable web and mobile applications.",
+      skills: ["React", "Node.js", "System Architecture"]
     },
     {
-      name: "Sarah Johnson",
-      role: "UI/UX Designer",
-      bio: "Passionate about creating intuitive and beautiful user experiences.",
-      skills: ["Figma", "User Research", "Prototyping"]
+      name: "Priya Deshmukh",
+      role: "UI/UX Design Lead",
+      bio: "Crafts intuitive digital experiences with a focus on user research and brand-driven design.",
+      skills: ["Figma", "Branding", "Prototyping"]
     },
     {
-      name: "Michael Roberts",
-      role: "Backend Engineer",
-      bio: "Expert in scalable systems and cloud infrastructure.",
+      name: "Amit Kulkarni",
+      role: "Backend & Cloud Engineer",
+      bio: "Builds robust server-side systems and manages cloud infrastructure for high-availability apps.",
       skills: ["Python", "AWS", "PostgreSQL"]
+    },
+    {
+      name: "Sneha Patil",
+      role: "Digital Marketing Strategist",
+      bio: "Drives growth through SEO, paid campaigns, and data-driven marketing strategies.",
+      skills: ["SEO", "Google Ads", "Analytics"]
+    },
+    {
+      name: "Vikram Joshi",
+      role: "Mobile App Developer",
+      bio: "Specialises in cross-platform mobile development delivering smooth, performant apps.",
+      skills: ["React Native", "Flutter", "Firebase"]
+    },
+    {
+      name: "Ananya Iyer",
+      role: "Sales & Client Success Lead",
+      bio: "Ensures every client engagement is seamless — from first call to project delivery and beyond.",
+      skills: ["Client Relations", "Strategy", "Revenue Growth"]
     }
   ];
 
