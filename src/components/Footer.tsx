@@ -98,9 +98,9 @@ const Footer = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
           {/* Top Row: Logo & Newsletter in single line */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8 lg:mb-16">
-            {/* Logo - Dark logo on light background */}
+            {/* Logo - theme-aware */}
             <Link to="/" className="flex items-center">
-              <img src={logoDark} alt="Advora Labs" className="h-8 sm:h-10 w-auto" />
+              <img src={isDark ? logoLight : logoDark} alt="Advora Labs" className="h-8 sm:h-10 w-auto" />
             </Link>
 
             {/* Newsletter - inline input with button */}
