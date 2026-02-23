@@ -49,9 +49,9 @@ const Index = () => {
     {
       id: "1",
       platform: "google",
-      title: "Exceptional delivery!",
+      title: "Our hiring platform finally works!",
       rating: 5,
-      snippet: "Advora delivered our e-commerce platform on time and under budget. Their attention to detail is exceptional and the team was incredibly professional throughout.",
+      snippet: "Advora built our recruitment and networking platform from scratch. The candidate matching system and employer dashboard they designed have completely streamlined how we connect talent with opportunities. Truly understood the HR-tech space.",
       readMoreUrl: "#",
       user: {
         name: "Neeraj Yadav",
@@ -63,9 +63,9 @@ const Index = () => {
     {
       id: "2",
       platform: "google",
-      title: "Outstanding user experience!",
+      title: "Perfect for our ocean brand!",
       rating: 5,
-      snippet: "The team understood our vision from day one. Our mobile app has received outstanding user reviews and downloads have exceeded our expectations.",
+      snippet: "We needed a website that captured the spirit of ocean adventures and Advora nailed it. The visuals, booking flow, and mobile experience are exactly what our customers expect. Enquiries went up noticeably within the first month.",
       readMoreUrl: "#",
       user: {
         name: "Karamveer Singh",
@@ -77,9 +77,9 @@ const Index = () => {
     {
       id: "3",
       platform: "google",
-      title: "Go-to development partner!",
+      title: "Bookings doubled after launch!",
       rating: 5,
-      snippet: "Professional, communicative, and technically excellent. Advora is our go-to development partner for all our digital projects.",
+      snippet: "Running a resort near Tadoba Tiger Reserve, we needed a site that showcases the wildlife experience and makes booking effortless. Advora delivered exactly that — our direct bookings have nearly doubled since the new website went live.",
       readMoreUrl: "#",
       user: {
         name: "Soni Patel",
@@ -91,9 +91,9 @@ const Index = () => {
     {
       id: "4",
       platform: "google",
-      title: "Revenue increased by 40%!",
+      title: "Guests find us so easily now!",
       rating: 5,
-      snippet: "They transformed our outdated system into a modern, scalable platform. Revenue increased by 40% within months of the launch.",
+      snippet: "Advora redesigned our entire online presence for Wild Spirit Stays. The new site beautifully highlights our homestay experiences and the SEO work means travellers actually find us on Google now. Worth every rupee.",
       readMoreUrl: "#",
       user: {
         name: "Jaideep Ojha",
@@ -105,9 +105,9 @@ const Index = () => {
     {
       id: "5",
       platform: "google",
-      title: "Students love it!",
+      title: "Patients love the new website!",
       rating: 5,
-      snippet: "Outstanding work on our clinic's digital presence. The user experience is intuitive and patients love it. Highly recommend their services!",
+      snippet: "As a dentist, I needed a clean, trustworthy website where patients can book appointments easily. Advora created a professional site for Vidhan Dental Clinic that patients actually compliment us on. Online appointment requests have gone up significantly.",
       readMoreUrl: "#",
       user: {
         name: "Dr. Rinni Raichandani",
@@ -119,9 +119,9 @@ const Index = () => {
     {
       id: "6",
       platform: "google",
-      title: "Above and beyond!",
+      title: "They understand growth strategy!",
       rating: 5,
-      snippet: "Advora's team went above and beyond. They delivered features we didn't even know we needed but have become essential to our operations.",
+      snippet: "As a growth consulting firm, we needed a digital partner who understands B2B marketing. Advora built us a sharp, conversion-focused website and CRM integration that reflects the quality we deliver to our own clients. Highly recommend.",
       readMoreUrl: "#",
       user: {
         name: "Rohini Patel",
@@ -133,9 +133,9 @@ const Index = () => {
     {
       id: "7",
       platform: "google",
-      title: "Highly professional team!",
+      title: "Best decision for our lodge!",
       rating: 5,
-      snippet: "Working with Advora was a seamless experience. They understood our hospitality business needs perfectly and delivered a solution that exceeded expectations.",
+      snippet: "TNT Lodging needed a modern booking website that travellers trust. Advora delivered a fast, mobile-friendly site with a smooth reservation system. Our walk-in dependency has reduced and online bookings keep growing month over month.",
       readMoreUrl: "#",
       user: {
         name: "Jaywant Warghane",
