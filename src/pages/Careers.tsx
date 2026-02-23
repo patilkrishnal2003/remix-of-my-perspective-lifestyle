@@ -5,8 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Briefcase, MapPin, Clock, ArrowRight, Users, Heart, Zap, Coffee, Globe, GraduationCap } from "lucide-react";
 import aboutHero from "@/assets/about-hero.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const Careers = () => {
+  usePageSEO({
+    title: "Careers",
+    description: "Join Advora Digital — explore open roles in engineering, design, and marketing. Remote-first culture with competitive benefits.",
+    canonical: "/careers",
+  });
   const openPositions = [
     {
       title: "Senior Full-Stack Developer",

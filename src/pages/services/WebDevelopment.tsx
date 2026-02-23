@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Globe, CheckCircle, Zap, Shield, Code, Layout, Search, Smartphone } from "lucide-react";
 import serviceWebDev from "@/assets/service-web-dev.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const WebDevelopment = () => {
+  usePageSEO({
+    title: "Web Development Services",
+    description: "Custom web development by Advora Digital — responsive, SEO-optimized, fast-loading websites and web apps built with modern frameworks.",
+    canonical: "/services/web-development",
+  });
   const features = [
     { icon: Layout, title: "Responsive Design", description: "Websites that look perfect on every device, from desktop to mobile." },
     { icon: Zap, title: "Fast Performance", description: "Optimized code and assets for lightning-fast load times." },

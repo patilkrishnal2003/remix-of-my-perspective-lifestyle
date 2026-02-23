@@ -9,10 +9,16 @@ import ScrollReveal from "@/components/ScrollReveal";
 import HowWeWorkSection from "@/components/HowWeWorkSection";
 
 import { Button } from "@/components/ui/button";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 import aboutHero from "@/assets/about-hero.jpg";
 
 const About = () => {
+  usePageSEO({
+    title: "About Us",
+    description: "Learn about Advora Digital — a Pune-based software agency delivering custom web, mobile, and cloud solutions with a client-focused approach.",
+    canonical: "/about",
+  });
   
   const values = [
     {

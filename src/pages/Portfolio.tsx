@@ -7,6 +7,7 @@ import { ArrowRight, DollarSign, HeartPulse, ShoppingCart, GraduationCap, Home, 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { usePageSEO } from "@/hooks/usePageSEO";
 import projectFinanceFlow from "@/assets/project-financeflow.jpg";
 import projectHealthTrack from "@/assets/project-healthtrack.jpg";
 import projectRetailHub from "@/assets/project-retailhub.jpg";
@@ -55,6 +56,11 @@ function IndustriesCarousel() {
 }
 
 const Portfolio = () => {
+  usePageSEO({
+    title: "Portfolio",
+    description: "See Advora Digital's portfolio — case studies in fintech, healthcare, e-commerce, edtech, and logistics software development.",
+    canonical: "/portfolio",
+  });
   const projects = [
     {
       title: "FinanceFlow",

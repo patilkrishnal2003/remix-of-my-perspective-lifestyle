@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Megaphone, CheckCircle, BarChart3, Users, Target, TrendingUp } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const GrowthMarketing = () => {
+  usePageSEO({
+    title: "Growth Marketing Services",
+    description: "Data-driven growth marketing by Advora Digital — paid ads, content marketing, email automation, and conversion optimization.",
+    canonical: "/services/growth-marketing",
+  });
   const features = [
     { icon: Megaphone, title: "Paid Advertising", description: "Strategic campaigns on Google, Meta & LinkedIn." },
     { icon: Target, title: "Funnel Architecture", description: "Conversion-optimized marketing funnels." },

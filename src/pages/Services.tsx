@@ -9,6 +9,7 @@ import TechStackSection from "@/components/TechStackSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 // Service images
 import serviceWebDev from "@/assets/service-web-dev.jpg";
@@ -100,6 +101,11 @@ const servicesData = [
 ];
 
 const Services = () => {
+  usePageSEO({
+    title: "Services",
+    description: "Explore Advora Digital's services — web development, mobile apps, UI/UX design, branding, growth marketing, and digital strategy for businesses.",
+    canonical: "/services",
+  });
   const [activeTab, setActiveTab] = useState("web");
 
   const pricingTiers = [

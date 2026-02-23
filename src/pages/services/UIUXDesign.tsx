@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Palette, CheckCircle, Users, Layers, MousePointer, Eye } from "lucide-react";
 import serviceDesign from "@/assets/service-design.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const UIUXDesign = () => {
+  usePageSEO({
+    title: "UI/UX Design Services",
+    description: "User-centered UI/UX design by Advora Digital — research, wireframes, prototypes, and design systems for web and mobile products.",
+    canonical: "/services/ui-ux-design",
+  });
   const features = [
     { icon: Users, title: "User Research", description: "Deep understanding of your users' needs and behaviors." },
     { icon: Layers, title: "Wireframing", description: "Clear blueprints for intuitive user journeys." },

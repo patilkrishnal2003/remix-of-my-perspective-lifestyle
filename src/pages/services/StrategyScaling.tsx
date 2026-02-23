@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, LineChart, CheckCircle, Puzzle, TrendingUp, BarChart3, Target } from "lucide-react";
 import projectHealthtrack from "@/assets/project-healthtrack.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const StrategyScaling = () => {
+  usePageSEO({
+    title: "Strategy & Scaling Consulting",
+    description: "Scale your business with Advora Digital — KPI dashboards, process optimization, team augmentation, and go-to-market strategy.",
+    canonical: "/services/strategy-scaling",
+  });
   const features = [
     { icon: LineChart, title: "KPI Dashboards", description: "Real-time analytics & performance tracking." },
     { icon: Puzzle, title: "Process Automation", description: "Streamlined operations & workflow automation." },

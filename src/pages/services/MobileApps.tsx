@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Smartphone, CheckCircle, Zap, Bell, Wifi, Download } from "lucide-react";
 import serviceMobileDev from "@/assets/service-mobile-dev.jpg";
+import { usePageSEO } from "@/hooks/usePageSEO";
 
 const MobileApps = () => {
+  usePageSEO({
+    title: "Mobile App Development",
+    description: "Cross-platform mobile app development for iOS and Android by Advora Digital. Native performance with React Native and Flutter.",
+    canonical: "/services/mobile-apps",
+  });
   const features = [
     { icon: Smartphone, title: "Cross-Platform", description: "Build once, deploy to both iOS and Android platforms." },
     { icon: Zap, title: "Native Performance", description: "Smooth animations and fast response times users expect." },
