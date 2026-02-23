@@ -10,6 +10,14 @@ import {
 import logoDark from "@/assets/logo-dark.svg";
 import logoLight from "@/assets/logo-light.svg";
 
+// Renders both logos stacked; toggles visibility via CSS to avoid reload flicker
+const ThemeLogo = ({ className = "h-5 sm:h-6 w-auto" }: { className?: string }) => (
+  <span className="relative inline-flex">
+    <img src={logoDark} alt="Advora Labs" className={`${className} dark:hidden`} />
+    <img src={logoLight} alt="Advora Labs" className={`${className} hidden dark:block`} />
+  </span>
+);
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -136,11 +144,7 @@ const Header = () => {
               {/* Logo - Dark on light bg, Light on dark mode */}
               <div className="flex items-center min-w-0">
                 <Link to="/" className="flex items-center">
-                  <img 
-                    src={isDark ? logoLight : logoDark} 
-                    alt="Advora Labs" 
-                    className="h-5 sm:h-6 w-auto" 
-                  />
+                  <ThemeLogo />
                 </Link>
               </div>
 
@@ -330,11 +334,7 @@ const Header = () => {
                 to="/" 
                 className="flex items-center pill-nav px-3 sm:px-4 py-2 shadow-lg"
               >
-                <img 
-                  src={isDark ? logoLight : logoDark} 
-                  alt="Advora Labs" 
-                  className="h-5 sm:h-6 w-auto" 
-                />
+                <ThemeLogo />
               </Link>
 
               {/* Right Corner Actions */}
@@ -538,11 +538,7 @@ const Header = () => {
           {/* Logo - Dark on light bg, Light on dark mode */}
           <div className="flex items-center min-w-0">
             <Link to="/" className="flex items-center">
-              <img 
-                src={isDark ? logoLight : logoDark} 
-                alt="Advora Labs" 
-                className="h-5 sm:h-6 w-auto" 
-              />
+              <ThemeLogo />
             </Link>
           </div>
 
