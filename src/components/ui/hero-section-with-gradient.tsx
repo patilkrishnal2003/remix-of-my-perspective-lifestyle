@@ -319,9 +319,9 @@ export default function HeroSectionWithGradient() {
               variants={transitionVariants.item}
               className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]"
             >
-              <span className="block font-serif italic font-normal">Inspiring Digital</span>
+              <span className="block font-serif italic font-normal">Engineering Digital</span>
               <span className="block font-bold text-foreground">
-                <span className="text-primary">Innovators</span>
+                <span className="text-primary">Excellence</span>
               </span>
             </motion.h1>
 
@@ -330,7 +330,7 @@ export default function HeroSectionWithGradient() {
               variants={transitionVariants.item}
               className="max-w-xs sm:max-w-xl md:max-w-4xl text-xl sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
             >
-              Empowering creators to move fast, stay consistent, and ship beautiful products every time.
+              We build scalable software solutions, from web and mobile apps to cloud infrastructure, helping businesses grow with technology that performs.
             </motion.p>
 
             {/* CTA Buttons */}
