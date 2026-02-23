@@ -130,6 +130,20 @@ const Index = () => {
         profileUrl: "#",
       },
     },
+    {
+      id: "7",
+      platform: "google",
+      title: "Highly professional team!",
+      rating: 5,
+      snippet: "Working with Advora was a seamless experience. They understood our hospitality business needs perfectly and delivered a solution that exceeded expectations.",
+      readMoreUrl: "#",
+      user: {
+        name: "Jaywant Warghane",
+        role: "Founder, TNT Lodging",
+        avatar: "https://ui-avatars.com/api/?name=Jaywant+Warghane&background=6366f1&color=fff&bold=true",
+        profileUrl: "#",
+      },
+    },
   ];
 
   // JSON-LD structured data
