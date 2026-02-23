@@ -163,35 +163,6 @@ const About = () => {
         </section>
 
 
-        {/* Why Choose Advora - Flip Image Carousel */}
-        <section className="section-divider">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ScrollReveal>
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
-                  <span className="block font-serif italic font-normal">Your Success Is Our Mission</span>
-                  <span className="block font-bold text-primary">Here's What Sets Us Apart</span>
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  We combine technical expertise with genuine partnership to deliver solutions that exceed expectations
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={150}>
-              <div className="rounded-2xl overflow-hidden" style={{ position: 'relative', paddingBottom: 'calc(43.083333333333336% + 41px)', height: '0', width: '100%' }}>
-                <iframe
-                  src="https://demo.arcade.software/DIF1B3LP6qteCKiQQteB?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-                  title="Configure payment gateways, taxes, and account settings"
-                  frameBorder="0"
-                  loading="lazy"
-                  allowFullScreen
-                  allow="clipboard-write"
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', colorScheme: 'light' }}
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
 
         {/* How We Work Section */}
         <HowWeWorkSection />
