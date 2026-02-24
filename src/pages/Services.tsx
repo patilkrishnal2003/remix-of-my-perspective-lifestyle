@@ -260,8 +260,8 @@ const Services = () => {
               viewport={{ once: true }}
               className="text-3xl md:text-5xl tracking-tight mb-4"
             >
-              <span className="block font-serif italic font-normal">What We</span>
-              <span className="block font-bold">Offer <span className="text-primary">You</span></span>
+              <span className="block font-serif italic font-normal">Explore What We</span>
+              <span className="block font-bold">Can Build <span className="text-primary">For You</span></span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
