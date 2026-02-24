@@ -54,6 +54,9 @@ const Footer = () => {
   const [footerEmail, setFooterEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [upperEmail, setUpperEmail] = useState("");
+  const [upperSending, setUpperSending] = useState(false);
+  const [upperSent, setUpperSent] = useState(false);
   const formContainerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -115,11 +118,38 @@ const Footer = () => {
               <div className="relative flex w-full rounded-full border border-border bg-background/80 backdrop-blur-sm overflow-hidden">
                 <input
                   type="email"
+                  value={upperEmail}
+                  onChange={(e) => setUpperEmail(e.target.value)}
                   placeholder="Enter your email for Weekly insights"
                   className="flex-1 px-5 py-3.5 bg-transparent focus:outline-none text-sm"
+                  disabled={upperSending || upperSent}
                 />
-                <button className="px-6 py-3 m-1 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/70 transition-colors text-sm whitespace-nowrap">
-                  Subscribe
+                <button
+                  onClick={async () => {
+                    if (upperSent) return;
+                    if (!upperEmail || !upperEmail.includes("@")) return;
+                    setUpperSending(true);
+                    try {
+                      const formData = new FormData();
+                      formData.append("access_key", "9b766b1f-8a26-4ba4-b363-3829a818bc92");
+                      formData.append("email", upperEmail);
+                      formData.append("subject", "New newsletter subscription");
+                      formData.append("message", `Newsletter signup from: ${upperEmail}`);
+                      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+                      if (res.ok) {
+                        setUpperSent(true);
+                        setUpperEmail("");
+                      }
+                    } catch {
+                      // silent fail
+                    } finally {
+                      setUpperSending(false);
+                    }
+                  }}
+                  disabled={upperSending}
+                  className="px-6 py-3 m-1 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/70 transition-colors text-sm whitespace-nowrap disabled:opacity-70"
+                >
+                  {upperSent ? "✓ Subscribed!" : upperSending ? "Sending..." : "Subscribe"}
                 </button>
               </div>
             </div>
