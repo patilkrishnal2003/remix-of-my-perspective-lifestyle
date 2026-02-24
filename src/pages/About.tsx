@@ -175,7 +175,10 @@ const About = () => {
                     <span className="block font-bold text-primary">trusted digital partner</span>
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    We envision a world where every business, regardless of size, has access to world-class digital solutions that drive real growth and lasting impact. Our goal is to deliver software that's not just technically excellent, but strategically aligned with your business goals, helping you compete, grow, and lead in your industry.
+                    We envision a world where every business, regardless of size, has access to world-class digital solutions that drive real growth and lasting impact.
+                  </p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    Our goal is to deliver software that's not just technically excellent, but strategically aligned with your business goals, helping you compete, grow, and lead in your industry.
                   </p>
                 </div>
               </motion.div>
