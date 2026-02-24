@@ -330,7 +330,8 @@ export default function HeroSectionWithGradient() {
               variants={transitionVariants.item}
               className="max-w-xs sm:max-w-xl md:max-w-4xl text-xl sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
             >
-              We build scalable software solutions, from web and mobile apps to cloud infrastructure, helping businesses grow with technology that performs.
+              <span className="hidden sm:inline">We build scalable software solutions, from web and mobile apps to cloud infrastructure, helping businesses grow with technology that performs.</span>
+              <span className="sm:hidden">Scalable web, mobile & cloud solutions that drive business growth.</span>
             </motion.p>
 
             {/* CTA Buttons */}
