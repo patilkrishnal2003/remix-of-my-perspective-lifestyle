@@ -328,7 +328,7 @@ export default function HeroSectionWithGradient() {
             {/* Description */}
             <motion.p
               variants={transitionVariants.item}
-              className="max-w-xs sm:max-w-xl md:max-w-4xl text-xl sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
+              className="max-w-xs sm:max-w-xl md:max-w-4xl text-sm sm:text-lg md:text-xl text-muted-foreground leading-relaxed px-2"
             >
               We build scalable software solutions, from web and mobile apps to cloud infrastructure, helping businesses grow with technology that performs.
             </motion.p>
