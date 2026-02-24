@@ -229,8 +229,8 @@ export default function PostDetail() {
 
                   {/* Right Image */}
                   {post.cover && (
-                    <motion.div variants={itemVariants} className="order-1 lg:order-2 flex flex-col gap-3">
-                      <figure className="rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-card">
+                    <motion.div variants={itemVariants} className="order-1 lg:order-2 flex flex-col gap-3 items-center">
+                      <figure className="rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-card w-full">
                         <img src={post.cover} alt={post.title} className="w-full aspect-[4/3] object-cover" loading="eager" />
                       </figure>
                       <ShareBar title={post.title} />
