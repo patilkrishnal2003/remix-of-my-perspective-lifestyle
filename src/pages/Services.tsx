@@ -256,10 +256,10 @@ const Services = () => {
           </div>
 
           {/* Split Panel */}
-          <div className="grid lg:grid-cols-[340px_1fr] xl:grid-cols-[380px_1fr] gap-6 lg:gap-8">
+          <div className="grid lg:grid-cols-[320px_1fr] xl:grid-cols-[360px_1fr] gap-6 lg:gap-8 items-start">
             
             {/* LEFT — Category & Service List */}
-            <div className="space-y-2">
+            <div className="lg:sticky lg:top-28 space-y-2 rounded-[2rem] bg-card border border-border p-4">
               {allServices.map((cat, catIdx) => (
                 <div key={cat.category}>
                   {/* Category Header */}
