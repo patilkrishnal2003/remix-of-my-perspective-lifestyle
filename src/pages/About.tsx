@@ -154,6 +154,9 @@ const About = () => {
           </div>
         </section>
 
+        {/* Values Section */}
+        <ValuesTabSection />
+
         {/* Mission & Vision - Premium Split Section */}
         <section className="section-divider py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,9 +244,6 @@ const About = () => {
             </div>
           </div>
         </section>
-
-        {/* Values Section */}
-        <ValuesTabSection />
 
         {/* How We Work Section */}
         <HowWeWorkSection />
