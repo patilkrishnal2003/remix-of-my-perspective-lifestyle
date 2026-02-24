@@ -145,11 +145,21 @@ const Services = () => {
 
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeService, setActiveService] = useState(0);
+  const [openCategories, setOpenCategories] = useState<number[]>([0, 1]);
   const currentService = allServices[activeCategory].services[activeService];
 
-  const handleCategoryChange = (catIdx: number) => {
+  const toggleCategory = (catIdx: number) => {
+    setOpenCategories((prev) =>
+      prev.includes(catIdx) ? prev.filter((i) => i !== catIdx) : [...prev, catIdx]
+    );
+  };
+
+  const handleServiceClick = (catIdx: number, sIdx: number) => {
     setActiveCategory(catIdx);
-    setActiveService(0);
+    setActiveService(sIdx);
+    if (!openCategories.includes(catIdx)) {
+      setOpenCategories((prev) => [...prev, catIdx]);
+    }
   };
 
   const pricingTiers = [
@@ -272,8 +282,8 @@ const Services = () => {
               {allServices.map((cat, catIdx) => (
                 <div key={cat.category}>
                   {/* Category Header */}
-                  <button
-                    onClick={() => handleCategoryChange(catIdx)}
+                 <button
+                    onClick={() => toggleCategory(catIdx)}
                     className={`w-full flex items-center gap-3 px-5 py-3.5 rounded-xl text-left font-semibold text-sm tracking-wide transition-all duration-300 ${
                       activeCategory === catIdx
                         ? "bg-primary text-primary-foreground"
@@ -282,12 +292,12 @@ const Services = () => {
                   >
                     <cat.categoryIcon className="w-4 h-4 shrink-0" />
                     <span className="flex-1">{cat.category}</span>
-                    <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${activeCategory === catIdx ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${openCategories.includes(catIdx) ? "rotate-180" : ""}`} />
                   </button>
 
                   {/* Services under this category */}
                   <AnimatePresence>
-                    {activeCategory === catIdx && (
+                    {openCategories.includes(catIdx) && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
@@ -296,31 +306,34 @@ const Services = () => {
                         className="overflow-hidden"
                       >
                         <div className="py-2 pl-3 space-y-1">
-                          {cat.services.map((service, sIdx) => (
-                            <button
-                              key={service.label}
-                              onClick={() => setActiveService(sIdx)}
-                              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm transition-all duration-300 group ${
-                                activeService === sIdx
-                                  ? "bg-card border border-border shadow-sm font-semibold text-foreground"
-                                  : "text-muted-foreground hover:text-foreground hover:bg-card/50"
-                              }`}
-                            >
-                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                                activeService === sIdx
-                                  ? "bg-primary/10"
-                                  : "bg-muted/50 group-hover:bg-muted"
-                              }`}>
-                                <service.icon className={`w-4 h-4 ${
-                                  activeService === sIdx ? "text-primary" : "text-muted-foreground"
-                                }`} />
-                              </div>
-                              <span className="flex-1">{service.label}</span>
-                              {activeService === sIdx && (
-                                <ChevronRight className="w-4 h-4 text-primary" />
-                              )}
-                            </button>
-                          ))}
+                          {cat.services.map((service, sIdx) => {
+                            const isActive = activeCategory === catIdx && activeService === sIdx;
+                            return (
+                              <button
+                                key={service.label}
+                                onClick={() => handleServiceClick(catIdx, sIdx)}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm transition-all duration-300 group ${
+                                  isActive
+                                    ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                                }`}
+                              >
+                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                                  isActive
+                                    ? "bg-primary-foreground/20"
+                                    : "bg-muted/50 group-hover:bg-muted"
+                                }`}>
+                                  <service.icon className={`w-4 h-4 ${
+                                    isActive ? "text-primary-foreground" : "text-muted-foreground"
+                                  }`} />
+                                </div>
+                                <span className="flex-1">{service.label}</span>
+                                {isActive && (
+                                  <ChevronRight className="w-4 h-4 text-primary-foreground" />
+                                )}
+                              </button>
+                            );
+                          })}
                         </div>
                       </motion.div>
                     )}
