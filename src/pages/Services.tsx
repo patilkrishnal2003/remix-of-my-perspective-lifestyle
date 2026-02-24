@@ -11,127 +11,148 @@ import { usePageSEO } from "@/hooks/usePageSEO";
 
 // Service images
 import serviceWebDev from "@/assets/service-web-dev.jpg";
+import imgWebDev from "@/assets/service-web-dev-row.jpg";
+import imgMobile from "@/assets/service-mobile-row.jpg";
+import imgSoftware from "@/assets/service-software-row.jpg";
+import imgUiux from "@/assets/service-uiux-row.jpg";
+import imgBranding from "@/assets/service-branding-row.jpg";
+import imgDigital from "@/assets/service-digital-row.jpg";
+import imgGrowth from "@/assets/service-growth-row.jpg";
+import imgSales from "@/assets/service-sales-row.jpg";
+import imgStrategy from "@/assets/service-strategy-row.jpg";
 
 const buildServices = [
   {
-    id: "web-development",
     label: "Web Development",
     icon: Globe,
     description: "High-performance websites and web apps built with modern frameworks for speed, SEO, and scalability.",
-    tags: ["React", "Next.js", "TypeScript"],
+    features: ["React & Next.js", "SEO Optimized", "Fast Loading", "Responsive"],
+    image: imgWebDev,
     path: "/services/web-development",
   },
   {
-    id: "mobile-apps",
     label: "Mobile Apps",
     icon: Smartphone,
     description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
-    tags: ["React Native", "Flutter", "iOS/Android"],
+    features: ["React Native", "Flutter", "iOS & Android", "App Store Ready"],
+    image: imgMobile,
     path: "/services/mobile-apps",
   },
   {
-    id: "custom-software",
     label: "Custom Software",
     icon: Code,
     description: "Bespoke enterprise solutions designed to automate workflows, boost efficiency, and scale with your business.",
-    tags: ["APIs", "Microservices", "Cloud"],
+    features: ["APIs & Microservices", "Cloud Native", "Scalable", "Secure"],
+    image: imgSoftware,
     path: "/services/custom-software",
   },
   {
-    id: "ui-ux-design",
     label: "UI/UX Design",
     icon: Palette,
     description: "Research-driven design that converts visitors into customers through intuitive, beautiful interfaces.",
-    tags: ["User Research", "Prototyping", "Design Systems"],
+    features: ["User Research", "Prototyping", "Design Systems", "Figma"],
+    image: imgUiux,
     path: "/services/ui-ux-design",
   },
   {
-    id: "branding",
     label: "Branding",
     icon: Paintbrush,
     description: "Strategic brand identity that tells your story and differentiates you in the market.",
-    tags: ["Logo Design", "Brand Strategy", "Guidelines"],
+    features: ["Logo Design", "Brand Strategy", "Guidelines", "Visual Identity"],
+    image: imgBranding,
     path: "/services/branding",
   },
 ];
 
 const growServices = [
   {
-    id: "digital-presence",
     label: "Digital Presence",
     icon: Monitor,
     description: "Establish and strengthen your online footprint with SEO, content strategy, and multi-channel visibility.",
-    tags: ["SEO", "Content", "Social Media"],
+    features: ["SEO", "Content Strategy", "Social Media", "Analytics"],
+    image: imgDigital,
     path: "/services/digital-presence",
   },
   {
-    id: "growth-marketing",
     label: "Growth Marketing",
     icon: TrendingUp,
     description: "Data-driven marketing campaigns that acquire customers, boost engagement, and maximize ROI.",
-    tags: ["PPC", "Analytics", "Automation"],
+    features: ["PPC", "Analytics", "Automation", "A/B Testing"],
+    image: imgGrowth,
     path: "/services/growth-marketing",
   },
   {
-    id: "sales-revenue",
     label: "Sales & Revenue",
     icon: DollarSign,
     description: "Optimize your sales funnel with CRM integration, lead scoring, and conversion optimization strategies.",
-    tags: ["CRM", "Lead Gen", "Conversion"],
+    features: ["CRM Integration", "Lead Gen", "Conversion", "Pipeline"],
+    image: imgSales,
     path: "/services/sales-revenue",
   },
   {
-    id: "strategy-scaling",
     label: "Strategy & Scaling",
     icon: BarChart3,
     description: "Strategic consulting to plan growth, enter new markets, and scale operations sustainably.",
-    tags: ["Roadmapping", "Market Entry", "KPIs"],
+    features: ["Roadmapping", "Market Entry", "KPIs", "Growth Plans"],
+    image: imgStrategy,
     path: "/services/strategy-scaling",
   },
 ];
 
-const ServiceCard = ({ service, index }: { service: typeof buildServices[0]; index: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.08 }}
-  >
-    <Link to={service.path} className="group block h-full">
-      <div className="relative h-full rounded-[1.5rem] sm:rounded-[2rem] border border-border/60 bg-card p-6 sm:p-8 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_8px_40px_-12px_hsl(var(--primary)/0.15)] overflow-hidden">
-        {/* Background number */}
-        <span className="absolute -top-4 -right-2 text-[8rem] font-bold leading-none text-foreground/[0.03] select-none pointer-events-none">
-          {String(index + 1).padStart(2, "0")}
-        </span>
+type ServiceItem = typeof buildServices[0];
 
-        <div className="relative z-10">
-          {/* Icon */}
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-            <service.icon className="w-6 h-6 text-primary" />
+const ServiceRow = ({ service, index, reversed }: { service: ServiceItem; index: number; reversed: boolean }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+  >
+    <Link to={service.path} className="group block">
+      <div className={`grid lg:grid-cols-2 gap-6 lg:gap-10 items-center ${reversed ? "lg:[direction:rtl]" : ""}`}>
+        {/* Image */}
+        <div className="rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden lg:[direction:ltr]">
+          <img
+            src={service.image}
+            alt={service.label}
+            className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="lg:[direction:ltr] space-y-4 sm:space-y-5">
+          {/* Number + Icon */}
+          <div className="flex items-center gap-4">
+            <span className="text-5xl sm:text-6xl font-bold text-foreground/[0.07] select-none leading-none">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <service.icon className="w-5 h-5 text-primary" />
+            </div>
           </div>
 
           {/* Title */}
-          <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+          <h3 className="text-2xl sm:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
             {service.label}
           </h3>
 
           {/* Description */}
-          <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+          <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
             {service.description}
           </p>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-5">
-            {service.tags.map((tag) => (
-              <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
-                {tag}
+          {/* Feature tags */}
+          <div className="flex flex-wrap gap-2">
+            {service.features.map((f) => (
+              <span key={f} className="px-3 py-1.5 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border/50">
+                {f}
               </span>
             ))}
           </div>
 
-          {/* Arrow CTA */}
-          <div className="flex items-center gap-2 text-sm font-semibold text-primary opacity-0 translate-x-[-8px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-            Explore Service
+          {/* CTA */}
+          <div className="flex items-center gap-2 text-primary font-semibold pt-1 group-hover:gap-3 transition-all duration-300">
+            Learn More
             <ArrowRight className="w-4 h-4" />
           </div>
         </div>
@@ -249,7 +270,7 @@ const Services = () => {
         {/* BUILD — Tech Services */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
           {/* Category Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -282,110 +303,62 @@ const Services = () => {
             </motion.p>
           </div>
 
-          {/* Build Services Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Build Services — Alternating Rows */}
+          <div className="space-y-16 sm:space-y-20">
             {buildServices.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+              <ServiceRow key={service.label} service={service} index={index} reversed={index % 2 !== 0} />
             ))}
           </div>
         </section>
 
+        {/* Divider */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-px bg-border" />
+        </div>
+
         {/* GROW & SCALE — Digital Services */}
-        <section className="section-divider py-20 pt-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Dark container */}
-            <div className="rounded-[2rem] sm:rounded-[3rem] bg-foreground text-background p-6 sm:p-10 md:p-14">
-              {/* Category Header */}
-              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-                <div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4"
-                  >
-                    <TrendingUp className="w-4 h-4" />
-                    GROW & SCALE
-                  </motion.div>
-                  <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="text-3xl md:text-5xl tracking-tight"
-                  >
-                    <span className="block font-serif italic font-normal">Digital Growth</span>
-                    <span className="block font-bold">That <span className="text-primary">Scales</span></span>
-                  </motion.h2>
-                </div>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="text-background/60 max-w-md text-lg"
-                >
-                  Strategic marketing, branding, and growth services to amplify your digital presence.
-                </motion.p>
-              </div>
-
-              {/* Grow Services Grid */}
-              <div className="grid sm:grid-cols-2 gap-5">
-                {growServices.map((service, index) => (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <Link to={service.path} className="group block h-full">
-                      <div className="relative h-full rounded-[1.5rem] sm:rounded-[2rem] border border-background/10 bg-background/5 backdrop-blur-sm p-6 sm:p-8 transition-all duration-500 hover:border-primary/40 hover:bg-background/10 overflow-hidden">
-                        {/* Background number */}
-                        <span className="absolute -top-4 -right-2 text-[8rem] font-bold leading-none text-background/[0.03] select-none pointer-events-none">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-
-                        <div className="relative z-10">
-                          {/* Icon */}
-                          <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/30 transition-colors duration-300">
-                            <service.icon className="w-6 h-6 text-primary" />
-                          </div>
-
-                          {/* Title */}
-                          <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
-                            {service.label}
-                          </h3>
-
-                          {/* Description */}
-                          <p className="text-background/60 text-sm leading-relaxed mb-5">
-                            {service.description}
-                          </p>
-
-                          {/* Tags */}
-                          <div className="flex flex-wrap gap-2 mb-5">
-                            {service.tags.map((tag) => (
-                              <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-background/10 text-background/70">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-
-                          {/* Arrow CTA */}
-                          <div className="flex items-center gap-2 text-sm font-semibold text-primary opacity-0 translate-x-[-8px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                            Explore Service
-                            <ArrowRight className="w-4 h-4" />
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
+        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
+          {/* Category Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
+              >
+                <TrendingUp className="w-4 h-4" />
+                GROW & SCALE
+              </motion.div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl md:text-5xl tracking-tight"
+              >
+                <span className="block font-serif italic font-normal">Digital Growth</span>
+                <span className="block font-bold">That <span className="text-primary">Scales</span></span>
+              </motion.h2>
             </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-muted-foreground max-w-md text-lg"
+            >
+              Strategic marketing, branding, and growth services to amplify your digital presence.
+            </motion.p>
+          </div>
+
+          {/* Grow Services — Alternating Rows */}
+          <div className="space-y-16 sm:space-y-20">
+            {growServices.map((service, index) => (
+              <ServiceRow key={service.label} service={service} index={index} reversed={index % 2 !== 0} />
+            ))}
           </div>
         </section>
-
 
         {/* Process Section - Minimal Timeline */}
         <section className="section-divider py-20 pt-24 overflow-hidden bg-foreground text-background">
