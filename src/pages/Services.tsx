@@ -270,7 +270,7 @@ const Services = () => {
               transition={{ delay: 0.1 }}
               className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
-              Explore our full range of services across two core pillars — technology and growth.
+              Explore our full range of services across two core pillars: technology and growth.
             </motion.p>
           </div>
 
