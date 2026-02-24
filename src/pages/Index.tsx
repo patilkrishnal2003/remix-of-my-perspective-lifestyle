@@ -206,11 +206,11 @@ const Index = () => {
                 {[...Array(3)].map((_, setIndex) => (
                   <div key={setIndex} className="flex items-center gap-10 sm:gap-14 md:gap-20 px-5 sm:px-7">
                     {serviceCategories.map((item) => (
-                      <div key={`${setIndex}-${item.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex flex-col items-center gap-2">
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                          <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+                      <div key={`${setIndex}-${item.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex items-center gap-3">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                          <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                         </div>
-                        <span className="text-xs sm:text-sm font-medium text-muted-foreground whitespace-nowrap">{item.name}</span>
+                        <span className="text-sm sm:text-base font-medium text-muted-foreground whitespace-nowrap">{item.name}</span>
                       </div>
                     ))}
                   </div>
