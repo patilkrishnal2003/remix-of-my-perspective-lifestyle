@@ -56,58 +56,8 @@ const ValuesTabSection = () => {
         </div>
 
         {/* Desktop: Interactive accordion-style layout */}
-        <div className="hidden lg:grid lg:grid-cols-[1fr_1.2fr] gap-8 items-start">
-          {/* Left: Selectable value list */}
-          <div className="space-y-3">
-            {valuesData.map((value, index) => (
-              <motion.button
-                key={value.id}
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  "w-full text-left p-5 rounded-2xl border transition-all duration-300 group relative overflow-hidden",
-                  activeIndex === index
-                    ? "border-primary bg-primary/5 shadow-lg shadow-primary/10"
-                    : "border-border bg-card hover:border-primary/30 hover:bg-primary/[0.02]"
-                )}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="flex items-center gap-4">
-                  <span className={cn(
-                    "text-3xl font-bold transition-colors duration-300",
-                    activeIndex === index ? "text-primary" : "text-muted-foreground/30"
-                  )}>
-                    {value.number}
-                  </span>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <div className={cn(
-                        "w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300",
-                        activeIndex === index ? "bg-primary/15" : "bg-muted/50"
-                      )}>
-                        <value.icon className={cn(
-                          "w-4 h-4 transition-colors duration-300",
-                          activeIndex === index ? "text-primary" : "text-muted-foreground"
-                        )} />
-                      </div>
-                      <h3 className={cn(
-                        "text-lg font-semibold transition-colors duration-300",
-                        activeIndex === index ? "text-foreground" : "text-muted-foreground"
-                      )}>
-                        {value.title}
-                      </h3>
-                    </div>
-                  </div>
-                  {/* Active indicator bar */}
-                  <div className={cn(
-                    "w-1 h-10 rounded-full transition-all duration-300",
-                    activeIndex === index ? "bg-primary" : "bg-transparent"
-                  )} />
-                </div>
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Right: Expanded detail card */}
+        <div className="hidden lg:grid lg:grid-cols-[1.2fr_1fr] gap-8 items-start">
+          {/* Left: Expanded detail card */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeValue.id}
@@ -157,6 +107,56 @@ const ValuesTabSection = () => {
               </div>
             </motion.div>
           </AnimatePresence>
+
+          {/* Right: Selectable value list */}
+          <div className="space-y-3">
+            {valuesData.map((value, index) => (
+              <motion.button
+                key={value.id}
+                onClick={() => setActiveIndex(index)}
+                className={cn(
+                  "w-full text-left p-5 rounded-2xl border transition-all duration-300 group relative overflow-hidden",
+                  activeIndex === index
+                    ? "border-primary bg-primary/5 shadow-lg shadow-primary/10"
+                    : "border-border bg-card hover:border-primary/30 hover:bg-primary/[0.02]"
+                )}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex items-center gap-4">
+                  <span className={cn(
+                    "text-3xl font-bold transition-colors duration-300",
+                    activeIndex === index ? "text-primary" : "text-muted-foreground/30"
+                  )}>
+                    {value.number}
+                  </span>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <div className={cn(
+                        "w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300",
+                        activeIndex === index ? "bg-primary/15" : "bg-muted/50"
+                      )}>
+                        <value.icon className={cn(
+                          "w-4 h-4 transition-colors duration-300",
+                          activeIndex === index ? "text-primary" : "text-muted-foreground"
+                        )} />
+                      </div>
+                      <h3 className={cn(
+                        "text-lg font-semibold transition-colors duration-300",
+                        activeIndex === index ? "text-foreground" : "text-muted-foreground"
+                      )}>
+                        {value.title}
+                      </h3>
+                    </div>
+                  </div>
+                  {/* Active indicator bar */}
+                  <div className={cn(
+                    "w-1 h-10 rounded-full transition-all duration-300",
+                    activeIndex === index ? "bg-primary" : "bg-transparent"
+                  )} />
+                </div>
+              </motion.button>
+            ))}
+          </div>
         </div>
 
         {/* Mobile/Tablet: Stacked expandable cards */}
