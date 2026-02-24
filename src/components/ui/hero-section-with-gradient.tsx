@@ -347,7 +347,7 @@ export default function HeroSectionWithGradient() {
                   Start Building
                 </Button>
               </Link>
-              <Link to="/services" className="w-full sm:w-auto">
+              <Link to="/contact" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="lg"
