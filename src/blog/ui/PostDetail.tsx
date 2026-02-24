@@ -8,10 +8,50 @@ import CommentsList from "./components/CommentsList";
 import CommentForm from "./components/CommentForm";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { Link2, Check } from "lucide-react";
+import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 
 function formatDate(d: string | Date) {
   const date = typeof d === "string" ? new Date(d) : d;
   return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+}
+
+function ShareBar({ title }: { title: string }) {
+  const [copied, setCopied] = useState(false);
+  const url = window.location.href;
+
+  const share = (platform: string) => {
+    const encoded = encodeURIComponent(url);
+    const text = encodeURIComponent(title);
+    const urls: Record<string, string> = {
+      whatsapp: `https://wa.me/?text=${text}%20${encoded}`,
+      twitter: `https://twitter.com/intent/tweet?url=${encoded}&text=${text}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encoded}`,
+    };
+    window.open(urls[platform], "_blank", "noopener,noreferrer,width=600,height=500");
+  };
+
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const btnClass = "p-2 rounded-xl bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors";
+
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-xs font-medium text-muted-foreground mr-1">Share</span>
+      <button onClick={() => share("whatsapp")} className={btnClass} aria-label="Share on WhatsApp"><FaWhatsapp className="w-4 h-4" /></button>
+      <button onClick={() => share("twitter")} className={btnClass} aria-label="Share on X"><FaXTwitter className="w-4 h-4" /></button>
+      <button onClick={() => share("linkedin")} className={btnClass} aria-label="Share on LinkedIn"><FaLinkedinIn className="w-4 h-4" /></button>
+      <button onClick={() => share("facebook")} className={btnClass} aria-label="Share on Facebook"><FaFacebookF className="w-4 h-4" /></button>
+      <button onClick={copyLink} className={btnClass} aria-label="Copy link">
+        {copied ? <Check className="w-4 h-4 text-green-500" /> : <Link2 className="w-4 h-4" />}
+      </button>
+    </div>
+  );
 }
 
 export default function PostDetail() {
@@ -189,9 +229,12 @@ export default function PostDetail() {
 
                   {/* Right Image */}
                   {post.cover && (
-                    <motion.figure variants={itemVariants} className="order-1 lg:order-2 rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-card">
-                      <img src={post.cover} alt={post.title} className="w-full aspect-[4/3] object-cover" loading="eager" />
-                    </motion.figure>
+                    <motion.div variants={itemVariants} className="order-1 lg:order-2 flex flex-col gap-3">
+                      <figure className="rounded-2xl overflow-hidden border border-border/50 shadow-lg bg-card">
+                        <img src={post.cover} alt={post.title} className="w-full aspect-[4/3] object-cover" loading="eager" />
+                      </figure>
+                      <ShareBar title={post.title} />
+                    </motion.div>
                   )}
                 </div>
                 </motion.div>
