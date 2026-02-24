@@ -65,16 +65,7 @@ export default function TestimonialCard({ t, highlight = false }: { t: Testimoni
         <Stars n={t.rating} />
       </div>
 
-      <p className="mt-4 text-muted-foreground line-clamp-4 text-sm leading-relaxed">{t.snippet}</p>
-
-      <a
-        href={t.readMoreUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-3 text-sm font-medium text-primary hover:underline"
-      >
-        Read More
-      </a>
+      <p className="mt-4 text-muted-foreground text-sm leading-relaxed flex-1">{t.snippet}</p>
 
       <hr className="my-4 border-border" />
 
