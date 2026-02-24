@@ -17,14 +17,14 @@ import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSectio
 import BookingFlowSection from "@/components/BookingFlowSection";
 
 const serviceCategories = [
-  { name: "E-commerce", icon: ShoppingCart },
-  { name: "Custom CRM", icon: Database },
-  { name: "AI Chatbots", icon: Bot },
-  { name: "Mobile Apps", icon: Smartphone },
-  { name: "Web Portals", icon: Globe },
-  { name: "Analytics", icon: BarChart3 },
-  { name: "Automation", icon: Workflow },
-  { name: "Cloud Apps", icon: Cloud },
+  { name: "E-commerce", icon: ShoppingCart, color: "#E44D26", bg: "#E44D26" },
+  { name: "Custom CRM", icon: Database, color: "#7C3AED", bg: "#7C3AED" },
+  { name: "AI Chatbots", icon: Bot, color: "#10B981", bg: "#10B981" },
+  { name: "Mobile Apps", icon: Smartphone, color: "#3B82F6", bg: "#3B82F6" },
+  { name: "Web Portals", icon: Globe, color: "#F59E0B", bg: "#F59E0B" },
+  { name: "Analytics", icon: BarChart3, color: "#EC4899", bg: "#EC4899" },
+  { name: "Automation", icon: Workflow, color: "#06B6D4", bg: "#06B6D4" },
+  { name: "Cloud Apps", icon: Cloud, color: "#8B5CF6", bg: "#8B5CF6" },
 ];
 
 const Index = () => {
@@ -207,10 +207,10 @@ const Index = () => {
                   <div key={setIndex} className="flex items-center gap-10 sm:gap-14 md:gap-20 px-5 sm:px-7">
                     {serviceCategories.map((item) => (
                       <div key={`${setIndex}-${item.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex items-center gap-3">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                          <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${item.bg}15` }}>
+                          <item.icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: item.color }} />
                         </div>
-                        <span className="text-sm sm:text-base font-medium text-muted-foreground whitespace-nowrap">{item.name}</span>
+                        <span className="text-sm sm:text-base font-semibold whitespace-nowrap" style={{ color: item.color }}>{item.name}</span>
                       </div>
                     ))}
                   </div>
