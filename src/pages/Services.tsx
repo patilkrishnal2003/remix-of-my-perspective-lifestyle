@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
 import TechStackSection from "@/components/TechStackSection";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { usePageSEO } from "@/hooks/usePageSEO";
 
 // Service images
@@ -21,145 +22,110 @@ import imgGrowth from "@/assets/service-growth-row.jpg";
 import imgSales from "@/assets/service-sales-row.jpg";
 import imgStrategy from "@/assets/service-strategy-row.jpg";
 
-const buildServices = [
+const allServices = [
   {
-    label: "Web Development",
-    icon: Globe,
-    description: "High-performance websites and web apps built with modern frameworks for speed, SEO, and scalability.",
-    features: ["React & Next.js", "SEO Optimized", "Fast Loading", "Responsive"],
-    image: imgWebDev,
-    path: "/services/web-development",
+    category: "BUILD",
+    categoryIcon: Code,
+    services: [
+      {
+        label: "Web Development",
+        icon: Globe,
+        description: "High-performance websites and web apps built with modern frameworks for speed, SEO, and scalability.",
+        highlights: ["React & Next.js", "SEO Optimized", "Fast Loading", "Responsive Design", "Progressive Web Apps"],
+        image: imgWebDev,
+        path: "/services/web-development",
+        stat: "60+",
+        statLabel: "Projects Delivered",
+      },
+      {
+        label: "Mobile Apps",
+        icon: Smartphone,
+        description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
+        highlights: ["React Native & Flutter", "iOS & Android", "Offline Support", "Push Notifications", "App Store Ready"],
+        image: imgMobile,
+        path: "/services/mobile-apps",
+        stat: "40+",
+        statLabel: "Apps Launched",
+      },
+      {
+        label: "Custom Software",
+        icon: Code,
+        description: "Bespoke enterprise solutions designed to automate workflows, boost efficiency, and scale with your business.",
+        highlights: ["APIs & Microservices", "Cloud Native", "Process Automation", "Integration Ready", "Scalable Architecture"],
+        image: imgSoftware,
+        path: "/services/custom-software",
+        stat: "30+",
+        statLabel: "Enterprise Solutions",
+      },
+      {
+        label: "UI/UX Design",
+        icon: Palette,
+        description: "Research-driven design that converts visitors into customers through intuitive, beautiful interfaces.",
+        highlights: ["User Research", "Wireframing & Prototyping", "Design Systems", "Usability Testing", "Figma & Sketch"],
+        image: imgUiux,
+        path: "/services/ui-ux-design",
+        stat: "95%",
+        statLabel: "Client Satisfaction",
+      },
+      {
+        label: "Branding",
+        icon: Paintbrush,
+        description: "Strategic brand identity that tells your story and differentiates you in the market.",
+        highlights: ["Logo Design", "Brand Strategy", "Visual Identity", "Brand Guidelines", "Packaging Design"],
+        image: imgBranding,
+        path: "/services/branding",
+        stat: "50+",
+        statLabel: "Brands Created",
+      },
+    ],
   },
   {
-    label: "Mobile Apps",
-    icon: Smartphone,
-    description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
-    features: ["React Native", "Flutter", "iOS & Android", "App Store Ready"],
-    image: imgMobile,
-    path: "/services/mobile-apps",
-  },
-  {
-    label: "Custom Software",
-    icon: Code,
-    description: "Bespoke enterprise solutions designed to automate workflows, boost efficiency, and scale with your business.",
-    features: ["APIs & Microservices", "Cloud Native", "Scalable", "Secure"],
-    image: imgSoftware,
-    path: "/services/custom-software",
-  },
-  {
-    label: "UI/UX Design",
-    icon: Palette,
-    description: "Research-driven design that converts visitors into customers through intuitive, beautiful interfaces.",
-    features: ["User Research", "Prototyping", "Design Systems", "Figma"],
-    image: imgUiux,
-    path: "/services/ui-ux-design",
-  },
-  {
-    label: "Branding",
-    icon: Paintbrush,
-    description: "Strategic brand identity that tells your story and differentiates you in the market.",
-    features: ["Logo Design", "Brand Strategy", "Guidelines", "Visual Identity"],
-    image: imgBranding,
-    path: "/services/branding",
+    category: "GROW & SCALE",
+    categoryIcon: TrendingUp,
+    services: [
+      {
+        label: "Digital Presence",
+        icon: Monitor,
+        description: "Establish and strengthen your online footprint with SEO, content strategy, and multi-channel visibility.",
+        highlights: ["SEO Optimization", "Content Strategy", "Social Media", "Multi-Channel", "Analytics & Reporting"],
+        image: imgDigital,
+        path: "/services/digital-presence",
+        stat: "3x",
+        statLabel: "Avg. Traffic Increase",
+      },
+      {
+        label: "Growth Marketing",
+        icon: TrendingUp,
+        description: "Data-driven marketing campaigns that acquire customers, boost engagement, and maximize ROI.",
+        highlights: ["PPC Campaigns", "Marketing Automation", "A/B Testing", "Conversion Optimization", "Analytics"],
+        image: imgGrowth,
+        path: "/services/growth-marketing",
+        stat: "200%",
+        statLabel: "Avg. ROI Boost",
+      },
+      {
+        label: "Sales & Revenue",
+        icon: DollarSign,
+        description: "Optimize your sales funnel with CRM integration, lead scoring, and conversion optimization strategies.",
+        highlights: ["CRM Integration", "Lead Generation", "Sales Funnel", "Pipeline Management", "Revenue Analytics"],
+        image: imgSales,
+        path: "/services/sales-revenue",
+        stat: "45%",
+        statLabel: "Conversion Uplift",
+      },
+      {
+        label: "Strategy & Scaling",
+        icon: BarChart3,
+        description: "Strategic consulting to plan growth, enter new markets, and scale operations sustainably.",
+        highlights: ["Growth Roadmapping", "Market Entry", "KPI Frameworks", "Operational Scaling", "Team Building"],
+        image: imgStrategy,
+        path: "/services/strategy-scaling",
+        stat: "25+",
+        statLabel: "Companies Scaled",
+      },
+    ],
   },
 ];
-
-const growServices = [
-  {
-    label: "Digital Presence",
-    icon: Monitor,
-    description: "Establish and strengthen your online footprint with SEO, content strategy, and multi-channel visibility.",
-    features: ["SEO", "Content Strategy", "Social Media", "Analytics"],
-    image: imgDigital,
-    path: "/services/digital-presence",
-  },
-  {
-    label: "Growth Marketing",
-    icon: TrendingUp,
-    description: "Data-driven marketing campaigns that acquire customers, boost engagement, and maximize ROI.",
-    features: ["PPC", "Analytics", "Automation", "A/B Testing"],
-    image: imgGrowth,
-    path: "/services/growth-marketing",
-  },
-  {
-    label: "Sales & Revenue",
-    icon: DollarSign,
-    description: "Optimize your sales funnel with CRM integration, lead scoring, and conversion optimization strategies.",
-    features: ["CRM Integration", "Lead Gen", "Conversion", "Pipeline"],
-    image: imgSales,
-    path: "/services/sales-revenue",
-  },
-  {
-    label: "Strategy & Scaling",
-    icon: BarChart3,
-    description: "Strategic consulting to plan growth, enter new markets, and scale operations sustainably.",
-    features: ["Roadmapping", "Market Entry", "KPIs", "Growth Plans"],
-    image: imgStrategy,
-    path: "/services/strategy-scaling",
-  },
-];
-
-type ServiceItem = typeof buildServices[0];
-
-const ServiceRow = ({ service, index, reversed }: { service: ServiceItem; index: number; reversed: boolean }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.6, delay: index * 0.1 }}
-  >
-    <Link to={service.path} className="group block">
-      <div className={`grid lg:grid-cols-2 gap-6 lg:gap-10 items-center ${reversed ? "lg:[direction:rtl]" : ""}`}>
-        {/* Image */}
-        <div className="rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden lg:[direction:ltr]">
-          <img
-            src={service.image}
-            alt={service.label}
-            className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-
-        {/* Content */}
-        <div className="lg:[direction:ltr] space-y-4 sm:space-y-5">
-          {/* Number + Icon */}
-          <div className="flex items-center gap-4">
-            <span className="text-5xl sm:text-6xl font-bold text-foreground/[0.07] select-none leading-none">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              <service.icon className="w-5 h-5 text-primary" />
-            </div>
-          </div>
-
-          {/* Title */}
-          <h3 className="text-2xl sm:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-            {service.label}
-          </h3>
-
-          {/* Description */}
-          <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
-            {service.description}
-          </p>
-
-          {/* Feature tags */}
-          <div className="flex flex-wrap gap-2">
-            {service.features.map((f) => (
-              <span key={f} className="px-3 py-1.5 rounded-full text-xs font-medium bg-muted text-muted-foreground border border-border/50">
-                {f}
-              </span>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="flex items-center gap-2 text-primary font-semibold pt-1 group-hover:gap-3 transition-all duration-300">
-            Learn More
-            <ArrowRight className="w-4 h-4" />
-          </div>
-        </div>
-      </div>
-    </Link>
-  </motion.div>
-);
 
 const Services = () => {
   usePageSEO({
@@ -167,6 +133,15 @@ const Services = () => {
     description: "Explore Advora Digital's services — web development, mobile apps, UI/UX design, branding, growth marketing, and digital strategy for businesses.",
     canonical: "/services",
   });
+
+  const [activeCategory, setActiveCategory] = useState(0);
+  const [activeService, setActiveService] = useState(0);
+  const currentService = allServices[activeCategory].services[activeService];
+
+  const handleCategoryChange = (catIdx: number) => {
+    setActiveCategory(catIdx);
+    setActiveService(0);
+  };
 
   const pricingTiers = [
     {
@@ -222,37 +197,26 @@ const Services = () => {
       <Header />
       
       <main>
-        {/* Hero Section - Editorial Split Layout */}
+        {/* Hero Section */}
         <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Hero Card */}
             <div className="rounded-[2rem] sm:rounded-[2.5rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
-                {/* Image */}
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                  <img
-                    src={serviceWebDev}
-                    alt="Our Services"
-                    className="w-full h-auto object-cover aspect-[4/3]"
-                  />
+                  <img src={serviceWebDev} alt="Our Services" className="w-full h-auto object-cover aspect-[4/3]" />
                 </div>
-
-                {/* Content */}
                 <div className="space-y-4 sm:space-y-6">
                   <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]">
                     <span className="block font-serif italic font-normal">Expert Solutions</span>
                     <span className="block font-bold text-primary">For Your Business</span>
                   </h1>
-
                   <p className="text-muted-foreground text-xl sm:text-lg md:text-xl leading-relaxed">
                     From web and mobile development to cloud infrastructure and UI/UX design, we deliver comprehensive digital solutions that drive growth.
                   </p>
-
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                     <Link to="/contact" className="w-full sm:w-auto">
                       <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-5 sm:px-8 sm:py-6 font-medium w-full sm:w-auto">
-                        Get Started
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                        Get Started <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                     <Link to="/portfolio" className="w-full sm:w-auto">
@@ -267,96 +231,177 @@ const Services = () => {
           </div>
         </section>
 
-        {/* BUILD — Tech Services */}
+        {/* Service Explorer — Split Panel */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          {/* Category Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
-              >
-                <Code className="w-4 h-4" />
-                BUILD
-              </motion.div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-3xl md:text-5xl tracking-tight"
-              >
-                <span className="block font-serif italic font-normal">Technology</span>
-                <span className="block font-bold">Solutions <span className="text-primary">We Build</span></span>
-              </motion.h2>
-            </div>
+          {/* Section Header */}
+          <div className="text-center mb-14">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-5xl tracking-tight mb-4"
+            >
+              <span className="block font-serif italic font-normal">What We</span>
+              <span className="block font-bold">Offer <span className="text-primary">You</span></span>
+            </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-muted-foreground max-w-md text-lg"
+              transition={{ delay: 0.1 }}
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
-              End-to-end development expertise — from pixel-perfect frontends to robust backend architecture.
+              Explore our full range of services across two core pillars — technology and growth.
             </motion.p>
           </div>
 
-          {/* Build Services — Alternating Rows */}
-          <div className="space-y-16 sm:space-y-20">
-            {buildServices.map((service, index) => (
-              <ServiceRow key={service.label} service={service} index={index} reversed={index % 2 !== 0} />
-            ))}
-          </div>
-        </section>
+          {/* Split Panel */}
+          <div className="grid lg:grid-cols-[340px_1fr] xl:grid-cols-[380px_1fr] gap-6 lg:gap-8">
+            
+            {/* LEFT — Category & Service List */}
+            <div className="space-y-2">
+              {allServices.map((cat, catIdx) => (
+                <div key={cat.category}>
+                  {/* Category Header */}
+                  <button
+                    onClick={() => handleCategoryChange(catIdx)}
+                    className={`w-full flex items-center gap-3 px-5 py-3.5 rounded-xl text-left font-semibold text-sm tracking-wide transition-all duration-300 ${
+                      activeCategory === catIdx
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted/50 text-muted-foreground hover:bg-muted"
+                    }`}
+                  >
+                    <cat.categoryIcon className="w-4 h-4 shrink-0" />
+                    {cat.category}
+                  </button>
 
-        {/* Divider */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-px bg-border" />
-        </div>
-
-        {/* GROW & SCALE — Digital Services */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          {/* Category Header */}
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-16">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
-              >
-                <TrendingUp className="w-4 h-4" />
-                GROW & SCALE
-              </motion.div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-3xl md:text-5xl tracking-tight"
-              >
-                <span className="block font-serif italic font-normal">Digital Growth</span>
-                <span className="block font-bold">That <span className="text-primary">Scales</span></span>
-              </motion.h2>
+                  {/* Services under this category */}
+                  <AnimatePresence>
+                    {activeCategory === catIdx && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="py-2 pl-3 space-y-1">
+                          {cat.services.map((service, sIdx) => (
+                            <button
+                              key={service.label}
+                              onClick={() => setActiveService(sIdx)}
+                              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm transition-all duration-300 group ${
+                                activeService === sIdx
+                                  ? "bg-card border border-border shadow-sm font-semibold text-foreground"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-card/50"
+                              }`}
+                            >
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                                activeService === sIdx
+                                  ? "bg-primary/10"
+                                  : "bg-muted/50 group-hover:bg-muted"
+                              }`}>
+                                <service.icon className={`w-4 h-4 ${
+                                  activeService === sIdx ? "text-primary" : "text-muted-foreground"
+                                }`} />
+                              </div>
+                              <span className="flex-1">{service.label}</span>
+                              {activeService === sIdx && (
+                                <ChevronRight className="w-4 h-4 text-primary" />
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
             </div>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-muted-foreground max-w-md text-lg"
-            >
-              Strategic marketing, branding, and growth services to amplify your digital presence.
-            </motion.p>
+
+            {/* RIGHT — Service Detail */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${activeCategory}-${activeService}`}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.35 }}
+                className="rounded-[2rem] bg-card border border-border overflow-hidden"
+              >
+                {/* Image */}
+                <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                  <img
+                    src={currentService.image}
+                    alt={currentService.label}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Stat overlay */}
+                  <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-border/50">
+                    <span className="text-2xl font-bold text-primary">{currentService.stat}</span>
+                    <span className="text-xs text-muted-foreground block">{currentService.statLabel}</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-8 space-y-5">
+                  {/* Title + Category badge */}
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                      {allServices[activeCategory].category}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                      {currentService.label}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                    {currentService.description}
+                  </p>
+
+                  {/* Highlights as checklist */}
+                  <div className="space-y-2.5">
+                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">What's Included</span>
+                    <div className="grid sm:grid-cols-2 gap-2">
+                      {currentService.highlights.map((h) => (
+                        <div key={h} className="flex items-center gap-2.5 text-sm text-foreground/80">
+                          <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                          {h}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <Link to={currentService.path}>
+                      <Button className="rounded-full px-6 bg-foreground text-background hover:bg-foreground/90">
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                    <Link to="/contact">
+                      <Button variant="outline" className="rounded-full px-6">
+                        Get a Quote
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Grow Services — Alternating Rows */}
-          <div className="space-y-16 sm:space-y-20">
-            {growServices.map((service, index) => (
-              <ServiceRow key={service.label} service={service} index={index} reversed={index % 2 !== 0} />
-            ))}
+          {/* Mobile: Quick links for all services */}
+          <div className="mt-10 lg:hidden">
+            <div className="grid grid-cols-3 gap-3">
+              {allServices.flatMap(cat => cat.services).map((s) => (
+                <Link key={s.label} to={s.path} className="text-center p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
+                  <s.icon className="w-5 h-5 text-primary mx-auto mb-1.5" />
+                  <span className="text-xs font-medium text-foreground/80">{s.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
