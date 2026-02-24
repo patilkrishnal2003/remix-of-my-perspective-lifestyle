@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Globe, Smartphone, Code, Palette, Paintbrush, Monitor, TrendingUp, DollarSign, BarChart3, CheckCircle, Zap, Shield, Clock, ChevronRight, Search, FileText, Rocket } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Code, Palette, Paintbrush, Monitor, TrendingUp, DollarSign, BarChart3, CheckCircle, Zap, Shield, Clock, ChevronRight, ChevronDown, Search, FileText, Rocket } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -272,7 +272,8 @@ const Services = () => {
                     }`}
                   >
                     <cat.categoryIcon className="w-4 h-4 shrink-0" />
-                    {cat.category}
+                    <span className="flex-1">{cat.category}</span>
+                    <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${activeCategory === catIdx ? "rotate-180" : ""}`} />
                   </button>
 
                   {/* Services under this category */}
