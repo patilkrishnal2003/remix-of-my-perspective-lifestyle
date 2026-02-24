@@ -214,9 +214,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Values Section */}
-        <ValuesTabSection />
-
         {/* Capabilities Marquee Section */}
         <section className="py-8 sm:py-12 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
@@ -244,6 +241,9 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        {/* Values Section */}
+        <ValuesTabSection />
 
         {/* How We Work Section */}
         <HowWeWorkSection />
