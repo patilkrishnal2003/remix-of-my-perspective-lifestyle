@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import HeroSectionWithGradient from "@/components/ui/hero-section-with-gradient";
 
 import { Zap, Shield, Users } from "lucide-react";
-import { SiGoogle, SiAmazon, SiMeta, SiApple, SiNetflix, SiSpotify } from "react-icons/si";
+import { ShoppingCart, Database, Bot, Smartphone, Globe, BarChart3, Workflow, Cloud } from "lucide-react";
 
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { usePageSEO } from "@/hooks/usePageSEO";
@@ -16,13 +16,15 @@ import DigitalServicesCarouselSection from "@/components/DigitalServicesCarousel
 import WhatMakesUsDifferentSection from "@/components/WhatMakesUsDifferentSection";
 import BookingFlowSection from "@/components/BookingFlowSection";
 
-const trustedCompanies = [
-  { name: "Google", icon: SiGoogle, color: "#4285F4" },
-  { name: "Spotify", icon: SiSpotify, color: "#1DB954" },
-  { name: "Amazon", icon: SiAmazon, color: "#FF9900" },
-  { name: "Meta", icon: SiMeta, color: "#0081FB" },
-  { name: "Apple", icon: SiApple, color: "#A2AAAD" },
-  { name: "Netflix", icon: SiNetflix, color: "#E50914" }
+const serviceCategories = [
+  { name: "E-commerce", icon: ShoppingCart },
+  { name: "Custom CRM", icon: Database },
+  { name: "AI Chatbots", icon: Bot },
+  { name: "Mobile Apps", icon: Smartphone },
+  { name: "Web Portals", icon: Globe },
+  { name: "Analytics", icon: BarChart3 },
+  { name: "Automation", icon: Workflow },
+  { name: "Cloud Apps", icon: Cloud },
 ];
 
 const Index = () => {
@@ -194,23 +196,21 @@ const Index = () => {
           {/* Trusted By Section - Marquee */}
           <section className="section-divider py-8 sm:py-12 pt-44 sm:pt-52 md:pt-60 overflow-hidden relative z-0 bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8 invisible">Trusted by innovative companies</p>
+              <p className="text-center text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">What We Build</p>
             </div>
             <div className="relative">
-              {/* Fade edges */}
               <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-background to-transparent z-10" />
               <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-background to-transparent z-10" />
               
-              {/* Marquee container */}
               <div className="flex animate-marquee hover:[animation-play-state:paused]">
                 {[...Array(3)].map((_, setIndex) => (
-                  <div key={setIndex} className="flex items-center gap-16 sm:gap-20 md:gap-28 px-8 sm:px-10">
-                    {trustedCompanies.map((company) => (
-                      <div key={`${setIndex}-${company.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0">
-                        <company.icon 
-                          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16" 
-                          style={{ color: company.color }}
-                        />
+                  <div key={setIndex} className="flex items-center gap-10 sm:gap-14 md:gap-20 px-5 sm:px-7">
+                    {serviceCategories.map((item) => (
+                      <div key={`${setIndex}-${item.name}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex flex-col items-center gap-2">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                          <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+                        </div>
+                        <span className="text-xs sm:text-sm font-medium text-muted-foreground whitespace-nowrap">{item.name}</span>
                       </div>
                     ))}
                   </div>
