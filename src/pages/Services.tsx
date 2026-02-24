@@ -1,104 +1,144 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Globe, Smartphone, Code, Database, Cloud, Settings, Palette, LineChart, CheckCircle, Zap, Shield, Clock, ChevronRight, Search, FileText, Rocket } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Code, Palette, Paintbrush, Monitor, TrendingUp, DollarSign, BarChart3, CheckCircle, Zap, Shield, Clock, ChevronRight, Search, FileText, Rocket } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
 import TechStackSection from "@/components/TechStackSection";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
 import { usePageSEO } from "@/hooks/usePageSEO";
 
 // Service images
 import serviceWebDev from "@/assets/service-web-dev.jpg";
-import serviceMobileDev from "@/assets/service-mobile-dev.jpg";
-import serviceCloud from "@/assets/service-cloud.jpg";
-import serviceDesign from "@/assets/service-design.jpg";
 
-const servicesData = [
+const buildServices = [
   {
-    id: "web",
+    id: "web-development",
     label: "Web Development",
     icon: Globe,
-    title: "Custom Web Solutions",
-    tagline: "Build powerful web experiences",
-    description: "From responsive websites to complex web applications, we create digital solutions that drive business growth and user engagement.",
-    features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Secure"],
+    description: "High-performance websites and web apps built with modern frameworks for speed, SEO, and scalability.",
+    tags: ["React", "Next.js", "TypeScript"],
     path: "/services/web-development",
   },
   {
-    id: "mobile",
+    id: "mobile-apps",
     label: "Mobile Apps",
     icon: Smartphone,
-    title: "Cross-Platform Mobile Apps",
-    tagline: "Reach users everywhere",
-    description: "Native and cross-platform mobile applications built with React Native and Flutter for seamless experiences on iOS and Android.",
-    features: ["iOS & Android", "Offline Support", "Push Notifications", "App Store Ready"],
+    description: "Native and cross-platform mobile applications for iOS and Android with seamless user experiences.",
+    tags: ["React Native", "Flutter", "iOS/Android"],
     path: "/services/mobile-apps",
   },
   {
-    id: "software",
+    id: "custom-software",
     label: "Custom Software",
     icon: Code,
-    title: "Enterprise Software",
-    tagline: "Tailored to your business",
-    description: "Bespoke software solutions designed to automate processes, improve efficiency, and solve your unique business challenges.",
-    features: ["Process Automation", "Integration Ready", "Scalable", "Maintainable"],
+    description: "Bespoke enterprise solutions designed to automate workflows, boost efficiency, and scale with your business.",
+    tags: ["APIs", "Microservices", "Cloud"],
     path: "/services/custom-software",
   },
   {
-    id: "backend",
-    label: "Backend Systems",
-    icon: Database,
-    title: "Robust Backend Architecture",
-    tagline: "Power your applications",
-    description: "Scalable APIs, microservices, and database architectures that form the backbone of high-performance applications.",
-    features: ["RESTful APIs", "GraphQL", "Cloud Native", "High Availability"],
-    path: "/services/backend-systems",
-  },
-  {
-    id: "design",
+    id: "ui-ux-design",
     label: "UI/UX Design",
     icon: Palette,
-    title: "User-Centered Design",
-    tagline: "Design that converts",
-    description: "Beautiful, intuitive interfaces backed by user research and design thinking to maximize engagement and conversions.",
-    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+    description: "Research-driven design that converts visitors into customers through intuitive, beautiful interfaces.",
+    tags: ["User Research", "Prototyping", "Design Systems"],
     path: "/services/ui-ux-design",
   },
   {
-    id: "cloud",
-    label: "Cloud Solutions",
-    icon: Cloud,
-    title: "Cloud Infrastructure",
-    tagline: "Scale with confidence",
-    description: "AWS, Azure, and Google Cloud solutions for hosting, deployment, and infrastructure management with 99.9% uptime.",
-    features: ["Auto Scaling", "CI/CD Pipelines", "Monitoring", "Cost Optimized"],
-    path: "/services/cloud-solutions",
-  },
-  {
-    id: "maintenance",
-    label: "Maintenance",
-    icon: Settings,
-    title: "Ongoing Support & Maintenance",
-    tagline: "Keep your systems running",
-    description: "Ongoing technical support and maintenance to keep your applications running smoothly and securely with 24/7 monitoring.",
-    features: ["24/7 Monitoring", "Bug Fixes", "Performance Optimization", "Security Patches"],
-    path: "/contact",
-  },
-  {
-    id: "consulting",
-    label: "Consulting",
-    icon: LineChart,
-    title: "Technical Consulting",
-    tagline: "Strategic technology advice",
-    description: "Strategic technology advice to help you make informed decisions, plan architecture, and prepare for future growth.",
-    features: ["Tech Assessment", "Architecture Planning", "Team Augmentation", "Code Reviews"],
-    path: "/contact",
+    id: "branding",
+    label: "Branding",
+    icon: Paintbrush,
+    description: "Strategic brand identity that tells your story and differentiates you in the market.",
+    tags: ["Logo Design", "Brand Strategy", "Guidelines"],
+    path: "/services/branding",
   },
 ];
+
+const growServices = [
+  {
+    id: "digital-presence",
+    label: "Digital Presence",
+    icon: Monitor,
+    description: "Establish and strengthen your online footprint with SEO, content strategy, and multi-channel visibility.",
+    tags: ["SEO", "Content", "Social Media"],
+    path: "/services/digital-presence",
+  },
+  {
+    id: "growth-marketing",
+    label: "Growth Marketing",
+    icon: TrendingUp,
+    description: "Data-driven marketing campaigns that acquire customers, boost engagement, and maximize ROI.",
+    tags: ["PPC", "Analytics", "Automation"],
+    path: "/services/growth-marketing",
+  },
+  {
+    id: "sales-revenue",
+    label: "Sales & Revenue",
+    icon: DollarSign,
+    description: "Optimize your sales funnel with CRM integration, lead scoring, and conversion optimization strategies.",
+    tags: ["CRM", "Lead Gen", "Conversion"],
+    path: "/services/sales-revenue",
+  },
+  {
+    id: "strategy-scaling",
+    label: "Strategy & Scaling",
+    icon: BarChart3,
+    description: "Strategic consulting to plan growth, enter new markets, and scale operations sustainably.",
+    tags: ["Roadmapping", "Market Entry", "KPIs"],
+    path: "/services/strategy-scaling",
+  },
+];
+
+const ServiceCard = ({ service, index }: { service: typeof buildServices[0]; index: number }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay: index * 0.08 }}
+  >
+    <Link to={service.path} className="group block h-full">
+      <div className="relative h-full rounded-[1.5rem] sm:rounded-[2rem] border border-border/60 bg-card p-6 sm:p-8 transition-all duration-500 hover:border-primary/40 hover:shadow-[0_8px_40px_-12px_hsl(var(--primary)/0.15)] overflow-hidden">
+        {/* Background number */}
+        <span className="absolute -top-4 -right-2 text-[8rem] font-bold leading-none text-foreground/[0.03] select-none pointer-events-none">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        <div className="relative z-10">
+          {/* Icon */}
+          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
+            <service.icon className="w-6 h-6 text-primary" />
+          </div>
+
+          {/* Title */}
+          <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+            {service.label}
+          </h3>
+
+          {/* Description */}
+          <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+            {service.description}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {service.tags.map((tag) => (
+              <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Arrow CTA */}
+          <div className="flex items-center gap-2 text-sm font-semibold text-primary opacity-0 translate-x-[-8px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            Explore Service
+            <ArrowRight className="w-4 h-4" />
+          </div>
+        </div>
+      </div>
+    </Link>
+  </motion.div>
+);
 
 const Services = () => {
   usePageSEO({
@@ -106,7 +146,6 @@ const Services = () => {
     description: "Explore Advora Digital's services — web development, mobile apps, UI/UX design, branding, growth marketing, and digital strategy for businesses.",
     canonical: "/services",
   });
-  const [activeTab, setActiveTab] = useState("web");
 
   const pricingTiers = [
     {
@@ -207,142 +246,146 @@ const Services = () => {
           </div>
         </section>
 
-        {/* Services Tab Section */}
+        {/* BUILD — Tech Services */}
         <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl tracking-tight mb-4">
-              <span className="block font-serif italic font-normal">What We</span>
-              <span className="block font-bold">Offer <span className="text-primary">You</span></span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Full-stack development expertise for every need
-            </p>
+          {/* Category Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
+              >
+                <Code className="w-4 h-4" />
+                BUILD
+              </motion.div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-3xl md:text-5xl tracking-tight"
+              >
+                <span className="block font-serif italic font-normal">Technology</span>
+                <span className="block font-bold">Solutions <span className="text-primary">We Build</span></span>
+              </motion.h2>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-muted-foreground max-w-md text-lg"
+            >
+              End-to-end development expertise — from pixel-perfect frontends to robust backend architecture.
+            </motion.p>
           </div>
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            {/* Tab Navigation */}
-            <div className="relative flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
-              {servicesData.map((service) => (
-                <button
-                  key={service.id}
-                  onClick={() => setActiveTab(service.id)}
-                  className={`relative px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                    activeTab === service.id
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {service.label}
-                  {activeTab === service.id && (
-                    <motion.div
-                      layoutId="activeServicesPageTabUnderline"
-                      className="absolute -bottom-[1px] left-0 right-0 h-[3px] bg-primary z-10 rounded-full"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                </button>
-              ))}
-              {/* Full-width line below tabs */}
-              <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border" />
-            </div>
+          {/* Build Services Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {buildServices.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </div>
+        </section>
 
-            {/* Tab Content */}
-            <div className="relative">
-              <AnimatePresence mode="wait">
-                {servicesData.map((service) => (
-                  <TabsContent
-                    key={service.id}
-                    value={service.id}
-                    className="mt-0 focus-visible:outline-none focus-visible:ring-0"
+        {/* GROW & SCALE — Digital Services */}
+        <section className="section-divider py-20 pt-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Dark container */}
+            <div className="rounded-[2rem] sm:rounded-[3rem] bg-foreground text-background p-6 sm:p-10 md:p-14">
+              {/* Category Header */}
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+                <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 text-primary text-sm font-semibold mb-4"
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className={`w-full rounded-[2.5rem] sm:rounded-[3rem] p-8 md:p-12 relative overflow-hidden ${
-                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                          ? "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-800/50"
-                          : "bg-gradient-to-br from-primary/10 to-primary/5 dark:from-primary/20 dark:to-primary/10"
-                      }`}
-                    >
-                      {/* Decorative elements */}
-                      <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 ${
-                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                          ? "bg-slate-200/40 dark:bg-slate-700/30"
-                          : "bg-primary/20 dark:bg-primary/30"
-                      }`} />
-                      <div className={`absolute bottom-0 left-0 w-48 h-48 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2 ${
-                        servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                          ? "bg-slate-300/30 dark:bg-slate-600/20"
-                          : "bg-primary/15 dark:bg-primary/25"
-                      }`} />
-                      
-                      <div className="relative z-10 flex flex-col items-center text-center gap-6">
-                        {/* Icon */}
-                        <div className={`w-20 h-20 rounded-2xl flex items-center justify-center ${
-                          servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                            ? "bg-slate-800 dark:bg-slate-200"
-                            : "bg-primary"
-                        }`}>
-                          <service.icon className={`w-10 h-10 ${
-                            servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                              ? "text-white dark:text-slate-800"
-                              : "text-primary-foreground"
-                          }`} />
-                        </div>
-                        
-                        {/* Content */}
-                        <div>
-                          <p className="text-sm font-medium text-muted-foreground mb-1">
-                            {service.tagline}
-                          </p>
-                          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                            {service.title}
+                    <TrendingUp className="w-4 h-4" />
+                    GROW & SCALE
+                  </motion.div>
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                    className="text-3xl md:text-5xl tracking-tight"
+                  >
+                    <span className="block font-serif italic font-normal">Digital Growth</span>
+                    <span className="block font-bold">That <span className="text-primary">Scales</span></span>
+                  </motion.h2>
+                </div>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="text-background/60 max-w-md text-lg"
+                >
+                  Strategic marketing, branding, and growth services to amplify your digital presence.
+                </motion.p>
+              </div>
+
+              {/* Grow Services Grid */}
+              <div className="grid sm:grid-cols-2 gap-5">
+                {growServices.map((service, index) => (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <Link to={service.path} className="group block h-full">
+                      <div className="relative h-full rounded-[1.5rem] sm:rounded-[2rem] border border-background/10 bg-background/5 backdrop-blur-sm p-6 sm:p-8 transition-all duration-500 hover:border-primary/40 hover:bg-background/10 overflow-hidden">
+                        {/* Background number */}
+                        <span className="absolute -top-4 -right-2 text-[8rem] font-bold leading-none text-background/[0.03] select-none pointer-events-none">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+
+                        <div className="relative z-10">
+                          {/* Icon */}
+                          <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/30 transition-colors duration-300">
+                            <service.icon className="w-6 h-6 text-primary" />
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
+                            {service.label}
                           </h3>
-                          <p className="text-muted-foreground max-w-2xl mb-6">
+
+                          {/* Description */}
+                          <p className="text-background/60 text-sm leading-relaxed mb-5">
                             {service.description}
                           </p>
-                          
-                          {/* Features - Transparent badges */}
-                          <div className="flex flex-wrap justify-center gap-3 mb-6">
-                            {service.features.map((feature) => (
-                              <span
-                                key={feature}
-                                className="px-3 py-1 bg-transparent border border-foreground/20 rounded-full text-sm font-medium text-foreground"
-                              >
-                                {feature}
+
+                          {/* Tags */}
+                          <div className="flex flex-wrap gap-2 mb-5">
+                            {service.tags.map((tag) => (
+                              <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-background/10 text-background/70">
+                                {tag}
                               </span>
                             ))}
                           </div>
-                          
-                          {/* CTA Buttons */}
-                          <div className="flex flex-wrap justify-center gap-4">
-                            <Link to="/contact">
-                              <Button className={`rounded-full px-6 ${
-                                servicesData.findIndex(s => s.id === service.id) % 2 === 0
-                                  ? "bg-slate-800 hover:bg-slate-900 dark:bg-slate-200 dark:hover:bg-slate-100 dark:text-slate-800"
-                                  : "bg-primary hover:bg-primary/90"
-                              }`}>
-                                Get Started
-                              </Button>
-                            </Link>
-                            <Link to={service.path}>
-                              <Button variant="outline" className="rounded-full px-6 bg-white/60 backdrop-blur-sm border-foreground/20 hover:bg-white/80 hover:text-foreground">
-                                Learn More
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                              </Button>
-                            </Link>
+
+                          {/* Arrow CTA */}
+                          <div className="flex items-center gap-2 text-sm font-semibold text-primary opacity-0 translate-x-[-8px] group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                            Explore Service
+                            <ArrowRight className="w-4 h-4" />
                           </div>
                         </div>
                       </div>
-                    </motion.div>
-                  </TabsContent>
+                    </Link>
+                  </motion.div>
                 ))}
-              </AnimatePresence>
+              </div>
             </div>
-          </Tabs>
+          </div>
         </section>
+
 
         {/* Process Section - Minimal Timeline */}
         <section className="section-divider py-20 pt-24 overflow-hidden bg-foreground text-background">
