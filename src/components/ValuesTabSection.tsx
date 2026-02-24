@@ -43,15 +43,24 @@ const ValuesTabSection = () => {
   const activeValue = valuesData[activeIndex];
 
   return (
-    <section className="section-divider py-20 pt-24">
+    <section className="section-divider relative bg-[hsl(0_0%_6%)] text-white overflow-hidden py-20 pt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl tracking-tight leading-[1.1] mb-4">
-            <span className="block font-serif italic font-normal">The Principles That</span>
-            <span className="block font-bold text-primary">Drive Everything We Do</span>
+        <div className="mb-8 sm:mb-12 lg:mb-16">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/50 mb-3 sm:mb-4">
+            Our Values
+          </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.15] sm:leading-[1.1]">
+            <span className="font-serif italic text-white/90">
+              The principles that shape
+            </span>
+            <br />
+            <span className="font-sans font-bold text-white">
+              every decision{" "}
+              <span className="text-primary">we make.</span>
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            More than just words — these values shape every decision, every line of code, and every client relationship.
+          <p className="text-sm sm:text-base text-white/40 mt-4 max-w-md leading-relaxed">
+            More than just words: these values drive every line of code and every client relationship.
           </p>
         </div>
 
@@ -65,7 +74,7 @@ const ValuesTabSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="bg-foreground text-background rounded-[2.5rem] p-10 lg:p-12 relative overflow-hidden min-h-[360px] flex flex-col justify-between"
+              className="bg-white/10 backdrop-blur-sm border border-white/10 text-white rounded-[2.5rem] p-10 lg:p-12 relative overflow-hidden min-h-[360px] flex flex-col justify-between"
             >
               {/* Large background number */}
               <div className="absolute -top-4 -right-2 text-[10rem] font-bold opacity-[0.06] leading-none select-none font-serif">
@@ -100,7 +109,7 @@ const ValuesTabSection = () => {
                     onClick={() => setActiveIndex(i)}
                     className={cn(
                       "h-1.5 rounded-full transition-all duration-300",
-                      i === activeIndex ? "w-8 bg-primary" : "w-3 bg-background/20 hover:bg-background/40"
+                      i === activeIndex ? "w-8 bg-primary" : "w-3 bg-white/20 hover:bg-white/40"
                     )}
                   />
                 ))}
@@ -117,15 +126,15 @@ const ValuesTabSection = () => {
                 className={cn(
                   "w-full text-left p-5 rounded-2xl border transition-all duration-300 group relative overflow-hidden",
                   activeIndex === index
-                    ? "border-primary bg-primary/5 shadow-lg shadow-primary/10"
-                    : "border-border bg-card hover:border-primary/30 hover:bg-primary/[0.02]"
+                    ? "border-primary/40 bg-white/10 shadow-lg shadow-primary/10"
+                    : "border-white/10 bg-white/5 hover:border-primary/20 hover:bg-white/[0.07]"
                 )}
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-center gap-4">
                   <span className={cn(
                     "text-3xl font-bold transition-colors duration-300",
-                    activeIndex === index ? "text-primary" : "text-muted-foreground/30"
+                    activeIndex === index ? "text-primary" : "text-white/20"
                   )}>
                     {value.number}
                   </span>
@@ -133,16 +142,16 @@ const ValuesTabSection = () => {
                     <div className="flex items-center gap-3">
                       <div className={cn(
                         "w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-300",
-                        activeIndex === index ? "bg-primary/15" : "bg-muted/50"
+                        activeIndex === index ? "bg-primary/15" : "bg-white/10"
                       )}>
                         <value.icon className={cn(
                           "w-4 h-4 transition-colors duration-300",
-                          activeIndex === index ? "text-primary" : "text-muted-foreground"
+                          activeIndex === index ? "text-primary" : "text-white/50"
                         )} />
                       </div>
                       <h3 className={cn(
                         "text-lg font-semibold transition-colors duration-300",
-                        activeIndex === index ? "text-foreground" : "text-muted-foreground"
+                        activeIndex === index ? "text-white" : "text-white/50"
                       )}>
                         {value.title}
                       </h3>
@@ -167,8 +176,8 @@ const ValuesTabSection = () => {
               className={cn(
                 "rounded-2xl border overflow-hidden transition-all duration-300",
                 activeIndex === index
-                  ? "border-primary bg-foreground text-background"
-                  : "border-border bg-card"
+                  ? "border-primary/40 bg-white/10 text-white"
+                  : "border-white/10 bg-white/5"
               )}
             >
               <button
@@ -177,17 +186,17 @@ const ValuesTabSection = () => {
               >
                 <span className={cn(
                   "text-2xl font-bold",
-                  activeIndex === index ? "text-primary" : "text-muted-foreground/30"
+                  activeIndex === index ? "text-primary" : "text-white/20"
                 )}>
                   {value.number}
                 </span>
                 <div className={cn(
                   "w-9 h-9 rounded-lg flex items-center justify-center",
-                  activeIndex === index ? "bg-primary/20" : "bg-muted/50"
+                  activeIndex === index ? "bg-primary/20" : "bg-white/10"
                 )}>
                   <value.icon className={cn(
                     "w-4 h-4",
-                    activeIndex === index ? "text-primary" : "text-muted-foreground"
+                    activeIndex === index ? "text-primary" : "text-white/50"
                   )} />
                 </div>
                 <h3 className="text-lg font-semibold flex-1">{value.title}</h3>
