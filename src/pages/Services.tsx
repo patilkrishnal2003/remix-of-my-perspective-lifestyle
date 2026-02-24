@@ -314,22 +314,22 @@ const Services = () => {
                                 onClick={() => handleServiceClick(catIdx, sIdx)}
                                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left text-sm transition-all duration-300 group ${
                                   isActive
-                                    ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                                    ? "bg-primary/10 text-foreground font-semibold border border-primary/20"
                                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                                 }`}
                               >
                                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                                   isActive
-                                    ? "bg-primary-foreground/20"
+                                    ? "bg-primary/15"
                                     : "bg-muted/50 group-hover:bg-muted"
                                 }`}>
                                   <service.icon className={`w-4 h-4 ${
-                                    isActive ? "text-primary-foreground" : "text-muted-foreground"
+                                    isActive ? "text-primary" : "text-muted-foreground"
                                   }`} />
                                 </div>
                                 <span className="flex-1">{service.label}</span>
                                 {isActive && (
-                                  <ChevronRight className="w-4 h-4 text-primary-foreground" />
+                                  <ChevronRight className="w-4 h-4 text-primary" />
                                 )}
                               </button>
                             );
