@@ -8,12 +8,91 @@ import CommentsList from "./components/CommentsList";
 import CommentForm from "./components/CommentForm";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { Link2, Check } from "lucide-react";
+import { Link2, Check, Download, X } from "lucide-react";
 import { FaWhatsapp, FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
 
 function formatDate(d: string | Date) {
   const date = typeof d === "string" ? new Date(d) : d;
   return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+}
+
+function DownloadGuideCard({ postTitle }: { postTitle: string }) {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) return;
+    setSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append("access_key", "9b766b1f-8a26-4ba4-b363-3829a818bc92");
+      formData.append("name", name.trim());
+      formData.append("email", email.trim());
+      formData.append("subject", `Guide Download Request: ${postTitle}`);
+      formData.append("message", `${name.trim()} (${email.trim()}) requested the guide from blog post "${postTitle}".`);
+      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+      if (res.ok) {
+        setSubmitted(true);
+        setName("");
+        setEmail("");
+      }
+    } catch (err) {
+      console.error("Guide form error:", err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary text-sm";
+
+  return (
+    <>
+      <div className="bg-card border border-border rounded-[2rem] p-6 shadow-sm">
+        <h3 className="text-lg font-bold text-foreground mb-3">Ready to learn more?</h3>
+        <p className="text-sm text-muted-foreground mb-4">Download our quick guide to get started.</p>
+        <button
+          onClick={() => { setOpen(true); setSubmitted(false); }}
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/10 text-primary font-medium hover:bg-primary/20 transition-colors"
+        >
+          <Download className="w-4 h-4" /> Download Guide
+        </button>
+      </div>
+
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/40 backdrop-blur-sm p-4" onClick={() => setOpen(false)}>
+          <div className="bg-card border border-border rounded-2xl p-6 w-full max-w-sm shadow-xl relative" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setOpen(false)} className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors" aria-label="Close">
+              <X className="w-5 h-5" />
+            </button>
+
+            {submitted ? (
+              <div className="text-center py-6">
+                <Check className="w-10 h-10 text-primary mx-auto mb-3" />
+                <h3 className="text-lg font-bold text-foreground mb-2">Thank you!</h3>
+                <p className="text-sm text-muted-foreground">The guide will be sent to your email shortly.</p>
+              </div>
+            ) : (
+              <>
+                <h3 className="text-lg font-bold text-foreground mb-1">Get Your Free Guide</h3>
+                <p className="text-sm text-muted-foreground mb-5">Enter your details and we'll send it right over.</p>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                  <input className={inputClass} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required maxLength={100} />
+                  <input className={inputClass} placeholder="Email address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required maxLength={255} />
+                  <button type="submit" disabled={submitting} className="w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50 text-sm">
+                    {submitting ? "Sending..." : "Send me the guide"}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 function SidebarCTAForm({ postTitle }: { postTitle: string }) {
@@ -328,13 +407,7 @@ export default function PostDetail() {
               <aside className="lg:sticky lg:top-24 flex flex-col gap-4">
                 <SidebarCTAForm postTitle={post.title} />
 
-                <div className="bg-card border border-border rounded-[2rem] p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-foreground mb-3">Ready to learn more?</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Download our quick guide to get started.</p>
-                  <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary/10 text-primary font-medium hover:bg-primary/20 transition-colors">
-                    <span>⬇️</span> Download Guide
-                  </button>
-                </div>
+                <DownloadGuideCard postTitle={post.title} />
               </aside>
             </div>
           </div>
