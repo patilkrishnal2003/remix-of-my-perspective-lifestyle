@@ -16,6 +16,63 @@ function formatDate(d: string | Date) {
   return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
 }
 
+function SidebarCTAForm({ postTitle }: { postTitle: string }) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !phone.trim()) return;
+    setSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append("access_key", "9b766b1f-8a26-4ba4-b363-3829a818bc92");
+      formData.append("name", name.trim());
+      formData.append("phone", phone.trim());
+      formData.append("subject", `Blog CTA Lead: ${postTitle}`);
+      formData.append("message", `New lead from blog post "${postTitle}". Name: ${name.trim()}, Phone: ${phone.trim()}`);
+      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: formData });
+      if (res.ok) {
+        setSubmitted(true);
+        setName("");
+        setPhone("");
+      }
+    } catch (err) {
+      console.error("CTA form error:", err);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const inputClass = "w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary";
+
+  return (
+    <div className="bg-card border border-border rounded-[2rem] p-6 shadow-sm">
+      <h3 className="text-lg font-bold text-foreground mb-3">Get Free Consultation</h3>
+      <p className="text-sm text-muted-foreground mb-4">Talk to an expert to plan your next move.</p>
+      {submitted ? (
+        <div className="text-center py-4">
+          <Check className="w-8 h-8 text-primary mx-auto mb-2" />
+          <p className="text-sm font-medium text-foreground">Thank you! We'll reach out soon.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <input className={inputClass} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required maxLength={100} />
+          <input className={inputClass} placeholder="Phone number" value={phone} onChange={(e) => setPhone(e.target.value)} required maxLength={20} />
+          <button type="submit" disabled={submitting} className="w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-md disabled:opacity-50">
+            {submitting ? "Sending..." : "Submit"}
+          </button>
+        </form>
+      )}
+      <p className="text-xs text-muted-foreground/60 mt-3">
+        By submitting, you accept our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+      </p>
+    </div>
+  );
+}
+
 function ShareBar({ title }: { title: string }) {
   const [copied, setCopied] = useState(false);
   const url = window.location.href;
@@ -269,20 +326,7 @@ export default function PostDetail() {
 
               {/* Sidebar */}
               <aside className="lg:sticky lg:top-24 flex flex-col gap-4">
-                <div className="bg-card border border-border rounded-[2rem] p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-foreground mb-3">Get Free Consultation</h3>
-                  <p className="text-sm text-muted-foreground mb-4">Talk to an expert to plan your next move.</p>
-                  <div className="flex flex-col gap-3">
-                    <input className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Your name" />
-                    <input className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Phone number" />
-                    <button className="w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-md">
-                      Submit
-                    </button>
-                  </div>
-                  <p className="text-xs text-muted-foreground/60 mt-3">
-                    By submitting, you accept our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
-                  </p>
-                </div>
+                <SidebarCTAForm postTitle={post.title} />
 
                 <div className="bg-card border border-border rounded-[2rem] p-6 shadow-sm">
                   <h3 className="text-lg font-bold text-foreground mb-3">Ready to learn more?</h3>
