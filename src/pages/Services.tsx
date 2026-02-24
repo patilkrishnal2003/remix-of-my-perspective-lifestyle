@@ -36,6 +36,7 @@ const allServices = [
         path: "/services/web-development",
         stat: "60+",
         statLabel: "Projects Delivered",
+        bgColor: "#438260",
       },
       {
         label: "Mobile Apps",
@@ -46,6 +47,7 @@ const allServices = [
         path: "/services/mobile-apps",
         stat: "40+",
         statLabel: "Apps Launched",
+        bgColor: "#948149",
       },
       {
         label: "Custom Software",
@@ -56,6 +58,7 @@ const allServices = [
         path: "/services/custom-software",
         stat: "30+",
         statLabel: "Enterprise Solutions",
+        bgColor: "#711e1b",
       },
       {
         label: "UI/UX Design",
@@ -66,6 +69,7 @@ const allServices = [
         path: "/services/ui-ux-design",
         stat: "95%",
         statLabel: "Client Satisfaction",
+        bgColor: "#894f71",
       },
       {
         label: "Branding",
@@ -76,6 +80,7 @@ const allServices = [
         path: "/services/branding",
         stat: "50+",
         statLabel: "Brands Created",
+        bgColor: "#485c81",
       },
     ],
   },
@@ -92,6 +97,7 @@ const allServices = [
         path: "/services/digital-presence",
         stat: "3x",
         statLabel: "Avg. Traffic Increase",
+        bgColor: "#2d5a7b",
       },
       {
         label: "Growth Marketing",
@@ -102,6 +108,7 @@ const allServices = [
         path: "/services/growth-marketing",
         stat: "200%",
         statLabel: "Avg. ROI Boost",
+        bgColor: "#5a4a3a",
       },
       {
         label: "Sales & Revenue",
@@ -112,6 +119,7 @@ const allServices = [
         path: "/services/sales-revenue",
         stat: "45%",
         statLabel: "Conversion Uplift",
+        bgColor: "#6b4c5a",
       },
       {
         label: "Strategy & Scaling",
@@ -122,6 +130,7 @@ const allServices = [
         path: "/services/strategy-scaling",
         stat: "25+",
         statLabel: "Companies Scaled",
+        bgColor: "#3a6b5a",
       },
     ],
   },
@@ -328,19 +337,20 @@ const Services = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.35 }}
-                className="rounded-[2rem] bg-card border border-border overflow-hidden"
+                style={{ backgroundColor: currentService.bgColor }}
+                className="rounded-[2rem] overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden">
+                <div className="relative h-56 sm:h-64 md:h-72 overflow-hidden p-4 pb-0">
                   <img
                     src={currentService.image}
                     alt={currentService.label}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-2xl"
                   />
                   {/* Stat overlay */}
-                  <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-border/50">
-                    <span className="text-2xl font-bold text-primary">{currentService.stat}</span>
-                    <span className="text-xs text-muted-foreground block">{currentService.statLabel}</span>
+                  <div className="absolute bottom-2 left-8 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5">
+                    <span className="text-2xl font-bold text-gray-900">{currentService.stat}</span>
+                    <span className="text-xs text-gray-600 block">{currentService.statLabel}</span>
                   </div>
                 </div>
 
@@ -348,26 +358,26 @@ const Services = () => {
                 <div className="p-6 sm:p-8 space-y-5">
                   {/* Title + Category badge */}
                   <div>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold mb-3">
                       {allServices[activeCategory].category}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">
                       {currentService.label}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                  <p className="text-white/80 leading-relaxed text-base sm:text-lg">
                     {currentService.description}
                   </p>
 
                   {/* Highlights as checklist */}
                   <div className="space-y-2.5">
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">What's Included</span>
+                    <span className="text-xs font-semibold text-white/60 uppercase tracking-wider">What's Included</span>
                     <div className="grid sm:grid-cols-2 gap-2">
                       {currentService.highlights.map((h) => (
-                        <div key={h} className="flex items-center gap-2.5 text-sm text-foreground/80">
-                          <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                        <div key={h} className="flex items-center gap-2.5 text-sm text-white/80">
+                          <CheckCircle className="w-4 h-4 text-white/70 shrink-0" />
                           {h}
                         </div>
                       ))}
@@ -377,13 +387,13 @@ const Services = () => {
                   {/* CTA */}
                   <div className="flex flex-wrap gap-3 pt-2">
                     <Link to={currentService.path}>
-                      <Button className="rounded-full px-6 bg-foreground text-background hover:bg-foreground/90">
+                      <Button className="rounded-full px-6 bg-white text-gray-900 hover:bg-white/90">
                         Learn More
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                     <Link to="/contact">
-                      <Button variant="outline" className="rounded-full px-6">
+                      <Button variant="outline" className="rounded-full px-6 border-white/30 text-white hover:bg-white/10">
                         Get a Quote
                       </Button>
                     </Link>
