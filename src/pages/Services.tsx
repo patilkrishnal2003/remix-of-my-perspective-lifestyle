@@ -393,7 +393,7 @@ const Services = () => {
                       </Button>
                     </Link>
                     <Link to="/contact">
-                      <Button variant="outline" className="rounded-full px-6 border-white/30 text-white hover:bg-white/10">
+                      <Button className="rounded-full px-6 bg-white/20 text-white border border-white/40 hover:bg-white/30">
                         Get a Quote
                       </Button>
                     </Link>
