@@ -175,17 +175,7 @@ const About = () => {
                     <span className="block font-bold text-primary">trusted digital partner</span>
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    We envision a world where every business, regardless of size, has access to world-class digital solutions that drive real growth and lasting impact.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                    <Rocket className="w-4 h-4" />
-                    Our Mission
-                  </div>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    To deliver software solutions that are not just technically excellent, but strategically aligned with our clients' business goals — helping them compete, grow, and lead in their industries.
+                    We envision a world where every business, regardless of size, has access to world-class digital solutions that drive real growth and lasting impact. Our goal is to deliver software that's not just technically excellent, but strategically aligned with your business goals, helping you compete, grow, and lead in your industry.
                   </p>
                 </div>
               </motion.div>
