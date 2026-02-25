@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import CTASection from "@/components/CTASection";
 import TechStackSection from "@/components/TechStackSection";
+import PremiumFAQ from "@/components/PremiumFAQ";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { usePageSEO } from "@/hooks/usePageSEO";
@@ -575,32 +576,7 @@ const Services = () => {
         <TechStackSection title="Technologies We Use" subtitle="Modern tools for modern solutions" showTwoRows={true} />
 
         {/* FAQ Section */}
-        <section className="section-divider max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-muted-foreground">Answers to common questions about our services</p>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
-              {[
-                { q: "How long does a typical project take?", a: "Project timelines vary based on scope and complexity. A simple website might take 4-6 weeks, while a complex application could take 3-6 months. We'll provide a detailed timeline during our initial consultation." },
-                { q: "Do you work with clients remotely?", a: "Yes! We're a remote-first company and have successfully delivered projects for clients worldwide. We use modern collaboration tools to ensure smooth communication regardless of location." },
-                { q: "What happens after the project is delivered?", a: "We offer various maintenance and support packages to keep your application running smoothly. This includes bug fixes, security updates, and feature enhancements as needed." },
-                { q: "Can you work with our existing team?", a: "Absolutely. We offer team augmentation services where our developers integrate with your existing team. We can also provide technical consulting to guide your internal development efforts." },
-                { q: "What is your payment structure?", a: "We typically work with a milestone-based payment structure. A percentage is due upfront, with remaining payments tied to project milestones. We're flexible and can discuss arrangements that work for your budget." }
-              ].map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`} className="rounded-2xl bg-card border border-border px-6 data-[state=open]:border-accent/50">
-                  <AccordionTrigger className="text-left font-bold hover:no-underline py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
+        <PremiumFAQ />
 
         <CTASection
           title="Ready to get started?"
