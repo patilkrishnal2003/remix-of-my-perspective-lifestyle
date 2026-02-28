@@ -2,21 +2,6 @@
   RewriteEngine On
   RewriteBase /
 
-  # Prerender.io - serve cached HTML to bots
-  <IfModule mod_headers.c>
-    RequestHeader set X-Prerender-Token "SSne0H4eBZAnkt6sysI7"
-  </IfModule>
-
-  RewriteCond %{HTTP_USER_AGENT} googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest\/0\.|pinterestbot|slackbot|vkShare|W3C_Validator|whatsapp|redditbot|applebot|flipboard|tumblr|bitlybot|skypeuripreview|nuzzel|discordbot|google\ page\ speed|qwantify|bitrix\ link\ preview|xing-contenttabreceiver|chrome-lighthouse|telegrambot [NC,OR]
-  RewriteCond %{QUERY_STRING} _escaped_fragment_
-  RewriteCond %{REQUEST_URI} !^/sitemap\.xml$ [NC]
-  RewriteCond %{REQUEST_URI} !^/robots\.txt$ [NC]
-
-  # Don't prerender if already prerendered
-  RewriteCond %{HTTP:X-Prerender} !1
-
-  RewriteRule ^(.*) https://service.prerender.io/https://advora.in/$1 [P,L]
-
   # Allow direct access to existing files and folders
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
