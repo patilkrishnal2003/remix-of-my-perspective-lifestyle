@@ -24,7 +24,7 @@ const About = () => {
 
   const team = [
     {
-      name: "Rahul Sharma",
+      name: "Raj",
       role: "Founder & Full-Stack Developer",
       bio: "Leads product strategy and development with deep expertise in scalable web and mobile applications.",
       skills: ["React", "Node.js", "System Architecture"]
@@ -316,10 +316,10 @@ const About = () => {
               </p>
               <div className="flex items-center justify-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">RS</span>
+                  <span className="text-primary-foreground font-bold">R</span>
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold">Rahul Sharma</div>
+                  <div className="font-semibold">Raj</div>
                   <div className="text-sm opacity-70">Founder, Advora Labs</div>
                 </div>
               </div>
