@@ -1,7 +1,20 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import { Users, Target, Award, Heart, Lightbulb, Rocket, Eye, ArrowRight, Code2, Palette, TrendingUp, Smartphone } from "lucide-react";
+import {
+  Users,
+  Target,
+  Award,
+  Heart,
+  Lightbulb,
+  Rocket,
+  Eye,
+  ArrowRight,
+  Code2,
+  Palette,
+  TrendingUp,
+  Smartphone,
+} from "lucide-react";
 import ValuesTabSection from "@/components/ValuesTabSection";
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin } from "lucide-react";
@@ -18,47 +31,48 @@ import aboutWorkspace from "@/assets/about-workspace.jpg";
 const About = () => {
   usePageSEO({
     title: "About Us",
-    description: "Learn about Advora Digital — a Pune-based software agency delivering custom web, mobile, and cloud solutions with a client-focused approach.",
+    description:
+      "Learn about Advora Digital — a Pune-based software agency delivering custom web, mobile, and cloud solutions with a client-focused approach.",
     canonical: "/about",
   });
 
   const team = [
     {
-      name: "Raj",
+      name: "Rahul Sharma",
       role: "Founder & Full-Stack Developer",
       bio: "Leads product strategy and development with deep expertise in scalable web and mobile applications.",
-      skills: ["React", "Node.js", "System Architecture"]
+      skills: ["React", "Node.js", "System Architecture"],
     },
     {
       name: "Priya Deshmukh",
       role: "UI/UX Design Lead",
       bio: "Crafts intuitive digital experiences with a focus on user research and brand-driven design.",
-      skills: ["Figma", "Branding", "Prototyping"]
+      skills: ["Figma", "Branding", "Prototyping"],
     },
     {
       name: "Amit Kulkarni",
       role: "Backend & Cloud Engineer",
       bio: "Builds robust server-side systems and manages cloud infrastructure for high-availability apps.",
-      skills: ["Python", "AWS", "PostgreSQL"]
+      skills: ["Python", "AWS", "PostgreSQL"],
     },
     {
       name: "Sneha Patil",
       role: "Digital Marketing Strategist",
       bio: "Drives growth through SEO, paid campaigns, and data-driven marketing strategies.",
-      skills: ["SEO", "Google Ads", "Analytics"]
+      skills: ["SEO", "Google Ads", "Analytics"],
     },
     {
       name: "Vikram Joshi",
       role: "Mobile App Developer",
       bio: "Specialises in cross-platform mobile development delivering smooth, performant apps.",
-      skills: ["React Native", "Flutter", "Firebase"]
+      skills: ["React Native", "Flutter", "Firebase"],
     },
     {
       name: "Ananya Iyer",
       role: "Sales & Client Success Lead",
       bio: "Ensures every client engagement is seamless — from first call to project delivery and beyond.",
-      skills: ["Client Relations", "Strategy", "Revenue Growth"]
-    }
+      skills: ["Client Relations", "Strategy", "Revenue Growth"],
+    },
   ];
 
   const capabilities = [
@@ -71,7 +85,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
-      
+
       <main>
         {/* Hero Section - Editorial Split Layout */}
         <section className="pt-20 sm:pt-24 md:pt-28 pb-10 sm:pb-16">
@@ -79,11 +93,7 @@ const About = () => {
             <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-primary/10 dark:bg-card p-4 sm:p-8 md:p-12">
               <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
                 <div className="rounded-xl sm:rounded-2xl overflow-hidden">
-                  <img
-                    src={aboutHero}
-                    alt="Advora workspace"
-                    className="w-full h-auto object-cover aspect-[4/3]"
-                  />
+                  <img src={aboutHero} alt="Advora workspace" className="w-full h-auto object-cover aspect-[4/3]" />
                 </div>
                 <div className="space-y-4 sm:space-y-6">
                   <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1]">
@@ -91,7 +101,8 @@ const About = () => {
                     <span className="block font-bold text-primary">Excellence</span>
                   </h1>
                   <p className="text-muted-foreground text-xl sm:text-lg md:text-xl leading-relaxed">
-                    Welcome to Advora: A space for innovation, collaboration, and digital transformation. Where technology meets creativity to build solutions that shape the future.
+                    Welcome to Advora: A space for innovation, collaboration, and digital transformation. Where
+                    technology meets creativity to build solutions that shape the future.
                   </p>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
                     <Link to="/contact" className="w-full sm:w-auto">
@@ -100,10 +111,20 @@ const About = () => {
                       </Button>
                     </Link>
                     <div className="flex items-center gap-3">
-                      <a href="https://www.instagram.com/advora.labs" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors">
+                      <a
+                        href="https://www.instagram.com/advora.labs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+                      >
                         <Instagram className="w-4 h-4" />
                       </a>
-                      <a href="https://www.linkedin.com/company/advora-labs" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors">
+                      <a
+                        href="https://www.linkedin.com/company/advora-labs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+                      >
                         <Linkedin className="w-4 h-4" />
                       </a>
                     </div>
@@ -122,10 +143,10 @@ const About = () => {
                 { value: "5+", label: "Years in Business" },
                 { value: "150+", label: "Projects Completed" },
                 { value: "50+", label: "Happy Clients" },
-                { value: "15+", label: "Team Members" }
+                { value: "15+", label: "Team Members" },
               ].map((stat, index) => (
-                <motion.div 
-                  key={stat.label} 
+                <motion.div
+                  key={stat.label}
                   className="text-center"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -145,10 +166,13 @@ const About = () => {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <ScrollReveal>
               <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-foreground leading-relaxed mb-6">
-                Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the digital world.
+                Advora is a space for exploring ideas, finding inspiration, and discovering new ways of building the
+                digital world.
               </p>
               <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-                From web development and mobile apps to custom software and cloud solutions, we share our expertise to help businesses thrive. Join us as we explore technologies that inspire innovation and meaningful growth.
+                From web development and mobile apps to custom software and cloud solutions, we share our expertise to
+                help businesses thrive. Join us as we explore technologies that inspire innovation and meaningful
+                growth.
               </p>
             </ScrollReveal>
           </div>
@@ -178,10 +202,12 @@ const About = () => {
                     <span className="block font-bold text-primary">trusted digital partner</span>
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    We envision a world where every business, regardless of size, has access to world-class digital solutions that drive real growth and lasting impact.
+                    We envision a world where every business, regardless of size, has access to world-class digital
+                    solutions that drive real growth and lasting impact.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Our goal is to deliver software that's not just technically excellent, but strategically aligned with your business goals, helping you compete, grow, and lead in your industry.
+                    Our goal is to deliver software that's not just technically excellent, but strategically aligned
+                    with your business goals, helping you compete, grow, and lead in your industry.
                   </p>
                 </div>
               </motion.div>
@@ -229,12 +255,17 @@ const About = () => {
               {[...Array(4)].map((_, setIndex) => (
                 <div key={setIndex} className="flex items-center gap-10 sm:gap-14 md:gap-20 px-5 sm:px-7">
                   {capabilities.map((item) => (
-                    <div key={`${setIndex}-${item.label}`} className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex items-center gap-3">
+                    <div
+                      key={`${setIndex}-${item.label}`}
+                      className="hover:scale-110 transition-all duration-300 flex-shrink-0 flex items-center gap-3"
+                    >
                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                         <item.icon className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <span className="text-sm sm:text-base font-semibold text-foreground/80 whitespace-nowrap block">{item.label}</span>
+                        <span className="text-sm sm:text-base font-semibold text-foreground/80 whitespace-nowrap block">
+                          {item.label}
+                        </span>
                         <span className="text-xs text-muted-foreground">{item.count} Projects</span>
                       </div>
                     </div>
@@ -261,13 +292,15 @@ const About = () => {
                   <span className="block font-serif italic font-normal">The Passionate People Behind</span>
                   <span className="block font-bold text-primary">Every Successful Project</span>
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Our diverse team of experts brings creativity, technical excellence, and dedication to every challenge</p>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Our diverse team of experts brings creativity, technical excellence, and dedication to every challenge
+                </p>
               </ScrollReveal>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {team.map((member, index) => (
-                <motion.div 
-                  key={member.name} 
+                <motion.div
+                  key={member.name}
                   className="group p-6 sm:p-8 rounded-[2rem] bg-card border border-border transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -286,7 +319,10 @@ const About = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">{member.bio}</p>
                   <div className="flex flex-wrap gap-2">
                     {member.skills.map((skill) => (
-                      <span key={skill} className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-xs font-medium">
+                      <span
+                        key={skill}
+                        className="px-3 py-1 rounded-full bg-primary/5 border border-primary/10 text-xs font-medium"
+                      >
                         {skill}
                       </span>
                     ))}
@@ -300,7 +336,7 @@ const About = () => {
         {/* Big Quote / Social Proof Section */}
         <section className="section-divider py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
+            <motion.div
               className="bg-foreground text-background rounded-[2.5rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 text-center relative overflow-hidden"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -310,16 +346,17 @@ const About = () => {
               {/* Decorative elements */}
               <div className="absolute top-6 left-8 text-8xl font-serif opacity-10 select-none">"</div>
               <div className="absolute bottom-6 right-8 text-8xl font-serif opacity-10 select-none rotate-180">"</div>
-              
+
               <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic leading-relaxed mb-8 max-w-3xl mx-auto relative z-10">
-                We don't just build software — we build partnerships that drive growth, innovation, and lasting digital impact.
+                We don't just build software, we build partnerships that drive growth, innovation, and lasting digital
+                impact.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold">R</span>
+                  <span className="text-primary-foreground font-bold">RS</span>
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold">Raj</div>
+                  <div className="font-semibold">Rahul Sharma</div>
                   <div className="text-sm opacity-70">Founder, Advora Labs</div>
                 </div>
               </div>
@@ -336,7 +373,8 @@ const About = () => {
                 <span className="block font-bold text-primary">What We've Built?</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-                From startups to established enterprises, explore how we've helped businesses transform their digital presence.
+                From startups to established enterprises, explore how we've helped businesses transform their digital
+                presence.
               </p>
               <Link to="/portfolio">
                 <Button className="rounded-full px-8 py-6 font-medium text-base gap-2">
